@@ -9,6 +9,7 @@
                 </picture>
                 <h1>Sign Up</h1>
                 <form-input
+                        class="mb-30"
                         id="email"
                         type="email"
                         name="email"
@@ -16,12 +17,21 @@
                         icon-class-name="icon-shape"
                 ></form-input>
                 <form-input
+                        class="mb-30"
                         id="password"
                         type="password"
                         name="password"
                         label="Password"
                         icon-class-name="icon-lock"
                 ></form-input>
+                <div style="display: flex;">
+                    <div class="mr-1" style="flex: 1;">
+                        <button class="btn btn-red w-100 p-1 mr-1">Signup</button>
+                    </div>
+                    <div class="ml-1" style="flex: 1;">
+                        <button class="btn btn-blue w-100 p-1 ml-1">Login</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
