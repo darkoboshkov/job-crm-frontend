@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'hiway-icon';
+  src:  url('fonts/hiway-icon.eot?5ykx66');
+  src:  url('fonts/hiway-icon.eot?5ykx66#iefix') format('embedded-opentype'),
+    url('fonts/hiway-icon.ttf?5ykx66') format('truetype'),
+    url('fonts/hiway-icon.woff?5ykx66') format('woff'),
+    url('fonts/hiway-icon.svg?5ykx66#hiway-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'hiway-icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lock:before {
+  content: "\e900";
+}
+.icon-shape:before {
+  content: "\e901";
+}
