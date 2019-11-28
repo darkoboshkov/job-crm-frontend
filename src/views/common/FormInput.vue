@@ -13,6 +13,7 @@
                    @keyup="event => this.$emit('keyup', event)"
                    :data-vat="dataVat" />
             <label :for="id || field">{{ label }}</label>
+            <span class="input-icon" v-if="iconClassName"><i class="icon-lock"></i></span>
             <div class="invalid-feedback" v-if="invalid">
                 {{ error }}
             </div>
@@ -23,7 +24,7 @@
 <script>
     export default {
         name: "FormInput",
-        props: ["id", "field", "label", "type", "required", "error", "value", "autofocus", "dataVat"],
+        props: ["id", "field", "label", "type", "required", "error", "value", "autofocus", "dataVat", "iconClassName"],
         data() {
             return {
                 //
@@ -67,6 +68,7 @@
         border-bottom: 1px solid #aaa;
         box-sizing: border-box;
         font-size: 1rem;
+        line-height: 1.5;
         width: 100%;
         color: var(--cobalt-blue);
     }
@@ -87,6 +89,7 @@
         padding: 0.75rem 0;
         color: #aaa;
         font-size: 1rem;
+        line-height: 1.5;
         pointer-events: none;
         transition: 0.2s ease all;
         -moz-transition: 0.2s ease all;
@@ -136,5 +139,13 @@
         input:-ms-input-placeholder {
             color: #777;
         }
+    }
+    .input-icon {
+        position: absolute;
+        font-size: 1rem;
+        line-height: 1.5;
+        top: calc(50% - 0.75rem);
+        right: 0;
+        color: var(--cobalt-blue);
     }
 </style>

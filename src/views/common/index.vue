@@ -8,6 +8,7 @@
         <div class="my-1">
             <form-input
                     label="common form input"
+                    icon-class-name="icon-lock"
             ></form-input>
         </div>
     </div>
