@@ -1,0 +1,27 @@
+.btn {
+  border: 1px solid transparent;
+  border-radius: 50rem;
+  color: white;
+  cursor: pointer;
+  outline: none;
+
+  &-red {
+    background-color: var(--lipstick-red);
+    border-color: var(--lipstick-red);
+
+    &:hover {
+      background-color: white;
+      color: var(--lipstick-red);
+    }
+  }
+
+  &-blue {
+    background-color: var(--cobalt-blue);
+    border-color: var(--cobalt-blue);
+
+    &:hover {
+      background-color: white;
+      color: var(--cobalt-blue);
+    }
+  }
+}
