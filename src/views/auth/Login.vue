@@ -1,7 +1,7 @@
 <template>
   <div id="page_login">
     <div class="container">
-      <div class="row align-items-center">
+      <div class="row justify-content-center">
         <div class="form-container">
           <form class="login-form">
             <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
