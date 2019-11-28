@@ -1,6 +1,5 @@
 <template>
-    <div id="signup-page">
-        sign up page
+    <div id="page_signup">
         <div class="form-container">
             <form class="signup-form">
                 <picture>
