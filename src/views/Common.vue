@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import FormInput from './FormInput.vue';
+  import FormInput from '@/components/common/FormInput.vue';
 
   export default {
     name: "index",

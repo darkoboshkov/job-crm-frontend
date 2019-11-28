@@ -9,18 +9,33 @@
                     <img src="@/assets/image/hiway_crm.png" alt="Hiway CRM" style="width:auto;max-width: 100%;">
                 </picture>
                 <h1>Sign Up</h1>
-                <div class="input-group">
-                    <label></label>
-                </div>
-                <div class="input-group"></div>
+                <form-input
+                        id="email"
+                        type="email"
+                        name="email"
+                        label="Email address"
+                        icon-class-name="icon-shape"
+                ></form-input>
+                <form-input
+                        id="password"
+                        type="password"
+                        name="password"
+                        label="Password"
+                        icon-class-name="icon-lock"
+                ></form-input>
             </form>
         </div>
     </div>
 </template>
 
 <script>
+  import FormInput from '@/components/common/FormInput.vue';
+
   export default {
-    name: "SignUp"
+    name: "SignUp",
+    components: {
+      FormInput
+    }
   }
 </script>
 

@@ -26,7 +26,7 @@ const routes = [
   {
     path: '/common',
     name: 'common',
-    component: () => import('../views/common')
+    component: () => import('../views/Common.vue')
   }
 ]
 
