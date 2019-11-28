@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="signup-page">
         sign up page
         <div class="form-container">
             <form class="signup-form">

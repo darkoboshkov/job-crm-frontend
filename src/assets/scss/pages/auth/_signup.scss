@@ -1,9 +1,15 @@
-.form-container {
-  max-width: 600px;
-  width: 100%;
-  margin: auto;
+#signup-page {
+  .form-container {
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
 
-  .signup-form {
-    padding: 60px;
+    form {
+      padding: 60px;
+
+      h1 {
+        color: var(--lipstick-red);
+      }
+    }
   }
 }
