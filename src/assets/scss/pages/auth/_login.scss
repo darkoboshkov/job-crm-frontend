@@ -1,3 +1,35 @@
 #page_login {
+  .logo {
+    width: 207px;
+    height: 50px;
+  }
+  .form-container {
+    max-width: 613px;
+    min-height: 613px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .login-form {
+    background-color: white;
+    padding: 52px 63px;
+    height: calc(100% - 104px);
 
+    &__header-line {
+      height: 1px;
+      border-bottom: 1px solid #f0eff2;
+      margin-left: -63px;
+      margin-right: -63px;
+      object-fit: contain;
+      margin-top: 42px;
+    }
+
+    h1 {
+      color: var(--lipstick-red);
+      font-family: Apercu;
+      font-size: 36px;
+      margin-top: 37px;
+      font-weight: normal;
+    }
+  }
 }

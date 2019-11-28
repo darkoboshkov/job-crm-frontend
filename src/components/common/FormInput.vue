@@ -103,7 +103,7 @@
 
     input:not(:placeholder-shown) + label {
         font-size: 0.75rem;
-        padding-top: 0.25rem
+        padding-top: 0.25rem;
     }
 
     .invalid-feedback {
