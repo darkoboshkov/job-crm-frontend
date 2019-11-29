@@ -1,0 +1,55 @@
+.auth-container {
+  height: 100vh;
+
+  &__back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    overflow: hidden;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+    * {
+      position: absolute;
+      background: url("../image/circle.svg") no-repeat center center;
+      background-size: contain;
+    }
+    .circle-1 {
+      width: 585px;
+      height: 585px;
+      left: -314px;
+      top: -292px;
+    }
+    .circle-2 {
+      width: 585px;
+      height: 585px;
+      right: -224px;
+      top: -497px;
+    }
+    .circle-3 {
+      width: 134px;
+      height: 134px;
+      left: 180px;
+      bottom: 200px;
+    }
+    .circle-4 {
+      width: 237px;
+      height: 237px;
+      left: 200px;
+      bottom: -150px;
+    }
+    .circle-5 {
+      width: 830px;
+      height: 830px;
+      right: -275px;
+      bottom: -265px;
+    }
+    .circle-6 {
+      width: 390px;
+      height: 390px;
+      right: 250px;
+      bottom: -225px;
+    }
+  }
+}

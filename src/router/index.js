@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import AuthContainer from '@/containers/AuthContainer'
 
 Vue.use(VueRouter)
 
@@ -7,7 +8,11 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/auth/Login.vue')
+    component: AuthContainer,
+    children: [{
+      path: '/',
+      component: () => import('../views/auth/Login.vue')
+    }]
   },
   {
     path: '/signup',
