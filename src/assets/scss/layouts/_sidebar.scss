@@ -11,4 +11,30 @@
   &.hidden {
     display: none;
   }
+
+  .nav-link {
+    height: $header-height;
+    width: 100%;
+    text-align: center;
+    img {
+      width: 34px;
+      height: 34px;
+      margin-top: calc(#{$header-height/2} - 17px);
+    }
+  }
+
+  &__top {
+    .nav-link {
+      border-bottom: 1px solid #ececec;
+    }
+  }
+
+  &__bottom {
+    position: absolute;
+    bottom: 0;
+    width: $sidebar-width;
+    .nav-link {
+      border-top: 1px solid #ececec;
+    }
+  }
 }
