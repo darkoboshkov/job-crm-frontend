@@ -25,8 +25,6 @@
               ></form-input>
               <a href="/forgot" class="forgot-pass">Forgot?</a>
             </div>
-
-
             <div class="btn-group">
               <div style="flex: 1">
                 <button class="btn btn-red login">Login</button>
