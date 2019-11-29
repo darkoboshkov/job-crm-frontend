@@ -11,16 +11,30 @@
               id="email"
               type="email"
               name="email"
-              label="Email address"
+              label="E-mail address"
               icon-class-name="icon-shape"
+              class="email"
             ></form-input>
-            <form-input
-              id="password"
-              type="password"
-              name="password"
-              label="Password"
-              icon-class-name="icon-lock"
-            ></form-input>
+            <div class="input-wrapper">
+              <form-input
+                id="password"
+                type="password"
+                name="password"
+                label="Password"
+                icon-class-name="icon-lock"
+              ></form-input>
+              <a href="/forgot" class="forgot-pass">Forgot?</a>
+            </div>
+
+
+            <div class="btn-group">
+              <div style="flex: 1">
+                <button class="btn btn-red login">Login</button>
+              </div>
+              <div style="flex: 1">
+                <button class="btn btn-blue signup">Signup</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>

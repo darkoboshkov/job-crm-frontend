@@ -7,12 +7,12 @@
     max-width: 611px;
     min-height: 611px;
     width: 100%;
-    margin-top: calc(50vh - 306px);
+    margin-top: 100px; //calc(50vh - 306px);
   }
   .login-form {
     background-color: white;
-    padding: 52px 63px;
-    height: calc(100% - 104px);
+    padding: 50px 63px;
+    height: calc(100% - 100px);
 
     &__header-line {
       height: 1px;
@@ -20,7 +20,7 @@
       margin-left: -63px;
       margin-right: -63px;
       object-fit: contain;
-      margin-top: 42px;
+      margin-top: 38px;
     }
 
     h1 {
@@ -28,6 +28,55 @@
       font-size: 36px;
       margin-top: 37px;
       font-weight: normal;
+    }
+
+    div[name="email"] {
+      margin-top: 55px;
+    }
+
+    div[name="password"] {
+      margin-top: 48px;
+    }
+
+    input {
+      font-size: 21px;
+    }
+
+    .input-icon {
+      i {
+        font-size: 24px;
+      }
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    a.forgot-pass {
+      font-size: 18px;
+      color: #878787;
+      position: absolute;
+      right: 50px;
+      top: 17px;
+    }
+
+    .btn-group {
+      display: flex;
+      margin-top: 45px;
+      button {
+        letter-spacing: 0;
+        font-size: 21px;
+        font-weight: 500;
+        height: 60px;
+        padding: 0;
+        width: 233px;
+      }
+      .signup {
+        float: right;
+      }
+      .login {
+        float: left;
+      }
     }
   }
 }

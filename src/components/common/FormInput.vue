@@ -65,7 +65,7 @@
         padding: 0.75rem 0;
         background: #FFFFFF;
         border: none;
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #e9e9e9;
         box-sizing: border-box;
         font-size: 1rem;
         line-height: 1.5;
@@ -86,10 +86,9 @@
         top: 0;
         left: 0;
         margin: 0;
-        padding: 0.75rem 0;
-        color: #aaa;
-        font-size: 1rem;
-        line-height: 1.5;
+        padding: 1.25rem 0 0.25rem;
+        color: #a3a3a3;
+        font-size: 21px;
         pointer-events: none;
         transition: 0.2s ease all;
         -moz-transition: 0.2s ease all;
@@ -102,8 +101,8 @@
     }
 
     input:not(:placeholder-shown) + label {
-        font-size: 0.75rem;
-        padding-top: 0.25rem;
+        font-size: 18px;
+        padding-top: 0;
     }
 
     .invalid-feedback {
