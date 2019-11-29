@@ -10,7 +10,7 @@
             <form-input
               id="email"
               type="email"
-              name="email"
+              field="email"
               label="E-mail address"
               icon-class-name="icon-shape"
               class="email"
@@ -19,9 +19,10 @@
               <form-input
                 id="password"
                 type="password"
-                name="password"
+                field="password"
                 label="Password"
                 icon-class-name="icon-lock"
+                class="password"
               ></form-input>
               <a href="/forgot" class="forgot-pass">Forgot?</a>
             </div>

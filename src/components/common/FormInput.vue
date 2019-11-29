@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="input-group">
-            <input :id="id || field" class="input-theme"
+            <input :id="id || field"
                    :class="{'is-invalid': invalid, 'has-value': input}"
                    :name="field"
                    :type="type"
@@ -54,7 +54,7 @@
         align-items: stretch;
         width: 100%;
     }
-    .input-theme {
+    input {
         &::-webkit-input-placeholder { color: rgba(104, 104, 104, 0.7); }  /* WebKit, Blink, Edge */
         &:-moz-placeholder { color: rgba(104, 104, 104, 0.7); }  /* Mozilla Firefox 4 to 18 */
         &::-moz-placeholder { color: rgba(104, 104, 104, 0.7); }  /* Mozilla Firefox 19+ */
@@ -62,13 +62,13 @@
         &::-ms-input-placeholder { color: rgba(104, 104, 104, 0.7); }  /* Microsoft Edge */
 
         outline: none;
-        padding: 0.75rem 0;
+        padding: 13px 0;
         background: #FFFFFF;
         border: none;
         border-bottom: 1px solid #e9e9e9;
         box-sizing: border-box;
-        font-size: 1rem;
-        line-height: 1.5;
+        font-size: 21px;
+        line-height: 21px;
         width: 100%;
         color: var(--cobalt-blue);
     }
@@ -78,7 +78,7 @@
     }
 
     input:not(:placeholder-shown) {
-        padding: 1.25rem 0 0.25rem;
+        /*padding: 34px 0 13px;*/
     }
 
     label {
@@ -86,9 +86,11 @@
         top: 0;
         left: 0;
         margin: 0;
-        padding: 1.25rem 0 0.25rem;
+        padding: 13px 0;
         color: #a3a3a3;
         font-size: 21px;
+        line-height: 21px;
+        font-weight: 300;
         pointer-events: none;
         transition: 0.2s ease all;
         -moz-transition: 0.2s ease all;
@@ -101,8 +103,8 @@
     }
 
     input:not(:placeholder-shown) + label {
-        font-size: 18px;
-        padding-top: 0;
+        position: absolute;
+        top: -34px;
     }
 
     .invalid-feedback {
@@ -141,9 +143,9 @@
     }
     .input-icon {
         position: absolute;
-        font-size: 1rem;
-        line-height: 1.5;
-        top: calc(50% - 0.75rem);
+        font-size: 24px;
+        line-height: 24px;
+        top: calc(50% - 12px);
         right: 0;
         color: var(--cobalt-blue);
     }
