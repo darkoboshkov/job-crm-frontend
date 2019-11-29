@@ -6,7 +6,7 @@
           <form class="login-form">
             <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
             <div class="login-form__header-line"></div>
-            <h1>Login</h1>
+            <h1 class="title">Login</h1>
             <form-input
               id="email"
               type="email"
