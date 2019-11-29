@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import AuthContainer from '@/containers/AuthContainer'
 
 Vue.use(VueRouter)
 
@@ -8,7 +7,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: AuthContainer,
+    component: () => import('../containers/AuthContainer.vue'),
     children: [{
       path: '/',
       component: () => import('../views/auth/Login.vue')
@@ -18,6 +17,15 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: () => import('../views/auth/SignUp.vue')
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('../containers/DashboardContainer.vue'),
+    children: [{
+      path: '/',
+      component: () => import('../views/dashboard/Index.vue')
+    }]
   },
   {
     path: '/',

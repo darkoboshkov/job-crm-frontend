@@ -1,0 +1,19 @@
+.app-header {
+  height: $header-height;
+  width: 100%;
+  border: 1px solid #ececec;
+  background-color: white;
+  position: fixed;
+  top: 0;
+
+  .logo {
+    width: $sidebar-width;
+    height: $header-height;
+    border-right: 1px solid #ececec;
+    text-align: center;
+    img {
+      width: 50px;
+      margin-top: calc(#{$header-height/2} - 25px);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.app-sidebar {
+  height: calc(100vh - #{$header-height});
+  width: $sidebar-width;
+  border-right: 1px solid #ececec;
+  border-left: 1px solid #ececec;
+  background-color: white;
+  position: fixed;
+  top: calc(#{$header-height} + 2px);
+  left: 0;
+
+  &.hidden {
+    display: none;
+  }
+}
