@@ -1,5 +1,10 @@
 #page_login {
   position: relative;
+  padding-top: 100px;
+  @include media-breakpoint-down(sm) {
+    padding-top: 0;
+  }
+
   .logo {
     width: 207px;
     height: 50px;
@@ -9,22 +14,21 @@
     max-width: 611px;
     min-height: 611px;
     width: 100%;
-    margin-top: 100px; //calc(50vh - 306px);
-    @include media-breakpoint-down(sm) {
-      margin-top: 0;
-    }
   }
   .login-form {
     background-color: white;
     padding: 50px 67px;
+    @include media-breakpoint-down(sm) {
+      padding: 50px 30px;
+    }
 
     &__header-line {
       height: 1px;
       border-bottom: 1px solid #f0eff2;
-      margin-left: -67px;
-      margin-right: -67px;
-      object-fit: contain;
-      margin-top: 38px;
+      margin: 38px -67px 0 -67px;
+      @include media-breakpoint-down(sm) {
+        margin: 38px -30px 0 -30px;
+      }
     }
 
     h1.title {

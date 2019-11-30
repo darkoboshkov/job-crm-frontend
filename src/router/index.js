@@ -23,6 +23,15 @@ const routes = [
     }]
   },
   {
+    path: '/invitation',
+    name: 'invitation',
+    component: () => import('../containers/AuthContainer.vue'),
+    children: [{
+      path: '/',
+      component: () => import('../views/auth/AcceptInvitation.vue')
+    }]
+  },
+  {
     path: '/dashboard',
     name: 'dashboard',
     component: () => import('../containers/DashboardContainer.vue'),

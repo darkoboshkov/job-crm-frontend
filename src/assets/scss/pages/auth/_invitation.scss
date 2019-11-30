@@ -1,0 +1,68 @@
+#page_invitation {
+  position: relative;
+  padding-top: 50px;
+  @include media-breakpoint-down(sm) {
+    padding-top: 0;
+  }
+
+  .logo {
+    width: 207px;
+    height: 50px;
+  }
+  .form-container {
+    background-color: white;
+    max-width: 611px;
+    width: 100%;
+  }
+  .invitation-form {
+    background-color: white;
+    padding: 50px 67px;
+    @include media-breakpoint-down(sm) {
+      padding: 50px 30px;
+    }
+
+    &__header-line {
+      height: 1px;
+      border-bottom: 1px solid #f0eff2;
+      margin: 38px -67px 0 -67px;
+      @include media-breakpoint-down(sm) {
+        margin: 38px -30px 0 -30px;
+      }
+    }
+
+    h1.title {
+      color: var(--lipstick-red);
+      font-size: 36px;
+      margin-top: 37px;
+      font-weight: normal;
+    }
+
+    .input-group {
+      margin-top: 45px;
+    }
+
+    input {
+      font-size: 21px;
+    }
+
+    .input-icon {
+      i {
+        font-size: 24px;
+      }
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    button.accept {
+      letter-spacing: 0;
+      font-size: 21px;
+      font-weight: 500;
+      height: 60px;
+      margin: 55px auto 0 auto;
+      padding: 0;
+      width: 233px;
+    }
+  }
+}

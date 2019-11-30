@@ -1,11 +1,15 @@
 #page_signup {
   position: relative;
+  padding-top: 100px;
+  @include media-breakpoint-down(sm) {
+    padding-top: 0;
+  }
 
   .form-container {
     max-width: 611px;
     min-height: 611px;
     width: 100%;
-    margin: 100px auto;
+    margin: 0 auto;
     background-color: white;
 
     form {
