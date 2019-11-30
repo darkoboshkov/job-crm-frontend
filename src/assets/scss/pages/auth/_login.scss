@@ -5,6 +5,7 @@
     height: 50px;
   }
   .form-container {
+    background-color: white;
     max-width: 611px;
     min-height: 611px;
     width: 100%;
@@ -16,7 +17,6 @@
   .login-form {
     background-color: white;
     padding: 50px 67px;
-    height: calc(100% - 100px);
 
     &__header-line {
       height: 1px;
