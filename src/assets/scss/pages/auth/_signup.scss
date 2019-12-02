@@ -34,37 +34,30 @@
         font-size: 36px;
         margin-top: 37px;
         font-weight: normal;
+      }
 
-        & + div {
-          margin-top: 62px;
-
-          & + div {
-            margin-top: 52px;
-
-            & + div {
-              margin-top: 51px;
-
-              & > div {
-                width: 50%;
-                &:first-child {
-                  margin-right: 6.5px;
-                }
-                &:last-child {
-                  margin-left: 6.5px;
-                }
-                button {
-                  width: 100%;
-                  padding-top: 18px;
-                  padding-bottom: 17px;
-                  font-size: 21px;
-                  font-weight: 500;
-                  //font-stretch: normal;
-                  //font-style: normal;
-                  //line-height: normal;
-                  letter-spacing: -0.1px;
-                }
-              }
-            }
+      .first_name {
+        margin-top: 62px;
+      }
+      .last_name, .email, .password, .buttons {
+        margin-top: 52px;
+      }
+      .buttons {
+        & > div {
+          width: 50%;
+          &:first-child {
+            margin-right: 6px;
+          }
+          &:last-child {
+            margin-left: 6px;
+          }
+          button {
+            width: 100%;
+            padding-top: 18px;
+            padding-bottom: 17px;
+            font-size: 21px;
+            font-weight: 500;
+            letter-spacing: -0.1px;
           }
         }
       }

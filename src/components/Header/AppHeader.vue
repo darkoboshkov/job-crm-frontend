@@ -5,15 +5,19 @@
           <img src="@/assets/logo.svg" />
       </div>
       <div class="nav">
-
+        <search-bar></search-bar>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import SearchBar from '@/components/common/SearchBar.vue';
   export default {
-    name: "AppHeader"
+    name: "AppHeader",
+    components: {
+      SearchBar,
+    }
   }
 </script>
 
