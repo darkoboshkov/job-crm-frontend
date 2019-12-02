@@ -15,6 +15,9 @@
 
     form {
       padding: 50px 67px;
+      @include media-breakpoint-down(sm) {
+        padding: 50px 30px;
+      }
 
       img {
         width: 207px;
@@ -22,11 +25,10 @@
 
         & + div {
           border-bottom: 1px solid #f0eff2;
-          margin-left: -67px;
-          margin-right: -67px;
-          -o-object-fit: contain;
-          object-fit: contain;
-          margin-top: 38px;
+          margin: 38px -67px 0 -67px;
+          @include media-breakpoint-down(sm) {
+            margin: 38px -30px 0 -30px;
+          }
         }
       }
 
@@ -44,21 +46,35 @@
         margin-top: 52px;
       }
       .buttons {
+        display: flex;
+        @include media-breakpoint-down(sm) {
+          flex-direction: column;
+          text-align: center;
+        }
+
         & > div {
-          width: 50%;
+          flex: 1;
+          
           &:first-child {
-            margin-right: 6px;
+            float: left;
+            @include media-breakpoint-down(sm) {
+              float: none;
+            }
           }
           &:last-child {
-            margin-left: 6px;
+            float: right;
+            @include media-breakpoint-down(sm) {
+              float: none;
+              margin-top: 20px;
+            }
           }
           button {
-            width: 100%;
-            padding-top: 18px;
-            padding-bottom: 17px;
+            letter-spacing: 0;
             font-size: 21px;
             font-weight: 500;
-            letter-spacing: -0.1px;
+            height: 60px;
+            padding: 0;
+            width: 233px;
           }
         }
       }
