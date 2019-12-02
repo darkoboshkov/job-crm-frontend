@@ -1,0 +1,56 @@
+#page_verify_email {
+    position: relative;
+    padding: 100px 0;
+    @include media-breakpoint-down(sm) {
+      padding: 0;
+    }
+  
+    .logo {
+      width: 207px;
+      height: 50px;
+    }
+    .form-container {
+      background-color: white;
+      max-width: 611px;
+      width: 100%;
+    }
+    .verify-email-form {
+      padding: 50px 67px;
+      @include media-breakpoint-down(sm) {
+        padding: 50px 30px;
+      }
+  
+      &__header-line {
+        height: 1px;
+        border-bottom: 1px solid #f0eff2;
+        margin: 38px -67px 0 -67px;
+        @include media-breakpoint-down(sm) {
+          margin: 38px -30px 0 -30px;
+        }
+      }
+  
+      .notification-container {
+          display: flex;
+          margin-top: 30px;
+          @include media-breakpoint-down(sm) {
+            flex-direction: column;
+          }
+          .mailbox {
+              width: 120px;
+              margin-top: 40px;
+              margin-right: 20px;
+              @include media-breakpoint-down(sm) {
+                margin: 20px auto;
+              }
+              img {
+                  width: 100%;
+                  
+              }
+          }
+          p {
+            font-size: 16px;
+          }
+      }
+    }
+  }
+  

@@ -1,9 +1,8 @@
 #page_signup {
   position: relative;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding: 100px 0;
   @include media-breakpoint-down(sm) {
-    padding-top: 0;
+    padding: 0;
   }
 
   .form-container {

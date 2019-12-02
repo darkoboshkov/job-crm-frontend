@@ -23,6 +23,15 @@ const routes = [
     }]
   },
   {
+    path: '/verify-email',
+    name: 'verify-email',
+    component: () => import('../containers/AuthContainer.vue'),
+    children: [{
+      path: '/',
+      component: () => import('../views/auth/VerifyEmail.vue')
+    }]
+  },
+  {
     path: '/invitation',
     name: 'invitation',
     component: () => import('../containers/AuthContainer.vue'),
