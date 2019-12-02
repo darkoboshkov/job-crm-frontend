@@ -1,4 +1,4 @@
-#page_reset_password {
+#page_forgot_password {
     position: relative;
     padding: 100px 0;
     @include media-breakpoint-down(sm) {
@@ -14,7 +14,7 @@
       max-width: 611px;
       width: 100%;
     }
-    .reset-password-form {
+    .forgot-password-form {
       padding: 50px 67px;
       @include media-breakpoint-down(sm) {
         padding: 50px 30px;
@@ -50,7 +50,7 @@
         }
       }
   
-      button.reset {
+      button.send {
         letter-spacing: 0;
         font-size: 21px;
         font-weight: 500;

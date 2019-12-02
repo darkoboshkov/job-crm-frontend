@@ -31,7 +31,7 @@
   import FormInput from '@/components/common/FormInput.vue';
 
   export default {
-    name: "ResetPassword",
+    name: "VerifyEmail",
     components: {
       FormInput
     },

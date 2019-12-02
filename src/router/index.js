@@ -41,6 +41,15 @@ const routes = [
     }]
   },
   {
+    path: '/forgot-password',
+    name: 'reset-password',
+    component: () => import('../containers/AuthContainer.vue'),
+    children: [{
+      path: '/',
+      component: () => import('../views/auth/ForgotPassword.vue')
+    }]
+  },
+  {
     path: '/reset-password',
     name: 'reset-password',
     component: () => import('../containers/AuthContainer.vue'),

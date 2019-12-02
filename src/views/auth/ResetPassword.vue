@@ -6,17 +6,23 @@
           <form class="reset-password-form">
             <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
             <div class="reset-password-form__header-line"></div>
-            <h1 class="title">Reset your password</h1>
+            <h1 class="title">Reset Password</h1>
             <form-input
-              id="email"
-              type="email"
-              field="email"
-              label="E-mail address"
-              icon-class-name="icon-shape"
-              class="email"
+              id="password"
+              type="password"
+              field="password"
+              label="Password"
+              icon-class-name="icon-lock"
+            ></form-input>
+            <form-input
+              id="c_password"
+              type="password"
+              field="c_password"
+              label="Confirm Password"
+              icon-class-name="icon-lock"
             ></form-input>
             <div style="display: flex">
-              <button class="btn btn-blue accept">Send Reset Email</button>
+              <button class="btn btn-blue reset">Reset</button>
             </div>
           </form>
         </div>
