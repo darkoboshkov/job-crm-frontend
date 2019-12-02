@@ -24,7 +24,7 @@
                 icon-class-name="icon-lock"
                 class="password"
               ></form-input>
-              <a href="/forgot" class="forgot-pass">Forgot?</a>
+              <a href="/reset-password" class="forgot-pass">Forgot?</a>
             </div>
             <div class="btn-group">
               <div style="flex: 1">
