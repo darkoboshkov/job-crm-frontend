@@ -15,7 +15,7 @@
               icon-class-name="icon-shape"
               class="email"
               v-model="email"
-            ></form-input>
+            />
             <div class="input-wrapper">
               <form-input
                 id="password"
@@ -25,7 +25,7 @@
                 icon-class-name="icon-lock"
                 class="password"
                 v-model="password"
-              ></form-input>
+              />
               <a href="/forgot-password" class="forgot-pass">Forgot?</a>
             </div>
             <div class="btn-group">

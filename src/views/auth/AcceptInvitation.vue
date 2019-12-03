@@ -12,27 +12,27 @@
               type="text"
               field="firstName"
               label="First Name"
-            ></form-input>
+            />
             <form-input
               id="last_name"
               type="text"
               field="lastName"
               label="Last Name"
-            ></form-input>
+            />
             <form-input
               id="password"
               type="password"
               field="password"
               label="Password"
               icon-class-name="icon-lock"
-            ></form-input>
+            />
             <form-input
               id="c_password"
               type="password"
               field="c_password"
               label="Confirm Password"
               icon-class-name="icon-lock"
-            ></form-input>
+            />
             <div style="display: flex">
               <button class="btn btn-blue accept">Accept</button>
             </div>

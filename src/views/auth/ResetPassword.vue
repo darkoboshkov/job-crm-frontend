@@ -13,14 +13,14 @@
               field="password"
               label="Password"
               icon-class-name="icon-lock"
-            ></form-input>
+            />
             <form-input
               id="c_password"
               type="password"
               field="c_password"
               label="Confirm Password"
               icon-class-name="icon-lock"
-            ></form-input>
+            />
             <div style="display: flex">
               <button class="btn btn-blue reset">Reset</button>
             </div>

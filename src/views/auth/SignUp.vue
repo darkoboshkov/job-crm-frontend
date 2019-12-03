@@ -14,7 +14,7 @@
                                 field="first_name"
                                 label="First Name"
                                 icon-class-name="icon-shape"
-                        ></form-input>
+                        />
                         <form-input
                                 id="last_name"
                                 class="last_name"
@@ -22,7 +22,7 @@
                                 field="last_name"
                                 label="Last Name"
                                 icon-class-name="icon-shape"
-                        ></form-input>
+                        />
                         <form-input
                                 id="email"
                                 class="email"
@@ -30,7 +30,7 @@
                                 field="email"
                                 label="Email address"
                                 icon-class-name="icon-shape"
-                        ></form-input>
+                        />
                         <form-input
                                 id="password"
                                 class="password"
@@ -38,7 +38,7 @@
                                 field="password"
                                 label="Password"
                                 icon-class-name="icon-lock"
-                        ></form-input>
+                        />
                         <div class="buttons" style="display: flex;">
                             <div>
                                 <button class="btn btn-red">Signup</button>
@@ -55,14 +55,14 @@
 </template>
 
 <script>
-  import FormInput from '@/components/common/FormInput.vue';
+    import FormInput from '@/components/common/FormInput.vue';
 
-  export default {
-    name: "SignUp",
-    components: {
-      FormInput
+    export default {
+        name: "SignUp",
+        components: {
+            FormInput
+        }
     }
-  }
 </script>
 
 <style scoped>

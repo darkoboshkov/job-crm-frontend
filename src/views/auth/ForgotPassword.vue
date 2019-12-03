@@ -14,7 +14,7 @@
               label="E-mail address"
               icon-class-name="icon-shape"
               class="email"
-            ></form-input>
+            />
             <div style="display: flex">
               <button class="btn btn-blue send">Send Reset Email</button>
             </div>
