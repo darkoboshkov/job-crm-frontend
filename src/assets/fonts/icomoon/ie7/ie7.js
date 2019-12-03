@@ -13,8 +13,25 @@
 		el.innerHTML = '<span style="font-family: \'hiway-icon\'">' + entity + '</span>' + html;
 	}
 	var icons = {
+		'icon-magnifier': '&#xe902;',
+		'icon-arrow-down': '&#xe903;',
+		'icon-arrow-right': '&#xe904;',
+		'icon-bag': '&#xe905;',
+		'icon-calendar': '&#xe906;',
+		'icon-check': '&#xe907;',
+		'icon-close': '&#xe908;',
+		'icon-delete': '&#xe909;',
+		'icon-group': '&#xe90a;',
+		'icon-hand': '&#xe90b;',
+		'icon-home': '&#xe90c;',
+		'icon-link': '&#xe90d;',
+		'icon-mail': '&#xe90e;',
+		'icon-more': '&#xe90f;',
+		'icon-plus': '&#xe910;',
+		'icon-setting': '&#xe911;',
+		'icon-share': '&#xe912;',
 		'icon-lock': '&#xe900;',
-		'icon-shape': '&#xe901;',
+		'icon-monkey': '&#xe901;',
 		'0': 0
 		},
 		els = document.getElementsByTagName('*'),
