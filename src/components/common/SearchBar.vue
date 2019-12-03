@@ -26,6 +26,9 @@
 
     .icon-search {
         display: flex;
+        img {
+            width: 24px;
+        }
     }
 
     input {

@@ -1,7 +1,7 @@
 <template>
     <div class="app-sidebar">
         <div class="app-sidebar__top">
-            <div class="nav-link">
+            <div class="nav-link active">
                 <img src="@/assets/image/icon/home.svg"/>
             </div>
             <div class="nav-link">
