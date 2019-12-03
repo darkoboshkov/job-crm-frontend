@@ -1,7 +1,7 @@
 .app-header {
   height: $header-height;
   width: 100%;
-  border: 1px solid #ececec;
+  border: 1px solid var(--white-two);
   background-color: white;
   position: fixed;
   top: 0;
@@ -9,7 +9,7 @@
   .logo {
     width: $sidebar-width;
     height: $header-height;
-    border-right: 1px solid #ececec;
+    border-right: 1px solid var(--white-two);
     text-align: center;
     img {
       width: 50px;

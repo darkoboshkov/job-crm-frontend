@@ -28,11 +28,11 @@
                             />
                             <a href="/forgot-password" class="forgot-pass">Forgot?</a>
                         </div>
-                        <div class="btn-group">
-                            <div style="flex: 1">
+                        <div class="buttons d-flex">
+                            <div>
                                 <button class="btn btn-red login" @click.prevent="login">Login</button>
                             </div>
-                            <div style="flex: 1">
+                            <div>
                                 <button class="btn btn-blue signup">Signup</button>
                             </div>
                         </div>

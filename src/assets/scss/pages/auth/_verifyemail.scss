@@ -22,7 +22,7 @@
   
       &__header-line {
         height: 1px;
-        border-bottom: 1px solid #f0eff2;
+        border-bottom: 1px solid var(--pale-grey-four);
         margin: 38px -67px 0 -67px;
         @include media-breakpoint-down(sm) {
           margin: 38px -30px 0 -30px;
@@ -30,7 +30,6 @@
       }
   
       .notification-container {
-          display: flex;
           margin-top: 30px;
           @include media-breakpoint-down(sm) {
             flex-direction: column;
@@ -38,7 +37,7 @@
           .mailbox {
               width: 120px;
               margin-top: 40px;
-              margin-right: 20px;
+              margin-right: 30px;
               @include media-breakpoint-down(sm) {
                 margin: 20px auto;
               }
@@ -47,8 +46,12 @@
                   
               }
           }
+          h4 {
+            color: var(--black);
+          }
           p {
             font-size: 16px;
+            color: var(--greyish-brown);
           }
       }
     }

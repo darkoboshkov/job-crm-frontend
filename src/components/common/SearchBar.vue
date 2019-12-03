@@ -3,7 +3,7 @@
         <div class="icon-search">
             <img src="@/assets/image/icon/magnifier.svg"/>
         </div>
-        <input v-model="search" placeholder="Zoeken..."/>
+        <input v-model="search" placeholder="Search..."/>
     </div>
 </template>
 
@@ -32,5 +32,6 @@
         font-size: 18px;
         /*height: 58px;*/
         border: none;
+        margin-left: 20px;
     }
 </style>

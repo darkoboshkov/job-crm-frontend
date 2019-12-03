@@ -5,7 +5,7 @@
                 <img src="@/assets/logo.svg"/>
             </div>
             <div class="nav">
-                <search-bar></search-bar>
+                <search-bar />
             </div>
         </div>
     </div>

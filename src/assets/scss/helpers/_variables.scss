@@ -1,9 +1,24 @@
 :root {
-  --light-periwinkle: #dbdde0;
-  --lipstick-red: #c9002a;
-  --cobalt-blue: #08009d;
+  --white: #fff;
+  --white-two: #ececec;
   --pale-grey: #f5f7fb;
   --pale-grey-two: #eff1f6;
+  --white-four: #e9e9e9;
+  --pale-grey-four: #f0eff2;
+  --light-periwinkle: #dbdde0;
+  --pale-grey-three: #ebecf0;
+  --white-three: #d8d8d8;
+  --pinkish-grey: #c5c5c5;
+  --warm-grey-two: #878787;
+  --warm-grey: #929292;
+  --greyish: #aaa;
+  --brownish-grey: #666;
+  --greyish-brown: #464646;
+  --black-7: rgba(0, 0, 0, 0.07);
+  --black: #000;
+  --green: #0eac16;
+  --lipstick-red: #c9002a;
+  --cobalt-blue: #08009d;
 }
 
 $enable-grid-classes: true !default;

@@ -39,7 +39,7 @@
                                 label="Password"
                                 icon-class-name="icon-lock"
                         />
-                        <div class="buttons" style="display: flex;">
+                        <div class="buttons d-flex">
                             <div>
                                 <button class="btn btn-red">Signup</button>
                             </div>

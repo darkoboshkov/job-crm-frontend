@@ -23,7 +23,7 @@
 
     &__header-line {
       height: 1px;
-      border-bottom: 1px solid #f0eff2;
+      border-bottom: 1px solid var(--pale-grey-four);
       margin: 38px -67px 0 -67px;
       @include media-breakpoint-down(sm) {
         margin: 38px -30px 0 -30px;
@@ -61,18 +61,21 @@
 
     a.forgot-pass {
       font-size: 18px;
-      color: #878787;
+      color: var(--warm-grey-two);
       position: absolute;
       right: 50px;
       top: 17px;
     }
 
-    .btn-group {
-      display: flex;
+    .buttons {
       margin-top: 45px;
       @include media-breakpoint-down(sm) {
         flex-direction: column;
         text-align: center;
+      }
+
+      & > div {
+        flex: 1;
       }
 
       button {

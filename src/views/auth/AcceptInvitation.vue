@@ -33,7 +33,7 @@
                                 label="Confirm Password"
                                 icon-class-name="icon-lock"
                         />
-                        <div style="display: flex">
+                        <div class="d-flex">
                             <button class="btn btn-blue accept">Accept</button>
                         </div>
                     </form>

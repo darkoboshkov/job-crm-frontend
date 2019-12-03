@@ -6,11 +6,11 @@
                     <form class="verify-email-form">
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="verify-email-form__header-line"></div>
-                        <div class="notification-container">
+                        <div class="notification-container d-flex">
                             <div class="mailbox">
                                 <img src="@/assets/image/img-mailbox.png" alt="Mailbox">
                             </div>
-                            <div style="flex:1">
+                            <div class="flex-1">
                                 <h4>Please verify your email address to login to Hiway CRM!</h4>
                                 <p>
                                     We've just sent an email to your address <strong>{{ email }}</strong> <br>

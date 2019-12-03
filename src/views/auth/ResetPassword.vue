@@ -21,7 +21,7 @@
                                 label="Confirm Password"
                                 icon-class-name="icon-lock"
                         />
-                        <div style="display: flex">
+                        <div class="d-flex">
                             <button class="btn btn-blue reset">Reset</button>
                         </div>
                     </form>
