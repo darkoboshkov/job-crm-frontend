@@ -14,6 +14,7 @@
               label="E-mail address"
               icon-class-name="icon-shape"
               class="email"
+              v-model="email"
             ></form-input>
             <div class="input-wrapper">
               <form-input
@@ -23,12 +24,13 @@
                 label="Password"
                 icon-class-name="icon-lock"
                 class="password"
+                v-model="password"
               ></form-input>
               <a href="/forgot-password" class="forgot-pass">Forgot?</a>
             </div>
             <div class="btn-group">
               <div style="flex: 1">
-                <button class="btn btn-red login">Login</button>
+                <button class="btn btn-red login" @click.prevent="login">Login</button>
               </div>
               <div style="flex: 1">
                 <button class="btn btn-blue signup">Signup</button>
@@ -42,12 +44,29 @@
 </template>
 
 <script>
+  import authApi from '@/services/api/auth.js';
   import FormInput from '@/components/common/FormInput.vue';
 
   export default {
     name: "Login",
     components: {
       FormInput
+    },
+    data() {
+      return {
+        email: '',
+        password: '',
+      }
+    },
+    methods: {
+      login() {
+        return authApi.login({
+          email: this.email,
+          password: this.password,
+        }).then(res => {
+          this.$store.dispatch('updateToken', res.token)
+        });
+      }
     }
   }
 </script>
