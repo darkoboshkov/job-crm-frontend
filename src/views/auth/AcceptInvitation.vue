@@ -12,12 +12,14 @@
                                 type="text"
                                 field="firstName"
                                 label="First Name"
+                                icon-class-name="icon-monkey"
                         />
                         <form-input
                                 id="last_name"
                                 type="text"
                                 field="lastName"
                                 label="Last Name"
+                                icon-class-name="icon-monkey"
                         />
                         <form-input
                                 id="password"

@@ -13,7 +13,7 @@
                                 type="text"
                                 field="first_name"
                                 label="First Name"
-                                icon-class-name="icon-shape"
+                                icon-class-name="icon-monkey"
                         />
                         <form-input
                                 id="last_name"
@@ -21,7 +21,7 @@
                                 type="text"
                                 field="last_name"
                                 label="Last Name"
-                                icon-class-name="icon-shape"
+                                icon-class-name="icon-monkey"
                         />
                         <form-input
                                 id="email"
@@ -29,7 +29,7 @@
                                 type="email"
                                 field="email"
                                 label="Email address"
-                                icon-class-name="icon-shape"
+                                icon-class-name="icon-monkey"
                         />
                         <form-input
                                 id="password"

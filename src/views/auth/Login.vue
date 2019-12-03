@@ -12,7 +12,7 @@
                                 type="email"
                                 field="email"
                                 label="E-mail address"
-                                icon-class-name="icon-shape"
+                                icon-class-name="icon-monkey"
                                 class="email"
                                 v-model="email"
                         />
