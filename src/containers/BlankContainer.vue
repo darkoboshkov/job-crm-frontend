@@ -1,13 +1,13 @@
 <template>
-  <div class="blank-container">
-    <router-view />
-  </div>
+    <div class="blank-container">
+        <router-view/>
+    </div>
 </template>
 
 <script>
-  export default {
-    name: "BlackContainers"
-  }
+    export default {
+        name: "BlackContainers"
+    }
 </script>
 
 <style scoped>

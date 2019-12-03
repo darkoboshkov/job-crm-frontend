@@ -2,14 +2,14 @@ export const ls = require('store');
 export const STORAGE_KEY = 'hiway-crm';
 
 const localStoragePlugin = store => {
-  store.subscribe((mutation, state) => {
+    store.subscribe((mutation, state) => {
 
-    const syncedData = {
-      token: state.auth.token,
-    };
+        const syncedData = {
+            token: state.auth.token,
+        };
 
-    ls.set(STORAGE_KEY, syncedData);
-  });
+        ls.set(STORAGE_KEY, syncedData);
+    });
 };
 
 // export default process.env.NODE_ENV !== 'production' ? [localStoragePlugin] : [localStoragePlugin]

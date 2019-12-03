@@ -1,49 +1,45 @@
 <template>
-  <div id="page_verify_email">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="form-container">
-          <form class="verify-email-form">
-            <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
-            <div class="verify-email-form__header-line"></div>
-            <div class="notification-container">
-                <div class="mailbox">
-                    <img src="@/assets/image/img-mailbox.png" alt="Mailbox">
-                </div>
-                <div style="flex:1">
-                    <h4>Please verify your email address to login to Hiway CRM!</h4>
-                    <p>
-                        We've just sent an email to your address <strong>{{ email }}</strong> <br>
-                        Please check your email and click on the link provided to verify your address. <br>
-                        If you haven't received email, request 
-                        <a href="javascript:;" @click="() => requestResendEmail()">resend</a> here.
-                    </p>
+    <div id="page_verify_email">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="form-container">
+                    <form class="verify-email-form">
+                        <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
+                        <div class="verify-email-form__header-line"></div>
+                        <div class="notification-container">
+                            <div class="mailbox">
+                                <img src="@/assets/image/img-mailbox.png" alt="Mailbox">
+                            </div>
+                            <div style="flex:1">
+                                <h4>Please verify your email address to login to Hiway CRM!</h4>
+                                <p>
+                                    We've just sent an email to your address <strong>{{ email }}</strong> <br>
+                                    Please check your email and click on the link provided to verify your address. <br>
+                                    If you haven't received email, request
+                                    <a href="javascript:;" @click="() => requestResendEmail()">resend</a> here.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
-  import FormInput from '@/components/common/FormInput.vue';
-
-  export default {
-    name: "VerifyEmail",
-    components: {
-      FormInput
-    },
-    data() {
-        return {
-            email: "test@test.com"
+    export default {
+        name: "VerifyEmail",
+        data() {
+            return {
+                email: "test@test.com"
+            }
+        },
+        methods: {
+            requestResendEmail() {
+            }
         }
-    },
-    methods: {
-        requestResendEmail() {}
     }
-  }
 </script>
 
 <style scoped>

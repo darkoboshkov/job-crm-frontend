@@ -15,14 +15,14 @@
 </template>
 
 <script>
-  import FormInput from '@/components/common/FormInput.vue';
+    import FormInput from '@/components/common/FormInput.vue';
 
-  export default {
-    name: "index",
-    components: {
-      FormInput
+    export default {
+        name: "common",
+        components: {
+            FormInput
+        }
     }
-  }
 </script>
 
 <style scoped>

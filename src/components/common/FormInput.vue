@@ -11,7 +11,7 @@
                    autocomplete="off"
                    v-model="input"
                    @keyup="event => this.$emit('keyup', event)"
-                   :data-vat="dataVat" />
+                   :data-vat="dataVat"/>
             <label :for="id || field">{{ label }}</label>
             <span class="input-icon" v-if="iconClassName"><i :class="iconClassName"></i></span>
             <div class="invalid-feedback" v-if="invalid">
@@ -54,12 +54,33 @@
         align-items: stretch;
         width: 100%;
     }
+
     input {
-        &::-webkit-input-placeholder { color: rgba(104, 104, 104, 0.7); }  /* WebKit, Blink, Edge */
-        &:-moz-placeholder { color: rgba(104, 104, 104, 0.7); }  /* Mozilla Firefox 4 to 18 */
-        &::-moz-placeholder { color: rgba(104, 104, 104, 0.7); }  /* Mozilla Firefox 19+ */
-        &:-ms-input-placeholder { color: rgba(104, 104, 104, 0.7); }  /* Internet Explorer 10-11 */
-        &::-ms-input-placeholder { color: rgba(104, 104, 104, 0.7); }  /* Microsoft Edge */
+        &::-webkit-input-placeholder {
+            color: rgba(104, 104, 104, 0.7);
+        }
+
+        /* WebKit, Blink, Edge */
+        &:-moz-placeholder {
+            color: rgba(104, 104, 104, 0.7);
+        }
+
+        /* Mozilla Firefox 4 to 18 */
+        &::-moz-placeholder {
+            color: rgba(104, 104, 104, 0.7);
+        }
+
+        /* Mozilla Firefox 19+ */
+        &:-ms-input-placeholder {
+            color: rgba(104, 104, 104, 0.7);
+        }
+
+        /* Internet Explorer 10-11 */
+        &::-ms-input-placeholder {
+            color: rgba(104, 104, 104, 0.7);
+        }
+
+        /* Microsoft Edge */
 
         outline: none;
         padding: 13px 0;
@@ -141,6 +162,7 @@
             color: #777;
         }
     }
+
     .input-icon {
         position: absolute;
         font-size: 24px;
