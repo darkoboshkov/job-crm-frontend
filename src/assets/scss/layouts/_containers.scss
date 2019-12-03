@@ -56,6 +56,9 @@
 
 .dashboard-container {
   height: 100vh;
+  @include media-breakpoint-down(sm) {
+    height: initial;
+  }
 
   &__back {
     position: absolute;

@@ -48,10 +48,10 @@
 
 <style scoped lang="scss">
     .input-group {
-        position: relative;
+        align-items: stretch;
         display: flex;
         flex-wrap: wrap;
-        align-items: stretch;
+        position: relative;
         width: 100%;
     }
 
@@ -81,17 +81,17 @@
         }
 
         /* Microsoft Edge */
-
-        outline: none;
-        padding: 13px 0;
-        background: #FFFFFF;
+        color: var(--cobalt-blue);
+        background: white;
         border: none;
-        border-bottom: 1px solid #e9e9e9;
+        border-bottom: 1px solid var(--white-four);
         box-sizing: border-box;
         font-size: 21px;
+        outline: none;
         line-height: 21px;
+        padding: 13px 0;
         width: 100%;
-        color: var(--cobalt-blue);
+
     }
 
     input::placeholder {
