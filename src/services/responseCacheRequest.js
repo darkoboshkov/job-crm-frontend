@@ -1,4 +1,5 @@
 // import encodingDecodingHelper from '../../helpers/encodingDecodingHelper.js';
+const apiUrl = process.env.VUE_APP_API_URL;
 
 function keygen(method, path, params) {
     return JSON.stringify({method, path, params})
@@ -99,7 +100,7 @@ const request = function (method, path, params, successCallback, errorCallback) 
                     increaseRequestCount();
 
                     window.axios
-                        .get('http://localhost:3000/api' + path, {params})
+                        .get(apiUrl + path, {params})
                         .then((response) => {
                             if (successCallback) {
                                 // successCallback(decode(response.data));
@@ -123,7 +124,7 @@ const request = function (method, path, params, successCallback, errorCallback) 
                     increaseRequestCount();
 
                     window.axios
-                        .post('http://localhost:3000/api' + path, params)
+                        .post(apiUrl + path, params)
                         .then((response) => {
                             if (successCallback) {
                                 // successCallback(decode(response.data));
