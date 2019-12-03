@@ -1,8 +1,9 @@
 .app-sidebar {
-  height: calc(100vh - #{$header-height} - 2px);
+  height: calc(100vh - #{$header-height} - 3px);
   width: $sidebar-width;
   border-right: 1px solid var(--white-two);
   border-left: 1px solid var(--white-two);
+  border-bottom: 1px solid var(--white-two);
   background-color: white;
   position: absolute;
   top: calc(#{$header-height} + 2px);

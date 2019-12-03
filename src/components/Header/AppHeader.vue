@@ -1,6 +1,6 @@
 <template>
     <div class="app-header">
-        <div style="display: flex">
+        <div class="d-flex">
             <div class="logo">
                 <img src="@/assets/logo.svg"/>
             </div>
