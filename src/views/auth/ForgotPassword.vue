@@ -6,7 +6,7 @@
                     <form class="forgot-password-form">
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="forgot-password-form__header-line"></div>
-                        <h1 class="title">Forgot your password</h1>
+                        <h1 class="title">Forgot my password</h1>
                         <form-input
                                 id="email"
                                 type="email"
