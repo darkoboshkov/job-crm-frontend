@@ -7,6 +7,7 @@ import '@/assets/fonts/Apercu/Apercu.css'
 import '@/assets/fonts/icomoon/style.css'
 import '@/assets/scss/app.scss'
 
+window.axios = axios;
 Vue.config.productionTip = false
 
 new Vue({

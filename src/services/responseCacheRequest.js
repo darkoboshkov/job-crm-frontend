@@ -98,7 +98,7 @@ const request = function(method, path, params, successCallback, errorCallback) {
           increaseRequestCount();
 
           window.axios
-            .get(path, {params})
+            .get('http://localhost:3000/api' + path, {params})
             .then((response) => {
               if (successCallback) {
                 // successCallback(decode(response.data));
@@ -122,7 +122,7 @@ const request = function(method, path, params, successCallback, errorCallback) {
           increaseRequestCount();
 
           window.axios
-            .post(path, params)
+            .post('http://localhost:3000/api' + path, params)
             .then((response) => {
               if (successCallback) {
                 // successCallback(decode(response.data));
