@@ -23,8 +23,8 @@ const routes = [
         }]
     },
     {
-        path: '/verify-email',
-        name: 'verify-email',
+        path: '/verify',
+        name: 'verify',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
             path: '/',
