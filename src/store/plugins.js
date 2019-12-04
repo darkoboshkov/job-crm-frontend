@@ -5,7 +5,7 @@ const localStoragePlugin = store => {
     store.subscribe((mutation, state) => {
 
         const syncedData = {
-            token: state.auth.token,
+            token: state.token,
         };
 
         ls.set(STORAGE_KEY, syncedData);
