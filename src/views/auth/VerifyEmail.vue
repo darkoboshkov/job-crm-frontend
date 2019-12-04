@@ -28,11 +28,34 @@
 </template>
 
 <script>
+    import authApi from '@/services/api/auth.js';
     export default {
         name: "VerifyEmail",
         data() {
             return {
-                email: "test@test.com"
+
+            }
+        },
+        computed: {
+            email() {
+                return this.$store.state.user.email
+            },
+        },
+        mounted() {
+            let code = this.$route.params.code
+
+            if (code) {
+                authApi.verify({
+                    id: code
+                }).then(res => {
+                    console.log('res', res)
+                    if (res.verified) {
+                        this.$store.dispatch('user/updateVerified', res.verified)
+                        this.$router.push('/dashboard')
+                    } else {
+                        alert('verification code has issue')
+                    }
+                })
             }
         },
         methods: {

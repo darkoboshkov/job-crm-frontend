@@ -29,6 +29,10 @@ const routes = [
         children: [{
             path: '/',
             component: () => import('../views/auth/VerifyEmail.vue')
+        },
+        {
+            path: ':code',
+            component: () => import('../views/auth/VerifyEmail.vue')
         }]
     },
     {

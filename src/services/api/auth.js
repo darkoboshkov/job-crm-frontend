@@ -8,4 +8,7 @@ export default {
     signup(params, resolve, reject = null) {
         return request('post', '/auth/register', params, resolve, reject);
     },
+    verify(params, resolve, reject = null) {
+        return request('post', '/auth/verify', params, resolve, reject);
+    },
 }
