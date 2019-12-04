@@ -65,6 +65,12 @@
                     password: this.password,
                 }).then(res => {
                     this.$store.dispatch('updateToken', res.token)
+
+                    if (res.user && res.user.verified) {
+                        this.$router.push('/dashboard')
+                    } else {
+                        this.$router.push('/verify')
+                    }
                 });
             },
             goToSignup() {
