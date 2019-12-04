@@ -67,7 +67,7 @@
                     this.$store.dispatch('updateToken', res.token)
                 });
             }
-        }
+        },
     }
 </script>
 
