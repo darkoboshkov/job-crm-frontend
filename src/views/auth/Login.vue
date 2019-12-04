@@ -33,7 +33,7 @@
                                 <button class="btn btn-red login" @click.prevent="login">Login</button>
                             </div>
                             <div>
-                                <button class="btn btn-blue signup">Signup</button>
+                                <button class="btn btn-blue signup" @click.prevent="goToSignup">Signup</button>
                             </div>
                         </div>
                     </form>
@@ -66,6 +66,9 @@
                 }).then(res => {
                     this.$store.dispatch('updateToken', res.token)
                 });
+            },
+            goToSignup() {
+                this.$router.push('/signup')
             }
         },
     }

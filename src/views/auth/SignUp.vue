@@ -74,7 +74,7 @@
                                 <button class="btn btn-red" @click.prevent="signup">Signup</button>
                             </div>
                             <div>
-                                <button class="btn btn-blue">Login</button>
+                                <button class="btn btn-blue" @click.prevent="goToLogin">Login</button>
                             </div>
                         </div>
                     </form>
@@ -113,10 +113,26 @@
                     password: this.password,
                     c_password: this.cPassword,
                 }).then(res => {
-                    console.log('res', res)
-                    // this.$store.dispatch('updateToken', res.token)
+                    this.$store.dispatch('updateToken', res.token)
+
+                    this.$store.dispatch('user/updateEmail', res.user.email)
+                    this.$store.dispatch('user/updateFirstName', res.user.firstName)
+                    this.$store.dispatch('user/updateLastName', res.user.lastName)
+                    this.$store.dispatch('user/updateRole', res.user.role)
+                    this.$store.dispatch('user/updateVerificationCode', res.user.verification)
+                    this.$store.dispatch('user/updateVerificationExpires', res.user.verificationExpires)
+                    this.$store.dispatch('user/updateVerified', res.user.verified)
+
+                    if (res.user && res.user.verified) {
+                        this.$router.push('/dashboard')
+                    } else {
+                        this.$router.push('/verify')
+                    }
                 });
-            }
+            },
+            goToLogin() {
+                this.$router.push('/login')
+            },
         },
     }
 </script>
