@@ -45,8 +45,8 @@ const routes = [
         }]
     },
     {
-        path: '/forgot-password',
-        name: 'reset-password',
+        path: '/forgot',
+        name: 'forgot',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
             path: '/',
@@ -54,8 +54,8 @@ const routes = [
         }]
     },
     {
-        path: '/reset-password',
-        name: 'reset-password',
+        path: '/reset',
+        name: 'reset',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
             path: '/',

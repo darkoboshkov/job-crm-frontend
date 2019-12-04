@@ -26,7 +26,7 @@
                                     class="password"
                                     v-model="password"
                             />
-                            <a href="/forgot-password" class="forgot-pass">Forgot?</a>
+                            <a href="/forgot" class="forgot-pass">Forgot?</a>
                         </div>
                         <div class="buttons d-flex">
                             <div>
