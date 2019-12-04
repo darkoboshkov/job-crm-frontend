@@ -2,7 +2,7 @@
     <div class="app-header">
         <div class="d-flex">
             <div class="logo">
-                <img src="@/assets/logo.svg"/>
+                <a href="/"><img src="@/assets/logo.svg"/></a>
             </div>
             <div class="nav">
                 <search-bar />
