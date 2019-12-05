@@ -43,8 +43,22 @@
             }
         },
         methods: {
+            validate() {
+                let valid = true;
+
+                if (!this.email) {
+                    this.error = 'This field is required!';
+                    valid = false;
+                } else {
+                    this.error = '';
+                }
+
+                return valid;
+            },
             forgot() {
-                if (this.email) {
+                if (this.validate()) {
+                    this.error = ''
+
                     authApi.forgot({
                         email: this.email
                     }).then(res => {
@@ -52,9 +66,15 @@
                         // if (res.verification) {
                         //     this.$router.push('/reset/' + res.verification)
                         // }
-                    })
-                } else {
-                    this.error = 'Please feel this input'
+                    }).catch((data) => {
+                        let messages = data.response.data.errors.msg
+
+                        messages.forEach(msg => {
+                            if (msg.param === 'email') {
+                                this.error = msg.msg
+                            }
+                        })
+                      });
                 }
             }
         }

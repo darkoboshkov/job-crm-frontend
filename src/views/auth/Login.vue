@@ -15,6 +15,7 @@
                                 icon-class-name="icon-monkey"
                                 class="email"
                                 v-model="email"
+                                :error="emailError"
                         />
                         <div class="input-wrapper">
                             <form-input
@@ -25,6 +26,7 @@
                                     icon-class-name="icon-lock"
                                     class="password"
                                     v-model="password"
+                                    :error="passwordError"
                             />
                             <a href="/forgot" class="forgot-pass">Forgot?</a>
                         </div>
@@ -56,22 +58,55 @@
             return {
                 email: '',
                 password: '',
+                emailError: '',
+                passwordError: '',
             }
         },
         methods: {
-            login() {
-                return authApi.login({
-                    email: this.email,
-                    password: this.password,
-                }).then(res => {
-                    this.$store.dispatch('updateToken', res.token)
+            validate() {
+                let valid = true;
 
-                    if (res.user && res.user.verified) {
-                        this.$router.push('/dashboard')
-                    } else {
-                        this.$router.push('/verify')
-                    }
-                });
+                if (!this.email) {
+                    this.emailError = 'This field is required!';
+                    valid = false;
+                } else {
+                    this.emailError = '';
+                }
+                if (!this.password) {
+                    this.passwordError = 'This field is required!';
+                    valid = false;
+                } else {
+                  this.passwordError = '';
+                }
+
+                return valid;
+            },
+            login() {
+                if (this.validate()) {
+                    return authApi.login({
+                        email: this.email,
+                        password: this.password,
+                    }).then(res => {
+                        this.$store.dispatch('updateToken', res.token)
+
+                        if (res.user && res.user.verified) {
+                            this.$router.push('/dashboard')
+                        } else {
+                            this.$router.push('/verify')
+                        }
+                    }).catch((data) => {
+                        let messages = data.response.data.errors.msg
+
+                        messages.forEach(msg => {
+                            if (msg.param === 'email') {
+                                this.emailError = msg.msg
+                            }
+                            if (msg.param === 'password') {
+                                this.passwordError = msg.msg
+                            }
+                        })
+                    });
+                }
             },
             goToSignup() {
                 this.$router.push('/signup')

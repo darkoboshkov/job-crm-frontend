@@ -14,6 +14,7 @@
                                 label="Password"
                                 icon-class-name="icon-lock"
                                 v-model="password"
+                                :error="passwordError"
                         />
                         <form-input
                                 id="c_password"
@@ -22,6 +23,7 @@
                                 label="Confirm Password"
                                 icon-class-name="icon-lock"
                                 v-model="cPassword"
+                                :error="cPasswordError"
                         />
                         <div class="d-flex">
                             <button class="btn btn-blue reset" @click.prevent="reset">Reset</button>
@@ -46,19 +48,53 @@
             return {
                 password: '',
                 cPassword: '',
+                passwordError: '',
+                cPasswordError: '',
             }
         },
         methods: {
-            reset() {
-                let code = this.$route.params.code
+            validate() {
+                let valid = true;
 
-                authApi.reset({
-                    id: code,
-                    password: this.password,
-                    c_password: this.cPassword,
-                }).then(res => {
-                    // console.log('res', res)
-                })
+                if (!this.password) {
+                    this.passwordError = 'This field is required!';
+                    valid = false;
+                } else {
+                    this.passwordError = '';
+                }
+
+                if (!this.cPassword) {
+                    this.cPasswordError = 'This field is required!';
+                    valid = false;
+                } else {
+                    this.cPasswordError = '';
+                }
+
+                return valid;
+            },
+            reset() {
+                if (this.validate()) {
+                    let code = this.$route.params.code
+
+                    authApi.reset({
+                        id: code,
+                        password: this.password,
+                        c_password: this.cPassword,
+                    }).then(res => {
+                        // console.log('res', res)
+                    }).catch((data) => {
+                        let messages = data.response.data.errors.msg
+
+                        messages.forEach(msg => {
+                            if (msg.param === 'password') {
+                                this.passwordError = msg.msg
+                            }
+                            if (msg.param === 'c_password') {
+                                this.cPasswordError = msg.msg
+                            }
+                        })
+                    });
+                }
             }
         }
     }

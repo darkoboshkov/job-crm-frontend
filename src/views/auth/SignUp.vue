@@ -16,6 +16,7 @@
                                     label="First Name"
                                     icon-class-name="icon-monkey"
                                     v-model="firstName"
+                                    :error="firstNameError"
                             />
                             <form-input
                                     id="last_name"
@@ -25,6 +26,7 @@
                                     label="Last Name"
                                     icon-class-name="icon-monkey"
                                     v-model="lastName"
+                                    :error="lastNameError"
                             />
                         </div>
 
@@ -36,6 +38,7 @@
                                 label="Email address"
                                 icon-class-name="icon-monkey"
                                 v-model="email"
+                                :error="emailError"
                         />
                         <form-input
                                 id="password"
@@ -45,6 +48,7 @@
                                 label="Password"
                                 icon-class-name="icon-lock"
                                 v-model="password"
+                                :error="passwordError"
                         />
                         <form-input
                                 id="c_password"
@@ -54,6 +58,7 @@
                                 label="Confirm Password"
                                 icon-class-name="icon-lock"
                                 v-model="cPassword"
+                                :error="cPasswordError"
                         />
                         <div class="d-flex role-selector">
                             <div>
@@ -98,34 +103,98 @@
                 role: 'manager',
                 password: '',
                 cPassword: '',
+
+                firstNameError: '',
+                lastNameError: '',
+                emailError: '',
+                passwordError: '',
+                cPasswordError: '',
             }
         },
         methods: {
+            validate() {
+                let valid = true;
+
+                if (!this.firstName) {
+                    this.firstNameError = 'This field is required!';
+                    valid = false;
+                } else {
+                    this.firstNameError = '';
+                }
+                if (!this.lastName) {
+                    this.lastNameError = 'This field is required!';
+                    valid = false;
+                } else {
+                    this.lastNameError = '';
+                }
+                if (!this.email) {
+                    this.emailError = 'This field is required!';
+                    valid = false;
+                } else {
+                    this.emailError = '';
+                }
+                if (!this.password) {
+                    this.passwordError = 'This field is required!';
+                    valid = false;
+                } else {
+                    this.passwordError = '';
+                }
+                if (!this.cPassword) {
+                    this.cPasswordError = 'This field is required!';
+                    valid = false;
+                } else {
+                    this.cPasswordError = '';
+                }
+
+                return valid;
+            },
             signup() {
-                return authApi.signup({
-                    firstName: this.firstName,
-                    lastName: this.lastName,
-                    email: this.email,
-                    role: this.role,
-                    password: this.password,
-                    c_password: this.cPassword,
-                }).then(res => {
-                    this.$store.dispatch('updateToken', res.token)
+                if (this.validate()) {
+                    return authApi.signup({
+                        firstName: this.firstName,
+                        lastName: this.lastName,
+                        email: this.email,
+                        role: this.role,
+                        password: this.password,
+                        c_password: this.cPassword,
+                    }).then(res => {
+                        this.$store.dispatch('updateToken', res.token)
 
-                    this.$store.dispatch('user/updateEmail', res.user.email)
-                    this.$store.dispatch('user/updateFirstName', res.user.firstName)
-                    this.$store.dispatch('user/updateLastName', res.user.lastName)
-                    this.$store.dispatch('user/updateRole', res.user.role)
-                    this.$store.dispatch('user/updateVerificationCode', res.user.verification)
-                    this.$store.dispatch('user/updateVerificationExpires', res.user.verificationExpires)
-                    this.$store.dispatch('user/updateVerified', res.user.verified)
+                        this.$store.dispatch('user/updateEmail', res.user.email)
+                        this.$store.dispatch('user/updateFirstName', res.user.firstName)
+                        this.$store.dispatch('user/updateLastName', res.user.lastName)
+                        this.$store.dispatch('user/updateRole', res.user.role)
+                        this.$store.dispatch('user/updateVerificationCode', res.user.verification)
+                        this.$store.dispatch('user/updateVerificationExpires', res.user.verificationExpires)
+                        this.$store.dispatch('user/updateVerified', res.user.verified)
 
-                    if (res.user && res.user.verified) {
-                        this.$router.push('/dashboard')
-                    } else {
-                        this.$router.push('/verify')
-                    }
-                });
+                        if (res.user && res.user.verified) {
+                            this.$router.push('/dashboard')
+                        } else {
+                            this.$router.push('/verify')
+                        }
+                    }).catch((data) => {
+                        let messages = data.response.data.errors.msg
+
+                        messages.forEach(msg => {
+                            if (msg.param === 'firstName') {
+                                this.firstNameError = msg.msg
+                            }
+                            if (msg.param === 'lastName') {
+                                this.lastNameError = msg.msg
+                            }
+                            if (msg.param === 'email') {
+                                this.emailError = msg.msg
+                            }
+                            if (msg.param === 'password') {
+                                this.passwordError = msg.msg
+                            }
+                            if (msg.param === 'c_password') {
+                                this.cPasswordError = msg.msg
+                            }
+                        })
+                    });
+                }
             },
             goToLogin() {
                 this.$router.push('/login')
