@@ -1,3 +1,6 @@
 {
-  "hello": "halo"
+  "EMAIL_IS_NOT_VALID": "The email is not valid",
+  "PASSWORD_TOO_SHORT_MIN_5": "The password is shorter than 5, minimum",
+  "THIS_FIELD_IS_REQUIRED": "This field is required",
+  "PASSWORDS_NOT_MATCH": "The password is not matching"
 }

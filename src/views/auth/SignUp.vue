@@ -116,31 +116,31 @@
                 let valid = true;
 
                 if (!this.firstName) {
-                    this.firstNameError = 'This field is required!';
+                    this.firstNameError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                     this.firstNameError = '';
                 }
                 if (!this.lastName) {
-                    this.lastNameError = 'This field is required!';
+                    this.lastNameError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                     this.lastNameError = '';
                 }
                 if (!this.email) {
-                    this.emailError = 'This field is required!';
+                    this.emailError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                     this.emailError = '';
                 }
                 if (!this.password) {
-                    this.passwordError = 'This field is required!';
+                    this.passwordError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                     this.passwordError = '';
                 }
                 if (!this.cPassword) {
-                    this.cPasswordError = 'This field is required!';
+                    this.cPasswordError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                     this.cPasswordError = '';

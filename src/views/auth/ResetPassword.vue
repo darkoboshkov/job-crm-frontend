@@ -57,14 +57,14 @@
                 let valid = true;
 
                 if (!this.password) {
-                    this.passwordError = 'This field is required!';
+                    this.passwordError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                     this.passwordError = '';
                 }
 
                 if (!this.cPassword) {
-                    this.cPasswordError = 'This field is required!';
+                    this.cPasswordError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                     this.cPasswordError = '';

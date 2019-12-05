@@ -47,7 +47,7 @@
                 let valid = true;
 
                 if (!this.email) {
-                    this.error = 'This field is required!';
+                    this.error = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                     this.error = '';

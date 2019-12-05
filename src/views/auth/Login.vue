@@ -67,13 +67,13 @@
                 let valid = true;
 
                 if (!this.email) {
-                    this.emailError = 'This field is required!';
+                    this.emailError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                     this.emailError = '';
                 }
                 if (!this.password) {
-                    this.passwordError = 'This field is required!';
+                    this.passwordError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
                   this.passwordError = '';

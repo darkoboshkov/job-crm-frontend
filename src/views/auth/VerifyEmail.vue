@@ -48,7 +48,6 @@
                 authApi.verify({
                     id: code
                 }).then(res => {
-                    console.log('res', res)
                     if (res.verified) {
                         this.$store.dispatch('user/updateVerified', res.verified)
                         this.$router.push('/dashboard')

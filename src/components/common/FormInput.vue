@@ -15,7 +15,7 @@
             <label :for="id || field">{{ label }}</label>
             <span class="input-icon" v-if="iconClassName"><i :class="iconClassName"></i></span>
             <div class="invalid-feedback" v-if="invalid">
-                {{ error }}
+                {{ $t(error) }}
             </div>
         </div>
     </div>
