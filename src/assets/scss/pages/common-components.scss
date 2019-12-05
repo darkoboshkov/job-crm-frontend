@@ -1,0 +1,40 @@
+#page_common_components {
+  padding: 50px 0;
+  section {
+    margin-top: 50px;
+  }
+  h1.title {
+    text-align: center;
+    color: var(--cobalt-blue);
+  }
+  section.common-colors {
+    .items {
+      column-count: 5;
+      margin-top: 20px;
+    }
+    .color-box {
+      padding-top: 20px;
+      color: var(--cobalt-blue);
+      text-align: center;
+      &__block {
+        margin-top: 5px;
+        width: 100%;
+        height: 50px;
+      }
+    }
+  }
+  section.common-buttons {
+    .items {
+      column-count: 5;
+      margin-top: 20px;
+    }
+    .button-box {
+      padding-top: 20px;
+      color: var(--cobalt-blue);
+      text-align: center;
+    }
+    button {
+      margin-top: 5px;
+    }
+  }
+}

@@ -4,24 +4,24 @@
   color: white;
   cursor: pointer;
   outline: none;
-
+  width: 100%;
+  &.rectangle {
+    border-radius: 0;
+  }
+  &-black {
+    @include button-color(--black)
+  }
+  &-default {
+    @include button-color(--warm-grey)
+  }
+  &-green {
+    @include button-color(--green)
+  }
   &-red {
-    background-color: var(--lipstick-red);
-    border-color: var(--lipstick-red);
-
-    &:hover {
-      background-color: white;
-      color: var(--lipstick-red);
-    }
+    @include button-color(--lipstick-red)
   }
-
   &-blue {
-    background-color: var(--cobalt-blue);
-    border-color: var(--cobalt-blue);
-
-    &:hover {
-      background-color: white;
-      color: var(--cobalt-blue);
-    }
+    @include button-color(--cobalt-blue)
   }
+  @include button-sizes;
 }
