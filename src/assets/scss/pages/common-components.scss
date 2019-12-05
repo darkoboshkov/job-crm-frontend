@@ -1,16 +1,20 @@
 #page_common_components {
   padding: 50px 0;
+  text-align: center;
   section {
     margin-top: 50px;
   }
+
   h1.title {
-    text-align: center;
     color: var(--cobalt-blue);
   }
   section.common-colors {
     .items {
       column-count: 5;
       margin-top: 20px;
+      @include media-breakpoint-down(sm) {
+        column-count: 1;
+      }
     }
     .color-box {
       padding-top: 20px;
@@ -27,6 +31,9 @@
     .items {
       column-count: 5;
       margin-top: 20px;
+      @include media-breakpoint-down(sm) {
+        column-count: 1;
+      }
     }
     .button-box {
       padding-top: 20px;

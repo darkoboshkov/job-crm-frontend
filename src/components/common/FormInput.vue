@@ -117,6 +117,7 @@
         -moz-transition: 0.2s ease all;
         -webkit-transition: 0.2s ease all;
 
+        text-align: left;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
