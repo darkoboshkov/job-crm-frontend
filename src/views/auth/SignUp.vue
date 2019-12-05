@@ -7,30 +7,27 @@
                         <img src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div></div>
                         <h1>Sign Up</h1>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <form-input
-                                        id="first_name"
-                                        class="first_name"
-                                        type="text"
-                                        field="first_name"
-                                        label="First Name"
-                                        icon-class-name="icon-monkey"
-                                        v-model="firstName"
-                                />
-                            </div>
-                            <div class="col-md-6">
-                                <form-input
-                                        id="last_name"
-                                        class="last_name"
-                                        type="text"
-                                        field="last_name"
-                                        label="Last Name"
-                                        icon-class-name="icon-monkey"
-                                        v-model="lastName"
-                                />
-                            </div>
+                        <div class="name-group d-flex">
+                            <form-input
+                                    id="first_name"
+                                    class="first-name flex-1"
+                                    type="text"
+                                    field="first_name"
+                                    label="First Name"
+                                    icon-class-name="icon-monkey"
+                                    v-model="firstName"
+                            />
+                            <form-input
+                                    id="last_name"
+                                    class="last-name flex-1"
+                                    type="text"
+                                    field="last_name"
+                                    label="Last Name"
+                                    icon-class-name="icon-monkey"
+                                    v-model="lastName"
+                            />
                         </div>
+
                         <form-input
                                 id="email"
                                 class="email"
@@ -60,12 +57,12 @@
                         />
                         <div class="d-flex role-selector">
                             <div>
-                                <input type="radio" name="role" id="manager" value="manager" v-model="role" />
+                                <input type="radio" name="role" id="manager" value="manager" v-model="role"/>
                                 <label for="manager">Manager</label>
                             </div>
 
                             <div>
-                                <input type="radio" name="role" id="worker" value="worker" v-model="role" />
+                                <input type="radio" name="role" id="worker" value="worker" v-model="role"/>
                                 <label for="worker">Worker</label>
                             </div>
                         </div>

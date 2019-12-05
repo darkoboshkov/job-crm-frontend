@@ -38,27 +38,33 @@
         font-weight: normal;
       }
 
-      .row {
-        margin: 0;
-        .col-md-6 {
-          padding: 0;
-        }
-      }
-
-      .first_name, .last_name {
-        margin-top: 62px;
-      }
-      .first_name {
-        .input-group {
-          width: 90%;
-        }
-      }
-      .email, .password, .c-password, .buttons, .role-selector {
+      .email, .password, .c-password, .buttons, .role-selector, .first-name, .last-name {
         margin-top: 52px;
+      }
+      .name-group {
+        .first-name {
+          margin-right: 15px;
+        }
+        .last-name {
+          margin-left: 15px;
+        }
+        @include media-breakpoint-down(sm) {
+          flex-direction: column;
+          .first-name {
+            margin-right: 0;
+          }
+          .last-name {
+            margin-left: 0;
+          }
+        }
       }
       .role-selector {
         justify-content: space-around;
         color: rgba(104, 104, 104, 0.7);
+        font-size: 21px;
+        label {
+          margin-left: 5px;
+        }
       }
       .buttons {
         @include media-breakpoint-down(sm) {

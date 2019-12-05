@@ -7,20 +7,24 @@
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="invitation-form__header-line"></div>
                         <h1 class="title">Accept Invitation</h1>
-                        <form-input
-                                id="first_name"
-                                type="text"
-                                field="firstName"
-                                label="First Name"
-                                icon-class-name="icon-monkey"
-                        />
-                        <form-input
-                                id="last_name"
-                                type="text"
-                                field="lastName"
-                                label="Last Name"
-                                icon-class-name="icon-monkey"
-                        />
+                        <div class="name-group d-flex">
+                            <form-input
+                                    id="first_name"
+                                    class="first-name flex-1"
+                                    type="text"
+                                    field="firstName"
+                                    label="First Name"
+                                    icon-class-name="icon-monkey"
+                            />
+                            <form-input
+                                    id="last_name"
+                                    class="last-name flex-1"
+                                    type="text"
+                                    field="lastName"
+                                    label="Last Name"
+                                    icon-class-name="icon-monkey"
+                            />
+                        </div>
                         <form-input
                                 id="password"
                                 type="password"

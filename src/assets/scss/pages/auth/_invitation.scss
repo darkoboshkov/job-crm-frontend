@@ -40,6 +40,24 @@
       margin-top: 45px;
     }
 
+    .name-group {
+      .first-name {
+        margin-right: 15px;
+      }
+      .last-name {
+        margin-left: 15px;
+      }
+      @include media-breakpoint-down(sm) {
+        flex-direction: column;
+        .first-name {
+          margin-right: 0;
+        }
+        .last-name {
+          margin-left: 0;
+        }
+      }
+    }
+
     input {
       font-size: 21px;
     }
