@@ -6,68 +6,69 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/login',
-        name: 'login',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
             path: '/',
+            name: 'login',
             component: () => import('../views/auth/Login.vue')
         }]
     },
     {
         path: '/signup',
-        name: 'signup',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
             path: '/',
+            name: 'signup',
             component: () => import('../views/auth/SignUp.vue')
         }]
     },
     {
         path: '/verify',
-        name: 'verify',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
             path: '/',
+            name: 'verify',
             component: () => import('../views/auth/VerifyEmail.vue')
         },
         {
             path: ':code',
+            name: 'verify-code',
             component: () => import('../views/auth/VerifyEmail.vue')
         }]
     },
     {
         path: '/invitation',
-        name: 'invitation',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
             path: '/',
+            name: 'invitation',
             component: () => import('../views/auth/AcceptInvitation.vue')
         }]
     },
     {
         path: '/forgot',
-        name: 'forgot',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
             path: '/',
+            name: 'forgot',
             component: () => import('../views/auth/ForgotPassword.vue')
         }]
     },
     {
         path: '/reset',
-        name: 'reset',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
             path: ':code',
+            name: 'reset',
             component: () => import('../views/auth/ResetPassword.vue')
         }]
     },
     {
         path: '/dashboard',
-        name: 'dashboard',
         component: () => import('../containers/DashboardContainer.vue'),
         children: [{
             path: '/',
+            name: 'dashboard',
             component: () => import('../views/dashboard/Index.vue')
         }]
     },
@@ -75,6 +76,15 @@ const routes = [
         path: '/',
         name: 'common',
         component: () => import('../views/Common.vue')
+    },
+    {
+        path: '*',
+        component: () => import('../containers/AuthContainer.vue'),
+        children: [{
+            path: '/',
+            name: '404',
+            component: () => import('../views/Page404.vue')
+        }]
     }
 ]
 
