@@ -14,9 +14,11 @@
                                 label="E-mail address"
                                 icon-class-name="icon-monkey"
                                 class="email"
+                                v-model="email"
+                                :error="error"
                         />
                         <div class="d-flex">
-                            <button class="btn btn-blue send">Send Reset Email</button>
+                            <button class="btn btn-blue send" @click.prevent="forgot">Send Reset Email</button>
                         </div>
                     </form>
                 </div>
@@ -26,12 +28,35 @@
 </template>
 
 <script>
+    import authApi from '@/services/api/auth.js';
     import FormInput from '@/components/common/FormInput.vue';
 
     export default {
         name: "ForgotPassword",
         components: {
             FormInput
+        },
+        data() {
+            return {
+                email: '',
+                error: '',
+            }
+        },
+        methods: {
+            forgot() {
+                if (this.email) {
+                    authApi.forgot({
+                        email: this.email
+                    }).then(res => {
+                        console.log('res', res)
+                        // if (res.verification) {
+                        //     this.$router.push('/reset/' + res.verification)
+                        // }
+                    })
+                } else {
+                    this.error = 'Please feel this input'
+                }
+            }
         }
     }
 </script>

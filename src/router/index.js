@@ -58,7 +58,7 @@ const routes = [
         name: 'reset',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
-            path: '/',
+            path: ':code',
             component: () => import('../views/auth/ResetPassword.vue')
         }]
     },

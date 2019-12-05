@@ -11,4 +11,10 @@ export default {
     verify(params, resolve, reject = null) {
         return request('post', '/auth/verify', params, resolve, reject);
     },
+    forgot(params, resolve, reject = null) {
+        return request('post', '/auth/forgot', params, resolve, reject);
+    },
+    reset(params, resolve, reject = null) {
+        return request('post', '/auth/reset', params, resolve, reject);
+    },
 }
