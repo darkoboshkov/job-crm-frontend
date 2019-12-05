@@ -5,7 +5,7 @@
             <section class="common-colors">
                 <h2>Colors</h2>
                 <div class="items">
-                    <div :key="index"
+                    <div :key="index + '-color'"
                          class="color-box"
                          v-for="(color, index ) in colors">
                         <div class="color-box__label">{{color}}</div>
@@ -15,7 +15,7 @@
             </section>
             <section class="common-buttons">
                 <h2>Buttons</h2>
-                <div :key="sizeIndex"
+                <div :key="sizeIndex + '-button'"
                      class="items"
                      v-for="(size, sizeIndex ) in buttonSizes"
                 >
@@ -27,17 +27,41 @@
                         <button :class="'btn btn-' + color + ' ' + size">Button</button>
                     </div>
                 </div>
+                <div :key="sizeIndex + '-rec-button'"
+                     class="items"
+                     v-for="(size, sizeIndex ) in buttonSizes"
+                >
+                    <div :key="colorIndex"
+                         class="button-box"
+                         v-for="(color, colorIndex ) in buttonColors"
+                    >
+                        <div class="button-box__label">{{size}} rectangle</div>
+                        <button :class="'btn btn-' + color + ' ' + size + ' rectangle'">Button</button>
+                    </div>
+                </div>
             </section>
-            <section class="common-buttons">
+            <section class="common-form-elements">
                 <h2>Form Elements</h2>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="my-1">
-                            <form-input
-                                    label="common form input"
-                                    icon-class-name="icon-lock"
-                            />
-                        </div>
+                <div class="items">
+                    <div class="my-1">
+                        <form-input
+                                type="text"
+                                label="Name"
+                        />
+                    </div>
+                    <div class="my-1">
+                        <form-input
+                                type="email"
+                                label="Email"
+                                icon-class-name="icon-monkey"
+                        />
+                    </div>
+                    <div class="my-1">
+                        <form-input
+                                type="password"
+                                label="Password"
+                                icon-class-name="icon-lock"
+                        />
                     </div>
                 </div>
             </section>
