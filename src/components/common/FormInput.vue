@@ -130,11 +130,13 @@
     }
 
     .invalid-feedback {
+        margin-top: 10px;
         display: block;
+        color: var(--lipstick-red);
     }
 
     .is-invalid {
-        border-color: #dc3545;
+        border-color: var(--lipstick-red);
     }
 
     input::-webkit-outer-spin-button,
@@ -168,7 +170,7 @@
         position: absolute;
         font-size: 24px;
         line-height: 24px;
-        top: calc(50% - 12px);
+        top: 13px;
         right: 0;
         color: var(--cobalt-blue);
     }
