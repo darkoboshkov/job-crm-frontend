@@ -46,8 +46,9 @@
 </template>
 
 <script>
-    import authApi from '@/services/api/auth.js';
+    import authApi from '@/services/api/auth';
     import FormInput from '@/components/common/FormInput.vue';
+    import { Toast, Alert } from '@/utiles';
 
     export default {
         name: "Login",
@@ -90,6 +91,7 @@
                         this.$store.dispatch('updateToken', res.token)
 
                         if (res.user && res.user.verified) {
+                            Toast('Signed in successfully!', 'success')
                             this.$router.push('/dashboard')
                         } else {
                             this.$router.push('/verify')
