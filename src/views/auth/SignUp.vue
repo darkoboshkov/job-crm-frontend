@@ -87,8 +87,9 @@
 </template>
 
 <script>
-    import authApi from '@/services/api/auth.js';
+    import authApi from '@/services/api/auth';
     import FormInput from '@/components/common/FormInput.vue';
+    import { Toast } from '@/utiles';
 
     export default {
         name: "SignUp",
@@ -169,8 +170,10 @@
                         this.$store.dispatch('user/updateVerified', res.user.verified)
 
                         if (res.user && res.user.verified) {
+                            Toast('Registered in successfully!', 'success')
                             this.$router.push('/dashboard')
                         } else {
+                            Toast('Please verify your email!', 'warning')
                             this.$router.push('/verify')
                         }
                     }).catch((data) => {

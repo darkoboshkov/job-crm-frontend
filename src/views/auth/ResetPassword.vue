@@ -36,7 +36,7 @@
 </template>
 
 <script>
-    import authApi from '@/services/api/auth.js';
+    import authApi from '@/services/api/auth';
     import FormInput from '@/components/common/FormInput.vue';
 
     export default {
