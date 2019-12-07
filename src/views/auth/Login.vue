@@ -6,12 +6,12 @@
                     <form class="login-form">
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="login-form__header-line"></div>
-                        <h1 class="title">Login</h1>
+                        <h1 class="title">{{ $t('LOGIN') }}</h1>
                         <form-input
                                 id="email"
                                 type="email"
                                 field="email"
-                                label="E-mail address"
+                                :label="$t('EMAIL_ADDRESS')"
                                 icon-class-name="icon-monkey"
                                 class="email"
                                 v-model="email"
@@ -22,20 +22,20 @@
                                     id="password"
                                     type="password"
                                     field="password"
-                                    label="Password"
+                                    :label="$t('PASSWORD')"
                                     icon-class-name="icon-lock"
                                     class="password"
                                     v-model="password"
                                     :error="passwordError"
                             />
-                            <a href="/forgot" class="forgot-pass">Forgot?</a>
+                            <a href="/en/forgot" class="forgot-pass">{{ $t('FORGOT') }}?</a>
                         </div>
                         <div class="buttons d-flex">
                             <div>
-                                <button class="btn btn-red login" @click.prevent="login">Login</button>
+                                <button class="btn btn-red login" @click.prevent="login">{{ $t('LOGIN') }}</button>
                             </div>
                             <div>
-                                <button class="btn btn-blue signup" @click.prevent="goToSignup">Signup</button>
+                                <button class="btn btn-blue signup" @click.prevent="goToSignup">{{ $t('CREATE_ACCOUNT') }}</button>
                             </div>
                         </div>
                     </form>

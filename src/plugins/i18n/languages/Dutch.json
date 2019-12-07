@@ -2,5 +2,19 @@
   "EMAIL_IS_NOT_VALID": "The email is not valid",
   "PASSWORD_TOO_SHORT_MIN_5": "The password is shorter than 5, minimum",
   "THIS_FIELD_IS_REQUIRED": "This field is required",
-  "PASSWORDS_NOT_MATCH": "The password is not matching"
+  "PASSWORDS_NOT_MATCH": "The password is not matching",
+  "LOGIN": "Inloggen",
+  "CREATE_ACCOUNT": "Account aanmaken",
+  "FORGOT": "Vergeten",
+  "FIRST_NAME": "Voornaam",
+  "LAST_NAME": "Achternaam",
+  "EMAIL_ADDRESS": "E-mail adres",
+  "PASSWORD": "Wachtwoord",
+  "CONFIRM_PASSWORD": "Bevestig Wachtwoord",
+  "SIGNUP": "Inschrijven",
+  "MANAGER": "Manager",
+  "WORKER": "Arbeider",
+  "FORGOT_MY_PASSWORD": "Wachtwoord vergeten",
+  "SEND_RESET_EMAIL": "Verstuur reset email",
+  "RESET_PASSWORD": "Wachtwoord opnieuw instellen"
 }

@@ -2,5 +2,19 @@
   "EMAIL_IS_NOT_VALID": "The email is not valid",
   "PASSWORD_TOO_SHORT_MIN_5": "The password is shorter than 5, minimum",
   "THIS_FIELD_IS_REQUIRED": "This field is required",
-  "PASSWORDS_NOT_MATCH": "The password is not matching"
+  "PASSWORDS_NOT_MATCH": "The password is not matching",
+  "LOGIN": "Login",
+  "CREATE_ACCOUNT": "Create Account",
+  "FORGOT": "Forgot",
+  "FIRST_NAME": "First Name",
+  "LAST_NAME": "Last Name",
+  "EMAIL_ADDRESS": "E-mail address",
+  "PASSWORD": "Password",
+  "CONFIRM_PASSWORD": "Confirm Password",
+  "SIGNUP": "Sign Up",
+  "MANAGER": "Manager",
+  "WORKER": "Worker",
+  "FORGOT_MY_PASSWORD": "Forgot my password",
+  "SEND_RESET_EMAIL": "Send reset email",
+  "RESET_PASSWORD": "Reset password"
 }

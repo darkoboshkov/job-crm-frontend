@@ -6,14 +6,14 @@
                     <form>
                         <img src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div></div>
-                        <h1>Sign Up</h1>
+                        <h1>{{ $t('SIGNUP') }}</h1>
                         <div class="name-group d-flex">
                             <form-input
                                     id="first_name"
                                     class="first-name flex-1"
                                     type="text"
                                     field="first_name"
-                                    label="First Name"
+                                    :label="$t('FIRST_NAME')"
                                     icon-class-name="icon-monkey"
                                     v-model="firstName"
                                     :error="firstNameError"
@@ -23,7 +23,7 @@
                                     class="last-name flex-1"
                                     type="text"
                                     field="last_name"
-                                    label="Last Name"
+                                    :label="$t('LAST_NAME')"
                                     icon-class-name="icon-monkey"
                                     v-model="lastName"
                                     :error="lastNameError"
@@ -35,7 +35,7 @@
                                 class="email"
                                 type="email"
                                 field="email"
-                                label="Email address"
+                                :label="$t('EMAIL_ADDRESS')"
                                 icon-class-name="icon-monkey"
                                 v-model="email"
                                 :error="emailError"
@@ -45,7 +45,7 @@
                                 class="password"
                                 type="password"
                                 field="password"
-                                label="Password"
+                                :label="$t('PASSWORD')"
                                 icon-class-name="icon-lock"
                                 v-model="password"
                                 :error="passwordError"
@@ -55,7 +55,7 @@
                                 class="c-password"
                                 type="password"
                                 field="password"
-                                label="Confirm Password"
+                                :label="$t('CONFIRM_PASSWORD')"
                                 icon-class-name="icon-lock"
                                 v-model="cPassword"
                                 :error="cPasswordError"
@@ -63,20 +63,20 @@
                         <div class="d-flex role-selector">
                             <div>
                                 <input type="radio" name="role" id="manager" value="manager" v-model="role"/>
-                                <label for="manager">Manager</label>
+                                <label for="manager">{{ $t('MANAGER') }}</label>
                             </div>
 
                             <div>
                                 <input type="radio" name="role" id="worker" value="worker" v-model="role"/>
-                                <label for="worker">Worker</label>
+                                <label for="worker">{{ $t('WORKER') }}</label>
                             </div>
                         </div>
                         <div class="buttons d-flex">
                             <div>
-                                <button class="btn btn-red" @click.prevent="signup">Signup</button>
+                                <button class="btn btn-red" @click.prevent="signup">{{ $t('SIGNUP') }}</button>
                             </div>
                             <div>
-                                <button class="btn btn-blue" @click.prevent="goToLogin">Login</button>
+                                <button class="btn btn-blue" @click.prevent="goToLogin">{{ $t('LOGIN') }}</button>
                             </div>
                         </div>
                     </form>

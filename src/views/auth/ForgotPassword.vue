@@ -6,19 +6,19 @@
                     <form class="forgot-password-form">
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="forgot-password-form__header-line"></div>
-                        <h1 class="title">Forgot my password</h1>
+                        <h1 class="title">{{ $t('FORGOT_MY_PASSWORD') }}</h1>
                         <form-input
                                 id="email"
                                 type="email"
                                 field="email"
-                                label="E-mail address"
+                                :label="$t('EMAIL_ADDRESS')"
                                 icon-class-name="icon-monkey"
                                 class="email"
                                 v-model="email"
                                 :error="error"
                         />
                         <div class="d-flex">
-                            <button class="btn btn-blue send" @click.prevent="forgot">Send Reset Email</button>
+                            <button class="btn btn-blue send" @click.prevent="forgot">{{ $t('SEND_RESET_EMAIL') }}</button>
                         </div>
                     </form>
                 </div>
