@@ -10,6 +10,6 @@ export const i18n = new VueI18n({
   fallbackLocale: 'en',
   messages: {
     en: English, // set locale messages
-    du: Dutch,
+    nl: Dutch,
   }
 })
