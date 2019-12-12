@@ -12,11 +12,9 @@
             </div>
             <div class="card-list">
                 <card id="frontoffice">
-                    <div slot="header">
-                        <div class="d-flex">
-                            <img class="icon" src="@/assets/image/icon/front-office.svg">
-                            <h2>Frontend Office</h2>
-                        </div>
+                    <div class="d-flex" slot="header">
+                        <img class="icon" src="@/assets/image/icon/front-office.svg">
+                        <h2>Frontend Office</h2>
                     </div>
                     <div>
                         <ul>
@@ -29,11 +27,9 @@
                     <button class="btn btn-red medium">Continue</button>
                 </card>
                 <card id="backoffice">
-                    <div slot="header">
-                        <div class="d-flex">
-                            <img class="icon" src="@/assets/image/icon/back-office.svg">
-                            <h2>Back Office</h2>
-                        </div>
+                    <div class="d-flex" slot="header">
+                        <img class="icon" src="@/assets/image/icon/back-office.svg">
+                        <h2>Back Office</h2>
                     </div>
                     <div>
                         <ul>
@@ -46,11 +42,9 @@
                     <button class="btn btn-red medium">Continue</button>
                 </card>
                 <card id="manageportal">
-                    <div slot="header">
-                        <div class="d-flex">
-                            <img class="icon" src="@/assets/image/icon/management-portal.svg">
-                            <h2>Management Portal</h2>
-                        </div>
+                    <div class="d-flex" slot="header">
+                        <img class="icon" src="@/assets/image/icon/management-portal.svg">
+                        <h2>Management Portal</h2>
                     </div>
                     <div>
                         <ul>
