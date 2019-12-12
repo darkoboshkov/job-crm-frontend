@@ -171,7 +171,7 @@
 
                         if (res.user && res.user.verified) {
                             Toast('Registered in successfully!', 'success')
-                            this.$router.push('/dashboard')
+                            this.$router.push('/summary')
                         } else {
                             Toast('Please verify your email!', 'warning')
                             this.$router.push('/verify')

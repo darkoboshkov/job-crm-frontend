@@ -50,7 +50,7 @@
                 }).then(res => {
                     if (res.verified) {
                         this.$store.dispatch('user/updateVerified', res.verified)
-                        this.$router.push('/dashboard')
+                        this.$router.push('/summary')
                     } else {
                         alert('verification code has issue')
                     }

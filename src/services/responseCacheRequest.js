@@ -144,9 +144,11 @@ const request = function (method, path, params, successCallback, errorCallback) 
                         });
                 }
             } else {
+                /* eslint-disable-next-line */
                 console.log('Exception: unexpected request method - ', method);
             }
         } catch (e) {
+            /* eslint-disable-next-line */
             console.log('api failed (method: ' + method + ', path: ' + path + ', params: ', params, ')', e);
             if (errorCallback) {
                 errorCallback(e);

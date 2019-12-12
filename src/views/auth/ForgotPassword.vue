@@ -62,6 +62,7 @@
                     authApi.forgot({
                         email: this.email
                     }).then(res => {
+                        /* eslint-disable-next-line */
                         console.log('res', res)
                         // if (res.verification) {
                         //     this.$router.push('/reset/' + res.verification)

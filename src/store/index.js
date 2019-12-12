@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import plugins from './plugins.js'
-import {ls, STORAGE_KEY} from './plugins.js'
+import { ls, STORAGE_KEY } from './plugins.js'
 
 Vue.use(Vuex)
 
@@ -47,6 +47,8 @@ if (ls.get(STORAGE_KEY)) {
     try {
         syncedData = ls.get(STORAGE_KEY)
     } catch (e) {
+        /* eslint-disable-next-line */
+        console.log(e)
     }
 }
 

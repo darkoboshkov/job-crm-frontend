@@ -54,7 +54,8 @@
   }
 }
 
-.dashboard-container {
+.dashboard-container,
+.summary-container {
   height: 100vh;
   @include media-breakpoint-down(sm) {
     height: initial;
@@ -66,6 +67,8 @@
     width: 100%;
     top: 0;
     overflow: hidden;
+    background-color: var(--pale-grey);
+
     @include media-breakpoint-down(sm) {
       display: none;
     }

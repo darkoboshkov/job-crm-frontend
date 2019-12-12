@@ -1,0 +1,9 @@
+.app-content {
+  position: absolute;
+  margin-top: $header-height;
+  width: 100%;
+
+  &.sidebar {
+    margin-left: $sidebar-width;
+  }
+}

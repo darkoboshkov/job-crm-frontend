@@ -80,6 +80,15 @@ const routes = [
                 }]
             },
             {
+                path: 'summary',
+                component: () => import('../containers/SummaryContainer.vue'),
+                children: [{
+                    path: '/',
+                    name: 'summary',
+                    component: () => import('../views/summary/Index.vue')
+                }]
+            },
+            {
                 path: 'dashboard',
                 component: () => import('../containers/DashboardContainer.vue'),
                 children: [{

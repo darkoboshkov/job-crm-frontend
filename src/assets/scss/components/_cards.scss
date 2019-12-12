@@ -1,0 +1,19 @@
+.card {
+  background-color: var(--white);
+  width: 100%;
+  border: solid 1px var(--white-two);
+  box-shadow: 0 2px 0 0 var(--pale-grey-three);
+  position: relative;
+
+  &-header {
+    padding: 0 20px;
+    display: flex;
+    border-bottom: solid 1px var(--white-two);
+    &__title {
+      color: var(--lipstick-red);
+    }
+  }
+  &-body {
+    padding: 20px 20px;
+  }
+}

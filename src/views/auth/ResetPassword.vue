@@ -81,7 +81,8 @@
                         password: this.password,
                         c_password: this.cPassword,
                     }).then(res => {
-                        // console.log('res', res)
+                        /* eslint-disable-next-line */
+                        console.log('res', res)
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg
 
