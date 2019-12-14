@@ -17,18 +17,20 @@
     display: none;
   }
 
-  .nav-link {
+  a.nav-link {
     height: $header-height;
     width: 100%;
     text-align: center;
     cursor: pointer;
+    display: block;
 
-    &.active, &:hover {
+    &.active, &:hover, &:visited {
       border-right: 2px solid var(--cobalt-blue);
       img {
         transform: scale(1.1);
       }
     }
+
 
     img {
       width: 34px;

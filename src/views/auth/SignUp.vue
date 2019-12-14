@@ -14,7 +14,6 @@
                                     type="text"
                                     field="first_name"
                                     :label="$t('FIRST_NAME')"
-                                    icon-class-name="icon-monkey"
                                     v-model="firstName"
                                     :error="firstNameError"
                             />
@@ -24,7 +23,6 @@
                                     type="text"
                                     field="last_name"
                                     :label="$t('LAST_NAME')"
-                                    icon-class-name="icon-monkey"
                                     v-model="lastName"
                                     :error="lastNameError"
                             />
@@ -88,8 +86,8 @@
 
 <script>
     import authApi from '@/services/api/auth';
-    import FormInput from '@/components/common/FormInput.vue';
-    import { Toast } from '@/utiles';
+    import FormInput from '@/components/common/FormInput';
+    import { Toast, handleLogin} from '@/utils';
 
     export default {
         name: "SignUp",
@@ -159,23 +157,15 @@
                         password: this.password,
                         c_password: this.cPassword,
                     }).then(res => {
-                        this.$store.dispatch('updateToken', res.token)
-
-                        this.$store.dispatch('user/updateEmail', res.user.email)
-                        this.$store.dispatch('user/updateFirstName', res.user.firstName)
-                        this.$store.dispatch('user/updateLastName', res.user.lastName)
-                        this.$store.dispatch('user/updateRole', res.user.role)
-                        this.$store.dispatch('user/updateVerificationCode', res.user.verification)
-                        this.$store.dispatch('user/updateVerificationExpires', res.user.verificationExpires)
-                        this.$store.dispatch('user/updateVerified', res.user.verified)
-
-                        if (res.user && res.user.verified) {
-                            Toast('Registered in successfully!', 'success')
-                            this.$router.push('/summary')
-                        } else {
-                            Toast('Please verify your email!', 'warning')
-                            this.$router.push('/verify')
-                        }
+                        handleLogin(
+                            {
+                                jwt: res.token,
+                                expiresIn: res.tokenExpiresIn
+                            },
+                            res.user
+                        );
+                        Toast('Please verify your email!', 'warning')
+                        this.$router.push('/verify')
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg
 

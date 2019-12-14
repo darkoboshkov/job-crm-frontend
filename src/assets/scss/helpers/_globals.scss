@@ -1,7 +1,6 @@
 html {
   font-family: Apercu;
 }
-
 body {
   margin: 0;
 }
@@ -9,11 +8,19 @@ body {
 .d-flex {
   display: flex;
 }
-
 .flex-1 {
   flex: 1;
 }
+.flex-2 {
+  flex: 2;
+}
+.container {
+  width: initial !important;
+}
 
-//.container {
-//  padding: 0 !important;
-//}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}

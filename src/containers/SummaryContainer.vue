@@ -7,7 +7,8 @@
             <div class="circle-5"></div>
             <div class="circle-6"></div>
         </div>
-        <app-header/>
+        <app-header />
+        <localization />
         <div class="app-content">
             <router-view/>
         </div>
@@ -16,10 +17,12 @@
 
 <script>
     import AppHeader from "../components/Header/AppHeader";
+    import Localization from "../components/common/Localization";
 
     export default {
         name: "SummaryContainer",
         components: {
+            Localization,
             AppHeader
         }
     }

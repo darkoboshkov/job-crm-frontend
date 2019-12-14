@@ -35,7 +35,10 @@
                                 <button class="btn btn-red login" @click.prevent="login">{{ $t('LOGIN') }}</button>
                             </div>
                             <div>
-                                <button class="btn btn-blue signup" @click.prevent="goToSignup">{{ $t('CREATE_ACCOUNT') }}</button>
+                                <button
+                                        class="btn btn-blue signup"
+                                        @click.prevent="goToSignup">{{ $t('CREATE_ACCOUNT') }}
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -47,8 +50,8 @@
 
 <script>
     import authApi from '@/services/api/auth';
-    import FormInput from '@/components/common/FormInput.vue';
-    import { Toast } from '@/utiles';
+    import FormInput from '@/components/common/FormInput';
+    import {Toast, handleLogin} from '@/utils';
 
     export default {
         name: "Login",
@@ -77,7 +80,7 @@
                     this.passwordError = "THIS_FIELD_IS_REQUIRED";
                     valid = false;
                 } else {
-                  this.passwordError = '';
+                    this.passwordError = '';
                 }
 
                 return valid;
@@ -88,15 +91,15 @@
                         email: this.email,
                         password: this.password,
                     }).then(res => {
-                        this.$store.dispatch('updateToken', res.token)
-
-                        if (res.user && res.user.verified) {
-                            Toast('Signed in successfully!', 'success')
-                            this.$router.push('/summary')
-                        } else {
-                            Toast('Please verify your email!', 'warning')
-                            this.$router.push('/verify')
-                        }
+                        handleLogin(
+                            {
+                                jwt: res.token,
+                                expiresIn: res.tokenExpiresIn
+                            },
+                            res.user
+                        );
+                        Toast('Signed in successfully!', 'success')
+                        this.$router.push('/summary')
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg
 

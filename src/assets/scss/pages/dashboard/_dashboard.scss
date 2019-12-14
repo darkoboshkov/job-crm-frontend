@@ -1,0 +1,35 @@
+#page_dashboard {
+  .left-pane {
+    margin-right: 20px;
+    @include media-breakpoint-down(sm) {
+      margin-right: 0;
+    }
+  }
+  .right-pane {
+    margin-left: 20px;
+    @include media-breakpoint-down(sm) {
+      margin-left: 0;
+    }
+  }
+  #messages {
+    margin-right: 20px;
+    @include media-breakpoint-down(sm) {
+      margin-left: 0;
+    }
+  }
+  #open_positions {
+    margin-left: 20px;
+    @include media-breakpoint-down(sm) {
+      margin-left: 0;
+    }
+  }
+
+  .d-flex {
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    }
+  }
+  .card {
+    margin-top: 40px;
+  }
+}

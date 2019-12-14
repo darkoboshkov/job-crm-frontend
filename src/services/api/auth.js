@@ -1,4 +1,4 @@
-import request from '../responseCacheRequest';
+import request from '../request';
 
 export default {
 

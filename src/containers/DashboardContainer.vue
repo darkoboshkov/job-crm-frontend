@@ -9,6 +9,7 @@
         </div>
         <app-header/>
         <app-sidebar/>
+        <localization />
         <div class="app-content sidebar">
             <router-view/>
         </div>
@@ -18,10 +19,12 @@
 <script>
     import AppSidebar from "../components/Sidebar/AppSidebar";
     import AppHeader from "../components/Header/AppHeader";
+    import Localization from "../components/common/Localization";
 
     export default {
         name: "DashboardContainer",
         components: {
+            Localization,
             AppHeader,
             AppSidebar
         }

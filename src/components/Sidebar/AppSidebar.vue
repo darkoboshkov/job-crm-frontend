@@ -1,39 +1,45 @@
 <template>
     <div class="app-sidebar">
         <div class="app-sidebar__top">
-            <div class="nav-link active">
+            <a href="/dashboard" class="nav-link">
                 <img src="@/assets/image/icon/home.svg"/>
-            </div>
-            <div class="nav-link">
+            </a>
+            <a href="/dashboard/candidates" class="nav-link">
                 <img src="@/assets/image/icon/group.svg"/>
-            </div>
-            <div class="nav-link">
+            </a>
+            <a href="/dashboard/candidates" class="nav-link">
                 <img src="@/assets/image/icon/bag.svg"/>
-            </div>
-            <div class="nav-link">
+            </a>
+            <a href="/dashboard/matches" class="nav-link">
                 <img src="@/assets/image/icon/hand.svg"/>
-            </div>
-            <div class="nav-link">
+            </a>
+            <a href="/dashboard/candidates" class="nav-link">
                 <img src="@/assets/image/icon/calendar.svg"/>
-            </div>
-            <div class="nav-link">
+            </a>
+            <a href="/dashboard/news" class="nav-link">
                 <img src="@/assets/image/icon/mail.svg"/>
-            </div>
+            </a>
         </div>
         <div class="app-sidebar__bottom">
-            <div class="nav-link">
+            <a href="javascript:;" class="nav-link" @click.prevent="onAddItem">
                 <img src="@/assets/image/icon/plus.svg"/>
-            </div>
-            <div class="nav-link">
+            </a>
+            <a href="/dashboard/setting" class="nav-link">
                 <img src="@/assets/image/icon/setting.svg"/>
-            </div>
+            </a>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "AppSidebar"
+        name: "AppSidebar",
+        methods: {
+            onAddItem() {
+                /* eslint-disable-next-line */
+                console.log("add item");
+            }
+        }
     }
 </script>
 

@@ -28,13 +28,12 @@
 </template>
 
 <script>
-    import authApi from '@/services/api/auth.js';
+    import authApi from '@/services/api/auth';
+
     export default {
         name: "VerifyEmail",
         data() {
-            return {
-
-            }
+            return {}
         },
         computed: {
             email() {

@@ -1,11 +1,25 @@
+import { ls, STORAGE_KEY } from "../plugins";
+
+let syncedData = {
+    email: null,
+    firstName: null,
+    lastName: null,
+    role: null,
+    verified: false
+};
+
+if (ls.get(STORAGE_KEY)) {
+  try {
+    syncedData = ls.get(STORAGE_KEY)
+  } catch (e) {
+    /* eslint-disable-next-line */
+    console.log(e)
+  }
+}
+
+
 export const state = {
-  email: '',
-  firstName: '',
-  lastName: '',
-  role: '',
-  verificationCode: '',
-  verificationExpires: '',
-  verified: '',
+  ...syncedData.user
 };
 
 export const getters = {};
@@ -23,18 +37,22 @@ export const mutations = {
   UPDATE_ROLE(state, payload) {
     state.role = payload;
   },
-  UPDATE_VERIFICATION_CODE(state, payload) {
-    state.verificationCode = payload;
-  },
-  UPDATE_VERIFICATION_EXPIRES(state, payload) {
-    state.verificationExpires = payload;
-  },
   UPDATE_VERIFIED(state, payload) {
     state.verified = payload;
+  },
+  UPDATE_USER_INFO(state, user) {
+    state.email = user.email ? user.email : null;
+    state.firstName = user.firstName ? user.firstName : null;
+    state.lastName = user.lastName ? user.lastName : null;
+    state.role = user.role ? user.role : null;
+    state.verified = user.verified ? user.verified : false;
   },
 };
 
 export const actions = {
+  updateUserInfo({commit}, payload) {
+    commit('UPDATE_USER_INFO', payload)
+  },
   updateEmail({commit}, payload) {
     commit('UPDATE_EMAIL', payload)
   },
@@ -46,12 +64,6 @@ export const actions = {
   },
   updateRole({commit}, payload) {
     commit('UPDATE_ROLE', payload)
-  },
-  updateVerificationCode({commit}, payload) {
-    commit('UPDATE_VERIFICATION_CODE', payload)
-  },
-  updateVerificationExpires({commit}, payload) {
-    commit('UPDATE_VERIFICATION_EXPIRES', payload)
   },
   updateVerified({commit}, payload) {
     commit('UPDATE_VERIFIED', payload)

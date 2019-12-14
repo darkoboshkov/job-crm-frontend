@@ -14,7 +14,6 @@
                                     type="text"
                                     field="firstName"
                                     label="First Name"
-                                    icon-class-name="icon-monkey"
                             />
                             <form-input
                                     id="last_name"
@@ -22,7 +21,6 @@
                                     type="text"
                                     field="lastName"
                                     label="Last Name"
-                                    icon-class-name="icon-monkey"
                             />
                         </div>
                         <form-input
@@ -50,7 +48,7 @@
 </template>
 
 <script>
-    import FormInput from '@/components/common/FormInput.vue';
+    import FormInput from '@/components/common/FormInput';
 
     export default {
         name: "AcceptInvitation",

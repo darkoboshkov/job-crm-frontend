@@ -8,13 +8,18 @@
             <div class="circle-5"></div>
             <div class="circle-6"></div>
         </div>
+        <localization />
         <router-view/>
     </div>
 </template>
 
 <script>
+    import Localization from "../components/common/Localization";
     export default {
-        name: "AuthContainer"
+        name: "AuthContainer",
+        components: {
+            Localization
+        }
     }
 </script>
 

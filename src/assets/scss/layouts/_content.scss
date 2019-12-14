@@ -1,9 +1,24 @@
 .app-content {
   position: absolute;
-  margin-top: $header-height;
+  top: $header-height;
   width: 100%;
+  height: calc(100vh - #{$header-height});
+  overflow: auto;
 
   &.sidebar {
-    margin-left: $sidebar-width;
+    left: $sidebar-width;
+    width: calc(100% - #{$sidebar-width})
+  }
+}
+
+.dashboard-content {
+  padding: 50px 80px;
+  position: relative;
+  @include media-breakpoint-down(sm) {
+    padding: 30px 15px;
+  }
+  h1.title {
+    color: var(--lipstick-red);
+    margin: 0;
   }
 }

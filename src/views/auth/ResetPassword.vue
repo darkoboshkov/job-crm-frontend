@@ -37,7 +37,7 @@
 
 <script>
     import authApi from '@/services/api/auth';
-    import FormInput from '@/components/common/FormInput.vue';
+    import FormInput from '@/components/common/FormInput';
 
     export default {
         name: "ResetPassword",
