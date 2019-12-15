@@ -24,11 +24,18 @@ export const mutations = {
         state.jwt = token.jwt;
         state.expiresIn = token.expiresIn;
     },
+    REMOVE_TOKEN(state, token) {
+        state.jwt = null;
+        state.expiresIn = null;
+    },
 };
 
 export const actions = {
     updateToken({commit}, payload) {
         commit('UPDATE_TOKEN', payload)
+    },
+    removeToken({commit}) {
+        commit('REMOVE_TOKEN')
     }
 };
 

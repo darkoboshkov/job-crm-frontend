@@ -6,7 +6,7 @@
             </div>
             <div class="nav">
                 <search-bar />
-<!--                <app-header-account-dropdown />-->
+                <app-header-account-dropdown />
             </div>
         </div>
     </div>

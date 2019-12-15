@@ -119,6 +119,6 @@ export const handleLogin = (token, userInfo) => {
  * Actions after log out
  */
 export const handleLogout = () => {
-    store.dispatch('removeToken');
+    store.dispatch('token/removeToken');
     delete axios.defaults.headers['Authorization'];
 };
