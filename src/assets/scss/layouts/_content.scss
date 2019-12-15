@@ -4,21 +4,47 @@
   width: 100%;
   height: calc(100vh - #{$header-height});
   overflow: auto;
+  @include media-breakpoint-down(sm) {
+    top: $mobile-header-height;
+    height: calc(100vh - #{$mobile-header-height});
+  }
 
   &.sidebar {
     left: $sidebar-width;
-    width: calc(100% - #{$sidebar-width})
+    width: calc(100% - #{$sidebar-width});
+    @include media-breakpoint-down(sm) {
+      left: $mobile-sidebar-width;
+      width: calc(100% - #{$mobile-sidebar-width});
+    }
   }
 }
 
 .dashboard-content {
-  padding: 50px 80px;
+  padding: 68px 125px 30px 125px;
   position: relative;
+  @include media-breakpoint-down(lg) {
+    padding: 50px 30px;
+  }
   @include media-breakpoint-down(sm) {
     padding: 30px 15px;
   }
   h1.title {
     color: var(--lipstick-red);
     margin: 0;
+    font-size: 40px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+  .sub-title {
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.2;
+    letter-spacing: normal;
+    color: var(--black);
   }
 }

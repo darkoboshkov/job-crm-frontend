@@ -6,15 +6,26 @@
   position: fixed;
   top: 0;
   z-index: 1000;
+  @include media-breakpoint-down(sm) {
+    height: $mobile-header-height;
+  }
 
   .logo {
     width: $sidebar-width;
     height: $header-height;
     border-right: 1px solid var(--white-two);
     text-align: center;
+    @include media-breakpoint-down(sm) {
+      width: $mobile-sidebar-width;
+      height: $mobile-header-height;
+    }
     img {
-      width: 50px;
-      margin-top: calc(#{$header-height/2} - 25px);
+      width: $dashboard-logo-height;
+      margin-top: calc(#{$header-height/2} - #{$dashboard-logo-height/2});
+      @include media-breakpoint-down(sm) {
+        width: $mobile-dashboard-logo-height;
+        margin-top: calc(#{$mobile-header-height/2} - #{$mobile-dashboard-logo-height/2});
+      }
     }
   }
 }

@@ -6,6 +6,10 @@ Vue.use(VueRouter);
 
 const routes = [
     {
+        path: '/',
+        redirect: '/login'
+    },
+    {
         path: '/login',
         component: () => import('../containers/AuthContainer.vue'),
         children: [{
@@ -103,6 +107,11 @@ const routes = [
                 path: 'matches',
                 name: 'matches',
                 component: () => import('../views/dashboard/Matches.vue')
+            },
+            {
+                path: 'privacy',
+                name: 'privacy',
+                component: () => import('../views/dashboard/Privacy.vue')
             },
             {
                 path: 'setting',

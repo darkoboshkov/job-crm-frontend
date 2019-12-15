@@ -1,0 +1,15 @@
+#page_privacy {
+  #privacy {
+    margin-top: 30px;
+    @include media-breakpoint-down(sm) {
+      border: none;
+      box-shadow: none;
+    }
+    .card-body {
+      padding: 36px 54px;
+      @include media-breakpoint-down(sm) {
+        padding: 0;
+      }
+    }
+  }
+}

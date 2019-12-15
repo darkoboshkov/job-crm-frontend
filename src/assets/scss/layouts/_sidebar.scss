@@ -11,18 +11,20 @@
 
   @include media-breakpoint-down(sm) {
     height: initial;
-  }
-
-  &.hidden {
-    display: none;
+    width: $mobile-sidebar-width;
+    top: calc(#{$mobile-header-height} + 2px);
   }
 
   a.nav-link {
-    height: $header-height;
+    height: $sidebar-item-height;
     width: 100%;
     text-align: center;
     cursor: pointer;
     display: block;
+
+    @include media-breakpoint-down(sm) {
+      height: $mobile-sidebar-item-height;
+    }
 
     &.active, &:hover, &:visited {
       border-right: 2px solid var(--cobalt-blue);
@@ -31,11 +33,15 @@
       }
     }
 
-
     img {
-      width: 34px;
-      height: 34px;
-      margin-top: calc(#{$header-height/2} - 17px);
+      width: $sidebar-image-width;
+      height: $sidebar-image-height;
+      margin-top: calc(#{$sidebar-item-height/2} - #{$sidebar-image-height/2});
+      @include media-breakpoint-down(sm) {
+        width: $mobile-sidebar-image-width;
+        height: $mobile-sidebar-image-height;
+        margin-top: calc(#{$mobile-sidebar-item-height/2} - #{$mobile-sidebar-image-height/2});
+      }
     }
   }
 
@@ -51,6 +57,7 @@
     width: $sidebar-width;
     @include media-breakpoint-down(sm) {
       position: relative;
+      width: $mobile-sidebar-width;
     }
 
     .nav-link {

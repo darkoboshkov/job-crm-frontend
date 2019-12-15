@@ -1,15 +1,19 @@
 <template>
     <div id="page_candidates" class="dashboard-content">
         <div class="d-flex">
-            <h1 class="title">
-                Candidates
-            </h1>
+            <div>
+                <h1 class="title">
+                    Candidates
+                </h1>
+                <p class="sub-title">We hebben 5401 kandidaten gevonden</p>
+            </div>
             <div class="pull-right">
 
             </div>
         </div>
-        <small>We hebben 5401 kandidaten gevonden</small>
-        <div></div>
+        <div>
+
+        </div>
     </div>
 </template>
 

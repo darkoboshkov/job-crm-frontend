@@ -2,22 +2,30 @@
   margin: 100px 0 50px 0;
   .title {
     color: var(--lipstick-red);
+    font-size: 40px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
   }
   .sub-title {
     color: var(--warm-grey-two);
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
   }
 
   .card-list {
     display: flex;
     margin: 0 -20px;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       flex-direction: column;
       margin: 0;
     }
     .card {
       margin: 50px 20px 0 20px;
       @include media-breakpoint-down(sm) {
-        flex-direction: column;
         margin: 50px 0 0 0;
       }
       &-header {

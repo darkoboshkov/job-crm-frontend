@@ -16,4 +16,15 @@
   &-body {
     padding: 20px 20px;
   }
+
+  &.no-header {
+    .card-header {
+      display: none;
+    }
+  }
+  &.no-footer {
+    .card-footer {
+      display: none;
+    }
+  }
 }

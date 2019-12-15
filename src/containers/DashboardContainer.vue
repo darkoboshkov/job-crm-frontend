@@ -7,9 +7,9 @@
             <div class="circle-5"></div>
             <div class="circle-6"></div>
         </div>
+        <localization />
         <app-header/>
         <app-sidebar/>
-        <localization />
         <div class="app-content sidebar">
             <router-view/>
         </div>
