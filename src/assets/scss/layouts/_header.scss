@@ -14,18 +14,26 @@
     width: $sidebar-width;
     height: $header-height;
     border-right: 1px solid var(--white-two);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    a {
+      margin: 0 auto;
+    }
+
     @include media-breakpoint-down(sm) {
       width: $mobile-sidebar-width;
       height: $mobile-header-height;
     }
     img {
       width: $dashboard-logo-height;
-      margin-top: calc(#{$header-height/2} - #{$dashboard-logo-height/2});
       @include media-breakpoint-down(sm) {
         width: $mobile-dashboard-logo-height;
-        margin-top: calc(#{$mobile-header-height/2} - #{$mobile-dashboard-logo-height/2});
       }
     }
+  }
+
+  .account-dropdown {
+    float: right;
+    &__photo {}
   }
 }

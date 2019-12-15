@@ -6,6 +6,7 @@
             </div>
             <div class="nav">
                 <search-bar />
+<!--                <app-header-account-dropdown />-->
             </div>
         </div>
     </div>
@@ -13,10 +14,12 @@
 
 <script>
     import SearchBar from '@/components/common/SearchBar.vue';
+    import AppHeaderAccountDropdown from "@/components/Header/AppHeaderAccountDropdown";
 
     export default {
         name: "AppHeader",
         components: {
+            AppHeaderAccountDropdown,
             SearchBar,
         }
     }

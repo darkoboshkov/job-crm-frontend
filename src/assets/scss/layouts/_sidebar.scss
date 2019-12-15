@@ -20,7 +20,8 @@
     width: 100%;
     text-align: center;
     cursor: pointer;
-    display: block;
+    display: flex;
+    align-items: center;
 
     @include media-breakpoint-down(sm) {
       height: $mobile-sidebar-item-height;
@@ -36,11 +37,10 @@
     img {
       width: $sidebar-image-width;
       height: $sidebar-image-height;
-      margin-top: calc(#{$sidebar-item-height/2} - #{$sidebar-image-height/2});
+      margin: 0 auto;
       @include media-breakpoint-down(sm) {
         width: $mobile-sidebar-image-width;
         height: $mobile-sidebar-image-height;
-        margin-top: calc(#{$mobile-sidebar-item-height/2} - #{$mobile-sidebar-image-height/2});
       }
     }
   }
