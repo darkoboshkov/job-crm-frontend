@@ -1,5 +1,6 @@
 #page_summary {
   margin: 100px 0 50px 0;
+
   .title {
     color: var(--lipstick-red);
     font-size: 40px;
@@ -9,6 +10,7 @@
     line-height: normal;
     letter-spacing: normal;
   }
+
   .sub-title {
     color: var(--warm-grey-two);
     font-weight: normal;
@@ -17,40 +19,35 @@
   }
 
   .card-list {
-    display: flex;
-    margin: 0 -20px;
-    @include media-breakpoint-down(md) {
-      flex-direction: column;
-      margin: 0;
+    margin-top: 50px;
+  }
+  .card {
+    @include media-breakpoint-down(sm) {
+      margin: 50px 0 0 0;
     }
-    .card {
-      margin: 50px 20px 0 20px;
-      @include media-breakpoint-down(sm) {
-        margin: 50px 0 0 0;
+
+    &-header {
+      h2 {
+        font-size: 28px;
+        color: var(--lipstick-red);
       }
-      &-header {
-        img.icon {
-          margin-right: 15px;
+      img.icon {
+        margin-right: 15px;
+      }
+    }
+
+    ul {
+      margin-bottom: 50px;
+      list-style-image: url("../image/icon/arrow-right-active.svg");
+
+      li {
+        height: 60px;
+        color: var(--warm-grey-two);
+
+        &:before {
+
         }
       }
     }
-  }
-
-  ul {
-    margin-bottom: 80px;
-    list-style-image: url("../image/icon/arrow-right-active.svg");
-    li {
-      height: 60px;
-      color: var(--warm-grey-two);
-      &:before {
-
-      }
-    }
-  }
-
-  button.btn {
-    position: absolute;
-    bottom: 20px;
-    width: calc(100% - 40px);
   }
 }

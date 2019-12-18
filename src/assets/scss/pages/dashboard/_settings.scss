@@ -1,0 +1,57 @@
+#page_settings {
+  .tab-content {
+    padding: 30px;
+  }
+
+  .tabs {
+    border: solid 1px var(--light-periwinkle);
+  }
+  .tab-pane {
+    outline: none;
+  }
+  .setting-profile {
+    display: flex;
+    @include media-breakpoint-down(sm) {
+      flex-direction: column-reverse;
+    };
+
+    &__form {
+      flex: 3;
+
+      .form-element {
+        display: flex;
+        align-items: center;
+        @include media-breakpoint-down(sm) {
+          flex-direction: column;
+        };
+
+        label {
+          width: 175px;
+        }
+      }
+
+      .gender {
+        display: flex;
+        @include media-breakpoint-down(sm) {
+          flex-direction: column;
+          margin-left: 20px;
+        };
+      }
+    }
+    &__photo {
+      flex: 1;
+
+      .image-wrapper {
+        margin: 0 auto;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: var(--pinkish-grey);
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

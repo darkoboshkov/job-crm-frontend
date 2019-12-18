@@ -1,8 +1,6 @@
-html {
-  font-family: Apercu;
-}
 body {
   margin: 0;
+  font-family: Apercu;
 }
 
 .d-flex {
@@ -27,4 +25,26 @@ body {
 
 .hidden {
   display: none;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+ul.custom-list {
+  margin: 0;
+  list-style: none;
+  line-height: 3;
+  padding: 0;
+  //li:not(:last-child) {
+  li {
+    border-bottom: 1px solid var(--white-two);
+  }
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 1.5rem 1rem;
 }

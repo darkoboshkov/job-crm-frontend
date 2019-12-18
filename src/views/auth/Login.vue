@@ -7,28 +7,29 @@
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="login-form__header-line"></div>
                         <h1 class="title">{{ $t('LOGIN') }}</h1>
-                        <form-input
+                        <b-form-input
                                 id="email"
-                                type="email"
-                                field="email"
-                                :label="$t('EMAIL_ADDRESS')"
-                                icon-class-name="icon-monkey"
-                                class="email"
                                 v-model="email"
-                                :error="emailError"
+                                type="email"
+                                :placeholder="$t('EMAIL_ADDRESS')"
+                                class="custom-input mt-5"
                         />
-                        <div class="input-wrapper">
-                            <form-input
+                        <b-form-invalid-feedback class="d-block">
+                            {{ $t(emailError) }}
+                        </b-form-invalid-feedback>
+                        <div class="input-wrapper mt-5">
+                            <b-form-input
                                     id="password"
-                                    type="password"
-                                    field="password"
-                                    :label="$t('PASSWORD')"
-                                    icon-class-name="icon-lock"
-                                    class="password"
                                     v-model="password"
-                                    :error="passwordError"
+                                    type="password"
+                                    required
+                                    :placeholder="$t('PASSWORD')"
+                                    class="custom-input"
                             />
-                            <a href="/en/forgot" class="forgot-pass">{{ $t('FORGOT') }}?</a>
+                            <b-form-invalid-feedback class="d-block">
+                                {{ $t(passwordError) }}
+                            </b-form-invalid-feedback>
+                            <a href="/forgot" class="forgot-pass">{{ $t('FORGOT') }}?</a>
                         </div>
                         <div class="buttons d-flex">
                             <div>
@@ -50,14 +51,10 @@
 
 <script>
     import authApi from '@/services/api/auth';
-    import FormInput from '@/components/common/FormInput';
     import {Toast, handleLogin} from '@/utils';
 
     export default {
         name: "Login",
-        components: {
-            FormInput
-        },
         data() {
             return {
                 email: '',
@@ -67,6 +64,9 @@
             }
         },
         methods: {
+            isError(str) {
+                return str && str.length > 0;
+            },
             validate() {
                 let valid = true;
 
@@ -102,15 +102,16 @@
                         this.$router.push('/summary')
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg
-
-                        messages.forEach(msg => {
-                            if (msg.param === 'email') {
-                                this.emailError = msg.msg
-                            }
-                            if (msg.param === 'password') {
-                                this.passwordError = msg.msg
-                            }
-                        })
+                        if(Array.isArray(messages)) {
+                            messages.forEach(msg => {
+                                if (msg.param === 'email') {
+                                    this.emailError = msg.msg
+                                }
+                                if (msg.param === 'password') {
+                                    this.passwordError = msg.msg
+                                }
+                            })
+                        }
                     });
                 }
             },

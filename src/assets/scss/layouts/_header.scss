@@ -49,8 +49,12 @@
         height: $dashboard-logo-height;
         border-radius: 50%;
         background: var(--pinkish-grey);
+        overflow: hidden;
         @include media-breakpoint-down(sm) {
           display: none;
+        }
+        img {
+          width: 100%;
         }
       }
       &__list {

@@ -1,7 +1,7 @@
 <template>
     <div class="account-dropdown">
         <div class="account-dropdown__photo">
-            <img :src="photo" />
+            <img src="@/assets/image/avatar_nick.png" />
         </div>
         <div class="account-dropdown__list">
             <a href="javascript;" @click.prevent="toggleDropdown">{{ fullName }}</a>
@@ -14,14 +14,14 @@
 </template>
 
 <script>
-    import { handleLogout } from '@/utils';
+    import { handleLogout, Toast } from '@/utils';
 
     export default {
         name: "AppHeaderAccountDropdown",
         data() {
             return {
-                photo: "",
-                fullName: "Aslan Lin",
+                photo: "", // To do from store
+                fullName: "Aslan Lin", // To do from store
                 collapsed: false
             }
         },
@@ -31,6 +31,7 @@
             },
             logout() {
                 handleLogout();
+                Toast('Logged out successfully!', 'success')
                 this.$router.push('/login')
             }
         }

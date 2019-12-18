@@ -7,76 +7,79 @@
                         <img src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div></div>
                         <h1>{{ $t('SIGNUP') }}</h1>
-                        <div class="name-group d-flex">
-                            <form-input
-                                    id="first_name"
-                                    class="first-name flex-1"
-                                    type="text"
-                                    field="first_name"
-                                    :label="$t('FIRST_NAME')"
-                                    v-model="firstName"
-                                    :error="firstNameError"
-                            />
-                            <form-input
-                                    id="last_name"
-                                    class="last-name flex-1"
-                                    type="text"
-                                    field="last_name"
-                                    :label="$t('LAST_NAME')"
-                                    v-model="lastName"
-                                    :error="lastNameError"
-                            />
-                        </div>
-
-                        <form-input
+                        <b-row>
+                            <b-col md="6">
+                                <b-form-input
+                                        id="first_name"
+                                        v-model="firstName"
+                                        type="text"
+                                        required
+                                        :placeholder="$t('FIRST_NAME')"
+                                        class="custom-input first-name mt-3"
+                                />
+                                <b-form-invalid-feedback class="d-block">
+                                    {{ $t(firstNameError) }}
+                                </b-form-invalid-feedback>
+                            </b-col>
+                            <b-col md="6">
+                                <b-form-input
+                                        id="last_name"
+                                        v-model="lastName"
+                                        type="text"
+                                        required
+                                        :placeholder="$t('LAST_NAME')"
+                                        class="custom-input last-name mt-3"
+                                />
+                                <b-form-invalid-feedback class="d-block">
+                                    {{ $t(lastNameError) }}
+                                </b-form-invalid-feedback>
+                            </b-col>
+                        </b-row>
+                        <b-form-input
                                 id="email"
-                                class="email"
-                                type="email"
-                                field="email"
-                                :label="$t('EMAIL_ADDRESS')"
-                                icon-class-name="icon-monkey"
                                 v-model="email"
-                                :error="emailError"
+                                type="email"
+                                required
+                                :placeholder="$t('EMAIL_ADDRESS')"
+                                class="custom-input mt-3"
                         />
-                        <form-input
+                        <b-form-invalid-feedback class="d-block">
+                            {{ $t(emailError) }}
+                        </b-form-invalid-feedback>
+                        <b-form-input
                                 id="password"
-                                class="password"
-                                type="password"
-                                field="password"
-                                :label="$t('PASSWORD')"
-                                icon-class-name="icon-lock"
                                 v-model="password"
-                                :error="passwordError"
-                        />
-                        <form-input
-                                id="c_password"
-                                class="c-password"
                                 type="password"
-                                field="password"
-                                :label="$t('CONFIRM_PASSWORD')"
-                                icon-class-name="icon-lock"
-                                v-model="cPassword"
-                                :error="cPasswordError"
+                                required
+                                :placeholder="$t('PASSWORD')"
+                                class="custom-input mt-3"
                         />
+                        <b-form-invalid-feedback class="d-block">
+                            {{ $t(passwordError) }}
+                        </b-form-invalid-feedback>
+                        <b-form-input
+                                id="c_password"
+                                v-model="cPassword"
+                                type="password"
+                                required
+                                :placeholder="$t('CONFIRM_PASSWORD')"
+                                class="custom-input mt-3"
+                        />
+                        <b-form-invalid-feedback class="d-block">
+                            {{ $t(cPasswordError) }}
+                        </b-form-invalid-feedback>
                         <div class="d-flex role-selector">
-                            <div>
-                                <input type="radio" name="role" id="manager" value="manager" v-model="role"/>
-                                <label for="manager">{{ $t('MANAGER') }}</label>
-                            </div>
-
-                            <div>
-                                <input type="radio" name="role" id="worker" value="worker" v-model="role"/>
-                                <label for="worker">{{ $t('WORKER') }}</label>
-                            </div>
+                            <b-form-radio v-model="role" name="role" value="manager">{{ $t('MANAGER') }}</b-form-radio>
+                            <b-form-radio v-model="role" name="role" value="worker">{{ $t('WORKER') }}</b-form-radio>
                         </div>
-                        <div class="buttons d-flex">
-                            <div>
+                        <b-row class="buttons">
+                            <b-col md="6">
                                 <button class="btn btn-red" @click.prevent="signup">{{ $t('SIGNUP') }}</button>
-                            </div>
-                            <div>
+                            </b-col>
+                            <b-col md="6">
                                 <button class="btn btn-blue" @click.prevent="goToLogin">{{ $t('LOGIN') }}</button>
-                            </div>
-                        </div>
+                            </b-col>
+                        </b-row>
                     </form>
                 </div>
             </div>
@@ -86,14 +89,10 @@
 
 <script>
     import authApi from '@/services/api/auth';
-    import FormInput from '@/components/common/FormInput';
-    import { Toast, handleLogin} from '@/utils';
+    import {Toast, handleLogin} from '@/utils';
 
     export default {
         name: "SignUp",
-        components: {
-            FormInput
-        },
         data() {
             return {
                 firstName: '',
@@ -168,24 +167,25 @@
                         this.$router.push('/verify')
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg
-
-                        messages.forEach(msg => {
-                            if (msg.param === 'firstName') {
-                                this.firstNameError = msg.msg
-                            }
-                            if (msg.param === 'lastName') {
-                                this.lastNameError = msg.msg
-                            }
-                            if (msg.param === 'email') {
-                                this.emailError = msg.msg
-                            }
-                            if (msg.param === 'password') {
-                                this.passwordError = msg.msg
-                            }
-                            if (msg.param === 'c_password') {
-                                this.cPasswordError = msg.msg
-                            }
-                        })
+                        if(Array.isArray(messages)) {
+                            messages.forEach(msg => {
+                                if (msg.param === 'firstName') {
+                                    this.firstNameError = msg.msg
+                                }
+                                if (msg.param === 'lastName') {
+                                    this.lastNameError = msg.msg
+                                }
+                                if (msg.param === 'email') {
+                                    this.emailError = msg.msg
+                                }
+                                if (msg.param === 'password') {
+                                    this.passwordError = msg.msg
+                                }
+                                if (msg.param === 'c_password') {
+                                    this.cPasswordError = msg.msg
+                                }
+                            })
+                        }
                     });
                 }
             },

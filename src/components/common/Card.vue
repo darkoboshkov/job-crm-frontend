@@ -1,16 +1,16 @@
 <template>
-    <div :id="id" class="card">
-        <div class="card-header">
-            <div class="card-header__title">
+    <div :id="id" class="custom-card">
+        <div class="custom-card-header">
+            <div class="custom-card-header__title">
                 <slot name="header"/>
             </div>
-            <div class="card-header__tool">
+            <div class="custom-card-header__tool">
             </div>
         </div>
-        <div class="card-body">
+        <div class="custom-card-body">
             <slot/>
         </div>
-        <div class="card-footer">
+        <div class="custom-card-footer">
             <slot name="footer"/>
         </div>
     </div>

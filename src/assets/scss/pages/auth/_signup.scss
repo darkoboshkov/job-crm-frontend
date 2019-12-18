@@ -38,65 +38,31 @@
         font-weight: normal;
       }
 
-      .email, .password, .c-password, .buttons, .role-selector, .first-name, .last-name {
+      .email, .password, .c-password, button, .role-selector, .first-name, .last-name {
         margin-top: 52px;
       }
-      .name-group {
-        .first-name {
-          margin-right: 15px;
-        }
-        .last-name {
-          margin-left: 15px;
-        }
-        @include media-breakpoint-down(sm) {
-          flex-direction: column;
-          .first-name {
-            margin-right: 0;
-          }
-          .last-name {
-            margin-left: 0;
-          }
-        }
-      }
+
       .role-selector {
         justify-content: space-around;
         color: rgba(104, 104, 104, 0.7);
         font-size: 21px;
+
         label {
           margin-left: 5px;
         }
       }
-      .buttons {
-        @include media-breakpoint-down(sm) {
-          flex-direction: column;
-          text-align: center;
-        }
 
-        & > div {
-          flex: 1;
-          
-          &:first-child {
-            float: left;
-            @include media-breakpoint-down(sm) {
-              float: none;
-            }
-          }
-          &:last-child {
-            float: right;
-            @include media-breakpoint-down(sm) {
-              float: none;
-              margin-top: 20px;
-            }
-          }
-          button {
-            letter-spacing: 0;
-            font-size: 21px;
-            font-weight: 500;
-            height: 60px;
-            padding: 0;
-            width: 233px;
-          }
-        }
+      .buttons {
+        text-align: center;
+      }
+
+      button {
+        letter-spacing: 0;
+        font-size: 21px;
+        font-weight: 500;
+        height: 60px;
+        padding: 0;
+        width: 233px;
       }
     }
   }

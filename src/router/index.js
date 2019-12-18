@@ -109,6 +109,11 @@ const routes = [
                 component: () => import('../views/dashboard/Matches.vue')
             },
             {
+                path: 'profile/:id',
+                name: 'profile',
+                component: () => import('../views/dashboard/Profile.vue')
+            },
+            {
                 path: 'privacy',
                 name: 'privacy',
                 component: () => import('../views/dashboard/Privacy.vue')
@@ -116,7 +121,7 @@ const routes = [
             {
                 path: 'setting',
                 name: 'setting',
-                component: () => import('../views/dashboard/Setting.vue')
+                component: () => import('../views/dashboard/Setting/Index.vue')
             }
         ],
         beforeEnter: ifAuthenticated

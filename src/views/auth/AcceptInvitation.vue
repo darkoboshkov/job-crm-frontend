@@ -8,34 +8,38 @@
                         <div class="invitation-form__header-line"></div>
                         <h1 class="title">Accept Invitation</h1>
                         <div class="name-group d-flex">
-                            <form-input
+                            <b-form-input
                                     id="first_name"
-                                    class="first-name flex-1"
+                                    v-model="firstName"
                                     type="text"
-                                    field="firstName"
-                                    label="First Name"
+                                    required
+                                    :placeholder="$t('FIRST_NAME')"
+                                    class="custom-input first-name mt-5"
                             />
-                            <form-input
+                            <b-form-input
                                     id="last_name"
-                                    class="last-name flex-1"
+                                    v-model="lastName"
                                     type="text"
-                                    field="lastName"
-                                    label="Last Name"
+                                    required
+                                    :placeholder="$t('LAST_NAME')"
+                                    class="custom-input last-name mt-5"
                             />
                         </div>
-                        <form-input
+                        <b-form-input
                                 id="password"
+                                v-model="password"
                                 type="password"
-                                field="password"
-                                label="Password"
-                                icon-class-name="icon-lock"
+                                required
+                                :placeholder="$t('PASSWORD')"
+                                class="custom-input mt-5"
                         />
-                        <form-input
+                        <b-form-input
                                 id="c_password"
+                                v-model="cPassword"
                                 type="password"
-                                field="c_password"
-                                label="Confirm Password"
-                                icon-class-name="icon-lock"
+                                required
+                                :placeholder="$t('CONFIRM_PASSWORD')"
+                                class="custom-input mt-5"
                         />
                         <div class="d-flex">
                             <button class="btn btn-blue accept">Accept</button>
@@ -48,12 +52,15 @@
 </template>
 
 <script>
-    import FormInput from '@/components/common/FormInput';
-
     export default {
         name: "AcceptInvitation",
-        components: {
-            FormInput
+        data() {
+            return {
+                firstName: null,
+                lastName: null,
+                password: null,
+                cPassword: null
+            }
         }
     }
 </script>

@@ -7,3 +7,17 @@
     border: none;
   }
 }
+
+input.custom-input {
+  height: 60px;
+  border-radius: 4px;
+  border: solid 1px var(--light-periwinkle);
+  color: var(--cobalt-blue);
+
+  &::placeholder {
+    color: rgba(104, 104, 104, 0.7);
+  }
+  &:focus {
+    color: var(--cobalt-blue);
+  }
+}

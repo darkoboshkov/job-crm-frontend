@@ -1,43 +1,50 @@
 <template>
     <div id="page_dashboard" class="dashboard-content">
-        <h1 class="title">Your Dashboard</h1>
-        <div class="d-flex">
-            <div class="left-pane flex-2">
-                <div class="d-flex">
-                    <card id="messages">
-                        <div slot="header">
-                            <h3>Messages</h3>
-                        </div>
+        <div class="container-fluid">
+            <h1 class="title">Your Dashboard</h1>
+            <b-row>
+                <b-col md="8">
+                    <b-row>
+                        <b-col md="6">
+                            <b-card id="messages">
+                                <template v-slot:header>
+                                    <h2 class="m-0">Messages</h2>
+                                </template>
+                                <div>
+                                </div>
+                            </b-card>
+                        </b-col>
+                        <b-col md="6">
+                            <b-card id="open_positions">
+                                <template v-slot:header>
+                                    <h2 class="m-0">Open Positions</h2>
+                                </template>
+                                <div></div>
+                            </b-card>
+                        </b-col>
+                    </b-row>
+                    <b-card id="statistics">
+                        <template v-slot:header>
+                            <h2 class="m-0">Male Statistics</h2>
+                        </template>
                         <div></div>
-                    </card>
-                    <card id="open_positions">
-                        <div slot="header">
-                            <h3>Open Positions</h3>
-                        </div>
+                    </b-card>
+                </b-col>
+                <b-col md="4">
+                    <b-card id="upcoming_birthdays">
+                        <template v-slot:header>
+                            <h2 class="m-0">Upcoming birthdays</h2>
+                        </template>
                         <div></div>
-                    </card>
-                </div>
-                <card id="statistics">
-                    <div slot="header">
-                        <h3>Male Statistics</h3>
-                    </div>
-                    <div></div>
-                </card>
-            </div>
-            <div class="right-pane flex-1">
-                <card id="upcoming_birthdays">
-                    <div slot="header">
-                        <h3>Upcoming birthdays</h3>
-                    </div>
-                    <div></div>
-                </card>
-                <card id="to_do_list">
-                    <div slot="header">
-                        <h3>To-do list today</h3>
-                    </div>
-                    <div></div>
-                </card>
-            </div>
+                    </b-card>
+                    <b-card id="to_do_list">
+                        <template v-slot:header>
+                            <h2 class="m-0">To-do list today</h2>
+                        </template>
+                        <div></div>
+                    </b-card>
+                </b-col>
+            </b-row>
         </div>
     </div>
 </template>

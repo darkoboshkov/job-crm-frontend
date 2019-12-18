@@ -7,18 +7,20 @@
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="forgot-password-form__header-line"></div>
                         <h1 class="title">{{ $t('FORGOT_MY_PASSWORD') }}</h1>
-                        <form-input
+                        <b-form-input
                                 id="email"
-                                type="email"
-                                field="email"
-                                :label="$t('EMAIL_ADDRESS')"
-                                icon-class-name="icon-monkey"
-                                class="email"
                                 v-model="email"
-                                :error="error"
+                                type="email"
+                                required
+                                :placeholder="$t('EMAIL_ADDRESS')"
+                                class="custom-input mt-5"
                         />
+                        <b-form-invalid-feedback class="d-block">
+                            {{ $t(error) }}
+                        </b-form-invalid-feedback>
                         <div class="d-flex">
-                            <button class="btn btn-blue send" @click.prevent="forgot">{{ $t('SEND_RESET_EMAIL') }}</button>
+                            <button class="btn btn-blue send" @click.prevent="forgot">{{ $t('SEND_RESET_EMAIL') }}
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -33,9 +35,6 @@
 
     export default {
         name: "ForgotPassword",
-        components: {
-            FormInput
-        },
         data() {
             return {
                 email: '',
@@ -69,13 +68,14 @@
                         // }
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg
-
-                        messages.forEach(msg => {
-                            if (msg.param === 'email') {
-                                this.error = msg.msg
-                            }
-                        })
-                      });
+                        if (Array.isArray(messages)) {
+                            messages.forEach(msg => {
+                                if (msg.param === 'email') {
+                                    this.error = msg.msg
+                                }
+                            })
+                        }
+                    });
                 }
             }
         }

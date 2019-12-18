@@ -2,7 +2,7 @@
     <div id="page_privacy" class="dashboard-content">
         <div class="container">
             <h1 class="title">Privacy Statement</h1>
-            <card id="privacy" class="no-header no-footer">
+            <b-card id="privacy">
                 <h3>1. Inleiding</h3>
                 <p>Het begint met een korte inleiding, waarom je dit privacystatement schrijft en dat je gaat uitleggen
                     hoe je met deze gegevens omgaat.</p>
@@ -58,7 +58,7 @@
                 <p>Als je Google Analytics gebruikt, laat de bezoekers dan weten dat je dit doet en waarom. Vertel
                     verder wat Google met deze cookies doet (opslaan op server, gebruiken om rapportages te
                     maken).Verwijs ook hier door naar het privacybeleid van Google.</p>
-            </card>
+            </b-card>
         </div>
     </div>
 </template>

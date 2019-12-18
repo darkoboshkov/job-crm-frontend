@@ -7,24 +7,28 @@
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="reset-password-form__header-line"></div>
                         <h1 class="title">Reset Password</h1>
-                        <form-input
+                        <b-form-input
                                 id="password"
-                                type="password"
-                                field="password"
-                                :label="$t('PASSWORD')"
-                                icon-class-name="icon-lock"
                                 v-model="password"
-                                :error="passwordError"
-                        />
-                        <form-input
-                                id="c_password"
                                 type="password"
-                                field="c_password"
-                                :label="$t('CONFIRM_PASSWORD')"
-                                icon-class-name="icon-lock"
-                                v-model="cPassword"
-                                :error="cPasswordError"
+                                required
+                                :placeholder="$t('PASSWORD')"
+                                class="custom-input mt-5"
                         />
+                        <b-form-invalid-feedback class="d-block">
+                            {{ $t(passwordError) }}
+                        </b-form-invalid-feedback>
+                        <b-form-input
+                                id="c_password"
+                                v-model="cPassword"
+                                type="password"
+                                required
+                                :placeholder="$t('CONFIRM_PASSWORD')"
+                                class="custom-input mt-5"
+                        />
+                        <b-form-invalid-feedback class="d-block">
+                            {{ $t(cPasswordError) }}
+                        </b-form-invalid-feedback>
                         <div class="d-flex">
                             <button class="btn btn-blue reset" @click.prevent="reset">Reset</button>
                         </div>
@@ -37,13 +41,9 @@
 
 <script>
     import authApi from '@/services/api/auth';
-    import FormInput from '@/components/common/FormInput';
 
     export default {
         name: "ResetPassword",
-        components: {
-            FormInput
-        },
         data() {
             return {
                 password: '',
@@ -85,15 +85,16 @@
                         console.log('res', res)
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg
-
-                        messages.forEach(msg => {
-                            if (msg.param === 'password') {
-                                this.passwordError = msg.msg
-                            }
-                            if (msg.param === 'c_password') {
-                                this.cPasswordError = msg.msg
-                            }
-                        })
+                        if (Array.isArray(messages)) {
+                            messages.forEach(msg => {
+                                if (msg.param === 'password') {
+                                    this.passwordError = msg.msg
+                                }
+                                if (msg.param === 'c_password') {
+                                    this.cPasswordError = msg.msg
+                                }
+                            })
+                        }
                     });
                 }
             }
