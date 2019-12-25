@@ -21,7 +21,7 @@
                                                     Je loon gegevens zijn gewijgd. Zie de veranderingen in je werkgevers
                                                     informatie.
                                                 </small>
-                                                <i class="icon-more-vertical" />
+                                                <i class="icon-more-vertical"/>
                                             </div>
                                         </li>
                                         <li>
@@ -33,7 +33,7 @@
                                                     Je loon gegevens zijn gewijgd. Zie de veranderingen in je werkgevers
                                                     informatie.
                                                 </small>
-                                                <i class="icon-more-vertical" />
+                                                <i class="icon-more-vertical"/>
                                             </div>
                                         </li>
                                         <li>
@@ -45,13 +45,13 @@
                                                     Je loon gegevens zijn gewijgd. Zie de veranderingen in je werkgevers
                                                     informatie.
                                                 </small>
-                                                <i class="icon-more-vertical" />
+                                                <i class="icon-more-vertical"/>
                                             </div>
                                         </li>
                                     </ul>
                                     <div class="mt-3">
                                         <a href="javascript:void(0)">
-                                            <i class="icon-angle-right mr-2" />
+                                            <i class="icon-angle-right mr-2"/>
                                             View All
                                         </a>
                                     </div>
@@ -73,7 +73,7 @@
                                                 <small class="flex-1">
                                                     Henry van Loon
                                                 </small>
-                                                <i class="icon-angle-right" />
+                                                <i class="icon-angle-right"/>
                                             </div>
                                         </li>
                                         <li>
@@ -84,7 +84,7 @@
                                                 <small class="flex-1">
                                                     Henry van Loon
                                                 </small>
-                                                <i class="icon-angle-right" />
+                                                <i class="icon-angle-right"/>
                                             </div>
                                         </li>
                                         <li>
@@ -95,13 +95,13 @@
                                                 <small class="flex-1">
                                                     Henry van Loon
                                                 </small>
-                                                <i class="icon-angle-right" />
+                                                <i class="icon-angle-right"/>
                                             </div>
                                         </li>
                                     </ul>
                                     <div class="mt-3">
                                         <a href="javascript:void(0)">
-                                            <i class="icon-angle-right mr-2" />
+                                            <i class="icon-angle-right mr-2"/>
                                             View All
                                         </a>
                                     </div>
@@ -114,11 +114,49 @@
                             <h2 class="m-0">Male Statistics</h2>
                         </template>
                         <div>
-                            <ul class="custom-list">
-                                <li class="d-flex">
+                            <div class="d-flex">
+                                <trend
+                                        :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
+                                        :gradient="['#c9002a', '#ff4b1f', '#ff9068']"
+                                        auto-draw
+                                        smooth>
+                                </trend>
+                                <div class="border-left">
+                                    <div class="d-flex text-center border-bottom py-4">
+                                        <div class="flex-1 px-5">
+                                            <p>
+                                                Hoogte loon
+                                            </p>
+                                            <h4>
+                                                +29.7%
+                                            </h4>
+                                        </div>
+                                        <div class="flex-1 px-5 border-left">
+                                            <p>
+                                                Hoogte loon
+                                            </p>
+                                            <h4>
+                                                -54.7%
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex text-center py-4">
+                                        <div class="flex-1 px-5">
+                                            <p>
+                                                Performance
+                                            </p>
+                                            <h4>
 
-                                </li>
-                            </ul>
+                                            </h4>
+                                        </div>
+                                        <div class="flex-1 px-5">
+                                            <p>
+                                                Export
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </b-card>
                 </b-col>
@@ -127,13 +165,73 @@
                         <template v-slot:header>
                             <h2 class="m-0">Upcoming birthdays</h2>
                         </template>
-                        <div></div>
+                        <div>
+                            <ul class="custom-list">
+                                <li class="d-flex responsive align-items-center">
+                                    <div class="flex-1">
+                                        <div class="d-flex responsive align-items-center">
+                                            <div class="rounded-circle mr-3">
+                                                <img src="@/assets/image/avatar_nick.png"
+                                                     style="width:65px"
+                                                >
+                                            </div>
+                                            <div>
+                                                Informatie Dag Gemeente
+                                                <br>
+                                                Kerklaan 12 - 4593CP
+                                                <br>
+                                                15:00
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        03-08-1960
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </b-card>
                     <b-card id="to_do_list">
                         <template v-slot:header>
                             <h2 class="m-0">To-do list today</h2>
                         </template>
-                        <div></div>
+                        <div>
+                            <ul class="custom-list">
+                                <li class="d-flex responsive align-items-center">
+                                    <div class="flex-1">
+                                        <b-form-checkbox
+                                                value="accepted"
+                                                unchecked-value="not_accepted"
+                                        >
+                                            Vragen lijst 18-05-2019
+                                        </b-form-checkbox>
+                                    </div>
+                                    <i class="icon-more-vertical"/>
+                                </li>
+                                <li class="d-flex responsive align-items-center">
+                                    <div class="flex-1">
+                                        <b-form-checkbox
+                                                value="accepted"
+                                                unchecked-value="not_accepted"
+                                        >
+                                            Vragen lijst 18-05-2019
+                                        </b-form-checkbox>
+                                    </div>
+                                    <i class="icon-more-vertical"/>
+                                </li>
+                                <li class="d-flex responsive align-items-center">
+                                    <div class="flex-1">
+                                        <b-form-checkbox
+                                                value="accepted"
+                                                unchecked-value="not_accepted"
+                                        >
+                                            Vragen lijst 18-05-2019
+                                        </b-form-checkbox>
+                                    </div>
+                                    <i class="icon-more-vertical"/>
+                                </li>
+                            </ul>
+                        </div>
                     </b-card>
                 </b-col>
             </b-row>
@@ -143,11 +241,13 @@
 
 <script>
     import Card from "@/components/common/Card.vue";
+    import Trend from "vuetrend"
 
     export default {
         name: "dashboard",
         components: {
-            Card
+            Card,
+            Trend
         }
     }
 </script>

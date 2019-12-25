@@ -5,6 +5,11 @@ body {
 
 .d-flex {
   display: flex;
+  &.responsive {
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    };
+  }
 }
 .flex-1 {
   flex: 1;
@@ -34,6 +39,12 @@ body {
   align-items: center;
 }
 
+a {
+  color: var(--black);
+  &:hover {
+    color: var(--lipstick-red);
+  }
+}
 ul.custom-list {
   margin: 0;
   list-style: none;
@@ -49,4 +60,10 @@ ul.custom-list {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 1.5rem 1rem;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: var(--green);
+  border-color: var(--green);
+  background-color: var(--green);
 }
