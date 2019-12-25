@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="66px" height="67px" viewBox="0 0 66 67" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group 24</title>
+    <desc>Created with Sketch.</desc>
+    <g id="CRM" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Matching" transform="translate(-969.000000, -859.000000)" stroke-width="1.30000007">
+            <g id="Group" transform="translate(797.000000, 859.000000)">
+                <g id="Group-24" transform="translate(172.000000, 0.000000)">
+                    <line x1="8.64929048" y1="12.7467208" x2="26.8583915" y2="12.7467208" id="Stroke-1" stroke="#C9002A" stroke-linecap="round"></line>
+                    <line x1="8.64929048" y1="20.8311612" x2="38.5440921" y2="20.8311612" id="Stroke-2" stroke="#C9002A" stroke-linecap="round"></line>
+                    <line x1="8.64929048" y1="28.9167716" x2="31.5851917" y2="28.9167716" id="Stroke-3" stroke="#C9002A" stroke-linecap="round"></line>
+                    <line x1="8.64929048" y1="37.0012121" x2="25.0851914" y2="37.0012121" id="Stroke-4" stroke="#C9002A" stroke-linecap="round"></line>
+                    <line x1="8.64929048" y1="45.0855225" x2="22.9583913" y2="45.0855225" id="Stroke-5" stroke="#C9002A" stroke-linecap="round"></line>
+                    <line x1="8.64929048" y1="53.171133" x2="24.2583913" y2="53.171133" id="Stroke-6" stroke="#C9002A" stroke-linecap="round"></line>
+                    <g id="Group-23" transform="translate(0.000000, 0.788190)">
+                        <polygon id="Stroke-7" stroke="#C9002A" stroke-linecap="square" stroke-linejoin="round" points="46.5410426 12.5323507 33.4578418 12.5323507 33.4578418 0.736150096"></polygon>
+                        <polyline id="Stroke-9" stroke="#C9002A" points="46.5410426 28.1248116 46.5410426 11.9580107 33.4578418 0.161810064 0.649740036 0.161810064 0.649740036 64.6509136 31.5845417 64.6509136"></polyline>
+                        <path d="M46.4934626,28.1247669 C36.422362,28.1482116 28.2492616,36.3577121 28.2713168,46.4275126 C28.2934616,56.4973132 36.502962,64.6717136 46.5740626,64.6509532 C56.6451631,64.6275136 64.8182636,56.4180132 64.7962083,46.3482126 C64.7740636,36.2771121 56.5645631,28.1027116 46.4934626,28.1247669 Z" id="Stroke-11" stroke="#C9002A"></path>
+                        <line x1="59.4406833" y1="59.2942633" x2="64.7966836" y2="64.6502636" id="Stroke-13" stroke="#C9002A"></line>
+                        <line x1="36.418462" y1="52.3829429" x2="36.418462" y2="44.2969425" id="Stroke-15" stroke="#08009D" stroke-linecap="round"></line>
+                        <line x1="43.1622124" y1="52.3829429" x2="43.1622124" y2="37.8827421" id="Stroke-17" stroke="#08009D" stroke-linecap="round"></line>
+                        <line x1="49.9059627" y1="52.3829429" x2="49.9059627" y2="44.2969425" id="Stroke-19" stroke="#08009D" stroke-linecap="round"></line>
+                        <line x1="56.6497131" y1="52.3829429" x2="56.6497131" y2="39.5077422" id="Stroke-21" stroke="#08009D" stroke-linecap="round"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

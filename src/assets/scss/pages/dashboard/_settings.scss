@@ -4,7 +4,7 @@
   }
 
   .tabs {
-    border: solid 1px var(--light-periwinkle);
+    //border: solid 1px var(--light-periwinkle);
   }
   .tab-pane {
     outline: none;
@@ -50,6 +50,22 @@
         overflow: hidden;
         img {
           width: 100%;
+        }
+      }
+    }
+  }
+
+  .setting-system {
+    &__form {
+      .form-element {
+        display: flex;
+        align-items: center;
+        @include media-breakpoint-down(sm) {
+          flex-direction: column;
+        };
+
+        label {
+          width: 175px;
         }
       }
     }

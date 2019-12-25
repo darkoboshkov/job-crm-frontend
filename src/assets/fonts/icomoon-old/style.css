@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'hiway-icon';
+  src:  url('fonts/hiway-icon.eot?yzw8b4');
+  src:  url('fonts/hiway-icon.eot?yzw8b4#iefix') format('embedded-opentype'),
+    url('fonts/hiway-icon.ttf?yzw8b4') format('truetype'),
+    url('fonts/hiway-icon.woff?yzw8b4') format('woff'),
+    url('fonts/hiway-icon.svg?yzw8b4#hiway-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'hiway-icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-magnifier:before {
+  content: "\e902";
+  color: #c5c5c5;
+}
+.icon-arrow-down:before {
+  content: "\e903";
+}
+.icon-arrow-right:before {
+  content: "\e904";
+}
+.icon-bag:before {
+  content: "\e905";
+}
+.icon-calendar:before {
+  content: "\e906";
+  color: #7e7e7e;
+}
+.icon-check:before {
+  content: "\e907";
+  color: #0eac16;
+}
+.icon-close:before {
+  content: "\e908";
+}
+.icon-delete:before {
+  content: "\e909";
+}
+.icon-group:before {
+  content: "\e90a";
+  color: #7e7e7e;
+}
+.icon-hand:before {
+  content: "\e90b";
+}
+.icon-home:before {
+  content: "\e90c";
+  color: #7c7c7c;
+}
+.icon-link:before {
+  content: "\e90d";
+  color: #fff;
+}
+.icon-mail:before {
+  content: "\e90e";
+  color: #7e7e7e;
+}
+.icon-more:before {
+  content: "\e90f";
+}
+.icon-plus:before {
+  content: "\e910";
+  color: #7d7d7d;
+}
+.icon-setting:before {
+  content: "\e911";
+  color: #7d7d7d;
+}
+.icon-share:before {
+  content: "\e912";
+  color: #fff;
+}
+.icon-lock:before {
+  content: "\e900";
+}
+.icon-monkey:before {
+  content: "\e901";
+}

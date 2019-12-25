@@ -1,8 +1,6 @@
 <template>
     <div class="search-bar">
-        <div class="icon-search">
-            <img src="@/assets/image/icon/magnifier.svg"/>
-        </div>
+        <i class="icon-search"/>
         <input v-model="search" placeholder="Search..."/>
     </div>
 </template>
@@ -25,10 +23,8 @@
     }
 
     .icon-search {
-        display: flex;
-        img {
-            width: 24px;
-        }
+        font-size: 20px;
+        color: #c5c5c5;
     }
 
     input {

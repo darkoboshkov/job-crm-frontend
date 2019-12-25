@@ -1,8 +1,10 @@
 <template>
     <div id="page_profile" class="dashboard-content">
         <div class="container-fluid">
-            <a href="javascript;" @click.prevent="">&#60; Back</a>
-            <b-row>
+            <a href="javascript;" class="back" @click.prevent="$router.go(-1)">
+                <i class="icon-angle-left ml-2"/> Back
+            </a>
+            <b-row class="mt-5">
                 <b-col md="12">
                     <div class="profile-header">
                         <div class="profile-header__photo">
@@ -14,7 +16,9 @@
                         </div>
                     </div>
                     <div class="profile-edit">
-                        <a href="javascript;" @click.prevent="">Edit profile</a>
+                        <a href="javascript:void(0);" @click.prevent="">Edit profile
+                            <i class="icon-pencil ml-2"/>
+                        </a>
                     </div>
                 </b-col>
             </b-row>
@@ -35,12 +39,14 @@
                     <b-row>
                         <b-col md="6">
                             <b-card class="mt-4">
-                                magalie_l@hotmail.com
+                                <img src="@/assets/image/icon/mail-red.svg"/>
+                                <span class="ml-3">magalie_l@hotmail.com</span>
                             </b-card>
                         </b-col>
                         <b-col md="6" class="mt-4">
                             <b-card>
-                                + 31 6 53 72 41 31
+                                <img src="@/assets/image/icon/phone-red.svg"/>
+                                <span class="ml-3">+ 31 6 53 72 41 31</span>
                             </b-card>
                         </b-col>
                     </b-row>
@@ -65,15 +71,49 @@
                 <b-col md="12">
                     <b-card>
                         <template v-slot:header>
-                            <h5 class="m-0">Bestanden</h5>
+                            <div class="d-flex">
+                                <h5 class="m-0 flex-1">Bestanden</h5>
+                                <div>
+                                    <div class="float-right">
+                                        <button class="btn btn-blue upload" style="width: 100px">
+                                            Upload
+                                            <i class="icon-upload ml-2"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </template>
                         <div>
                             <ul class="custom-list">
-                                <li>
-                                    CV-magalie-2019.pdf
+                                <li class="d-flex">
+                                    <div class="flex-3">
+                                        CV-magalie-2019.pdf
+                                    </div>
+                                    <div class="flex-2">
+                                        Geupload op 23 juli 2019 om 15:09
+                                    </div>
+                                    <div class="flex-1">
+                                        2,3mb
+                                    </div>
+                                    <div>
+                                        <i class="icon-more-vertical mr-2"/>
+                                        <i class="icon-bin"/>
+                                    </div>
                                 </li>
-                                <li>
-                                    Motivatie.docx
+                                <li class="d-flex">
+                                    <div class="flex-3">
+                                        Motivatie.docx
+                                    </div>
+                                    <div class="flex-2">
+                                        Geupload op 23 juli 2019 om 15:09
+                                    </div>
+                                    <div class="flex-1">
+                                        2,3mb
+                                    </div>
+                                    <div>
+                                        <i class="icon-more-vertical mr-2"/>
+                                        <i class="icon-bin"/>
+                                    </div>
                                 </li>
                             </ul>
                         </div>

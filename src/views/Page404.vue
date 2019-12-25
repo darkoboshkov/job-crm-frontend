@@ -6,7 +6,10 @@
             elit, nec bibendum tellus erat a libero. Morbi et auctor sapien, nec dignissim mi. </p>
 
         <button class="btn btn-blue large">
-            Terug naar jouw dashboard
+            <span class="float-left pl-4">Terug naar jouw dashboard</span>
+            <span class="float-right pr-4">
+                <i class="icon-angle-right"/>
+            </span>
         </button>
     </div>
 </template>

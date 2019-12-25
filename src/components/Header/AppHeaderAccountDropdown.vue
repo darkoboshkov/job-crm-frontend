@@ -1,12 +1,15 @@
 <template>
     <div class="account-dropdown">
         <div class="account-dropdown__photo">
-            <img src="@/assets/image/avatar_nick.png" />
+            <img src="@/assets/image/avatar_nick.png"/>
         </div>
         <div class="account-dropdown__list">
-            <a href="javascript;" @click.prevent="toggleDropdown">{{ fullName }}</a>
+            <a href="javascript;" @click.prevent="toggleDropdown">
+                {{ fullName }}
+                <i class="icon-angle-down ml-3"/>
+            </a>
             <ul v-if="collapsed">
-                <li><a href="javascript;" @click.prevent="logout">Logout</a></li>
+                <li><a href="javascript:void(0);" @click.prevent="logout">Logout</a></li>
                 <li><a href="/dashboard/privacy">Privacy</a></li>
             </ul>
         </div>
@@ -14,7 +17,7 @@
 </template>
 
 <script>
-    import { handleLogout, Toast } from '@/utils';
+    import {handleLogout, Toast} from '@/utils';
 
     export default {
         name: "AppHeaderAccountDropdown",

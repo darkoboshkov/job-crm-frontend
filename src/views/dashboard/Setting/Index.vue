@@ -7,7 +7,7 @@
                     <setting-profile />
                 </b-tab>
                 <b-tab title="System Settings">
-                    <p>I'm the second tab</p>
+                    <setting-system />
                 </b-tab>
                 <b-tab title="Notifications">
                     <p>I'm a disabled tab!</p>
@@ -21,9 +21,10 @@
 
 <script>
     import SettingProfile from "./SettingProfile";
+    import SettingSystem from "./SettingSystem";
     export default {
         name: "Setting",
-        components: {SettingProfile}
+        components: {SettingSystem, SettingProfile}
     }
 </script>
 

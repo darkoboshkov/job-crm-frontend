@@ -27,7 +27,12 @@
                                 <li>Todo / dag / weekplanning</li>
                             </ul>
                         </div>
-                        <button class="btn btn-red large" @click="goToDashboard">Continue</button>
+                        <button class="btn btn-red large" @click="goToDashboard">
+                            <span class="float-left pl-4">Continue</span>
+                            <span class="float-right pr-4">
+                                <i class="icon-angle-right" />
+                            </span>
+                        </button>
                     </b-card>
                 </b-col>
                 <b-col md="4">
@@ -46,7 +51,12 @@
                                 <li>Debiteurenbeheer</li>
                             </ul>
                         </div>
-                        <button class="btn btn-red large" @click="goToDashboard">Continue</button>
+                        <button class="btn btn-red large" @click="goToDashboard">
+                            <span class="float-left pl-4">Continue</span>
+                            <span class="float-right pr-4">
+                                <i class="icon-angle-right" />
+                            </span>
+                        </button>
                     </b-card>
                 </b-col>
                 <b-col md="4">
@@ -65,7 +75,12 @@
                                 <li>Totaal urendeclaratie</li>
                             </ul>
                         </div>
-                        <button class="btn btn-red large" @click="goToDashboard">Continue</button>
+                        <button class="btn btn-red large" @click="goToDashboard">
+                            <span class="float-left pl-4">Continue</span>
+                            <span class="float-right pr-4">
+                                <i class="icon-angle-right" />
+                            </span>
+                        </button>
                     </b-card>
                 </b-col>
             </b-row>
