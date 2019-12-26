@@ -3,7 +3,7 @@
         <b-form-select
                 v-model="$i18n.locale"
                 :options="langs"
-                class="lang-selector"
+                class="lang-selector hide-icon"
                 value-field="lang"
                 text-field="lang"
         />

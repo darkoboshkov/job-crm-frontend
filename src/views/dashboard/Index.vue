@@ -1,7 +1,27 @@
 <template>
     <div id="page_dashboard" class="dashboard-content">
         <div class="container-fluid">
-            <h1 class="title">{{ $t('YOUR_DASHBOARD') }}</h1>
+            <b-row>
+                <b-col>
+                    <div class="d-flex responsive justify-content-between content-header">
+                        <h1 class="title text-center">{{ $t('YOUR_DASHBOARD') }}</h1>
+                        <b-button v-b-modal.adjust_dashboard>{{ $t('ADJUST_DASHBOARD') }}</b-button>
+                    </div>
+                </b-col>
+            </b-row>
+
+            <b-modal id="adjust_dashboard" centered>
+                <template v-slot:modal-header="{ close }">
+                    <h2>
+                        {{ $t('ADJUST_DASHBOARD') }}
+                    </h2>
+                    <b-button @click="close()">
+                        {{ $t('SAVE') }}
+                    </b-button>
+                </template>
+
+                <p class="my-4">Hello from modal!</p>
+            </b-modal>
             <b-row>
                 <b-col md="8">
                     <b-row>
@@ -122,7 +142,7 @@
                                         smooth>
                                 </trend>
                                 <div class="border-left">
-                                    <div class="d-flex text-center border-bottom py-4">
+                                    <div class="d-flex responsive text-center border-bottom py-4">
                                         <div class="flex-1 px-5">
                                             <p>
                                                 {{ $t('WAGE_LEVEL') }}
@@ -140,7 +160,7 @@
                                             </h4>
                                         </div>
                                     </div>
-                                    <div class="d-flex text-center py-4">
+                                    <div class="d-flex responsive text-center py-4">
                                         <div class="flex-1 px-5">
                                             <p>
                                                 {{ $t('PERFORMANCE') }}
@@ -241,13 +261,13 @@
 
 <script>
     import Card from "@/components/common/Card.vue";
-    import Trend from "vuetrend"
+    import Trend from "vuetrend";
 
     export default {
         name: "dashboard",
         components: {
             Card,
-            Trend
+            Trend,
         }
     }
 </script>
