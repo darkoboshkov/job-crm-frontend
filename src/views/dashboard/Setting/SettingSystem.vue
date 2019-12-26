@@ -19,7 +19,7 @@
             </div>
             <div class="form-element mt-3">
                 <label>{{ $t('NOTIFICATIONS') }}:</label>
-                <div class="d-flex w-100" style="margin-bottom: 0.5rem">
+                <div class="d-flex responsive w-100" style="margin-bottom: 0.5rem">
                     <b-form-checkbox class="rtl" switch size="lg">{{ $t('MAIL_NOTIFICATIONS') }}</b-form-checkbox>
                     <b-form-checkbox class="rtl" switch size="lg">{{ $t('PHONE_MESSAGE') }}</b-form-checkbox>
                 </div>

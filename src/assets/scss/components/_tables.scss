@@ -68,6 +68,9 @@
   }
   &-options {
     display: flex;
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    };
     .filter-option {
         margin-right: 20px;
         padding-right: 20px;

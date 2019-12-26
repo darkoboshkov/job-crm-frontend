@@ -134,7 +134,7 @@
                             <h2 class="m-0">{{ $t('MALE_STATISTICS') }}</h2>
                         </template>
                         <div>
-                            <div class="d-flex">
+                            <div class="d-flex responsive">
                                 <trend
                                         :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
                                         :gradient="['#c9002a', '#ff4b1f', '#ff9068']"
