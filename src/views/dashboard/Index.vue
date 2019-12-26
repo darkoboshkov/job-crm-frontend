@@ -1,7 +1,28 @@
 <template>
     <div id="page_dashboard" class="dashboard-content">
         <div class="container-fluid">
-            <h1 class="title">Your Dashboard</h1>
+            <b-row>
+                <b-col>
+                    <div class="d-flex responsive justify-content-between">
+                        <h1 class="title text-center">Your Dashboard</h1>
+                        <b-button v-b-modal.adjust_dashboard style="width: auto">Adjust dashboard</b-button>
+                    </div>
+                </b-col>
+            </b-row>
+
+            <b-modal id="adjust_dashboard" centered>
+                <template v-slot:modal-header="{ close }">
+                    <h2>
+                        Dashboard aanpassen
+                    </h2>
+                    <b-button style="width: auto" @click="close()">
+                        Opslaan
+                    </b-button>
+                </template>
+
+                <p class="my-4">Hello from modal!</p>
+            </b-modal>
+
             <b-row>
                 <b-col md="8">
                     <b-row>
@@ -122,7 +143,7 @@
                                         smooth>
                                 </trend>
                                 <div class="border-left">
-                                    <div class="d-flex text-center border-bottom py-4">
+                                    <div class="d-flex responsive text-center border-bottom py-4">
                                         <div class="flex-1 px-5">
                                             <p>
                                                 Hoogte loon
@@ -140,7 +161,7 @@
                                             </h4>
                                         </div>
                                     </div>
-                                    <div class="d-flex text-center py-4">
+                                    <div class="d-flex responsive text-center py-4">
                                         <div class="flex-1 px-5">
                                             <p>
                                                 Performance
