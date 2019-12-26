@@ -3,9 +3,9 @@
         <div class="container-fluid">
             <b-row>
                 <b-col>
-                    <div class="d-flex responsive justify-content-between">
+                    <div class="d-flex responsive justify-content-between content-header">
                         <h1 class="title text-center">Your Dashboard</h1>
-                        <b-button v-b-modal.adjust_dashboard style="width: auto">Adjust dashboard</b-button>
+                        <b-button v-b-modal.adjust_dashboard>Adjust dashboard</b-button>
                     </div>
                 </b-col>
             </b-row>
@@ -15,7 +15,7 @@
                     <h2>
                         Dashboard aanpassen
                     </h2>
-                    <b-button style="width: auto" @click="close()">
+                    <b-button @click="close()">
                         Opslaan
                     </b-button>
                 </template>
@@ -262,13 +262,15 @@
 
 <script>
     import Card from "@/components/common/Card.vue";
-    import Trend from "vuetrend"
+    import Trend from "vuetrend";
+    import MdCheckBox from "@/components/common/MdCheckBox.vue"
 
     export default {
         name: "dashboard",
         components: {
             Card,
-            Trend
+            Trend,
+            MdCheckBox
         }
     }
 </script>
