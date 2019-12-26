@@ -263,14 +263,12 @@
 <script>
     import Card from "@/components/common/Card.vue";
     import Trend from "vuetrend";
-    import MdCheckBox from "@/components/common/MdCheckBox.vue"
 
     export default {
         name: "dashboard",
         components: {
             Card,
             Trend,
-            MdCheckBox
         }
     }
 </script>
