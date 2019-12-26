@@ -28,6 +28,11 @@ select.custom-select {
   background: #fff escape-svg($new-custom-select-indicator) no-repeat right 0.5rem center/14px 12px;
 }
 
+select.custom-select.hide-icon {
+  padding: 6px 12px;
+  background-image: none;
+}
+
 .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
   background-color: #fff;
   border: #adb5bd solid 1px;
