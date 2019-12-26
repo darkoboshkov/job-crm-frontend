@@ -31,6 +31,10 @@
                         <i class="icon-more-vertical"/>
                         <i class="icon-bin"/>
                     </div>
+                    <div v-else-if="props.column.field === 'name'" class="d-flex align-items-center">
+                        <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
+                        <p class="m-0">{{ props.formattedRow['name'] }}</p>
+                    </div>
                     <span v-else>
                       {{ props.formattedRow[props.column.field] }}
                     </span>
@@ -65,6 +69,7 @@
                     },
                     columns: [
                         {label: 'Name', field: 'name'},
+                        {label: 'Image', field: 'image', hidden: true},
                         {label: 'Company', field: 'company'},
                         {label: 'Position', field: 'position'},
                         {label: 'Age', field: 'age'},
@@ -80,7 +85,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                         {
                             id: "2",
@@ -89,7 +95,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                         {
                             id: "3",
@@ -98,7 +105,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                         {
                             id: "4",
@@ -107,7 +115,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                         {
                             id: "5",
@@ -116,7 +125,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                         {
                             id: "6",
@@ -125,7 +135,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                         {
                             id: "7",
@@ -134,7 +145,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                         {
                             id: "8",
@@ -143,7 +155,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                         {
                             id: "9",
@@ -152,7 +165,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                         {
                             id: "10",
@@ -161,7 +175,8 @@
                             position: 'Creative Designer',
                             age: 30,
                             status: 'Active',
-                            city: 'Amsterdam'
+                            city: 'Amsterdam',
+                            image: ''
                         },
                     ],
                     searchTerm: ""

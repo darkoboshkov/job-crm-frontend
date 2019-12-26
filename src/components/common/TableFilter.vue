@@ -7,7 +7,7 @@
             <div class="table-filter-options">
                 <div class="filter-option"
                      v-for="(option, index) in filterOptions" :key="index">
-                    <div class="filter-option__title">
+                    <div class="filter-option__title mt-3">
                         {{option.title}}
                     </div>
                     <div class="filter-option__items">
@@ -29,6 +29,7 @@
                     </div>
                 </div>
             </div>
+            <button class="btn btn-blue mt-4" style="width: 150px">Apply Filters</button>
         </b-collapse>
     </div>
 </template>

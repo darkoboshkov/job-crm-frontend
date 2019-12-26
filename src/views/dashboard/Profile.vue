@@ -39,13 +39,13 @@
                     <b-row>
                         <b-col md="6">
                             <b-card class="mt-4">
-                                <img src="@/assets/image/icon/mail-red.svg"/>
+                                <img src="@/assets/image/icon/mail-red.svg" style="width: 31px"/>
                                 <span class="ml-3">magalie_l@hotmail.com</span>
                             </b-card>
                         </b-col>
                         <b-col md="6" class="mt-4">
                             <b-card>
-                                <img src="@/assets/image/icon/phone-red.svg"/>
+                                <img src="@/assets/image/icon/phone-red.svg" style="width: 22px"/>
                                 <span class="ml-3">+ 31 6 53 72 41 31</span>
                             </b-card>
                         </b-col>
