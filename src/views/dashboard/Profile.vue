@@ -1,8 +1,8 @@
 <template>
     <div id="page_profile" class="dashboard-content">
         <div class="container-fluid">
-            <a href="javascript;" class="back" @click.prevent="$router.go(-1)">
-                <i class="icon-angle-left ml-2"/> Back
+            <a href="javascript:void(0)" class="back" @click.prevent="$router.go(-1)">
+                <i class="icon-angle-left ml-2"/> {{ $t('BACK') }}
             </a>
             <b-row class="mt-5">
                 <b-col md="12">
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div class="profile-edit">
-                        <a href="javascript:void(0);" @click.prevent="">Edit profile
+                        <a href="javascript:void(0);" @click.prevent="">{{ $t('EDIT_PROFILE') }}
                             <i class="icon-pencil ml-2"/>
                         </a>
                     </div>
@@ -27,7 +27,7 @@
                 <b-col md="6">
                     <b-card class="mt-4">
                         <template v-slot:header>
-                            <h5 class="m-0">Bodytekst</h5>
+                            <h5 class="m-0">{{ $t('BODY_TEXT') }}</h5>
                         </template>
                         <div>
                             Hanc ego assentior, cum teneam sententiam, quid et iusto odio dignissimos ducimus, qui. Quae
@@ -54,14 +54,14 @@
                 <b-col md="6">
                     <b-card class="mt-4">
                         <template v-slot:header>
-                            <h5 class="m-0">Specificaties</h5>
+                            <h5 class="m-0">{{ $t('SPECIFICATIONS') }}</h5>
                         </template>
                         <div>
                             <ul class="custom-list">
-                                <li>Ingeschreven sinds <span class="pull-right">08-09-2019</span></li>
-                                <li>Leeftijd <span class="pull-right">29 jaar</span></li>
-                                <li>Status <span class="pull-right">Beschikbaar</span></li>
-                                <li>Locatie <span class="pull-right">Arnhem</span></li>
+                                <li>{{ $t('REGISTERED_SINCE') }} <span class="pull-right">08-09-2019</span></li>
+                                <li>{{ $t('AGE') }} <span class="pull-right">29 jaar</span></li>
+                                <li>{{ $t('STATUS') }} <span class="pull-right">Beschikbaar</span></li>
+                                <li>{{ $t('LOCATION') }} <span class="pull-right">Arnhem</span></li>
                             </ul>
                         </div>
                     </b-card>
@@ -72,11 +72,11 @@
                     <b-card>
                         <template v-slot:header>
                             <div class="d-flex">
-                                <h5 class="m-0 flex-1">Bestanden</h5>
+                                <h5 class="m-0 flex-1">{{ $t('FILES') }}</h5>
                                 <div>
                                     <div class="float-right">
-                                        <button class="btn btn-blue upload" style="width: 100px">
-                                            Upload
+                                        <button class="btn btn-blue upload" style="width: 100px; justify-content: center;">
+                                            {{ $t('UPLOAD') }}
                                             <i class="icon-upload ml-2"/>
                                         </button>
                                     </div>

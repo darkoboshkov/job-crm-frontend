@@ -6,7 +6,7 @@
                     <form class="invitation-form">
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="invitation-form__header-line"></div>
-                        <h1 class="title">Accept Invitation</h1>
+                        <h1 class="title">{{ $t('ACCEPT_INVITATION') }}</h1>
                         <div class="name-group d-flex">
                             <b-form-input
                                     id="first_name"
@@ -42,7 +42,7 @@
                                 class="custom-input mt-5"
                         />
                         <div class="d-flex">
-                            <button class="btn btn-blue accept">Accept</button>
+                            <button class="btn btn-blue accept">{{ $t('ACCEPT') }}</button>
                         </div>
                     </form>
                 </div>

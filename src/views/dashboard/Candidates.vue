@@ -3,9 +3,11 @@
         <div class="d-flex">
             <div>
                 <h1 class="title">
-                    Candidates
+                    {{ $t('CANDIDATES') }}
                 </h1>
-                <p class="sub-title">We have found 5401 candidates</p>
+                <p class="sub-title">
+                    {{ $t('CANDIDATE_DESCRIPTION', { candidates: 5401 }) }}
+                </p>
             </div>
             <div class="pull-right">
 

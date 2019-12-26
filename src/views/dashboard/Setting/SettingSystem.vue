@@ -2,7 +2,7 @@
     <div class="setting-system">
         <div class="setting-system__form">
             <div class="form-element">
-                <label>Background Color:</label>
+                <label>{{ $t('BACKGROUND_COLOR') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -10,27 +10,27 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Font Family:</label>
+                <label>{{ $t('FONT_FAMILY') }}:</label>
                 <b-form-select>
-                    <option >Please select an option</option>
-                    <option value="a">Option A</option>
-                    <option value="b">Option B</option>
+                    <option >{{ $t('SELECT_OPTION') }}</option>
+                    <option value="a">{{ $t('OPTION') }} A</option>
+                    <option value="b">{{ $t('OPTION') }} B</option>
                 </b-form-select>
             </div>
             <div class="form-element mt-3">
-                <label>Timezone:</label>
+                <label>{{ $t('TIMEZONE') }}:</label>
                 <b-form-select>
-                    <option >Please select an option</option>
-                    <option value="a">Option A</option>
-                    <option value="b">Option B</option>
+                    <option >{{ $t('SELECT_OPTION') }}</option>
+                    <option value="a">{{ $t('OPTION') }} A</option>
+                    <option value="b">{{ $t('OPTION') }} B</option>
                 </b-form-select>
             </div>
             <div class="form-element mt-3">
-                <label>Week:</label>
+                <label>{{ $t('WEEK') }}:</label>
                 <b-form-select>
-                    <option >Please select an option</option>
-                    <option value="a">Option A</option>
-                    <option value="b">Option B</option>
+                    <option >{{ $t('SELECT_OPTION') }}</option>
+                    <option value="a">{{ $t('OPTION') }} A</option>
+                    <option value="b">{{ $t('OPTION') }} B</option>
                 </b-form-select>
             </div>
         </div>

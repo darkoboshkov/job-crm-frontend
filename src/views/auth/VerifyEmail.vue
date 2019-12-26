@@ -11,12 +11,12 @@
                                 <img src="@/assets/image/img-mailbox.png" alt="Mailbox">
                             </div>
                             <div class="flex-1">
-                                <h4>Please verify your email address to login to Hiway CRM!</h4>
+                                <h4>{{ $t('VERIFY_EMAIL_NOTE') }}</h4>
                                 <p>
-                                    We've just sent an email to your address <strong>{{ email }}</strong> <br>
-                                    Please check your email and click on the link provided to verify your address. <br>
-                                    If you haven't received email, request
-                                    <a href="javascript:;" @click="() => requestResendEmail()">resend</a> here.
+                                    {{ $t('VERIFY_EMAIL_ADDRESS1') }} <strong>{{ email }}</strong> <br>
+                                    {{ $t('VERIFY_EMAIL_ADDRESS2') }} <br>
+                                    {{ $t('VERIFY_EMAIL_ADDRESS3') }}
+                                    <a href="javascript:void(0)" @click="() => requestResendEmail()">{{ $t('VERIFY_EMAIL_ADDRESS4') }}</a> {{ $t('VERIFY_EMAIL_ADDRESS5') }}
                                 </p>
                             </div>
                         </div>

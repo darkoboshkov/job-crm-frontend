@@ -1,7 +1,7 @@
 <template>
     <div id="page_settings" class="dashboard-content">
         <div class="container">
-            <h1 class="title">Settings</h1>
+            <h1 class="title">{{ $t('SETTINGS') }}</h1>
             <b-tabs class="mt-3 bg-white">
                 <b-tab title="Profile Settings" active>
                     <setting-profile />

@@ -2,7 +2,7 @@
     <div class="setting-profile">
         <div class="setting-profile__form">
             <div class="form-element">
-                <label>First Name:</label>
+                <label>{{ $t('FIRST_NAME') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -10,7 +10,7 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Middle Name:</label>
+                <label>{{ $t('MIDDLE_NAME') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -18,7 +18,7 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Last Name:</label>
+                <label>{{ $t('LAST_NAME') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -26,14 +26,14 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Gender:</label>
+                <label>{{ $t('GENDER') }}:</label>
                 <div class="gender">
-                    <b-form-radio name="gender" value="male">Man</b-form-radio>
-                    <b-form-radio name="gender" value="female">Woman</b-form-radio>
+                    <b-form-radio name="gender" value="male">{{ $t('MAN') }}</b-form-radio>
+                    <b-form-radio name="gender" value="female">{{ $t('WOMAN') }}</b-form-radio>
                 </div>
             </div>
             <div class="form-element mt-3">
-                <label>Date of birth:</label>
+                <label>{{ $t('DATE_OF_BIRTH') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -41,7 +41,7 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Bank account number:</label>
+                <label>{{ $t('BANK_ACCOUNT_NUMBER') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -49,7 +49,7 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Address:</label>
+                <label>{{ $t('ADDRESS') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -57,7 +57,7 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Postal code:</label>
+                <label>{{ $t('POSTAL_CODE') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -65,7 +65,7 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>City:</label>
+                <label>{{ $t('CITY') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -73,7 +73,7 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Email:</label>
+                <label>{{ $t('EMAIL') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -81,7 +81,7 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Password:</label>
+                <label>{{ $t('PASSWORD') }}:</label>
                 <b-form-input
                         type="text"
                         required
@@ -89,7 +89,7 @@
                 />
             </div>
             <div class="form-element mt-3">
-                <label>Passport:</label>
+                <label>{{ $t('PASSPORT') }}:</label>
                 <b-form-input
                         type="text"
                         required

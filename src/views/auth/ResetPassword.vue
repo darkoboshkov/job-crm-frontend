@@ -6,7 +6,7 @@
                     <form class="reset-password-form">
                         <img class="logo" src="@/assets/image/hiway_crm.png" alt="Hiway CRM">
                         <div class="reset-password-form__header-line"></div>
-                        <h1 class="title">Reset Password</h1>
+                        <h1 class="title">{{ $t('RESET_PASSWORD') }}</h1>
                         <b-form-input
                                 id="password"
                                 v-model="password"
@@ -30,7 +30,7 @@
                             {{ $t(cPasswordError) }}
                         </b-form-invalid-feedback>
                         <div class="d-flex">
-                            <button class="btn btn-blue reset" @click.prevent="reset">Reset</button>
+                            <button class="btn btn-blue reset" @click.prevent="reset">{{ $t('RESET') }}</button>
                         </div>
                     </form>
                 </div>

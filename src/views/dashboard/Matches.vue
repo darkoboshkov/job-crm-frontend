@@ -1,7 +1,7 @@
 <template>
     <div id="page_matches" class="dashboard-content">
         <h1 class="title">
-            Matches
+            {{ $t('MATCHES') }}
         </h1>
         <div class="position-list mt-5">
             <vue-good-table
@@ -17,7 +17,7 @@
                 <template slot="table-row" slot-scope="props">
                     <div v-if="props.column.field === 'actions'">
                         <span class="start-matching">
-                            <a href="javascript:void(0);" @click.prevent="startMatch">Start Matching</a>
+                            <a href="javascript:void(0);" @click.prevent="startMatch">{{ $t('START_MATCHING') }}</a>
                         </span>
                     </div>
                     <div v-else-if="props.column.field === 'name'" class="d-flex align-items-center">
@@ -33,7 +33,7 @@
         </div>
         <b-card id="matched-list" class="mt-5">
             <template v-slot:header>
-                <h4 class="m-0">Gevonden matches </h4>
+                <h4 class="m-0">{{ $t('MATCHES_FOUND') }}</h4>
             </template>
             <div>
                 <div v-if="matched">
@@ -99,10 +99,10 @@
                             <img src="@/assets/image/icon/empty.svg"/>
                             <div class="mt-3">
                                 <div>
-                                    We zijn de beste matches voor je aan het zoeken!
+                                    {{ $t('SEARCHING_MATCHES1') }}
                                 </div>
                                 <div>
-                                    Dit duurt enkele seconden…
+                                    {{ $t('SEARCHING_MATCHES2') }}
                                 </div>
                             </div>
                         </div>

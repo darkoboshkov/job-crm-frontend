@@ -1,14 +1,14 @@
 <template>
     <div id="page_dashboard" class="dashboard-content">
         <div class="container-fluid">
-            <h1 class="title">Your Dashboard</h1>
+            <h1 class="title">{{ $t('YOUR_DASHBOARD') }}</h1>
             <b-row>
                 <b-col md="8">
                     <b-row>
                         <b-col md="6">
                             <b-card id="messages">
                                 <template v-slot:header>
-                                    <h2 class="m-0">Messages</h2>
+                                    <h2 class="m-0">{{ $t('MESSAGES') }}</h2>
                                 </template>
                                 <div>
                                     <ul class="custom-list">
@@ -52,7 +52,7 @@
                                     <div class="mt-3">
                                         <a href="javascript:void(0)">
                                             <i class="icon-angle-right mr-2"/>
-                                            View All
+                                            {{ $t('VIEW_ALL') }}
                                         </a>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                         <b-col md="6">
                             <b-card id="open_positions">
                                 <template v-slot:header>
-                                    <h2 class="m-0">Open Positions</h2>
+                                    <h2 class="m-0">{{ $t('OPEN_POSITIONS') }}</h2>
                                 </template>
                                 <div>
                                     <ul class="custom-list">
@@ -102,7 +102,7 @@
                                     <div class="mt-3">
                                         <a href="javascript:void(0)">
                                             <i class="icon-angle-right mr-2"/>
-                                            View All
+                                            {{ $t('VIEW_ALL') }}
                                         </a>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@
                     </b-row>
                     <b-card id="statistics">
                         <template v-slot:header>
-                            <h2 class="m-0">Male Statistics</h2>
+                            <h2 class="m-0">{{ $t('MALE_STATISTICS') }}</h2>
                         </template>
                         <div>
                             <div class="d-flex">
@@ -125,7 +125,7 @@
                                     <div class="d-flex text-center border-bottom py-4">
                                         <div class="flex-1 px-5">
                                             <p>
-                                                Hoogte loon
+                                                {{ $t('WAGE_LEVEL') }}
                                             </p>
                                             <h4>
                                                 +29.7%
@@ -133,7 +133,7 @@
                                         </div>
                                         <div class="flex-1 px-5 border-left">
                                             <p>
-                                                Hoogte loon
+                                                {{ $t('WAGE_LEVEL') }}
                                             </p>
                                             <h4>
                                                 -54.7%
@@ -143,7 +143,7 @@
                                     <div class="d-flex text-center py-4">
                                         <div class="flex-1 px-5">
                                             <p>
-                                                Performance
+                                                {{ $t('PERFORMANCE') }}
                                             </p>
                                             <h4>
 
@@ -151,7 +151,7 @@
                                         </div>
                                         <div class="flex-1 px-5">
                                             <p>
-                                                Export
+                                                {{ $t('EXPORT') }}
                                             </p>
                                         </div>
                                     </div>
@@ -163,7 +163,7 @@
                 <b-col md="4">
                     <b-card id="upcoming_birthdays">
                         <template v-slot:header>
-                            <h2 class="m-0">Upcoming birthdays</h2>
+                            <h2 class="m-0">{{ $t('UPCOMING_BIRTHDAYS') }}</h2>
                         </template>
                         <div>
                             <ul class="custom-list">
@@ -193,7 +193,7 @@
                     </b-card>
                     <b-card id="to_do_list">
                         <template v-slot:header>
-                            <h2 class="m-0">To-do list today</h2>
+                            <h2 class="m-0">{{ $t('TO_DO_LIST_TODAY') }}</h2>
                         </template>
                         <div>
                             <ul class="custom-list">
