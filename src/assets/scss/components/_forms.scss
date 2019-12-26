@@ -25,7 +25,7 @@ $new-custom-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.
 
 select.custom-select {
   height: 60px;
-  background: #fff escape-svg($new-custom-select-indicator) no-repeat right 0.75rem center/16px 12px;
+  background: #fff escape-svg($new-custom-select-indicator) no-repeat right 0.5rem center/14px 12px;
 }
 
 .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
