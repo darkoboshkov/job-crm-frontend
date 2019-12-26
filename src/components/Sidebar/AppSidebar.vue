@@ -1,18 +1,18 @@
 <template>
     <div class="app-sidebar">
         <div class="app-sidebar__top">
-            <a href="/dashboard" class="nav-link">
+            <router-link to="/dashboard" class="nav-link">
                 <img src="@/assets/image/icon/home.svg"/>
-            </a>
-            <a href="/dashboard/candidates" class="nav-link">
+            </router-link>
+            <router-link to="/dashboard/candidates" class="nav-link">
                 <img src="@/assets/image/icon/group.svg"/>
-            </a>
+            </router-link>
 <!--            <a href="/dashboard/candidates" class="nav-link">-->
 <!--                <img src="@/assets/image/icon/bag.svg"/>-->
 <!--            </a>-->
-            <a href="/dashboard/matches" class="nav-link">
+            <router-link to="/dashboard/matches" class="nav-link">
                 <img src="@/assets/image/icon/hand.svg"/>
-            </a>
+            </router-link>
 <!--            <a href="/dashboard/candidates" class="nav-link">-->
 <!--                <img src="@/assets/image/icon/calendar.svg"/>-->
 <!--            </a>-->
@@ -24,9 +24,9 @@
             <a href="javascript:;" class="nav-link" @click.prevent="onAddItem">
                 <img src="@/assets/image/icon/plus.svg"/>
             </a>
-            <a href="/dashboard/setting" class="nav-link">
+            <router-link to="/dashboard/setting" class="nav-link">
                 <img src="@/assets/image/icon/setting.svg"/>
-            </a>
+            </router-link>
         </div>
     </div>
 </template>
