@@ -1,7 +1,7 @@
 <template>
     <div id="page_matches" class="dashboard-content">
         <h1 class="title">
-            {{ $t('MATCHES') }}
+            Matches
         </h1>
         <div class="position-list mt-5">
             <vue-good-table
@@ -17,7 +17,7 @@
                 <template slot="table-row" slot-scope="props">
                     <div v-if="props.column.field === 'actions'">
                         <span class="start-matching">
-                            <a href="javascript:void(0);" @click.prevent="startMatch">{{ $t('START_MATCHING') }}</a>
+                            <a href="javascript:void(0);" @click.prevent="startMatch">Start Matching</a>
                         </span>
                     </div>
                     <div v-else-if="props.column.field === 'name'" class="d-flex align-items-center">
@@ -33,7 +33,7 @@
         </div>
         <b-card id="matched-list" class="mt-5">
             <template v-slot:header>
-                <h4 class="m-0">{{ $t('MATCHES_FOUND') }}</h4>
+                <h4 class="m-0">Gevonden matches </h4>
             </template>
             <div>
                 <div v-if="matched">
@@ -57,7 +57,7 @@
                             <div class="flex-2">
                                 <p>
                                     87% match
-                                    <button class="btn btn-blue x-small" style="width:80px">Best match</button>
+                                    <button class="btn btn-blue x-small p-0" style="width:80px">Best match</button>
                                 </p>
                             </div>
                             <div>
@@ -99,10 +99,10 @@
                             <img src="@/assets/image/icon/empty.svg"/>
                             <div class="mt-3">
                                 <div>
-                                    {{ $t('SEARCHING_MATCHES1') }}
+                                    We zijn de beste matches voor je aan het zoeken!
                                 </div>
                                 <div>
-                                    {{ $t('SEARCHING_MATCHES2') }}
+                                    Dit duurt enkele seconden…
                                 </div>
                             </div>
                         </div>
