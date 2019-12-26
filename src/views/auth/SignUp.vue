@@ -72,6 +72,9 @@
                             <b-form-radio v-model="role" name="role" value="manager">{{ $t('MANAGER') }}</b-form-radio>
                             <b-form-radio v-model="role" name="role" value="worker">{{ $t('WORKER') }}</b-form-radio>
                         </div>
+                        <b-form-invalid-feedback class="d-block mt-4">
+                            {{ $t(error) }}
+                        </b-form-invalid-feedback>
                         <b-row class="buttons">
                             <b-col md="6">
                                 <button class="btn btn-red" @click.prevent="signup">{{ $t('SIGNUP') }}</button>
@@ -107,11 +110,13 @@
                 emailError: '',
                 passwordError: '',
                 cPasswordError: '',
+                error: '',
             }
         },
         methods: {
             validate() {
                 let valid = true;
+                this.error = '';
 
                 if (!this.firstName) {
                     this.firstNameError = "THIS_FIELD_IS_REQUIRED";
@@ -185,6 +190,8 @@
                                     this.cPasswordError = msg.msg
                                 }
                             })
+                        } else {
+                          this.error = messages
                         }
                     });
                 }

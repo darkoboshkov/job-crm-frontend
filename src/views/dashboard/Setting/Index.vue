@@ -3,16 +3,16 @@
         <div class="container">
             <h1 class="title">{{ $t('SETTINGS') }}</h1>
             <b-tabs class="mt-3 bg-white">
-                <b-tab title="Profile Settings" active>
+                <b-tab :title="$t('PROFILE_SETTINGS')" active>
                     <setting-profile />
                 </b-tab>
-                <b-tab title="System Settings">
+                <b-tab :title="$t('SYSTEM_SETTINGS')">
                     <setting-system />
                 </b-tab>
-                <b-tab title="Notifications">
+                <b-tab :title="$t('NOTIFICATIONS')">
                     <p>I'm a disabled tab!</p>
                 </b-tab>
-                <b-tab title="Overig">
+                <b-tab :title="$t('OTHER')">
                 </b-tab>
             </b-tabs>
         </div>

@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-blue mt-4" style="width: 150px">Apply Filters</button>
+            <button class="btn btn-blue mt-4" style="width: 150px">{{ $t('APPLY_FILTERS') }}</button>
         </b-collapse>
     </div>
 </template>

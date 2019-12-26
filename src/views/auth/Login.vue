@@ -31,6 +31,9 @@
                             </b-form-invalid-feedback>
                             <a href="/forgot" class="forgot-pass">{{ $t('FORGOT') }}?</a>
                         </div>
+                        <b-form-invalid-feedback class="d-block mt-4">
+                            {{ $t(error) }}
+                        </b-form-invalid-feedback>
                         <div class="buttons d-flex">
                             <div>
                                 <button class="btn btn-red login" @click.prevent="login">{{ $t('LOGIN') }}</button>
@@ -61,6 +64,7 @@
                 password: '',
                 emailError: '',
                 passwordError: '',
+                error: '',
             }
         },
         methods: {
@@ -69,6 +73,7 @@
             },
             validate() {
                 let valid = true;
+                this.error = '';
 
                 if (!this.email) {
                     this.emailError = "THIS_FIELD_IS_REQUIRED";
@@ -111,6 +116,8 @@
                                     this.passwordError = msg.msg
                                 }
                             })
+                        } else {
+                          this.error = messages
                         }
                     });
                 }
