@@ -1,4 +1,11 @@
 #page_dashboard {
+  .content-header {
+    button {
+      width: auto;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
   .card {
     margin-top: 40px;
 
@@ -12,11 +19,15 @@
 #adjust_dashboard {
   .modal-header {
     padding: 32px;
+    align-items: center;
     h2 {
+      font-size: 32px;
       margin: 0;
       color: var(--lipstick-red);
     }
     button {
+      font-size: 16px;
+      padding: 6px 12px;
       width: auto;
       background-color: var(--cobalt-blue);
       color: white;
@@ -28,6 +39,7 @@
   .modal-footer {
     padding: 32px;
     button {
+      padding: 6px 12px;
       width: auto;
     }
   }
