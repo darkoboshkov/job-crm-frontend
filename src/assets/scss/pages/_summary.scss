@@ -22,6 +22,8 @@
     margin-top: 50px;
   }
   .card {
+    flex: 1;
+
     @include media-breakpoint-down(sm) {
       margin: 50px 0 0 0;
     }
@@ -45,6 +47,12 @@
         height: 60px;
         color: var(--warm-grey-two);
       }
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 }

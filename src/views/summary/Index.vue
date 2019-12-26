@@ -11,7 +11,7 @@
                 </p>
             </div>
             <b-row class="card-list">
-                <b-col md="4">
+                <b-col md="4" class="d-flex">
                     <b-card id="frontoffice">
                         <template v-slot:header>
                             <div class="d-flex align-items-center">
@@ -35,7 +35,7 @@
                         </button>
                     </b-card>
                 </b-col>
-                <b-col md="4">
+                <b-col md="4" class="d-flex">
                     <b-card id="backoffice">
                         <template v-slot:header>
                             <div class="d-flex align-items-center">
@@ -59,7 +59,7 @@
                         </button>
                     </b-card>
                 </b-col>
-                <b-col md="4">
+                <b-col md="4" class="d-flex">
                     <b-card id="manage_portal">
                         <template v-slot:header>
                             <div class="d-flex align-items-center">
