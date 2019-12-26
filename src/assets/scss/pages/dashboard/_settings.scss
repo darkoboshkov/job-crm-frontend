@@ -67,6 +67,15 @@
         label {
           width: 175px;
         }
+
+        .rtl.custom-control.custom-switch.b-custom-control-lg {
+          &:first-child {
+            margin-right: 30px;
+          }
+          label {
+            width: auto;
+          }
+        }
       }
     }
   }

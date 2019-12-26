@@ -18,6 +18,13 @@
                 </b-form-select>
             </div>
             <div class="form-element mt-3">
+                <label>Notifications:</label>
+                <div class="d-flex w-100" style="margin-bottom: 0.5rem">
+                    <b-form-checkbox class="rtl" switch size="lg">Mail notifications</b-form-checkbox>
+                    <b-form-checkbox class="rtl" switch size="lg">Phone message</b-form-checkbox>
+                </div>
+            </div>
+            <div class="form-element mt-3">
                 <label>Timezone:</label>
                 <b-form-select>
                     <option >Please select an option</option>
@@ -39,7 +46,16 @@
 
 <script>
     export default {
-        name: "SettingSystem"
+        name: "SettingSystem",
+        data() {
+            return {
+                selected: [],
+                options: [
+                    { text: 'Mail notifications', value: 'red' },
+                    { text: 'Phone message', value: 'green' },
+                ]
+            }
+        }
     }
 </script>
 
