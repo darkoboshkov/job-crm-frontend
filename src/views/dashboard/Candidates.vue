@@ -30,8 +30,33 @@
             >
                 <template slot="table-row" slot-scope="props">
                     <div v-if="props.column.field === 'actions'">
-                        <i class="icon-more-vertical"/>
-                        <i class="icon-bin"/>
+                        <b-dropdown
+                                variant="link"
+                                toggle-class="text-decoration-none"
+                                no-caret
+                                offset="0"
+                                class="icon-dropdown m-2"
+                        >
+                            <template v-slot:button-content>
+                                <i class="icon-more-vertical"/>
+                            </template>
+                            <b-dropdown-item href="#">Action</b-dropdown-item>
+                            <b-dropdown-item href="#">Another action</b-dropdown-item>
+                            <b-dropdown-item href="#">Something else here...</b-dropdown-item>
+                        </b-dropdown>
+                        <b-dropdown
+                                variant="link"
+                                toggle-class="text-decoration-none"
+                                no-caret
+                                class="icon-dropdown m-2"
+                        >
+                            <template v-slot:button-content>
+                                <i class="icon-bin"/>
+                            </template>
+                            <b-dropdown-item href="#">Action</b-dropdown-item>
+                            <b-dropdown-item href="#">Another action</b-dropdown-item>
+                            <b-dropdown-item href="#">Something else here...</b-dropdown-item>
+                        </b-dropdown>
                     </div>
                     <div v-else-if="props.column.field === 'name'" class="d-flex align-items-center">
                         <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
@@ -279,5 +304,7 @@
 </script>
 
 <style scoped>
-
+    .icon-dropdown >>> button {
+        color: black;
+    }
 </style>
