@@ -18,14 +18,20 @@
                       :options="filterOptions"/>
         <div class="candidates-list">
             <vue-good-table
-                    :columns="candidates.columns"
-                    :rows="candidates.rows"
+                    mode="remote"
+
+                    @on-page-change="onPageChange"
+                    @on-sort-change="onSortChange"
+                    @on-column-filter="onColumnFilter"
+                    @on-per-page-change="onPerPageChange"
+
+                    :totalRows="totalRows"
+                    :isLoading.sync="isLoading"
+                    :rows="rows"
+                    :columns="columns"
+
                     @on-row-dblclick="goToProfile"
-                    :paginationOptions="candidates.paginationOptions"
-                    :search-options="{
-                        enabled: true,
-                        externalQuery: candidates.searchTerm
-                    }"
+                    :pagination-options="paginationOptions"
                     styleClass="custom-table"
             >
                 <template slot="table-row" slot-scope="props">
@@ -73,141 +79,40 @@
 
 <script>
     import TableFilter from "../../components/common/TableFilter";
+    import usersApi from "../../services/api/users.js";
 
     export default {
         name: "Candidates",
         components: {TableFilter},
         data() {
             return {
-                candidates: {
-                    paginationOptions: {
-                        enabled: true,
-                        mode: 'records',
-                        perPage: 5,
-                        perPageDropdown: [10, 15, 20],
-                        dropdownAllowAll: false,
-                        setCurrentPage: 2,
-                        nextLabel: 'next',
-                        prevLabel: 'prev',
-                        rowsPerPageLabel: 'Rows per page',
-                        ofLabel: 'of',
-                        pageLabel: 'page', // for 'pages' mode
-                        allLabel: 'All',
-                    },
-                    columns: [
-                        {label: 'Name', field: 'name'},
-                        {label: 'Image', field: 'image', hidden: true},
-                        {label: 'Company', field: 'company'},
-                        {label: 'Position', field: 'position'},
-                        {label: 'Age', field: 'age'},
-                        {label: 'Status', field: 'status'},
-                        {label: 'City', field: 'city'},
-                        {label: 'Actions', field: 'actions'},
-                    ],
-                    rows: [
-                        {
-                            id: "1",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                        {
-                            id: "2",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                        {
-                            id: "3",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                        {
-                            id: "4",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                        {
-                            id: "5",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                        {
-                            id: "6",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                        {
-                            id: "7",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                        {
-                            id: "8",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                        {
-                            id: "9",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                        {
-                            id: "10",
-                            name: 'Alex Tosic',
-                            company: "Hiway",
-                            position: 'Creative Designer',
-                            age: 30,
-                            status: 'Active',
-                            city: 'Amsterdam',
-                            image: ''
-                        },
-                    ],
-                    searchTerm: ""
+                totalRows: [],
+                isLoading: false,
+                paginationOptions: {
+                    enabled: true,
+                    mode: 'records',
+                    perPage: 5,
+                    perPageDropdown: [10, 15, 20],
+                    dropdownAllowAll: false,
+                    setCurrentPage: 2,
+                    nextLabel: 'next',
+                    prevLabel: 'prev',
+                    rowsPerPageLabel: 'Rows per page',
+                    ofLabel: 'of',
+                    pageLabel: 'page', // for 'pages' mode
+                    allLabel: 'All',
                 },
+                columns: [
+                    {label: 'Name', field: 'name'},
+                    {label: 'Image', field: 'image', hidden: true},
+                    {label: 'Company', field: 'company.name'},
+                    {label: 'Position', field: 'position'},
+                    {label: 'Age', field: 'age'},
+                    {label: 'Status', field: 'status'},
+                    {label: 'City', field: 'city'},
+                    {label: 'Actions', field: 'actions'},
+                ],
+                rows: [],
                 filterOptions: [
                     {
                         title: "Filter2",
@@ -292,13 +197,37 @@
                 ]
             }
         },
+        mounted() {
+            this.getWorkers();
+        },
         methods: {
             goToProfile(params) {
                 if (params && params.row) {
                     this.$router.push(`/dashboard/profile/${params.row.id}`)
                 }
-
-            }
+            },
+            onPageChange() {},
+            onSortChange() {},
+            onColumnFilter() {},
+            onPerPageChange() {},
+            getWorkers() {
+                return usersApi.get({
+                    'fields': 'role',
+                    'filter': 'worker',
+                }).then((res) => {
+                  this.rows = res.docs;
+                  this.rows.forEach(row => {
+                    if (row.birthday) {
+                      let thisYear = new Date().getFullYear();
+                      let birthYear = row.birthday.split('-')[0];
+                      row.age = thisYear - birthYear;
+                    } else {
+                      row.age = ' - ';
+                    }
+                    row.company = row.company[0];
+                  })
+              })
+            },
         }
     }
 </script>
