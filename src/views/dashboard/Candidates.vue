@@ -14,6 +14,7 @@
             </div>
         </div>
         <table-filter class="candidate-filters"
+                      @table-filter="filter"
                       :title="'Filter Options'"
                       :options="filterOptions"/>
         <div class="candidates-list">
@@ -111,84 +112,47 @@
                 rows: [],
                 filterOptions: [
                     {
-                        title: "Filter2",
-                        items: [
+                        title: "Name",
+                        type: "text",
+                        value: ""
+                    },
+                    {
+                        title: "Company",
+                        type: "text",
+                        value: ""
+                    },
+                    {
+                        title: "Position",
+                        type: "text",
+                        value: ""
+                    },
+                    {
+                        title: "Age",
+                        type: "select",
+                        options: [
+                            20, 21, 22, 23, 24, 25, 26
+                        ],
+                        value: ""
+                    },
+                    {
+                        title: "Status",
+                        type: "checkbox",
+                        value: "",
+                        options: [
                             {
-                                "el": "checkbox",
-                                "value": "",
-                                "label": "Option1"
+                                label: "Available",
+                                checked: false,
                             },
                             {
-                                "el": "checkbox",
-                                "value": "",
-                                "label": "Option2"
-                            },
-                            {
-                                "el": "checkbox",
-                                "value": "",
-                                "label": "Option3"
-                            },
-                            {
-                                "el": "checkbox",
-                                "value": "",
-                                "label": "Option3"
+                                label: "Unavailable",
+                                checked: false,
                             },
                         ]
                     },
                     {
-                        title: "Filter1",
-                        items: [
-                            {
-                                "el": "input",
-                                "type": "text",
-                                "value": ""
-                            },
-                        ]
-                    },
-                    {
-                        title: "Filter3",
-                        items: [
-                            {
-                                "el": "checkbox",
-                                "value": "",
-                                "label": "Option1"
-                            },
-                            {
-                                "el": "checkbox",
-                                "value": "",
-                                "label": "Option2"
-                            },
-                            {
-                                "el": "checkbox",
-                                "value": "",
-                                "label": "Option3"
-                            },
-                            {
-                                "el": "checkbox",
-                                "value": "",
-                                "label": "Option3"
-                            },
-                        ]
-                    },
-                    {
-                        title: "Filter4",
-                        items: [
-                            {
-                                "el": "input",
-                                "type": "text",
-                                "value": ""
-                            },
-                            {
-                                "el": "input",
-                                "type": "text",
-                                "value": ""
-                            },
-                            {
-                                "el": "input",
-                                "type": "text",
-                                "value": ""
-                            },
-                        ]
+                        title: "City",
+                        type: "text",
+                        value: ""
                     },
                 ],
                 serverParams: {
@@ -260,6 +224,9 @@
                   });
                   this.totalRows = res.totalDocs;
               })
+            },
+            filter(v) {
+                console.log('v', v);
             },
         }
     }

@@ -11,25 +11,30 @@
                         {{option.title}}
                     </div>
                     <div class="filter-option__items">
-                        <div class="item"
-                             v-for="(item, itemIndex) in option.items"
-                             :key="itemIndex">
+                        <div class="item">
                             <b-form-input
-                                    v-if="item.el && item.el === 'input'"
-                                    :type="item.type"
-                                    v-model="item.value"
+                                    v-if="option.type === 'text'"
+                                    :type="option.type"
+                                    v-model="option.value"
                             />
                             <b-form-checkbox
-                                    v-if="item.el && item.el === 'checkbox'"
-                                    v-model="item.value"
+                                    v-if="option.type === 'checkbox'"
+                                    v-for="(item, itemIndex) in option.options"
+                                    :key="itemIndex"
+                                    v-model="item.checked"
                             >
                                 {{item.label}}
                             </b-form-checkbox>
+                            <b-form-select
+                                    v-if="option.type === 'select'"
+                                    v-model="option.value"
+                                    :options="option.options"
+                            ></b-form-select>
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="btn btn-blue mt-4" style="width: 150px">{{ $t('APPLY_FILTERS') }}</button>
+            <button class="btn btn-blue mt-4" style="width: 150px" @click="applyFilter">{{ $t('APPLY_FILTERS') }}</button>
         </b-collapse>
     </div>
 </template>
@@ -57,11 +62,13 @@
                 get() {
                     return this.options;
                 },
-                set(value) {
-                    this.$emit('table:filter', value);
-                },
             },
-        }
+        },
+        methods: {
+            applyFilter() {
+              this.$emit('table-filter', this.filterOptions);
+            }
+        },
     }
 </script>
 
