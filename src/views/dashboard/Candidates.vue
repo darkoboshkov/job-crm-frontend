@@ -6,7 +6,7 @@
                     {{ $t('CANDIDATES') }}
                 </h1>
                 <p class="sub-title">
-                    {{ $t('CANDIDATE_DESCRIPTION', { candidates: 5401 }) }}
+                    {{ $t('CANDIDATE_DESCRIPTION', { candidates: this.totalRows }) }}
                 </p>
             </div>
             <div class="pull-right">
@@ -26,7 +26,6 @@
                     @on-per-page-change="onPerPageChange"
 
                     :totalRows="totalRows"
-                    :isLoading.sync="isLoading"
                     :rows="rows"
                     :columns="columns"
 
@@ -50,19 +49,11 @@
                             <b-dropdown-item href="#">Another action</b-dropdown-item>
                             <b-dropdown-item href="#">Something else here...</b-dropdown-item>
                         </b-dropdown>
-                        <b-dropdown
-                                variant="link"
-                                toggle-class="text-decoration-none"
-                                no-caret
-                                class="icon-dropdown m-2"
-                        >
-                            <template v-slot:button-content>
-                                <i class="icon-bin"/>
-                            </template>
-                            <b-dropdown-item href="#">Action</b-dropdown-item>
-                            <b-dropdown-item href="#">Another action</b-dropdown-item>
-                            <b-dropdown-item href="#">Something else here...</b-dropdown-item>
-                        </b-dropdown>
+
+                        <b-button v-b-modal.delete_confirmation class="delete-confirmation-button" @click="selectCandidate(props)">
+                            <i class="icon-bin"></i>
+                        </b-button>
+
                     </div>
                     <div v-else-if="props.column.field === 'name'" class="d-flex align-items-center">
                         <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
@@ -74,6 +65,14 @@
                 </template>
             </vue-good-table>
         </div>
+
+        <b-modal id="delete_confirmation" centered>
+            <template v-slot:modal-header="{ close }">
+                <h2>
+                    Are you sure you want to delete this candidate?
+                </h2>
+            </template>
+        </b-modal>
     </div>
 </template>
 
@@ -86,27 +85,26 @@
         components: {TableFilter},
         data() {
             return {
-                totalRows: [],
-                isLoading: false,
+                totalRows: 0,
                 paginationOptions: {
                     enabled: true,
-                    mode: 'records',
+                    // mode: 'records',
                     perPage: 5,
-                    perPageDropdown: [10, 15, 20],
-                    dropdownAllowAll: false,
-                    setCurrentPage: 2,
-                    nextLabel: 'next',
-                    prevLabel: 'prev',
-                    rowsPerPageLabel: 'Rows per page',
-                    ofLabel: 'of',
-                    pageLabel: 'page', // for 'pages' mode
-                    allLabel: 'All',
+                    // perPageDropdown: [10, 15, 20],
+                    // dropdownAllowAll: false,
+                    // setCurrentPage: 2,
+                    // nextLabel: 'next',
+                    // prevLabel: 'prev',
+                    // rowsPerPageLabel: 'Rows per page',
+                    // ofLabel: 'of',
+                    // pageLabel: 'page', // for 'pages' mode
+                    // allLabel: 'All',
                 },
                 columns: [
                     {label: 'Name', field: 'name'},
                     {label: 'Image', field: 'image', hidden: true},
                     {label: 'Company', field: 'company.name'},
-                    {label: 'Position', field: 'position'},
+                    {label: 'Position', field: 'position.name'},
                     {label: 'Age', field: 'age'},
                     {label: 'Status', field: 'status'},
                     {label: 'City', field: 'city'},
@@ -194,27 +192,58 @@
                             },
                         ]
                     },
-                ]
+                ],
+                serverParams: {
+                    columnFilters: {},
+                    page: 1,
+                    limit: 5,
+                    sort: '',
+                    order: '',
+                },
+                selectedCandidateId: null,
             }
         },
         mounted() {
             this.getWorkers();
         },
         methods: {
+            selectCandidate(props) {
+                this.selectedCandidateId = props.row._id;
+            },
             goToProfile(params) {
                 if (params && params.row) {
                     this.$router.push(`/dashboard/profile/${params.row.id}`)
                 }
             },
-            onPageChange() {},
-            onSortChange() {},
-            onColumnFilter() {},
-            onPerPageChange() {},
+            onPageChange(e) {
+              this.serverParams = Object.assign({}, this.serverParams, {
+                page: e.currentPage,
+              });
+              this.getWorkers();
+            },
+            onSortChange(e) {
+              console.log('onSortChange', e);
+              // this.serverParams = Object.assign({}, this.serverParams, { // todo: back-end sorting is not working as expected
+              //   sort: e[0].field === 'age' ? 'birthday' : e[0].field,
+              //   order: e[0].type === 'desc' ? 1 : -1,
+              // });
+              // this.getWorkers();
+            },
+            onColumnFilter(e) {
+              console.log('onColumnFilter', e);
+              this.getWorkers();
+            },
+            onPerPageChange(e) {
+              this.serverParams = Object.assign({}, this.serverParams, {
+                limit: e.currentPerPage,
+              });
+              this.getWorkers();
+            },
             getWorkers() {
-                return usersApi.get({
+                return usersApi.get(Object.assign(this.serverParams, {
                     'fields': 'role',
                     'filter': 'worker',
-                }).then((res) => {
+                })).then((res) => {
                   this.rows = res.docs;
                   this.rows.forEach(row => {
                     if (row.birthday) {
@@ -225,7 +254,9 @@
                       row.age = ' - ';
                     }
                     row.company = row.company[0];
-                  })
+                    row.position = row.position[0];
+                  });
+                  this.totalRows = res.totalDocs;
               })
             },
         }

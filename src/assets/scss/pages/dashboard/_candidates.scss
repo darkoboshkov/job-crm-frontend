@@ -6,4 +6,21 @@
   .candidates-filters {
     display: flex;
   }
+
+  .delete-confirmation-button {
+    width: auto;
+    background-color: transparent;
+    color: black;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+#delete_confirmation {
+  .modal-body {
+    padding: 0;
+  }
+  .modal-footer .btn {
+    width: unset;
+  }
 }
