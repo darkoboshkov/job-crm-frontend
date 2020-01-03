@@ -53,11 +53,9 @@
                         <b-button v-b-modal.delete_confirmation class="delete-confirmation-button" @click="selectCandidate(props)">
                             <i class="icon-bin"></i>
                         </b-button>
-
                     </div>
-                    <div v-else-if="props.column.field === 'name'" class="d-flex align-items-center">
+                    <div v-else-if="props.column.field === 'image'" class="d-flex align-items-center">
                         <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
-                        <p class="m-0">{{ props.formattedRow['name'] }}</p>
                     </div>
                     <span v-else>
                       {{ props.formattedRow[props.column.field] }}
@@ -101,8 +99,8 @@
                     // allLabel: 'All',
                 },
                 columns: [
-                    {label: 'Name', field: 'name'},
-                    {label: 'Image', field: 'image', hidden: true},
+                    {label: 'Name', field: this.computedName},
+                    {label: 'Image', field: 'image'},
                     {label: 'Company', field: 'company.name'},
                     {label: 'Position', field: 'position.name'},
                     {label: 'Age', field: 'age'},
@@ -207,7 +205,10 @@
             this.getWorkers();
         },
         methods: {
-            selectCandidate(props) {
+            computedName(row) {
+                return row['firstName'] + ' ' + row['lastName'];
+            },
+            selectCandidate(props) {console.log('props', props);
                 this.selectedCandidateId = props.row._id;
             },
             goToProfile(params) {
@@ -255,6 +256,7 @@
                     }
                     row.company = row.company[0];
                     row.position = row.position[0];
+                    console.log('row', row);
                   });
                   this.totalRows = res.totalDocs;
               })
