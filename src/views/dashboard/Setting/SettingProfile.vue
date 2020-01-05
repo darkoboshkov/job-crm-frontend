@@ -44,15 +44,15 @@
                         v-model="model.birthday"
                 />
             </div>
-            <div class="form-element mt-3">
-                <label>{{ $t('BANK_ACCOUNT_NUMBER') }}:</label>
-                <b-form-input
-                        type="text"
-                        required
-                        class="custom-input"
-                        v-model="model.bankNumber"
-                />
-            </div>
+            <!--<div class="form-element mt-3">-->
+                <!--<label>{{ $t('BANK_ACCOUNT_NUMBER') }}:</label>-->
+                <!--<b-form-input-->
+                        <!--type="text"-->
+                        <!--required-->
+                        <!--class="custom-input"-->
+                        <!--v-model="model.bankNumber"-->
+                <!--/>-->
+            <!--</div>-->
             <!--<div class="form-element mt-3">-->
                 <!--<label>{{ $t('ADDRESS') }}:</label>-->
                 <!--<b-form-input-->
@@ -61,15 +61,15 @@
                         <!--class="custom-input"-->
                 <!--/>-->
             <!--</div>-->
-            <div class="form-element mt-3">
-                <label>{{ $t('POSTAL_CODE') }}:</label>
-                <b-form-input
-                        type="text"
-                        required
-                        class="custom-input"
-                        v-model="model.postalCode"
-                />
-            </div>
+            <!--<div class="form-element mt-3">-->
+                <!--<label>{{ $t('POSTAL_CODE') }}:</label>-->
+                <!--<b-form-input-->
+                        <!--type="text"-->
+                        <!--required-->
+                        <!--class="custom-input"-->
+                        <!--v-model="model.postalCode"-->
+                <!--/>-->
+            <!--</div>-->
             <div class="form-element mt-3">
                 <label>{{ $t('CITY') }}:</label>
                 <b-form-input
@@ -88,23 +88,26 @@
                         v-model="model.email"
                 />
             </div>
+            <!--<div class="form-element mt-3">-->
+                <!--<label>{{ $t('PASSWORD') }}:</label>-->
+                <!--<b-form-input-->
+                        <!--type="text"-->
+                        <!--required-->
+                        <!--class="custom-input"-->
+                        <!--v-model="model.password"-->
+                <!--/>-->
+            <!--</div>-->
+            <!--<div class="form-element mt-3">-->
+                <!--<label>{{ $t('PASSPORT') }}:</label>-->
+                <!--<b-form-input-->
+                        <!--type="text"-->
+                        <!--required-->
+                        <!--class="custom-input"-->
+                        <!--v-model="model.passport"-->
+                <!--/>-->
+            <!--</div>-->
             <div class="form-element mt-3">
-                <label>{{ $t('PASSWORD') }}:</label>
-                <b-form-input
-                        type="text"
-                        required
-                        class="custom-input"
-                        v-model="model.password"
-                />
-            </div>
-            <div class="form-element mt-3">
-                <label>{{ $t('PASSPORT') }}:</label>
-                <b-form-input
-                        type="text"
-                        required
-                        class="custom-input"
-                        v-model="model.passport"
-                />
+                <b-button @click="update">{{ $t('update profile') }}</b-button>
             </div>
         </div>
         <div class="setting-profile__photo">
@@ -122,8 +125,8 @@
         name: "SettingProfile",
         data() {
             return {
-                role: "admin",
                 model: {
+                    role: "",
                     firstName: "",
                     // middleName: "",
                     lastName: "",
@@ -141,10 +144,19 @@
             }
         },
         mounted() {
-            profileApi.get().then(res => {
-                console.log('res', res);
-                this.model = res;
-            })
+            profileApi.get()
+                .then(res => {
+                    console.log('res', res);
+                    this.model = res;
+                });
+        },
+        methods: {
+            update() {
+                profileApi.patch(this.model)
+                    .then(res => {
+                        console.log('response', res);
+                    });
+            }
         }
     }
 </script>

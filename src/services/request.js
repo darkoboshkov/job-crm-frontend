@@ -39,6 +39,15 @@ const request = function(method, path, params) {
                     .catch((e) => {
                         reject(e);
                     });
+            } else if (method === 'patch') {
+                axios
+                    .patch(path, params)
+                    .then((response) => {
+                        resolve(response.data);
+                    })
+                    .catch((e) => {
+                        reject(e);
+                    });
             } else {
                 /* eslint-disable-next-line */
                 console.log('Exception: unexpected request method - ', method);
