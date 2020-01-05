@@ -103,7 +103,7 @@
   "REGISTERED_SINCE": "Registered since",
   "AGE": "Age",
   "STATUS": "Status",
-  "LOCATION": "Location",
+  "PLACE": "Location",
   "WELCOME_BACK": "Welcome back",
   "FRONTEND_OFFICE": "Frontend Office",
   "BACK_OFFICE": "Back Office",
@@ -130,5 +130,10 @@
   "OTHER": "Other",
   "SYSTEM_SETTINGS": "System Settings",
   "PROFILE_SETTINGS": "Profile Settings",
-  "FILTER_OPTIONS": "Filter Options"
+  "FILTER_OPTIONS": "Filter Options",
+  "NAME+POSITION": "Name + Position",
+  "CREATED_AT": "Registered since",
+  "LOCATION": "Location",
+  "available": "Available",
+  "unavailable": "Unavailable"
 }

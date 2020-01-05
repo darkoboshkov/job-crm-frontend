@@ -59,7 +59,7 @@
                         <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
                     </div>
                     <span v-else>
-                      {{ props.formattedRow[props.column.field] }}
+                        {{ $t(props.formattedRow[props.column.field]) }}
                     </span>
                 </template>
             </vue-good-table>
@@ -99,16 +99,6 @@
                     // pageLabel: 'page', // for 'pages' mode
                     // allLabel: 'All',
                 },
-                columns: [
-                    {label: 'Name', field: this.computedName},
-                    {label: 'Image', field: 'image'},
-                    {label: 'Company', field: 'company.name'},
-                    {label: 'Position', field: 'position.name'},
-                    {label: 'Age', field: 'age'},
-                    {label: 'Status', field: 'status'},
-                    {label: 'City', field: 'city'},
-                    {label: 'Actions', field: 'actions'},
-                ],
                 rows: [],
                 filterOptions: [
                     {
@@ -165,12 +155,36 @@
                 selectedCandidateId: null,
             }
         },
+        computed: {
+            columns() {
+                return [
+                    {label: 'Image', field: 'image'},
+                    {label: this.$t('NAME'), field: this.computedName()},
+                    {label: this.$t('POSITION'), field: 'position.name'},
+                    {label: this.$t('CREATED_AT'), field: this.computedCreatedAt()},
+                    {label: 'Company', field: 'company.name'},
+                    {label: this.$t('AGE'), field: 'age'},
+                    {label: this.$t('STATUS'), field: 'status'},
+                    {label: this.$t('LOCATION'), field: 'city'},
+                    {label: 'Actions', field: 'actions'},
+                ]
+            },
+        },
         mounted() {
             this.getWorkers();
         },
         methods: {
-            computedName(row) {
-                return row['firstName'] + ' ' + row['lastName'];
+            computedName() {
+                return function(row) {
+                    return row['firstName'] + ' ' + row['lastName'];
+                }
+            },
+            computedCreatedAt() {
+                return function(row) {
+                    let date = new Date(row['createdAt']);
+
+                    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                }
             },
             selectCandidate(props) {console.log('props', props);
                 this.selectedCandidateId = props.row._id;
@@ -229,7 +243,12 @@
             filter(v) {
                 console.log('v', v);
             },
-        }
+        },
+        watch: {
+            '$i18n.locale'(v) {
+                console.log('locale', v);
+            }
+        },
     }
 </script>
 

@@ -61,7 +61,7 @@
                                 <li>{{ $t('REGISTERED_SINCE') }} <span class="pull-right">08-09-2019</span></li>
                                 <li>{{ $t('AGE') }} <span class="pull-right">29 jaar</span></li>
                                 <li>{{ $t('STATUS') }} <span class="pull-right">Beschikbaar</span></li>
-                                <li>{{ $t('LOCATION') }} <span class="pull-right">Arnhem</span></li>
+                                <li>{{ $t('PLACE') }} <span class="pull-right">Arnhem</span></li>
                             </ul>
                         </div>
                     </b-card>

@@ -103,7 +103,7 @@
   "REGISTERED_SINCE": "Geregistreerd sinds",
   "AGE": "Leeftijd",
   "STATUS": "Toestand",
-  "LOCATION": "Plaats",
+  "PLACE": "Plaats",
   "WELCOME_BACK": "Welkom terug",
   "FRONTEND_OFFICE": "Frontend Kantoor",
   "BACK_OFFICE": "Back Kantoor",
@@ -130,5 +130,10 @@
   "OTHER": "Overig",
   "SYSTEM_SETTINGS": "Systeem instellingen",
   "PROFILE_SETTINGS": "Profielinstellingen",
-  "FILTER_OPTIONS": "Filter opties"
+  "FILTER_OPTIONS": "Filter opties",
+  "NAME+POSITION": "Naam + functie",
+  "CREATED_AT": "Ingeschreven sinds",
+  "LOCATION": "Locatie",
+  "available": "Beschikbaar",
+  "unavailable": "Niet beschikbaar"
 }
