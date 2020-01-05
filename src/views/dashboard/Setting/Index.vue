@@ -6,7 +6,7 @@
                 <b-tab :title="$t('PROFILE_SETTINGS')" active>
                     <setting-profile />
                 </b-tab>
-                <b-tab :title="$t('SYSTEM_SETTINGS')">
+                <b-tab :title="$t('SYSTEM_SETTINGS')" v-if="this.$store.state.user.role === 'admin'">
                     <setting-system />
                 </b-tab>
                 <b-tab :title="$t('NOTIFICATIONS')">
