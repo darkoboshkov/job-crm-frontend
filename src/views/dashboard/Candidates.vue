@@ -206,8 +206,9 @@
             },
             getWorkers() {
                 return usersApi.get(Object.assign(this.serverParams, {
-                    'fields': 'role',
-                    'filter': 'worker',
+                    'filter': {
+                      role: 'worker'
+                    },
                 })).then((res) => {
                   this.rows = res.docs;
                   this.rows.forEach(row => {
