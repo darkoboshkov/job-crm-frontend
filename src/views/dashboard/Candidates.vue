@@ -238,7 +238,7 @@
                     console.log('row', row);
                   });
                   this.totalRows = res.totalDocs;
-              })
+              });
             },
             filter(v) {
                 console.log('v', v);

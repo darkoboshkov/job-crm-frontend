@@ -5,12 +5,21 @@
         </h1>
         <div class="position-list mt-5">
             <vue-good-table
-                    :columns="positions.columns"
-                    :rows="positions.rows"
-                    :paginationOptions="positions.paginationOptions"
+                    mode="remote"
+
+                    @on-page-change="onPageChange"
+                    @on-sort-change="onSortChange"
+                    @on-column-filter="onColumnFilter"
+                    @on-per-page-change="onPerPageChange"
+
+                    :columns="columns"
+                    :rows="rows"
+                    :totalRows="totalRows"
+
+                    :paginationOptions="paginationOptions"
                     :search-options="{
                         enabled: true,
-                        externalQuery: positions.searchTerm
+                        externalQuery: searchTerm
                     }"
                     styleClass="custom-table"
             >
@@ -20,13 +29,12 @@
                             <a href="javascript:void(0);" @click.prevent="startMatch">Start Matching</a>
                         </span>
                     </div>
-                    <div v-else-if="props.column.field === 'name'" class="d-flex align-items-center">
+                    <div v-else-if="props.column.field === 'image'" class="d-flex align-items-center">
                         <img src="@/assets/image/company-flooop-logo.png"
                              class="rounded-circle border mr-2" style="width:32px;"/>
-                        <p class="m-0">{{ props.formattedRow['name'] }}</p>
                     </div>
                     <span v-else>
-                      {{ props.formattedRow[props.column.field] }}
+                        {{ $t(props.formattedRow[props.column.field]) }}
                     </span>
                 </template>
             </vue-good-table>
@@ -114,78 +122,111 @@
 </template>
 
 <script>
+    import jobsApi from "../../services/api/jobs.js";
+
     export default {
         name: "Matches",
         data() {
             return {
-                positions: {
-                    paginationOptions: {
-                        enabled: true,
-                        mode: 'records',
-                        perPage: 5,
-                        perPageDropdown: [10, 15, 20],
-                        dropdownAllowAll: false,
-                        setCurrentPage: 2,
-                        nextLabel: 'next',
-                        prevLabel: 'prev',
-                        rowsPerPageLabel: 'Rows per page',
-                        ofLabel: 'of',
-                        pageLabel: 'page', // for 'pages' mode
-                        allLabel: 'All',
-                    },
-                    columns: [
-                        {label: 'Open positions', field: 'name'},
-                        {label: 'Image', field: 'image', hidden: true},
-                        {label: 'Duration', field: 'duration'},
-                        {label: 'Location', field: 'location'},
-                        {label: 'Actions', field: 'actions'},
-                    ],
-                    rows: [
-                        {
-                            id: "1",
-                            name: "Parttime Magazijnmedewerker Kruidvat",
-                            duration: "10 ~ 20 hrs",
-                            location: "Amsterdam",
-                            image: ''
-                        },
-                        {
-                            id: "2",
-                            name: "Parttime Magazijnmedewerker Kruidvat",
-                            location: "Amsterdam",
-                            duration: "10 ~ 20 hrs",
-                            image: ''
-                        },
-                        {
-                            id: "3",
-                            name: "Parttime Magazijnmedewerker Kruidvat",
-                            duration: "10 ~ 20 hrs",
-                            location: "Amsterdam",
-                            image: ''
-                        },
-                        {
-                            id: "4",
-                            name: "Parttime Magazijnmedewerker Kruidvat",
-                            duration: "10 ~ 20 hrs",
-                            location: "Amsterdam",
-                            image: ''
-                        },
-                        {
-                            id: "5",
-                            name: "Parttime Magazijnmedewerker Kruidvat",
-                            duration: "10 ~ 20 hrs",
-                            location: "Amsterdam",
-                            image: ''
-                        }
-                    ],
-                    searchTerm: ""
+                paginationOptions: {
+                    enabled: true,
+                    // mode: 'records',
+                    perPage: 5,
+                    // perPageDropdown: [10, 15, 20],
+                    // dropdownAllowAll: false,
+                    // setCurrentPage: 2,
+                    // nextLabel: 'next',
+                    // prevLabel: 'prev',
+                    // rowsPerPageLabel: 'Rows per page',
+                    // ofLabel: 'of',
+                    // pageLabel: 'page', // for 'pages' mode
+                    // allLabel: 'All',
                 },
-                matched: false
+                columns: [
+                    {label: 'Image', field: 'image'},
+                    {label: 'Open positions', field: 'title'},
+                    {label: 'Company', field: 'company.name'},
+                    {label: 'Duration', field: this.computedDuration()},
+                    {label: 'Location', field: 'position'},
+                    {label: 'Actions', field: 'actions'},
+                ],
+                rows: [],
+                searchTerm: "",
+                matched: false,
+                totalRows: 0,
+                serverParams: {
+                    columnFilters: {},
+                    page: 1,
+                    limit: 5,
+                    sort: '',
+                    order: '',
+                },
             }
         },
+        mounted() {
+            this.getActiveJobs();
+        },
         methods: {
+            computedDuration() {
+                return function(row) {
+                    let startDate = new Date(row['startDate']);
+                    let endDate = new Date(row['endDate']);
+
+                    return `From ${startDate.getFullYear()}-${startDate.getMonth()}-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()} to ${endDate.getFullYear()}-${endDate.getMonth()}-${endDate.getDate()} ${endDate.getHours()}:${endDate.getMinutes()}:${endDate.getSeconds()}`;
+                }
+            },
             startMatch() {
-                this.matched = true
-            }
+                this.matched = true;
+            },
+            getActiveJobs() {
+                return jobsApi.get(Object.assign(this.serverParams, {
+                    'filter': {
+                        status: 'active'
+                    },
+                }))
+                    .then((res) => {
+                        console.log('res', res);
+                        this.rows = res.docs;
+                        this.rows.forEach(row => {
+                            // if (row.birthday) {
+                            //     let thisYear = new Date().getFullYear();
+                            //     let birthYear = row.birthday.split('-')[0];
+                            //     row.age = thisYear - birthYear;
+                            // } else {
+                            //     row.age = ' - ';
+                            // }
+                            row.company = row.company[0];
+                            //     row.position = row.position[0];
+                            //
+                            // });
+                        this.totalRows = res.totalDocs;
+                    });
+                });
+            },
+            onPageChange(e) {
+                this.serverParams = Object.assign({}, this.serverParams, {
+                    page: e.currentPage,
+                });
+                this.getActiveJobs();
+            },
+            onSortChange(e) {
+                console.log('onSortChange', e);
+                // this.serverParams = Object.assign({}, this.serverParams, { // todo: back-end sorting is not working as expected
+                //   sort: e[0].field === 'age' ? 'birthday' : e[0].field,
+                //   order: e[0].type === 'desc' ? 1 : -1,
+                // });
+                // this.getWorkers();
+            },
+            onColumnFilter(e) {
+                console.log('onColumnFilter', e);
+                this.getActiveJobs();
+            },
+            onPerPageChange(e) {
+                this.serverParams = Object.assign({}, this.serverParams, {
+                    limit: e.currentPerPage,
+                });
+                this.getActiveJobs();
+          } ,
         }
     }
 </script>
