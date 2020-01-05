@@ -7,29 +7,32 @@
                         type="text"
                         required
                         class="custom-input"
+                        v-model="model.firstName"
                 />
             </div>
-            <div class="form-element mt-3">
-                <label>{{ $t('MIDDLE_NAME') }}:</label>
-                <b-form-input
-                        type="text"
-                        required
-                        class="custom-input"
-                />
-            </div>
+            <!--<div class="form-element mt-3">-->
+                <!--<label>{{ $t('MIDDLE_NAME') }}:</label>-->
+                <!--<b-form-input-->
+                        <!--type="text"-->
+                        <!--required-->
+                        <!--class="custom-input"-->
+                        <!--v-model="model.middleName"-->
+                <!--/>-->
+            <!--</div>-->
             <div class="form-element mt-3">
                 <label>{{ $t('LAST_NAME') }}:</label>
                 <b-form-input
                         type="text"
                         required
                         class="custom-input"
+                        v-model="model.lastName"
                 />
             </div>
             <div class="form-element mt-3">
                 <label>{{ $t('GENDER') }}:</label>
                 <div class="gender">
-                    <b-form-radio name="gender" value="male">{{ $t('MAN') }}</b-form-radio>
-                    <b-form-radio name="gender" value="female">{{ $t('WOMAN') }}</b-form-radio>
+                    <b-form-radio v-model="model.gender" name="gender" value="male">{{ $t('MAN') }}</b-form-radio>
+                    <b-form-radio v-model="model.gender" name="gender" value="female">{{ $t('WOMAN') }}</b-form-radio>
                 </div>
             </div>
             <div class="form-element mt-3">
@@ -38,6 +41,7 @@
                         type="text"
                         required
                         class="custom-input"
+                        v-model="model.birthday"
                 />
             </div>
             <div class="form-element mt-3">
@@ -46,22 +50,24 @@
                         type="text"
                         required
                         class="custom-input"
+                        v-model="model.bankNumber"
                 />
             </div>
-            <div class="form-element mt-3">
-                <label>{{ $t('ADDRESS') }}:</label>
-                <b-form-input
-                        type="text"
-                        required
-                        class="custom-input"
-                />
-            </div>
+            <!--<div class="form-element mt-3">-->
+                <!--<label>{{ $t('ADDRESS') }}:</label>-->
+                <!--<b-form-input-->
+                        <!--type="text"-->
+                        <!--required-->
+                        <!--class="custom-input"-->
+                <!--/>-->
+            <!--</div>-->
             <div class="form-element mt-3">
                 <label>{{ $t('POSTAL_CODE') }}:</label>
                 <b-form-input
                         type="text"
                         required
                         class="custom-input"
+                        v-model="model.postalCode"
                 />
             </div>
             <div class="form-element mt-3">
@@ -70,6 +76,7 @@
                         type="text"
                         required
                         class="custom-input"
+                        v-model="model.city"
                 />
             </div>
             <div class="form-element mt-3">
@@ -78,6 +85,7 @@
                         type="text"
                         required
                         class="custom-input"
+                        v-model="model.email"
                 />
             </div>
             <div class="form-element mt-3">
@@ -86,6 +94,7 @@
                         type="text"
                         required
                         class="custom-input"
+                        v-model="model.password"
                 />
             </div>
             <div class="form-element mt-3">
@@ -94,6 +103,7 @@
                         type="text"
                         required
                         class="custom-input"
+                        v-model="model.passport"
                 />
             </div>
         </div>
@@ -106,8 +116,36 @@
 </template>
 
 <script>
+    import profileApi from "../../../services/api/profile.js";
+
     export default {
-        name: "SettingProfile"
+        name: "SettingProfile",
+        data() {
+            return {
+                role: "admin",
+                model: {
+                    firstName: "",
+                    // middleName: "",
+                    lastName: "",
+                    gender: "male",
+                    birthday: "",
+                    bankNumber: "",
+                    // street: "",
+                    // houseNumber: "",
+                    postalCode: "",
+                    city: "",
+                    email: "",
+                    password: "",
+                    passport: "",
+                }
+            }
+        },
+        mounted() {
+            profileApi.get().then(res => {
+                console.log('res', res);
+                this.model = res;
+            })
+        }
     }
 </script>
 
