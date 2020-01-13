@@ -24,6 +24,7 @@
 
 <style scoped>
     .lang-selector {
+        display: none;
         height: 40px;
         border: none;
         outline: none;

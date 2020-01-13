@@ -19,240 +19,39 @@
                         {{ $t('SAVE') }}
                     </b-button>
                 </template>
-
-                <p class="my-4">Hello from modal!</p>
+                <div>
+                    <b-form-checkbox v-model="messageItem" name="check-button" switch>
+                        Message area
+                    </b-form-checkbox>
+                    <b-form-checkbox v-model="positionItem" name="check-button" switch>
+                        Position area
+                    </b-form-checkbox>
+                    <b-form-checkbox v-model="birthdayItem" name="check-button" switch>
+                        Birthday area
+                    </b-form-checkbox>
+                    <b-form-checkbox v-model="todoItem" name="check-button" switch>
+                        Todo area
+                    </b-form-checkbox>
+                    <b-form-checkbox v-model="statisticsItem" name="check-button" switch>
+                        Statistics area
+                    </b-form-checkbox>
+                </div>
             </b-modal>
             <b-row>
                 <b-col md="8">
+                    <Statistics v-if="statisticsItem" v-on:hide-statistics-card="hideStatisticsCard"></Statistics>
                     <b-row>
                         <b-col md="6">
-                            <b-card id="messages">
-                                <template v-slot:header>
-                                    <h2 class="m-0">{{ $t('MESSAGES') }}</h2>
-                                </template>
-                                <div>
-                                    <ul class="custom-list">
-                                        <li>
-                                            <p>
-                                                Werkgever A
-                                            </p>
-                                            <div class="d-flex">
-                                                <small class="flex-1">
-                                                    Je loon gegevens zijn gewijgd. Zie de veranderingen in je werkgevers
-                                                    informatie.
-                                                </small>
-                                                <i class="icon-more-vertical"/>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                Werkgever A
-                                            </p>
-                                            <div class="d-flex">
-                                                <small class="flex-1">
-                                                    Je loon gegevens zijn gewijgd. Zie de veranderingen in je werkgevers
-                                                    informatie.
-                                                </small>
-                                                <i class="icon-more-vertical"/>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                Werkgever A
-                                            </p>
-                                            <div class="d-flex">
-                                                <small class="flex-1">
-                                                    Je loon gegevens zijn gewijgd. Zie de veranderingen in je werkgevers
-                                                    informatie.
-                                                </small>
-                                                <i class="icon-more-vertical"/>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="mt-3">
-                                        <a href="javascript:void(0)">
-                                            <i class="icon-angle-right mr-2"/>
-                                            {{ $t('VIEW_ALL') }}
-                                        </a>
-                                    </div>
-                                </div>
-                            </b-card>
+                            <Position v-if="positionItem" v-on:hide-position-card="hidePositionCard"></Position>
                         </b-col>
                         <b-col md="6">
-                            <b-card id="open_positions">
-                                <template v-slot:header>
-                                    <h2 class="m-0">{{ $t('OPEN_POSITIONS') }}</h2>
-                                </template>
-                                <div>
-                                    <ul class="custom-list">
-                                        <li>
-                                            <p>
-                                                Uitkering 435-2019
-                                            </p>
-                                            <div class="d-flex">
-                                                <small class="flex-1">
-                                                    Henry van Loon
-                                                </small>
-                                                <i class="icon-angle-right"/>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                Uitkering 435-2019
-                                            </p>
-                                            <div class="d-flex">
-                                                <small class="flex-1">
-                                                    Henry van Loon
-                                                </small>
-                                                <i class="icon-angle-right"/>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                Uitkering 435-2019
-                                            </p>
-                                            <div class="d-flex">
-                                                <small class="flex-1">
-                                                    Henry van Loon
-                                                </small>
-                                                <i class="icon-angle-right"/>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="mt-3">
-                                        <a href="javascript:void(0)">
-                                            <i class="icon-angle-right mr-2"/>
-                                            {{ $t('VIEW_ALL') }}
-                                        </a>
-                                    </div>
-                                </div>
-                            </b-card>
+                            <message v-if="messageItem" v-on:hide-message-card="hideMessageCard"></message>
                         </b-col>
                     </b-row>
-                    <b-card id="statistics">
-                        <template v-slot:header>
-                            <h2 class="m-0">{{ $t('MALE_STATISTICS') }}</h2>
-                        </template>
-                        <div>
-                            <div class="d-flex responsive">
-                                <trend
-                                        :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
-                                        :gradient="['#c9002a', '#ff4b1f', '#ff9068']"
-                                        auto-draw
-                                        smooth>
-                                </trend>
-                                <div class="border-left">
-                                    <div class="d-flex responsive text-center border-bottom py-4">
-                                        <div class="flex-1 px-5">
-                                            <p>
-                                                {{ $t('WAGE_LEVEL') }}
-                                            </p>
-                                            <h4>
-                                                +29.7%
-                                            </h4>
-                                        </div>
-                                        <div class="flex-1 px-5 border-left">
-                                            <p>
-                                                {{ $t('WAGE_LEVEL') }}
-                                            </p>
-                                            <h4>
-                                                -54.7%
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex responsive text-center py-4">
-                                        <div class="flex-1 px-5">
-                                            <p>
-                                                {{ $t('PERFORMANCE') }}
-                                            </p>
-                                            <h4>
-
-                                            </h4>
-                                        </div>
-                                        <div class="flex-1 px-5">
-                                            <p>
-                                                {{ $t('EXPORT') }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </b-card>
                 </b-col>
                 <b-col md="4">
-                    <b-card id="upcoming_birthdays">
-                        <template v-slot:header>
-                            <h2 class="m-0">{{ $t('UPCOMING_BIRTHDAYS') }}</h2>
-                        </template>
-                        <div>
-                            <ul class="custom-list">
-                                <li class="d-flex responsive align-items-center">
-                                    <div class="flex-1">
-                                        <div class="d-flex responsive align-items-center">
-                                            <div class="rounded-circle mr-3">
-                                                <img src="@/assets/image/avatar_nick.png"
-                                                     style="width:65px"
-                                                >
-                                            </div>
-                                            <div>
-                                                Informatie Dag Gemeente
-                                                <br>
-                                                Kerklaan 12 - 4593CP
-                                                <br>
-                                                15:00
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        03-08-1960
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </b-card>
-                    <b-card id="to_do_list">
-                        <template v-slot:header>
-                            <h2 class="m-0">{{ $t('TO_DO_LIST_TODAY') }}</h2>
-                        </template>
-                        <div>
-                            <ul class="custom-list">
-                                <li class="d-flex responsive align-items-center">
-                                    <div class="flex-1">
-                                        <b-form-checkbox
-                                                value="accepted"
-                                                unchecked-value="not_accepted"
-                                        >
-                                            Vragen lijst 18-05-2019
-                                        </b-form-checkbox>
-                                    </div>
-                                    <i class="icon-more-vertical"/>
-                                </li>
-                                <li class="d-flex responsive align-items-center">
-                                    <div class="flex-1">
-                                        <b-form-checkbox
-                                                value="accepted"
-                                                unchecked-value="not_accepted"
-                                        >
-                                            Vragen lijst 18-05-2019
-                                        </b-form-checkbox>
-                                    </div>
-                                    <i class="icon-more-vertical"/>
-                                </li>
-                                <li class="d-flex responsive align-items-center">
-                                    <div class="flex-1">
-                                        <b-form-checkbox
-                                                value="accepted"
-                                                unchecked-value="not_accepted"
-                                        >
-                                            Vragen lijst 18-05-2019
-                                        </b-form-checkbox>
-                                    </div>
-                                    <i class="icon-more-vertical"/>
-                                </li>
-                            </ul>
-                        </div>
-                    </b-card>
+                    <Birthday v-if="birthdayItem" v-on:hide-birthday-card="hideBirthdayCard"></Birthday>
+                    <Todo v-if="todoItem" v-on:hide-todo-card="hideTodoCard"></Todo>
                 </b-col>
             </b-row>
         </div>
@@ -261,6 +60,11 @@
 
 <script>
     import Card from "@/components/common/Card.vue";
+    import Message from "@/views/dashboard/Home/Message.vue";
+    import Position from "@/views/dashboard/Home/Position.vue";
+    import Statistics from "@/views/dashboard/Home/Statistics.vue";
+    import Birthday from "@/views/dashboard/Home/Birthday.vue";
+    import Todo from "@/views/dashboard/Home/Todo.vue";
     import Trend from "vuetrend";
 
     export default {
@@ -268,6 +72,37 @@
         components: {
             Card,
             Trend,
+            Message,
+            Position,
+            Statistics,
+            Birthday,
+            Todo
+        },
+        data() {
+            return {
+                messageItem: true,
+                positionItem: true,
+                birthdayItem: true,
+                todoItem: true,
+                statisticsItem: true,
+            }
+        },
+        methods: {
+            hideMessageCard: function () {
+                this.messageItem = false;
+            },
+            hideStatisticsCard: function () {
+                this.statisticsItem = false;
+            },
+            hidePositionCard: function () {
+                this.positionItem = false;
+            },
+            hideBirthdayCard: function () {
+                this.birthdayItem = false;
+            },
+            hideTodoCard: function () {
+                this.todoItem = false;
+            }
         }
     }
 </script>
