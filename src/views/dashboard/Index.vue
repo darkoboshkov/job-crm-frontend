@@ -9,52 +9,113 @@
                     </div>
                 </b-col>
             </b-row>
-
-            <b-modal id="adjust_dashboard" centered>
-                <template v-slot:modal-header="{ close }">
-                    <h2>
-                        {{ $t('ADJUST_DASHBOARD') }}
-                    </h2>
-                    <b-button @click="close()">
-                        {{ $t('SAVE') }}
-                    </b-button>
-                </template>
-                <div>
-                    <b-form-checkbox v-model="messageItem" name="check-button" switch>
-                        Message area
-                    </b-form-checkbox>
-                    <b-form-checkbox v-model="positionItem" name="check-button" switch>
-                        Position area
-                    </b-form-checkbox>
-                    <b-form-checkbox v-model="birthdayItem" name="check-button" switch>
-                        Birthday area
-                    </b-form-checkbox>
-                    <b-form-checkbox v-model="todoItem" name="check-button" switch>
-                        Todo area
-                    </b-form-checkbox>
-                    <b-form-checkbox v-model="statisticsItem" name="check-button" switch>
-                        Statistics area
-                    </b-form-checkbox>
-                </div>
-            </b-modal>
             <b-row>
                 <b-col md="8">
-                    <Statistics v-if="statisticsItem" v-on:hide-statistics-card="hideStatisticsCard"></Statistics>
+                    <Statistics v-if="statisticsItem" v-on:hide-statistics-card="hideStatisticsCard"/>
                     <b-row>
                         <b-col md="6">
-                            <Position v-if="positionItem" v-on:hide-position-card="hidePositionCard"></Position>
+                            <Position v-if="positionItem" v-on:hide-position-card="hidePositionCard"/>
                         </b-col>
                         <b-col md="6">
-                            <message v-if="messageItem" v-on:hide-message-card="hideMessageCard"></message>
+                            <message v-if="messageItem" v-on:hide-message-card="hideMessageCard"/>
                         </b-col>
                     </b-row>
                 </b-col>
                 <b-col md="4">
-                    <Birthday v-if="birthdayItem" v-on:hide-birthday-card="hideBirthdayCard"></Birthday>
-                    <Todo v-if="todoItem" v-on:hide-todo-card="hideTodoCard"></Todo>
+                    <Birthday v-if="birthdayItem" v-on:hide-birthday-card="hideBirthdayCard"/>
+                    <Todo v-if="todoItem" v-on:hide-todo-card="hideTodoCard"/>
                 </b-col>
             </b-row>
         </div>
+        <b-modal id="adjust_dashboard" centered>
+            <template v-slot:modal-header="{ close }">
+                <h2>
+                    {{ $t('ADJUST_DASHBOARD') }}
+                </h2>
+            </template>
+            <div>
+                <ul class="custom-list">
+                    <li class="d-flex responsive">
+                        <div>
+                            <p>Message area</p>
+                            <small>
+                                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt, metus eu maximus
+                                interdum, dui purus cursus elit.
+                            </small>
+                        </div>
+                        <b-form-checkbox
+                                class="rtl"
+                                size="lg"
+                                v-model="messageItem"
+                                name="check-button" switch>
+                        </b-form-checkbox>
+                    </li>
+                    <li class="d-flex responsive">
+                        <div>
+                            <p>Position area</p>
+                            <small>
+                                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt, metus eu maximus
+                                interdum, dui purus cursus elit.
+                            </small>
+                        </div>
+                        <b-form-checkbox
+                                class="rtl"
+                                size="lg"
+                                v-model="positionItem"
+                                name="check-button" switch>
+                        </b-form-checkbox>
+                    </li>
+
+                    <li class="d-flex responsive">
+                        <div>
+                            <p>Birthday area</p>
+                            <small>
+                                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt, metus eu maximus
+                                interdum, dui purus cursus elit.
+                            </small>
+                        </div>
+                        <b-form-checkbox
+                                class="rtl"
+                                size="lg"
+                                v-model="birthdayItem"
+                                name="check-button" switch>
+                        </b-form-checkbox>
+                    </li>
+                    <li class="d-flex responsive">
+                        <div>
+                            <p>Todo area</p>
+                            <small>
+                                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt, metus eu maximus
+                                interdum, dui purus cursus elit.
+                            </small>
+                        </div>
+                        <b-form-checkbox
+                                class="rtl"
+                                size="lg"
+                                v-model="todoItem"
+                                name="check-button"
+                                switch>
+                        </b-form-checkbox>
+                    </li>
+                    <li class="d-flex responsive">
+                        <div>
+                            <p>Statistics area</p>
+                            <small>
+                                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt, metus eu maximus
+                                interdum, dui purus cursus elit.
+                            </small>
+                        </div>
+                        <b-form-checkbox
+                                class="rtl"
+                                size="lg"
+                                v-model="statisticsItem"
+                                name="check-button"
+                                switch>
+                        </b-form-checkbox>
+                    </li>
+                </ul>
+            </div>
+        </b-modal>
     </div>
 </template>
 

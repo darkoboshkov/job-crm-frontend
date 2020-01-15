@@ -29,7 +29,8 @@
                                     v-if="option.type === 'select'"
                                     v-model="option.value"
                                     :options="option.options"
-                            ></b-form-select>
+                                    class="normal-size"
+                            />
                         </div>
                     </div>
                 </div>

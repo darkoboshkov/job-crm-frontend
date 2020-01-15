@@ -9,7 +9,7 @@
 }
 
 input.custom-input {
-  height: 60px;
+  height: 50px;
   border-radius: 4px;
   border: solid 1px var(--light-periwinkle);
   color: var(--cobalt-blue);
@@ -24,14 +24,27 @@ input.custom-input {
 $new-custom-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Capa_1' x='0px' y='0px' width='451.847px' height='451.847px' viewBox='0 0 451.847 451.847' style='enable-background:new 0 0 451.847 451.847;' xml:space='preserve'><g fill='#c9002a'><path d='M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z'/></g></svg>");
 
 select.custom-select {
-  height: 60px;
+  height: 50px;
   background: #fff escape-svg($new-custom-select-indicator) no-repeat right 0.5rem center/14px 12px;
+  &.normal-size {
+    height: initial;
+  }
 }
+
 
 select.custom-select.hide-icon {
   padding: 6px 12px;
   background-image: none;
 }
+
+.custom-checkbox,
+.custom-radio {
+  .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: var(--lipstick-red);
+    border-color: var(--lipstick-red);
+  }
+}
+
 
 .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
   background-color: #fff;
@@ -39,7 +52,7 @@ select.custom-select.hide-icon {
 }
 
 .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
-  background-color: var(--lipstick-red);;
+  background-color: var(--lipstick-red);
 }
 
 .rtl.custom-switch.b-custom-control-lg {
@@ -48,25 +61,25 @@ select.custom-select.hide-icon {
 }
 
 .rtl.custom-switch.b-custom-control-lg .custom-control-label::before {
-  top: 0.3125rem;
-  height: 1.25rem;
+  top: 0.3rem;
+  height: 1.8rem;
   left: unset;
-  right: -2.5625rem;
-  width: 2.1875rem;
-  border-radius: 0.625rem;
+  right: -4rem;
+  width: 3.3rem;
+  border-radius: 0.8rem;
 }
 
 .rtl.custom-switch.b-custom-control-lg .custom-control-label::after {
-  top: calc( 0.3125rem + 2px );
+  top: calc( 0.3rem + 2px );
   left: unset;
-  right: calc( -1.625rem + 2px );
-  width: calc( 1.25rem - 4px );
-  height: calc( 1.25rem - 4px );
-  border-radius: 0.625rem;
+  right: calc( -2.8rem + 2px );
+  width: calc( 1.8rem - 4px );
+  height: calc( 1.8rem - 4px );
+  border-radius: 0.8rem;
   background-size: 50% 50%;
 }
 
 .rtl.custom-switch.b-custom-control-lg .custom-control-input:checked ~ .custom-control-label::after {
-  -webkit-transform: translateX(0.9375rem);
-  transform: translateX(0.9375rem);
+  -webkit-transform: translateX(1rem);
+  transform: translateX(1rem);
 }

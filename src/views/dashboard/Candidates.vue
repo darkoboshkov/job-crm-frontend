@@ -20,17 +20,14 @@
         <div class="candidates-list">
             <vue-good-table
                     mode="remote"
-
                     @on-page-change="onPageChange"
                     @on-sort-change="onSortChange"
                     @on-column-filter="onColumnFilter"
                     @on-per-page-change="onPerPageChange"
-
+                    @on-row-dblclick="goToProfile"
                     :totalRows="totalRows"
                     :rows="rows"
                     :columns="columns"
-
-                    @on-row-dblclick="goToProfile"
                     :pagination-options="paginationOptions"
                     styleClass="custom-table"
             >
@@ -51,12 +48,17 @@
                             <b-dropdown-item href="#">Something else here...</b-dropdown-item>
                         </b-dropdown>
 
-                        <b-button v-b-modal.delete_confirmation class="delete-confirmation-button" @click="selectCandidate(props)">
-                            <i class="icon-bin"></i>
+                        <b-button
+                                v-b-modal.delete_confirmation
+                                class="delete-confirmation-button"
+                                @click="selectCandidate(props)"
+                        >
+                            <i class="icon-bin"/>
                         </b-button>
                     </div>
                     <div v-else-if="props.column.field === 'image'" class="d-flex align-items-center">
-                        <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
+                        <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2"
+                             style="width:65px"/>
                     </div>
                     <span v-else>
                         {{ $t(props.formattedRow[props.column.field]) }}
@@ -67,9 +69,9 @@
 
         <b-modal id="delete_confirmation" centered>
             <template v-slot:modal-header="{ close }">
-                <h2>
+                <h4 class="text-center">
                     Are you sure you want to delete this candidate?
-                </h2>
+                </h4>
             </template>
         </b-modal>
     </div>
@@ -87,17 +89,7 @@
                 totalRows: 0,
                 paginationOptions: {
                     enabled: true,
-                    // mode: 'records',
-                    perPage: 5,
-                    // perPageDropdown: [10, 15, 20],
-                    // dropdownAllowAll: false,
-                    // setCurrentPage: 2,
-                    // nextLabel: 'next',
-                    // prevLabel: 'prev',
-                    // rowsPerPageLabel: 'Rows per page',
-                    // ofLabel: 'of',
-                    // pageLabel: 'page', // for 'pages' mode
-                    // allLabel: 'All',
+                    perPage: 5
                 },
                 rows: [],
                 filterOptions: [
@@ -175,18 +167,19 @@
         },
         methods: {
             computedName() {
-                return function(row) {
+                return function (row) {
                     return row['firstName'] + ' ' + row['lastName'];
                 }
             },
             computedCreatedAt() {
-                return function(row) {
+                return function (row) {
                     let date = new Date(row['createdAt']);
 
                     return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
                 }
             },
-            selectCandidate(props) {console.log('props', props);
+            selectCandidate(props) {
+                console.log('props', props);
                 this.selectedCandidateId = props.row._id;
             },
             goToProfile(params) {
@@ -195,50 +188,50 @@
                 }
             },
             onPageChange(e) {
-              this.serverParams = Object.assign({}, this.serverParams, {
-                page: e.currentPage,
-              });
-              this.getWorkers();
+                this.serverParams = Object.assign({}, this.serverParams, {
+                    page: e.currentPage,
+                });
+                this.getWorkers();
             },
             onSortChange(e) {
-              console.log('onSortChange', e);
-              // this.serverParams = Object.assign({}, this.serverParams, { // todo: back-end sorting is not working as expected
-              //   sort: e[0].field === 'age' ? 'birthday' : e[0].field,
-              //   order: e[0].type === 'desc' ? 1 : -1,
-              // });
-              // this.getWorkers();
+                console.log('onSortChange', e);
+                // this.serverParams = Object.assign({}, this.serverParams, { // todo: back-end sorting is not working as expected
+                //   sort: e[0].field === 'age' ? 'birthday' : e[0].field,
+                //   order: e[0].type === 'desc' ? 1 : -1,
+                // });
+                // this.getWorkers();
             },
             onColumnFilter(e) {
-              console.log('onColumnFilter', e);
-              this.getWorkers();
+                console.log('onColumnFilter', e);
+                this.getWorkers();
             },
             onPerPageChange(e) {
-              this.serverParams = Object.assign({}, this.serverParams, {
-                limit: e.currentPerPage,
-              });
-              this.getWorkers();
+                this.serverParams = Object.assign({}, this.serverParams, {
+                    limit: e.currentPerPage,
+                });
+                this.getWorkers();
             },
             getWorkers() {
                 return usersApi.get(Object.assign(this.serverParams, {
                     'filter': {
-                      role: 'worker'
+                        role: 'worker'
                     },
                 })).then((res) => {
-                  this.rows = res.docs;
-                  this.rows.forEach(row => {
-                    if (row.birthday) {
-                      let thisYear = new Date().getFullYear();
-                      let birthYear = row.birthday.split('-')[0];
-                      row.age = thisYear - birthYear;
-                    } else {
-                      row.age = ' - ';
-                    }
-                    row.company = row.company[0];
-                    row.position = row.position[0];
-                    console.log('row', row);
-                  });
-                  this.totalRows = res.totalDocs;
-              });
+                    this.rows = res.docs;
+                    this.rows.forEach(row => {
+                        if (row.birthday) {
+                            let thisYear = new Date().getFullYear();
+                            let birthYear = row.birthday.split('-')[0];
+                            row.age = thisYear - birthYear;
+                        } else {
+                            row.age = ' - ';
+                        }
+                        row.company = row.company[0];
+                        row.position = row.position[0];
+                        console.log('row', row);
+                    });
+                    this.totalRows = res.totalDocs;
+                });
             },
             filter(v) {
                 console.log('v', v);
