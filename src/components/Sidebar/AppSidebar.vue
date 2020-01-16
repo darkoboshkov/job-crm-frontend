@@ -7,18 +7,15 @@
             <router-link to="/dashboard/candidates" class="nav-link">
                 <img src="@/assets/image/icon/group.svg"/>
             </router-link>
-<!--            <a href="/dashboard/candidates" class="nav-link">-->
-<!--                <img src="@/assets/image/icon/bag.svg"/>-->
-<!--            </a>-->
             <router-link to="/dashboard/matches" class="nav-link">
                 <img src="@/assets/image/icon/hand.svg"/>
             </router-link>
-<!--            <a href="/dashboard/candidates" class="nav-link">-->
+<!--            <a href="/dashboard/calendars" class="nav-link">-->
 <!--                <img src="@/assets/image/icon/calendar.svg"/>-->
 <!--            </a>-->
-<!--            <a href="/dashboard/news" class="nav-link">-->
-<!--                <img src="@/assets/image/icon/mail.svg"/>-->
-<!--            </a>-->
+            <router-link to="/dashboard/chats" class="nav-link">
+                <img src="@/assets/image/icon/mail.svg"/>
+            </router-link>
         </div>
         <div class="app-sidebar__bottom">
             <a href="javascript:;" class="nav-link" @click.prevent="onAddItem">

@@ -34,7 +34,7 @@
                              class="rounded-circle border mr-2" style="width:32px;"/>
                     </div>
                     <span v-else>
-                        {{ $t(props.formattedRow[props.column.field]) }}
+                        {{ props.formattedRow[props.column.field] }}
                     </span>
                 </template>
             </vue-good-table>
@@ -130,17 +130,7 @@
             return {
                 paginationOptions: {
                     enabled: true,
-                    // mode: 'records',
-                    perPage: 5,
-                    // perPageDropdown: [10, 15, 20],
-                    // dropdownAllowAll: false,
-                    // setCurrentPage: 2,
-                    // nextLabel: 'next',
-                    // prevLabel: 'prev',
-                    // rowsPerPageLabel: 'Rows per page',
-                    // ofLabel: 'of',
-                    // pageLabel: 'page', // for 'pages' mode
-                    // allLabel: 'All',
+                    perPage: 5
                 },
                 columns: [
                     {label: 'Image', field: 'image'},

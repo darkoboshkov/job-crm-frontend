@@ -99,9 +99,9 @@ const routes = [
                 component: () => import('../views/dashboard/Candidates.vue')
             },
             {
-                path: 'news',
-                name: 'news',
-                component: () => import('../views/dashboard/News.vue')
+                path: 'chats',
+                name: 'chats',
+                component: () => import('../views/dashboard/Chats.vue')
             },
             {
                 path: 'matches',

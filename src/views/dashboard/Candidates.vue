@@ -24,7 +24,6 @@
                     @on-sort-change="onSortChange"
                     @on-column-filter="onColumnFilter"
                     @on-per-page-change="onPerPageChange"
-                    @on-row-dblclick="goToProfile"
                     :totalRows="totalRows"
                     :rows="rows"
                     :columns="columns"
@@ -43,9 +42,7 @@
                             <template v-slot:button-content>
                                 <i class="icon-more-vertical"/>
                             </template>
-                            <b-dropdown-item href="#">Action</b-dropdown-item>
-                            <b-dropdown-item href="#">Another action</b-dropdown-item>
-                            <b-dropdown-item href="#">Something else here...</b-dropdown-item>
+                            <b-dropdown-item href="#" @click="goToProfile(props)">View Profile</b-dropdown-item>
                         </b-dropdown>
 
                         <b-button
@@ -61,7 +58,7 @@
                              style="width:65px"/>
                     </div>
                     <span v-else>
-                        {{ $t(props.formattedRow[props.column.field]) }}
+                        {{ props.formattedRow[props.column.field] }}
                     </span>
                 </template>
             </vue-good-table>
@@ -111,9 +108,7 @@
                     {
                         title: "Age",
                         type: "select",
-                        options: [
-                            20, 21, 22, 23, 24, 25, 26
-                        ],
+                        options: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
                         value: ""
                     },
                     {
@@ -175,16 +170,17 @@
                 return function (row) {
                     let date = new Date(row['createdAt']);
 
-                    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:
+                    ${date.getMinutes()}:${date.getSeconds()}`;
                 }
             },
             selectCandidate(props) {
                 console.log('props', props);
                 this.selectedCandidateId = props.row._id;
             },
-            goToProfile(params) {
-                if (params && params.row) {
-                    this.$router.push(`/dashboard/profile/${params.row.id}`)
+            goToProfile(props) {
+                if (props && props.row) {
+                    this.$router.push(`/dashboard/profile/${props.row._id}`)
                 }
             },
             onPageChange(e) {
@@ -194,7 +190,7 @@
                 this.getWorkers();
             },
             onSortChange(e) {
-                console.log('onSortChange', e);
+                // console.log('onSortChange', e);
                 // this.serverParams = Object.assign({}, this.serverParams, { // todo: back-end sorting is not working as expected
                 //   sort: e[0].field === 'age' ? 'birthday' : e[0].field,
                 //   order: e[0].type === 'desc' ? 1 : -1,
@@ -202,7 +198,7 @@
                 // this.getWorkers();
             },
             onColumnFilter(e) {
-                console.log('onColumnFilter', e);
+                // console.log('onColumnFilter', e);
                 this.getWorkers();
             },
             onPerPageChange(e) {
@@ -228,18 +224,17 @@
                         }
                         row.company = row.company[0];
                         row.position = row.position[0];
-                        console.log('row', row);
                     });
                     this.totalRows = res.totalDocs;
                 });
             },
             filter(v) {
-                console.log('v', v);
+                // console.log('v', v);
             },
         },
         watch: {
             '$i18n.locale'(v) {
-                console.log('locale', v);
+                // console.log('locale', v);
             }
         },
     }
