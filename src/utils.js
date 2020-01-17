@@ -93,7 +93,7 @@ export const ifNotAuthenticated = (to, from, next) => {
         next('/verify');
         return;
     }
-    next('/summary');
+    next('/dashboard');
 };
 
 /**

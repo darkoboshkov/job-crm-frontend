@@ -75,8 +75,8 @@
 </template>
 
 <script>
-    import TableFilter from "../../components/common/TableFilter";
-    import usersApi from "../../services/api/users.js";
+    import TableFilter from "@/components/common/TableFilter";
+    import usersApi from "@/services/api/users";
 
     export default {
         name: "Candidates",

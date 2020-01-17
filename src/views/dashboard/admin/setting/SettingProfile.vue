@@ -119,7 +119,7 @@
 </template>
 
 <script>
-    import profileApi from "../../../services/api/profile.js";
+    import profileApi from "@/services/api/profile";
 
     export default {
         name: "SettingProfile",

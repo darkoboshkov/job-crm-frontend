@@ -1,7 +1,7 @@
 <template>
     <div class="table-filter">
         <div v-b-toggle.collapse_table-filter class="table-filter__title">
-            <h5><i class="icon-equalizer mr-2" />{{title}}</h5>
+            <h5><i class="icon-equalizer mr-2"/>{{title}}</h5>
         </div>
         <b-collapse id="collapse_table-filter">
             <div class="table-filter-options">
@@ -35,7 +35,9 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-blue mt-4" style="width: 150px" @click="applyFilter">{{ $t('APPLY_FILTERS') }}</button>
+            <button class="btn btn-blue mt-4" style="width: 150px" @click="applyFilter">
+                {{ $t('APPLY_FILTERS') }}
+            </button>
         </b-collapse>
     </div>
 </template>
@@ -67,7 +69,7 @@
         },
         methods: {
             applyFilter() {
-              this.$emit('table-filter', this.filterOptions);
+                this.$emit('table-filter', this.filterOptions);
             }
         },
     }

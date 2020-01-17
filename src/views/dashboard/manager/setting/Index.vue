@@ -6,9 +6,6 @@
                 <b-tab :title="$t('PROFILE_SETTINGS')" active>
                     <setting-profile />
                 </b-tab>
-                <b-tab :title="$t('SYSTEM_SETTINGS')" v-if="this.$store.state.user.role === 'admin'">
-                    <setting-system />
-                </b-tab>
                 <b-tab :title="$t('NOTIFICATIONS')">
                     <p>I'm a disabled tab!</p>
                 </b-tab>
@@ -21,10 +18,9 @@
 
 <script>
     import SettingProfile from "./SettingProfile";
-    import SettingSystem from "./SettingSystem";
     export default {
         name: "Setting",
-        components: {SettingSystem, SettingProfile}
+        components: {SettingProfile}
     }
 </script>
 

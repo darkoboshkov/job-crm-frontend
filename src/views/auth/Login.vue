@@ -104,7 +104,7 @@
                             res.user
                         );
                         Toast('Signed in successfully!', 'success')
-                        this.$router.push('/summary')
+                        this.$router.push('/dashboard')
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg
                         if(Array.isArray(messages)) {

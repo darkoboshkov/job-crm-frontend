@@ -122,7 +122,7 @@
 </template>
 
 <script>
-    import jobsApi from "../../services/api/jobs.js";
+    import jobsApi from "@/services/api/jobs";
 
     export default {
         name: "Matches",

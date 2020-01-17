@@ -121,11 +121,11 @@
 
 <script>
     import Card from "@/components/common/Card.vue";
-    import Message from "@/views/dashboard/Home/Message.vue";
-    import Position from "@/views/dashboard/Home/Position.vue";
-    import Statistics from "@/views/dashboard/Home/Statistics.vue";
-    import Birthday from "@/views/dashboard/Home/Birthday.vue";
-    import Todo from "@/views/dashboard/Home/Todo.vue";
+    import Message from "@/views/dashboard/components/Message.vue";
+    import Position from "@/views/dashboard/components/Position.vue";
+    import Statistics from "@/views/dashboard/components/Statistics.vue";
+    import Birthday from "@/views/dashboard/components/Birthday.vue";
+    import Todo from "@/views/dashboard/components/Todo.vue";
     import Trend from "vuetrend";
 
     export default {

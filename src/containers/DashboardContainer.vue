@@ -9,7 +9,7 @@
         </div>
         <localization />
         <app-header/>
-        <app-sidebar/>
+        <app-sidebar :items="items"/>
         <div class="app-content sidebar">
             <router-view/>
         </div>
@@ -20,6 +20,7 @@
     import AppSidebar from "../components/Sidebar/AppSidebar";
     import AppHeader from "../components/Header/AppHeader";
     import Localization from "../components/common/Localization";
+    import { items } from "../navs";
 
     export default {
         name: "DashboardContainer",
@@ -27,6 +28,11 @@
             Localization,
             AppHeader,
             AppSidebar
+        },
+        data() {
+            return {
+                items
+            }
         }
     }
 </script>

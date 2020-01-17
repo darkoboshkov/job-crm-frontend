@@ -10,7 +10,7 @@
             </a>
             <ul v-if="collapsed">
                 <li><a href="javascript:void(0);" @click.prevent="logout">Logout</a></li>
-                <li><a href="/dashboard/privacy">Privacy</a></li>
+                <li><router-link :to="'/' + role + '/dashboard/privacy'">Privacy</router-link></li>
             </ul>
         </div>
     </div>
@@ -24,8 +24,21 @@
         data() {
             return {
                 photo: "", // To do from store
-                fullName: "Aslan Lin", // To do from store
                 collapsed: false
+            }
+        },
+        computed: {
+            fullName() {
+                if(this.$store.state.user) {
+                    return this.$store.state.user.firstName + ' ' + this.$store.state.user.lastName;
+                }
+                return "";
+            },
+            role() {
+                if(this.$store.state.user) {
+                    return this.$store.state.user.role;
+                }
+                return "worker";
             }
         },
         methods: {
@@ -34,7 +47,7 @@
             },
             logout() {
                 handleLogout();
-                Toast('Logged out successfully!', 'success')
+                Toast('Logged out successfully!', 'success');
                 this.$router.push('/login')
             }
         }
