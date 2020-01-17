@@ -97,11 +97,45 @@ export const ifNotAuthenticated = (to, from, next) => {
 };
 
 /**
- * Check if user is authenticated and token is not expired
- * @returns {boolean}
+ * Check if Admin user is authorized
+ * @param to
+ * @param from
+ * @param next
  */
-export const isAuthenticated = () => {
-    return store.state.token.jwt != null && checkValidJwt(store.state.token.expiresIn);
+export const isAdminAuthorized = (to, from, next) => {
+    if(store.state.user &&  store.state.user.role ===  'admin') {
+        next();
+        return;
+    }
+    next({name: '404'});
+};
+
+/**
+ * Check if manager user is authorized
+ * @param to
+ * @param from
+ * @param next
+ */
+export const isManagerAuthorized = (to, from, next) => {
+    if(store.state.user &&  store.state.user.role ===  'manager') {
+        next();
+        return;
+    }
+    next({name: '404'});
+};
+
+/**
+ * Check if worker user is authorized
+ * @param to
+ * @param from
+ * @param next
+ */
+export const isWorkerAuthorized = (to, from, next) => {
+    if(store.state.user &&  store.state.user.role ===  'worker') {
+        next();
+        return;
+    }
+    next({name: '404'});
 };
 
 /**
