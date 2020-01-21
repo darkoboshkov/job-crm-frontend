@@ -1,0 +1,14 @@
+#page_matching {
+  .matching-list {
+    .matching-item {
+      padding: 30px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+
+      & > *:not(img) {
+        flex: 1;
+      }
+    }
+  }
+}
