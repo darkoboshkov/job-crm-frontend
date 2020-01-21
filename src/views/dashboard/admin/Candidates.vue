@@ -156,6 +156,9 @@
                     {label: 'Actions', field: 'actions'},
                 ]
             },
+            role() {
+                return this.$store.state.user.role;
+            }
         },
         mounted() {
             this.getWorkers();
@@ -180,7 +183,7 @@
             },
             goToProfile(props) {
                 if (props && props.row) {
-                    this.$router.push(`/dashboard/profile/${props.row._id}`)
+                    this.$router.push(`/${this.role}/dashboard/profile/${props.row._id}`)
                 }
             },
             onPageChange(e) {
