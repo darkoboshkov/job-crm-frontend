@@ -16,7 +16,7 @@
 <!--            <a href="javascript:;" class="nav-link" @click.prevent="onAddItem">-->
 <!--                <img src="@/assets/image/icon/plus.svg"/>-->
 <!--            </a>-->
-            <router-link to="/dashboard/setting" class="nav-link">
+            <router-link :to="'/' + role + '/dashboard/setting'" class="nav-link">
                 <img src="@/assets/image/icon/setting.svg"/>
             </router-link>
         </div>
