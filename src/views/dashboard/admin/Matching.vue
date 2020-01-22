@@ -19,7 +19,56 @@
                       style="margin-top: 24px;"
                       @table-filter="filter"
                       title="Filter Options"
-                      :options="filterOptions"/>
+                      :options="filterOptions"
+        />
+
+        <div class="mt-5">
+            <div class="matching-list">
+                <div class="matching-item header">
+                    5 Gevonden matches “Parttime Magazijnmedewerker”
+                </div>
+                <div class="matching-item">
+                    <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
+                    <div>Magalie Lindeboom</div>
+                    <div>Visual Designer</div>
+                    <div>08-09-2019</div>
+                    <div>35 jaar</div>
+                    <div>Beschikbaar</div>
+                    <div>Arnhem</div>
+                    <div><a class="underline red" href="/">Match bekijken</a></div>
+                </div>
+                <div class="matching-item">
+                    <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
+                    <div>Tom Jansen</div>
+                    <div>Product Owner</div>
+                    <div>03-04-2019</div>
+                    <div>21 jaar</div>
+                    <div>Beschikbaar</div>
+                    <div>Delft</div>
+                    <div><a class="underline red" href="/">Match bekijken</a></div>
+                </div>
+                <div class="matching-item">
+                    <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
+                    <div>George Everink</div>
+                    <div>Verkoopmedewerker</div>
+                    <div>12-06-2018</div>
+                    <div>29 jaar</div>
+                    <div>Beschikbaar</div>
+                    <div>Amstelveen</div>
+                    <div><a class="underline red" href="/">Match bekijken</a></div>
+                </div>
+                <div class="matching-item">
+                    <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
+                    <div>Jackson Artlen</div>
+                    <div>User tester</div>
+                    <div>31-09-2017</div>
+                    <div>33 jaar</div>
+                    <div>Niet beschikbaar</div>
+                    <div>Amersfoort</div>
+                    <div><a class="underline red" href="/">Match bekijken</a></div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -87,6 +136,9 @@
             // this.getActiveJobs();
         },
         methods: {
+            filter() {
+
+            },
             computedDuration() {
                 return function(row) {
                     let startDate = new Date(row['startDate']);

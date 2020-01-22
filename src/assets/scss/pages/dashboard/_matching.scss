@@ -9,6 +9,21 @@
       & > *:not(img) {
         flex: 1;
       }
+
+      &.header {
+        font-weight: 500;
+      }
+
+      &:not(:last-child) {
+        border-bottom: solid 1px #ececec;
+      }
+
+      .red {
+        color: var(--lipstick-red);
+      }
+      .underline {
+        text-decoration: underline;
+      }
     }
   }
 }
