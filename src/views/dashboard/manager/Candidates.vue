@@ -44,14 +44,6 @@
                             </template>
                             <b-dropdown-item href="#" @click="goToProfile(props)">View Profile</b-dropdown-item>
                         </b-dropdown>
-
-                        <b-button
-                                v-b-modal.delete_confirmation
-                                class="delete-confirmation-button"
-                                @click="selectCandidate(props)"
-                        >
-                            <i class="icon-bin"/>
-                        </b-button>
                     </div>
                     <div v-else-if="props.column.field === 'image'" class="d-flex align-items-center">
                         <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2"
@@ -63,14 +55,6 @@
                 </template>
             </vue-good-table>
         </div>
-
-        <b-modal id="delete_confirmation" centered>
-            <template v-slot:modal-header="{ close }">
-                <h4 class="text-center">
-                    Are you sure you want to delete this candidate?
-                </h4>
-            </template>
-        </b-modal>
     </div>
 </template>
 
