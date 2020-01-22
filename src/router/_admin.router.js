@@ -46,7 +46,13 @@ export default [
                 name: 'admin-setting',
                 component: () => import('../views/dashboard/admin/setting/Index.vue'),
                 beforeEnter: isAdminAuthorized
-            }
+            },
+            {
+                path: 'matching',
+                name: 'admin-matches',
+                component: () => import('../views/dashboard/admin/Matching.vue'),
+                beforeEnter: isAdminAuthorized
+            },
         ],
         beforeEnter: ifAuthenticated
     }

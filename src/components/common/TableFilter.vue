@@ -7,30 +7,57 @@
             <div class="table-filter-options">
                 <div class="filter-option"
                      v-for="(option, index) in filterOptions" :key="index">
-                    <div class="filter-option__title mt-3">
-                        {{option.title}}
-                    </div>
-                    <div class="filter-option__items">
+                    <div class="filter-option__items mt-3">
                         <div class="item">
-                            <b-form-input
+                            <template
                                     v-if="option.type === 'text'"
-                                    :type="option.type"
-                                    v-model="option.value"
-                            />
-                            <b-form-checkbox
-                                    v-if="option.type === 'checkbox'"
-                                    v-for="(item, itemIndex) in option.options"
-                                    :key="itemIndex"
-                                    v-model="item.checked"
                             >
-                                {{item.label}}
-                            </b-form-checkbox>
-                            <b-form-select
+                                <div class="filter-option__title ">
+                                    {{option.title}}
+                                </div>
+                                <b-form-input
+                                        :type="option.type"
+                                        v-model="option.value"
+                                />
+                            </template>
+
+                            <template
+                                    v-if="option.type === 'checkbox'"
+                            >
+                                <div class="filter-option__title ">
+                                    {{option.title}}
+                                </div>
+                                <b-form-checkbox
+                                        v-for="(item, itemIndex) in option.options"
+                                        :key="itemIndex"
+                                        v-model="item.checked"
+                                >
+                                    {{item.label}}
+                                </b-form-checkbox>
+                            </template>
+
+                            <template
                                     v-if="option.type === 'select'"
-                                    v-model="option.value"
-                                    :options="option.options"
-                                    class="normal-size"
-                            />
+                            >
+                                <div class="filter-option__title ">
+                                    {{option.title}}
+                                </div>
+                                <b-form-select
+                                        v-model="option.value"
+                                        :options="option.options"
+                                        class="normal-size"
+                                />
+                            </template>
+
+                            <template
+                                    v-if="option.type === 'slider'"
+                            >
+                                <slider
+                                        :label="option.title"
+                                        :value="option.value"
+                                        :unit="option.unit"
+                                ></slider>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -43,8 +70,13 @@
 </template>
 
 <script>
+    import Slider from "@/components/common/Slider";
+
     export default {
         name: "TableFilter",
+        components: {
+            Slider
+        },
         props: {
             title: {
                 type: String,
