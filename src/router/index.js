@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import { ifAuthenticated, redirectRoleBasedDashboard } from '../utils';
 import authRoutes from './_auth.router';
 import adminRoutes from './_admin.router';
+import managerRoutes from './_manager.router';
 import workerRoutes from './_worker.router';
 import store from "../store";
 
@@ -10,7 +11,7 @@ Vue.use(VueRouter);
 
 const routes = [
     ...authRoutes,
-    ...adminRoutes,
+    ...managerRoutes,
     ...workerRoutes,
     {
         path: '/summary',
