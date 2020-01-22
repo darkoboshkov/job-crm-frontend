@@ -11,6 +11,7 @@ Vue.use(VueRouter);
 
 const routes = [
     ...authRoutes,
+    ...adminRoutes,
     ...managerRoutes,
     ...workerRoutes,
     {
