@@ -49,8 +49,14 @@ export default [
             },
             {
                 path: 'matching',
-                name: 'admin-matches',
+                name: 'admin-matching',
                 component: () => import('../views/dashboard/admin/Matching.vue'),
+                beforeEnter: isAdminAuthorized
+            },
+            {
+                path: 'matching-details',
+                name: 'admin-matching-details',
+                component: () => import('../views/dashboard/admin/MatchingDetails.vue'),
                 beforeEnter: isAdminAuthorized
             },
         ],
