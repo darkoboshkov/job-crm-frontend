@@ -168,7 +168,7 @@
                             },
                             res.user
                         );
-                        Toast('Please verify your email!', 'warning')
+                        // Toast('Please verify your email!', 'warning')
                         this.$router.push('/verify')
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg

@@ -103,7 +103,7 @@
                             },
                             res.user
                         );
-                        Toast('Signed in successfully!', 'success')
+                        // Toast('Signed in successfully!', 'success')
                         this.$router.push('/dashboard')
                     }).catch((data) => {
                         let messages = data.response.data.errors.msg
