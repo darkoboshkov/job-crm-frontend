@@ -11,19 +11,20 @@
             </b-row>
             <b-row>
                 <b-col md="8">
-                    <Statistics v-if="statisticsItem" v-on:hide-statistics-card="hideStatisticsCard"/>
+                    <!--<Statistics v-if="statisticsItem" v-on:hide-statistics-card="hideStatisticsCard"/>-->
                     <b-row>
-                        <b-col md="6">
+                        <!--<b-col md="6">-->
+                        <b-col md="12">
                             <Position v-if="positionItem" v-on:hide-position-card="hidePositionCard"/>
                         </b-col>
-                        <b-col md="6">
-                            <message v-if="messageItem" v-on:hide-message-card="hideMessageCard"/>
-                        </b-col>
+                        <!--<b-col md="6">-->
+                            <!--<message v-if="messageItem" v-on:hide-message-card="hideMessageCard"/>-->
+                        <!--</b-col>-->
                     </b-row>
                 </b-col>
                 <b-col md="4">
                     <Birthday v-if="birthdayItem" v-on:hide-birthday-card="hideBirthdayCard"/>
-                    <Todo v-if="todoItem" v-on:hide-todo-card="hideTodoCard"/>
+                    <!--<Todo v-if="todoItem" v-on:hide-todo-card="hideTodoCard"/>-->
                 </b-col>
             </b-row>
         </div>
