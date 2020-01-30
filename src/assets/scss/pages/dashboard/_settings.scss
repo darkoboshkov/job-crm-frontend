@@ -25,6 +25,12 @@
           flex-direction: column;
         };
 
+        .custom-radio {
+          label {
+            width: 100px;
+          }
+        }
+
         label {
           width: 175px;
         }

@@ -37,14 +37,37 @@ select.custom-select.hide-icon {
   background-image: none;
 }
 
-.custom-checkbox,
-.custom-radio {
+.custom-checkbox {
   .custom-control-input:checked ~ .custom-control-label::before {
     background-color: var(--lipstick-red);
     border-color: var(--lipstick-red);
   }
 }
 
+.custom-radio {
+  .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: transparent;
+    border-color: var(--light-periwinkle);
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::after {
+    background: var(--cobalt-blue) none;
+    border-radius: 50%;
+
+    top: 0.5rem;
+    left: -1.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: none;
+  }
+
+  input, label {
+    cursor: pointer;
+  }
+}
 
 .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
   background-color: #fff;
