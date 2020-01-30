@@ -2,7 +2,8 @@
     <div id="page_profile" class="dashboard-content">
         <div class="container-fluid">
             <a href="javascript:void(0)" class="back" @click.prevent="$router.go(-1)">
-                <i class="icon-angle-left ml-2"/> {{ $t('BACK') }}
+                <i class="icon-angle-left ml-2"/>
+                <span>{{ $t('BACK') }}</span>
             </a>
             <b-row class="mt-5">
                 <b-col md="12">
