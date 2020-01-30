@@ -1,16 +1,16 @@
 <template>
     <div id="page_candidates" class="dashboard-content">
-        <div class="d-flex">
+        <div>
             <div>
-                <h1 class="title">
-                    {{ $t('CANDIDATES') }}
-                </h1>
+                <div class="d-flex justify-content-between align-items-end">
+                    <h1 class="title">
+                        {{ $t('CANDIDATES') }}
+                    </h1>
+                    <img class="add-candidate" src="@/assets/image/icon/person-add.svg" @click="addPerson"/>
+                </div>
                 <p class="sub-title">
                     {{ $t('CANDIDATE_DESCRIPTION', { candidates: this.totalRows }) }}
                 </p>
-            </div>
-            <div class="pull-right">
-
             </div>
         </div>
         <div class="d-flex justify-content-between">
@@ -20,7 +20,7 @@
                           :options="filterOptions"/>
             <div class="view-switch">
                 View:
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="23" viewBox="0 0 26 23" @click="imageView(true)" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="23" viewBox="0 0 26 23" @click="imageView(true)" class="mode-switch">
                     <g fill="#000" fill-rule="evenodd" :opacity="imageMode ? 1 : 0.261">
                         <rect width="7" height="7" rx="1"/>
                         <rect width="18" height="7" x="8" rx="1"/>
@@ -31,7 +31,7 @@
                     </g>
                 </svg>
                 |
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="23" viewBox="0 0 26 23" @click="imageView(false)" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="23" viewBox="0 0 26 23" @click="imageView(false)" class="mode-switch">
                     <g fill="#000" fill-rule="evenodd" :opacity="!imageMode ? 1 : 0.261">
                         <rect width="26" height="5" rx="1"/>
                         <rect width="26" height="5" y="6" rx="1"/>
@@ -208,7 +208,6 @@
                 }
             },
             selectCandidate(props) {
-                console.log('props', props);
                 this.selectedCandidateId = props.row._id;
             },
             goToProfile(props) {
@@ -264,6 +263,9 @@
             filter(v) {
                 // console.log('v', v);
             },
+            addPerson() {
+                this.$router.push(`/${this.role}/dashboard/profile/0?mode=edit`);
+            }
         },
         watch: {
             '$i18n.locale'(v) {
@@ -276,5 +278,8 @@
 <style scoped>
     .icon-dropdown >>> button {
         color: black;
+    }
+    .add-candidate, .mode-switch {
+        cursor: pointer;
     }
 </style>
