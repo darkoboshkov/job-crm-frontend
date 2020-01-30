@@ -33,6 +33,7 @@ export default [
                 path: 'profile/:id',
                 name: 'admin-profile',
                 component: () => import('../views/dashboard/admin/Profile.vue'),
+                props: (route) => ({ mode: route.query.mode, id: route.params.id }),
                 beforeEnter: isAdminAuthorized
             },
             {

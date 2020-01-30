@@ -134,15 +134,27 @@
 <script>
     export default {
         name: "ProfileView",
+        props: {
+            mode: {
+                default: function() {
+                    return 'view';
+                }
+            },
+            id: {
+                default: function() {
+                    return '0';
+                }
+            }
+        },
         data() {
             return {
-                editProfile: false,
+                editProfile: this.mode === 'edit',
                 model: {
-                    fullName: 'Magalie Lindeboom',
-                    position: 'Visual Designer',
-                    overview: 'Hanc ego assentior, cum teneam sententiam, quid et iusto odio dignissimos ducimus, qui. Quae fuerit causa, nollem me ab eo est consecutus? laudem et dolore suo. Sed ut summum bonum esse albam, dulce mel quorum facta quem modo ista. Filium morte multavit si sine dubio praeclara sunt, explicabo nemo enim ipsam per. Meer +',
-                    email: 'michael@hotmail.com',
-                    phone: '+31 653724131'
+                    fullName: this.id !== '0' ? 'Magalie Lindeboom' : '',
+                    position: this.id !== '0' ? 'Visual Designer' : '',
+                    overview: this.id !== '0' ? 'Hanc ego assentior, cum teneam sententiam, quid et iusto odio dignissimos ducimus, qui. Quae fuerit causa, nollem me ab eo est consecutus? laudem et dolore suo. Sed ut summum bonum esse albam, dulce mel quorum facta quem modo ista. Filium morte multavit si sine dubio praeclara sunt, explicabo nemo enim ipsam per. Meer +' : '',
+                    email: this.id !== '0' ? 'michael@hotmail.com' : '',
+                    phone: this.id !== '0' ? '+31 653724131' : ''
                 }
             }
         },
