@@ -1,5 +1,5 @@
 <template>
-    <b-card id="open_positions" body-class="py-0">
+    <b-card id="open_positions" body-class="pt-0">
         <template v-slot:header>
             <div class="row">
                 <div class="col-md-6">
