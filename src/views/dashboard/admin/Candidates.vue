@@ -48,6 +48,7 @@
                     @on-page-change="onPageChange"
                     @on-sort-change="onSortChange"
                     @on-column-filter="onColumnFilter"
+                    @on-cell-click="onCellClick"
                     @on-per-page-change="onPerPageChange"
                     :totalRows="totalRows"
                     :rows="rows"
@@ -170,17 +171,17 @@
         },
         computed: {
             columns() {
-                let columns = this.imageMode ? [{label: 'Image', field: 'image'}] : [];
+                let columns = this.imageMode ? [{label: 'Image', field: 'image', name: 'image', tdClass: 'link'}] : [];
 
                 return columns.concat([
-                    {label: this.$t('NAME'), field: this.computedName()},
-                    {label: this.$t('POSITION'), field: 'position.name'},
-                    {label: this.$t('CREATED_AT'), field: this.computedCreatedAt()},
-                    {label: 'Company', field: 'company.name'},
-                    {label: this.$t('AGE'), field: 'age'},
-                    {label: this.$t('STATUS'), field: 'status'},
-                    {label: this.$t('LOCATION'), field: 'city'},
-                    {label: 'Actions', field: 'actions'},
+                    {label: this.$t('NAME'), field: this.computedName(), name: 'name', tdClass: 'link'},
+                    {label: this.$t('POSITION'), field: 'position.name', name: 'position'},
+                    {label: this.$t('CREATED_AT'), field: this.computedCreatedAt(), name: 'createdAt'},
+                    {label: 'Company', field: 'company.name', name: 'company'},
+                    {label: this.$t('AGE'), field: 'age', name: 'age'},
+                    {label: this.$t('STATUS'), field: 'status', name: 'status'},
+                    {label: this.$t('LOCATION'), field: 'city', name: 'city'},
+                    {label: 'Actions', field: 'actions', name: 'actions'},
                 ]);
             },
             role() {
@@ -232,6 +233,11 @@
             onColumnFilter(e) {
                 // console.log('onColumnFilter', e);
                 this.getWorkers();
+            },
+            onCellClick(params) {
+                if (params.column.name === 'name' || params.column.name === 'image') {
+                    this.goToProfile(params);
+                }
             },
             onPerPageChange(e) {
                 this.serverParams = Object.assign({}, this.serverParams, {
