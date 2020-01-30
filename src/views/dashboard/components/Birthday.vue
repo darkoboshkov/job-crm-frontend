@@ -14,27 +14,25 @@
         </template>
         <div>
             <ul class="custom-list">
-                <li class="d-flex responsive align-items-center">
-                    <div class="flex-1">
-                        <div class="d-flex responsive align-items-center">
-                            <div class="rounded-circle mr-3">
-                                <img src="@/assets/image/avatar_nick.png"
-                                     style="width:65px"
-                                >
-                            </div>
-                            <div>
-                                Informatie Dag Gemeente
-                                <br>
-                                Kerklaan 12 - 4593CP
-                                <br>
-                                15:00
+                <a href="/admin/dashboard/profile/1">
+                    <li class="d-flex responsive align-items-center">
+                        <div class="flex-1">
+                            <div class="d-flex responsive align-items-center">
+                                <div class="rounded-circle mr-3">
+                                    <img src="@/assets/image/avatar_nick.png" style="width:65px" />
+                                </div>
+                                <div>
+                                    Ton Jansen
+                                    <br>
+                                    <small>Product owner</small>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        03-08-1960
-                    </div>
-                </li>
+                        <div>
+                            03-08-1960
+                        </div>
+                    </li>
+                </a>
             </ul>
         </div>
     </b-card>
