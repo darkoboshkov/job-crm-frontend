@@ -55,6 +55,17 @@
     }
   }
 
+  .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: var(--cobalt-blue);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  .nav-tabs .nav-link {
+    border-left-color: #e9ecef;
+    border-right-color: #e9ecef;
+  }
+
   .setting-system {
     &__form {
       .form-element {
