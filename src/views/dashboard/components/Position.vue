@@ -1,5 +1,5 @@
 <template>
-    <b-card id="open_positions">
+    <b-card id="open_positions" body-class="py-0">
         <template v-slot:header>
             <div class="row">
                 <div class="col-md-6">
@@ -15,41 +15,80 @@
         <div>
             <ul class="custom-list">
                 <li>
-                    <p>
-                        Uitkering 435-2019
-                    </p>
-                    <div class="d-flex">
-                        <small class="flex-1">
-                            Henry van Loon
-                        </small>
+                    <div class="d-flex align-items-center">
+                        <img src="@/assets/image/kuidvat.png" style="max-width: 45px; margin-right: 15px;"/>
+                        <div class="flex-1">
+                            <div>
+                                Parttime Magazijnmedewerker
+                            </div>
+                            <small>
+                                Kruidvat
+                            </small>
+                        </div>
                         <i class="icon-angle-right"/>
                     </div>
                 </li>
                 <li>
-                    <p>
-                        Uitkering 435-2019
-                    </p>
-                    <div class="d-flex">
-                        <small class="flex-1">
-                            Henry van Loon
-                        </small>
+                    <div class="d-flex align-items-center">
+                        <img src="@/assets/image/kuidvat.png" style="max-width: 45px; margin-right: 15px;"/>
+                        <div class="flex-1">
+                            <div>
+                                Fulltime Servicemedewerker
+                            </div>
+                            <small>
+                                Tele2 marketing
+                            </small>
+                        </div>
                         <i class="icon-angle-right"/>
                     </div>
                 </li>
                 <li>
-                    <p>
-                        Uitkering 435-2019
-                    </p>
-                    <div class="d-flex">
-                        <small class="flex-1">
-                            Henry van Loon
-                        </small>
+                    <div class="d-flex align-items-center">
+                        <img src="@/assets/image/kuidvat.png" style="max-width: 45px; margin-right: 15px;"/>
+                        <div class="flex-1">
+                            <div>
+                                Parttime Magazijnmedewerker
+                            </div>
+                            <small>
+                                ING
+                            </small>
+                        </div>
                         <i class="icon-angle-right"/>
                     </div>
                 </li>
+                <template v-if="!collapsed">
+                    <li>
+                        <div class="d-flex align-items-center">
+                            <img src="@/assets/image/kuidvat.png" style="max-width: 45px; margin-right: 15px;"/>
+                            <div class="flex-1">
+                                <div>
+                                    Parttime Magazijnmedewerker
+                                </div>
+                                <small>
+                                    Kruidvat
+                                </small>
+                            </div>
+                            <i class="icon-angle-right"/>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex align-items-center">
+                            <img src="@/assets/image/kuidvat.png" style="max-width: 45px; margin-right: 15px;"/>
+                            <div class="flex-1">
+                                <div>
+                                    Fulltime Servicemedewerker
+                                </div>
+                                <small>
+                                    Tele2 marketing
+                                </small>
+                            </div>
+                            <i class="icon-angle-right"/>
+                        </div>
+                    </li>
+                </template>
             </ul>
-            <div class="mt-3">
-                <a href="javascript:void(0)">
+            <div class="mt-3" v-if="collapsed">
+                <a @click="viewAll">
                     <i class="icon-angle-right mr-2"/>
                     {{ $t('VIEW_ALL') }}
                 </a>
@@ -61,9 +100,17 @@
 <script>
     export default {
         name: 'position',
+        data() {
+            return {
+                collapsed: true,
+            }
+        },
         methods: {
             hidePositionCard: function () {
                 this.$emit('hide-position-card');
+            },
+            viewAll() {
+                this.collapsed = false;
             }
         }
     }
