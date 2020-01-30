@@ -285,6 +285,9 @@
     .icon-dropdown >>> button {
         color: black;
     }
+    .view-switch {
+        min-width: fit-content;
+    }
     .add-candidate, .mode-switch {
         cursor: pointer;
     }
