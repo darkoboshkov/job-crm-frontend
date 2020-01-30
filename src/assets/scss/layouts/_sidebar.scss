@@ -27,7 +27,7 @@
       height: $mobile-sidebar-item-height;
     }
 
-    &.active, &:hover, &:visited {
+    &.router-link-exact-active, &:hover, &:visited {
       border-right: 2px solid var(--cobalt-blue);
       img {
         transform: scale(1.1);
