@@ -72,7 +72,7 @@ select.custom-select.hide-icon {
 .rtl.custom-switch.b-custom-control-lg .custom-control-label::after {
   top: calc( 0.3rem + 2px );
   left: unset;
-  right: calc( -2.8rem + 2px );
+  right: calc( -2.5rem + 2px );
   width: calc( 1.8rem - 4px );
   height: calc( 1.8rem - 4px );
   border-radius: 0.8rem;
@@ -80,6 +80,6 @@ select.custom-select.hide-icon {
 }
 
 .rtl.custom-switch.b-custom-control-lg .custom-control-input:checked ~ .custom-control-label::after {
-  -webkit-transform: translateX(1rem);
-  transform: translateX(1rem);
+  -webkit-transform: translateX(1.5rem);
+  transform: translateX(1.5rem);
 }
