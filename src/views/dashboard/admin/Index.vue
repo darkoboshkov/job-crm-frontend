@@ -28,11 +28,12 @@
                 </b-col>
             </b-row>
         </div>
-        <b-modal id="adjust_dashboard" centered>
+        <b-modal id="adjust_dashboard" footer-class="d-none" centered>
             <template v-slot:modal-header="{ close }">
                 <h2>
                     {{ $t('ADJUST_DASHBOARD') }}
                 </h2>
+                <b-button>{{ $t('SAVE') }}</b-button>
             </template>
             <div>
                 <ul class="custom-list">
