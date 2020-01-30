@@ -1,7 +1,9 @@
 <template>
     <div class="table-filter">
         <div v-b-toggle.collapse_table-filter class="table-filter__title">
-            <h5><i class="icon-equalizer mr-2"/>{{title}}</h5>
+            <h5><i class="icon-equalizer mr-2"/>
+                <span class="when-opened">Close</span><span class="when-closed">Open</span> Filters
+            </h5>
         </div>
         <b-collapse id="collapse_table-filter">
             <div class="table-filter-options">
@@ -107,6 +109,9 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+    .table-filter__title.collapsed .when-opened,
+    .table-filter__title:not(.collapsed) .when-closed {
+        display: none;
+    }
 </style>
