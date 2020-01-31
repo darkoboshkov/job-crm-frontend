@@ -6,18 +6,15 @@
                     v-if="item && hasPermission(item)"
                     :to="item.path"
                     class="nav-link">
-                <img :src="require(`@/assets/image/icon/${item.icon}`)" />
+                <i class="hiway-crm-icon" :class="item.icon"></i>
             </router-link>
-<!--            <a href="/dashboard/calendars" class="nav-link">-->
-<!--                <img src="@/assets/image/icon/calendar.svg"/>-->
-<!--            </a>-->
         </div>
         <div class="app-sidebar__bottom">
 <!--            <a href="javascript:;" class="nav-link" @click.prevent="onAddItem">-->
 <!--                <img src="@/assets/image/icon/plus.svg"/>-->
 <!--            </a>-->
             <router-link :to="'/' + role + '/dashboard/setting'" class="nav-link">
-                <img src="@/assets/image/icon/setting.svg"/>
+                <i class="hiway-crm-icon icon-gear"></i>
             </router-link>
         </div>
     </div>

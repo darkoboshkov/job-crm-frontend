@@ -22,26 +22,20 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    color: #7e7e7e;
 
     @include media-breakpoint-down(sm) {
       height: $mobile-sidebar-item-height;
     }
 
-    &.router-link-exact-active, &:hover, &:visited {
-      border-right: 2px solid var(--cobalt-blue);
-      img {
-        transform: scale(1.1);
-      }
+    i {
+      margin: auto;
+      font-size: 2rem;
     }
 
-    img {
-      width: $sidebar-image-width;
-      height: $sidebar-image-height;
-      margin: 0 auto;
-      @include media-breakpoint-down(sm) {
-        width: $mobile-sidebar-image-width;
-        height: $mobile-sidebar-image-height;
-      }
+    &.router-link-exact-active, &:hover {
+      color: var(--cobalt-blue);
+      border-right: 2px solid var(--cobalt-blue);
     }
   }
 

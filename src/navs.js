@@ -1,69 +1,69 @@
 export const items = [
     {
-        icon: "home.svg",
+        icon: "icon-home",
         path: "/admin/dashboard",
         roles: [
             "admin"
         ]
     },
     {
-        icon: "home.svg",
+        icon: "icon-home",
         path: "/manager/dashboard",
         roles: [
             "manager"
         ]
     },
     {
-        icon: "home.svg",
+        icon: "icon-home",
         path: "/worker/dashboard",
         roles: [
             "worker"
         ]
     },
     {
-        icon: "group.svg",
+        icon: "icon-people",
         path: "/admin/dashboard/candidates",
         roles: [
             "admin"
         ]
     },
     {
-        icon: "group.svg",
+        icon: "icon-people",
         path: "/manager/dashboard/candidates",
         roles: [
             "manager"
         ]
     },
     {
-        icon: "hand.svg",
+        icon: "icon-hand",
         path: "/admin/dashboard/matches",
         roles: [
             "admin"
         ]
     },
     {
-        icon: "hand.svg",
+        icon: "icon-hand",
         path: "/manager/dashboard/matches",
         roles: [
             "manager"
         ]
     },
     {
-        icon: "mail.svg",
+        icon: "icon-mail",
         path: "/admin/dashboard/chats",
         roles: [
             "admin"
         ]
     },
     {
-        icon: "mail.svg",
+        icon: "icon-mail",
         path: "/manager/dashboard/chats",
         roles: [
             "manager"
         ]
     },
     {
-        icon: "mail.svg",
+        icon: "icon-mail",
         path: "/worker/dashboard/chats",
         roles: [
             "worker"
