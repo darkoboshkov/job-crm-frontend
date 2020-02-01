@@ -35,7 +35,7 @@
                     <div>35 jaar</div>
                     <div>Beschikbaar</div>
                     <div>Arnhem</div>
-                    <div><a class="underline red" href="/">Match bekijken</a></div>
+                    <div><a class="underline red" :href="detailsPageLink">Match bekijken</a></div>
                 </div>
                 <div class="matching-item">
                     <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
@@ -45,7 +45,7 @@
                     <div>21 jaar</div>
                     <div>Beschikbaar</div>
                     <div>Delft</div>
-                    <div><a class="underline red" href="/">Match bekijken</a></div>
+                    <div><a class="underline red" :href="detailsPageLink"">Match bekijken</a></div>
                 </div>
                 <div class="matching-item">
                     <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
@@ -55,7 +55,7 @@
                     <div>29 jaar</div>
                     <div>Beschikbaar</div>
                     <div>Amstelveen</div>
-                    <div><a class="underline red" href="/">Match bekijken</a></div>
+                    <div><a class="underline red" :href="detailsPageLink">Match bekijken</a></div>
                 </div>
                 <div class="matching-item">
                     <img src="@/assets/image/avatar_nick.png" class="rounded-circle border mr-2" style="width:65px"/>
@@ -65,7 +65,7 @@
                     <div>33 jaar</div>
                     <div>Niet beschikbaar</div>
                     <div>Amersfoort</div>
-                    <div><a class="underline red" href="/">Match bekijken</a></div>
+                    <div><a class="underline red" :href="detailsPageLink">Match bekijken</a></div>
                 </div>
             </div>
         </div>
@@ -130,6 +130,11 @@
                     sort: '',
                     order: '',
                 },
+            }
+        },
+        computed: {
+            detailsPageLink() {
+                return this.$route.fullPath + '-details';
             }
         },
         mounted() {
