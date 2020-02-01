@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <table-filter class="candidate-filters"
+        <matching-filter class="candidate-filters"
                       style="margin-top: 24px;"
                       @table-filter="filter"
                       title="Filter Options"
@@ -73,12 +73,12 @@
 </template>
 
 <script>
-    import TableFilter from "@/components/common/TableFilter";
+    import MatchingFilter from "@/components/common/MatchingFilter";
     import jobsApi from "@/services/api/jobs";
 
     export default {
         name: "Matches",
-        components: {TableFilter},
+        components: {MatchingFilter},
         data() {
             return {
                 filterOptions: [
