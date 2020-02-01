@@ -36,14 +36,14 @@ export const items = [
     },
     {
         icon: "icon-hand",
-        path: "/admin/dashboard/matches",
+        path: "/admin/dashboard/matching",
         roles: [
             "admin"
         ]
     },
     {
         icon: "icon-hand",
-        path: "/manager/dashboard/matches",
+        path: "/manager/dashboard/matching",
         roles: [
             "manager"
         ]

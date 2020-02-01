@@ -24,9 +24,15 @@ export default [
                 beforeEnter: isAdminAuthorized
             },
             {
-                path: 'matches',
-                name: 'admin-matches',
-                component: () => import('../views/dashboard/admin/Matches.vue'),
+                path: 'matching',
+                name: 'admin-matching',
+                component: () => import('../views/dashboard/admin/Matching.vue'),
+                beforeEnter: isAdminAuthorized
+            },
+            {
+                path: 'matching-details',
+                name: 'admin-matching-details',
+                component: () => import('../views/dashboard/admin/MatchingDetails.vue'),
                 beforeEnter: isAdminAuthorized
             },
             {
@@ -46,18 +52,6 @@ export default [
                 path: 'setting',
                 name: 'admin-setting',
                 component: () => import('../views/dashboard/admin/setting/Index.vue'),
-                beforeEnter: isAdminAuthorized
-            },
-            {
-                path: 'matching',
-                name: 'admin-matching',
-                component: () => import('../views/dashboard/admin/Matching.vue'),
-                beforeEnter: isAdminAuthorized
-            },
-            {
-                path: 'matching-details',
-                name: 'admin-matching-details',
-                component: () => import('../views/dashboard/admin/MatchingDetails.vue'),
                 beforeEnter: isAdminAuthorized
             },
         ],

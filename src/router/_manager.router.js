@@ -1,4 +1,4 @@
-import {ifAuthenticated, isManagerAuthorized} from '../utils';
+import {ifAuthenticated, isAdminAuthorized, isManagerAuthorized} from '../utils';
 
 export default [
     {
@@ -24,10 +24,16 @@ export default [
                 beforeEnter: isManagerAuthorized
             },
             {
-                path: 'matches',
-                name: 'manager-matches',
-                component: () => import('../views/dashboard/manager/Matches.vue'),
+                path: 'matching',
+                name: 'manager-matching',
+                component: () => import('../views/dashboard/manager/Matching.vue'),
                 beforeEnter: isManagerAuthorized
+            },
+            {
+                path: 'matching-details',
+                name: 'manager-matching-details',
+                component: () => import('../views/dashboard/manager/MatchingDetails.vue'),
+                beforeEnter: isAdminAuthorized
             },
             {
                 path: 'profile/:id',
