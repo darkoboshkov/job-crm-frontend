@@ -104,7 +104,7 @@
         },
         methods: {
             applyFilter() {
-                this.$emit('table-filter', this.filterOptions);
+                this.$emit('match-filter', this.filterOptions);
             }
         },
     }

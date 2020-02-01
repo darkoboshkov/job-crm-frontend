@@ -17,12 +17,12 @@
         </div>
         <matching-filter class="candidate-filters"
                       style="margin-top: 24px;"
-                      @table-filter="filter"
+                      @match-filter="filter"
                       title="Filter Options"
                       :options="filterOptions"
         />
 
-        <div class="mt-5">
+        <div v-if="showTable" class="mt-5">
             <div class="matching-list">
                 <div class="matching-item header">
                     5 Gevonden matches “Parttime Magazijnmedewerker”
@@ -81,6 +81,7 @@
         components: {MatchingFilter},
         data() {
             return {
+                showTable: false, // temporary variable for MVP
                 filterOptions: [
                     {
                         title: "Woon - werk afstand",
@@ -142,7 +143,7 @@
         },
         methods: {
             filter() {
-
+                this.showTable = true;
             },
             computedDuration() {
                 return function(row) {
