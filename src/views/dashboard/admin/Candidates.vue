@@ -102,7 +102,7 @@
 
 <script>
     import TableFilter from "@/components/common/TableFilter";
-    import usersApi from "@/services/api/users";
+    import userApi from "@/services/api/user";
 
     export default {
         name: "Candidates",
@@ -246,7 +246,7 @@
                 this.getWorkers();
             },
             getWorkers() {
-                return usersApi.get(Object.assign(this.serverParams, {
+                return userApi.list(Object.assign(this.serverParams, {
                     'filter': {
                         role: 'worker'
                     },
