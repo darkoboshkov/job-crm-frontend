@@ -1,6 +1,7 @@
 import { ls, STORAGE_KEY } from "../plugins";
 
 let syncedData = {
+    _id: null,
     email: null,
     firstName: null,
     lastName: null,
@@ -25,6 +26,9 @@ export const state = {
 export const getters = {};
 
 export const mutations = {
+  UPDATE_ID(state, payload) {
+    state._id = payload;
+  },
   UPDATE_EMAIL(state, payload) {
     state.email = payload;
   },
@@ -41,6 +45,7 @@ export const mutations = {
     state.verified = payload;
   },
   UPDATE_USER_INFO(state, user) {
+    state._id = user._id ? user._id : null;
     state.email = user.email ? user.email : null;
     state.firstName = user.firstName ? user.firstName : null;
     state.lastName = user.lastName ? user.lastName : null;
@@ -50,8 +55,8 @@ export const mutations = {
 };
 
 export const actions = {
-  updateUserInfo({commit}, payload) {
-    commit('UPDATE_USER_INFO', payload)
+  updateId({commit}, payload) {
+    commit('UPDATE_ID', payload)
   },
   updateEmail({commit}, payload) {
     commit('UPDATE_EMAIL', payload)
@@ -67,5 +72,8 @@ export const actions = {
   },
   updateVerified({commit}, payload) {
     commit('UPDATE_VERIFIED', payload)
+  },
+  updateUserInfo({commit}, payload) {
+    commit('UPDATE_USER_INFO', payload)
   },
 };
