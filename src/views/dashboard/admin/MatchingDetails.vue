@@ -67,7 +67,7 @@
             </h2>
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 d-flex">
                     <div class="info-card">
                         <div class="title">Woon-werk afstand</div>
                         <div class="body">
@@ -84,7 +84,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 d-flex">
                     <div class="info-card">
                         <div class="title">Opleidingsniveau</div>
                         <div class="body">
@@ -101,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 d-flex">
                     <div class="info-card">
                         <div class="title">Beschikbaarheid</div>
                         <div class="body">
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 d-flex">
                     <div class="info-card">
                         <div class="title">Leeftijd</div>
                         <div class="body">
