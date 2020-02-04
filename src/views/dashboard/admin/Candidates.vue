@@ -102,7 +102,7 @@
 
 <script>
     import TableFilter from "@/components/common/TableFilter";
-    import userApi from "@/services/api/user";
+    import userApi from "@/services/api/users";
 
     export default {
         name: "Candidates",
