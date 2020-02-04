@@ -31,7 +31,20 @@
           }
         }
 
-        label {
+        .custom-file-label {
+          height: 50px;
+        }
+
+        .custom-file-label::after {
+          height: 48px;
+        }
+
+        .custom-file-label, .custom-file-label::after {
+          display: flex;
+          align-items: center;
+        }
+
+        & > label {
           width: 175px;
         }
       }
