@@ -48,7 +48,7 @@
                 v-model="model.birthday"
         />
       </div>
-      <div v-if="role === 'worker'" class="form-element mt-3">
+      <div class="form-element mt-3">
         <label>{{ $t("BANK_ACCOUNT_NUMBER") }}:</label>
         <b-form-input
                 type="text"
@@ -57,7 +57,7 @@
                 v-model="model.bankNumber"
         />
       </div>
-      <div v-if="role === 'worker'" class="form-element mt-3">
+      <div class="form-element mt-3">
         <label>{{ $t("STREET_NAME") }}:</label>
         <b-form-input
                 type="text"
@@ -66,7 +66,7 @@
                 v-model="model.street"
         />
       </div>
-      <div v-if="role === 'worker'" class="form-element mt-3">
+      <div class="form-element mt-3">
         <label>{{ $t("HOUSE_NUMBER") }}:</label>
         <b-form-input
                 type="text"
@@ -75,7 +75,7 @@
                 v-model="model.houseNumber"
         />
       </div>
-      <div v-if="role === 'worker'" class="form-element mt-3">
+      <div class="form-element mt-3">
         <label>{{ $t("POSTAL_CODE") }}:</label>
         <b-form-input
                 type="text"
@@ -84,7 +84,7 @@
                 v-model="model.postalCode"
         />
       </div>
-      <div v-if="role === 'worker'" class="form-element mt-3">
+      <div class="form-element mt-3">
         <label>{{ $t("CITY") }}:</label>
         <b-form-input
                 type="text"
@@ -156,11 +156,6 @@
           // passport: "",
         }
       };
-    },
-    computed: {
-      role() {
-        return this.$store.state.user.role;
-      }
     },
     mounted() {
       settingsApi.get(this.$store.state.user).then(res => {
