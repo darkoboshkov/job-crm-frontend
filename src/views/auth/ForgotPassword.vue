@@ -13,12 +13,12 @@
             <h1 class="title">{{ $t("FORGOT_MY_PASSWORD") }}</h1>
             <div v-if="!mailSent">
               <b-form-input
-                      id="email"
-                      v-model="email"
-                      type="email"
-                      required
-                      :placeholder="$t('EMAIL_ADDRESS')"
-                      class="custom-input mt-5"
+                id="email"
+                v-model="email"
+                type="email"
+                required
+                :placeholder="$t('EMAIL_ADDRESS')"
+                class="custom-input mt-5"
               />
               <b-form-invalid-feedback class="d-block">
                 {{ $t(error) }}
@@ -29,14 +29,13 @@
                 </button>
               </div>
             </div>
-            <div class="text-center"  v-else>
-                <h5 class="mt-5">We sent a reset password link to your email.</h5>
+            <div class="text-center" v-else>
+              <h5 class="mt-5">We sent a reset password link to your email.</h5>
               <button class="btn btn-blue send" @click.prevent="forgot">
                 {{ $t("RESEND_RESET_EMAIL") }}
               </button>
             </div>
           </form>
-
         </div>
       </div>
     </div>
