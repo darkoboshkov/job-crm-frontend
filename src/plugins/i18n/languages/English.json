@@ -136,5 +136,8 @@
   "CREATED_AT": "Registered since",
   "LOCATION": "Location",
   "available": "Available",
-  "unavailable": "Unavailable"
+  "unavailable": "Unavailable",
+  "STREET_NAME": "Street name",
+  "HOUSE_NUMBER": "House number",
+  "UPDATE_PROFILE": "Update profile"
 }

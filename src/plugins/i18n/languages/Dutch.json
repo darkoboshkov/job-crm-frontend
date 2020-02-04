@@ -136,5 +136,8 @@
   "CREATED_AT": "Ingeschreven sinds",
   "LOCATION": "Locatie",
   "available": "Beschikbaar",
-  "unavailable": "Niet beschikbaar"
+  "unavailable": "Niet beschikbaar",
+  "STREET_NAME": "straatnaam",
+  "HOUSE_NUMBER": "Huisnummer",
+  "UPDATE_PROFILE": "Profiel bijwerken"
 }
