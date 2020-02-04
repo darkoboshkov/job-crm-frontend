@@ -20,6 +20,7 @@
   "WORKER": "Worker",
   "FORGOT_MY_PASSWORD": "Forgot my password",
   "SEND_RESET_EMAIL": "Send reset email",
+  "RESEND_RESET_EMAIL": "Resend reset email",
   "RESET_PASSWORD": "Reset password",
   "NAME": "Name",
   "POSITION": "Position",

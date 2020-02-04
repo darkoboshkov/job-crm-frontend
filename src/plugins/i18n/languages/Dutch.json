@@ -20,6 +20,7 @@
   "WORKER": "Arbeider",
   "FORGOT_MY_PASSWORD": "Wachtwoord vergeten",
   "SEND_RESET_EMAIL": "Verstuur reset email",
+  "RESEND_RESET_EMAIL": "Resend reset email",
   "RESET_PASSWORD": "Wachtwoord opnieuw instellen",
   "NAME": "Naam",
   "POSITION": "Functie",
