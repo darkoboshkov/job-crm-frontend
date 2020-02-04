@@ -1,6 +1,6 @@
-const Swal = require('sweetalert2');
-import store from './store';
-import axios from './axios';
+const Swal = require("sweetalert2");
+import store from "./store";
+import axios from "./axios";
 
 /**
  * Toast
@@ -10,21 +10,21 @@ import axios from './axios';
  * @constructor
  */
 export const Toast = (message, icon) => {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        onOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    });
-    Toast.fire({
-        icon: icon,
-        title: message
-    });
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    onOpen: toast => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    }
+  });
+  Toast.fire({
+    icon: icon,
+    title: message
+  });
 };
 
 /**
@@ -37,13 +37,13 @@ export const Toast = (message, icon) => {
  * @constructor
  */
 export const Alert = (message, icon, position, showConfirm, timer) => {
-    Swal.fire({
-        title: message ? message : '',
-        icon: icon ? icon : 'success',
-        position: position ? position : '',
-        showConfirmButton: showConfirm ? showConfirm : true,
-        timer: timer ? timer : 0
-    })
+  Swal.fire({
+    title: message ? message : "",
+    icon: icon ? icon : "success",
+    position: position ? position : "",
+    showConfirmButton: showConfirm ? showConfirm : true,
+    timer: timer ? timer : 0
+  });
 };
 
 /**
@@ -51,13 +51,13 @@ export const Alert = (message, icon, position, showConfirm, timer) => {
  * @param tokenExpiresIn
  * @returns {boolean}
  */
-export const checkValidJwt = (tokenExpiresIn) => {
-    if (tokenExpiresIn) {
-        if (tokenExpiresIn > (Date.now() / 1000)) {
-            return true;
-        }
+export const checkValidJwt = tokenExpiresIn => {
+  if (tokenExpiresIn) {
+    if (tokenExpiresIn > Date.now() / 1000) {
+      return true;
     }
-    return false;
+  }
+  return false;
 };
 
 /**
@@ -67,15 +67,18 @@ export const checkValidJwt = (tokenExpiresIn) => {
  * @param next
  */
 export const ifAuthenticated = (to, from, next) => {
-    if (store.state.token.jwt != null && checkValidJwt(store.state.token.expiresIn)) {
-        if (!store.state.user.verified) {
-            next('/verify');
-            return;
-        }
-        next();
-        return;
+  if (
+    store.state.token.jwt != null &&
+    checkValidJwt(store.state.token.expiresIn)
+  ) {
+    if (!store.state.user.verified) {
+      next("/verify");
+      return;
     }
-    next('/login');
+    next();
+    return;
+  }
+  next("/login");
 };
 
 /**
@@ -85,15 +88,18 @@ export const ifAuthenticated = (to, from, next) => {
  * @param next
  */
 export const ifNotAuthenticated = (to, from, next) => {
-    if (store.state.token.jwt == null || !checkValidJwt(store.state.token.expiresIn)) {
-        next();
-        return;
-    }
-    if (!store.state.user.verified) {
-        next('/verify');
-        return;
-    }
-    next('/dashboard');
+  if (
+    store.state.token.jwt == null ||
+    !checkValidJwt(store.state.token.expiresIn)
+  ) {
+    next();
+    return;
+  }
+  if (!store.state.user.verified) {
+    next("/verify");
+    return;
+  }
+  next("/dashboard");
 };
 
 /**
@@ -103,11 +109,11 @@ export const ifNotAuthenticated = (to, from, next) => {
  * @param next
  */
 export const isAdminAuthorized = (to, from, next) => {
-    if(store.state.user &&  store.state.user.role ===  'admin') {
-        next();
-        return;
-    }
-    next({name: '404'});
+  if (store.state.user && store.state.user.role === "admin") {
+    next();
+    return;
+  }
+  next({ name: "404" });
 };
 
 /**
@@ -117,11 +123,11 @@ export const isAdminAuthorized = (to, from, next) => {
  * @param next
  */
 export const isManagerAuthorized = (to, from, next) => {
-    if(store.state.user &&  store.state.user.role ===  'manager') {
-        next();
-        return;
-    }
-    next({name: '404'});
+  if (store.state.user && store.state.user.role === "manager") {
+    next();
+    return;
+  }
+  next({ name: "404" });
 };
 
 /**
@@ -131,11 +137,11 @@ export const isManagerAuthorized = (to, from, next) => {
  * @param next
  */
 export const isWorkerAuthorized = (to, from, next) => {
-    if(store.state.user &&  store.state.user.role ===  'worker') {
-        next();
-        return;
-    }
-    next({name: '404'});
+  if (store.state.user && store.state.user.role === "worker") {
+    next();
+    return;
+  }
+  next({ name: "404" });
 };
 
 /**
@@ -144,15 +150,15 @@ export const isWorkerAuthorized = (to, from, next) => {
  * @param token
  */
 export const handleLogin = (token, userInfo) => {
-    store.dispatch('token/updateToken', token);
-    store.dispatch('user/updateUserInfo', userInfo);
-    axios.defaults.headers['Authorization'] = 'Bearer ' + token.jwt;
+  store.dispatch("token/updateToken", token);
+  store.dispatch("user/updateUserInfo", userInfo);
+  axios.defaults.headers["Authorization"] = "Bearer " + token.jwt;
 };
 
 /**
  * Actions after log out
  */
 export const handleLogout = () => {
-    store.dispatch('token/removeToken');
-    delete axios.defaults.headers['Authorization'];
+  store.dispatch("token/removeToken");
+  delete axios.defaults.headers["Authorization"];
 };

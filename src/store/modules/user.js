@@ -1,23 +1,21 @@
 import { ls, STORAGE_KEY } from "../plugins";
 
 let syncedData = {
-    _id: null,
-    email: null,
-    firstName: null,
-    lastName: null,
-    role: null,
-    verified: false
+  _id: null,
+  email: null,
+  firstName: null,
+  lastName: null,
+  role: null,
+  verified: false
 };
 
 if (ls.get(STORAGE_KEY)) {
   try {
-    syncedData = ls.get(STORAGE_KEY)
+    syncedData = ls.get(STORAGE_KEY);
   } catch (e) {
-    /* eslint-disable-next-line */
-    console.log(e)
+    console.log(e);
   }
 }
-
 
 export const state = {
   ...syncedData.user
@@ -51,29 +49,29 @@ export const mutations = {
     state.lastName = user.lastName ? user.lastName : null;
     state.role = user.role ? user.role : null;
     state.verified = user.verified ? user.verified : false;
-  },
+  }
 };
 
 export const actions = {
-  updateId({commit}, payload) {
-    commit('UPDATE_ID', payload)
+  updateId({ commit }, payload) {
+    commit("UPDATE_ID", payload);
   },
-  updateEmail({commit}, payload) {
-    commit('UPDATE_EMAIL', payload)
+  updateEmail({ commit }, payload) {
+    commit("UPDATE_EMAIL", payload);
   },
-  updateFirstName({commit}, payload) {
-    commit('UPDATE_FIRST_NAME', payload)
+  updateFirstName({ commit }, payload) {
+    commit("UPDATE_FIRST_NAME", payload);
   },
-  updateLastName({commit}, payload) {
-    commit('UPDATE_LAST_NAME', payload)
+  updateLastName({ commit }, payload) {
+    commit("UPDATE_LAST_NAME", payload);
   },
-  updateRole({commit}, payload) {
-    commit('UPDATE_ROLE', payload)
+  updateRole({ commit }, payload) {
+    commit("UPDATE_ROLE", payload);
   },
-  updateVerified({commit}, payload) {
-    commit('UPDATE_VERIFIED', payload)
+  updateVerified({ commit }, payload) {
+    commit("UPDATE_VERIFIED", payload);
   },
-  updateUserInfo({commit}, payload) {
-    commit('UPDATE_USER_INFO', payload)
-  },
+  updateUserInfo({ commit }, payload) {
+    commit("UPDATE_USER_INFO", payload);
+  }
 };

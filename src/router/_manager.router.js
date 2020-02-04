@@ -1,59 +1,64 @@
-import {ifAuthenticated, isAdminAuthorized, isManagerAuthorized} from '../utils';
+import {
+  ifAuthenticated,
+  isAdminAuthorized,
+  isManagerAuthorized
+} from "../utils";
 
 export default [
-    {
-        path: '/manager/dashboard',
-        component: () => import('../containers/DashboardContainer.vue'),
-        children: [
-            {
-                path: '/',
-                name: 'manager-dashboard',
-                component: () => import('../views/dashboard/manager/Index.vue'),
-                beforeEnter: isManagerAuthorized
-            },
-            {
-                path: 'candidates',
-                name: 'manager-candidates',
-                component: () => import('../views/dashboard/manager/Candidates.vue'),
-                beforeEnter: isManagerAuthorized
-            },
-            {
-                path: 'chats',
-                name: 'manager-chats',
-                component: () => import('../views/dashboard/manager/Chats.vue'),
-                beforeEnter: isManagerAuthorized
-            },
-            {
-                path: 'matching',
-                name: 'manager-matching',
-                component: () => import('../views/dashboard/manager/Matching.vue'),
-                beforeEnter: isManagerAuthorized
-            },
-            {
-                path: 'matching-details',
-                name: 'manager-matching-details',
-                component: () => import('../views/dashboard/manager/MatchingDetails.vue'),
-                beforeEnter: isAdminAuthorized
-            },
-            {
-                path: 'profile/:id',
-                name: 'manager-profile',
-                component: () => import('../views/dashboard/manager/Profile.vue'),
-                beforeEnter: isManagerAuthorized
-            },
-            {
-                path: 'privacy',
-                name: 'manager-privacy',
-                component: () => import('../views/dashboard/manager/Privacy.vue'),
-                beforeEnter: isManagerAuthorized
-            },
-            {
-                path: 'setting',
-                name: 'manager-setting',
-                component: () => import('../views/dashboard/manager/setting/Index.vue'),
-                beforeEnter: isManagerAuthorized
-            }
-        ],
-        beforeEnter: ifAuthenticated
-    }
-]
+  {
+    path: "/manager/dashboard",
+    component: () => import("../containers/DashboardContainer.vue"),
+    children: [
+      {
+        path: "/",
+        name: "manager-dashboard",
+        component: () => import("../views/dashboard/manager/Index.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "candidates",
+        name: "manager-candidates",
+        component: () => import("../views/dashboard/manager/Candidates.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "chats",
+        name: "manager-chats",
+        component: () => import("../views/dashboard/manager/Chats.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "matching",
+        name: "manager-matching",
+        component: () => import("../views/dashboard/manager/Matching.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "matching-details",
+        name: "manager-matching-details",
+        component: () =>
+          import("../views/dashboard/manager/MatchingDetails.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
+        path: "profile/:id",
+        name: "manager-profile",
+        component: () => import("../views/dashboard/manager/Profile.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "privacy",
+        name: "manager-privacy",
+        component: () => import("../views/dashboard/manager/Privacy.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "setting",
+        name: "manager-setting",
+        component: () => import("../views/dashboard/manager/setting/Index.vue"),
+        beforeEnter: isManagerAuthorized
+      }
+    ],
+    beforeEnter: ifAuthenticated
+  }
+];

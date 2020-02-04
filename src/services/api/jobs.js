@@ -1,8 +1,7 @@
-import request from '../request';
+import request from "../request";
 
 export default {
-
   get(params, resolve, reject = null) {
-    return request('get', '/jobs', params, resolve, reject);
-  },
-}
+    return request("get", "/jobs", params, resolve, reject);
+  }
+};
