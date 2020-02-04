@@ -67,7 +67,6 @@ export default {
             email: this.email
           })
           .then(res => {
-            console.log("res", res);
             if (res.verification) {
               this.$router.push("/reset/" + res.verification);
             }
