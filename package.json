@@ -13,6 +13,7 @@
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
+    "moment-timezone": "^0.5.27",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
     "store": "^2.0.12",

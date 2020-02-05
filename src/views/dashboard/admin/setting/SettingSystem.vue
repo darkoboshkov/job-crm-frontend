@@ -28,8 +28,7 @@
         <label>{{ $t("TIMEZONE") }}:</label>
         <b-form-select>
           <option>{{ $t("SELECT_OPTION") }}</option>
-          <option value="a">{{ $t("OPTION") }} A</option>
-          <option value="b">{{ $t("OPTION") }} B</option>
+          <option v-for="(tz, idx) in tzList" :key="idx">{{ tz }}</option>
         </b-form-select>
       </div>
       <div class="form-element mt-3">
@@ -45,6 +44,8 @@
 </template>
 
 <script>
+import moment from "moment-timezone";
+
 export default {
   name: "SettingSystem",
   data() {
@@ -53,8 +54,12 @@ export default {
       options: [
         { text: "Mail notifications", value: "red" },
         { text: "Phone message", value: "green" }
-      ]
+      ],
+      tzList: []
     };
+  },
+  mounted() {
+    this.tzList = moment.tz.names();
   }
 };
 </script>
