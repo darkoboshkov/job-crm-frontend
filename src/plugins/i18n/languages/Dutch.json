@@ -139,5 +139,13 @@
   "unavailable": "Niet beschikbaar",
   "STREET_NAME": "straatnaam",
   "HOUSE_NUMBER": "Huisnummer",
-  "UPDATE_PROFILE": "Profiel bijwerken"
+  "UPDATE_PROFILE": "Profiel bijwerken",
+  "WEEK_START_AT": "Week start op",
+  "SUNDAY": "Zondag",
+  "MONDAY": "Maandag",
+  "TUESDAY": "Dinsdag",
+  "WEDNESDAY": "Woensdag",
+  "THURSDAY": "Donderdag",
+  "FRIDAY": "Vrijdag",
+  "SATURDAY": "Zaterdag"
 }
