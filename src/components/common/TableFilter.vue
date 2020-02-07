@@ -2,7 +2,8 @@
   <div class="table-filter">
     <div v-b-toggle.collapse_table-filter class="table-filter__title">
       <h5>
-        <i class="hiway-crm-icon icon-equalizer mr-2" /> <span class="when-opened">Close</span
+        <i class="hiway-crm-icon icon-equalizer mr-2" />
+        <span class="when-opened">Close</span
         ><span class="when-closed">Open</span> Filters
       </h5>
     </div>
