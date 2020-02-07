@@ -28,17 +28,24 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
-        path: "matching",
-        name: "manager-matching",
-        component: () => import("../views/dashboard/manager/Matching.vue"),
+        path: "jobs",
+        name: "manager-jobs",
+        component: () => import("../views/dashboard/manager/jobs/Index.vue"),
         beforeEnter: isManagerAuthorized
       },
       {
-        path: "matching-details",
+        path: "jobs/:jobId/matching",
+        name: "manager-matching",
+        component: () =>
+          import("../views/dashboard/manager/jobs/MatchingJob.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "jobs/:jobId/:workerId/matching-details",
         name: "manager-matching-details",
         component: () =>
-          import("../views/dashboard/manager/MatchingDetails.vue"),
-        beforeEnter: isAdminAuthorized
+          import("../views/dashboard/manager/jobs/MatchingDetails.vue"),
+        beforeEnter: isManagerAuthorized
       },
       {
         path: "profile/:id",

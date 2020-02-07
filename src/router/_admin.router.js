@@ -24,22 +24,29 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
-        path: "matching",
+        path: "jobs",
+        name: "admin-jobs",
+        component: () => import("../views/dashboard/admin/jobs/Index.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
+        path: "jobs/:companyId/:jobId/matching",
         name: "admin-matching",
-        component: () => import("../views/dashboard/admin/Matching.vue"),
+        component: () =>
+          import("../views/dashboard/admin/jobs/MatchingJob.vue"),
         beforeEnter: isAdminAuthorized
       },
       {
-        path: "matching-details",
+        path: "jobs/:companyId/:jobId/:workerId/matching-details",
         name: "admin-matching-details",
-        component: () => import("../views/dashboard/admin/MatchingDetails.vue"),
+        component: () =>
+          import("../views/dashboard/admin/jobs/MatchingDetails.vue"),
         beforeEnter: isAdminAuthorized
       },
       {
-        path: "profile/:id",
+        path: "profile/:companyId/:id",
         name: "admin-profile",
         component: () => import("../views/dashboard/admin/Profile.vue"),
-        props: route => ({ mode: route.query.mode, id: route.params.id }),
         beforeEnter: isAdminAuthorized
       },
       {

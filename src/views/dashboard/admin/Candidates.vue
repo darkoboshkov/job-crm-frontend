@@ -264,9 +264,8 @@ export default {
       return function(row) {
         let date = new Date(row["createdAt"]);
 
-        return `${date.getFullYear()}-${date.getMonth() +
-          1}-${date.getDate()} ${date.getHours()}:
-                    ${date.getMinutes()}:${date.getSeconds()}`;
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}
+                ${date.getHours()}: ${date.getMinutes()}:${date.getSeconds()}`;
       };
     },
     selectCandidate(props) {
@@ -274,7 +273,9 @@ export default {
     },
     goToProfile(props) {
       if (props && props.row) {
-        this.$router.push(`/${this.role}/dashboard/profile/${props.row._id}`);
+        this.$router.push(
+          `/${this.role}/dashboard/profile/${props.row.companyId}/${props.row._id}`
+        );
       }
     },
     onPageChange(e) {
@@ -292,7 +293,6 @@ export default {
       // this.getWorkers();
     },
     onColumnFilter(e) {
-      // console.log('onColumnFilter', e);
       this.getWorkers();
     },
     onCellClick(params) {
@@ -308,7 +308,7 @@ export default {
     },
     getWorkers() {
       return userApi
-        .list(
+        .getAll(
           Object.assign(this.serverParams, {
             filter: {
               role: "worker"
@@ -331,17 +331,11 @@ export default {
           this.totalRows = res.totalDocs;
         });
     },
-    filter(v) {
-      // console.log('v', v);
-    },
-    addPerson() {
-      this.$router.push(`/${this.role}/dashboard/profile/0?mode=edit`);
-    }
+    filter(v) {},
+    addPerson() {}
   },
   watch: {
-    "$i18n.locale"(v) {
-      // console.log('locale', v);
-    }
+    "$i18n.locale"(v) {}
   }
 };
 </script>

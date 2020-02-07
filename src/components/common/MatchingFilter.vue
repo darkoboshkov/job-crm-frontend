@@ -6,7 +6,7 @@
         ><span class="when-closed">Open</span> Filters
       </h5>
     </div>
-    <b-collapse id="collapse_table-filter">
+    <b-collapse id="collapse_table-filter" visible>
       <div class="table-filter-options">
         <div
           class="filter-option"
@@ -57,10 +57,10 @@
           </div>
         </div>
       </div>
-      <div class="mt-3">
+      <div class="mt-5">
         <button
-          class="btn btn-red mt-4 d-flex m-auto align-items-center justify-content-around"
-          style="width: 150px"
+          class="btn btn-red large mt-5 d-flex m-auto align-items-center justify-content-around"
+          style="width: 200px"
           @click="applyFilter"
         >
           {{ $t("APPLY_FILTERS") }}<i class="hiway-crm-icon icon-search"></i>

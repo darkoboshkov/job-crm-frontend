@@ -6,6 +6,7 @@ let syncedData = {
   firstName: null,
   lastName: null,
   role: null,
+  companyId: null,
   verified: false
 };
 
@@ -49,6 +50,7 @@ export const mutations = {
     state.lastName = user.lastName ? user.lastName : null;
     state.role = user.role ? user.role : null;
     state.verified = user.verified ? user.verified : false;
+    state.companyId = user.companyId ? user.companyId : null;
   }
 };
 

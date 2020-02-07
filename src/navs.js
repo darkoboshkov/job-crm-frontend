@@ -7,7 +7,7 @@ export const items = [
   {
     icon: "icon-home",
     path: "/manager/dashboard",
-    roles: ["manager"]
+    roles: ["manager", "owner"]
   },
   {
     icon: "icon-home",
@@ -22,17 +22,17 @@ export const items = [
   {
     icon: "icon-people",
     path: "/manager/dashboard/candidates",
-    roles: ["manager"]
+    roles: ["manager", "owner"]
   },
   {
     icon: "icon-hand",
-    path: "/admin/dashboard/matching",
+    path: "/admin/dashboard/jobs",
     roles: ["admin"]
   },
   {
     icon: "icon-hand",
-    path: "/manager/dashboard/matching",
-    roles: ["manager"]
+    path: "/manager/dashboard/jobs",
+    roles: ["manager", "owner"]
   },
   {
     icon: "icon-mail",
@@ -42,7 +42,7 @@ export const items = [
   {
     icon: "icon-mail",
     path: "/manager/dashboard/chats",
-    roles: ["manager"]
+    roles: ["manager", "owner"]
   },
   {
     icon: "icon-mail",

@@ -167,6 +167,9 @@ export default {
     },
     role() {
       return this.$store.state.user.role;
+    },
+    companyId() {
+      return this.$store.state.user.companyId;
     }
   },
   mounted() {
@@ -182,9 +185,9 @@ export default {
       return function(row) {
         let date = new Date(row["createdAt"]);
 
-        return `${date.getFullYear()}-${date.getMonth() +
-          1}-${date.getDate()} ${date.getHours()}:
-                    ${date.getMinutes()}:${date.getSeconds()}`;
+        return `${date.getFullYear()}-${date.getMonth() + 1}-
+                ${date.getDate()} ${date.getHours()}:
+                ${date.getMinutes()}:${date.getSeconds()}`;
       };
     },
     selectCandidate(props) {
@@ -202,16 +205,8 @@ export default {
       });
       this.getWorkers();
     },
-    onSortChange(e) {
-      // console.log('onSortChange', e);
-      // this.serverParams = Object.assign({}, this.serverParams, { // todo: back-end sorting is not working as expected
-      //   sort: e[0].field === 'age' ? 'birthday' : e[0].field,
-      //   order: e[0].type === 'desc' ? 1 : -1,
-      // });
-      // this.getWorkers();
-    },
+    onSortChange(e) {},
     onColumnFilter(e) {
-      // console.log('onColumnFilter', e);
       this.getWorkers();
     },
     onPerPageChange(e) {
@@ -222,8 +217,9 @@ export default {
     },
     getWorkers() {
       return userApi
-        .list(
+        .getCompanyUsers(
           Object.assign(this.serverParams, {
+            companyId: this.companyId,
             filter: {
               role: "worker"
             }
@@ -245,14 +241,10 @@ export default {
           this.totalRows = res.totalDocs;
         });
     },
-    filter(v) {
-      // console.log('v', v);
-    }
+    filter(v) {}
   },
   watch: {
-    "$i18n.locale"(v) {
-      // console.log('locale', v);
-    }
+    "$i18n.locale"(v) {}
   }
 };
 </script>
