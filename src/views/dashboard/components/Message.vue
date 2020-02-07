@@ -28,7 +28,7 @@
               Je loon gegevens zijn gewijgd. Zie de veranderingen in je
               werkgevers informatie.
             </small>
-            <i class="icon-more-vertical" />
+            <i class="hiway-crm-icon icon-more-vertical" />
           </div>
         </li>
         <li>
@@ -40,7 +40,7 @@
               Je loon gegevens zijn gewijgd. Zie de veranderingen in je
               werkgevers informatie.
             </small>
-            <i class="icon-more-vertical" />
+            <i class="hiway-crm-icon icon-more-vertical" />
           </div>
         </li>
         <li>
@@ -52,13 +52,13 @@
               Je loon gegevens zijn gewijgd. Zie de veranderingen in je
               werkgevers informatie.
             </small>
-            <i class="icon-more-vertical" />
+            <i class="hiway-crm-icon icon-more-vertical" />
           </div>
         </li>
       </ul>
       <div class="mt-3">
         <a href="javascript:void(0)">
-          <i class="icon-angle-right mr-2" />
+          <i class="hiway-crm-icon icon-angle-right mr-2" />
           {{ $t("VIEW_ALL") }}
         </a>
       </div>

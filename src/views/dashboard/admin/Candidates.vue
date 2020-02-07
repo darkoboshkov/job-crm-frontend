@@ -86,7 +86,7 @@
               class="icon-dropdown m-2"
             >
               <template v-slot:button-content>
-                <i class="icon-more-vertical" />
+                <i class="hiway-crm-icon icon-more-vertical" />
               </template>
               <b-dropdown-item href="#" @click="goToProfile(props)"
                 >View Profile</b-dropdown-item
@@ -98,7 +98,7 @@
               class="delete-confirmation-button"
               @click="selectCandidate(props)"
             >
-              <i class="icon-bin" />
+              <i class="hiway-crm-icon icon-bin" />
             </b-button>
           </div>
           <div

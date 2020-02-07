@@ -25,7 +25,7 @@
               Vragen lijst 18-05-2019
             </b-form-checkbox>
           </div>
-          <i class="icon-more-vertical" />
+          <i class="hiway-crm-icon icon-more-vertical" />
         </li>
         <li class="d-flex responsive align-items-center">
           <div class="flex-1">
@@ -33,7 +33,7 @@
               Vragen lijst 18-05-2019
             </b-form-checkbox>
           </div>
-          <i class="icon-more-vertical" />
+          <i class="hiway-crm-icon icon-more-vertical" />
         </li>
         <li class="d-flex responsive align-items-center">
           <div class="flex-1">
@@ -41,7 +41,7 @@
               Vragen lijst 18-05-2019
             </b-form-checkbox>
           </div>
-          <i class="icon-more-vertical" />
+          <i class="hiway-crm-icon icon-more-vertical" />
         </li>
       </ul>
     </div>

@@ -2,7 +2,7 @@
   <div id="page_profile" class="dashboard-content">
     <div class="container-fluid">
       <a href="javascript:void(0)" class="back" @click.prevent="$router.go(-1)">
-        <i class="icon-angle-left ml-2" /> {{ $t("BACK") }}
+        <i class="hiway-crm-icon icon-angle-left ml-2" /> {{ $t("BACK") }}
       </a>
       <b-row class="mt-5">
         <b-col md="12">
@@ -19,7 +19,7 @@
             <a href="javascript:void(0);" @click.prevent="onEditProfile">
               {{ editProfile ? $t("SAVE_PROFILE") : $t("EDIT_PROFILE") }}
             </a>
-            <i class="icon-pencil ml-2" />
+            <i class="hiway-crm-icon icon-pencil ml-2" />
           </div>
         </b-col>
       </b-row>
@@ -100,7 +100,7 @@
                       style="width: 100px; justify-content: center;"
                     >
                       {{ $t("UPLOAD") }}
-                      <i class="icon-upload ml-2" />
+                      <i class="hiway-crm-icon icon-upload ml-2" />
                     </button>
                   </div>
                 </div>
@@ -119,8 +119,8 @@
                     2,3mb
                   </div>
                   <div>
-                    <i class="icon-more-vertical mr-2" />
-                    <i class="icon-bin" />
+                    <i class="hiway-crm-icon icon-more-vertical mr-2" />
+                    <i class="hiway-crm-icon icon-bin" />
                   </div>
                 </li>
                 <li class="d-flex">
@@ -134,8 +134,8 @@
                     2,3mb
                   </div>
                   <div>
-                    <i class="icon-more-vertical mr-2" />
-                    <i class="icon-bin" />
+                    <i class="hiway-crm-icon icon-more-vertical mr-2" />
+                    <i class="hiway-crm-icon icon-bin" />
                   </div>
                 </li>
               </ul>

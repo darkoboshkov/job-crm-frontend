@@ -10,7 +10,7 @@
     <button class="btn btn-blue large" @click="goToDashBoard">
       <span class="float-left pl-4">{{ $t("BACK_TO_YOUR_DASHBOARD") }}</span>
       <span class="float-right px-4">
-        <i class="icon-angle-right" />
+        <i class="hiway-crm-icon icon-angle-right" />
       </span>
     </button>
   </div>

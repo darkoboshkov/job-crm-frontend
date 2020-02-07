@@ -1,6 +1,6 @@
 <template>
   <div class="search-bar">
-    <i class="icon-search" />
+    <i class="hiway-crm-icon icon-search" />
     <input v-model="search" placeholder="Search..." />
   </div>
 </template>

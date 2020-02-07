@@ -15,8 +15,8 @@
         :data-vat="dataVat"
       />
       <label :for="id || field">{{ label }}</label>
-      <span class="input-icon" v-if="iconClassName"
-        ><i :class="iconClassName"></i
+      <span class="input-icon " v-if="iconClassName"
+        ><i class="hiway-crm-icon" :class="iconClassName"></i
       ></span>
       <div class="invalid-feedback" v-if="invalid">
         {{ $t(error) }}

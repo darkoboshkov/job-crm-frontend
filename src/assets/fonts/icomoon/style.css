@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'hiway-crm-icon';
-  src:  url('fonts/hiway-crm-icon.eot?u6myw8');
-  src:  url('fonts/hiway-crm-icon.eot?u6myw8#iefix') format('embedded-opentype'),
-    url('fonts/hiway-crm-icon.ttf?u6myw8') format('truetype'),
-    url('fonts/hiway-crm-icon.woff?u6myw8') format('woff'),
-    url('fonts/hiway-crm-icon.svg?u6myw8#hiway-crm-icon') format('svg');
+  src:  url('fonts/hiway-crm-icon.eot?vz92i9');
+  src:  url('fonts/hiway-crm-icon.eot?vz92i9#iefix') format('embedded-opentype'),
+    url('fonts/hiway-crm-icon.ttf?vz92i9') format('truetype'),
+    url('fonts/hiway-crm-icon.woff?vz92i9') format('woff'),
+    url('fonts/hiway-crm-icon.svg?vz92i9#hiway-crm-icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-i {
+.hiway-crm-icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'hiway-crm-icon' !important;
   speak: none;
@@ -25,39 +25,60 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-angle-left:before {
+  content: "\e903";
+}
+.icon-add:before {
+  content: "\e900";
+}
+.icon-angle-down:before {
+  content: "\e901";
+}
+.icon-angle-right:before {
+  content: "\e902";
+}
+.icon-bin:before {
+  content: "\e904";
+}
+.icon-calendar:before {
+  content: "\e905";
+}
+.icon-hand:before {
+  content: "\e906";
+}
+.icon-home:before {
+  content: "\e907";
+}
+.icon-hours:before {
+  content: "\e908";
+}
+.icon-jobs:before {
+  content: "\e909";
+}
 .icon-mail:before {
   content: "\e90a";
 }
-.icon-hand:before {
+.icon-more-vertical:before {
   content: "\e90b";
 }
-.icon-plus:before {
-  content: "\e900";
-}
-.icon-arrow-down:before {
-  content: "\e901";
-}
-.icon-calendar:before {
-  content: "\e902";
-}
-.icon-home:before {
-  content: "\e903";
-}
-.icon-clock:before {
-  content: "\e904";
-}
-.icon-bag:before {
-  content: "\e905";
-}
-.icon-partnership:before {
-  content: "\e906";
+.icon-partner:before {
+  content: "\e90c";
 }
 .icon-people:before {
-  content: "\e907";
+  content: "\e90d";
 }
 .icon-search:before {
-  content: "\e908";
+  content: "\e90e";
 }
-.icon-gear:before {
-  content: "\e909";
+.icon-settings:before {
+  content: "\e90f";
+}
+.icon-upload:before {
+  content: "\e910";
+}
+.icon-equalizer:before {
+  content: "\e911";
+}
+.icon-pencil:before {
+  content: "\e912";
 }

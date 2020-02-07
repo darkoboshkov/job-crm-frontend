@@ -33,7 +33,7 @@
                 Kruidvat
               </small>
             </div>
-            <i class="icon-angle-right" />
+            <i class="hiway-crm-icon icon-angle-right" />
           </div>
         </li>
         <li>
@@ -50,7 +50,7 @@
                 Tele2 marketing
               </small>
             </div>
-            <i class="icon-angle-right" />
+            <i class="hiway-crm-icon icon-angle-right" />
           </div>
         </li>
         <li>
@@ -67,7 +67,7 @@
                 ING
               </small>
             </div>
-            <i class="icon-angle-right" />
+            <i class="hiway-crm-icon icon-angle-right" />
           </div>
         </li>
         <template v-if="!collapsed">
@@ -85,7 +85,7 @@
                   Kruidvat
                 </small>
               </div>
-              <i class="icon-angle-right" />
+              <i class="hiway-crm-icon icon-angle-right" />
             </div>
           </li>
           <li>
@@ -102,14 +102,14 @@
                   Tele2 marketing
                 </small>
               </div>
-              <i class="icon-angle-right" />
+              <i class="hiway-crm-icon icon-angle-right" />
             </div>
           </li>
         </template>
       </ul>
       <div class="mt-3" v-if="collapsed">
         <a @click="viewAll">
-          <i class="icon-angle-right mr-2" />
+          <i class="hiway-crm-icon icon-angle-right mr-2" />
           {{ $t("VIEW_ALL") }}
         </a>
       </div>

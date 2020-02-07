@@ -31,7 +31,7 @@
             <button class="btn btn-red large" @click="goToDashboard">
               <span class="float-left pl-4">{{ $t("CONTINUE") }}</span>
               <span class="float-right pr-4">
-                <i class="icon-angle-right" />
+                <i class="hiway-crm-icon icon-angle-right" />
               </span>
             </button>
           </b-card>
@@ -55,7 +55,7 @@
             <button class="btn btn-red large" @click="goToDashboard">
               <span class="float-left pl-4">{{ $t("CONTINUE") }}</span>
               <span class="float-right pr-4">
-                <i class="icon-angle-right" />
+                <i class="hiway-crm-icon icon-angle-right" />
               </span>
             </button>
           </b-card>
@@ -84,7 +84,7 @@
             <button class="btn btn-red large" @click="goToDashboard">
               <span class="float-left pl-4">{{ $t("CONTINUE") }}</span>
               <span class="float-right pr-4">
-                <i class="icon-angle-right" />
+                <i class="hiway-crm-icon icon-angle-right" />
               </span>
             </button>
           </b-card>

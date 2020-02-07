@@ -6,7 +6,7 @@
     <div class="account-dropdown__list">
       <a href="javascript;" @click.prevent="toggleDropdown">
         {{ fullName }}
-        <i class="icon-angle-down ml-3" />
+        <i class="hiway-crm-icon icon-angle-down ml-3" />
       </a>
       <ul v-if="collapsed">
         <li>

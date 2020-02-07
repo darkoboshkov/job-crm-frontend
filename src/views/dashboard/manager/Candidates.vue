@@ -40,7 +40,7 @@
               class="icon-dropdown m-2"
             >
               <template v-slot:button-content>
-                <i class="icon-more-vertical" />
+                <i class="hiway-crm-icon icon-more-vertical" />
               </template>
               <b-dropdown-item href="#" @click="goToProfile(props)"
                 >View Profile</b-dropdown-item

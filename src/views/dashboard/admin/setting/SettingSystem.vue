@@ -1,6 +1,6 @@
 <template>
   <div class="setting-system">
-    <div class="setting-system__form">
+    <div class="setting-system__form container">
       <div class="form-element">
         <label>{{ $t("BACKGROUND_COLOR") }}:</label>
         <b-form-input
