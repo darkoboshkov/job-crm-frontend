@@ -68,14 +68,6 @@
             <b-form-invalid-feedback class="d-block">
               {{ $t(cPasswordError) }}
             </b-form-invalid-feedback>
-            <div class="d-flex role-selector">
-              <b-form-radio v-model="role" name="role" value="manager">{{
-                $t("MANAGER")
-              }}</b-form-radio>
-              <b-form-radio v-model="role" name="role" value="worker">{{
-                $t("WORKER")
-              }}</b-form-radio>
-            </div>
             <b-form-invalid-feedback class="d-block mt-4">
               {{ $t(error) }}
             </b-form-invalid-feedback>
@@ -109,7 +101,6 @@ export default {
       firstName: "",
       lastName: "",
       email: "",
-      role: "manager",
       password: "",
       cPassword: "",
 
@@ -166,7 +157,6 @@ export default {
             firstName: this.firstName,
             lastName: this.lastName,
             email: this.email,
-            role: this.role,
             password: this.password,
             c_password: this.cPassword
           })

@@ -77,7 +77,8 @@
         styleClass="custom-table"
       >
         <template slot="table-row" slot-scope="props">
-          <div v-if="props.column.field === 'actions'">
+          <div v-if="props.column.field === 'actions'" class="d-flex">
+
             <b-dropdown
               variant="link"
               toggle-class="text-decoration-none"
@@ -306,6 +307,9 @@ export default {
       });
       this.getWorkers();
     },
+    filter(v) {},
+    addPerson() {},
+    deletePerson() {},
     getWorkers() {
       return userApi
         .getAll(
@@ -330,9 +334,7 @@ export default {
           });
           this.totalRows = res.totalDocs;
         });
-    },
-    filter(v) {},
-    addPerson() {}
+    }
   },
   watch: {
     "$i18n.locale"(v) {}
