@@ -17,7 +17,7 @@
       <!--                <img src="@/assets/image/icon/plus.svg"/>-->
       <!--            </a>-->
       <router-link :to="'/' + role + '/dashboard/setting'" class="nav-link">
-        <i class="hiway-crm-icon icon-gear"></i>
+        <i class="hiway-crm-icon icon-settings"></i>
       </router-link>
     </div>
   </div>

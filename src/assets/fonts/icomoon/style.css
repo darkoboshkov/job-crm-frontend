@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'hiway-crm-icon';
-  src:  url('fonts/hiway-crm-icon.eot?vz92i9');
-  src:  url('fonts/hiway-crm-icon.eot?vz92i9#iefix') format('embedded-opentype'),
-    url('fonts/hiway-crm-icon.ttf?vz92i9') format('truetype'),
-    url('fonts/hiway-crm-icon.woff?vz92i9') format('woff'),
-    url('fonts/hiway-crm-icon.svg?vz92i9#hiway-crm-icon') format('svg');
+  src:  url('fonts/hiway-crm-icon.eot?p91cb7');
+  src:  url('fonts/hiway-crm-icon.eot?p91cb7#iefix') format('embedded-opentype'),
+    url('fonts/hiway-crm-icon.ttf?p91cb7') format('truetype'),
+    url('fonts/hiway-crm-icon.woff?p91cb7') format('woff'),
+    url('fonts/hiway-crm-icon.svg?p91cb7#hiway-crm-icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -81,4 +81,10 @@
 }
 .icon-pencil:before {
   content: "\e912";
+}
+.icon-office:before {
+  content: "\e913";
+}
+.icon-user-tie:before {
+  content: "\e976";
 }

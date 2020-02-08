@@ -12,6 +12,12 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
+        path: "companies",
+        name: "admin-companies",
+        component: () => import("../views/dashboard/admin/companies/Index.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
         path: "candidates",
         name: "admin-candidates",
         component: () => import("../views/dashboard/admin/Candidates.vue"),

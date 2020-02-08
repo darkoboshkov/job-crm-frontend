@@ -1,22 +1,18 @@
 <template>
   <div id="page_candidates" class="dashboard-content">
-    <div>
-      <div>
-        <div class="d-flex justify-content-between align-items-end">
-          <h1 class="title">
-            {{ $t("CANDIDATES") }}
-          </h1>
-          <img
-            class="add-candidate"
-            src="@/assets/image/icon/person-add.svg"
-            @click="addPerson"
-          />
-        </div>
-        <p class="sub-title">
-          {{ $t("CANDIDATE_DESCRIPTION", { candidates: this.totalRows }) }}
-        </p>
-      </div>
+    <div class="d-flex justify-content-between align-items-end">
+      <h1 class="title">
+        {{ $t("CANDIDATES") }}
+      </h1>
+      <img
+        class="add-candidate"
+        src="@/assets/image/icon/person-add.svg"
+        @click="addPerson"
+      />
     </div>
+    <p class="sub-title">
+      {{ $t("CANDIDATE_DESCRIPTION", { candidates: this.totalRows }) }}
+    </p>
     <div class="d-flex justify-content-between">
       <table-filter
         class="candidate-filters"
