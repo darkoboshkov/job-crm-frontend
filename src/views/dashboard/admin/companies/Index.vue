@@ -35,9 +35,9 @@
               <template v-slot:button-content>
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
-              <b-dropdown-item href="#" @click="goToCompany(props)"
-              >{{ $t("VIEW_COMPANY") }}</b-dropdown-item
-              >
+              <b-dropdown-item href="#" @click="goToCompany(props)">{{
+                $t("VIEW_COMPANY")
+              }}</b-dropdown-item>
             </b-dropdown>
             <button class="btn btn-transparent">
               <i class="hiway-crm-icon icon-bin" />
@@ -123,20 +123,16 @@ export default {
     filter(v) {},
     goToCompany(props) {
       if (props && props.row) {
-        this.$router.push(
-          `/${this.role}/dashboard/companies/${props.row._id}`
-        );
+        this.$router.push(`/${this.role}/dashboard/companies/${props.row._id}`);
       }
     },
     createCompany() {},
     deleteCompany() {},
     getCompanies() {
-      return companyApi
-        .getAll(this.serverParams)
-        .then(res => {
-          this.totalRows = res.totalDocs;
-          this.rows = res.docs;
-        });
+      return companyApi.getAll(this.serverParams).then(res => {
+        this.totalRows = res.totalDocs;
+        this.rows = res.docs;
+      });
     }
   }
 };

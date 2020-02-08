@@ -34,6 +34,12 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
+        path: "jobs/:jobId",
+        name: "manage-jobs-detail",
+        component: () => import("../views/dashboard/admin/jobs/JobsDetail.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
         path: "jobs/:jobId/matching",
         name: "manager-matching",
         component: () =>

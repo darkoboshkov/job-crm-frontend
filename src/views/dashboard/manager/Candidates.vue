@@ -42,9 +42,9 @@
               <template v-slot:button-content>
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
-              <b-dropdown-item href="#" @click="goToProfile(props)"
-                >{{ $t("VIEW_PROFILE") }}</b-dropdown-item
-              >
+              <b-dropdown-item href="#" @click="goToProfile(props)">{{
+                $t("VIEW_PROFILE")
+              }}</b-dropdown-item>
             </b-dropdown>
           </div>
           <div

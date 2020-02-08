@@ -50,6 +50,12 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
+        path: "jobs/:companyId/:jobId",
+        name: "admin-jobs-detail",
+        component: () => import("../views/dashboard/admin/jobs/JobsDetail.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
         path: "jobs/:companyId/:jobId/matching",
         name: "admin-matching",
         component: () =>

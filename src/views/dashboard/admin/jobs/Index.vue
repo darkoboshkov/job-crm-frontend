@@ -20,12 +20,24 @@
         styleClass="custom-table"
       >
         <template slot="table-row" slot-scope="props">
-          <div v-if="props.column.field === 'actions'">
-            <span class="start-matching">
-              <a href="javascript:void(0);" @click.prevent="goToMatching(props)"
-                >{{ $t("START_MATCHING") }}</a
-              >
-            </span>
+          <div v-if="props.column.field === 'actions'" class="d-flex">
+            <b-dropdown
+              variant="link"
+              toggle-class="text-decoration-none"
+              no-caret
+              offset="0"
+              class="icon-dropdown m-2"
+            >
+              <template v-slot:button-content>
+                <i class="hiway-crm-icon icon-more-vertical color-black" />
+              </template>
+              <b-dropdown-item href="#" @click="goToJob(props)">{{
+                $t("VIEW_JOB")
+              }}</b-dropdown-item>
+            </b-dropdown>
+            <button class="btn btn-transparent" @click="goToMatching(props)">
+              {{ $t("START_MATCHING") }}
+            </button>
           </div>
           <div
             v-else-if="props.column.field === 'image'"
@@ -127,6 +139,13 @@ export default {
         page: e.currentPage
       });
       this.getActiveJobs();
+    },
+    goToJob(props) {
+      if (props && props.row) {
+        this.$router.push(
+          `/${this.role}/dashboard/jobs/${props.row.company._id}/${props.row._id}`
+        );
+      }
     },
     goToMatching(props) {
       if (props && props.row) {
