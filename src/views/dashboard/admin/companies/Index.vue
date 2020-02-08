@@ -92,6 +92,11 @@ export default {
       ]
     };
   },
+  computed: {
+    role() {
+      return this.$store.state.user.role;
+    }
+  },
   mounted() {
     this.getCompanies();
   },
@@ -116,7 +121,13 @@ export default {
       this.getCompanies();
     },
     filter(v) {},
-    goToCompany(props) {},
+    goToCompany(props) {
+      if (props && props.row) {
+        this.$router.push(
+          `/${this.role}/dashboard/companies/${props.row._id}`
+        );
+      }
+    },
     createCompany() {},
     deleteCompany() {},
     getCompanies() {

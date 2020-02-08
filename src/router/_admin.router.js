@@ -25,10 +25,10 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
-        path: "companies/:companyId/edit",
-        name: "admin-companies-edit",
+        path: "companies/:companyId",
+        name: "admin-companies-detail",
         component: () =>
-          import("../views/dashboard/admin/companies/CompanyEdit.vue"),
+          import("../views/dashboard/admin/companies/CompanyDetail.vue"),
         beforeEnter: isAdminAuthorized
       },
       {
