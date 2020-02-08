@@ -74,7 +74,6 @@
       >
         <template slot="table-row" slot-scope="props">
           <div v-if="props.column.field === 'actions'" class="d-flex">
-
             <b-dropdown
               variant="link"
               toggle-class="text-decoration-none"
