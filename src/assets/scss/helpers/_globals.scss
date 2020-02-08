@@ -69,3 +69,10 @@ ul.custom-list {
   border-color: var(--green);
   background-color: var(--green);
 }
+
+.dropdown-menu:focus {
+  outline: none;
+}
+.dropdown-item:focus {
+  outline: none;
+}

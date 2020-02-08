@@ -1,10 +1,10 @@
 <template>
   <div id="jobs_candidates" class="dashboard-content">
     <h1 class="title">
-      Active Jobs
+      {{ $t("ACTIVE_JOBS") }}
     </h1>
     <p class="sub-title">We have found {{ totalRows }} active jobs</p>
-    <div class="jobs-list mt-5">
+    <div class="jobs-list mt-3">
       <vue-good-table
         mode="remote"
         @on-page-change="onPageChange"
@@ -23,7 +23,7 @@
           <div v-if="props.column.field === 'actions'">
             <span class="start-matching">
               <a href="javascript:void(0);" @click.prevent="goToMatching(props)"
-                >Start Matching</a
+                >{{ $t("START_MATCHING") }}</a
               >
             </span>
           </div>
@@ -109,10 +109,10 @@ export default {
         )
         .then(res => {
           this.rows = res.docs;
+          this.totalRows = res.totalDocs;
           this.rows.forEach(row => {
             row.company = row.company[0];
             row.position = row.position[0];
-            this.totalRows = res.totalDocs;
           });
         });
     },

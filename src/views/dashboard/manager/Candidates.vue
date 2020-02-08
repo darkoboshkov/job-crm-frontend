@@ -17,7 +17,7 @@
       :title="'Filter Options'"
       :options="filterOptions"
     />
-    <div class="candidates-list">
+    <div class="candidates-list mt-3">
       <vue-good-table
         mode="remote"
         @on-page-change="onPageChange"
@@ -40,10 +40,10 @@
               class="icon-dropdown m-2"
             >
               <template v-slot:button-content>
-                <i class="hiway-crm-icon icon-more-vertical" />
+                <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
               <b-dropdown-item href="#" @click="goToProfile(props)"
-                >View Profile</b-dropdown-item
+                >{{ $t("VIEW_PROFILE") }}</b-dropdown-item
               >
             </b-dropdown>
           </div>

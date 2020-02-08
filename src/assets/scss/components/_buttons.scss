@@ -26,5 +26,21 @@
   &-blue {
     @include button-color(--cobalt-blue)
   }
+
+  &-transparent {
+    width: auto;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    &:hover {
+      background-color: transparent;
+      border: none;
+    }
+    &:focus {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+    }
+  }
   @include button-sizes;
 }

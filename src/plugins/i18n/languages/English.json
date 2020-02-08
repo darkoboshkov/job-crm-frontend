@@ -148,5 +148,8 @@
   "THURSDAY": "Thursday",
   "FRIDAY": "Friday",
   "SATURDAY": "Saturday",
-  "UPDATE_SETTINGS": "Update settings"
+  "UPDATE_SETTINGS": "Update settings",
+  "COMPANIES": "Companies",
+  "ACTIVE_JOBS": "Active Jobs",
+  "VIEW_COMPANY": "View Company"
 }

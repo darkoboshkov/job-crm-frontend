@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <div class="candidates-list">
+    <div class="candidates-list mt-3">
       <vue-good-table
         mode="remote"
         @on-page-change="onPageChange"
@@ -82,20 +82,20 @@
               class="icon-dropdown m-2"
             >
               <template v-slot:button-content>
-                <i class="hiway-crm-icon icon-more-vertical" />
+                <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
               <b-dropdown-item href="#" @click="goToProfile(props)"
                 >View Profile</b-dropdown-item
               >
             </b-dropdown>
 
-            <b-button
+            <button
               v-b-modal.delete_confirmation
-              class="delete-confirmation-button"
+              class="btn btn-transparent"
               @click="selectCandidate(props)"
             >
-              <i class="hiway-crm-icon icon-bin" />
-            </b-button>
+              <i class="hiway-crm-icon icon-bin color-black" />
+            </button>
           </div>
           <div
             v-else-if="props.column.field === 'image'"

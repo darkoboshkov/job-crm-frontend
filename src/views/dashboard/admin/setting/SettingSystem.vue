@@ -54,7 +54,9 @@
         </b-form-select>
       </div>
       <div class="form-element mt-3">
-        <button class="btn btn-blue" @click="update">{{ $t("UPDATE_SETTINGS") }}</button>
+        <button class="btn btn-blue" @click="update">
+          {{ $t("UPDATE_SETTINGS") }}
+        </button>
       </div>
     </div>
   </div>

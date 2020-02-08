@@ -113,10 +113,10 @@ export default {
         )
         .then(res => {
           this.rows = res.docs;
+          this.totalRows = res.totalDocs;
           this.rows.forEach(row => {
             row.company = row.company[0];
             row.position = row.position[0];
-            this.totalRows = res.totalDocs;
           });
         });
     },
