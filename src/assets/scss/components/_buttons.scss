@@ -8,6 +8,9 @@
   &.rectangle {
     border-radius: 0;
   }
+  &.circle {
+    border-radius: 50%;
+  }
   &-black {
     @include button-color(--black)
   }

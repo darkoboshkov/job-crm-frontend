@@ -1,8 +1,16 @@
 <template>
     <div id="page_companies" class="dashboard-content">
-        <h1 class="title">
-            Companies
-        </h1>
+        <div class="d-flex justify-content-between align-items-end">
+            <h1 class="title">
+                Companies
+            </h1>
+            <button
+               class="btn btn-red circle large"
+               style="width:50px"
+            >
+                <i class="hiway-crm-icon icon-add" />
+            </button>
+        </div>
         <p class="sub-title">We have found {{ totalRows }} companies</p>
         <div class="companies-list mt-5">
             <vue-good-table
