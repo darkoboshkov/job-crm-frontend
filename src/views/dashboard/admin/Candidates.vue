@@ -94,7 +94,7 @@
               class="btn btn-transparent"
               @click="selectCandidate(props)"
             >
-              <i class="hiway-crm-icon icon-bin color-black" />
+              <i class="hiway-crm-icon icon-bin" />
             </button>
           </div>
           <div

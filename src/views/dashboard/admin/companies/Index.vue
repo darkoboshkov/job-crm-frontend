@@ -40,7 +40,7 @@
               >
             </b-dropdown>
             <button class="btn btn-transparent">
-              <i class="hiway-crm-icon icon-bin color-black" />
+              <i class="hiway-crm-icon icon-bin" />
             </button>
           </div>
           <div
