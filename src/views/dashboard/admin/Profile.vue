@@ -107,6 +107,7 @@
           </b-card>
         </b-col>
       </b-row>
+
       <b-row class="mt-5">
         <b-col md="12">
           <b-card>
@@ -164,6 +165,20 @@
         </b-col>
       </b-row>
     </div>
+    <b-modal
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
+    >
+      <div class="text-center">
+        <img class="success-image" src="@/assets/image/icon/success.svg">
+        <p class="alert-title color-blue">{{ $t("CHANGE_PROFILE_MODAL_TITLE") }}</p>
+        <p class="alert-sub-title">{{ $t("CHANGE_PROFILE_MODAL_SUB_TITLE") }}</p>
+        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">{{ $t("CONTINUE") }}</button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -242,6 +257,7 @@ export default {
         overview: this.model.overview
       };
       profileApi.patchById(data).then(res => {
+        this.$refs["modal-alert"].show();
         this.fetchProfile();
       });
     }
