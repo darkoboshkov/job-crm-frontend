@@ -2,7 +2,7 @@
   <div id="page_profile" class="dashboard-content">
     <div class="container-fluid">
       <a href="javascript:void(0)" class="back" @click.prevent="$router.go(-1)">
-        <i class="hiway-crm-icon icon-angle-left ml-2" />
+        <i class="hiway-crm-icon icon-angle-left mr-2" />
         <span>{{ $t("BACK") }}</span>
       </a>
       <b-row class="mt-5">
