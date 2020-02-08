@@ -173,10 +173,16 @@
       modal-class="modal-alert"
     >
       <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/success.svg">
-        <p class="alert-title color-blue">{{ $t("CHANGE_PROFILE_MODAL_TITLE") }}</p>
-        <p class="alert-sub-title">{{ $t("CHANGE_PROFILE_MODAL_SUB_TITLE") }}</p>
-        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">{{ $t("CONTINUE") }}</button>
+        <img class="success-image" src="@/assets/image/icon/success.svg" />
+        <p class="alert-title color-blue">
+          {{ $t("CHANGE_PROFILE_MODAL_TITLE") }}
+        </p>
+        <p class="alert-sub-title">
+          {{ $t("CHANGE_PROFILE_MODAL_SUB_TITLE") }}
+        </p>
+        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
+          {{ $t("CONTINUE") }}
+        </button>
       </div>
     </b-modal>
   </div>

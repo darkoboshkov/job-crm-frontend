@@ -122,7 +122,9 @@
         ></b-form-file>
       </div>
       <div class="form-element mt-3">
-        <b-button @click="update">{{ $t("UPDATE_PROFILE") }}</b-button>
+        <button class="btn btn-blue" @click="update">
+          {{ $t("UPDATE_SETTINGS") }}
+        </button>
       </div>
     </div>
     <div class="setting-profile__photo">
@@ -130,6 +132,26 @@
         <img src="@/assets/image/avatar_nick.png" />
       </div>
     </div>
+    <b-modal
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
+    >
+      <div class="text-center">
+        <img class="success-image" src="@/assets/image/icon/success.svg" />
+        <p class="alert-title color-blue">
+          {{ $t("CHANGE_USER_SETTING_MODAL_TITLE") }}
+        </p>
+        <p class="alert-sub-title">
+          {{ $t("CHANGE_USER_SETTING_MODAL_SUB_TITLE") }}
+        </p>
+        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
+          {{ $t("CONTINUE") }}
+        </button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -167,6 +189,7 @@ export default {
       settingsApi
         .patch(Object.assign(this.$store.state.user, this.model))
         .then(res => {
+          this.$refs["modal-alert"].show();
           console.log("response", res);
         });
     }

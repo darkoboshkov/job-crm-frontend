@@ -3,8 +3,8 @@
     <div class="container">
       <h1 class="title">{{ $t("SETTINGS") }}</h1>
       <b-tabs class="mt-3 bg-white">
-        <b-tab :title="$t('PROFILE_SETTINGS')" active>
-          <setting-profile />
+        <b-tab :title="$t('ACCOUNT_SETTINGS')" active>
+          <setting-account />
         </b-tab>
 
         <b-tab :title="$t('NOTIFICATIONS')">
@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import SettingProfile from "./SettingProfile";
+import SettingAccount from "./SettingAccount";
 export default {
   name: "Setting",
-  components: { SettingProfile }
+  components: { SettingAccount }
 };
 </script>
 
