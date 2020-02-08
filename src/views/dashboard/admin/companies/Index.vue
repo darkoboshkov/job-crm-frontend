@@ -130,11 +130,13 @@ export default {
     },
     deleteCompany(props) {
       let id = props?.row?._id;
-      companyApi.delete({
-        companyId: id
-      }).then(() => {
-        this.getCompanies();
-      });
+      companyApi
+        .delete({
+          companyId: id
+        })
+        .then(() => {
+          this.getCompanies();
+        });
     },
     getCompanies() {
       return companyApi.getAll(this.serverParams).then(res => {
