@@ -4,6 +4,9 @@ export default {
   getAll(params, resolve, reject = null) {
     return request("get", `/companies`, params, resolve, reject);
   },
+  create(params, resolve, reject = null) {
+    return request("post", `/companies`, params, resolve, reject);
+  },
   get(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;

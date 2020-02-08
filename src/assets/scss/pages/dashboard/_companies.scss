@@ -1,2 +1,13 @@
-#page_candidates {
+#page_companies {
+}
+
+#page_company_create {
+  .company-create__header {
+    color: var(--lipstick-red);
+    margin: 48px 24px 12px;
+    font-size: 34px;
+  }
+  .form-element {
+    margin-bottom: 1rem;
+  }
 }

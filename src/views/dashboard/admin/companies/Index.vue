@@ -4,9 +4,11 @@
       <h1 class="title">
         {{ $t("COMPANIES") }}
       </h1>
-      <button class="btn btn-red circle large" style="width:50px">
-        <i class="hiway-crm-icon icon-add" />
-      </button>
+      <router-link to="/admin/dashboard/companies/create">
+        <button class="btn btn-red circle large" style="width:50px">
+          <i class="hiway-crm-icon icon-add" />
+        </button>
+      </router-link>
     </div>
     <p class="sub-title">We have found {{ totalRows }} companies</p>
     <div class="companies-list mt-3">
@@ -39,7 +41,7 @@
                 $t("VIEW_COMPANY")
               }}</b-dropdown-item>
             </b-dropdown>
-            <button class="btn btn-transparent">
+            <button class="btn btn-transparent" @click="deleteCompany(props)">
               <i class="hiway-crm-icon icon-bin" />
             </button>
           </div>
@@ -126,8 +128,14 @@ export default {
         this.$router.push(`/${this.role}/dashboard/companies/${props.row._id}`);
       }
     },
-    createCompany() {},
-    deleteCompany() {},
+    deleteCompany(props) {
+      let id = props?.row?._id;
+      companyApi.delete({
+        companyId: id
+      }).then(() => {
+        this.getCompanies();
+      });
+    },
     getCompanies() {
       return companyApi.getAll(this.serverParams).then(res => {
         this.totalRows = res.totalDocs;

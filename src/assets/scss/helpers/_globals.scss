@@ -76,3 +76,22 @@ ul.custom-list {
 .dropdown-item:focus {
   outline: none;
 }
+
+.back {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  i {
+    font-size: 1.25em;
+  }
+  span {
+    line-height: 1;
+  }
+}

@@ -18,7 +18,7 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
-        path: "companies/:companyId/create",
+        path: "companies/create",
         name: "admin-companies-create",
         component: () =>
           import("../views/dashboard/admin/companies/CompanyCreate.vue"),
