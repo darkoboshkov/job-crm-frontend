@@ -3,7 +3,7 @@
     <template v-slot:header>
       <div class="row">
         <div class="col-md-6">
-          <h2 class="m-0">{{ $t("TO_DO_LIST_TODAY") }}</h2>
+          <h2 class="m-0">{{ $t("component.todo.title") }}</h2>
         </div>
         <div class="col-md-6">
           <button

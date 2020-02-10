@@ -10,12 +10,14 @@
       </a>
       <ul v-if="collapsed">
         <li>
-          <a href="javascript:void(0);" @click.prevent="logout">Logout</a>
+          <a href="javascript:void(0);" @click.prevent="logout">{{
+            $t("common.logout")
+          }}</a>
         </li>
         <li>
-          <router-link :to="'/' + role + '/dashboard/privacy'"
-            >Privacy</router-link
-          >
+          <router-link :to="'/' + role + '/dashboard/privacy'">{{
+            $t("common.privacy")
+          }}</router-link>
         </li>
       </ul>
     </div>

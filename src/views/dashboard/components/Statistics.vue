@@ -3,7 +3,7 @@
     <template v-slot:header>
       <div class="row">
         <div class="col-md-6">
-          <h2 class="m-0">{{ $t("MALE_STATISTICS") }}</h2>
+          <h2 class="m-0">{{ $t("component.statistics.title") }}</h2>
         </div>
         <div class="col-md-6">
           <button
@@ -30,7 +30,7 @@
           <div class="d-flex responsive text-center border-bottom py-4">
             <div class="flex-1 px-5">
               <p>
-                {{ $t("WAGE_LEVEL") }}
+                {{ $t("component.statistics.wage_level") }}
               </p>
               <h4>
                 +29.7%
@@ -38,7 +38,7 @@
             </div>
             <div class="flex-1 px-5 border-left">
               <p>
-                {{ $t("WAGE_LEVEL") }}
+                {{ $t("component.statistics.wage_level") }}
               </p>
               <h4>
                 -54.7%
@@ -48,13 +48,13 @@
           <div class="d-flex responsive text-center py-4">
             <div class="flex-1 px-5">
               <p>
-                {{ $t("PERFORMANCE") }}
+                {{ $t("component.statistics.performance") }}
               </p>
               <h4></h4>
             </div>
             <div class="flex-1 px-5">
               <p>
-                {{ $t("EXPORT") }}
+                {{ $t("component.statistics.export") }}
               </p>
             </div>
           </div>

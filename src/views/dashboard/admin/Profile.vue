@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <a href="javascript:void(0)" class="back" @click.prevent="$router.go(-1)">
         <i class="hiway-crm-icon icon-angle-left mr-2" />
-        <span>{{ $t("BACK") }}</span>
+        <span>{{ $t("common.back") }}</span>
       </a>
       <b-row class="mt-5">
         <b-col md="12">
@@ -18,7 +18,9 @@
           </div>
           <div class="profile-edit">
             <a href="javascript:void(0);" @click.prevent="onEditProfile">
-              {{ editProfile ? $t("SAVE_PROFILE") : $t("EDIT_PROFILE") }}
+              {{
+                editProfile ? $t("page_profile.save") : $t("page_profile.edit")
+              }}
             </a>
             <i class="hiway-crm-icon icon-pencil ml-2" />
           </div>
@@ -29,7 +31,7 @@
         <b-col md="6">
           <b-card class="mt-4">
             <template v-slot:header>
-              <h5 class="m-0">{{ $t("BODY_TEXT") }}</h5>
+              <h5 class="m-0">{{ $t("page_profile.form.overview") }}</h5>
             </template>
             <b-textarea v-if="editProfile" v-model="model.overview" rows="5" />
             <div v-else>
@@ -66,20 +68,22 @@
         <b-col md="6">
           <b-card class="mt-4">
             <template v-slot:header>
-              <h5 class="m-0">{{ $t("SPECIFICATIONS") }}</h5>
+              <h5 class="m-0">{{ $t("page_profile.form.specifications") }}</h5>
             </template>
             <div>
               <ul class="custom-list">
                 <li>
-                  {{ $t("REGISTERED_SINCE") }}
+                  {{ $t("page_profile.form.since") }}
                   <span class="pull-right">{{ model.registeredAt }}</span>
                 </li>
                 <li>
-                  {{ $t("AGE") }}
-                  <span class="pull-right">{{ model.age }} jaar</span>
+                  {{ $t("page_profile.form.age") }}
+                  <span class="pull-right"
+                    >{{ model.age }} {{ $t("page_profile.form.years") }}</span
+                  >
                 </li>
                 <li>
-                  {{ $t("STATUS") }}
+                  {{ $t("page_profile.form.status") }}
                   <div class="pull-right">
                     <b-form-select
                       v-if="editProfile"
@@ -99,7 +103,7 @@
                   </div>
                 </li>
                 <li>
-                  {{ $t("PLACE") }}
+                  {{ $t("page_profile.form.location") }}
                   <span class="pull-right">{{ model.location }}</span>
                 </li>
               </ul>
@@ -113,14 +117,14 @@
           <b-card>
             <template v-slot:header>
               <div class="d-flex">
-                <h5 class="m-0 flex-1">{{ $t("FILES") }}</h5>
+                <h5 class="m-0 flex-1">{{ $t("page_profile.form.files") }}</h5>
                 <div>
                   <div class="float-right">
                     <button
                       class="btn btn-blue upload"
                       style="width:100px;justify-content:center;"
                     >
-                      {{ $t("UPLOAD") }}
+                      {{ $t("page_profile.button.upload") }}
                       <i class="hiway-crm-icon icon-upload ml-2" />
                     </button>
                   </div>
@@ -175,13 +179,13 @@
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
         <p class="alert-title color-blue">
-          {{ $t("CHANGE_PROFILE_MODAL_TITLE") }}
+          {{ $t("page_profile.modal.change.title") }}
         </p>
         <p class="alert-sub-title">
-          {{ $t("CHANGE_PROFILE_MODAL_SUB_TITLE") }}
+          {{ $t("page_profile.modal.change.sub_title") }}
         </p>
         <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("CONTINUE") }}
+          {{ $t("page_profile.modal.change.continue") }}
         </button>
       </div>
     </b-modal>

@@ -3,7 +3,7 @@
     <template v-slot:header>
       <div class="row">
         <div class="col-md-6">
-          <h2 class="m-0">{{ $t("OPEN_POSITIONS") }}</h2>
+          <h2 class="m-0">{{ $t("component.position.title") }}</h2>
         </div>
         <div class="col-md-6">
           <button
@@ -110,7 +110,7 @@
       <div class="mt-3" v-if="collapsed">
         <a @click="viewAll">
           <i class="hiway-crm-icon icon-angle-right mr-2" />
-          {{ $t("VIEW_ALL") }}
+          {{ $t("component.position.view_all") }}
         </a>
       </div>
     </div>

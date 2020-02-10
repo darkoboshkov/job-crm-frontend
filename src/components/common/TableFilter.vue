@@ -3,8 +3,9 @@
     <div v-b-toggle.collapse_table-filter class="table-filter__title">
       <h5>
         <i class="hiway-crm-icon icon-equalizer mr-2" />
-        <span class="when-opened">Close</span
-        ><span class="when-closed">Open</span> Filters
+        <span class="when-opened">{{ $t("common.close") }}</span
+        ><span class="when-closed">{{ $t("common.open") }}</span>
+        {{ $t("common.filters") }}
       </h5>
     </div>
     <b-collapse id="collapse_table-filter">
@@ -63,7 +64,7 @@
         style="width: 150px"
         @click="applyFilter"
       >
-        {{ $t("APPLY_FILTERS") }}
+        {{ $t("common.apply_filters") }}
       </button>
     </b-collapse>
   </div>

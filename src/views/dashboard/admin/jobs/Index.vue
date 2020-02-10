@@ -1,9 +1,11 @@
 <template>
   <div id="jobs_candidates" class="dashboard-content">
     <h1 class="title">
-      {{ $t("ACTIVE_JOBS") }}
+      {{ $t("page_jobs.title") }}
     </h1>
-    <p class="sub-title">We have found {{ totalRows }} active jobs</p>
+    <p class="sub-title">
+      {{ $t("page_jobs.sub_title", { jobs: this.totalRows }) }}
+    </p>
     <div class="jobs-list mt-3">
       <vue-good-table
         mode="remote"
@@ -32,11 +34,11 @@
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
               <b-dropdown-item href="#" @click="goToJob(props)">{{
-                $t("VIEW_JOB")
+                $t("page_jobs.table.view_job")
               }}</b-dropdown-item>
             </b-dropdown>
             <button class="btn btn-transparent" @click="goToMatching(props)">
-              {{ $t("START_MATCHING") }}
+              {{ $t("page_jobs.table.start_matching") }}
             </button>
           </div>
           <div
@@ -70,12 +72,36 @@ export default {
         perPage: 5
       },
       columns: [
-        { label: "Image", field: "image" },
-        { label: "Title", field: "title", name: "title" },
-        { label: "Company", field: "company.name", name: "company" },
-        { label: "Duration", field: this.computedDuration() },
-        { label: "Position", field: "position.name", name: "position" },
-        { label: "Actions", field: "actions", name: "actions" }
+        {
+          label: this.$t("page_jobs.table.image"),
+          field: "image",
+          name: "image"
+        },
+        {
+          label: this.$t("page_jobs.table.title"),
+          field: "title",
+          name: "title"
+        },
+        {
+          label: this.$t("page_jobs.table.company"),
+          field: "company.name",
+          name: "company"
+        },
+        {
+          label: this.$t("page_jobs.table.duration"),
+          field: this.computedDuration(),
+          name: "duration"
+        },
+        {
+          label: this.$t("page_jobs.table.position"),
+          field: "position.name",
+          name: "position"
+        },
+        {
+          label: this.$t("page_jobs.table.actions"),
+          field: "actions",
+          name: "actions"
+        }
       ],
       rows: [],
       searchTerm: "",

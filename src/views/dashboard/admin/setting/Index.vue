@@ -1,18 +1,16 @@
 <template>
   <div id="page_settings" class="dashboard-content">
     <div class="container">
-      <h1 class="title">{{ $t("SETTINGS") }}</h1>
+      <h1 class="title">{{ $t("page_setting.title") }}</h1>
       <b-tabs class="mt-3 bg-white">
-        <b-tab :title="$t('ACCOUNT_SETTINGS')" active>
+        <b-tab :title="$t('page_setting.account_setting.title')" active>
           <setting-account />
         </b-tab>
-        <b-tab :title="$t('SYSTEM_SETTINGS')">
+        <b-tab :title="$t('page_setting.system_setting.title')">
           <setting-system />
         </b-tab>
-        <b-tab :title="$t('NOTIFICATIONS')">
-          <p>I'm a disabled tab!</p>
-        </b-tab>
-        <b-tab :title="$t('OTHER')"> </b-tab>
+        <b-tab :title="$t('page_setting.notification_setting.title')"> </b-tab>
+        <b-tab :title="$t('page_setting.other_setting.title')"> </b-tab>
       </b-tabs>
     </div>
   </div>

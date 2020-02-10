@@ -2,7 +2,7 @@
   <div id="page_company_create" class="company-create">
     <div class="company-create__header text-center">
       <h1>
-        {{ $t("CREATE_YOUR_OWN_COMPANY") }}
+        {{ $t("page_create_company.title") }}
       </h1>
     </div>
     <form class="company-create__form mt-4" ref="company-create-form">
@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-12 col-md-6">
             <div class="form-element">
-              <label>{{ $t("COMPANY_NAME") }}:</label>
+              <label>{{ $t("page_create_company.form.name") }}:</label>
               <b-form-input
                 type="text"
                 name="name"
@@ -22,7 +22,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-element">
-              <label>{{ $t("COMPANY_EMAIL") }}:</label>
+              <label>{{ $t("page_create_company.form.email") }}:</label>
               <b-form-input
                 type="email"
                 name="email"
@@ -34,7 +34,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-element">
-              <label>{{ $t("COMPANY_PHONE_NUMBER") }}:</label>
+              <label>{{ $t("page_create_company.form.phone") }}:</label>
               <b-form-input
                 type="number"
                 name="phone"
@@ -45,7 +45,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-element">
-              <label>{{ $t("COMPANY_KVK_NUMBER") }}:</label>
+              <label>{{ $t("page_create_company.form.kvk") }}:</label>
               <b-form-input
                 type="number"
                 name="kvk"
@@ -57,7 +57,9 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-element">
-              <label>{{ $t("COMPANY_LIMIT_CREDIT_SAFE") }}:</label>
+              <label
+                >{{ $t("page_create_company.form.limit_credit_safe") }}:</label
+              >
               <b-form-input
                 type="number"
                 required
@@ -68,7 +70,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-element">
-              <label>{{ $t("COMPANY_VAT_SHIFTED") }}:</label>
+              <label>{{ $t("page_create_company.form.vat_shifted") }}:</label>
               <b-form-input
                 type="text"
                 name="vat_shifted"
@@ -80,7 +82,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-element">
-              <label>{{ $t("COMPANY_G_ACCOUNT") }}:</label>
+              <label>{{ $t("page_create_company.form.g_account") }}:</label>
               <b-form-input
                 type="text"
                 name="g_account"
@@ -91,7 +93,9 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-element">
-              <label>{{ $t("COMPANY_TERM_OF_PAYMENT") }}:</label>
+              <label
+                >{{ $t("page_create_company.form.terms_of_payment") }}:</label
+              >
               <b-form-select
                 name="term_of_payment"
                 required
@@ -110,7 +114,7 @@
                 class="custom-input"
                 v-model="model.automaticCollection"
               >
-                {{ $t("COMPANY_AUTOMATIC_COLLECTION") }}
+                {{ $t("page_create_company.form.automatic_collection") }}
               </b-form-checkbox>
             </div>
           </div>
@@ -122,7 +126,7 @@
                 class="custom-input"
                 v-model="model.chargeTravelExpenses"
               >
-                {{ $t("COMPANY_CHARGE_TRAVEL_EXPENSES") }}
+                {{ $t("page_create_company.form.charge_travel_expenses") }}
               </b-form-checkbox>
             </div>
           </div>
@@ -134,7 +138,7 @@
                 class="custom-input"
                 v-model="model.chargeOtherExpenses"
               >
-                {{ $t("COMPANY_CHARGE_OTHER_EXPENSES") }}
+                {{ $t("page_create_company.form.charge_other_expenses") }}
               </b-form-checkbox>
             </div>
           </div>
@@ -145,7 +149,7 @@
                 class="custom-input"
                 name="is_active"
               >
-                {{ $t("COMPANY_IS_ACTIVE") }}
+                {{ $t("page_create_company.form.is_active") }}
               </b-form-checkbox>
             </div>
           </div>
@@ -164,7 +168,7 @@
         <div class="row">
           <div class="col-12 text-right">
             <button type="submit" class="btn btn-blue">
-              {{ $t("CREATE") }}
+              {{ $t("page_create_company.button.create") }}
             </button>
           </div>
         </div>
@@ -217,5 +221,3 @@ export default {
   }
 };
 </script>
-
-<style scoped></style>

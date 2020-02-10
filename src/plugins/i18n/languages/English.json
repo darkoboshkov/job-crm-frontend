@@ -1,156 +1,399 @@
 {
-  "EMAIL_IS_NOT_VALID": "The email is not valid",
-  "PASSWORD_TOO_SHORT_MIN_5": "The password is shorter than 5, minimum",
-  "THIS_FIELD_IS_REQUIRED": "This field is required",
-  "PASSWORDS_NOT_MATCH": "The password is not matching",
-  "WRONG_PASSWORD": "The password is not correct",
-  "USER_DOES_NOT_EXIST": "The user does not exist",
-  "EMAIL_ALREADY_EXISTS": "The email already exists",
-  "LOGIN": "Login",
-  "CREATE_ACCOUNT": "Create Account",
-  "FORGOT": "Forgot",
-  "FIRST_NAME": "First Name",
-  "MIDDLE_NAME": "Middle Name",
-  "LAST_NAME": "Last Name",
-  "EMAIL_ADDRESS": "E-mail address",
-  "PASSWORD": "Password",
-  "CONFIRM_PASSWORD": "Confirm Password",
-  "SIGNUP": "Sign Up",
-  "MANAGER": "Manager",
-  "WORKER": "Worker",
-  "FORGOT_MY_PASSWORD": "Forgot my password",
-  "SEND_RESET_EMAIL": "Send reset email",
-  "RESEND_RESET_EMAIL": "Resend reset email",
-  "RESET_PASSWORD": "Reset password",
-  "NAME": "Name",
-  "POSITION": "Position",
-  "VERIFY_EMAIL_NOTE": "Please verify your email address to login to Hiway CRM!",
-  "VERIFY_EMAIL_ADDRESS1": "We've just sent an email to your address",
-  "VERIFY_EMAIL_ADDRESS2": "Please check your email and click on the link provided to verify your address.",
-  "VERIFY_EMAIL_ADDRESS3": "If you haven't received email, request",
-  "VERIFY_EMAIL_ADDRESS4": "resend",
-  "VERIFY_EMAIL_ADDRESS5": "here.",
-  "ACCEPT_INVITATION": "Accept Invitation",
-  "ACCEPT": "Accept",
-  "RESET": "Reset",
-  "SETTINGS": "Settings",
-  "GENDER": "Gender",
-  "MAN": "Man",
-  "WOMAN": "Woman",
-  "DATE_OF_BIRTH": "Date of birth",
-  "BANK_ACCOUNT_NUMBER": "Bank account number",
-  "ADDRESS": "Address",
-  "POSTAL_CODE": "Postal code",
-  "CITY": "City",
-  "EMAIL": "Email",
-  "PASSPORT": "Passport",
-  "BACKGROUND_COLOR": "Background Color",
-  "FONT_FAMILY": "Font Family",
-  "TIMEZONE": "Timezone",
-  "NOTIFICATIONS": "Notifications",
-  "MAIL_NOTIFICATIONS": "Mail notifications",
-  "PHONE_MESSAGE": "Phone message",
-  "WEEK": "Week",
-  "SELECT_OPTION": "Please select an option",
-  "OPTION": "Option",
-  "CANDIDATES": "Candidates",
-  "CANDIDATE_DESCRIPTION": "We have found {candidates} candidates",
-  "YOUR_DASHBOARD": "Your Dashboard",
-  "ADJUST_DASHBOARD": "Adjust dashboard",
-  "SAVE": "Save",
-  "MESSAGES": "Messages",
-  "VIEW_ALL": "View All",
-  "OPEN_POSITIONS": "Open Positions",
-  "MALE_STATISTICS": "Male Statistics",
-  "WAGE_LEVEL": "Wage level",
-  "PERFORMANCE": "Performance",
-  "EXPORT": "Export",
-  "UPCOMING_BIRTHDAYS": "Upcoming birthdays",
-  "TO_DO_LIST_TODAY": "To-do list today",
-  "MATCHES": "Matches",
-  "START_MATCHING": "Start Matching",
-  "MATCHES_FOUND": "Matches found",
-  "SEARCHING_MATCHES1": "We are looking for the best matches for you!",
-  "SEARCHING_MATCHES2": "This takes a few seconds ...",
-  "PRIVACY_STATEMENT": "Privacy Statement",
-  "PRIVACY1": "Introduction",
-  "PRIVACY1_DESCRIPTION1": "It starts with a short introduction, why you write this privacy statement and that you explain how you handle this data.",
-  "PRIVACY2": "Own data",
-  "PRIVACY2_DESCRIPTION1": "State your company name, contact details, etc. Do you have a larger company and a Data Protection Officer? Then you are obliged to state the contact details of the official.",
-  "PRIVACY3": "What information you collect",
-  "PRIVACY3_DESCRIPTION1": "That therefore differs per company, it also depends on whether you are active on social media. Logically, most companies collect a (company) name, telephone number, e-mail address, social media account names, etc.",
-  "PRIVACY4": "The purpose of collecting the data",
-  "PRIVACY4_DESCRIPTION1": "Explain the purpose of collecting the personal data. For example, because you want to send the customer or user newsletters, you want to use the data to make an offer or because you want to respond to an online response. When a customer e-mails you with a question about a product, you cannot simply send a newsletter to that person.",
-  "PRIVACY5": "The retention period of the data",
-  "PRIVACY5_DESCRIPTION1": "There is no specific retention period for personal data in the AVG. Companies determine for themselves how long they keep this information, but you must indicate this. This will differ greatly per company.",
-  "PRIVACY5_DESCRIPTION2": "Use concrete examples to make the explanation in the privacy statement as clear as possible.",
-  "PRIVACY5_DESCRIPTION3": "Some companies keep data for five years in order to respond appropriately and adequately based on earlier contact.",
-  "PRIVACY5_DESCRIPTION4": "If you have a forum on your website, you can, for example, state that the comments under messages always remain, because other users respond to them and you otherwise influence a discussion.",
-  "PRIVACY6": "Other recipients of the personal data",
-  "PRIVACY6_DESCRIPTION1": "There are more parties that receive the personal data. You must state this in the privacy statement. For example, there is the hosting party, your accountant who processes invoices, delivery services (the mail!), The mail server, etc.",
-  "PRIVACY7": "The rights of the visitor / customer",
-  "PRIVACY7_DESCRIPTION1": "Let the reader or visitor know what rights he has. For example, he has the right to change or even delete his data. Your customers and employees can ask you as an entrepreneur to view their own data or to forward it to another organization. They can also withdraw their consent to use the data.",
-  "PRIVACY7_DESCRIPTION2": "With the AVG they have the 'Right to be forgotten'.",
-  "PRIVACY8": "Use of cookies",
-  "PRIVACY8_DESCRIPTION1": "Name the programs that collect cookies. For example, if you offer social media channels to share content, let them know that these companies (Facebook, Twitter) are responsible for this part. The same goes for embedding YouTube videos.",
-  "PRIVACY8_DESCRIPTION2": "If you link to external websites, these websites are responsible for their own policies. Therefore, refer them to their privacy statement.",
-  "PRIVACY8_DESCRIPTION3": "If you use Google Analytics, let the visitors know that you are doing this and why. Also explain what Google does with these cookies (save to server, use to create reports). Also refer here to Google's privacy policy.",
-  "BACK": "Back",
-  "EDIT_PROFILE": "Edit Profile",
-  "BODY_TEXT": "Body Text",
-  "SPECIFICATIONS": "Specifications",
-  "FILES": "Files",
-  "UPLOAD": "Upload",
-  "REGISTERED_SINCE": "Registered since",
-  "AGE": "Age",
-  "STATUS": "Status",
-  "PLACE": "Location",
-  "WELCOME_BACK": "Welcome back",
-  "FRONTEND_OFFICE": "Frontend Office",
-  "BACK_OFFICE": "Back Office",
-  "MANAGEMENT_PORTAL": "Management Portal",
-  "CONTINUE": "Continue",
-  "CANDIDATE": "Candidate",
-  "CUSTOMER": "Customer",
-  "REQUEST": "Request",
-  "MATCHING": "Matching",
-  "TODO": "Todo",
-  "DAY": "Day",
-  "WEEK_PLANNING": "Week planning",
-  "HOURLY_DECLARATIONS": "Hourly Declarations",
-  "INVOICING": "Invoicing",
-  "PAY": "Pay",
-  "DEBTOR_MANAGEMENT": "Debtor management",
-  "TOTAL_APPLICATIONS": "Total applications",
-  "JOBS_PER_ACCOUNT": "Jobs per account",
-  "TOTAL_HOURLY_STATEMENT": "Total Hourly Statement",
-  "PLACEMENTS_PER_ACC_COMPARED_TO_PREVIOUS_WEEKS": "Placements per acc compared to previous weeks",
-  "APPLY_FILTERS": "Apply Filters",
-  "SOMETHING_WRONG": "Oops, something is going wrong ...",
-  "BACK_TO_YOUR_DASHBOARD": "Back to your dashboard",
-  "OTHER": "Other",
-  "SYSTEM_SETTINGS": "System Settings",
-  "ACCOUNT_SETTINGS": "Account Settings",
-  "FILTER_OPTIONS": "Filter Options",
-  "NAME+POSITION": "Name + Position",
-  "CREATED_AT": "Registered since",
-  "LOCATION": "Location",
-  "available": "Available",
-  "unavailable": "Unavailable",
-  "STREET_NAME": "Street name",
-  "HOUSE_NUMBER": "House number",
-  "UPDATE_PROFILE": "Update profile",
-  "WEEK_START_AT": "Week start at",
-  "SUNDAY": "Sunday",
-  "MONDAY": "Monday",
-  "TUESDAY": "Tuesday",
-  "WEDNESDAY": "Wednesday",
-  "THURSDAY": "Thursday",
-  "FRIDAY": "Friday",
-  "SATURDAY": "Saturday",
-  "UPDATE_SETTINGS": "Update settings",
-  "COMPANIES": "Companies",
-  "ACTIVE_JOBS": "Active Jobs",
-  "VIEW_COMPANY": "View Company",
-  "VIEW_JOB": "View Job"
+  "common": {
+    "update": "Update",
+    "create": "Create",
+    "delete": "Delete",
+    "login": "Login",
+    "logout": "Logout",
+    "signup": "Sign Up",
+    "register": "Register",
+    "reset": "Reset",
+    "accept": "Accept",
+    "ok": "Ok",
+    "save": "Save",
+    "cancel": "Cancel",
+    "open": "Open",
+    "filters": "Filters",
+    "close": "Close",
+    "complete": "Complete",
+    "upload": "Upload",
+    "apply": "Apply",
+    "apply_filters": "Apply Filters",
+    "status": "Status",
+    "location": "Location",
+    "age": "Age",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "c_password": "Confirm Password",
+    "years": "years",
+    "setting": "Setting",
+    "privacy": "Privacy",
+    "forgot": "Forgot",
+    "company": "Company",
+    "active": "Active",
+    "back": "Back"
+  },
+  "validation": {
+    "EMAIL_IS_NOT_VALID": "The email is not valid",
+    "PASSWORD_TOO_SHORT_MIN_5": "The password is shorter than 5, minimum",
+    "THIS_FIELD_IS_REQUIRED": "This field is required",
+    "PASSWORDS_NOT_MATCH": "The password is not matching",
+    "WRONG_PASSWORD": "The password is not correct",
+    "USER_DOES_NOT_EXIST": "The user does not exist",
+    "EMAIL_ALREADY_EXISTS": "The email already exists"
+  },
+  "roles": {
+    "manager": "Manager",
+    "worker": "Worker",
+    "owner": "Owner",
+    "admin": "Administrator"
+  },
+  "weekday": {
+    "mon": "Monday",
+    "tue": "Tuesday",
+    "wed": "Wednesday",
+    "thu": "Thursday",
+    "fri": "Friday",
+    "sat": "Saturday",
+    "sun": "Sunday"
+  },
+  "status": {
+    "available": "Available",
+    "unavailable": "Not Available"
+  },
+  "component": {
+    "position": {
+      "title": "Open Positions",
+      "view_all": "View All"
+    },
+    "birthday": {
+      "title": "Upcoming Birthdays"
+    },
+    "message": {
+      "title": "Messages"
+    },
+    "statistics": {
+      "title": "Mail Statistics",
+      "wage_level": "Wage Level",
+      "performance": "PERFORMANCE",
+      "export": "Export"
+    },
+    "todo": {
+      "title": "To-do list today"
+    }
+  },
+  "page_404": {
+    "title": "404",
+    "sub_title": "Oops, something is going wrong ...",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    "button": {
+      "back": "Back to your dashboard"
+    }
+  },
+  "page_login": {
+    "title": "Login",
+    "form": {
+      "email": "E-mail Address",
+      "password": "Password",
+      "forgot": "Forgot"
+    },
+    "button": {
+      "login": "Login",
+      "create": "Create Account"
+    }
+  },
+  "page_signup": {
+    "title": "Sign Up",
+    "form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "E-mail Address",
+      "password": "Password",
+      "c_password": "Confirm Password"
+    },
+    "button": {
+      "signup": "Sign Up",
+      "login": "Login"
+    }
+  },
+  "page_verify": {
+    "note": "Please verify your email address to login to Hiway CRM!",
+    "text1": "We've just sent an email to your address",
+    "text2": "Please check your email and click on the link provided to verify your address.",
+    "text3": "If you haven't received email, request",
+    "resend": "resend",
+    "here": "here."
+  },
+  "page_accept": {
+    "title": "Accept Invitation",
+    "form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "middle_name": "Middle Name",
+      "password": "Password",
+      "c_password": "Confirm Password"
+    },
+    "button": {
+      "accept": "Accept"
+    }
+  },
+  "page_forgot": {
+    "title": "Forgot my password",
+    "text1": "We sent a reset password link to your email",
+    "form": {
+      "email": "E-mail address"
+    },
+    "button": {
+      "send": "Send reset email",
+      "resend": "Resend reset email"
+    }
+
+  },
+  "page_reset": {
+    "title": "Reset my password",
+    "form": {
+      "password": "Password",
+      "c_password": "confirm Password"
+    },
+    "button": {
+      "reset": "Reset password"
+    }
+  },
+  "page_privacy": {
+    "title": "Privacy Statement",
+    "privacy1": "Introduction",
+    "privacy1_description1": "It starts with a short introduction, why you write this privacy statement and that you explain how you handle this data.",
+    "privacy2": "Own data",
+    "privacy2_description1": "State your company name, contact details, etc. Do you have a larger company and a Data Protection Officer? Then you are obliged to state the contact details of the official.",
+    "privacy3": "What information you collect",
+    "privacy3_description1": "That therefore differs per company, it also depends on whether you are active on social media. Logically, most companies collect a (company) name, telephone number, e-mail address, social media account names, etc.",
+    "privacy4": "The purpose of collecting the data",
+    "privacy4_description1": "Explain the purpose of collecting the personal data. For example, because you want to send the customer or user newsletters, you want to use the data to make an offer or because you want to respond to an online response. When a customer e-mails you with a question about a product, you cannot simply send a newsletter to that person.",
+    "privacy5": "The retention period of the data",
+    "privacy5_description1": "There is no specific retention period for personal data in the AVG. Companies determine for themselves how long they keep this information, but you must indicate this. This will differ greatly per company.",
+    "privacy5_description2": "Use concrete examples to make the explanation in the privacy statement as clear as possible.",
+    "privacy5_description3": "Some companies keep data for five years in order to respond appropriately and adequately based on earlier contact.",
+    "privacy5_description4": "If you have a forum on your website, you can, for example, state that the comments under messages always remain, because other users respond to them and you otherwise influence a discussion.",
+    "privacy6": "Other recipients of the personal data",
+    "privacy6_description1": "There are more parties that receive the personal data. You must state this in the privacy statement. For example, there is the hosting party, your accountant who processes invoices, delivery services (the mail!), The mail server, etc.",
+    "privacy7": "The rights of the visitor / customer",
+    "privacy7_description1": "Let the reader or visitor know what rights he has. For example, he has the right to change or even delete his data. Your customers and employees can ask you as an entrepreneur to view their own data or to forward it to another organization. They can also withdraw their consent to use the data.",
+    "privacy7_description2": "With the AVG they have the 'Right to be forgotten'.",
+    "privacy8": "Use of cookies",
+    "privacy8_description1": "Name the programs that collect cookies. For example, if you offer social media channels to share content, let them know that these companies (Facebook, Twitter) are responsible for this part. The same goes for embedding YouTube videos.",
+    "privacy8_description2": "If you link to external websites, these websites are responsible for their own policies. Therefore, refer them to their privacy statement.",
+    "privacy8_description3": "If you use Google Analytics, let the visitors know that you are doing this and why. Also explain what Google does with these cookies (save to server, use to create reports). Also refer here to Google's privacy policy."
+  },
+  "page_dashboard": {
+    "title": "Your Dashboard",
+    "button": {
+      "adjust": "Adjust Dashboard"
+    },
+    "modal": {
+      "adjust": {
+        "title": "Adjust Dashboard",
+        "save": "Save",
+        "message_area_title": "Message Area",
+        "message_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "position_area_title": "Position Area",
+        "position_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "birthday_area_title": "Birthday Area",
+        "birthday_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "todo_area_title": "To Do Area",
+        "todo_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "statistics_area_title": "Statistics Area",
+        "statistics_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+      }
+    }
+  },
+  "page_companies": {
+    "title": "Companies",
+    "sub_title": "We have found {companies} companies",
+    "table": {
+      "image": "Image",
+      "name": "Name",
+      "email": "Email",
+      "since": "Registered since",
+      "status": "Status",
+      "actions": "Actions",
+      "view_company": "View Company"
+    }
+  },
+  "page_create_company": {
+    "title": "Create Company",
+    "form": {
+      "name": "Company Name",
+      "email": "Company Email",
+      "phone": "Company Phone Number",
+      "kvk": "Company KVK Number",
+      "limit_credit_safe": "Company Limit Credit Safe",
+      "vat_shifted": "Company VAT Shifted",
+      "g_account": "Company G Account",
+      "terms_of_payment": "Company Terms Of Payment",
+      "automatic_collection": "Company Automatic Collection",
+      "charge_travel_expenses": "Company Charge Travel Expenses",
+      "charge_other_expenses": "Company Charge Other Expenses",
+      "is_active": "Is Active"
+    },
+    "button": {
+      "create": "Create Company"
+    }
+  },
+  "page_detail_company": {
+    "form": {
+      "name": "Company Name",
+      "email": "Company Email",
+      "phone": "Company Phone Number",
+      "kvk": "Company KVK Number",
+      "limit_credit_safe": "Company Limit Credit Safe",
+      "vat_shifted": "Company VAT Shifted",
+      "g_account": "Company G Account",
+      "terms_of_payment": "Company Terms Of Payment",
+      "automatic_collection": "Company Automatic Collection",
+      "charge_travel_expenses": "Company Charge Travel Expenses",
+      "charge_other_expenses": "Company Charge Other Expenses",
+      "active_status": "Company Active Status",
+      "is_active": "Is Active"
+    },
+    "button": {
+      "create": "Update Company"
+    }
+  },
+  "page_candidates": {
+    "title": "Active Candidates",
+    "sub_title": "We have found {candidates} candidates",
+    "filter": {
+      "name": "Name",
+      "company": "Company",
+      "position": "Position",
+      "age": "Age",
+      "status": "Status",
+      "available": "Available",
+      "unavailable": "Unavailable",
+      "city": "City"
+    },
+    "table": {
+      "name": "Name",
+      "company": "Company",
+      "position": "Position",
+      "age": "Age",
+      "status": "Status",
+      "image": "Image",
+      "since": "Registered Since",
+      "location": "Location",
+      "actions": "Actions",
+      "view_profile": "View Profile"
+    },
+    "modal": {
+      "delete": {
+        "body_text": "Are you sure you want to delete this candidate?"
+      }
+    }
+  },
+  "page_profile": {
+    "edit": "Edit Profile",
+    "save": "Save Profile",
+    "form": {
+      "overview": "Overview",
+      "specifications": "Specifications",
+      "since": "Registered Since",
+      "age": "Age",
+      "years": "years",
+      "location": "Location",
+      "status": "Status",
+      "files": "Files"
+    },
+    "button": {
+      "upload": "Upload"
+    },
+    "modal": {
+      "change": {
+        "title": "Successfully changed this profile",
+        "sub_title": "Thank you",
+        "continue": "Continue"
+      }
+    }
+  },
+  "page_jobs": {
+    "title": "Jobs",
+    "sub_title": "We have found {jobs} jobs",
+    "table": {
+      "image": "Image",
+      "title": "Title",
+      "company": "Company",
+      "duration": "Duration",
+      "position": "Position",
+      "actions": "Actions",
+      "start_matching": "Start Matching",
+      "view_job": "View Job"
+    }
+  },
+  "page_jobs_detail": {
+
+  },
+  "page_matching": {
+    "title": "Matching",
+    "match_detail": "Matching Detail",
+    "match_result": "{candidates} Candidates matches "
+  },
+  "page_matching_detail": {
+    "title": "Matching Detail"
+  },
+  "page_setting": {
+    "title": "Settings",
+    "account_setting": {
+      "title": "Account Setting",
+      "form": {
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "middle_name": "Middle Name",
+        "email": "Email",
+        "password": "Password",
+        "c_password": "Confirm Password",
+        "gender": "Gender",
+        "man": "Man",
+        "woman": "Woman",
+        "birthday": "Birthday",
+        "city": "City"
+      },
+      "button": {
+        "update": "Update Setting"
+      }
+    },
+    "system_setting": {
+      "title": "System Setting",
+      "form": {
+        "back_color": "Background Color",
+        "font_family": "Font Family",
+        "notifications": "Notifications",
+        "mail_notifications": "Mail Notifications",
+        "phone_message": "Phone Message",
+        "timezone": "Timezone",
+        "select_option": "Select Option",
+        "week_start_at": "Week Start At"
+      },
+      "button": {
+        "update": "Update Setting"
+      }
+    },
+    "notification_setting": {
+      "title": "Notification Setting"
+    },
+    "other_setting": {
+      "title": "Other Setting"
+    },
+    "modal": {
+      "account_change": {
+        "title": "Successfully changed account settings",
+        "sub_title": "Thank you",
+        "continue": "Continue"
+      },
+      "system_change": {
+        "title": "Successfully changed system settings",
+        "sub_title": "Thank you",
+        "continue": "Continue"
+      }
+    }
+  }
 }

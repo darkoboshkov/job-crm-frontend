@@ -2,14 +2,14 @@
   <div id="page_companies_detail" class="dashboard-content">
     <a href="javascript:void(0)" class="back" @click.prevent="$router.go(-1)">
       <i class="hiway-crm-icon icon-angle-left mr-2" />
-      <span>{{ $t("BACK") }}</span>
+      <span>{{ $t("common.back") }}</span>
     </a>
 
     <div class="container mt-4">
       <div class="row">
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_NAME") }}:</label>
+            <label>{{ $t("page_detail_company.form.name") }}:</label>
             <b-form-input
               type="text"
               name="name"
@@ -22,7 +22,7 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_EMAIL") }}:</label>
+            <label>{{ $t("page_detail_company.form.email") }}:</label>
             <b-form-input
               type="email"
               name="email"
@@ -35,7 +35,7 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_PHONE_NUMBER") }}:</label>
+            <label>{{ $t("page_detail_company.form.phone") }}:</label>
             <b-form-input
               type="number"
               name="phone"
@@ -47,7 +47,7 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_KVK_NUMBER") }}:</label>
+            <label>{{ $t("page_detail_company.form.kvk") }}:</label>
             <b-form-input
               type="number"
               name="kvk"
@@ -60,7 +60,9 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_LIMIT_CREDIT_SAFE") }}:</label>
+            <label
+              >{{ $t("page_detail_company.form.limit_credit_safe") }}:</label
+            >
             <b-form-input
               type="number"
               disabled
@@ -72,7 +74,7 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_VAT_SHIFTED") }}:</label>
+            <label>{{ $t("page_detail_company.form.vat_shifted") }}:</label>
             <b-form-input
               type="text"
               name="vat_shifted"
@@ -85,7 +87,7 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_G_ACCOUNT") }}:</label>
+            <label>{{ $t("page_detail_company.form.g_account") }}:</label>
             <b-form-input
               type="text"
               disabled
@@ -97,7 +99,9 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_TERM_OF_PAYMENT") }}:</label>
+            <label
+              >{{ $t("page_detail_company.form.terms_of_payment") }}:</label
+            >
             <b-form-select
               name="term_of_payment"
               required
@@ -110,7 +114,9 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_AUTOMATIC_COLLECTION") }}:</label>
+            <label
+              >{{ $t("page_detail_company.form.automatic_collection") }}:</label
+            >
             <b-form-checkbox
               type="text"
               name="automatic_collection"
@@ -123,7 +129,11 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_CHARGE_TRAVEL_EXPENSES") }}:</label>
+            <label
+              >{{
+                $t("page_detail_company.form.charge_travel_expenses")
+              }}:</label
+            >
             <b-form-checkbox
               name="charge_travel_expenses"
               disabled
@@ -135,7 +145,11 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_CHARGE_OTHER_EXPENSES") }}:</label>
+            <label
+              >{{
+                $t("page_detail_company.form.charge_other_expenses")
+              }}:</label
+            >
             <b-form-checkbox
               name="charge_other_expenses"
               disabled
@@ -147,14 +161,14 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-element">
-            <label>{{ $t("COMPANY_ACTIVE_STATE") }}:</label>
+            <label>{{ $t("page_detail_company.form.active_status") }}:</label>
             <b-form-checkbox
               disabled
               v-model="model.active"
               class="custom-input"
               name="is_active"
             >
-              {{ $t("COMPANY_IS_ACTIVE") }}
+              {{ $t("page_detail_company.form.is_active") }}
             </b-form-checkbox>
           </div>
         </div>

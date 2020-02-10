@@ -6,7 +6,7 @@
           <form>
             <img src="@/assets/image/hiway_crm.png" alt="Hiway CRM" />
             <div></div>
-            <h1>{{ $t("SIGNUP") }}</h1>
+            <h1>{{ $t("page_signup.title") }}</h1>
             <b-row>
               <b-col md="6">
                 <b-form-input
@@ -14,11 +14,11 @@
                   v-model="firstName"
                   type="text"
                   required
-                  :placeholder="$t('FIRST_NAME')"
+                  :placeholder="$t('page_signup.form.first_name')"
                   class="custom-input first-name mt-3"
                 />
-                <b-form-invalid-feedback class="d-block">
-                  {{ $t(firstNameError) }}
+                <b-form-invalid-feedback class="d-block" v-if="firstNameError">
+                  {{ $t(`validation.${firstNameError}`) }}
                 </b-form-invalid-feedback>
               </b-col>
               <b-col md="6">
@@ -27,11 +27,11 @@
                   v-model="lastName"
                   type="text"
                   required
-                  :placeholder="$t('LAST_NAME')"
+                  :placeholder="$t('page_signup.form.last_name')"
                   class="custom-input last-name mt-3"
                 />
-                <b-form-invalid-feedback class="d-block">
-                  {{ $t(lastNameError) }}
+                <b-form-invalid-feedback class="d-block" v-if="lastNameError">
+                  {{ $t(`validation.${lastNameError}`) }}
                 </b-form-invalid-feedback>
               </b-col>
             </b-row>
@@ -40,46 +40,46 @@
               v-model="email"
               type="email"
               required
-              :placeholder="$t('EMAIL_ADDRESS')"
+              :placeholder="$t('page_signup.form.email')"
               class="custom-input mt-3"
             />
-            <b-form-invalid-feedback class="d-block">
-              {{ $t(emailError) }}
+            <b-form-invalid-feedback class="d-block" v-if="emailError">
+              {{ $t(`validation.${emailError}`) }}
             </b-form-invalid-feedback>
             <b-form-input
               id="password"
               v-model="password"
               type="password"
               required
-              :placeholder="$t('PASSWORD')"
+              :placeholder="$t('page_signup.form.password')"
               class="custom-input mt-3"
             />
-            <b-form-invalid-feedback class="d-block">
-              {{ $t(passwordError) }}
+            <b-form-invalid-feedback class="d-block" v-if="passwordError">
+              {{ $t(`validation.${passwordError}`) }}
             </b-form-invalid-feedback>
             <b-form-input
               id="c_password"
               v-model="cPassword"
               type="password"
               required
-              :placeholder="$t('CONFIRM_PASSWORD')"
+              :placeholder="$t('page_signup.form.c_password')"
               class="custom-input mt-3"
             />
-            <b-form-invalid-feedback class="d-block">
-              {{ $t(cPasswordError) }}
+            <b-form-invalid-feedback class="d-block" v-if="cPasswordError">
+              {{ $t(`validation.${cPasswordError}`) }}
             </b-form-invalid-feedback>
-            <b-form-invalid-feedback class="d-block mt-4">
-              {{ $t(error) }}
+            <b-form-invalid-feedback class="d-block mt-4" v-if="error">
+              {{ $t(`validation.${error}`) }}
             </b-form-invalid-feedback>
             <b-row class="buttons">
               <b-col md="6">
                 <button class="btn btn-red" @click.prevent="signup">
-                  {{ $t("SIGNUP") }}
+                  {{ $t("page_signup.button.signup") }}
                 </button>
               </b-col>
               <b-col md="6">
                 <button class="btn btn-blue" @click.prevent="goToLogin">
-                  {{ $t("LOGIN") }}
+                  {{ $t("page_signup.button.login") }}
                 </button>
               </b-col>
             </b-row>

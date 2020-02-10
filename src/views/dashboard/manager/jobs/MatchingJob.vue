@@ -1,7 +1,7 @@
 <template>
   <div id="page_matching" class="dashboard-content">
     <h1 class="title">
-      Matching
+      {{ $t("page_matching.title") }}
     </h1>
     <div class="mt-5">
       <div class="matching-list">
@@ -30,8 +30,12 @@
     <div v-if="matchedWorkers.length" class="mt-5">
       <div class="matching-list">
         <div class="matching-item header">
-          {{ matchedWorkers.length }} Gevonden matches “Parttime
-          Magazijnmedewerker”
+          {{
+            $t("page_matching.match_result", {
+              candidates: matchedWorkers.length
+            })
+          }}
+          “{{ job.title }}”
         </div>
         <div
           class="matching-item"
@@ -46,7 +50,7 @@
           <div>{{ item.fullName }}</div>
           <div>{{ item.position }}</div>
           <div>{{ item.birthday }}</div>
-          <div>{{ item.age }} jaar</div>
+          <div>{{ item.age }} {{ $t("common.years") }}</div>
           <div>{{ item.status }}</div>
           <div>{{ item.location }}</div>
           <div>
@@ -54,7 +58,7 @@
               class="underline red"
               href="javascript:void(0);"
               @click.prevent="goToMatchDetails(item)"
-              >Match bekijken</a
+              >{{ $t("page_matching.match_detail") }}</a
             >
           </div>
         </div>

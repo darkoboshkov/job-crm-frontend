@@ -15,18 +15,18 @@
                 <img src="@/assets/image/img-mailbox.png" alt="Mailbox" />
               </div>
               <div class="flex-1">
-                <h4>{{ $t("VERIFY_EMAIL_NOTE") }}</h4>
+                <h4>{{ $t("page_verify.note") }}</h4>
                 <p>
-                  {{ $t("VERIFY_EMAIL_ADDRESS1") }}
+                  {{ $t("page_verify.text1") }}
                   <strong>{{ email }}</strong> <br />
-                  {{ $t("VERIFY_EMAIL_ADDRESS2") }} <br />
-                  {{ $t("VERIFY_EMAIL_ADDRESS3") }}
+                  {{ $t("page_verify.text2") }} <br />
+                  {{ $t("page_verify.text3") }}
                   <a
                     href="javascript:void(0)"
                     @click="() => requestResendEmail()"
-                    >{{ $t("VERIFY_EMAIL_ADDRESS4") }}</a
+                    >{{ $t("page_verify.resend") }}</a
                   >
-                  {{ $t("VERIFY_EMAIL_ADDRESS5") }}
+                  {{ $t("page_verify.here") }}
                 </p>
               </div>
             </div>

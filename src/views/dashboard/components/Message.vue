@@ -3,7 +3,7 @@
     <template v-slot:header>
       <div class="row">
         <div class="col-md-6">
-          <h2 class="m-0">{{ $t("MESSAGES") }}</h2>
+          <h2 class="m-0">{{ $t("component.message.title") }}</h2>
         </div>
         <div class="col-md-6">
           <button

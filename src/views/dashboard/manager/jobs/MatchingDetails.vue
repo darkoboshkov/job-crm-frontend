@@ -1,7 +1,7 @@
 <template>
   <div id="page_matching_details" class="dashboard-content">
     <h1 class="title">
-      Matching
+      {{ $t("page_matching_detail.title") }}
     </h1>
     <div class="mt-5 row">
       <div class="matching-list col-5">

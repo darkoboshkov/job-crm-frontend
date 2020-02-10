@@ -1,16 +1,18 @@
 <template>
   <div id="page_candidates" class="dashboard-content">
-    <div class="d-flex">
-      <div>
-        <h1 class="title">
-          {{ $t("CANDIDATES") }}
-        </h1>
-        <p class="sub-title">
-          {{ $t("CANDIDATE_DESCRIPTION", { candidates: this.totalRows }) }}
-        </p>
-      </div>
-      <div class="pull-right"></div>
+    <div class="d-flex justify-content-between align-items-end">
+      <h1 class="title">
+        {{ $t("page_candidates.title") }}
+      </h1>
+      <img
+        class="add-candidate"
+        src="@/assets/image/icon/person-add.svg"
+        @click="addPerson"
+      />
     </div>
+    <p class="sub-title">
+      {{ $t("page_candidates.sub_title", { candidates: this.totalRows }) }}
+    </p>
     <table-filter
       class="candidate-filters"
       @table-filter="filter"
@@ -43,7 +45,7 @@
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
               <b-dropdown-item href="#" @click="goToProfile(props)">{{
-                $t("VIEW_PROFILE")
+                $t("page_candidates.table.view_profile")
               }}</b-dropdown-item>
             </b-dropdown>
           </div>
@@ -83,22 +85,22 @@ export default {
       rows: [],
       filterOptions: [
         {
-          title: "Name",
+          title: this.$t("page_candidates.filter.name"),
           type: "text",
           value: ""
         },
         {
-          title: "Company",
+          title: this.$t("page_candidates.filter.company"),
           type: "text",
           value: ""
         },
         {
-          title: "Position",
+          title: this.$t("page_candidates.filter.position"),
           type: "text",
           value: ""
         },
         {
-          title: "Age",
+          title: this.$t("page_candidates.filter.age"),
           type: "select",
           options: [
             20,
@@ -121,22 +123,22 @@ export default {
           value: ""
         },
         {
-          title: "Status",
+          title: this.$t("page_candidates.filter.status"),
           type: "checkbox",
           value: "",
           options: [
             {
-              label: "Available",
+              label: this.$t("page_candidates.filter.available"),
               checked: false
             },
             {
-              label: "Unavailable",
+              label: this.$t("page_candidates.filter.unavailable"),
               checked: false
             }
           ]
         },
         {
-          title: "City",
+          title: this.$t("page_candidates.filter.city"),
           type: "text",
           value: ""
         }
@@ -153,17 +155,60 @@ export default {
   },
   computed: {
     columns() {
-      return [
-        { label: "Image", field: "image" },
-        { label: this.$t("NAME"), field: this.computedName() },
-        { label: this.$t("POSITION"), field: "position.name" },
-        { label: this.$t("CREATED_AT"), field: this.computedCreatedAt() },
-        { label: "Company", field: "company.name" },
-        { label: this.$t("AGE"), field: "age" },
-        { label: this.$t("STATUS"), field: "status" },
-        { label: this.$t("LOCATION"), field: "city" },
-        { label: "Actions", field: "actions" }
-      ];
+      let columns = this.imageMode
+        ? [
+            {
+              label: this.$t("page_candidates.table.image"),
+              field: "image",
+              name: "image",
+              tdClass: "link"
+            }
+          ]
+        : [];
+
+      return columns.concat([
+        {
+          label: this.$t("page_candidates.table.name"),
+          field: this.computedName(),
+          name: "name",
+          tdClass: "link"
+        },
+        {
+          label: this.$t("page_candidates.table.position"),
+          field: "position.name",
+          name: "position"
+        },
+        {
+          label: this.$t("page_candidates.table.since"),
+          field: this.computedCreatedAt(),
+          name: "createdAt"
+        },
+        {
+          label: this.$t("page_candidates.table.company"),
+          field: "company.name",
+          name: "company"
+        },
+        {
+          label: this.$t("page_candidates.table.age"),
+          field: "age",
+          name: "age"
+        },
+        {
+          label: this.$t("page_candidates.table.status"),
+          field: "status",
+          name: "status"
+        },
+        {
+          label: this.$t("page_candidates.table.location"),
+          field: "city",
+          name: "city"
+        },
+        {
+          label: this.$t("page_candidates.table.actions"),
+          field: "actions",
+          name: "actions"
+        }
+      ]);
     },
     role() {
       return this.$store.state.user.role;

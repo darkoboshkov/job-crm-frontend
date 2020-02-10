@@ -4,32 +4,27 @@
       <b-row>
         <b-col>
           <div class="d-flex responsive justify-content-between content-header">
-            <h1 class="title text-center">{{ $t("YOUR_DASHBOARD") }}</h1>
+            <h1 class="title text-center">{{ $t("page_dashboard.title") }}</h1>
             <b-button v-b-modal.adjust_dashboard>{{
-              $t("ADJUST_DASHBOARD")
+              $t("page_dashboard.button.adjust")
             }}</b-button>
           </div>
         </b-col>
       </b-row>
       <b-row>
         <b-col md="8">
-          <Statistics
-            v-if="statisticsItem"
-            v-on:hide-statistics-card="hideStatisticsCard"
-          />
+          <!--<Statistics v-if="statisticsItem" v-on:hide-statistics-card="hideStatisticsCard"/>-->
           <b-row>
-            <b-col md="6">
+            <!--<b-col md="6">-->
+            <b-col md="12">
               <Position
                 v-if="positionItem"
                 v-on:hide-position-card="hidePositionCard"
               />
             </b-col>
-            <b-col md="6">
-              <message
-                v-if="messageItem"
-                v-on:hide-message-card="hideMessageCard"
-              />
-            </b-col>
+            <!--<b-col md="6">-->
+            <!--<message v-if="messageItem" v-on:hide-message-card="hideMessageCard"/>-->
+            <!--</b-col>-->
           </b-row>
         </b-col>
         <b-col md="4">
@@ -37,25 +32,25 @@
             v-if="birthdayItem"
             v-on:hide-birthday-card="hideBirthdayCard"
           />
-          <Todo v-if="todoItem" v-on:hide-todo-card="hideTodoCard" />
+          <!--<Todo v-if="todoItem" v-on:hide-todo-card="hideTodoCard"/>-->
         </b-col>
       </b-row>
     </div>
-    <b-modal id="adjust_dashboard" centered>
+    <b-modal id="adjust_dashboard" footer-class="d-none" centered>
       <template v-slot:modal-header="{ close }">
         <h2>
-          {{ $t("ADJUST_DASHBOARD") }}
+          {{ $t("page_dashboard.modal.adjust.title") }}
         </h2>
+        <b-button>{{ $t("common.save") }}</b-button>
       </template>
       <div>
         <ul class="custom-list">
           <li class="d-flex responsive">
             <div>
-              <p>Message area</p>
-              <small>
-                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt,
-                metus eu maximus interdum, dui purus cursus elit.
-              </small>
+              <p>{{ $t("page_dashboard.modal.adjust.message_area_title") }}</p>
+              <small>{{
+                $t("page_dashboard.modal.adjust.message_area_text")
+              }}</small>
             </div>
             <b-form-checkbox
               class="rtl"
@@ -68,11 +63,10 @@
           </li>
           <li class="d-flex responsive">
             <div>
-              <p>Position area</p>
-              <small>
-                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt,
-                metus eu maximus interdum, dui purus cursus elit.
-              </small>
+              <p>{{ $t("page_dashboard.modal.adjust.position_area_title") }}</p>
+              <small>{{
+                $t("page_dashboard.modal.adjust.position_area_text")
+              }}</small>
             </div>
             <b-form-checkbox
               class="rtl"
@@ -86,11 +80,10 @@
 
           <li class="d-flex responsive">
             <div>
-              <p>Birthday area</p>
-              <small>
-                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt,
-                metus eu maximus interdum, dui purus cursus elit.
-              </small>
+              <p>{{ $t("page_dashboard.modal.adjust.birthday_area_title") }}</p>
+              <small>{{
+                $t("page_dashboard.modal.adjust.birthday_area_text")
+              }}</small>
             </div>
             <b-form-checkbox
               class="rtl"
@@ -103,11 +96,10 @@
           </li>
           <li class="d-flex responsive">
             <div>
-              <p>Todo area</p>
-              <small>
-                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt,
-                metus eu maximus interdum, dui purus cursus elit.
-              </small>
+              <p>{{ $t("page_dashboard.modal.adjust.todo_area_title") }}</p>
+              <small>{{
+                $t("page_dashboard.modal.adjust.todo_area_text")
+              }}</small>
             </div>
             <b-form-checkbox
               class="rtl"
@@ -120,11 +112,12 @@
           </li>
           <li class="d-flex responsive">
             <div>
-              <p>Statistics area</p>
-              <small>
-                Curabitur luctus sit amet nunc et commodo. Phasellus tincidunt,
-                metus eu maximus interdum, dui purus cursus elit.
-              </small>
+              <p>
+                {{ $t("page_dashboard.modal.adjust.statistics_area_title") }}
+              </p>
+              <small>{{
+                $t("page_dashboard.modal.adjust.statistics_area_text")
+              }}</small>
             </div>
             <b-form-checkbox
               class="rtl"
@@ -189,5 +182,3 @@ export default {
   }
 };
 </script>
-
-<style scoped></style>

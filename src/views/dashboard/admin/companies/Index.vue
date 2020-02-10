@@ -2,7 +2,7 @@
   <div id="page_companies" class="dashboard-content">
     <div class="d-flex justify-content-between align-items-end">
       <h1 class="title">
-        {{ $t("COMPANIES") }}
+        {{ $t("page_companies.title") }}
       </h1>
       <router-link to="/admin/dashboard/companies/create">
         <button class="btn btn-red circle large" style="width:50px">
@@ -10,7 +10,9 @@
         </button>
       </router-link>
     </div>
-    <p class="sub-title">We have found {{ totalRows }} companies</p>
+    <p class="sub-title">
+      {{ $t("page_companies.sub_title", { companies: this.totalRows }) }}
+    </p>
     <div class="companies-list mt-3">
       <vue-good-table
         mode="remote"
@@ -38,7 +40,7 @@
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
               <b-dropdown-item href="#" @click="goToCompany(props)">{{
-                $t("VIEW_COMPANY")
+                $t("page_companies.table.view_company")
               }}</b-dropdown-item>
             </b-dropdown>
             <button class="btn btn-transparent" @click="deleteCompany(props)">
@@ -85,12 +87,36 @@ export default {
         order: ""
       },
       columns: [
-        { label: "Image", field: "image", name: "image" },
-        { label: "Name", field: "name", name: "name" },
-        { label: "Email", field: "email", name: "email" },
-        { label: "Created At", field: "createdAt", name: "createdAt" },
-        { label: "Status", field: "activeState", name: "activeState" },
-        { label: "Actions", field: "actions", name: "actions" }
+        {
+          label: this.$t("page_companies.table.image"),
+          field: "image",
+          name: "image"
+        },
+        {
+          label: this.$t("page_companies.table.name"),
+          field: "name",
+          name: "name"
+        },
+        {
+          label: this.$t("page_companies.table.email"),
+          field: "email",
+          name: "email"
+        },
+        {
+          label: this.$t("page_companies.table.since"),
+          field: "createdAt",
+          name: "createdAt"
+        },
+        {
+          label: this.$t("page_companies.table.status"),
+          field: "activeState",
+          name: "activeState"
+        },
+        {
+          label: this.$t("page_companies.table.actions"),
+          field: "actions",
+          name: "actions"
+        }
       ]
     };
   },

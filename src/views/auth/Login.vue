@@ -10,16 +10,16 @@
               alt="Hiway CRM"
             />
             <div class="login-form__header-line"></div>
-            <h1 class="title">{{ $t("LOGIN") }}</h1>
+            <h1 class="title">{{ $t("page_login.title") }}</h1>
             <b-form-input
               id="email"
               v-model="email"
               type="email"
-              :placeholder="$t('EMAIL_ADDRESS')"
+              :placeholder="$t('page_login.form.email')"
               class="custom-input mt-5"
             />
-            <b-form-invalid-feedback class="d-block">
-              {{ $t(emailError) }}
+            <b-form-invalid-feedback class="d-block" v-if="emailError">
+              {{ $t(`validation.${emailError}`) }}
             </b-form-invalid-feedback>
             <div class="input-wrapper mt-5">
               <b-form-input
@@ -27,26 +27,28 @@
                 v-model="password"
                 type="password"
                 required
-                :placeholder="$t('PASSWORD')"
+                :placeholder="$t('page_login.form.password')"
                 class="custom-input"
               />
-              <b-form-invalid-feedback class="d-block">
-                {{ $t(passwordError) }}
+              <b-form-invalid-feedback class="d-block" v-if="passwordError">
+                {{ $t(`validation.${passwordError}`) }}
               </b-form-invalid-feedback>
-              <a href="/forgot" class="forgot-pass">{{ $t("FORGOT") }}?</a>
+              <a href="/forgot" class="forgot-pass"
+                >{{ $t("page_login.form.forgot") }}?</a
+              >
             </div>
-            <b-form-invalid-feedback class="d-block mt-4">
-              {{ $t(error) }}
+            <b-form-invalid-feedback class="d-block mt-4" v-if="error">
+              {{ $t(`validation.${error}`) }}
             </b-form-invalid-feedback>
             <div class="buttons d-flex">
               <div>
                 <button class="btn btn-red login" @click.prevent="login">
-                  {{ $t("LOGIN") }}
+                  {{ $t("page_login.button.login") }}
                 </button>
               </div>
               <div>
                 <button class="btn btn-blue signup" @click.prevent="goToSignup">
-                  {{ $t("CREATE_ACCOUNT") }}
+                  {{ $t("page_login.button.create") }}
                 </button>
               </div>
             </div>
@@ -110,7 +112,6 @@ export default {
               },
               res.user
             );
-            // Toast('Signed in successfully!', 'success')
             this.$router.push("/dashboard");
           })
           .catch(data => {

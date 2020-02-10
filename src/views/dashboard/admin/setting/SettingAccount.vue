@@ -2,7 +2,7 @@
   <div class="setting-profile">
     <div class="setting-profile__form">
       <div class="form-element">
-        <label>{{ $t("FIRST_NAME") }}:</label>
+        <label>{{ $t("page_setting.account_setting.form.first_name") }}:</label>
         <b-form-input
           type="text"
           required
@@ -11,7 +11,9 @@
         />
       </div>
       <div class="form-element mt-3">
-        <label>{{ $t("MIDDLE_NAME") }}:</label>
+        <label
+          >{{ $t("page_setting.account_setting.form.middle_name") }}:</label
+        >
         <b-form-input
           type="text"
           required
@@ -20,7 +22,7 @@
         />
       </div>
       <div class="form-element mt-3">
-        <label>{{ $t("LAST_NAME") }}:</label>
+        <label>{{ $t("page_setting.account_setting.form.last_name") }}:</label>
         <b-form-input
           type="text"
           required
@@ -29,18 +31,18 @@
         />
       </div>
       <div class="form-element mt-3">
-        <label>{{ $t("GENDER") }}:</label>
+        <label>{{ $t("page_setting.account_setting.form.gender") }}:</label>
         <div class="gender">
           <b-form-radio v-model="model.gender" name="gender" value="male">{{
-            $t("MAN")
+            $t("page_setting.account_setting.form.man")
           }}</b-form-radio>
           <b-form-radio v-model="model.gender" name="gender" value="female">{{
-            $t("WOMAN")
+            $t("page_setting.account_setting.form.woman")
           }}</b-form-radio>
         </div>
       </div>
       <div class="form-element mt-3">
-        <label>{{ $t("DATE_OF_BIRTH") }}:</label>
+        <label>{{ $t("page_setting.account_setting.form.birthday") }}:</label>
         <b-form-input
           type="text"
           required
@@ -75,7 +77,7 @@
       <!--/>-->
       <!--</div>-->
       <div class="form-element mt-3">
-        <label>{{ $t("CITY") }}:</label>
+        <label>{{ $t("page_setting.account_setting.form.city") }}:</label>
         <b-form-input
           type="text"
           required
@@ -84,7 +86,7 @@
         />
       </div>
       <div class="form-element mt-3">
-        <label>{{ $t("EMAIL") }}:</label>
+        <label>{{ $t("page_setting.account_setting.form.email") }}:</label>
         <b-form-input
           type="text"
           required
@@ -112,7 +114,7 @@
       <!--</div>-->
       <div class="form-element mt-3">
         <button class="btn btn-blue" @click="update">
-          {{ $t("UPDATE_SETTINGS") }}
+          {{ $t("page_setting.account_setting.button.update") }}
         </button>
       </div>
     </div>
@@ -131,13 +133,13 @@
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
         <p class="alert-title color-blue">
-          {{ $t("CHANGE_USER_SETTING_MODAL_TITLE") }}
+          {{ $t("page_setting.modal.account_change.title") }}
         </p>
         <p class="alert-sub-title">
-          {{ $t("CHANGE_USER_SETTING_MODAL_SUB_TITLE") }}
+          {{ $t("page_setting.modal.account_change.sub_title") }}
         </p>
         <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("CONTINUE") }}
+          {{ $t("page_setting.modal.account_change.continue") }}
         </button>
       </div>
     </b-modal>

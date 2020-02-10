@@ -10,29 +10,29 @@
               alt="Hiway CRM"
             />
             <div class="forgot-password-form__header-line"></div>
-            <h1 class="title">{{ $t("FORGOT_MY_PASSWORD") }}</h1>
+            <h1 class="title">{{ $t("page_forgot.title") }}</h1>
             <div v-if="!mailSent">
               <b-form-input
                 id="email"
                 v-model="email"
                 type="email"
                 required
-                :placeholder="$t('EMAIL_ADDRESS')"
+                :placeholder="$t('page_forgot.form.email')"
                 class="custom-input mt-5"
               />
-              <b-form-invalid-feedback class="d-block">
-                {{ $t(error) }}
+              <b-form-invalid-feedback class="d-block" v-if="error">
+                {{ $t(`validation.${error}`) }}
               </b-form-invalid-feedback>
               <div class="d-flex">
                 <button class="btn btn-blue send" @click.prevent="forgot">
-                  {{ $t("SEND_RESET_EMAIL") }}
+                  {{ $t("page_forgot.button.send") }}
                 </button>
               </div>
             </div>
             <div class="text-center" v-else>
-              <h5 class="mt-5">We sent a reset password link to your email.</h5>
+              <h5 class="mt-5">{{ $t("page_forgot.text1") }}.</h5>
               <button class="btn btn-blue send" @click.prevent="forgot">
-                {{ $t("RESEND_RESET_EMAIL") }}
+                {{ $t("page_forgot.button.resend") }}
               </button>
             </div>
           </form>

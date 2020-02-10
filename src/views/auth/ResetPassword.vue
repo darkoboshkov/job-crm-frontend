@@ -10,32 +10,32 @@
               alt="Hiway CRM"
             />
             <div class="reset-password-form__header-line"></div>
-            <h1 class="title">{{ $t("RESET_PASSWORD") }}</h1>
+            <h1 class="title">{{ $t("page_reset.title") }}</h1>
             <b-form-input
               id="password"
               v-model="password"
               type="password"
               required
-              :placeholder="$t('PASSWORD')"
+              :placeholder="$t('page_reset.form.password')"
               class="custom-input mt-5"
             />
-            <b-form-invalid-feedback class="d-block">
-              {{ $t(passwordError) }}
+            <b-form-invalid-feedback class="d-block" v-if="passwordError">
+              {{ $t(`validation.${passwordError}`) }}
             </b-form-invalid-feedback>
             <b-form-input
               id="c_password"
               v-model="cPassword"
               type="password"
               required
-              :placeholder="$t('CONFIRM_PASSWORD')"
+              :placeholder="$t('page_reset.form.c_password')"
               class="custom-input mt-5"
             />
-            <b-form-invalid-feedback class="d-block">
-              {{ $t(cPasswordError) }}
+            <b-form-invalid-feedback class="d-block" v-if="cPasswordError">
+              {{ $t(`validation.${cPasswordError}`) }}
             </b-form-invalid-feedback>
             <div class="d-flex">
               <button class="btn btn-blue reset" @click.prevent="reset">
-                {{ $t("RESET") }}
+                {{ $t("page_reset.button.reset") }}
               </button>
             </div>
           </form>
