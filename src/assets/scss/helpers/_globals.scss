@@ -39,6 +39,10 @@ body {
   align-items: center;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 a {
   color: var(--black);
   &:hover {
