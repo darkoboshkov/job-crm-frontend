@@ -5,7 +5,7 @@
         {{ $t("page_candidates.title") }}
       </h1>
       <img
-        class="add-candidate"
+        class="pointer"
         src="@/assets/image/icon/person-add.svg"
         @click="$router.push({ name: 'admin-users-create' })"
       />
@@ -21,40 +21,9 @@
         :options="filterOptions"
       />
       <div class="view-switch">
-        View:
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="26"
-          height="23"
-          viewBox="0 0 26 23"
-          @click="imageView(true)"
-          class="mode-switch"
-        >
-          <g fill="#000" fill-rule="evenodd" :opacity="imageMode ? 1 : 0.261">
-            <rect width="7" height="7" rx="1" />
-            <rect width="18" height="7" x="8" rx="1" />
-            <rect width="7" height="7" y="8" rx="1" />
-            <rect width="7" height="7" y="16" rx="1" />
-            <rect width="18" height="7" x="8" y="8" rx="1" />
-            <rect width="18" height="7" x="8" y="16" rx="1" />
-          </g>
-        </svg>
+        View: <i class="hiway-crm-icon icon-ol pointer" @click="imageView(true)" :style="{opacity: imageMode ? 1 : 0.261}"></i>
         |
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="26"
-          height="23"
-          viewBox="0 0 26 23"
-          @click="imageView(false)"
-          class="mode-switch"
-        >
-          <g fill="#000" fill-rule="evenodd" :opacity="!imageMode ? 1 : 0.261">
-            <rect width="26" height="5" rx="1" />
-            <rect width="26" height="5" y="6" rx="1" />
-            <rect width="26" height="5" y="12" rx="1" />
-            <rect width="26" height="5" y="18" rx="1" />
-          </g>
-        </svg>
+        <i class="hiway-crm-icon icon-ul pointer" @click="imageView(false)" :style="{opacity: !imageMode ? 1 : 0.261}"></i>
       </div>
     </div>
 
@@ -381,9 +350,5 @@ export default {
 }
 .view-switch {
   min-width: fit-content;
-}
-.add-candidate,
-.mode-switch {
-  cursor: pointer;
 }
 </style>
