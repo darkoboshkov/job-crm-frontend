@@ -124,7 +124,7 @@ export default {
         },
         {
           label: this.$t("page_companies.table.since"),
-          field: "createdAt",
+          field: this.formattedDateTime(),
           name: "createdAt"
         },
         {
@@ -144,12 +144,24 @@ export default {
   computed: {
     role() {
       return this.$store.state.user.role;
-    }
+    },
   },
   mounted() {
     this.getCompanies();
   },
   methods: {
+    formattedDateTime() {
+      return function(row) {
+
+        const dateStringOptions = {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        };
+
+        return (new Date(row["createdAt"])).toLocaleDateString("nl-NL", dateStringOptions);
+      };
+    },
     onPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {
         page: e.currentPage
