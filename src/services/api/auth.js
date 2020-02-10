@@ -15,5 +15,8 @@ export default {
   },
   reset(params, resolve, reject = null) {
     return request("post", "/auth/reset", params, resolve, reject);
+  },
+  invitation(params, resolve, reject = null) {
+    return request("post", "/auth/invitation", params, resolve, reject);
   }
 };

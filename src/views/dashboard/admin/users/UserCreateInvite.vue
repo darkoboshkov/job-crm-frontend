@@ -48,7 +48,7 @@
         </div>
       </div>
       <b-form-invalid-feedback class="d-block mt-5" v-if="error">
-        {{ $t(`validation.${error}`) }}
+        {{ $t(`${error}`) }}
       </b-form-invalid-feedback>
       <div class="form-element mt-5 text-center">
         <button class="btn btn-blue large" @click="sendInvitation">

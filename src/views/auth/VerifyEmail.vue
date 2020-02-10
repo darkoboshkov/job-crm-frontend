@@ -51,7 +51,7 @@ export default {
     }
   },
   mounted() {
-    let code = this.$route.params.code;
+    const code = this.$route.params.code;
 
     if (code) {
       authApi

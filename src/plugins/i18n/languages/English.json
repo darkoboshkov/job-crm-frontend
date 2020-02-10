@@ -136,6 +136,13 @@
     },
     "button": {
       "accept": "Accept"
+    },
+    "modal": {
+      "accept": {
+        "title": "You successfully accepted the invitation",
+        "sub_title": "Thank you",
+        "login": "Login"
+      }
     }
   },
   "page_forgot": {

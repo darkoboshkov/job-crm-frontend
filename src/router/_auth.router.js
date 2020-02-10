@@ -50,7 +50,7 @@ export default [
     component: () => import("../containers/AuthContainer.vue"),
     children: [
       {
-        path: "/",
+        path: ":id",
         name: "invitation",
         component: () => import("../views/auth/AcceptInvitation.vue")
       }
