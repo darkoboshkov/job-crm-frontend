@@ -422,9 +422,23 @@
   },
   "page_users_create_invite": {
     "title": "New User Invitation",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ",
+    "form": {
+      "company_list": "Select Company",
+      "manager": "Manager",
+      "worker": "Worker",
+      "owner": "Owner",
+      "email": "E-mail Address"
+    },
     "button": {
       "send": "Send Invitation"
+    },
+    "modal": {
+      "invite": {
+        "title": "Successfully invited this user",
+        "sub_title": "Thank you",
+        "continue": "Continue"
+      }
     }
   }
 }

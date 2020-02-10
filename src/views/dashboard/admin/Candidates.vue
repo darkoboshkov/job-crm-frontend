@@ -7,7 +7,7 @@
       <img
         class="add-candidate"
         src="@/assets/image/icon/person-add.svg"
-        @click="addPerson"
+        @click="$router.push({ name: 'admin-users-create' })"
       />
     </div>
     <p class="sub-title">
@@ -89,10 +89,7 @@
               }}</b-dropdown-item>
             </b-dropdown>
 
-            <button
-              class="btn btn-transparent"
-              @click="selectCandidate(props)"
-            >
+            <button class="btn btn-transparent" @click="selectCandidate(props)">
               <i class="hiway-crm-icon icon-bin" />
             </button>
           </div>
@@ -114,11 +111,11 @@
     </div>
 
     <b-modal
-            ref="modal-alert"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-alert"
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
@@ -292,7 +289,10 @@ export default {
     },
     computedName() {
       return function(row) {
-        return row["firstName"] + " " + row["lastName"];
+        if(row["firstName"]) {
+          return row["firstName"] + " " + row["lastName"];
+        }
+        return "";
       };
     },
     computedCreatedAt() {
@@ -304,7 +304,7 @@ export default {
       };
     },
     selectCandidate(props) {
-      this.$refs['modal-alert'].show();
+      this.$refs["modal-alert"].show();
       this.selectedCandidateId = props.row._id;
     },
     goToProfile(props) {
@@ -336,9 +336,8 @@ export default {
       this.getWorkers();
     },
     filter(v) {},
-    addPerson() {},
     deleteCandidate() {
-      this.$refs['modal-alert'].hide();
+      this.$refs["modal-alert"].hide();
       // userApi
       //   .delete({
       //     companyId: this.idToDelete

@@ -43,7 +43,10 @@
                 $t("page_companies.table.view_company")
               }}</b-dropdown-item>
             </b-dropdown>
-            <button class="btn btn-transparent" @click="deleteCompanyConfirm(props)">
+            <button
+              class="btn btn-transparent"
+              @click="deleteCompanyConfirm(props)"
+            >
               <i class="hiway-crm-icon icon-bin" />
             </button>
           </div>
@@ -64,11 +67,11 @@
       </vue-good-table>
     </div>
     <b-modal
-            ref="modal-alert"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-alert"
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
@@ -180,7 +183,7 @@ export default {
       this.idToDelete = props?.row?._id;
     },
     deleteCompany() {
-      this.$refs['modal-alert'].hide();
+      this.$refs["modal-alert"].hide();
       companyApi
         .delete({
           companyId: this.idToDelete

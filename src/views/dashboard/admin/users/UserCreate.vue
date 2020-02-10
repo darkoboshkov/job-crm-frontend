@@ -6,7 +6,7 @@
       <button
         class="btn btn-red large mr-4"
         @click.prevent="$router.push({ name: 'admin-users-create-invite' })"
-        style="width:250px;"
+        style="min-width:260px;"
       >
         {{ $t("page_users_create.button.invite") }}
       </button>
@@ -14,7 +14,7 @@
       <button
         class="btn btn-blue large"
         @click.prevent="$router.push({ name: 'admin-users-create-manual' })"
-        style="width:250px;"
+        style="min-width:240px;"
       >
         {{ $t("page_users_create.button.manual") }}
       </button>
@@ -23,24 +23,10 @@
 </template>
 
 <script>
-import companyApi from "@/services/api/companies";
 export default {
   name: "Invitation",
   data() {
-    return {
-      companies: [],
-      inviteSignUp: false
-    };
-  },
-  mounted() {
-    this.getCompanies();
-  },
-  methods: {
-    getCompanies() {
-      return companyApi.getAll().then(res => {
-        this.companies = res;
-      });
-    }
+    return {};
   }
 };
 </script>

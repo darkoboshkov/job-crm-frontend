@@ -223,7 +223,10 @@ export default {
   methods: {
     computedName() {
       return function(row) {
-        return row["firstName"] + " " + row["lastName"];
+        if(row["firstName"]) {
+          return row["firstName"] + " " + row["lastName"];
+        }
+        return "";
       };
     },
     computedCreatedAt() {
