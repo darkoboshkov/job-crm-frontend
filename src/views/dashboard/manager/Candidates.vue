@@ -286,7 +286,8 @@ export default {
           this.totalRows = res.totalDocs;
         });
     },
-    filter(v) {}
+    filter(v) {},
+    addPerson() {},
   },
   watch: {
     "$i18n.locale"(v) {}
