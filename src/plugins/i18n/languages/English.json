@@ -301,7 +301,9 @@
     },
     "modal": {
       "delete": {
-        "body_text": "Are you sure you want to delete this candidate?"
+        "title": "Are you sure?",
+        "sub_title": "Are you sure you want to delete this candidate?",
+        "continue": "Continue"
       }
     }
   },
