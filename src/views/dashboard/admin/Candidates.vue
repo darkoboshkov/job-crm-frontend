@@ -307,14 +307,7 @@ export default {
       });
       this.getWorkers();
     },
-    onSortChange(e) {
-      // console.log('onSortChange', e);
-      // this.serverParams = Object.assign({}, this.serverParams, { // todo: back-end sorting is not working as expected
-      //   sort: e[0].field === 'age' ? 'birthday' : e[0].field,
-      //   order: e[0].type === 'desc' ? 1 : -1,
-      // });
-      // this.getWorkers();
-    },
+    onSortChange(e) {},
     onColumnFilter(e) {
       this.getWorkers();
     },
@@ -357,9 +350,6 @@ export default {
           this.totalRows = res.totalDocs;
         });
     }
-  },
-  watch: {
-    "$i18n.locale"(v) {}
   }
 };
 </script>

@@ -287,7 +287,7 @@ export default {
         });
     },
     filter(v) {},
-    addPerson() {},
+    addPerson() {}
   },
   watch: {
     "$i18n.locale"(v) {}

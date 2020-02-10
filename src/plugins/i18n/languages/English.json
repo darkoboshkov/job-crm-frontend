@@ -395,5 +395,20 @@
         "continue": "Continue"
       }
     }
+  },
+  "page_users_create": {
+    "title": "Add Users",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ",
+    "button": {
+      "invite": "Invite Users to sign up",
+      "manual": "Manually Add Users"
+    }
+  },
+  "page_users_create_invite": {
+    "title": "New User Invitation",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ",
+    "button": {
+      "send": "Send Invitation"
+    }
   }
 }

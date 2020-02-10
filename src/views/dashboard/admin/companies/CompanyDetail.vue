@@ -215,7 +215,7 @@ export default {
   methods: {
     getCompany(companyId) {
       console.log("id in router", companyId);
-      companyService.get({ companyId }).then(res => {
+      companyService.getById({ companyId }).then(res => {
         console.log("res", res);
         this.model = res;
       });

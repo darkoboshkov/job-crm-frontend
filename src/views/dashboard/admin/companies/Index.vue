@@ -165,7 +165,7 @@ export default {
         });
     },
     getCompanies() {
-      return companyApi.getAll(this.serverParams).then(res => {
+      return companyApi.get(this.serverParams).then(res => {
         this.totalRows = res.totalDocs;
         this.rows = res.docs;
       });

@@ -38,6 +38,27 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
+        path: "users/create",
+        name: "admin-users-create",
+        component: () =>
+          import("../views/dashboard/admin/users/UserCreate.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
+        path: "users/create-manual",
+        name: "admin-users-create-manual",
+        component: () =>
+          import("../views/dashboard/admin/users/UserCreateManual.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
+        path: "users/create-invite",
+        name: "admin-users-create-invite",
+        component: () =>
+          import("../views/dashboard/admin/users/UserCreateInvite.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
         path: "chats",
         name: "admin-chats",
         component: () => import("../views/dashboard/admin/Chats.vue"),
