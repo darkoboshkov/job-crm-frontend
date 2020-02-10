@@ -5,7 +5,7 @@
     <div class="d-flex mt-5">
       <button
         class="btn btn-red large mr-4"
-        @click="$router.push({ name: 'admin-users-create-invite' })"
+        @click="$router.push({ name: 'manager-users-create-invite' })"
         style="min-width:260px;"
       >
         {{ $t("page_users_create.button.invite") }}
@@ -13,7 +13,7 @@
 
       <button
         class="btn btn-blue large"
-        @click="$router.push({ name: 'admin-users-create-manual' })"
+        @click="$router.push({ name: 'manager-users-create-manual' })"
         style="min-width:240px;"
       >
         {{ $t("page_users_create.button.manual") }}

@@ -21,9 +21,18 @@
         :options="filterOptions"
       />
       <div class="view-switch">
-        View: <i class="hiway-crm-icon icon-ol pointer" @click="imageView(true)" :style="{opacity: imageMode ? 1 : 0.261}"></i>
+        View:
+        <i
+          class="hiway-crm-icon icon-ol pointer"
+          @click="imageView(true)"
+          :style="{ opacity: imageMode ? 1 : 0.261 }"
+        ></i>
         |
-        <i class="hiway-crm-icon icon-ul pointer" @click="imageView(false)" :style="{opacity: !imageMode ? 1 : 0.261}"></i>
+        <i
+          class="hiway-crm-icon icon-ul pointer"
+          @click="imageView(false)"
+          :style="{ opacity: !imageMode ? 1 : 0.261 }"
+        ></i>
       </div>
     </div>
 
@@ -258,7 +267,7 @@ export default {
     },
     computedName() {
       return function(row) {
-        if(row["firstName"]) {
+        if (row["firstName"]) {
           return row["firstName"] + " " + row["lastName"];
         }
         return "";

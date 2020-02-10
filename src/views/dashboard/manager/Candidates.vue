@@ -223,7 +223,7 @@ export default {
   methods: {
     computedName() {
       return function(row) {
-        if(row["firstName"]) {
+        if (row["firstName"]) {
           return row["firstName"] + " " + row["lastName"];
         }
         return "";
