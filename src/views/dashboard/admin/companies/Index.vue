@@ -43,7 +43,7 @@
                 $t("page_companies.table.view_company")
               }}</b-dropdown-item>
             </b-dropdown>
-            <button class="btn btn-transparent" @click="deleteCompany(props)">
+            <button class="btn btn-transparent" @click="deleteCompanyConfirm(props)">
               <i class="hiway-crm-icon icon-bin" />
             </button>
           </div>
@@ -63,6 +63,26 @@
         </template>
       </vue-good-table>
     </div>
+    <b-modal
+            ref="modal-alert"
+            :hide-footer="true"
+            :hide-header="true"
+            centered
+            modal-class="modal-alert"
+    >
+      <div class="text-center">
+        <img class="success-image" src="@/assets/image/icon/success.svg" />
+        <p class="alert-title color-blue">
+          {{ $t("page_companies.modal.company_delete.title") }}
+        </p>
+        <p class="alert-sub-title">
+          {{ $t("page_companies.modal.company_delete.sub_title") }}
+        </p>
+        <button class="btn btn-blue" @click="deleteCompany">
+          {{ $t("page_companies.modal.company_delete.continue") }}
+        </button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -117,7 +137,8 @@ export default {
           field: "actions",
           name: "actions"
         }
-      ]
+      ],
+      idToDelete: 0
     };
   },
   computed: {
@@ -154,11 +175,15 @@ export default {
         this.$router.push(`/${this.role}/dashboard/companies/${props.row._id}`);
       }
     },
-    deleteCompany(props) {
-      let id = props?.row?._id;
+    deleteCompanyConfirm(props) {
+      this.$refs["modal-alert"].show();
+      this.idToDelete = props?.row?._id;
+    },
+    deleteCompany() {
+      this.$refs['modal-alert'].hide();
       companyApi
         .delete({
-          companyId: id
+          companyId: this.idToDelete
         })
         .then(() => {
           this.getCompanies();

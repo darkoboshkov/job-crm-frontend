@@ -90,7 +90,6 @@
             </b-dropdown>
 
             <button
-              v-b-modal.delete_confirmation
               class="btn btn-transparent"
               @click="selectCandidate(props)"
             >
@@ -114,12 +113,25 @@
       </vue-good-table>
     </div>
 
-    <b-modal id="delete_confirmation" centered>
-      <template v-slot:modal-header="{ close }">
-        <h4 class="text-center">
-          {{ $t("page_candidates.modal.delete.body_text") }}
-        </h4>
-      </template>
+    <b-modal
+            ref="modal-alert"
+            :hide-footer="true"
+            :hide-header="true"
+            centered
+            modal-class="modal-alert"
+    >
+      <div class="text-center">
+        <img class="success-image" src="@/assets/image/icon/success.svg" />
+        <p class="alert-title color-blue">
+          {{ $t("page_candidates.modal.delete.title") }}
+        </p>
+        <p class="alert-sub-title">
+          {{ $t("page_candidates.modal.delete.sub_title") }}
+        </p>
+        <button class="btn btn-blue" @click="deleteCandidate">
+          {{ $t("page_candidates.modal.delete.continue") }}
+        </button>
+      </div>
     </b-modal>
   </div>
 </template>
@@ -292,6 +304,7 @@ export default {
       };
     },
     selectCandidate(props) {
+      this.$refs['modal-alert'].show();
       this.selectedCandidateId = props.row._id;
     },
     goToProfile(props) {
@@ -324,7 +337,16 @@ export default {
     },
     filter(v) {},
     addPerson() {},
-    deletePerson() {},
+    deleteCandidate() {
+      this.$refs['modal-alert'].hide();
+      // userApi
+      //   .delete({
+      //     companyId: this.idToDelete
+      //   })
+      //   .then(() => {
+      //     this.getCompanies();
+      //   });
+    },
     getWorkers() {
       return userApi
         .getAll(
