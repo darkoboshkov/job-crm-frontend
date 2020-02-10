@@ -218,6 +218,13 @@
       "status": "Status",
       "actions": "Actions",
       "view_company": "View Company"
+    },
+    "modal": {
+      "company_delete": {
+        "title": "Are you sure?",
+        "sub_title": "Are you really going to delete the company?",
+        "continue": "Continue"
+      }
     }
   },
   "page_create_company": {
@@ -238,6 +245,13 @@
     },
     "button": {
       "create": "Create Company"
+    },
+    "modal": {
+      "company_create": {
+        "title": "Successfully created new company",
+        "sub_title": "Thank you",
+        "continue": "Continue"
+      }
     }
   },
   "page_detail_company": {

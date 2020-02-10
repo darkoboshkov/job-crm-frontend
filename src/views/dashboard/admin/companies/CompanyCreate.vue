@@ -174,6 +174,26 @@
         </div>
       </div>
     </form>
+    <b-modal
+            ref="modal-alert"
+            :hide-footer="true"
+            :hide-header="true"
+            centered
+            modal-class="modal-alert"
+    >
+      <div class="text-center">
+        <img class="success-image" src="@/assets/image/icon/success.svg" />
+        <p class="alert-title color-blue">
+          {{ $t("page_create_company.modal.company_create.title") }}
+        </p>
+        <p class="alert-sub-title">
+          {{ $t("page_create_company.modal.company_create.sub_title") }}
+        </p>
+        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
+          {{ $t("page_create_company.modal.company_create.continue") }}
+        </button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -206,6 +226,7 @@ export default {
       // companyApi.create(this.model);
       console.log("company create");
       companyApi.create(this.model).then(res => {
+        this.$refs["modal-alert"].show();
         console.log("res", res);
       });
     }
