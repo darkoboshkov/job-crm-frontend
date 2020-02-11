@@ -48,6 +48,7 @@
         :rows="rows"
         :columns="columns"
         :pagination-options="paginationOptions"
+        :isLoading.sync="isLoading"
         styleClass="custom-table"
       >
         <template slot="table-row" slot-scope="props">
@@ -120,6 +121,7 @@ export default {
   components: { TableFilter },
   data() {
     return {
+      isLoading: false,
       totalRows: 0,
       paginationOptions: {
         enabled: true,

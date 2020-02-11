@@ -19,6 +19,7 @@
           enabled: true,
           externalQuery: searchTerm
         }"
+        :isLoading.sync="isLoading"
         styleClass="custom-table"
       >
         <template slot="table-row" slot-scope="props">
@@ -67,6 +68,7 @@ export default {
   name: "JobList",
   data() {
     return {
+      isLoading: false,
       paginationOptions: {
         enabled: true,
         perPage: 5
