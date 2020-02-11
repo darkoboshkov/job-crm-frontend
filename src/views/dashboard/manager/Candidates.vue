@@ -5,26 +5,44 @@
         {{ $t("page_candidates.title") }}
       </h1>
       <img
-        class="add-candidate"
+        class="pointer"
         src="@/assets/image/icon/person-add.svg"
-        @click="addPerson"
+        @click="$router.push({ name: 'manager-users-create' })"
       />
     </div>
     <p class="sub-title">
       {{ $t("page_candidates.sub_title", { candidates: this.totalRows }) }}
     </p>
-    <table-filter
-      class="candidate-filters"
-      @table-filter="filter"
-      :title="'Filter Options'"
-      :options="filterOptions"
-    />
+    <div class="d-flex justify-content-between">
+      <table-filter
+        class="candidate-filters"
+        @table-filter="filter"
+        :title="'Filter Options'"
+        :options="filterOptions"
+      />
+      <div class="view-switch">
+        View:
+        <i
+          class="hiway-crm-icon icon-ol pointer"
+          @click="imageView(true)"
+          :style="{ opacity: imageMode ? 1 : 0.261 }"
+        ></i>
+        |
+        <i
+          class="hiway-crm-icon icon-ul pointer"
+          @click="imageView(false)"
+          :style="{ opacity: !imageMode ? 1 : 0.261 }"
+        ></i>
+      </div>
+    </div>
+
     <div class="candidates-list mt-3">
       <vue-good-table
         mode="remote"
         @on-page-change="onPageChange"
         @on-sort-change="onSortChange"
         @on-column-filter="onColumnFilter"
+        @on-cell-click="onCellClick"
         @on-per-page-change="onPerPageChange"
         :totalRows="totalRows"
         :rows="rows"
@@ -49,6 +67,10 @@
                 $t("page_candidates.table.view_profile")
               }}</b-dropdown-item>
             </b-dropdown>
+
+            <button class="btn btn-transparent" @click="selectCandidate(props)">
+              <i class="hiway-crm-icon icon-bin" />
+            </button>
           </div>
           <div
             v-else-if="props.column.field === 'image'"
@@ -66,6 +88,27 @@
         </template>
       </vue-good-table>
     </div>
+
+    <b-modal
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
+    >
+      <div class="text-center">
+        <img class="success-image" src="@/assets/image/icon/alert.svg" />
+        <p class="alert-title color-blue">
+          {{ $t("page_candidates.modal.delete.title") }}
+        </p>
+        <p class="alert-sub-title">
+          {{ $t("page_candidates.modal.delete.sub_title") }}
+        </p>
+        <button class="btn btn-blue" @click="deleteCandidate">
+          {{ $t("page_candidates.modal.delete.continue") }}
+        </button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -150,9 +193,11 @@ export default {
         page: 1,
         limit: 5,
         sort: "",
-        order: ""
+        order: "",
+        companyId: this.$store.state.user.companyId
       },
-      selectedCandidateId: null
+      selectedCandidate: null,
+      imageMode: true
     };
   },
   computed: {
@@ -214,15 +259,15 @@ export default {
     },
     role() {
       return this.$store.state.user.role;
-    },
-    companyId() {
-      return this.$store.state.user.companyId;
     }
   },
   mounted() {
     this.getWorkers();
   },
   methods: {
+    imageView(mode) {
+      this.imageMode = !!mode;
+    },
     computedName() {
       return function(row) {
         if (row["firstName"]) {
@@ -235,18 +280,19 @@ export default {
       return function(row) {
         let date = new Date(row["createdAt"]);
 
-        return `${date.getFullYear()}-${date.getMonth() + 1}-
-                ${date.getDate()} ${date.getHours()}:
-                ${date.getMinutes()}:${date.getSeconds()}`;
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}
+                ${date.getHours()}: ${date.getMinutes()}:${date.getSeconds()}`;
       };
     },
     selectCandidate(props) {
-      console.log("props", props);
-      this.selectedCandidateId = props.row._id;
+      this.$refs["modal-alert"].show();
+      this.selectedCandidate = props.row;
     },
     goToProfile(props) {
       if (props && props.row) {
-        this.$router.push(`/${this.role}/dashboard/profile/${props.row._id}`);
+        this.$router.push(
+          `/${this.role}/dashboard/profile/${props.row.companyId}/${props.row._id}`
+        );
       }
     },
     onPageChange(e) {
@@ -259,17 +305,35 @@ export default {
     onColumnFilter(e) {
       this.getWorkers();
     },
+    onCellClick(params) {
+      if (params.column.name === "name" || params.column.name === "image") {
+        this.goToProfile(params);
+      }
+    },
     onPerPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {
         limit: e.currentPerPage
       });
       this.getWorkers();
     },
+    filter(v) {},
+    deleteCandidate() {
+      this.$refs["modal-alert"].hide();
+      if (this.selectedCandidate) {
+        userApi
+          .delete({
+            companyId: this.selectedCandidate.companyId,
+            id: this.selectedCandidate._id
+          })
+          .then(() => {
+            this.getWorkers();
+          });
+      }
+    },
     getWorkers() {
       return userApi
         .getCompanyUsers(
           Object.assign(this.serverParams, {
-            companyId: this.companyId,
             filter: {
               role: "worker"
             }
@@ -290,12 +354,7 @@ export default {
           });
           this.totalRows = res.totalDocs;
         });
-    },
-    filter(v) {},
-    addPerson() {}
-  },
-  watch: {
-    "$i18n.locale"(v) {}
+    }
   }
 };
 </script>
@@ -303,5 +362,8 @@ export default {
 <style scoped>
 .icon-dropdown >>> button {
   color: black;
+}
+.view-switch {
+  min-width: fit-content;
 }
 </style>

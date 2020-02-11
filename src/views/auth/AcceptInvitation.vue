@@ -84,7 +84,7 @@
         <p class="alert-sub-title">
           {{ $t("page_accept.modal.accept.sub_title") }}
         </p>
-        <button class="btn btn-blue" @click="$router.push({'name': 'login'})">
+        <button class="btn btn-blue" @click="$router.push({ name: 'login' })">
           {{ $t("page_accept.modal.accept.login") }}
         </button>
       </div>
