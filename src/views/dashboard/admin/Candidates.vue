@@ -323,7 +323,7 @@ export default {
             id: this.selectedCandidate._id
           })
           .then(() => {
-            this.getCompanies();
+            this.getWorkers();
           });
       }
     },
