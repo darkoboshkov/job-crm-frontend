@@ -257,6 +257,9 @@ export default {
         }
       ]);
     },
+    companyId() {
+      return this.$store.state.user.companyId;
+    },
     role() {
       return this.$store.state.user.role;
     }
@@ -322,7 +325,7 @@ export default {
       if (this.selectedCandidate) {
         userApi
           .delete({
-            companyId: this.selectedCandidate.companyId,
+            companyId: this.companyId,
             id: this.selectedCandidate._id
           })
           .then(() => {
