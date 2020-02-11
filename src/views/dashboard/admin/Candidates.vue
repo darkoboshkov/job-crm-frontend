@@ -193,7 +193,7 @@ export default {
         sort: "",
         order: ""
       },
-      selectedCandidateId: null,
+      selectedCandidate: null,
       imageMode: true
     };
   },
@@ -283,7 +283,7 @@ export default {
     },
     selectCandidate(props) {
       this.$refs["modal-alert"].show();
-      this.selectedCandidateId = props.row._id;
+      this.selectedCandidate = props.row;
     },
     goToProfile(props) {
       if (props && props.row) {
@@ -316,13 +316,16 @@ export default {
     filter(v) {},
     deleteCandidate() {
       this.$refs["modal-alert"].hide();
-      // userApi
-      //   .delete({
-      //     companyId: this.idToDelete
-      //   })
-      //   .then(() => {
-      //     this.getCompanies();
-      //   });
+      if (this.selectedCandidate) {
+        userApi
+          .delete({
+            companyId: this.selectedCandidate.companyId,
+            id: this.selectedCandidate._id
+          })
+          .then(() => {
+            this.getCompanies();
+          });
+      }
     },
     getWorkers() {
       return userApi
