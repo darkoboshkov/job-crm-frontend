@@ -68,7 +68,7 @@ export default {
   name: "JobList",
   data() {
     return {
-      isLoading: false,
+      isLoading: true,
       paginationOptions: {
         enabled: true,
         perPage: 5

@@ -121,7 +121,7 @@ export default {
   components: { TableFilter },
   data() {
     return {
-      isLoading: false,
+      isLoading: true,
       totalRows: 0,
       paginationOptions: {
         enabled: true,

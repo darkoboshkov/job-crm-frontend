@@ -97,7 +97,7 @@ export default {
   name: "CompanyList",
   data() {
     return {
-      isLoading: false,
+      isLoading: true,
       totalRows: 0,
       paginationOptions: {
         enabled: true,
