@@ -21,10 +21,10 @@
       </div>
       <div class="form-element mt-5">
         <div class="role text-center">
-          <b-form-radio v-model="form.role" name="gender" value="worker">{{
+          <b-form-radio v-model="form.role" name="role" value="worker">{{
             $t("page_users_create_invite.form.worker")
           }}</b-form-radio>
-          <b-form-radio v-model="form.role" name="gender" value="manager">{{
+          <b-form-radio v-model="form.role" name="role" value="manager">{{
             $t("page_users_create_invite.form.manager")
           }}</b-form-radio>
         </div>

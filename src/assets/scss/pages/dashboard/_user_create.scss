@@ -19,3 +19,16 @@
         }
     }
 }
+
+#page_user_create_manual {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .role {
+        display: flex;
+        & > * {
+            flex: 1;
+        }
+    }
+}

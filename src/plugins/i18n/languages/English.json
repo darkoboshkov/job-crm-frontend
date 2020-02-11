@@ -447,5 +447,40 @@
         "continue": "Continue"
       }
     }
+  },
+  "page_users_create_manual": {
+    "title": "Manually Add User",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur",
+    "form": {
+      "company_list": "Select Company",
+      "manager": "Manager",
+      "worker": "Worker",
+      "owner": "Owner",
+      "email": "E-mail Address",
+      "role": "Role",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "middleName": "Middle Name",
+      "male": "Man",
+      "female": "Woman",
+      "gender": "Gender",
+      "birthday": "Birthday",
+      "street-house": "Street HouseNumber",
+      "bankNumber": "Bank Account Number",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "password": "Password",
+      "passport": "Passport"
+    },
+    "button": {
+      "create": "Create User"
+    },
+    "modal": {
+      "create": {
+        "title": "Successfully created this user",
+        "sub_title": "Thank you",
+        "continue": "Continue"
+      }
+    }
   }
 }
