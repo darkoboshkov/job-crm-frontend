@@ -61,7 +61,7 @@
               {{ $t(`validation.${error}`) }}
             </b-form-invalid-feedback>
             <div class="d-flex">
-              <button class="btn btn-blue accept" @click="accept">
+              <button class="btn btn-blue accept" @click.prevent="accept">
                 {{ $t("page_accept.button.accept") }}
               </button>
             </div>

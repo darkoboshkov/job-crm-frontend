@@ -2,7 +2,8 @@
   <div id="page_profile" class="dashboard-content">
     <div class="container-fluid">
       <a href="javascript:void(0)" class="back" @click.prevent="$router.go(-1)">
-        <i class="hiway-crm-icon icon-angle-left ml-2" /> {{ $t("BACK") }}
+        <i class="hiway-crm-icon icon-angle-left mr-2" />
+        <span>{{ $t("common.back") }}</span>
       </a>
       <b-row class="mt-5">
         <b-col md="12">
@@ -17,7 +18,9 @@
           </div>
           <div class="profile-edit">
             <a href="javascript:void(0);" @click.prevent="onEditProfile">
-              {{ editProfile ? $t("SAVE_PROFILE") : $t("EDIT_PROFILE") }}
+              {{
+                editProfile ? $t("page_profile.save") : $t("page_profile.edit")
+              }}
             </a>
             <i class="hiway-crm-icon icon-pencil ml-2" />
           </div>
@@ -28,7 +31,7 @@
         <b-col md="6">
           <b-card class="mt-4">
             <template v-slot:header>
-              <h5 class="m-0">{{ $t("BODY_TEXT") }}</h5>
+              <h5 class="m-0">{{ $t("page_profile.form.overview") }}</h5>
             </template>
             <b-textarea v-if="editProfile" v-model="model.overview" rows="5" />
             <div v-else>
@@ -44,8 +47,7 @@
                     style="width:31px"
                     class="mr-3"
                   />
-                  <b-form-input v-if="editProfile" v-model="model.email" />
-                  <span v-else>{{ model.email }}</span>
+                  <span>{{ model.email }}</span>
                 </div>
               </b-card>
             </b-col>
@@ -57,8 +59,7 @@
                     style="width: 22px"
                     class="mr-3"
                   />
-                  <b-form-input v-if="editProfile" v-model="model.phone" />
-                  <span v-else>{{ model.phone }}</span>
+                  <span>{{ model.phone }}</span>
                 </div>
               </b-card>
             </b-col>
@@ -67,20 +68,43 @@
         <b-col md="6">
           <b-card class="mt-4">
             <template v-slot:header>
-              <h5 class="m-0">{{ $t("SPECIFICATIONS") }}</h5>
+              <h5 class="m-0">{{ $t("page_profile.form.specifications") }}</h5>
             </template>
             <div>
               <ul class="custom-list">
                 <li>
-                  {{ $t("REGISTERED_SINCE") }}
-                  <span class="pull-right">08-09-2019</span>
-                </li>
-                <li>{{ $t("AGE") }} <span class="pull-right">29 jaar</span></li>
-                <li>
-                  {{ $t("STATUS") }} <span class="pull-right">Beschikbaar</span>
+                  {{ $t("page_profile.form.since") }}
+                  <span class="pull-right">{{ model.registeredAt }}</span>
                 </li>
                 <li>
-                  {{ $t("PLACE") }} <span class="pull-right">Arnhem</span>
+                  {{ $t("page_profile.form.age") }}
+                  <span class="pull-right"
+                    >{{ model.age }} {{ $t("page_profile.form.years") }}</span
+                  >
+                </li>
+                <li>
+                  {{ $t("page_profile.form.status") }}
+                  <div class="pull-right">
+                    <b-form-select
+                      v-if="editProfile"
+                      v-model="model.status"
+                      class="normal-size"
+                      style="margin-top:-8px"
+                    >
+                      <option
+                        v-for="(status, index) in userStates"
+                        :value="status.value"
+                        :key="index"
+                      >
+                        {{ status.label }}
+                      </option>
+                    </b-form-select>
+                    <span v-else>{{ $t(model.status) }}</span>
+                  </div>
+                </li>
+                <li>
+                  {{ $t("page_profile.form.location") }}
+                  <span class="pull-right">{{ model.location }}</span>
                 </li>
               </ul>
             </div>
@@ -97,7 +121,7 @@
                   <div class="float-right">
                     <button
                       class="btn btn-blue upload"
-                      style="width: 100px; justify-content: center;"
+                      style="width:100px;justify-content:center;"
                     >
                       {{ $t("UPLOAD") }}
                       <i class="hiway-crm-icon icon-upload ml-2" />
@@ -144,35 +168,111 @@
         </b-col>
       </b-row>
     </div>
+    <b-modal
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
+    >
+      <div class="text-center">
+        <img class="success-image" src="@/assets/image/icon/success.svg" />
+        <p class="alert-title color-blue">
+          {{ $t("page_profile.modal.change.title") }}
+        </p>
+        <p class="alert-sub-title">
+          {{ $t("page_profile.modal.change.sub_title") }}
+        </p>
+        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
+          {{ $t("page_profile.modal.change.continue") }}
+        </button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
 <script>
+import profileApi from "@/services/api/profile";
+
 export default {
   name: "ProfileView",
   data() {
     return {
       editProfile: false,
+      userStates: [
+        {
+          value: "available",
+          label: "Available"
+        },
+        {
+          value: "unavailable",
+          label: "Unavailable"
+        }
+      ],
       model: {
-        fullName: "Magalie Lindeboom",
-        position: "Visual Designer",
-        overview:
-          "Hanc ego assentior, cum teneam sententiam, quid et iusto odio dignissimos ducimus, qui. Quae fuerit causa, nollem me ab eo est consecutus? laudem et dolore suo. Sed ut summum bonum esse albam, dulce mel quorum facta quem modo ista. Filium morte multavit si sine dubio praeclara sunt, explicabo nemo enim ipsam per. Meer +",
-        email: "michael@hotmail.com",
-        phone: "+31 653724131"
+        fullName: "",
+        position: "",
+        overview: "",
+        email: "",
+        phone: "",
+        age: 29,
+        registeredAt: "08-09-2019",
+        location: "Arhem",
+        status: "available"
       }
     };
   },
+  computed: {
+    companyId() {
+      return this.$store.state.user.companyId;
+    },
+    userId() {
+      return this.$store.state.user._id;
+    }
+  },
+  mounted() {
+    this.fetchProfile();
+  },
   methods: {
+    fetchProfile() {
+      profileApi
+        .get({ companyId: this.companyId, id: this.userId })
+        .then(res => {
+          this.model.fullName = res.firstName + " " + res.lastName;
+          if (res.position && res.position.length) {
+            this.model.position = res.position[0].name;
+          }
+          this.model.overview = res.overview ? res.overview : "";
+          this.model.email = res.email;
+          this.model.phone = res.phone;
+          this.model.status = res.status;
+          if (res.birthday) {
+            const thisYear = new Date().getFullYear();
+            const birthYear = res.birthday.split("-")[0];
+            this.model.age = thisYear - birthYear;
+          } else {
+            this.model.age = "-";
+          }
+          this.model.registeredAt = new Date(res.createdAt).toDateString();
+        });
+    },
     onEditProfile() {
+      this.editProfile = !this.editProfile;
       if (!this.editProfile) {
-        this.editProfile = true;
-      } else {
-        this.editProfile = false;
+        this.updateProfile();
       }
+    },
+    updateProfile() {
+      const data = {
+        companyId: this.companyId,
+        status: this.model.status,
+        overview: this.model.overview
+      };
+      profileApi.patch(data).then(res => {
+        this.$refs["modal-alert"].show();
+        this.fetchProfile();
+      });
     }
   }
 };
 </script>
-
-<style scoped></style>

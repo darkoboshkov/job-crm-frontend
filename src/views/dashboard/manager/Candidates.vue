@@ -293,9 +293,7 @@ export default {
     },
     goToProfile(props) {
       if (props && props.row) {
-        this.$router.push(
-          `/${this.role}/dashboard/profile/${props.row.companyId}/${props.row._id}`
-        );
+        this.$router.push(`/${this.role}/dashboard/profile/${props.row._id}`);
       }
     },
     onPageChange(e) {

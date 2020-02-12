@@ -18,7 +18,7 @@ export default [
         beforeEnter: isWorkerAuthorized
       },
       {
-        path: "profile/:id",
+        path: "profile",
         name: "worker-profile",
         component: () => import("../views/dashboard/worker/Profile.vue"),
         beforeEnter: isWorkerAuthorized
