@@ -1,8 +1,4 @@
-import {
-  ifAuthenticated,
-  isAdminAuthorized,
-  isManagerAuthorized
-} from "../utils";
+import { ifAuthenticated, isManagerAuthorized } from "../utils";
 
 export default [
   {
@@ -26,21 +22,21 @@ export default [
         name: "manager-users-create",
         component: () =>
           import("../views/dashboard/manager/users/UserCreate.vue"),
-        beforeEnter: isAdminAuthorized
+        beforeEnter: isManagerAuthorized
       },
       {
         path: "users/create-manual",
         name: "manager-users-create-manual",
         component: () =>
           import("../views/dashboard/manager/users/UserCreateManual.vue"),
-        beforeEnter: isAdminAuthorized
+        beforeEnter: isManagerAuthorized
       },
       {
         path: "users/create-invite",
         name: "manager-users-create-invite",
         component: () =>
           import("../views/dashboard/manager/users/UserCreateInvite.vue"),
-        beforeEnter: isAdminAuthorized
+        beforeEnter: isManagerAuthorized
       },
       {
         path: "chats",

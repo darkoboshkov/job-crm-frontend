@@ -40,6 +40,11 @@ export const items = [
     roles: ["manager", "owner"]
   },
   {
+    icon: "icon-hand",
+    path: "/worker/dashboard/jobs",
+    roles: ["worker"]
+  },
+  {
     icon: "icon-mail",
     path: "/admin/dashboard/chats",
     roles: ["admin"]

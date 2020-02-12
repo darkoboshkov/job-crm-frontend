@@ -12,6 +12,19 @@ export default [
         beforeEnter: isWorkerAuthorized
       },
       {
+        path: "jobs",
+        name: "worker-jobs",
+        component: () => import("../views/dashboard/worker/jobs/Index.vue"),
+        beforeEnter: isWorkerAuthorized
+      },
+      {
+        path: "jobs/:jobId",
+        name: "worker-jobs-detail",
+        component: () =>
+          import("../views/dashboard/worker/jobs/JobsDetail.vue"),
+        beforeEnter: isWorkerAuthorized
+      },
+      {
         path: "chats",
         name: "worker-chats",
         component: () => import("../views/dashboard/worker/Chats.vue"),
