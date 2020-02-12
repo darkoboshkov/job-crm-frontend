@@ -16,5 +16,14 @@ export default {
       resolve,
       reject
     );
+  },
+  create(params, resolve, reject = null) {
+    return request(
+      "post",
+      `/jobs/${params.companyId}`,
+      params,
+      resolve,
+      reject
+    );
   }
 };

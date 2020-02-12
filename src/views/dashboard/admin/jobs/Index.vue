@@ -1,8 +1,15 @@
 <template>
-  <div id="jobs_candidates" class="dashboard-content">
-    <h1 class="title">
-      {{ $t("page_jobs.title") }}
-    </h1>
+  <div id="page_jobs" class="dashboard-content">
+    <div class="d-flex justify-content-between align-items-end">
+      <h1 class="title">
+        {{ $t("page_jobs.title") }}
+      </h1>
+      <img
+        class="pointer"
+        src="@/assets/image/icon/person-add.svg"
+        @click="$router.push({ name: 'admin-job-create' })"
+      />
+    </div>
     <p class="sub-title">
       {{ $t("page_jobs.sub_title", { jobs: this.totalRows }) }}
     </p>
@@ -34,7 +41,7 @@
               <template v-slot:button-content>
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
-              <b-dropdown-item href="#" @click="goToJob(props)">{{
+              <b-dropdown-item @click="goToJob(props)">{{
                 $t("page_jobs.table.view_job")
               }}</b-dropdown-item>
             </b-dropdown>
@@ -169,6 +176,7 @@ export default {
       this.getActiveJobs();
     },
     goToJob(props) {
+      console.log("props", props);
       if (props && props.row) {
         this.$router.push(
           `/${this.role}/dashboard/jobs/${props.row.company._id}/${props.row._id}`

@@ -71,6 +71,12 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
+        path: "job/create",
+        name: "admin-job-create",
+        component: () => import("../views/dashboard/admin/jobs/JobsCreate.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
         path: "jobs/:companyId/:jobId",
         name: "admin-jobs-detail",
         component: () => import("../views/dashboard/admin/jobs/JobsDetail.vue"),

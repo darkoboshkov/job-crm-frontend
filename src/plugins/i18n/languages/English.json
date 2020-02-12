@@ -352,8 +352,27 @@
       "view_job": "View Job"
     }
   },
-  "page_jobs_detail": {
-
+  "page_job_detail": {
+    "edit": "Edit Job",
+    "save": "Save Job",
+    "form": {
+      "description": "Description",
+      "specifications": "Specifications",
+      "questions": "Questions",
+      "company": "Company",
+      "manager": "Manager",
+      "level": "Level",
+      "rate": "Wage",
+      "start_date": "Start Date",
+      "end_date": "End Date"
+    },
+    "job_offers": "Job Offers",
+    "files": "Files",
+    "button": {
+      "upload": "Upload",
+      "create_new_job_offer": "Create New Job Offer",
+      "create": "Create job"
+    }
   },
   "page_matching": {
     "title": "Matching",

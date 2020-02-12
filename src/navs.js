@@ -30,12 +30,12 @@ export const items = [
     roles: ["manager", "owner"]
   },
   {
-    icon: "icon-hand",
+    icon: "icon-jobs",
     path: "/admin/dashboard/jobs",
     roles: ["admin"]
   },
   {
-    icon: "icon-hand",
+    icon: "icon-jobs",
     path: "/manager/dashboard/jobs",
     roles: ["manager", "owner"]
   },
