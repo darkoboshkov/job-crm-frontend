@@ -78,40 +78,14 @@
                 <li>
                   {{ $t("page_job_detail.form.company") }}
                   <div class="pull-right">
-                    <b-form-select
-                      v-model="model.company"
-                      class="normal-size"
-                      style="margin-top:-8px"
-                    >
-                      <option
-                        v-for="(company, index) in companies"
-                        :value="company"
-                        :key="index"
-                      >
-                        {{ company && company.name }}
-                      </option>
-                    </b-form-select>
+                    <span>{{ model.company && model.company.name }}</span>
                   </div>
                 </li>
 
                 <li>
                   {{ $t("page_job_detail.form.manager") }}
                   <div class="pull-right">
-                    <b-form-select
-                      v-model="model.manager"
-                      class="normal-size"
-                      style="margin-top:-8px"
-                    >
-                      <option
-                        v-for="(manager, index) in managers"
-                        :value="manager"
-                        :key="index"
-                      >
-                        {{
-                          manager && manager.firstName + " " + manager.lastName
-                        }}
-                      </option>
-                    </b-form-select>
+                    <span>{{ userName }}</span>
                   </div>
                 </li>
 
@@ -167,7 +141,7 @@
                     style="width:31px"
                     class="mr-3"
                   />
-                  <span>{{ model.manager && model.manager.email }}</span>
+                  <span>{{ user.email }}</span>
                 </div>
               </b-card>
             </b-col>
@@ -180,7 +154,7 @@
                     style="width: 22px"
                     class="mr-3"
                   />
-                  <span>{{ model.manager && model.manager.phone }}</span>
+                  <span>{{ user.phone }}</span>
                 </div>
               </b-card>
             </b-col>
@@ -420,18 +394,18 @@ export default {
       select: false
     }
          */
-      companies: [],
-      managers: [],
       levels: [],
       state: []
     };
   },
   mounted() {
-    this.getCompanies();
-    this.getManagers();
+    this.getCompany();
     this.getLevels();
   },
   computed: {
+    user() {
+      return this.$store.state.user;
+    },
     userName() {
       return (
         this.$store.state.user.firstName + " " + this.$store.state.user.lastName
@@ -439,31 +413,23 @@ export default {
     }
   },
   methods: {
-    getCompanies() {
-      companiesApi.getAll().then(res => {
-        this.companies = [null].concat(res);
-      });
+    getCompany() {
+      companiesApi
+        .getById({
+          companyId: this.user.companyId
+        })
+        .then(res => {
+          this.model.company = res;
+        });
     },
     getLevels() {
       constantsApi.getAll().then(res => {
         this.levels = [null].concat(res.levels);
       });
     },
-    getManagers() {
-      usersApi
-        .getAll({
-          filter: {
-            role: "manager"
-          },
-          limit: 100
-        })
-        .then(res => {
-          this.managers = [null].concat(res.docs);
-        });
-    },
     createJob() {
-      this.model.companyId = this.model.company._id;
-      this.model.managerId = this.model.manager._id;
+      this.model.companyId = this.user.companyId;
+      this.model.managerId = this.user._id;
       if (!this.model.endDate) {
         delete this.model.endDate;
       }
