@@ -244,28 +244,33 @@
     }
   },
   "page_create_company": {
-    "title": "Create Company",
+    "title": "Add New Company",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida dui eget magna pretium imperdiet. Aliquam nec feugiat massa. Ut vitae est vitae nisi lacinia rhoncus sed vel ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Quisque justo lacus, auctor nec vehicula in, efficitur vel nibh. Vestibulum efficitur urna sed augue lacinia, et pulvinar nulla iaculis.",
     "form": {
       "name": "Company Name",
+      "kvk": "KVK Number",
+      "limit_credit_safe": "Limit CreditSafe",
       "email": "Company Email",
       "phone": "Company Phone Number",
-      "kvk": "Company KVK Number",
-      "limit_credit_safe": "Company Limit Credit Safe",
-      "vat_shifted": "Company VAT Shifted",
-      "g_account": "Company G Account",
-      "terms_of_payment": "Company Terms Of Payment",
-      "automatic_collection": "Company Automatic Collection",
-      "charge_travel_expenses": "Company Charge Travel Expenses",
-      "charge_other_expenses": "Company Charge Other Expenses",
+      "vat_shifted": "VAT Shifted",
+      "g_account": "G Account",
+      "terms_of_payment": "Terms Of Payment",
+      "automatic_collection": "Automatic Collection",
+      "charge_travel_expenses": "Charge Travel Expenses",
+      "charge_other_expenses": "Charge Other Expenses",
       "is_active": "Is Active"
     },
     "button": {
-      "create": "Create Company"
+      "create": "Save Company"
     },
     "modal": {
-      "company_create": {
+      "create_success": {
         "title": "Successfully created new company",
         "sub_title": "Thank you",
+        "continue": "Continue"
+      },
+      "create_error": {
+        "title": "Error",
         "continue": "Continue"
       }
     }
