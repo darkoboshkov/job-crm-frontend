@@ -371,7 +371,8 @@
     "button": {
       "upload": "Upload",
       "create_new_job_offer": "Create New Job Offer",
-      "create": "Create job"
+      "create": "Create job",
+      "update": "Update job"
     },
     "modal": {
       "create_success": {
@@ -380,6 +381,15 @@
         "continue": "Click here to continue."
       },
       "create_error": {
+        "title": "Error",
+        "continue": "Click here to continue."
+      },
+      "update_success": {
+        "title": "Success!",
+        "sub_title": "Job updated successfully!",
+        "continue": "Click here to continue."
+      },
+      "update_error": {
         "title": "Error",
         "continue": "Click here to continue."
       }

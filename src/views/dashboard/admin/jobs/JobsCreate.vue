@@ -108,7 +108,7 @@
                         :key="index"
                       >
                         {{
-                          manager && manager.firstName + " " + manager.lastName
+                          manager && (manager.firstName + " " + manager.lastName)
                         }}
                       </option>
                     </b-form-select>

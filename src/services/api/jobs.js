@@ -25,5 +25,14 @@ export default {
       resolve,
       reject
     );
+  },
+  update(params, resolve, reject = null) {
+    return request(
+      "patch",
+      `/jobs/${params.companyId}/${params._id}`,
+      params,
+      resolve,
+      reject
+    );
   }
 };
