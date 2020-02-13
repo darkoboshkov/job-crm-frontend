@@ -63,7 +63,7 @@ export default [
       {
         path: "jobs/:jobId",
         name: "manage-jobs-detail",
-        component: () => import("../views/dashboard/admin/jobs/JobsDetail.vue"),
+        component: () => import("../views/dashboard/manager/jobs/JobsDetail.vue"),
         beforeEnter: isManagerAuthorized
       },
       {

@@ -394,7 +394,7 @@
   import errorReader from "@/helpers/ErrorReader";
 
   export default {
-    name: "JobsUpdate",
+    name: "JobsDetail",
     data() {
       return {
         editJob: false,

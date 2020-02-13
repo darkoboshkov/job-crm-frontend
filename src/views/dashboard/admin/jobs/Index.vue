@@ -176,7 +176,6 @@ export default {
       this.getActiveJobs();
     },
     goToJob(props) {
-      console.log("props", props);
       if (props && props.row) {
         this.$router.push(
           `/${this.role}/dashboard/jobs/${props.row.company._id}/${props.row._id}`
