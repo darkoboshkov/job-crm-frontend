@@ -13,6 +13,29 @@
     <p class="sub-title">
       {{ $t("page_companies.sub_title", { companies: this.totalRows }) }}
     </p>
+    <div class="d-flex justify-content-between">
+      <table-filter
+        class="companies-filters"
+        @table-filter="filter"
+        :title="'Filter Options'"
+        :options="filterOptions"
+      />
+      <div class="view-switch">
+        View:
+        <i
+          class="hiway-crm-icon icon-ol pointer"
+          @click="imageView(true)"
+          :style="{ opacity: imageMode ? 1 : 0.261 }"
+        ></i>
+        |
+        <i
+          class="hiway-crm-icon icon-ul pointer"
+          @click="imageView(false)"
+          :style="{ opacity: !imageMode ? 1 : 0.261 }"
+        ></i>
+      </div>
+    </div>
+
     <div class="companies-list mt-3">
       <vue-good-table
         mode="remote"
@@ -61,6 +84,9 @@
               style="width:32px;"
             />
           </div>
+          <span v-else-if="props.column.field === 'activeState'">
+            {{ props.formattedRow[props.column.field] ? "active" : "inactive"}}
+          </span>
           <span v-else>
             {{ props.formattedRow[props.column.field] }}
           </span>
@@ -75,7 +101,7 @@
       modal-class="modal-alert"
     >
       <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/success.svg" />
+        <img class="success-image" src="@/assets/image/icon/alert.svg" />
         <p class="alert-title color-blue">
           {{ $t("page_companies.modal.company_delete.title") }}
         </p>
@@ -91,12 +117,15 @@
 </template>
 
 <script>
-import companyApi from "@/services/api/companies";
+  import TableFilter from "@/components/common/TableFilter";
+  import companyApi from "@/services/api/companies";
 
 export default {
   name: "CompanyList",
+  components: { TableFilter },
   data() {
     return {
+      imageMode: true,
       isLoading: true,
       totalRows: 0,
       paginationOptions: {
@@ -104,6 +133,38 @@ export default {
         perPage: 5
       },
       rows: [],
+      filterOptions: [
+        {
+          title: this.$t("page_companies.filter.name"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_companies.filter.email"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_companies.filter.status"),
+          type: "checkbox",
+          value: "",
+          options: [
+            {
+              label: this.$t("page_companies.filter.active"),
+              checked: false
+            },
+            {
+              label: this.$t("page_companies.filter.inactive"),
+              checked: false
+            }
+          ]
+        },
+        {
+          title: this.$t("page_companies.filter.city"),
+          type: "text",
+          value: ""
+        }
+      ],
       serverParams: {
         columnFilters: {},
         page: 1,
@@ -111,21 +172,37 @@ export default {
         sort: "",
         order: ""
       },
-      columns: [
-        {
-          label: this.$t("page_companies.table.image"),
-          field: "image",
-          name: "image"
-        },
+      idToDelete: 0
+    };
+  },
+  computed: {
+    columns() {
+      let columns = this.imageMode
+        ? [
+          {
+            label: this.$t("page_companies.table.image"),
+            field: "image",
+            name: "image",
+            tdClass: "link"
+          }
+        ]
+        : [];
+
+      return columns.concat([
         {
           label: this.$t("page_companies.table.name"),
           field: "name",
           name: "name"
         },
         {
-          label: this.$t("page_companies.table.email"),
+          label: this.$t("page_companies.table.owner"),
           field: "email",
           name: "email"
+        },
+        {
+          label: this.$t("page_companies.table.kvk"),
+          field: "kvkNumber",
+          name: "kvk"
         },
         {
           label: this.$t("page_companies.table.since"),
@@ -142,11 +219,8 @@ export default {
           field: "actions",
           name: "actions"
         }
-      ],
-      idToDelete: 0
-    };
-  },
-  computed: {
+      ]);
+    },
     role() {
       return this.$store.state.user.role;
     }
@@ -155,6 +229,9 @@ export default {
     this.getCompanies();
   },
   methods: {
+    imageView(mode) {
+      this.imageMode = !!mode;
+    },
     formattedDateTime() {
       return function(row) {
         const dateStringOptions = {
@@ -188,7 +265,9 @@ export default {
       });
       this.getCompanies();
     },
-    filter(v) {},
+    filter(v) {
+      console.log('filter', v);
+    },
     goToCompany(props) {
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/companies/${props.row._id}`);

@@ -220,11 +220,20 @@
     "table": {
       "image": "Image",
       "name": "Name",
-      "email": "Email",
+      "owner": "Owner",
+      "kvk": "KVK Number",
       "since": "Registered since",
       "status": "Status",
       "actions": "Actions",
       "view_company": "View Company"
+    },
+    "filter": {
+      "name": "Name",
+      "email": "Owner Email",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "city": "City"
     },
     "modal": {
       "company_delete": {

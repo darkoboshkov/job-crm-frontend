@@ -102,6 +102,7 @@ export default {
   },
   methods: {
     applyFilter() {
+      let filterValues = {}; // todo
       this.$emit("table-filter", this.filterOptions);
     }
   }
