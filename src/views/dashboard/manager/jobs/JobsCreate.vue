@@ -282,22 +282,43 @@
     </div>
 
     <b-modal
-      ref="modal-alert"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-alert"
+            ref="modal-success"
+            :hide-footer="true"
+            :hide-header="true"
+            centered
+            modal-class="modal-success"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
         <p class="alert-title color-blue">
-          {{ $t("page_profile.modal.change.title") }}
+          {{ $t("page_job_detail.modal.create_success.title") }}
         </p>
         <p class="alert-sub-title">
-          {{ $t("page_profile.modal.change.sub_title") }}
+          {{ $t("page_job_detail.modal.create_success.sub_title") }}
+        </p>
+        <button class="btn btn-blue" @click="$refs['modal-success'].hide()">
+          {{ $t("page_job_detail.modal.create_success.continue") }}
+        </button>
+      </div>
+    </b-modal>
+
+    <b-modal
+            ref="modal-alert"
+            :hide-footer="true"
+            :hide-header="true"
+            centered
+            modal-class="modal-alert"
+    >
+      <div class="text-center">
+        <img class="success-image" src="@/assets/image/icon/alert.svg" />
+        <p class="alert-title color-blue">
+          {{ $t("page_job_detail.modal.create_error.title") }}
+        </p>
+        <p class="alert-sub-title">
+          {{ error }}
         </p>
         <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("page_profile.modal.change.continue") }}
+          {{ $t("page_job_detail.modal.create_error.continue") }}
         </button>
       </div>
     </b-modal>
@@ -307,8 +328,8 @@
 <script>
 import jobsApi from "@/services/api/jobs";
 import companiesApi from "@/services/api/companies";
-import usersApi from "@/services/api/users";
 import constantsApi from "@/services/api/constants";
+import errorReader from "@/helpers/ErrorReader";
 
 export default {
   name: "JobsCreate",
@@ -395,7 +416,8 @@ export default {
     }
          */
       levels: [],
-      state: []
+      state: [],
+      error: ''
     };
   },
   mounted() {
@@ -443,6 +465,13 @@ export default {
         this.model.company = res.company[0];
         this.model.managerId = res.manager[0]._id;
         this.model.manager = res.manager[0];
+
+        this.$refs["modal-success"].show();
+      }).catch(err => {
+        let read = errorReader(err);
+        this.error = read.param + ' is ' + read.msg.toLowerCase();
+
+        this.$refs["modal-alert"].show();
       });
     }
   }

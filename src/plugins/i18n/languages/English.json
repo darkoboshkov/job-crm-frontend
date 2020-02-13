@@ -372,6 +372,17 @@
       "upload": "Upload",
       "create_new_job_offer": "Create New Job Offer",
       "create": "Create job"
+    },
+    "modal": {
+      "create_success": {
+        "title": "Success!",
+        "sub_title": "Job created successfully!",
+        "continue": "Click here to continue."
+      },
+      "create_error": {
+        "title": "Error",
+        "continue": "Click here to continue."
+      }
     }
   },
   "page_matching": {
