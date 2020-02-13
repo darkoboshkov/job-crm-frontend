@@ -39,6 +39,7 @@
 
 <script>
 import authApi from "@/services/api/auth";
+import { Toast } from "@/utils";
 
 export default {
   name: "VerifyEmail",
@@ -61,6 +62,7 @@ export default {
         .then(res => {
           if (res.verified) {
             this.$store.dispatch("user/updateVerified", res.verified);
+            Toast("E-mail is successfully verified!", "success");
             this.$router.push("/dashboard");
           } else {
             alert("verification code has issue");

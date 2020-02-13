@@ -90,7 +90,7 @@ export default {
             c_password: this.cPassword
           })
           .then(res => {
-            Toast("Reset password successfully!", "success");
+            Toast("Password is successfully reset!", "success");
             this.$router.push("/login");
           })
           .catch(data => {

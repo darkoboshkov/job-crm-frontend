@@ -156,7 +156,6 @@ export default {
           .invitation(params)
           .then(res => {
             this.$refs["modal-alert"].show();
-            console.log(res);
           })
           .catch(data => {
             let messages = data.response.data.errors.msg;
