@@ -244,7 +244,8 @@
     }
   },
   "page_detail_company": {
-    "title": "Add New Company",
+    "create_title": "Add New Company",
+    "edit_title": "Edit Company",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida dui eget magna pretium imperdiet. Aliquam nec feugiat massa. Ut vitae est vitae nisi lacinia rhoncus sed vel ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Quisque justo lacus, auctor nec vehicula in, efficitur vel nibh. Vestibulum efficitur urna sed augue lacinia, et pulvinar nulla iaculis.",
     "form": {
       "name": "Company Name",

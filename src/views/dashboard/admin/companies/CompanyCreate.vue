@@ -2,7 +2,7 @@
   <div id="page_company_create" class="company-create">
     <div class="company-create__header text-center">
       <h1>
-        {{ $t("page_detail_company.title") }}
+        {{ $t("page_detail_company.create_title") }}
       </h1>
     </div>
     <div class="company-create__description text-center">

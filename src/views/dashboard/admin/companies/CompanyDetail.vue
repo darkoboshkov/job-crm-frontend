@@ -2,7 +2,7 @@
   <div id="page_companies_detail" class="company-detail">
     <div class="company-detail__header text-center">
       <h1>
-        {{ $t("page_detail_company.title") }}
+        {{ $t("page_detail_company.edit_title") }}
       </h1>
     </div>
     <div class="company-detail__description text-center">
