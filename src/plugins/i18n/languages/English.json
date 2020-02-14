@@ -262,7 +262,9 @@
       "is_active": "Is Active"
     },
     "button": {
-      "create": "Save Company"
+      "create": "Create Company",
+      "update": "Update Company",
+      "delete": "Delete Company"
     },
     "modal": {
       "create_success": {
@@ -444,6 +446,17 @@
         "update": "Update Setting"
       }
     },
+    "reset_password": {
+      "title": "Reset Password",
+      "form": {
+        "old_password": "Old Password",
+        "new_password": "New Password",
+        "confirm": "Confirm"
+      },
+      "button": {
+        "update": "Reset"
+      }
+    },
     "notification_setting": {
       "title": "Notification Setting"
     },
@@ -459,6 +472,12 @@
       "system_change": {
         "title": "Successfully changed system settings",
         "sub_title": "Thank you",
+        "continue": "Continue"
+      },
+      "reset_password": {
+        "success_title": "Successfully updated your password",
+        "error_title": "Failed to update your password",
+        "success_sub_title": "Thank you",
         "continue": "Continue"
       }
     }

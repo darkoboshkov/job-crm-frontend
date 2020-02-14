@@ -244,10 +244,19 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12 text-right">
-            <button type="submit" class="btn btn-blue">
-              {{ $t("page_detail_company.button.create") }}
-            </button>
+          <div class="col-12 col-md-8 offset-md-2">
+            <div class="row">
+              <div class="col-6 text-left">
+                <button class="btn btn-red" @click="deleteCompany">
+                  {{ $t("page_detail_company.button.delete") }}
+                </button>
+              </div>
+              <div class="col-6 text-right">
+                <button type="submit" class="btn btn-blue">
+                  {{ $t("page_detail_company.button.update") }}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -370,6 +379,22 @@
       catchSubmitUpdate(e) {
         e.preventDefault();
         this.update();
+      },
+      deleteCompany() {
+        companyApi.delete({
+          companyId: this.companyId
+        })
+          .then(res => {
+            this.$refs["modal-success"].show();
+          })
+          .catch(err => {
+            // let read = errorReader(err);
+            // this.error = read.param + ' is ' + read.msg.toLowerCase();
+
+            this.error = err.response.data?.errors?.msg;
+
+            this.$refs["modal-alert"].show();
+          });
       }
     },
     mounted() {

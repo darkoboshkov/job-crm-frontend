@@ -12,5 +12,14 @@ export default {
       resolve,
       reject
     );
+  },
+  resetPassword(params, resolve, reject = null) {
+    return request(
+      "post",
+      "/settings/changePassword",
+      params,
+      resolve,
+      reject
+    );
   }
 };

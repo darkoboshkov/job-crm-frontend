@@ -9,6 +9,9 @@
         <b-tab :title="$t('page_setting.system_setting.title')">
           <setting-system />
         </b-tab>
+        <b-tab :title="$t('page_setting.reset_password.title')">
+          <reset-password />
+        </b-tab>
         <b-tab :title="$t('page_setting.notification_setting.title')"> </b-tab>
         <b-tab :title="$t('page_setting.other_setting.title')"> </b-tab>
       </b-tabs>
@@ -19,9 +22,10 @@
 <script>
 import SettingAccount from "./SettingAccount";
 import SettingSystem from "./SettingSystem";
+import ResetPassword from "./ResetPassword";
 export default {
   name: "Setting",
-  components: { SettingSystem, SettingAccount }
+  components: { SettingSystem, SettingAccount, ResetPassword }
 };
 </script>
 

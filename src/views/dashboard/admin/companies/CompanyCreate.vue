@@ -258,7 +258,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12 text-right">
+          <div class="col-12 col-md-8 offset-md-2 text-right">
             <button type="submit" class="btn btn-blue">
               {{ $t("page_detail_company.button.create") }}
             </button>
