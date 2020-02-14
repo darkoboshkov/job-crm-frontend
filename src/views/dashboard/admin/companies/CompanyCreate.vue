@@ -2,21 +2,25 @@
   <div id="page_company_create" class="company-create">
     <div class="company-create__header text-center">
       <h1>
-        {{ $t("page_create_company.title") }}
+        {{ $t("page_detail_company.title") }}
       </h1>
     </div>
     <div class="company-create__description text-center">
-      <p>
-        {{ $t("page_create_company.description") }}
-      </p>
+      <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+          <p>
+            {{ $t("page_detail_company.description") }}
+          </p>
+        </div>
+      </div>
     </div>
     <form class="company-create__form mt-4" ref="company-create-form">
       <div class="container">
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.name") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.name") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-6">
             <b-form-input
                     type="text"
                     name="name"
@@ -28,23 +32,38 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.email") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.owner") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
-            <b-form-input
-                    type="email"
-                    name="email"
-                    required
-                    class="custom-input"
-                    v-model="model.email"
-            ></b-form-input>
+          <div class="col-12 col-md-6">
+            <b-form-select
+              name="email"
+              v-model="model.email"
+              class="custom-input"
+              style="margin-top:-8px"
+            >
+              <option
+                v-for="(manager, index) in managers"
+                :value="manager.email"
+                :key="index"
+              >
+                {{ manager.email }}
+              </option>
+            </b-form-select>
+
+              <!--<b-form-input-->
+                      <!--type="email"-->
+                      <!--name="email"-->
+                      <!--required-->
+                      <!--class="custom-input"-->
+                      <!--v-model="model.email"-->
+              <!--&gt;</b-form-input>-->
           </div>
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.kvk") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.kvk") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-6">
             <b-form-input
                     type="number"
                     name="kvk"
@@ -56,9 +75,9 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.limit_credit_safe") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.limit_credit_safe") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-6">
             <b-form-input
                     type="number"
                     name="limit_credit_safe"
@@ -70,9 +89,9 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.vat_shifted") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.vat_shifted") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-6">
             <div class="row align-items-center">
               <div class="col-12 col-md-4">
                 <b-form-group class="mb-2">
@@ -98,7 +117,7 @@
                             name="vat_shifted"
                             :disabled="!model.vatShiftedEnabled"
                             class="custom-input"
-                            v-model="model.vatShifted"
+                            v-model="model.VATShifted"
                     ></b-form-input>
                   </div>
                 </div>
@@ -108,9 +127,9 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.g_account") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.g_account") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-6">
             <div class="row align-items-center">
               <div class="col-12 col-md-4">
                 <b-form-group class="mb-2">
@@ -136,7 +155,7 @@
                             name="vat_shifted"
                             :disabled="!model.gAccountEnabled"
                             class="custom-input"
-                            v-model="model.gAccount"
+                            v-model="model.GAccount"
                     ></b-form-input>
                   </div>
                 </div>
@@ -146,9 +165,9 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.terms_of_payment") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.terms_of_payment") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-6">
             <b-form-group class="mb-2">
               <b-form-radio-group
                       id="radio-group-3"
@@ -162,9 +181,9 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.automatic_collection") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.automatic_collection") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-6">
             <b-form-group class="mb-2">
               <b-form-radio-group
                       id="radio-group-4"
@@ -180,9 +199,9 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.charge_travel_expenses") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.charge_travel_expenses") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-6">
             <b-form-group class="mb-2">
               <b-form-radio-group
                       id="radio-group-5"
@@ -198,9 +217,9 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_create_company.form.charge_other_expenses") }}:</label>
+            <label class="pull-right">{{ $t("page_detail_company.form.charge_other_expenses") }}:</label>
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-6">
             <b-form-group class="mb-2">
               <b-form-radio-group
                       id="radio-group-6"
@@ -222,7 +241,7 @@
                 <!--class="custom-input"-->
                 <!--name="is_active"-->
               <!--&gt;-->
-                <!--{{ $t("page_create_company.form.is_active") }}-->
+                <!--{{ $t("page_detail_company.form.is_active") }}-->
               <!--</b-form-checkbox>-->
             <!--</div>-->
           <!--</div>-->
@@ -241,7 +260,7 @@
         <div class="row">
           <div class="col-12 text-right">
             <button type="submit" class="btn btn-blue">
-              {{ $t("page_create_company.button.create") }}
+              {{ $t("page_detail_company.button.create") }}
             </button>
           </div>
         </div>
@@ -257,13 +276,13 @@
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/alert.svg" />
         <p class="alert-title color-blue">
-          {{ $t("page_create_company.modal.create_error.title") }}
+          {{ $t("page_detail_company.modal.create_error.title") }}
         </p>
         <p class="alert-sub-title">
           {{ error }}
         </p>
         <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("page_create_company.modal.create_error.continue") }}
+          {{ $t("page_detail_company.modal.create_error.continue") }}
         </button>
       </div>
     </b-modal>
@@ -277,13 +296,13 @@
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
         <p class="alert-title color-blue">
-          {{ $t("page_create_company.modal.create_success.title") }}
+          {{ $t("page_detail_company.modal.create_success.title") }}
         </p>
         <p class="alert-sub-title">
-          {{ $t("page_create_company.modal.create_success.sub_title") }}
+          {{ $t("page_detail_company.modal.create_success.sub_title") }}
         </p>
         <button class="btn btn-blue" @click="$refs['modal-success'].hide()">
-          {{ $t("page_create_company.modal.create_success.continue") }}
+          {{ $t("page_detail_company.modal.create_success.continue") }}
         </button>
       </div>
     </b-modal>
@@ -293,6 +312,7 @@
 <script>
 import companyApi from "../../../../services/api/companies.js";
 import constantsApi from "../../../../services/api/constants.js";
+import usersApi from "@/services/api/users";
 import errorReader from "@/helpers/ErrorReader";
 
 export default {
@@ -306,9 +326,9 @@ export default {
         kvkNumber: "",
         limitCreditSafe: "",
         vatShiftedEnabled: false,
-        vatShifted: "",
+        VATShifted: "",
         gAccountEnabled: false,
-        gAccount: "",
+        GAccount: "",
         termOfPayment: "",
         automaticCollection: true,
         chargeTravelExpenses: true,
@@ -316,11 +336,24 @@ export default {
         active: false,
         members: []
       },
+      managers: [],
       termsOfPayment: [],
       error: ''
     };
   },
   methods: {
+    getManagers() {
+      usersApi
+        .getAll({
+          filter: {
+            role: "manager"
+          },
+          limit: 100
+        })
+        .then(res => {
+          this.managers = res.docs;
+        });
+    },
     getTermsOfPayment() {
       return constantsApi.getAll()
         .then((res) => {
@@ -329,11 +362,11 @@ export default {
         });
     },
     create() {
-      if (!this.vatShiftedEnabled) {
-        delete this.model.vatShifted;
+      if (!this.model.vatShiftedEnabled) {
+        delete this.model.VATShifted;
       }
-      if (!this.gAccountEnabled) {
-        delete this.model.gAccount;
+      if (!this.model.gAccountEnabled) {
+        delete this.model.GAccount;
       }
 
       companyApi.create(this.model)
@@ -355,6 +388,7 @@ export default {
     }
   },
   mounted() {
+    this.getManagers();
     this.getTermsOfPayment();
     this.$refs["company-create-form"].addEventListener("submit", this.catchSubmitCreate.bind(this));
   },

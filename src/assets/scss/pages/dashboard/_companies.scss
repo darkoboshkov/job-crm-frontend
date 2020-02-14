@@ -14,3 +14,17 @@
     margin-bottom: 1rem;
   }
 }
+
+#page_company_detail {
+  .company-detail__header {
+    color: var(--lipstick-red);
+    margin: 48px 24px 12px;
+    font-size: 34px;
+  }
+  .company-detail__description {
+    margin: 24px 24px 12px;
+  }
+  .form-element {
+    margin-bottom: 1rem;
+  }
+}
