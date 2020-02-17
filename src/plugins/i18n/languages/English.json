@@ -245,8 +245,10 @@
   },
   "page_detail_company": {
     "create_title": "Add New Company",
-    "edit_title": "Edit Company",
+    "edit_title": "Company Details",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida dui eget magna pretium imperdiet. Aliquam nec feugiat massa. Ut vitae est vitae nisi lacinia rhoncus sed vel ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Quisque justo lacus, auctor nec vehicula in, efficitur vel nibh. Vestibulum efficitur urna sed augue lacinia, et pulvinar nulla iaculis.",
+    "save": "Save company",
+    "edit": "Edit company",
     "form": {
       "name": "Company Name",
       "kvk": "KVK Number",
