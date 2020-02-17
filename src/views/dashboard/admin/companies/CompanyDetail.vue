@@ -294,7 +294,7 @@
             <div class="col-12 col-md-8 offset-md-2">
               <div class="row">
                 <div class="col-6 text-left">
-                  <button class="btn btn-red" @click="deleteCompany">
+                  <button class="btn btn-red" @click.prevent="deleteCompany">
                     {{ $t("page_detail_company.button.delete") }}
                   </button>
                 </div>
@@ -447,6 +447,9 @@ export default {
         })
         .then(res => {
           this.$refs["modal-success"].show();
+          setTimeout(() => {
+            this.$router.push('/admin/dashboard/companies');
+          }, 3000);
         })
         .catch(err => {
           // let read = errorReader(err);
