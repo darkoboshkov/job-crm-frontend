@@ -43,7 +43,7 @@
             {{ $t("page_users_create_invite.form.manager") }}
           </b-form-radio>
           <b-form-radio v-model="form.role" name="gender" value="owner">
-            {{ $t("page_users_create_invite.form.role") }}
+            {{ $t("page_users_create_invite.form.owner") }}
           </b-form-radio>
         </div>
       </div>

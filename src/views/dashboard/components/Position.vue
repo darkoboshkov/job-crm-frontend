@@ -125,6 +125,14 @@ export default {
       collapsed: true
     };
   },
+  computed: {
+    companyId() {
+      return this.$store.state.user.companyId;
+    },
+    role() {
+      return this.$store.state.user.role;
+    }
+  },
   methods: {
     hidePositionCard: function() {
       this.$emit("hide-position-card");
