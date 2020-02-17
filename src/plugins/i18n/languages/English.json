@@ -417,14 +417,17 @@
         "first_name": "First Name",
         "last_name": "Last Name",
         "middle_name": "Middle Name",
-        "email": "Email",
-        "password": "Password",
-        "c_password": "Confirm Password",
         "gender": "Gender",
         "man": "Man",
         "woman": "Woman",
         "birthday": "Birthday",
-        "city": "City"
+        "bank_account_number": "Bank Account Number",
+        "city": "City",
+        "street": "Street",
+        "house_number": "House Number",
+        "postal_code": "Postal Code",
+        "password": "Password",
+        "c_password": "Confirm Password"
       },
       "button": {
         "update": "Update Setting"
