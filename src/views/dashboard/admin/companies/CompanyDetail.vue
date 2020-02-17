@@ -298,11 +298,11 @@
                     {{ $t("page_detail_company.button.delete") }}
                   </button>
                 </div>
-                <div class="col-6 text-right">
-                  <button type="submit" class="btn btn-blue">
-                    {{ $t("page_detail_company.button.update") }}
-                  </button>
-                </div>
+                <!--<div class="col-6 text-right">-->
+                  <!--<button type="submit" class="btn btn-blue">-->
+                    <!--{{ $t("page_detail_company.button.update") }}-->
+                  <!--</button>-->
+                <!--</div>-->
               </div>
             </div>
           </div>
@@ -386,7 +386,11 @@ export default {
   },
   methods: {
     onEditCompany() {
-      this.editCompany = !this.editCompany;
+      if (this.editCompany) {
+        this.update();
+      } else {
+        this.editCompany = !this.editCompany;
+      }
     },
     getCompany() {
       companyApi
@@ -421,6 +425,7 @@ export default {
         )
         .then(res => {
           this.$refs["modal-success"].show();
+          this.editCompany = !this.editCompany;
         })
         .catch(err => {
           // let read = errorReader(err);
