@@ -282,11 +282,11 @@
     </div>
 
     <b-modal
-            ref="modal-success"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-success"
+      ref="modal-success"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-success"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
@@ -303,11 +303,11 @@
     </b-modal>
 
     <b-modal
-            ref="modal-alert"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-alert"
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/alert.svg" />
@@ -417,7 +417,7 @@ export default {
          */
       levels: [],
       state: [],
-      error: ''
+      error: ""
     };
   },
   mounted() {
@@ -459,20 +459,23 @@ export default {
         delete this.model.image;
       }
 
-      jobsApi.create(this.model).then(res => {
-        this.model = res;
-        this.model.companyId = res.company[0]._id;
-        this.model.company = res.company[0];
-        this.model.managerId = res.manager[0]._id;
-        this.model.manager = res.manager[0];
+      jobsApi
+        .create(this.model)
+        .then(res => {
+          this.model = res;
+          this.model.companyId = res.company[0]._id;
+          this.model.company = res.company[0];
+          this.model.managerId = res.manager[0]._id;
+          this.model.manager = res.manager[0];
 
-        this.$refs["modal-success"].show();
-      }).catch(err => {
-        let read = errorReader(err);
-        this.error = read.param + ' is ' + read.msg.toLowerCase();
+          this.$refs["modal-success"].show();
+        })
+        .catch(err => {
+          let read = errorReader(err);
+          this.error = read.param + " is " + read.msg.toLowerCase();
 
-        this.$refs["modal-alert"].show();
-      });
+          this.$refs["modal-alert"].show();
+        });
     }
   }
 };

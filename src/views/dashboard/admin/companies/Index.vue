@@ -85,7 +85,7 @@
             />
           </div>
           <span v-else-if="props.column.field === 'activeState'">
-            {{ props.formattedRow[props.column.field] ? "active" : "inactive"}}
+            {{ props.formattedRow[props.column.field] ? "active" : "inactive" }}
           </span>
           <span v-else>
             {{ props.formattedRow[props.column.field] }}
@@ -117,8 +117,8 @@
 </template>
 
 <script>
-  import TableFilter from "@/components/common/TableFilter";
-  import companyApi from "@/services/api/companies";
+import TableFilter from "@/components/common/TableFilter";
+import companyApi from "@/services/api/companies";
 
 export default {
   name: "CompanyList",
@@ -179,13 +179,13 @@ export default {
     columns() {
       let columns = this.imageMode
         ? [
-          {
-            label: this.$t("page_companies.table.image"),
-            field: "image",
-            name: "image",
-            tdClass: "link"
-          }
-        ]
+            {
+              label: this.$t("page_companies.table.image"),
+              field: "image",
+              name: "image",
+              tdClass: "link"
+            }
+          ]
         : [];
 
       return columns.concat([
@@ -266,7 +266,7 @@ export default {
       this.getCompanies();
     },
     filter(v) {
-      console.log('filter', v);
+      console.log("filter", v);
     },
     goToCompany(props) {
       if (props && props.row) {

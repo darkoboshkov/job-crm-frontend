@@ -401,6 +401,24 @@
       }
     }
   },
+  "page_jobs_choose_candidate": {
+    "title": "Choose Candidate",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    "button": {
+      "search": "Search Candidates",
+      "new": "Add new Candidate"
+    }
+  },
+  "page_jobs_select_candidate": {
+    "title": "Select Candidate",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    "form": {
+      "search": "Search name"
+    },
+    "button": {
+      "search": "Search Candidates"
+    }
+  },
   "page_matching": {
     "title": "Matching",
     "match_detail": "Matching Detail",

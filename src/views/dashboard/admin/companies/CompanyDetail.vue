@@ -19,73 +19,83 @@
       <div class="container">
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.name") }}:</label>
+            <label class="pull-right"
+              >{{ $t("page_detail_company.form.name") }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <b-form-input
-                    type="text"
-                    name="name"
-                    required
-                    class="custom-input"
-                    v-model="model.name"
+              type="text"
+              name="name"
+              required
+              class="custom-input"
+              v-model="model.name"
             ></b-form-input>
           </div>
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.owner") }}:</label>
+            <label class="pull-right"
+              >{{ $t("page_detail_company.form.owner") }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <b-form-input
-                    type="email"
-                    name="email"
-                    required
-                    class="custom-input"
-                    v-model="model.email"
+              type="email"
+              name="email"
+              required
+              class="custom-input"
+              v-model="model.email"
             ></b-form-input>
           </div>
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.kvk") }}:</label>
+            <label class="pull-right"
+              >{{ $t("page_detail_company.form.kvk") }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <b-form-input
-                    type="number"
-                    name="kvk"
-                    required
-                    class="custom-input"
-                    v-model="model.kvkNumber"
+              type="number"
+              name="kvk"
+              required
+              class="custom-input"
+              v-model="model.kvkNumber"
             ></b-form-input>
           </div>
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.limit_credit_safe") }}:</label>
+            <label class="pull-right"
+              >{{ $t("page_detail_company.form.limit_credit_safe") }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <b-form-input
-                    type="number"
-                    name="limit_credit_safe"
-                    required
-                    class="custom-input"
-                    v-model="model.limitCreditSafe"
+              type="number"
+              name="limit_credit_safe"
+              required
+              class="custom-input"
+              v-model="model.limitCreditSafe"
             ></b-form-input>
           </div>
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.vat_shifted") }}:</label>
+            <label class="pull-right"
+              >{{ $t("page_detail_company.form.vat_shifted") }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <div class="row align-items-center">
               <div class="col-12 col-md-4">
                 <b-form-group class="mb-2">
                   <b-form-radio-group
-                          id="radio-group-1"
-                          v-model="model.vatShiftedEnabled"
-                          name="vat_shifted"
-                          style="outline: none;"
+                    id="radio-group-1"
+                    v-model="model.vatShiftedEnabled"
+                    name="vat_shifted"
+                    style="outline: none;"
                   >
                     <b-form-radio :value="false">No</b-form-radio>
                     <b-form-radio :value="true">Yes</b-form-radio>
@@ -99,11 +109,11 @@
                   </div>
                   <div class="col-12 col-md-8">
                     <b-form-input
-                            type="text"
-                            name="vat_shifted"
-                            :disabled="!model.vatShiftedEnabled"
-                            class="custom-input"
-                            v-model="model.VATShifted"
+                      type="text"
+                      name="vat_shifted"
+                      :disabled="!model.vatShiftedEnabled"
+                      class="custom-input"
+                      v-model="model.VATShifted"
                     ></b-form-input>
                   </div>
                 </div>
@@ -113,17 +123,19 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.g_account") }}:</label>
+            <label class="pull-right"
+              >{{ $t("page_detail_company.form.g_account") }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <div class="row align-items-center">
               <div class="col-12 col-md-4">
                 <b-form-group class="mb-2">
                   <b-form-radio-group
-                          id="radio-group-2"
-                          v-model="model.gAccountEnabled"
-                          name="g_account"
-                          style="outline: none;"
+                    id="radio-group-2"
+                    v-model="model.gAccountEnabled"
+                    name="g_account"
+                    style="outline: none;"
                   >
                     <b-form-radio :value="false">No</b-form-radio>
                     <b-form-radio :value="true">Yes</b-form-radio>
@@ -137,11 +149,11 @@
                   </div>
                   <div class="col-12 col-md-8">
                     <b-form-input
-                            type="number"
-                            name="vat_shifted"
-                            :disabled="!model.gAccountEnabled"
-                            class="custom-input"
-                            v-model="model.GAccount"
+                      type="number"
+                      name="vat_shifted"
+                      :disabled="!model.gAccountEnabled"
+                      class="custom-input"
+                      v-model="model.GAccount"
                     ></b-form-input>
                   </div>
                 </div>
@@ -151,31 +163,35 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.terms_of_payment") }}:</label>
+            <label class="pull-right"
+              >{{ $t("page_detail_company.form.terms_of_payment") }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <b-form-group class="mb-2">
               <b-form-radio-group
-                      id="radio-group-3"
-                      v-model="model.termOfPayment"
-                      :options="termsOfPayment"
-                      name="term_of_payment"
-                      style="outline: none;"
+                id="radio-group-3"
+                v-model="model.termOfPayment"
+                :options="termsOfPayment"
+                name="term_of_payment"
+                style="outline: none;"
               ></b-form-radio-group>
             </b-form-group>
           </div>
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.automatic_collection") }}:</label>
+            <label class="pull-right"
+              >{{ $t("page_detail_company.form.automatic_collection") }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <b-form-group class="mb-2">
               <b-form-radio-group
-                      id="radio-group-4"
-                      v-model="model.automaticCollection"
-                      name="automatic_collection"
-                      style="outline: none;"
+                id="radio-group-4"
+                v-model="model.automaticCollection"
+                name="automatic_collection"
+                style="outline: none;"
               >
                 <b-form-radio :value="false">No</b-form-radio>
                 <b-form-radio :value="true">Yes</b-form-radio>
@@ -185,15 +201,19 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.charge_travel_expenses") }}:</label>
+            <label class="pull-right"
+              >{{
+                $t("page_detail_company.form.charge_travel_expenses")
+              }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <b-form-group class="mb-2">
               <b-form-radio-group
-                      id="radio-group-5"
-                      v-model="model.chargeTravelExpenses"
-                      name="charge_travel_expenses"
-                      style="outline: none;"
+                id="radio-group-5"
+                v-model="model.chargeTravelExpenses"
+                name="charge_travel_expenses"
+                style="outline: none;"
               >
                 <b-form-radio :value="false">No</b-form-radio>
                 <b-form-radio :value="true">Yes</b-form-radio>
@@ -203,15 +223,19 @@
         </div>
         <div class="row align-items-center pb-3">
           <div class="col-12 col-md-4">
-            <label class="pull-right">{{ $t("page_detail_company.form.charge_other_expenses") }}:</label>
+            <label class="pull-right"
+              >{{
+                $t("page_detail_company.form.charge_other_expenses")
+              }}:</label
+            >
           </div>
           <div class="col-12 col-md-6">
             <b-form-group class="mb-2">
               <b-form-radio-group
-                      id="radio-group-6"
-                      v-model="model.chargeOtherExpenses"
-                      name="charge_other_expenses"
-                      style="outline: none;"
+                id="radio-group-6"
+                v-model="model.chargeOtherExpenses"
+                name="charge_other_expenses"
+                style="outline: none;"
               >
                 <b-form-radio :value="false">No</b-form-radio>
                 <b-form-radio :value="true">Yes</b-form-radio>
@@ -262,11 +286,11 @@
       </div>
     </form>
     <b-modal
-            ref="modal-alert"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-alert"
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/alert.svg" />
@@ -282,11 +306,11 @@
       </div>
     </b-modal>
     <b-modal
-            ref="modal-success"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-success"
+      ref="modal-success"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-success"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
@@ -305,105 +329,116 @@
 </template>
 
 <script>
-  import companyApi from "../../../../services/api/companies.js";
-  import constantsApi from "../../../../services/api/constants.js";
-  import errorReader from "@/helpers/ErrorReader";
+import companyApi from "../../../../services/api/companies.js";
+import constantsApi from "../../../../services/api/constants.js";
+import errorReader from "@/helpers/ErrorReader";
 
-  export default {
-    name: "CompanyCreate",
-    data() {
-      return {
-        editCompany: false,
-        companyId: this.$route.params.companyId,
-        model: {
-          name: "",
-          email: "",
-          phoneNumber: "",
-          kvkNumber: "",
-          limitCreditSafe: "",
-          vatShiftedEnabled: false,
-          VATShifted: "",
-          gAccountEnabled: false,
-          GAccount: "",
-          termOfPayment: "",
-          automaticCollection: true,
-          chargeTravelExpenses: true,
-          chargeOtherExpenses: true,
-          active: false,
-          members: []
-        },
-        termsOfPayment: [],
-        error: ''
-      };
-    },
-    methods: {
-      getCompany() {
-        companyApi.getById({
+export default {
+  name: "CompanyCreate",
+  data() {
+    return {
+      editCompany: false,
+      companyId: this.$route.params.companyId,
+      model: {
+        name: "",
+        email: "",
+        phoneNumber: "",
+        kvkNumber: "",
+        limitCreditSafe: "",
+        vatShiftedEnabled: false,
+        VATShifted: "",
+        gAccountEnabled: false,
+        GAccount: "",
+        termOfPayment: "",
+        automaticCollection: true,
+        chargeTravelExpenses: true,
+        chargeOtherExpenses: true,
+        active: false,
+        members: []
+      },
+      termsOfPayment: [],
+      error: ""
+    };
+  },
+  methods: {
+    getCompany() {
+      companyApi
+        .getById({
           companyId: this.companyId
-        }).then((res) => {
+        })
+        .then(res => {
           this.model = res;
           this.model.vatShiftedEnabled = !!res.VATShifted;
           this.model.gAccountEnabled = !!res.GAccount;
         });
-      },
-      getTermsOfPayment() {
-        return constantsApi.getAll()
-          .then((res) => {
-            this.termsOfPayment = res.termsOfPayments;
-            this.model.termOfPayment = this.termsOfPayment[0];
-          });
-      },
-      update() {
-        if (!this.model.vatShiftedEnabled) {
-          delete this.model.VATShifted;
-        }
-        if (!this.model.gAccountEnabled) {
-          delete this.model.GAccount;
-        }
+    },
+    getTermsOfPayment() {
+      return constantsApi.getAll().then(res => {
+        this.termsOfPayment = res.termsOfPayments;
+        this.model.termOfPayment = this.termsOfPayment[0];
+      });
+    },
+    update() {
+      if (!this.model.vatShiftedEnabled) {
+        delete this.model.VATShifted;
+      }
+      if (!this.model.gAccountEnabled) {
+        delete this.model.GAccount;
+      }
 
-        companyApi.patch(Object.assign(this.model, {
-          companyId: this.model._id
-        }))
-          .then(res => {
-            this.$refs["modal-success"].show();
+      companyApi
+        .patch(
+          Object.assign(this.model, {
+            companyId: this.model._id
           })
-          .catch(err => {
-            // let read = errorReader(err);
-            // this.error = read.param + ' is ' + read.msg.toLowerCase();
+        )
+        .then(res => {
+          this.$refs["modal-success"].show();
+        })
+        .catch(err => {
+          // let read = errorReader(err);
+          // this.error = read.param + ' is ' + read.msg.toLowerCase();
 
-            this.error = err.response.data?.errors?.msg;
+          this.error = err.response.data?.errors?.msg;
 
-            this.$refs["modal-alert"].show();
-          });
-      },
-      catchSubmitUpdate(e) {
-        e.preventDefault();
-        this.update();
-      },
-      deleteCompany() {
-        companyApi.delete({
+          this.$refs["modal-alert"].show();
+        });
+    },
+    catchSubmitUpdate(e) {
+      e.preventDefault();
+      this.update();
+    },
+    deleteCompany() {
+      companyApi
+        .delete({
           companyId: this.companyId
         })
-          .then(res => {
-            this.$refs["modal-success"].show();
-          })
-          .catch(err => {
-            // let read = errorReader(err);
-            // this.error = read.param + ' is ' + read.msg.toLowerCase();
+        .then(res => {
+          this.$refs["modal-success"].show();
+        })
+        .catch(err => {
+          // let read = errorReader(err);
+          // this.error = read.param + ' is ' + read.msg.toLowerCase();
 
-            this.error = err.response.data?.errors?.msg;
+          this.error = err.response.data?.errors?.msg;
 
-            this.$refs["modal-alert"].show();
-          });
-      }
-    },
-    mounted() {
-      this.getCompany();
-      this.getTermsOfPayment();
-      this.$refs["company-detail-form"].addEventListener("submit", this.catchSubmitUpdate.bind(this));
-    },
-    beforeDestroy() {
-      this.$refs["company-detail-form"].removeEventListener("submit", this.catchSubmitUpdate);
+          this.$refs["modal-alert"].show();
+        });
     }
-  };
+  },
+  mounted() {
+    this.getCompany();
+    this.getTermsOfPayment();
+    this.$refs["company-detail-form"].addEventListener(
+      "submit",
+      this.catchSubmitUpdate.bind(this)
+    );
+  },
+  beforeDestroy() {
+    this.$refs["company-detail-form"].removeEventListener(
+      "submit",
+      this.catchSubmitUpdate
+    );
+  }
+};
 </script>

@@ -46,18 +46,23 @@
 
           <b-card class="mt-3">
             <template v-slot:header>
-              <div v-if="editJob" class="d-flex justify-content-between align-items-end">
+              <div
+                v-if="editJob"
+                class="d-flex justify-content-between align-items-end"
+              >
                 <h5 class="m-0">{{ $t("page_job_detail.form.questions") }}</h5>
                 <button
-                        data-v-74cd9a4e=""
-                        class="btn btn-red circle large"
-                        style="width: 50px;"
-                        @click="model.questions = model.questions.concat([''])"
+                  data-v-74cd9a4e=""
+                  class="btn btn-red circle large"
+                  style="width: 50px;"
+                  @click="model.questions = model.questions.concat([''])"
                 >
-                  <i data-v-74cd9a4e="" class="hiway-crm-icon icon-add"></i>
+                  <i class="hiway-crm-icon icon-add"></i>
                 </button>
               </div>
-              <h5 class="m-0" v-else>{{ $t("page_job_detail.form.questions") }}</h5>
+              <h5 class="m-0" v-else>
+                {{ $t("page_job_detail.form.questions") }}
+              </h5>
             </template>
             <ul class="custom-list">
               <li
@@ -105,7 +110,9 @@
                         {{ company && company.name }}
                       </option>
                     </b-form-select>
-                    <span v-else>{{ model.company && model.company.name }}</span>
+                    <span v-else>{{
+                      model.company && model.company.name
+                    }}</span>
                   </div>
                 </li>
 
@@ -119,17 +126,18 @@
                       style="margin-top:-8px"
                     >
                       <option
-                              v-for="(manager, index) in filteredManagers"
-                              :value="manager"
-                              :key="index"
+                        v-for="(manager, index) in filteredManagers"
+                        :value="manager"
+                        :key="index"
                       >
                         {{
-                        manager && (manager.firstName + " " + manager.lastName)
+                          manager && manager.firstName + " " + manager.lastName
                         }}
                       </option>
                     </b-form-select>
                     <span v-else>{{
-                      model.manager && (model.manager.firstName + " " + model.manager.lastName)
+                      model.manager &&
+                        model.manager.firstName + " " + model.manager.lastName
                     }}</span>
                   </div>
                 </li>
@@ -144,9 +152,9 @@
                       style="margin-top:-8px"
                     >
                       <option
-                              v-for="(level, index) in levels"
-                              :value="level"
-                              :key="index"
+                        v-for="(level, index) in levels"
+                        :value="level"
+                        :key="index"
                       >
                         {{ level }}
                       </option>
@@ -238,7 +246,18 @@
                 </h5>
                 <div>
                   <div class="float-right">
-                    <button class="btn btn-blue">
+                    <button
+                      class="btn btn-blue"
+                      @click.prevent="
+                        $router.push({
+                          name: 'admin-jobs-choose-candidate',
+                          params: {
+                            companyId: companyId,
+                            jobId: jobId
+                          }
+                        })
+                      "
+                    >
                       {{ $t("page_job_detail.button.create_new_job_offer") }}
                       <i class="hiway-crm-icon icon-pencil ml-2" />
                     </button>
@@ -343,11 +362,11 @@
     </div>
 
     <b-modal
-            ref="modal-success"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-success"
+      ref="modal-success"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-success"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
@@ -364,11 +383,11 @@
     </b-modal>
 
     <b-modal
-            ref="modal-alert"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-alert"
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/alert.svg" />
@@ -387,38 +406,38 @@
 </template>
 
 <script>
-  import jobsApi from "@/services/api/jobs";
-  import companiesApi from "@/services/api/companies";
-  import usersApi from "@/services/api/users";
-  import constantsApi from "@/services/api/constants";
-  import errorReader from "@/helpers/ErrorReader";
+import jobsApi from "@/services/api/jobs";
+import companiesApi from "@/services/api/companies";
+import usersApi from "@/services/api/users";
+import constantsApi from "@/services/api/constants";
+import errorReader from "@/helpers/ErrorReader";
 
-  export default {
-    name: "JobsDetail",
-    data() {
-      return {
-        editJob: false,
-        model: {
-          title: "",
-          companyId: 0,
-          managerId: 0,
-          positionId: 0,
-          rate: "",
-          level: null,
-          status: "",
-          skillIds: [],
-          description: "",
-          questions: [],
-          image: null,
-          startDate: null,
-          endDate: null,
+export default {
+  name: "JobsDetail",
+  data() {
+    return {
+      editJob: false,
+      model: {
+        title: "",
+        companyId: 0,
+        managerId: 0,
+        positionId: 0,
+        rate: "",
+        level: null,
+        status: "",
+        skillIds: [],
+        description: "",
+        questions: [],
+        image: null,
+        startDate: null,
+        endDate: null,
 
-          company: null,
-          manager: null,
-          position: null
-        },
+        company: null,
+        manager: null,
+        position: null
+      },
 
-        /*
+      /*
            title: {
         type: String,
         required: true
@@ -478,92 +497,103 @@
         select: false
       }
            */
-        companies: [],
-        managers: [],
-        levels: [],
-        state: [],
-        error: ''
-      };
-    },
-    mounted() {
-      this.companyId = this.$route.params.companyId;
-      this.jobId = this.$route.params.id;
-      this.getCompanies().then(() => {
-        this.getManagers().then(() => {
-          this.fetchJobDetails();
-        });
+      companies: [],
+      managers: [],
+      levels: [],
+      state: [],
+      error: "",
+      companyId: "",
+      jobId: ""
+    };
+  },
+  mounted() {
+    this.companyId = this.$route.params.companyId;
+    this.jobId = this.$route.params.jobId;
+    this.getCompanies().then(() => {
+      this.getManagers().then(() => {
+        this.fetchJobDetails();
       });
-      this.getLevels();
+    });
+    this.getLevels();
+  },
+  computed: {
+    userName() {
+      return (
+        this.$store.state.user.firstName + " " + this.$store.state.user.lastName
+      );
     },
-    computed: {
-      userName() {
-        return (
-          this.$store.state.user.firstName + " " + this.$store.state.user.lastName
+    filteredManagers() {
+      return [null].concat(
+        this.managers.filter(
+          manager => manager.companyId === this.model.company?._id
+        )
+      );
+    }
+  },
+  methods: {
+    getCompanies() {
+      return companiesApi.getAll().then(res => {
+        this.companies = [null].concat(res);
+      });
+    },
+    getLevels() {
+      constantsApi.getAll().then(res => {
+        this.levels = [null].concat(res.levels);
+      });
+    },
+    getManagers() {
+      return usersApi
+        .getAll({
+          filter: {
+            role: "manager"
+          },
+          limit: 100
+        })
+        .then(res => {
+          this.managers = res.docs;
+        });
+    },
+    fetchJobDetails() {
+      jobsApi.get({ companyId: this.companyId, id: this.jobId }).then(res => {
+        this.model = res;
+        this.model.company = this.companies.find(
+          company => company && company._id === res.company[0]._id
         );
-      },
-      filteredManagers() {
-        return [null].concat(this.managers.filter(manager => manager.companyId === this.model.company?._id));
+        this.model.manager = this.managers.find(
+          manager => manager && manager._id === res.manager[0]._id
+        );
+      });
+    },
+    onEditJob() {
+      this.editJob = !this.editJob;
+      if (!this.editJob) {
+        this.updateJob();
       }
     },
-    methods: {
-      getCompanies() {
-        return companiesApi.getAll().then(res => {
-          this.companies = [null].concat(res);
-        });
-      },
-      getLevels() {
-        constantsApi.getAll().then(res => {
-          this.levels = [null].concat(res.levels);
-        });
-      },
-      getManagers() {
-        return usersApi
-          .getAll({
-            filter: {
-              role: "manager"
-            },
-            limit: 100
-          })
-          .then(res => {
-            this.managers = res.docs;
-          });
-      },
-      fetchJobDetails() {
-        jobsApi
-          .get({ companyId: this.companyId, id: this.$route.params.jobId })
-          .then(res => {
-            this.model = res;
-            this.model.company = this.companies.find(company => company && company._id === res.company[0]._id);
-            this.model.manager = this.managers.find(manager => manager && manager._id === res.manager[0]._id);
-          });
-      },
-      onEditJob() {
-        this.editJob = !this.editJob;
-        if (!this.editJob) {
-          this.updateJob();
-        }
-      },
-      updateJob() {
-        this.model.companyId = this.model.company?._id;
-        this.model.managerId = this.model.manager?._id;
-        this.model.positionId = this.model.position[0]?._id;
-        if (!this.model.endDate) {
-          delete this.model.endDate;
-        }
-        if (!this.model.image) {
-          delete this.model.image;
-        }
-        delete this.model.skillIds; // todo: support later
+    updateJob() {
+      this.model.companyId = this.model.company?._id;
+      this.model.managerId = this.model.manager?._id;
+      this.model.positionId = this.model.position[0]?._id;
+      if (!this.model.endDate) {
+        delete this.model.endDate;
+      }
+      if (!this.model.image) {
+        delete this.model.image;
+      }
+      delete this.model.skillIds; // todo: support later
 
-        jobsApi.update(this.model).then(res => {
+      jobsApi
+        .update(this.model)
+        .then(res => {
           this.$refs["modal-success"].show();
-        }).catch(err => {
+        })
+        .catch(err => {
           let read = errorReader(err);
-          this.error = read.param + ' is ' + read.msg.toLowerCase();
+          this.error = read.param + " is " + read.msg.toLowerCase();
 
           this.$refs["modal-alert"].show();
         });
-      }
     }
-  };
+  }
+};
 </script>

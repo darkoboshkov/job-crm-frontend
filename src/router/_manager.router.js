@@ -57,13 +57,15 @@ export default [
       {
         path: "job/create",
         name: "manager-job-create",
-        component: () => import("../views/dashboard/manager/jobs/JobsCreate.vue"),
+        component: () =>
+          import("../views/dashboard/manager/jobs/JobsCreate.vue"),
         beforeEnter: isManagerAuthorized
       },
       {
         path: "jobs/:jobId",
         name: "manage-jobs-detail",
-        component: () => import("../views/dashboard/manager/jobs/JobsDetail.vue"),
+        component: () =>
+          import("../views/dashboard/manager/jobs/JobsDetail.vue"),
         beforeEnter: isManagerAuthorized
       },
       {

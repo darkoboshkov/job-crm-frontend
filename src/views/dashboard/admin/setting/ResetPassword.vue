@@ -2,7 +2,9 @@
   <div class="setting-profile">
     <div class="setting-profile__form">
       <div class="form-element">
-        <label>{{ $t("page_setting.reset_password.form.old_password") }}:</label>
+        <label
+          >{{ $t("page_setting.reset_password.form.old_password") }}:</label
+        >
         <b-form-input
           type="password"
           required
@@ -11,21 +13,23 @@
         />
       </div>
       <div class="form-element mt-3">
-        <label>{{ $t("page_setting.reset_password.form.new_password") }}:</label>
+        <label
+          >{{ $t("page_setting.reset_password.form.new_password") }}:</label
+        >
         <b-form-input
-                type="password"
-                required
-                class="custom-input"
-                v-model="model.newPassword"
+          type="password"
+          required
+          class="custom-input"
+          v-model="model.newPassword"
         />
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.reset_password.form.confirm") }}:</label>
         <b-form-input
-                type="password"
-                required
-                class="custom-input"
-                v-model="model.confirm"
+          type="password"
+          required
+          class="custom-input"
+          v-model="model.confirm"
         />
       </div>
       <div class="form-element mt-3">
@@ -55,11 +59,11 @@
       </div>
     </b-modal>
     <b-modal
-            ref="modal-success"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-alert"
+      ref="modal-success"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
@@ -85,26 +89,25 @@ export default {
   name: "ResetPassword",
   data() {
     return {
-      error: '',
+      error: "",
       model: {
-        oldPassword: '',
-        newPassword: '',
-        confirm: ''
+        oldPassword: "",
+        newPassword: "",
+        confirm: ""
       }
     };
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
     update() {
-      settingsApi.resetPassword(this.model)
+      settingsApi
+        .resetPassword(this.model)
         .then(res => {
           this.$refs["modal-success"].show();
         })
         .catch(err => {
           let read = errorReader(err);
-          this.error = read.param + ' is ' + read.msg.toLowerCase();
+          this.error = read.param + " is " + read.msg.toLowerCase();
 
           this.$refs["modal-alert"].show();
         });

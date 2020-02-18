@@ -22,9 +22,9 @@
           <div class="job-detail-edit">
             <a href="javascript:void(0);" @click.prevent="onEditJob">
               {{
-              editJob
-              ? $t("page_job_detail.save")
-              : $t("page_job_detail.edit")
+                editJob
+                  ? $t("page_job_detail.save")
+                  : $t("page_job_detail.edit")
               }}
             </a>
             <i class="hiway-crm-icon icon-pencil ml-2" />
@@ -46,31 +46,36 @@
 
           <b-card class="mt-3">
             <template v-slot:header>
-              <div v-if="editJob" class="d-flex justify-content-between align-items-end">
+              <div
+                v-if="editJob"
+                class="d-flex justify-content-between align-items-end"
+              >
                 <h5 class="m-0">{{ $t("page_job_detail.form.questions") }}</h5>
                 <button
-                        data-v-74cd9a4e=""
-                        class="btn btn-red circle large"
-                        style="width: 50px;"
-                        @click="model.questions = model.questions.concat([''])"
+                  data-v-74cd9a4e=""
+                  class="btn btn-red circle large"
+                  style="width: 50px;"
+                  @click="model.questions = model.questions.concat([''])"
                 >
                   <i data-v-74cd9a4e="" class="hiway-crm-icon icon-add"></i>
                 </button>
               </div>
-              <h5 class="m-0" v-else>{{ $t("page_job_detail.form.questions") }}</h5>
+              <h5 class="m-0" v-else>
+                {{ $t("page_job_detail.form.questions") }}
+              </h5>
             </template>
             <ul class="custom-list">
               <li
-                      v-for="(question, idx) in model.questions"
-                      :key="idx"
-                      class="d-flex justify-content-between align-items-center"
+                v-for="(question, idx) in model.questions"
+                :key="idx"
+                class="d-flex justify-content-between align-items-center"
               >
                 {{ idx + 1
                 }}<b-input
-                      v-if="editJob"
-                      v-model="model.questions[idx]"
-                      class="question-input"
-              />
+                  v-if="editJob"
+                  v-model="model.questions[idx]"
+                  class="question-input"
+                />
                 <div v-else>
                   {{ question }}
                 </div>
@@ -98,9 +103,7 @@
                 <li>
                   {{ $t("page_job_detail.form.manager") }}
                   <div class="pull-right">
-                    <span>{{
-                      userName
-                    }}</span>
+                    <span>{{ userName }}</span>
                   </div>
                 </li>
 
@@ -108,15 +111,15 @@
                   {{ $t("page_job_detail.form.level") }}
                   <div class="pull-right">
                     <b-form-select
-                            v-if="editJob"
-                            v-model="model.level"
-                            class="normal-size"
-                            style="margin-top:-8px"
+                      v-if="editJob"
+                      v-model="model.level"
+                      class="normal-size"
+                      style="margin-top:-8px"
                     >
                       <option
-                              v-for="(level, index) in levels"
-                              :value="level"
-                              :key="index"
+                        v-for="(level, index) in levels"
+                        :value="level"
+                        :key="index"
                       >
                         {{ level }}
                       </option>
@@ -141,9 +144,9 @@
                   {{ $t("page_job_detail.form.start_date") }}
                   <div class="pull-right">
                     <b-input
-                            type="datetime-local"
-                            v-if="editJob"
-                            v-model="model.startDate"
+                      type="datetime-local"
+                      v-if="editJob"
+                      v-model="model.startDate"
                     />
                     <div v-else>
                       {{ model.startDate }}
@@ -155,9 +158,9 @@
                   {{ $t("page_job_detail.form.end_date") }}
                   <div class="pull-right">
                     <b-input
-                            type="datetime-local"
-                            v-if="editJob"
-                            v-model="model.endDate"
+                      type="datetime-local"
+                      v-if="editJob"
+                      v-model="model.endDate"
                     />
                     <div v-else>
                       {{ model.endDate }}
@@ -173,9 +176,9 @@
               <b-card class="mt-4">
                 <div class="d-flex">
                   <img
-                          src="@/assets/image/icon/mail-red.svg"
-                          style="width:31px"
-                          class="mr-3"
+                    src="@/assets/image/icon/mail-red.svg"
+                    style="width:31px"
+                    class="mr-3"
                   />
                   <span>{{ user.email }}</span>
                 </div>
@@ -186,9 +189,9 @@
               <b-card>
                 <div class="d-flex">
                   <img
-                          src="@/assets/image/icon/phone-red.svg"
-                          style="width: 22px"
-                          class="mr-3"
+                    src="@/assets/image/icon/phone-red.svg"
+                    style="width: 22px"
+                    class="mr-3"
                   />
                   <span>{{ user.phone }}</span>
                 </div>
@@ -263,8 +266,8 @@
                 <div>
                   <div class="float-right">
                     <button
-                            class="btn btn-blue upload"
-                            style="width:100px;justify-content:center;"
+                      class="btn btn-blue upload"
+                      style="width:100px;justify-content:center;"
                     >
                       {{ $t("page_job_detail.button.upload") }}
                       <i class="hiway-crm-icon icon-upload ml-2" />
@@ -313,11 +316,11 @@
     </div>
 
     <b-modal
-            ref="modal-success"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-success"
+      ref="modal-success"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-success"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
@@ -334,11 +337,11 @@
     </b-modal>
 
     <b-modal
-            ref="modal-alert"
-            :hide-footer="true"
-            :hide-header="true"
-            centered
-            modal-class="modal-alert"
+      ref="modal-alert"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/alert.svg" />
@@ -357,38 +360,38 @@
 </template>
 
 <script>
-  import jobsApi from "@/services/api/jobs";
-  import companiesApi from "@/services/api/companies";
-  import usersApi from "@/services/api/users";
-  import constantsApi from "@/services/api/constants";
-  import errorReader from "@/helpers/ErrorReader";
+import jobsApi from "@/services/api/jobs";
+import companiesApi from "@/services/api/companies";
+import usersApi from "@/services/api/users";
+import constantsApi from "@/services/api/constants";
+import errorReader from "@/helpers/ErrorReader";
 
-  export default {
-    name: "JobsDetail",
-    data() {
-      return {
-        editJob: false,
-        model: {
-          title: "",
-          companyId: 0,
-          managerId: 0,
-          positionId: 0,
-          rate: "",
-          level: null,
-          status: "",
-          skillIds: [],
-          description: "",
-          questions: [],
-          image: null,
-          startDate: null,
-          endDate: null,
+export default {
+  name: "JobsDetail",
+  data() {
+    return {
+      editJob: false,
+      model: {
+        title: "",
+        companyId: 0,
+        managerId: 0,
+        positionId: 0,
+        rate: "",
+        level: null,
+        status: "",
+        skillIds: [],
+        description: "",
+        questions: [],
+        image: null,
+        startDate: null,
+        endDate: null,
 
-          company: null,
-          manager: null,
-          position: null
-        },
+        company: null,
+        manager: null,
+        position: null
+      },
 
-        /*
+      /*
            title: {
         type: String,
         required: true
@@ -448,69 +451,75 @@
         select: false
       }
            */
-        companies: [],
-        managers: [],
-        levels: [],
-        state: [],
-        error: ''
-      };
+      companies: [],
+      managers: [],
+      levels: [],
+      state: [],
+      error: "",
+      jobId: ""
+    };
+  },
+  mounted() {
+    this.jobId = this.$route.params.jobId;
+    this.fetchJobDetails();
+    this.getLevels();
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
     },
-    mounted() {
-      this.jobId = this.$route.params.id;
-      this.fetchJobDetails();
-      this.getLevels();
+    userName() {
+      return (
+        this.$store.state.user.firstName + " " + this.$store.state.user.lastName
+      );
+    }
+  },
+  methods: {
+    getLevels() {
+      constantsApi.getAll().then(res => {
+        this.levels = [null].concat(res.levels);
+      });
     },
-    computed: {
-      user() {
-        return this.$store.state.user;
-      },
-      userName() {
-        return (this.$store.state.user.firstName + " " + this.$store.state.user.lastName);
-      },
-    },
-    methods: {
-      getLevels() {
-        constantsApi.getAll().then(res => {
-          this.levels = [null].concat(res.levels);
+    fetchJobDetails() {
+      jobsApi
+        .get({ companyId: this.user.companyId, id: this.jobId })
+        .then(res => {
+          this.model = res;
+          this.model.company = res.company[0];
+          this.model.manager = res.manager[0];
+          this.model.position = res.position[0];
         });
-      },
-      fetchJobDetails() {
-        jobsApi
-          .get({ companyId: this.user.companyId, id: this.$route.params.jobId })
-          .then(res => {
-            this.model = res;
-            this.model.company = res.company[0];
-            this.model.manager = res.manager[0];
-            this.model.position = res.position[0];
-          });
-      },
-      onEditJob() {
-        this.editJob = !this.editJob;
-        if (!this.editJob) {
-          this.updateJob();
-        }
-      },
-      updateJob() {
-        this.model.companyId = this.model.company?._id;
-        this.model.managerId = this.model.manager?._id;
-        this.model.positionId = this.model.position?._id;
-        if (!this.model.endDate) {
-          delete this.model.endDate;
-        }
-        if (!this.model.image) {
-          delete this.model.image;
-        }
-        delete this.model.skillIds; // todo: support later
+    },
+    onEditJob() {
+      this.editJob = !this.editJob;
+      if (!this.editJob) {
+        this.updateJob();
+      }
+    },
+    updateJob() {
+      this.model.companyId = this.model.company?._id;
+      this.model.managerId = this.model.manager?._id;
+      this.model.positionId = this.model.position?._id;
+      if (!this.model.endDate) {
+        delete this.model.endDate;
+      }
+      if (!this.model.image) {
+        delete this.model.image;
+      }
+      delete this.model.skillIds; // todo: support later
 
-        jobsApi.update(this.model).then(res => {
+      jobsApi
+        .update(this.model)
+        .then(res => {
           this.$refs["modal-success"].show();
-        }).catch(err => {
+        })
+        .catch(err => {
           let read = errorReader(err);
-          this.error = read.param + ' is ' + read.msg.toLowerCase();
+          this.error = read.param + " is " + read.msg.toLowerCase();
 
           this.$refs["modal-alert"].show();
         });
-      }
     }
-  };
+  }
+};
 </script>

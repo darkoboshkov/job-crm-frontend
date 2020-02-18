@@ -86,13 +86,13 @@
         />
       </div>
       <!--<div class="form-element mt-3">-->
-        <!--<label>{{ $t("page_setting.account_setting.form.email") }}:</label>-->
-        <!--<b-form-input-->
-          <!--type="text"-->
-          <!--required-->
-          <!--class="custom-input"-->
-          <!--v-model="model.email"-->
-        <!--/>-->
+      <!--<label>{{ $t("page_setting.account_setting.form.email") }}:</label>-->
+      <!--<b-form-input-->
+      <!--type="text"-->
+      <!--required-->
+      <!--class="custom-input"-->
+      <!--v-model="model.email"-->
+      <!--/>-->
       <!--</div>-->
       <!--<div class="form-element mt-3">-->
       <!--<label>{{ $t('PASSWORD') }}:</label>-->

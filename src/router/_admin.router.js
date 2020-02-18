@@ -83,6 +83,27 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
+        path: "jobs/:companyId/:jobId/choose-candidate",
+        name: "admin-jobs-choose-candidate",
+        component: () =>
+          import("../views/dashboard/admin/jobs/CandidateChoose.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
+        path: "jobs/:companyId/:jobId/select-candidate",
+        name: "admin-jobs-select-candidate",
+        component: () =>
+          import("../views/dashboard/admin/jobs/CandidateSelect.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
+        path: "jobs/:companyId/:jobId/new-candidate",
+        name: "admin-jobs-new-candidate",
+        component: () =>
+            import("../views/dashboard/admin/jobs/CandidateNew.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
         path: "jobs/:companyId/:jobId/matching",
         name: "admin-matching",
         component: () =>

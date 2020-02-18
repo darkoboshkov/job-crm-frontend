@@ -14,12 +14,6 @@ export default {
     );
   },
   resetPassword(params, resolve, reject = null) {
-    return request(
-      "post",
-      "/settings/changePassword",
-      params,
-      resolve,
-      reject
-    );
+    return request("post", "/settings/changePassword", params, resolve, reject);
   }
 };
