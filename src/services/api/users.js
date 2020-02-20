@@ -9,6 +9,19 @@ export default {
     delete params.companyId;
     return request("get", `/users/${companyId}/all`, params, resolve, reject);
   },
+  get(params, resolve, reject = null) {
+    const companyId = params.companyId;
+    const userId = params.userId;
+    delete params.companyId;
+    delete params.userId;
+    return request(
+      "get",
+      `/users/${companyId}/${userId}`,
+      params,
+      resolve,
+      reject
+    );
+  },
   create(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;

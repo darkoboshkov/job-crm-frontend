@@ -421,6 +421,20 @@
       "search": "Search Candidates"
     }
   },
+  "page_offer_detail": {
+    "title": "Job Offer Details",
+    "status_actions": "Contract Status & Actions",
+    "offer_states": {
+      "open": "Open",
+      "active": "Active",
+      "completed": "Completed",
+      "closed": "Closed",
+      "declined": "Declined",
+      "accepted": "Accepted",
+      "paused": "Paused",
+      "cancelled": "Cancelled"
+    }
+  },
   "page_matching": {
     "title": "Matching",
     "match_detail": "Matching Detail",

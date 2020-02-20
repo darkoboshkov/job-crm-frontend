@@ -17,6 +17,7 @@
       html;
   }
   var icons = {
+      "icon-dot": "&#xe91a;",
       "icon-office": "&#xe913;",
       "icon-contract": "&#xe916;",
       "icon-kyc": "&#xe917;",

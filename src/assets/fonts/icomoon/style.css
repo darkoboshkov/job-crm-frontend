@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'hiway-crm-icon';
-  src:  url('fonts/hiway-crm-icon.eot?yiwsyv');
-  src:  url('fonts/hiway-crm-icon.eot?yiwsyv#iefix') format('embedded-opentype'),
-    url('fonts/hiway-crm-icon.ttf?yiwsyv') format('truetype'),
-    url('fonts/hiway-crm-icon.woff?yiwsyv') format('woff'),
-    url('fonts/hiway-crm-icon.svg?yiwsyv#hiway-crm-icon') format('svg');
+  src:  url('fonts/hiway-crm-icon.eot?q4l86l');
+  src:  url('fonts/hiway-crm-icon.eot?q4l86l#iefix') format('embedded-opentype'),
+    url('fonts/hiway-crm-icon.ttf?q4l86l') format('truetype'),
+    url('fonts/hiway-crm-icon.woff?q4l86l') format('woff'),
+    url('fonts/hiway-crm-icon.svg?q4l86l#hiway-crm-icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-dot:before {
+  content: "\e91a";
+}
 .icon-office:before {
   content: "\e913";
 }

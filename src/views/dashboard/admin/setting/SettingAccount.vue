@@ -122,7 +122,13 @@
       <div class="image-wrapper">
         <img src="@/assets/image/avatar_nick.png" />
       </div>
-      <input type="file" class="form-control" id="image_upload" accept="image/*" @change="onFileChange"/>
+      <input
+        type="file"
+        class="form-control"
+        id="image_upload"
+        accept="image/*"
+        @change="onFileChange"
+      />
     </div>
     <b-modal
       ref="modal-alert"
@@ -171,7 +177,7 @@ export default {
         passport: ""
       },
       maxSize: 2097152,
-      imageData: null,
+      imageData: null
     };
   },
   mounted() {
@@ -191,12 +197,12 @@ export default {
         let reader = new FileReader();
         let vm = this;
 
-        if (files.length !== 1 || !files[0].type.match('image')) return;
+        if (files.length !== 1 || !files[0].type.match("image")) return;
         let file = files[0];
-        reader.onload = (e) => {
+        reader.onload = e => {
           let title = file.name;
-          let titleArray = title.split('.');
-          title = title.replace('.' + titleArray[titleArray.length - 1], '');
+          let titleArray = title.split(".");
+          title = title.replace("." + titleArray[titleArray.length - 1], "");
 
           vm.imageData = {
             file: file,
@@ -209,7 +215,7 @@ export default {
         };
         reader.readAsDataURL(file);
       } else {
-        console.error('Your browser does not support File API')
+        console.error("Your browser does not support File API");
       }
     },
     update() {
