@@ -330,21 +330,23 @@ export default {
       }
     },
     getWorkers() {
-      return userApi.getAll(Object.assign(this.serverParams)).then(res => {
-        this.rows = res.docs;
-        this.rows.forEach(row => {
-          if (row.birthday) {
-            let thisYear = new Date().getFullYear();
-            let birthYear = row.birthday.split("-")[0];
-            row.age = thisYear - birthYear;
-          } else {
-            row.age = " - ";
-          }
-          row.company = row.company[0];
-          row.position = row.position[0];
+      return userApi
+        .getAllWorkers(Object.assign(this.serverParams))
+        .then(res => {
+          this.rows = res.docs;
+          this.rows.forEach(row => {
+            if (row.birthday) {
+              let thisYear = new Date().getFullYear();
+              let birthYear = row.birthday.split("-")[0];
+              row.age = thisYear - birthYear;
+            } else {
+              row.age = " - ";
+            }
+            row.company = row.company[0];
+            row.position = row.position[0];
+          });
+          this.totalRows = res.totalDocs;
         });
-        this.totalRows = res.totalDocs;
-      });
     }
   }
 };

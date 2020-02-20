@@ -76,7 +76,7 @@ export default {
         return;
       }
       userApi
-        .getCompanyUsers({
+        .getCompanyWorkers({
           companyId: this.companyId,
           filter: {
             firstName: this.search,

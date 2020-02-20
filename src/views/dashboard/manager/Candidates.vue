@@ -333,7 +333,7 @@ export default {
     },
     getWorkers() {
       return userApi
-        .getCompanyUsers(Object.assign(this.serverParams))
+        .getCompanyWorkers(Object.assign(this.serverParams))
         .then(res => {
           this.rows = res.docs;
           this.rows.forEach(row => {
