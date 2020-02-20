@@ -8,18 +8,15 @@
     </p>
     <div class="form-element mt-5">
       <b-form-input
-          type="text"
-          required
-          class="custom-input"
-          :placeholder="$t('page_jobs_select_candidate.form.search')"
-          v-model="form.search"
+        type="text"
+        required
+        class="custom-input"
+        :placeholder="$t('page_jobs_select_candidate.form.search')"
+        v-model="form.search"
       />
     </div>
     <div class="mt-5">
-      <button
-          class="btn btn-red large mr-2"
-          style="min-width:260px;"
-      >
+      <button class="btn btn-red large mr-2" style="min-width:260px;">
         {{ $t("page_jobs_select_candidate.button.search") }}
       </button>
     </div>
@@ -27,17 +24,17 @@
 </template>
 
 <script>
-  export default {
-    name: "CandidateSelect",
-    data() {
-      return {
-        form: {
-          search: "",
-          users: []
-        },
+export default {
+  name: "CandidateSelect",
+  data() {
+    return {
+      form: {
+        search: "",
+        users: []
       }
-    }
-  };
+    };
+  }
+};
 </script>
 
 <style scoped></style>

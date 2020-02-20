@@ -16,36 +16,36 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.name") }}:</label
+                >{{ $t("page_detail_company.form.name") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-input
-                      type="text"
-                      name="name"
-                      required
-                      class="custom-input"
-                      v-model="model.name"
+                type="text"
+                name="name"
+                required
+                class="custom-input"
+                v-model="model.name"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.owner") }}:</label
+                >{{ $t("page_detail_company.form.owner") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-select
-                      name="email"
-                      v-model="model.email"
-                      class="custom-input"
-                      style="margin-top:-8px"
+                name="email"
+                v-model="model.email"
+                class="custom-input"
+                style="margin-top:-8px"
               >
                 <option
-                        v-for="(manager, index) in managers"
-                        :value="manager.email"
-                        :key="index"
+                  v-for="(manager, index) in managers"
+                  :value="manager.email"
+                  :key="index"
                 >
                   {{ manager.email }}
                 </option>
@@ -63,39 +63,39 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.kvk") }}:</label
+                >{{ $t("page_detail_company.form.kvk") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-input
-                      type="number"
-                      name="kvk"
-                      required
-                      class="custom-input"
-                      v-model="model.kvkNumber"
+                type="number"
+                name="kvk"
+                required
+                class="custom-input"
+                v-model="model.kvkNumber"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.limit_credit_safe") }}:</label
+                >{{ $t("page_detail_company.form.limit_credit_safe") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-input
-                      type="number"
-                      name="limit_credit_safe"
-                      required
-                      class="custom-input"
-                      v-model="model.limitCreditSafe"
+                type="number"
+                name="limit_credit_safe"
+                required
+                class="custom-input"
+                v-model="model.limitCreditSafe"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.vat_shifted") }}:</label
+                >{{ $t("page_detail_company.form.vat_shifted") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
@@ -103,10 +103,10 @@
                 <div class="col-12 col-md-4">
                   <b-form-group class="mb-2">
                     <b-form-radio-group
-                            id="radio-group-1"
-                            v-model="model.vatShiftedEnabled"
-                            name="vat_shifted"
-                            style="outline: none;"
+                      id="radio-group-1"
+                      v-model="model.vatShiftedEnabled"
+                      name="vat_shifted"
+                      style="outline: none;"
                     >
                       <b-form-radio :value="false">No</b-form-radio>
                       <b-form-radio :value="true">Yes</b-form-radio>
@@ -120,11 +120,11 @@
                     </div>
                     <div class="col-12 col-md-8">
                       <b-form-input
-                              type="text"
-                              name="vat_shifted"
-                              :disabled="!model.vatShiftedEnabled"
-                              class="custom-input"
-                              v-model="model.VATShifted"
+                        type="text"
+                        name="vat_shifted"
+                        :disabled="!model.vatShiftedEnabled"
+                        class="custom-input"
+                        v-model="model.VATShifted"
                       ></b-form-input>
                     </div>
                   </div>
@@ -135,7 +135,7 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.g_account") }}:</label
+                >{{ $t("page_detail_company.form.g_account") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
@@ -143,10 +143,10 @@
                 <div class="col-12 col-md-4">
                   <b-form-group class="mb-2">
                     <b-form-radio-group
-                            id="radio-group-2"
-                            v-model="gAccountEnabled"
-                            name="g_account"
-                            style="outline: none;"
+                      id="radio-group-2"
+                      v-model="gAccountEnabled"
+                      name="g_account"
+                      style="outline: none;"
                     >
                       <b-form-radio :value="false">No</b-form-radio>
                       <b-form-radio :value="true">Yes</b-form-radio>
@@ -160,11 +160,11 @@
                     </div>
                     <div class="col-12 col-md-8">
                       <b-form-input
-                              type="number"
-                              name="vat_shifted"
-                              :disabled="!model.gAccountEnabled"
-                              class="custom-input"
-                              v-model="model.GAccount"
+                        type="number"
+                        name="vat_shifted"
+                        :disabled="!model.gAccountEnabled"
+                        class="custom-input"
+                        v-model="model.GAccount"
                       ></b-form-input>
                     </div>
                   </div>
@@ -175,17 +175,17 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.terms_of_payment") }}:</label
+                >{{ $t("page_detail_company.form.terms_of_payment") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-group class="mb-2">
                 <b-form-radio-group
-                        id="radio-group-3"
-                        v-model="model.termOfPayment"
-                        :options="termsOfPayment"
-                        name="term_of_payment"
-                        style="outline: none;"
+                  id="radio-group-3"
+                  v-model="model.termOfPayment"
+                  :options="termsOfPayment"
+                  name="term_of_payment"
+                  style="outline: none;"
                 ></b-form-radio-group>
               </b-form-group>
             </div>
@@ -193,16 +193,18 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.automatic_collection") }}:</label
+                >{{
+                  $t("page_detail_company.form.automatic_collection")
+                }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-group class="mb-2">
                 <b-form-radio-group
-                        id="radio-group-4"
-                        v-model="model.automaticCollection"
-                        name="automatic_collection"
-                        style="outline: none;"
+                  id="radio-group-4"
+                  v-model="model.automaticCollection"
+                  name="automatic_collection"
+                  style="outline: none;"
                 >
                   <b-form-radio :value="false">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
@@ -213,18 +215,18 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{
-                $t("page_detail_company.form.charge_travel_expenses")
+                >{{
+                  $t("page_detail_company.form.charge_travel_expenses")
                 }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-group class="mb-2">
                 <b-form-radio-group
-                        id="radio-group-5"
-                        v-model="model.chargeTravelExpenses"
-                        name="charge_travel_expenses"
-                        style="outline: none;"
+                  id="radio-group-5"
+                  v-model="model.chargeTravelExpenses"
+                  name="charge_travel_expenses"
+                  style="outline: none;"
                 >
                   <b-form-radio :value="false">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
@@ -235,18 +237,18 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{
-                $t("page_detail_company.form.charge_other_expenses")
+                >{{
+                  $t("page_detail_company.form.charge_other_expenses")
                 }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-group class="mb-2">
                 <b-form-radio-group
-                        id="radio-group-6"
-                        v-model="model.chargeOtherExpenses"
-                        name="charge_other_expenses"
-                        style="outline: none;"
+                  id="radio-group-6"
+                  v-model="model.chargeOtherExpenses"
+                  name="charge_other_expenses"
+                  style="outline: none;"
                 >
                   <b-form-radio :value="false">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>

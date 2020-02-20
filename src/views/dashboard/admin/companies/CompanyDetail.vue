@@ -2,16 +2,20 @@
   <div id="page_companies_detail" class="dashboard-content">
     <div class="container-fluid">
       <div class="d-flex justify-content-between">
-        <a href="javascript:void(0)" class="back" @click.prevent="$router.go(-1)">
+        <a
+          href="javascript:void(0)"
+          class="back"
+          @click.prevent="$router.go(-1)"
+        >
           <i class="hiway-crm-icon icon-angle-left mr-2" />
           <span>{{ $t("common.back") }}</span>
         </a>
         <div>
           <a href="javascript:void(0);" @click.prevent="onEditCompany">
             {{
-            editCompany
-            ? $t("page_detail_company.save")
-            : $t("page_detail_company.edit")
+              editCompany
+                ? $t("page_detail_company.save")
+                : $t("page_detail_company.edit")
             }}
           </a>
           <i class="hiway-crm-icon icon-pencil ml-2" />
@@ -33,75 +37,75 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.name") }}:</label
+                >{{ $t("page_detail_company.form.name") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-input
-                      type="text"
-                      name="name"
-                      required
-                      class="custom-input"
-                      v-model="model.name"
-                      :disabled="!editCompany"
+                type="text"
+                name="name"
+                required
+                class="custom-input"
+                v-model="model.name"
+                :disabled="!editCompany"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.owner") }}:</label
+                >{{ $t("page_detail_company.form.owner") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-input
-                      type="email"
-                      name="email"
-                      required
-                      class="custom-input"
-                      v-model="model.email"
-                      :disabled="!editCompany"
+                type="email"
+                name="email"
+                required
+                class="custom-input"
+                v-model="model.email"
+                :disabled="!editCompany"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.kvk") }}:</label
+                >{{ $t("page_detail_company.form.kvk") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-input
-                      type="number"
-                      name="kvk"
-                      required
-                      class="custom-input"
-                      v-model="model.kvkNumber"
-                      :disabled="!editCompany"
+                type="number"
+                name="kvk"
+                required
+                class="custom-input"
+                v-model="model.kvkNumber"
+                :disabled="!editCompany"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.limit_credit_safe") }}:</label
+                >{{ $t("page_detail_company.form.limit_credit_safe") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-input
-                      type="number"
-                      name="limit_credit_safe"
-                      required
-                      class="custom-input"
-                      v-model="model.limitCreditSafe"
-                      :disabled="!editCompany"
+                type="number"
+                name="limit_credit_safe"
+                required
+                class="custom-input"
+                v-model="model.limitCreditSafe"
+                :disabled="!editCompany"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.vat_shifted") }}:</label
+                >{{ $t("page_detail_company.form.vat_shifted") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
@@ -109,11 +113,11 @@
                 <div class="col-12 col-md-4">
                   <b-form-group class="mb-2">
                     <b-form-radio-group
-                            id="radio-group-1"
-                            v-model="vatShiftedEnabled"
-                            name="vat_shifted"
-                            style="outline: none;"
-                            :disabled="!editCompany"
+                      id="radio-group-1"
+                      v-model="vatShiftedEnabled"
+                      name="vat_shifted"
+                      style="outline: none;"
+                      :disabled="!editCompany"
                     >
                       <b-form-radio :value="false">No</b-form-radio>
                       <b-form-radio :value="true">Yes</b-form-radio>
@@ -127,11 +131,11 @@
                     </div>
                     <div class="col-12 col-md-8">
                       <b-form-input
-                              type="text"
-                              name="vat_shifted"
-                              :disabled="!vatShiftedEnabled || !editCompany"
-                              class="custom-input"
-                              v-model="model.VATShifted"
+                        type="text"
+                        name="vat_shifted"
+                        :disabled="!vatShiftedEnabled || !editCompany"
+                        class="custom-input"
+                        v-model="model.VATShifted"
                       ></b-form-input>
                     </div>
                   </div>
@@ -142,7 +146,7 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.g_account") }}:</label
+                >{{ $t("page_detail_company.form.g_account") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
@@ -150,11 +154,11 @@
                 <div class="col-12 col-md-4">
                   <b-form-group class="mb-2">
                     <b-form-radio-group
-                            id="radio-group-2"
-                            v-model="gAccountEnabled"
-                            name="g_account"
-                            style="outline: none;"
-                            :disabled="!editCompany"
+                      id="radio-group-2"
+                      v-model="gAccountEnabled"
+                      name="g_account"
+                      style="outline: none;"
+                      :disabled="!editCompany"
                     >
                       <b-form-radio :value="false">No</b-form-radio>
                       <b-form-radio :value="true">Yes</b-form-radio>
@@ -168,11 +172,11 @@
                     </div>
                     <div class="col-12 col-md-8">
                       <b-form-input
-                              type="number"
-                              name="vat_shifted"
-                              :disabled="!gAccountEnabled || !editCompany"
-                              class="custom-input"
-                              v-model="model.GAccount"
+                        type="number"
+                        name="vat_shifted"
+                        :disabled="!gAccountEnabled || !editCompany"
+                        class="custom-input"
+                        v-model="model.GAccount"
                       ></b-form-input>
                     </div>
                   </div>
@@ -183,18 +187,18 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.terms_of_payment") }}:</label
+                >{{ $t("page_detail_company.form.terms_of_payment") }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-group class="mb-2">
                 <b-form-radio-group
-                        id="radio-group-3"
-                        v-model="model.termOfPayment"
-                        :options="termsOfPayment"
-                        name="term_of_payment"
-                        style="outline: none;"
-                        :disabled="!editCompany"
+                  id="radio-group-3"
+                  v-model="model.termOfPayment"
+                  :options="termsOfPayment"
+                  name="term_of_payment"
+                  style="outline: none;"
+                  :disabled="!editCompany"
                 ></b-form-radio-group>
               </b-form-group>
             </div>
@@ -202,17 +206,19 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{ $t("page_detail_company.form.automatic_collection") }}:</label
+                >{{
+                  $t("page_detail_company.form.automatic_collection")
+                }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-group class="mb-2">
                 <b-form-radio-group
-                        id="radio-group-4"
-                        v-model="model.automaticCollection"
-                        name="automatic_collection"
-                        style="outline: none;"
-                        :disabled="!editCompany"
+                  id="radio-group-4"
+                  v-model="model.automaticCollection"
+                  name="automatic_collection"
+                  style="outline: none;"
+                  :disabled="!editCompany"
                 >
                   <b-form-radio :value="false">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
@@ -223,19 +229,19 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{
-                $t("page_detail_company.form.charge_travel_expenses")
+                >{{
+                  $t("page_detail_company.form.charge_travel_expenses")
                 }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-group class="mb-2">
                 <b-form-radio-group
-                        id="radio-group-5"
-                        v-model="model.chargeTravelExpenses"
-                        name="charge_travel_expenses"
-                        style="outline: none;"
-                        :disabled="!editCompany"
+                  id="radio-group-5"
+                  v-model="model.chargeTravelExpenses"
+                  name="charge_travel_expenses"
+                  style="outline: none;"
+                  :disabled="!editCompany"
                 >
                   <b-form-radio :value="false">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
@@ -246,19 +252,19 @@
           <div class="row align-items-center pb-3">
             <div class="col-12 col-md-4">
               <label class="pull-right"
-              >{{
-                $t("page_detail_company.form.charge_other_expenses")
+                >{{
+                  $t("page_detail_company.form.charge_other_expenses")
                 }}:</label
               >
             </div>
             <div class="col-12 col-md-6">
               <b-form-group class="mb-2">
                 <b-form-radio-group
-                        id="radio-group-6"
-                        v-model="model.chargeOtherExpenses"
-                        name="charge_other_expenses"
-                        style="outline: none;"
-                        :disabled="!editCompany"
+                  id="radio-group-6"
+                  v-model="model.chargeOtherExpenses"
+                  name="charge_other_expenses"
+                  style="outline: none;"
+                  :disabled="!editCompany"
                 >
                   <b-form-radio :value="false">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
@@ -299,9 +305,9 @@
                   </button>
                 </div>
                 <!--<div class="col-6 text-right">-->
-                  <!--<button type="submit" class="btn btn-blue">-->
-                    <!--{{ $t("page_detail_company.button.update") }}-->
-                  <!--</button>-->
+                <!--<button type="submit" class="btn btn-blue">-->
+                <!--{{ $t("page_detail_company.button.update") }}-->
+                <!--</button>-->
                 <!--</div>-->
               </div>
             </div>
@@ -448,7 +454,7 @@ export default {
         .then(res => {
           this.$refs["modal-success"].show();
           setTimeout(() => {
-            this.$router.push('/admin/dashboard/companies');
+            this.$router.push("/admin/dashboard/companies");
           }, 3000);
         })
         .catch(err => {

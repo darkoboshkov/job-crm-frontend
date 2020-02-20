@@ -122,6 +122,7 @@
       <div class="image-wrapper">
         <img src="@/assets/image/avatar_nick.png" />
       </div>
+      <input type="file" class="form-control" id="image_upload" accept="image/*" @change="onFileChange"/>
     </div>
     <b-modal
       ref="modal-alert"
@@ -168,7 +169,9 @@ export default {
         email: "",
         password: "",
         passport: ""
-      }
+      },
+      maxSize: 2097152,
+      imageData: null,
     };
   },
   mounted() {
@@ -177,6 +180,38 @@ export default {
     });
   },
   methods: {
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+
+      this.imageData = null;
+      if (window.File && window.FileList && window.FileReader) {
+        let reader = new FileReader();
+        let vm = this;
+
+        if (files.length !== 1 || !files[0].type.match('image')) return;
+        let file = files[0];
+        reader.onload = (e) => {
+          let title = file.name;
+          let titleArray = title.split('.');
+          title = title.replace('.' + titleArray[titleArray.length - 1], '');
+
+          vm.imageData = {
+            file: file,
+            preview: e.target.result,
+            title: title,
+            size: file.size
+          };
+
+          vm.uploadImage();
+        };
+        reader.readAsDataURL(file);
+      } else {
+        console.error('Your browser does not support File API')
+      }
+    },
     update() {
       settingsApi
         .patch(Object.assign(this.$store.state.user, this.model))
@@ -184,7 +219,8 @@ export default {
           this.$refs["modal-alert"].show();
           console.log("response", res);
         });
-    }
+    },
+    uploadImage() {}
   }
 };
 </script>

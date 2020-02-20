@@ -100,7 +100,7 @@ export default [
         path: "jobs/:companyId/:jobId/new-candidate",
         name: "admin-jobs-new-candidate",
         component: () =>
-            import("../views/dashboard/admin/jobs/CandidateNew.vue"),
+          import("../views/dashboard/admin/jobs/CandidateNew.vue"),
         beforeEnter: isAdminAuthorized
       },
       {
