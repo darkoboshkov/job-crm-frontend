@@ -333,13 +333,7 @@ export default {
     },
     getWorkers() {
       return userApi
-        .getCompanyUsers(
-          Object.assign(this.serverParams, {
-            filter: {
-              role: "worker"
-            }
-          })
-        )
+        .getCompanyUsers(Object.assign(this.serverParams))
         .then(res => {
           this.rows = res.docs;
           this.rows.forEach(row => {

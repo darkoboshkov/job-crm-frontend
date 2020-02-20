@@ -12,4 +12,33 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+
+  .search-form {
+    width: 480px;
+    margin: 0 auto;
+
+    ul.search-result {
+      list-style: none;
+      padding: 0;
+      box-shadow: 0 2px 0 0 #ebecf0;
+      max-height: 300px;
+      overflow-y: scroll;
+      z-index: 100;
+
+      li {
+        border: solid 1px #ececec;
+        background-color: #ffffff;
+        padding: 10px 10px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #ebecf0;
+        }
+
+        img {
+          width: 60px;
+        }
+      }
+    }
+  }
 }
