@@ -120,14 +120,14 @@
     </div>
     <div class="setting-profile__photo">
       <div class="image-wrapper">
-        <img :src="imageData.preview"/>
-        <b-spinner type="grow" label="Spinning" v-if="isImageLoading"/>
+        <img :src="imageData.preview" />
+        <b-spinner type="grow" label="Spinning" v-if="isImageLoading" />
         <input
-            type="file"
-            class="form-control"
-            id="image_upload"
-            accept="image/*"
-            @change="onFileChange"
+          type="file"
+          class="form-control"
+          id="image_upload"
+          accept="image/*"
+          @change="onFileChange"
         />
       </div>
     </div>
@@ -156,7 +156,7 @@
 
 <script>
 import settingsApi from "@/services/api/settings";
-import { APP_URL} from "@/constants";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "SettingAccount",
@@ -224,18 +224,18 @@ export default {
     },
     update() {
       const data = new FormData();
-      data.append('title', this.imageData.title);
-      data.append('file', this.imageData.file);
+      data.append("title", this.imageData.title);
+      data.append("file", this.imageData.file);
       this.isImageLoading = true;
-      settingsApi.uploadImage(data).then((response) => {
+      settingsApi.uploadImage(data).then(response => {
         this.isImageLoading = false;
         this.model.image = response.path;
         settingsApi
-            .patch(Object.assign(this.$store.state.user, this.model))
-            .then(res => {
-              this.$refs["modal-alert"].show();
-              console.log("response", res);
-        });
+          .patch(Object.assign(this.$store.state.user, this.model))
+          .then(res => {
+            this.$refs["modal-alert"].show();
+            console.log("response", res);
+          });
       });
     }
   }
