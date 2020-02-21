@@ -120,15 +120,16 @@
     </div>
     <div class="setting-profile__photo">
       <div class="image-wrapper">
-        <img src="@/assets/image/avatar_nick.png" />
+        <img :src="imageData.preview"/>
+        <b-spinner type="grow" label="Spinning" v-if="isImageLoading"/>
+        <input
+            type="file"
+            class="form-control"
+            id="image_upload"
+            accept="image/*"
+            @change="onFileChange"
+        />
       </div>
-      <input
-        type="file"
-        class="form-control"
-        id="image_upload"
-        accept="image/*"
-        @change="onFileChange"
-      />
     </div>
     <b-modal
       ref="modal-alert"
@@ -155,6 +156,7 @@
 
 <script>
 import settingsApi from "@/services/api/settings";
+import { APP_URL} from "@/constants";
 
 export default {
   name: "SettingAccount",
@@ -174,15 +176,20 @@ export default {
         city: "",
         email: "",
         password: "",
-        passport: ""
+        passport: "",
+        image: ""
       },
       maxSize: 2097152,
-      imageData: null
+      imageData: {
+        preview: null
+      },
+      isImageLoading: false
     };
   },
   mounted() {
     settingsApi.get(this.$store.state.user).then(res => {
       this.model = res;
+      this.imageData.preview = res.image ? `${APP_URL}${res.image}` : null;
     });
   },
   methods: {
@@ -192,7 +199,6 @@ export default {
         return;
       }
 
-      this.imageData = null;
       if (window.File && window.FileList && window.FileReader) {
         let reader = new FileReader();
         let vm = this;
@@ -210,8 +216,6 @@ export default {
             title: title,
             size: file.size
           };
-
-          vm.uploadImage();
         };
         reader.readAsDataURL(file);
       } else {
@@ -219,14 +223,21 @@ export default {
       }
     },
     update() {
-      settingsApi
-        .patch(Object.assign(this.$store.state.user, this.model))
-        .then(res => {
-          this.$refs["modal-alert"].show();
-          console.log("response", res);
+      const data = new FormData();
+      data.append('title', this.imageData.title);
+      data.append('file', this.imageData.file);
+      this.isImageLoading = true;
+      settingsApi.uploadImage(data).then((response) => {
+        this.isImageLoading = false;
+        this.model.image = response.path;
+        settingsApi
+            .patch(Object.assign(this.$store.state.user, this.model))
+            .then(res => {
+              this.$refs["modal-alert"].show();
+              console.log("response", res);
         });
-    },
-    uploadImage() {}
+      });
+    }
   }
 };
 </script>

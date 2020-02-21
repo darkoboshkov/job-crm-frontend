@@ -13,6 +13,9 @@ export default {
       reject
     );
   },
+  uploadImage(params, resolve, reject = null) {
+    return request("post", "/settings/image", params, resolve, reject);
+  },
   resetPassword(params, resolve, reject = null) {
     return request("post", "/settings/changePassword", params, resolve, reject);
   }
