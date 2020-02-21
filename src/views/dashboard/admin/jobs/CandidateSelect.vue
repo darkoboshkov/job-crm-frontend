@@ -6,7 +6,7 @@
     <p class="description text-center mt-5">
       {{ $t("page_jobs_select_candidate.description") }}
     </p>
-    <div class="search-form">
+    <div class="search-form mt-5">
       <b-form-input
         type="text"
         required
@@ -28,8 +28,8 @@
             />
             <div>
               <strong>
-                {{ user.firstName
-                }}{{ user.middleName ? ` ${user.middleName}` : "" }}
+                {{ user.firstName }}
+                {{ user.middleName ? ` ${user.middleName}` : "" }}
                 {{ user.lastName }}
               </strong>
               <p>{{ user.city }}</p>
@@ -38,7 +38,7 @@
         </li>
       </ul>
     </div>
-    <div class="mt-5">
+    <div>
       <button
         class="btn btn-red large mr-2"
         style="min-width:260px;"
@@ -52,6 +52,7 @@
 
 <script>
 import userApi from "@/services/api/users";
+import jobOfferApi from "@/services/api/joboffers";
 
 export default {
   name: "CandidateSelect",
@@ -106,7 +107,24 @@ export default {
       this.selectedUserId = user.id;
       this.users = [];
     },
-    sendOffer() {}
+    sendOffer() {
+      jobOfferApi
+        .create({
+          companyId: this.companyId,
+          workerId: this.selectedUserId,
+          jobId: this.jobId
+        })
+        .then(response => {
+          console.log(response);
+          this.$router.push({
+            name: "admin-offer-details",
+            params: {
+              offerId: response._id,
+              companyId: this.companyId
+            }
+          });
+        });
+    }
   }
 };
 </script>

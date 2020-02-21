@@ -277,10 +277,10 @@
 </template>
 
 <script>
-import jobsApi from "../../../../services/api/jobs.js";
-import usersApi from "../../../../services/api/users.js";
-import companyApi from "../../../../services/api/companies.js";
-import jobOfferApi from "../../../../services/api/job-offer.js";
+import jobsApi from "@/services/api/jobs";
+import usersApi from "@/services/api/users";
+import companyApi from "@/services/api/companies";
+import jobOfferApi from "@/services/api/joboffers";
 
 export default {
   name: "Details",
