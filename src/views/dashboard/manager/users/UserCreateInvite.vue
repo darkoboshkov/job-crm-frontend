@@ -1,41 +1,53 @@
 <template>
   <div id="page_user_create_invite" class="dashboard-content">
-    <h1 class="title text-center">
-      {{ $t("page_users_create_invite.title") }}
-    </h1>
-    <p class="description text-center mt-5">
-      {{ $t("page_users_create_invite.description") }}
-    </p>
-    <div class="mt-5">
-      <div class="form-element mt-5">
-        <label>{{ $t("page_users_create_invite.form.email") }}:</label>
-        <b-form-input
-          type="text"
-          required
-          class="custom-input"
-          v-model="form.email"
-        />
-        <b-form-invalid-feedback class="d-block" v-if="emailError">
-          {{ $t(`validation.${emailError}`) }}
-        </b-form-invalid-feedback>
-      </div>
-      <div class="form-element mt-5">
-        <div class="role text-center">
-          <b-form-radio v-model="form.role" name="role" value="worker">{{
-            $t("page_users_create_invite.form.worker")
-          }}</b-form-radio>
-          <b-form-radio v-model="form.role" name="role" value="manager">{{
-            $t("page_users_create_invite.form.manager")
-          }}</b-form-radio>
+    <div class="d-flex">
+      <a
+        href="javascript:void(0)"
+        class="back pull-left"
+        @click.prevent="$router.go(-1)"
+      >
+        <i class="hiway-crm-icon icon-angle-left mr-2" />
+        <span>{{ $t("common.back") }}</span>
+      </a>
+    </div>
+    <div class="content">
+      <h1 class="title text-center">
+        {{ $t("page_users_create_invite.title") }}
+      </h1>
+      <p class="description text-center mt-5">
+        {{ $t("page_users_create_invite.description") }}
+      </p>
+      <div class="mt-5">
+        <div class="form-element mt-5">
+          <label>{{ $t("page_users_create_invite.form.email") }}:</label>
+          <b-form-input
+            type="text"
+            required
+            class="custom-input"
+            v-model="form.email"
+          />
+          <b-form-invalid-feedback class="d-block" v-if="emailError">
+            {{ $t(`validation.${emailError}`) }}
+          </b-form-invalid-feedback>
         </div>
-      </div>
-      <b-form-invalid-feedback class="d-block mt-5" v-if="error">
-        {{ $t(`validation.${error}`) }}
-      </b-form-invalid-feedback>
-      <div class="form-element mt-5 text-center">
-        <button class="btn btn-blue large" @click="sendInvitation">
-          {{ $t("page_users_create_invite.button.send") }}
-        </button>
+        <div class="form-element mt-5">
+          <div class="role text-center">
+            <b-form-radio v-model="form.role" name="role" value="worker">{{
+              $t("page_users_create_invite.form.worker")
+            }}</b-form-radio>
+            <b-form-radio v-model="form.role" name="role" value="manager">{{
+              $t("page_users_create_invite.form.manager")
+            }}</b-form-radio>
+          </div>
+        </div>
+        <b-form-invalid-feedback class="d-block mt-5" v-if="error">
+          {{ $t(`validation.${error}`) }}
+        </b-form-invalid-feedback>
+        <div class="form-element mt-5 text-center">
+          <button class="btn btn-blue large" @click="sendInvitation">
+            {{ $t("page_users_create_invite.button.send") }}
+          </button>
+        </div>
       </div>
     </div>
     <b-modal

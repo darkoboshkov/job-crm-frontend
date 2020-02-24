@@ -1,6 +1,16 @@
 <template>
   <div id="page_company_create" class="dashboard-content">
-    <div class="container-fluid">
+    <div class="d-flex">
+      <a
+        href="javascript:void(0)"
+        class="back pull-left"
+        @click.prevent="$router.go(-1)"
+      >
+        <i class="hiway-crm-icon icon-angle-left mr-2" />
+        <span>{{ $t("common.back") }}</span>
+      </a>
+    </div>
+    <div class="content">
       <div class="company-create__header text-center">
         <h1>
           {{ $t("page_detail_company.create_title") }}
@@ -11,15 +21,13 @@
           {{ $t("page_detail_company.description") }}
         </p>
       </div>
-      <form class="company-create__form mt-4" ref="company-create-form">
+      <form class="company-create__form mt-5" ref="company-create-form">
         <div class="container">
-          <div class="row align-items-center pb-3">
+          <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.name") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.name") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-input
                 type="text"
                 name="name"
@@ -29,13 +37,11 @@
               ></b-form-input>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.owner") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.owner") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-select
                 name="email"
                 v-model="model.email"
@@ -60,13 +66,11 @@
               <!--&gt;</b-form-input>-->
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.kvk") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.kvk") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-input
                 type="number"
                 name="kvk"
@@ -76,13 +80,13 @@
               ></b-form-input>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{ $t("page_detail_company.form.limit_credit_safe") }}:</label
               >
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-input
                 type="number"
                 name="limit_credit_safe"
@@ -92,13 +96,11 @@
               ></b-form-input>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.vat_shifted") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.vat_shifted") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <div class="row align-items-center">
                 <div class="col-12 col-md-4">
                   <b-form-group class="mb-2">
@@ -108,7 +110,9 @@
                       name="vat_shifted"
                       style="outline: none;"
                     >
-                      <b-form-radio :value="false">No</b-form-radio>
+                      <b-form-radio :value="false" class="mr-5"
+                        >No</b-form-radio
+                      >
                       <b-form-radio :value="true">Yes</b-form-radio>
                     </b-form-radio-group>
                   </b-form-group>
@@ -132,23 +136,23 @@
               </div>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.g_account") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.g_account") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <div class="row align-items-center">
                 <div class="col-12 col-md-4">
-                  <b-form-group class="mb-2">
+                  <b-form-group>
                     <b-form-radio-group
                       id="radio-group-2"
-                      v-model="gAccountEnabled"
+                      v-model="model.gAccountEnabled"
                       name="g_account"
                       style="outline: none;"
                     >
-                      <b-form-radio :value="false">No</b-form-radio>
+                      <b-form-radio :value="false" class="mr-5"
+                        >No</b-form-radio
+                      >
                       <b-form-radio :value="true">Yes</b-form-radio>
                     </b-form-radio-group>
                   </b-form-group>
@@ -172,13 +176,13 @@
               </div>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{ $t("page_detail_company.form.terms_of_payment") }}:</label
               >
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-group class="mb-2">
                 <b-form-radio-group
                   id="radio-group-3"
@@ -190,9 +194,9 @@
               </b-form-group>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{
                   $t("page_detail_company.form.automatic_collection")
                 }}:</label
@@ -206,15 +210,15 @@
                   name="automatic_collection"
                   style="outline: none;"
                 >
-                  <b-form-radio :value="false">No</b-form-radio>
+                  <b-form-radio :value="false" class="mr-5">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{
                   $t("page_detail_company.form.charge_travel_expenses")
                 }}:</label
@@ -228,15 +232,15 @@
                   name="charge_travel_expenses"
                   style="outline: none;"
                 >
-                  <b-form-radio :value="false">No</b-form-radio>
+                  <b-form-radio :value="false" class="mr-5">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{
                   $t("page_detail_company.form.charge_other_expenses")
                 }}:</label
@@ -250,13 +254,13 @@
                   name="charge_other_expenses"
                   style="outline: none;"
                 >
-                  <b-form-radio :value="false">No</b-form-radio>
+                  <b-form-radio :value="false" class="mr-5">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-5 align-items-center">
             <!--<div class="col-12 col-md-6">-->
             <!--<div class="form-element">-->
             <!--<b-form-checkbox-->
@@ -280,8 +284,8 @@
               <!--</div>-->
             </div>
           </div>
-          <div class="row">
-            <div class="col-12 col-md-8 offset-md-2 text-right">
+          <div class="row mt-5 align-items-center">
+            <div class="col-12 text-right">
               <button type="submit" class="btn btn-blue">
                 {{ $t("page_detail_company.button.create") }}
               </button>
@@ -290,6 +294,7 @@
         </div>
       </form>
     </div>
+
     <b-modal
       ref="modal-alert"
       :hide-footer="true"

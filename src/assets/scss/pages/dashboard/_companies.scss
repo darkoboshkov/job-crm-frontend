@@ -2,29 +2,39 @@
 }
 
 #page_company_create {
+  margin: 0 auto;
+  max-width: 1200px;
+
+  .content {
+    background-color: white;
+    padding: 50px 40px;
+    margin-top: 50px;
+  }
+
   .company-create__header {
     color: var(--lipstick-red);
-    margin: 48px 0 12px;
     font-size: 34px;
   }
   .company-create__description {
-    margin: 24px 0 12px;
-  }
-  .form-element {
-    margin-bottom: 1rem;
+    margin-top: 50px;
   }
 }
 
 #page_companies_detail {
+  margin: 0 auto;
+  max-width: 1200px;
+
+  .content {
+    background-color: white;
+    padding: 50px 40px;
+    margin-top: 50px;
+  }
+
   .company-detail__header {
     color: var(--lipstick-red);
-    margin: 48px 0 12px;
     font-size: 34px;
   }
   .company-detail__description {
-    margin: 24px 0 12px;
-  }
-  .form-element {
-    margin-bottom: 1rem;
+    margin-top: 50px;
   }
 }

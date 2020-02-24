@@ -172,7 +172,9 @@
           <div>CAO</div>
           <div v-if="edit">
             <b-form-select v-model="model.collectiveAgreement">
-              <option v-for="caoOption in caoOptions" :value="caoOption._id">{{ caoOption.name }}</option>
+              <option v-for="caoOption in caoOptions" :value="caoOption._id">{{
+                caoOption.name
+              }}</option>
             </b-form-select>
           </div>
           <div v-else>{{ selectedCaoOption.name }}</div>
@@ -196,12 +198,13 @@
           </div>
         </div>
         <div class="item">
-          <div>Level</div><div>CAO voor Senior Managers</div>
+          <div>Level</div>
+          <div>CAO voor Senior Managers</div>
         </div>
         <div class="item">
           <div>Hourly Wage</div>
           <div v-if="edit">
-            <b-form-input v-model="model.hourlyWage"/>
+            <b-form-input v-model="model.hourlyWage" />
           </div>
           <div v-else>
             {{ model.hourlyWage }}
@@ -210,7 +213,7 @@
         <div class="item">
           <div>Pay Rate</div>
           <div v-if="edit">
-            <b-form-input v-model="model.payRate"/>
+            <b-form-input v-model="model.payRate" />
           </div>
           <div v-else>
             {{ model.payRate }}
@@ -219,7 +222,7 @@
         <div class="item">
           <div>Travel Expenses</div>
           <div v-if="edit">
-            <b-form-input v-model="model.travelExpenses"/>
+            <b-form-input v-model="model.travelExpenses" />
           </div>
           <div v-else>
             {{ model.travelExpenses }}
@@ -228,7 +231,7 @@
         <div class="item">
           <div>Travel Hours</div>
           <div v-if="edit">
-            <b-form-input v-model="model.travelHours"/>
+            <b-form-input v-model="model.travelHours" />
           </div>
           <div v-else>
             {{ model.travelHours }}
@@ -237,16 +240,16 @@
         <div class="item">
           <div>Other Expenses</div>
           <div v-if="edit">
-            <b-form-input v-model="model.otherExpenses"/>
+            <b-form-input v-model="model.otherExpenses" />
           </div>
           <div v-else>
             {{ model.otherExpenses }}
           </div>
         </div>
         <div class="item">
-          <div>Contract Signed{{ (contractSigned.signDate) }}</div>
+          <div>Contract Signed{{ contractSigned.signDate }}</div>
           <div v-if="edit">
-            <b-form-textarea v-model="contractSigned.autograph"/>
+            <b-form-textarea v-model="contractSigned.autograph" />
           </div>
           <div v-else>
             {{ contractSigned.autograph }}
@@ -331,11 +334,11 @@
       </div>
     </div>
     <view-offer
-            :open="openViewOffer"
-            :offer="model"
-            :company="company"
-            :manager="manager"
-            :worker="worker"
+      :open="openViewOffer"
+      :offer="model"
+      :company="company"
+      :manager="manager"
+      :worker="worker"
     ></view-offer>
   </div>
 </template>
@@ -350,39 +353,41 @@ import ViewJobOffer from "./ViewJobOffer";
 export default {
   name: "Details",
   components: {
-    'view-offer': ViewJobOffer,
+    "view-offer": ViewJobOffer
   },
   computed: {
     edit() {
-      return this.model.status === 'open';
+      return this.model.status === "open";
     },
     selectedCaoOption() {
-      return this.caoOptions.find(option => option._id === this.model.collectiveAgreement)
+      return this.caoOptions.find(
+        option => option._id === this.model.collectiveAgreement
+      );
     },
     managerState() {
       switch (this.model.status) {
-        case 'open':
-          return 'pending';
-        case 'pending-worker':
-          return 'signed';
-        case 'active':
-          return 'signed';
-        case 'completed':
-          return 'completed';
+        case "open":
+          return "pending";
+        case "pending-worker":
+          return "signed";
+        case "active":
+          return "signed";
+        case "completed":
+          return "completed";
       }
     },
     workerState() {
       switch (this.model.status) {
-        case 'open':
-          return 'not able to see';
-        case 'pending-worker':
-          return 'pending';
-        case 'active':
-          return 'signed';
-        case 'completed':
-          return 'completed';
+        case "open":
+          return "not able to see";
+        case "pending-worker":
+          return "pending";
+        case "active":
+          return "signed";
+        case "completed":
+          return "completed";
       }
-    },
+    }
   },
   data() {
     return {
@@ -534,14 +539,14 @@ export default {
       openViewOffer: false,
       caoOptions: [
         {
-          _id: '5e4eab5aa308b5e9503fb5e1',
-          name: 'CAO 1 Test',
-          documentFilePath: 'Test.docx'
+          _id: "5e4eab5aa308b5e9503fb5e1",
+          name: "CAO 1 Test",
+          documentFilePath: "Test.docx"
         },
         {
-          _id: '5e4eab5efa19b59622bba86c',
-          name: 'CAO 2 Test',
-          documentFilePath: 'Tes2t.docx'
+          _id: "5e4eab5efa19b59622bba86c",
+          name: "CAO 2 Test",
+          documentFilePath: "Tes2t.docx"
         }
       ]
     };
@@ -551,38 +556,43 @@ export default {
   },
   methods: {
     lockSignSend() {
-      return jobOfferApi.update(Object.assign(this.model, {
-        status: 'pending-worker'
-      }))
+      return jobOfferApi
+        .update(
+          Object.assign(this.model, {
+            status: "pending-worker"
+          })
+        )
         .then(res => {
           console.log("res", res);
           this.model = Object.assign({}, this.model, {
-            status: 'pending-worker'
+            status: "pending-worker"
           });
         });
     },
     adjust() {
-      return jobOfferApi.update(Object.assign(this.model, {
-        status: 'open'
-      }))
+      return jobOfferApi
+        .update(
+          Object.assign(this.model, {
+            status: "open"
+          })
+        )
         .then(res => {
           console.log("res", res);
           this.model = Object.assign({}, this.model, {
-            status: 'open'
+            status: "open"
           });
         });
     },
     update() {
-      return jobOfferApi.update(this.model)
-        .then(res => {
-          console.log("res", res);
-          this.model = res;
-          this.company = res.company[0];
-          this.job = res.job[0];
-          this.worker = res.worker[0];
-          this.company = res.company[0];
-          this.manager = res.manager[0];
-        });
+      return jobOfferApi.update(this.model).then(res => {
+        console.log("res", res);
+        this.model = res;
+        this.company = res.company[0];
+        this.job = res.job[0];
+        this.worker = res.worker[0];
+        this.company = res.company[0];
+        this.manager = res.manager[0];
+      });
     },
     exportContract() {},
     upload() {},
@@ -604,17 +614,16 @@ export default {
     lockOffer() {
       const { companyId, offerId } = this;
 
-      return jobOfferApi.lock({ companyId, offerId })
-        .then(res => {
-          console.log("res", res);
-          this.model = res;
-          this.company = res.company[0];
-          this.job = res.job[0];
-          this.worker = res.worker[0];
-          this.company = res.company[0];
-          this.manager = res.manager[0];
-        });
-    },
+      return jobOfferApi.lock({ companyId, offerId }).then(res => {
+        console.log("res", res);
+        this.model = res;
+        this.company = res.company[0];
+        this.job = res.job[0];
+        this.worker = res.worker[0];
+        this.company = res.company[0];
+        this.manager = res.manager[0];
+      });
+    }
   }
 };
 </script>

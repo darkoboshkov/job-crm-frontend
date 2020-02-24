@@ -13,6 +13,7 @@
     <p class="sub-title">
       {{ $t("page_candidates.sub_title", { candidates: this.totalRows }) }}
     </p>
+    <hr />
     <div class="d-flex justify-content-between">
       <table-filter
         class="candidate-filters"

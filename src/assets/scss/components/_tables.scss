@@ -1,6 +1,5 @@
 .custom-table {
   font-size: 16px;
-  border-collapse: separate;
   border-spacing: 0;
   background-color: #fff;
   width: 100%;
@@ -27,6 +26,10 @@
 
       &:not(:last-child) {
         border-bottom: 1px solid var(--white-two);
+      }
+
+      &:hover {
+        background-color: var(--pale-grey-two);
       }
     }
   }

@@ -1,260 +1,272 @@
 <template>
   <div id="page_user_create_manual" class="dashboard-content">
-    <h1 class="title mt-5 text-center">
-      {{ $t("page_users_create_manual.title") }}
-    </h1>
-    <p class="description text-center mt-5">
-      {{ $t("page_users_create_manual.description") }}
-    </p>
-    <div class="mt-5">
-      <div class="form-element d-flex align-items-center">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.company_list") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-select v-model="form.companyId">
-            <option value=""></option>
-            <option
-              v-for="(company, idx) in companies"
-              :key="idx"
-              :value="company._id"
-              >{{ company.name }}</option
-            >
-          </b-form-select>
-          <b-form-invalid-feedback class="d-block" v-if="companyError">
-            {{ $t(`validation.${companyError}`) }}
-          </b-form-invalid-feedback>
-        </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.role") }}:
-        </label>
-        <div class="flex-3">
-          <div class="role">
-            <b-form-radio v-model="form.role" name="role" value="worker">
-              {{ $t("page_users_create_manual.form.worker") }}
-            </b-form-radio>
-            <b-form-radio v-model="form.role" name="role" value="manager">
-              {{ $t("page_users_create_manual.form.manager") }}
-            </b-form-radio>
-            <b-form-radio v-model="form.role" name="role" value="owner">
-              {{ $t("page_users_create_manual.form.owner") }}
-            </b-form-radio>
+    <div class="d-flex">
+      <a
+        href="javascript:void(0)"
+        class="back pull-left"
+        @click.prevent="$router.go(-1)"
+      >
+        <i class="hiway-crm-icon icon-angle-left mr-2" />
+        <span>{{ $t("common.back") }}</span>
+      </a>
+    </div>
+    <div class="content">
+      <h1 class="title mt-5 text-center">
+        {{ $t("page_users_create_manual.title") }}
+      </h1>
+      <p class="description text-center mt-5">
+        {{ $t("page_users_create_manual.description") }}
+      </p>
+      <div class="mt-5">
+        <div class="form-element d-flex align-items-center">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.company_list") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-select v-model="form.companyId">
+              <option value=""></option>
+              <option
+                v-for="(company, idx) in companies"
+                :key="idx"
+                :value="company._id"
+                >{{ company.name }}</option
+              >
+            </b-form-select>
+            <b-form-invalid-feedback class="d-block" v-if="companyError">
+              {{ $t(`validation.${companyError}`) }}
+            </b-form-invalid-feedback>
           </div>
         </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.email") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.email"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="emailError">
-            {{ $t(`validation.${emailError}`) }}
-          </b-form-invalid-feedback>
-        </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.firstName") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.firstName"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="firstNameError">
-            {{ $t(`validation.${firstNameError}`) }}
-          </b-form-invalid-feedback>
-        </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.middleName") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.middleName"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="middleNameError">
-            {{ $t(`validation.${middleNameError}`) }}
-          </b-form-invalid-feedback>
-        </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.lastName") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.lastName"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="lastNameError">
-            {{ $t(`validation.${lastNameError}`) }}
-          </b-form-invalid-feedback>
-        </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.password") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.password"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="passwordError">
-            {{ $t(`validation.${passwordError}`) }}
-          </b-form-invalid-feedback>
-        </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.gender") }}:
-        </label>
-        <div class="flex-3">
-          <div class="role">
-            <b-form-radio v-model="form.gender" name="gender" value="male">
-              {{ $t("page_users_create_manual.form.male") }}
-            </b-form-radio>
-            <b-form-radio v-model="form.gender" name="gender" value="female">
-              {{ $t("page_users_create_manual.form.female") }}
-            </b-form-radio>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.role") }}:
+          </label>
+          <div class="flex-3">
+            <div class="role">
+              <b-form-radio v-model="form.role" name="role" value="worker">
+                {{ $t("page_users_create_manual.form.worker") }}
+              </b-form-radio>
+              <b-form-radio v-model="form.role" name="role" value="manager">
+                {{ $t("page_users_create_manual.form.manager") }}
+              </b-form-radio>
+              <b-form-radio v-model="form.role" name="role" value="owner">
+                {{ $t("page_users_create_manual.form.owner") }}
+              </b-form-radio>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.birthday") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.birthday"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="birthdayError">
-            {{ $t(`validation.${birthdayError}`) }}
-          </b-form-invalid-feedback>
-        </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.bankNumber") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.bankNumber"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="bankNumberError">
-            {{ $t(`validation.${bankNumberError}`) }}
-          </b-form-invalid-feedback>
-        </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.street-house") }}:
-        </label>
-        <div class="flex-3 d-flex">
-          <div class="flex-1 pr-2">
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.email") }}:
+          </label>
+          <div class="flex-3">
             <b-form-input
               type="text"
               required
               class="custom-input"
-              v-model="form.street"
+              v-model="form.email"
             />
-            <b-form-invalid-feedback class="d-block" v-if="streetError">
-              {{ $t(`validation.${streetError}`) }}
+            <b-form-invalid-feedback class="d-block" v-if="emailError">
+              {{ $t(`validation.${emailError}`) }}
             </b-form-invalid-feedback>
           </div>
-          <div class="flex-1 pl-2">
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.firstName") }}:
+          </label>
+          <div class="flex-3">
             <b-form-input
               type="text"
               required
               class="custom-input"
-              v-model="form.houseNumber"
+              v-model="form.firstName"
             />
-            <b-form-invalid-feedback class="d-block" v-if="houseNumberError">
-              {{ $t(`validation.${houseNumberError}`) }}
+            <b-form-invalid-feedback class="d-block" v-if="firstNameError">
+              {{ $t(`validation.${firstNameError}`) }}
             </b-form-invalid-feedback>
           </div>
         </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.postalCode") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.postalCode"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="postalCodeError">
-            {{ $t(`validation.${postalCodeError}`) }}
-          </b-form-invalid-feedback>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.middleName") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.middleName"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="middleNameError">
+              {{ $t(`validation.${middleNameError}`) }}
+            </b-form-invalid-feedback>
+          </div>
         </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.city") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.city"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="cityError">
-            {{ $t(`validation.${cityError}`) }}
-          </b-form-invalid-feedback>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.lastName") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.lastName"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="lastNameError">
+              {{ $t(`validation.${lastNameError}`) }}
+            </b-form-invalid-feedback>
+          </div>
         </div>
-      </div>
-      <div class="form-element d-flex align-items-center mt-5">
-        <label class="flex-1">
-          {{ $t("page_users_create_manual.form.passport") }}:
-        </label>
-        <div class="flex-3">
-          <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="form.passport"
-          />
-          <b-form-invalid-feedback class="d-block" v-if="passportError">
-            {{ $t(`validation.${passportError}`) }}
-          </b-form-invalid-feedback>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.password") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.password"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="passwordError">
+              {{ $t(`validation.${passwordError}`) }}
+            </b-form-invalid-feedback>
+          </div>
         </div>
-      </div>
-      <b-form-invalid-feedback class="d-block mt-5" v-if="error">
-        {{ $t(`${error}`) }}
-      </b-form-invalid-feedback>
-      <div class="form-element mt-5 text-center">
-        <button class="btn btn-blue large" @click="createUser">
-          {{ $t("page_users_create_manual.button.create") }}
-        </button>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.gender") }}:
+          </label>
+          <div class="flex-3">
+            <div class="role">
+              <b-form-radio v-model="form.gender" name="gender" value="male">
+                {{ $t("page_users_create_manual.form.male") }}
+              </b-form-radio>
+              <b-form-radio v-model="form.gender" name="gender" value="female">
+                {{ $t("page_users_create_manual.form.female") }}
+              </b-form-radio>
+            </div>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.birthday") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.birthday"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="birthdayError">
+              {{ $t(`validation.${birthdayError}`) }}
+            </b-form-invalid-feedback>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.bankNumber") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.bankNumber"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="bankNumberError">
+              {{ $t(`validation.${bankNumberError}`) }}
+            </b-form-invalid-feedback>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.street-house") }}:
+          </label>
+          <div class="flex-3 d-flex">
+            <div class="flex-1 pr-2">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="form.street"
+              />
+              <b-form-invalid-feedback class="d-block" v-if="streetError">
+                {{ $t(`validation.${streetError}`) }}
+              </b-form-invalid-feedback>
+            </div>
+            <div class="flex-1 pl-2">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="form.houseNumber"
+              />
+              <b-form-invalid-feedback class="d-block" v-if="houseNumberError">
+                {{ $t(`validation.${houseNumberError}`) }}
+              </b-form-invalid-feedback>
+            </div>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.postalCode") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.postalCode"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="postalCodeError">
+              {{ $t(`validation.${postalCodeError}`) }}
+            </b-form-invalid-feedback>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.city") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.city"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="cityError">
+              {{ $t(`validation.${cityError}`) }}
+            </b-form-invalid-feedback>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.passport") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.passport"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="passportError">
+              {{ $t(`validation.${passportError}`) }}
+            </b-form-invalid-feedback>
+          </div>
+        </div>
+        <b-form-invalid-feedback class="d-block mt-5" v-if="error">
+          {{ $t(`${error}`) }}
+        </b-form-invalid-feedback>
+        <div class="form-element mt-5 text-center">
+          <button class="btn btn-blue large" @click="createUser">
+            {{ $t("page_users_create_manual.button.create") }}
+          </button>
+        </div>
       </div>
     </div>
     <b-modal

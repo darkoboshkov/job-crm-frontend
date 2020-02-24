@@ -1,46 +1,45 @@
 <template>
   <div id="page_companies_detail" class="dashboard-content">
-    <div class="container-fluid">
-      <div class="d-flex justify-content-between">
-        <a
-          href="javascript:void(0)"
-          class="back"
-          @click.prevent="$router.go(-1)"
-        >
-          <i class="hiway-crm-icon icon-angle-left mr-2" />
-          <span>{{ $t("common.back") }}</span>
+    <div class="d-flex justify-content-between">
+      <a
+        href="javascript:void(0)"
+        class="back pull-left"
+        @click.prevent="$router.go(-1)"
+      >
+        <i class="hiway-crm-icon icon-angle-left mr-2" />
+        <span>{{ $t("common.back") }}</span>
+      </a>
+      <div class="pull-right">
+        <a href="javascript:void(0);" @click.prevent="onEditCompany">
+          {{
+            editCompany
+              ? $t("page_detail_company.save")
+              : $t("page_detail_company.edit")
+          }}
         </a>
-        <div>
-          <a href="javascript:void(0);" @click.prevent="onEditCompany">
-            {{
-              editCompany
-                ? $t("page_detail_company.save")
-                : $t("page_detail_company.edit")
-            }}
-          </a>
-          <i class="hiway-crm-icon icon-pencil ml-2" />
-        </div>
+        <i class="hiway-crm-icon icon-pencil ml-2" />
       </div>
+    </div>
+    <div class="content">
       <div class="company-detail__header text-center">
         <h1>
           {{ $t("page_detail_company.edit_title") }}
         </h1>
       </div>
+
       <div class="company-detail__description text-center">
         <p>
           {{ $t("page_detail_company.description") }}
         </p>
       </div>
 
-      <form class="company-detail__form mt-4" ref="company-detail-form">
+      <form class="company-detail__form mt-5" ref="company-detail-form">
         <div class="container">
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.name") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.name") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-input
                 type="text"
                 name="name"
@@ -51,13 +50,11 @@
               ></b-form-input>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.owner") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.owner") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-input
                 type="email"
                 name="email"
@@ -68,13 +65,11 @@
               ></b-form-input>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.kvk") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.kvk") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-input
                 type="number"
                 name="kvk"
@@ -85,13 +80,13 @@
               ></b-form-input>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{ $t("page_detail_company.form.limit_credit_safe") }}:</label
               >
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-input
                 type="number"
                 name="limit_credit_safe"
@@ -102,13 +97,11 @@
               ></b-form-input>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.vat_shifted") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.vat_shifted") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <div class="row align-items-center">
                 <div class="col-12 col-md-4">
                   <b-form-group class="mb-2">
@@ -119,7 +112,9 @@
                       style="outline: none;"
                       :disabled="!editCompany"
                     >
-                      <b-form-radio :value="false">No</b-form-radio>
+                      <b-form-radio :value="false" class="mr-5"
+                        >No</b-form-radio
+                      >
                       <b-form-radio :value="true">Yes</b-form-radio>
                     </b-form-radio-group>
                   </b-form-group>
@@ -143,13 +138,11 @@
               </div>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
-                >{{ $t("page_detail_company.form.g_account") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.g_account") }}:</label>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <div class="row align-items-center">
                 <div class="col-12 col-md-4">
                   <b-form-group class="mb-2">
@@ -160,7 +153,9 @@
                       style="outline: none;"
                       :disabled="!editCompany"
                     >
-                      <b-form-radio :value="false">No</b-form-radio>
+                      <b-form-radio :value="false" class="mr-5"
+                        >No</b-form-radio
+                      >
                       <b-form-radio :value="true">Yes</b-form-radio>
                     </b-form-radio-group>
                   </b-form-group>
@@ -184,13 +179,13 @@
               </div>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{ $t("page_detail_company.form.terms_of_payment") }}:</label
               >
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-group class="mb-2">
                 <b-form-radio-group
                   id="radio-group-3"
@@ -203,9 +198,9 @@
               </b-form-group>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{
                   $t("page_detail_company.form.automatic_collection")
                 }}:</label
@@ -220,21 +215,21 @@
                   style="outline: none;"
                   :disabled="!editCompany"
                 >
-                  <b-form-radio :value="false">No</b-form-radio>
+                  <b-form-radio :value="false" class="mr-5">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{
                   $t("page_detail_company.form.charge_travel_expenses")
                 }}:</label
               >
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-group class="mb-2">
                 <b-form-radio-group
                   id="radio-group-5"
@@ -243,21 +238,21 @@
                   style="outline: none;"
                   :disabled="!editCompany"
                 >
-                  <b-form-radio :value="false">No</b-form-radio>
+                  <b-form-radio :value="false" class="mr-5">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
             </div>
           </div>
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label class="pull-right"
+              <label
                 >{{
                   $t("page_detail_company.form.charge_other_expenses")
                 }}:</label
               >
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <b-form-group class="mb-2">
                 <b-form-radio-group
                   id="radio-group-6"
@@ -266,7 +261,7 @@
                   style="outline: none;"
                   :disabled="!editCompany"
                 >
-                  <b-form-radio :value="false">No</b-form-radio>
+                  <b-form-radio :value="false" class="mr-5">No</b-form-radio>
                   <b-form-radio :value="true">Yes</b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
@@ -296,8 +291,8 @@
               <!--</div>-->
             </div>
           </div>
-          <div class="row">
-            <div class="col-12 col-md-8 offset-md-2">
+          <div class="row mt-5">
+            <div class="col-12">
               <div class="row">
                 <div class="col-6 text-left">
                   <button class="btn btn-red" @click.prevent="deleteCompany">
@@ -315,6 +310,7 @@
         </div>
       </form>
     </div>
+
     <b-modal
       ref="modal-alert"
       :hide-footer="true"

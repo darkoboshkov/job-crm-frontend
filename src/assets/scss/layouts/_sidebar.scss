@@ -1,6 +1,6 @@
 .app-sidebar {
   height: calc(100vh - #{$header-height} - 3px);
-  width: $sidebar-width;
+  width: calc(#{$sidebar-width} + 1px);
   border-right: 1px solid var(--white-two);
   border-left: 1px solid var(--white-two);
   border-bottom: 1px solid var(--white-two);
@@ -11,7 +11,7 @@
 
   @include media-breakpoint-down(sm) {
     height: initial;
-    width: $mobile-sidebar-width;
+    width: calc(#{$mobile-sidebar-width} + 1px);
     top: calc(#{$mobile-header-height} + 2px);
   }
 
