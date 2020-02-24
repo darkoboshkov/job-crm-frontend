@@ -1,5 +1,6 @@
 @font-face {
-    font-family: 'Apercu_medium'; /*a name to be used later*/
+    font-family: 'Apercu'; /*a name to be used later*/
+    font-weight: 700;
     src: url('apercu_medium.otf'),
     url('apercu_medium.woff2') format('woff2'),
     url('apercu_medium.woff') format('woff'),
@@ -17,7 +18,8 @@
 }
 
 @font-face {
-    font-family: 'Apercu_bold'; /*a name to be used later*/
+    font-family: 'Apercu'; /*a name to be used later*/
+    font-weight: bold;
     src: url('apercu-bold-pro.eot'),
     url('apercu-bold-pro.woff2') format('woff2'),
     url('apercu-bold-pro.woff') format('woff'),
