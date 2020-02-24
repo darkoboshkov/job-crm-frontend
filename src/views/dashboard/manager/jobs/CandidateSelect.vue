@@ -123,8 +123,7 @@ export default {
           this.$router.push({
             name: "manager-offer-details",
             params: {
-              offerId: response._id,
-              companyId: this.companyId
+              offerId: response._id
             }
           });
         });
