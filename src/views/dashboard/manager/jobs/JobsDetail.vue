@@ -211,7 +211,18 @@
                 </h5>
                 <div>
                   <div class="float-right">
-                    <button class="btn btn-blue">
+                    <button
+                      class="btn btn-blue"
+                      @click.prevent="
+                        $router.push({
+                          name: 'manager-jobs-choose-candidate',
+                          params: {
+                            jobId: jobId
+                          }
+                        })
+                      "
+                    >
+                      >
                       {{ $t("page_job_detail.button.create_new_job_offer") }}
                       <i class="hiway-crm-icon icon-pencil ml-2" />
                     </button>

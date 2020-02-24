@@ -69,6 +69,27 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
+        path: "jobs/:jobId/choose-candidate",
+        name: "manager-jobs-choose-candidate",
+        component: () =>
+          import("../views/dashboard/manager/jobs/CandidateChoose.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "jobs/:jobId/select-candidate",
+        name: "manager-jobs-select-candidate",
+        component: () =>
+          import("../views/dashboard/manager/jobs/CandidateSelect.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "jobs/:jobId/new-candidate",
+        name: "manager-jobs-new-candidate",
+        component: () =>
+          import("../views/dashboard/manager/jobs/CandidateNew.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
         path: "jobs/:jobId/matching",
         name: "manager-matching",
         component: () =>
@@ -80,6 +101,12 @@ export default [
         name: "manager-matching-details",
         component: () =>
           import("../views/dashboard/manager/jobs/MatchingDetails.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "joboffers/:offerId",
+        name: "admin-offer-details",
+        component: () => import("../views/dashboard/manager/offer/Details.vue"),
         beforeEnter: isManagerAuthorized
       },
       {
