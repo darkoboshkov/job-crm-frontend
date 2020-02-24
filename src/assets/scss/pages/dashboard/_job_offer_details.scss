@@ -103,13 +103,19 @@
       .item {
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         padding-bottom: 0.5rem;
         margin-bottom: 0.5rem;
         border-bottom: solid 1px var(--white-two);
 
         div {
-          max-width: 50%;
+          width: 50%;
+          &:last-child {
+            & > * {
+              width: 100%;
+            }
+          }
         }
       }
     }

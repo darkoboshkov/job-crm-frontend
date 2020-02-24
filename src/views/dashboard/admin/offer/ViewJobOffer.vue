@@ -303,7 +303,7 @@
             <br/>
             <div class="row">
                 <div class="col-6">
-                    Datum 	: MANAGERDATETIMESTAMP
+                    Datum 	: {{ new Date() }}
                 </div>
                 <div class="col-6">
                     Datum	: WORKERDATETIMESTAMP

@@ -171,16 +171,16 @@
         <div class="item">
           <div>CAO</div>
           <div v-if="edit">
-            <select v-model="model.collectiveAgreement">
+            <b-form-select v-model="model.collectiveAgreement">
               <option v-for="caoOption in caoOptions" :value="caoOption._id">{{ caoOption.name }}</option>
-            </select>
+            </b-form-select>
           </div>
           <div v-else>{{ selectedCaoOption.name }}</div>
         </div>
         <div class="item">
           <div>Position</div>
           <div v-if="edit">
-            <input value="position of who?" />
+            <b-form-input value="position of who?" />
           </div>
           <div v-else>
             position of who?
@@ -189,7 +189,7 @@
         <div class="item">
           <div>Status</div>
           <div v-if="edit">
-            <input value="status of what?" />
+            <b-form-input value="status of what?" />
           </div>
           <div v-else>
             status of what?
@@ -201,7 +201,7 @@
         <div class="item">
           <div>Hourly Wage</div>
           <div v-if="edit">
-            <input v-model="model.hourlyWage"/>
+            <b-form-input v-model="model.hourlyWage"/>
           </div>
           <div v-else>
             {{ model.hourlyWage }}
@@ -210,7 +210,7 @@
         <div class="item">
           <div>Pay Rate</div>
           <div v-if="edit">
-            <input v-model="model.payRate"/>
+            <b-form-input v-model="model.payRate"/>
           </div>
           <div v-else>
             {{ model.payRate }}
@@ -219,7 +219,7 @@
         <div class="item">
           <div>Travel Expenses</div>
           <div v-if="edit">
-            <input v-model="model.travelExpenses"/>
+            <b-form-input v-model="model.travelExpenses"/>
           </div>
           <div v-else>
             {{ model.travelExpenses }}
@@ -228,7 +228,7 @@
         <div class="item">
           <div>Travel Hours</div>
           <div v-if="edit">
-            <input v-model="model.travelHours"/>
+            <b-form-input v-model="model.travelHours"/>
           </div>
           <div v-else>
             {{ model.travelHours }}
@@ -237,7 +237,7 @@
         <div class="item">
           <div>Other Expenses</div>
           <div v-if="edit">
-            <input v-model="model.otherExpenses"/>
+            <b-form-input v-model="model.otherExpenses"/>
           </div>
           <div v-else>
             {{ model.otherExpenses }}
@@ -246,7 +246,7 @@
         <div class="item">
           <div>Contract Signed{{ (contractSigned.signDate) }}</div>
           <div v-if="edit">
-            <textarea v-model="contractSigned.autograph"/>
+            <b-form-textarea v-model="contractSigned.autograph"/>
           </div>
           <div v-else>
             {{ contractSigned.autograph }}
