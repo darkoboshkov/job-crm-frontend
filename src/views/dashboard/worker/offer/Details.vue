@@ -172,9 +172,12 @@
           <div>CAO</div>
           <div v-if="edit">
             <select v-model="model.collectiveAgreement">
-              <option v-for="caoOption in caoOptions" :value="caoOption._id">{{
-                caoOption.name
-              }}</option>
+              <option
+                v-for="caoOption in caoOptions"
+                :value="caoOption._id"
+                :key="caoOption._id"
+                >{{ caoOption.name }}</option
+              >
             </select>
           </div>
           <div v-else>{{ selectedCaoOption.name }}</div>
@@ -365,28 +368,43 @@ export default {
       );
     },
     managerState() {
+      let managerState = "";
+
       switch (this.model.status) {
         case "open":
-          return "pending";
+          managerState = "pending";
+          break;
         case "pending-worker":
-          return "signed";
+          managerState = "signed";
+          break;
         case "active":
-          return "signed";
+          managerState = "signed";
+          break;
         case "completed":
-          return "completed";
+          managerState = "completed";
+          break;
       }
+
+      return managerState;
     },
     workerState() {
+      let workerState = "";
       switch (this.model.status) {
         case "open":
-          return "not able to see";
+          workerState = "not able to see";
+          break;
         case "pending-worker":
-          return "pending";
+          workerState = "pending";
+          break;
         case "active":
-          return "signed";
+          workerState = "signed";
+          break;
         case "completed":
-          return "completed";
+          workerState = "completed";
+          break;
       }
+
+      return workerState;
     }
   },
   data() {
