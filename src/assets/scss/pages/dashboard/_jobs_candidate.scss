@@ -1,17 +1,25 @@
 #page_jobs_choose_candidate {
-  margin-top: 100px;
+  margin: 0 auto;
   max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
+
+  .content {
+    background-color: white;
+    padding: 50px 40px;
+    margin-top: 50px;
+  }
 }
 
 #page_jobs_select_candidate {
-  margin-top: 100px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  max-width: 1000px;
   text-align: center;
+
+  .content {
+    background-color: white;
+    padding: 50px 40px;
+    margin-top: 50px;
+  }
 
   .search-form {
     width: 480px;
