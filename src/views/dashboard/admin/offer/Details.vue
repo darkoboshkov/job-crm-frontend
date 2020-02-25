@@ -155,6 +155,7 @@
           <button
             class="btn btn-secondary ml-2"
             @click="openViewOffer = !openViewOffer"
+            :disabled="edit"
             style="min-width:160px;"
           >
             View Contract
@@ -595,7 +596,6 @@ export default {
           })
         )
         .then(res => {
-          console.log("res", res);
           this.model = Object.assign({}, this.model, {
             status: "open"
           });
@@ -603,7 +603,6 @@ export default {
     },
     update() {
       return jobOfferApi.update(this.model).then(res => {
-        console.log("res", res);
         this.model = res;
         this.company = res.company[0];
         this.job = res.job[0];
@@ -618,7 +617,6 @@ export default {
       const { companyId, offerId } = this;
 
       return jobOfferApi.get({ companyId, offerId }).then(res => {
-        console.log("res", res);
         this.model = res;
         // this.model.status = 'open';
         this.company = res.company[0];
@@ -633,7 +631,6 @@ export default {
       const { companyId, offerId } = this;
 
       return jobOfferApi.lock({ companyId, offerId }).then(res => {
-        console.log("res", res);
         this.model = res;
         this.company = res.company[0];
         this.job = res.job[0];
