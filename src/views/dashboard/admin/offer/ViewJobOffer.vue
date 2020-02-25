@@ -117,7 +117,7 @@
         <div style="width: 200px; display: inline-block;">
           Verwachte datum aanvang werkzaamheden
         </div>
-        : {{ offer.startDate }}
+        : {{ dateFormatter(new Date(offer.startDate)) }}
       </div>
       <div>
         <div style="width: 200px; display: inline-block;">
@@ -424,9 +424,13 @@
       >
       <br />
       <div class="row">
-        <div class="col-6">Datum : {{ new Date() }}</div>
         <div class="col-6">
-          Datum : WORKERDATETIMESTAMP
+          <!--Datum : MANAGERDATETIMESTAMP-->
+          Datum : {{ managerSign && managerSign.signDate ? dateFormatter(new Date(managerSign.signDate)) : ''}}
+        </div>
+        <div class="col-6">
+          <!--Datum : WORKERDATETIMESTAMP-->
+          Datum : {{ workerSign && workerSign.signDate ? dateFormatter(new Date(workerSign.signDate)) : ''}}
         </div>
       </div>
       <div class="row">
@@ -591,6 +595,17 @@ export default {
       default: function() {
         return {};
       }
+    }
+  },
+  computed: {
+    contract() {
+      return this.offer.contractSigned;
+    },
+    managerSign() {
+      return this.contract ? this.contract.find(sign => sign.role === 'manager') : {};
+    },
+    workerSign() {
+      return this.contract ? this.contract.find(sign => sign.role === 'worker') : {};
     }
   },
   methods: {
