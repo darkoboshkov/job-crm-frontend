@@ -180,14 +180,14 @@
               >
             </b-form-select>
           </div>
-          <div v-else>{{ selectedCaoOption.name }}</div>
+          <div v-else class="text-right">{{ selectedCaoOption.name }}</div>
         </div>
         <div class="item">
           <div>Position</div>
           <div v-if="edit">
             <b-form-input value="position of who?" />
           </div>
-          <div v-else>
+          <div v-else class="text-right">
             position of who?
           </div>
         </div>
@@ -196,20 +196,20 @@
           <div v-if="edit">
             <b-form-input value="status of what?" />
           </div>
-          <div v-else>
+          <div v-else class="text-right">
             status of what?
           </div>
         </div>
         <div class="item">
           <div>Level</div>
-          <div>CAO voor Senior Managers</div>
+          <div class="text-right">CAO voor Senior Managers</div>
         </div>
         <div class="item">
           <div>Hourly Wage</div>
           <div v-if="edit">
             <b-form-input v-model="model.hourlyWage" />
           </div>
-          <div v-else>
+          <div v-else class="text-right">
             {{ model.hourlyWage }}
           </div>
         </div>
@@ -218,7 +218,7 @@
           <div v-if="edit">
             <b-form-input v-model="model.payRate" />
           </div>
-          <div v-else>
+          <div v-else class="text-right">
             {{ model.payRate }}
           </div>
         </div>
@@ -227,7 +227,7 @@
           <div v-if="edit">
             <b-form-input v-model="model.travelExpenses" />
           </div>
-          <div v-else>
+          <div v-else class="text-right">
             {{ model.travelExpenses }}
           </div>
         </div>
@@ -236,7 +236,7 @@
           <div v-if="edit">
             <b-form-input v-model="model.travelHours" />
           </div>
-          <div v-else>
+          <div v-else class="text-right">
             {{ model.travelHours }}
           </div>
         </div>
@@ -245,7 +245,7 @@
           <div v-if="edit">
             <b-form-input v-model="model.otherExpenses" />
           </div>
-          <div v-else>
+          <div v-else class="text-right">
             {{ model.otherExpenses }}
           </div>
         </div>
@@ -254,7 +254,7 @@
           <div v-if="edit">
             <b-form-textarea v-model="contractSigned.autograph" />
           </div>
-          <div v-else>
+          <div v-else class="text-right">
             {{ contractSigned.autograph }}
           </div>
         </div>
