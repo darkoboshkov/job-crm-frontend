@@ -47,4 +47,8 @@
     }
   }
   @include button-sizes;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
