@@ -426,13 +426,9 @@
     "status_actions": "Contract Status & Actions",
     "offer_states": {
       "open": "Open",
+      "pending-worker": "Pending for Worker",
       "active": "Active",
-      "completed": "Completed",
-      "closed": "Closed",
-      "declined": "Declined",
-      "accepted": "Accepted",
-      "paused": "Paused",
-      "cancelled": "Cancelled"
+      "completed": "Completed"
     }
   },
   "page_matching": {
