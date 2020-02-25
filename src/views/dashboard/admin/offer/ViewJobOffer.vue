@@ -544,7 +544,7 @@
         Middels ondertekening van deze overeenkomst verklaart u op de hoogte te
         zijn van onze privacyverklaring.
       </div>
-      <div>{{ company.city }}, {{ offer.startDate }}</div>
+      <div>{{ company.city }}, {{ dateFormatter(new Date(offer.startDate)) }}</div>
       <div>
         Voor akkoord,
       </div>
@@ -557,6 +557,8 @@
 </template>
 
 <script>
+import dateFormatter from '@/helpers/DateFormatter.js';
+
 export default {
   name: "ViewJobOffer",
   props: {
@@ -590,6 +592,9 @@ export default {
         return {};
       }
     }
+  },
+  methods: {
+    dateFormatter
   },
   watch: {
     open(value, old) {
