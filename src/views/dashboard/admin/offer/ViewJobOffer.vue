@@ -426,11 +426,21 @@
       <div class="row">
         <div class="col-6">
           <!--Datum : MANAGERDATETIMESTAMP-->
-          Datum : {{ managerSign && managerSign.signDate ? dateFormatter(new Date(managerSign.signDate)) : ''}}
+          Datum :
+          {{
+            managerSign && managerSign.signDate
+              ? dateFormatter(new Date(managerSign.signDate))
+              : ""
+          }}
         </div>
         <div class="col-6">
           <!--Datum : WORKERDATETIMESTAMP-->
-          Datum : {{ workerSign && workerSign.signDate ? dateFormatter(new Date(workerSign.signDate)) : ''}}
+          Datum :
+          {{
+            workerSign && workerSign.signDate
+              ? dateFormatter(new Date(workerSign.signDate))
+              : ""
+          }}
         </div>
       </div>
       <div class="row">
@@ -548,7 +558,9 @@
         Middels ondertekening van deze overeenkomst verklaart u op de hoogte te
         zijn van onze privacyverklaring.
       </div>
-      <div>{{ company.city }}, {{ dateFormatter(new Date(offer.startDate)) }}</div>
+      <div>
+        {{ company.city }}, {{ dateFormatter(new Date(offer.startDate)) }}
+      </div>
       <div>
         Voor akkoord,
       </div>
@@ -561,7 +573,7 @@
 </template>
 
 <script>
-import dateFormatter from '@/helpers/DateFormatter.js';
+import dateFormatter from "@/helpers/DateFormatter.js";
 
 export default {
   name: "ViewJobOffer",
@@ -602,10 +614,14 @@ export default {
       return this.offer.contractSigned;
     },
     managerSign() {
-      return this.contract ? this.contract.find(sign => sign.role === 'manager') : {};
+      return this.contract
+        ? this.contract.find(sign => sign.role === "manager")
+        : {};
     },
     workerSign() {
-      return this.contract ? this.contract.find(sign => sign.role === 'worker') : {};
+      return this.contract
+        ? this.contract.find(sign => sign.role === "worker")
+        : {};
     }
   },
   methods: {

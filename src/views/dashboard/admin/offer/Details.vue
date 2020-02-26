@@ -184,28 +184,6 @@
           <div v-else class="text-right">{{ selectedCaoOption.name }}</div>
         </div>
         <div class="item">
-          <div>Position</div>
-          <div v-if="edit">
-            <b-form-input value="position of who?" />
-          </div>
-          <div v-else class="text-right">
-            position of who?
-          </div>
-        </div>
-        <div class="item">
-          <div>Status</div>
-          <div v-if="edit">
-            <b-form-input value="status of what?" />
-          </div>
-          <div v-else class="text-right">
-            status of what?
-          </div>
-        </div>
-        <div class="item">
-          <div>Level</div>
-          <div class="text-right">CAO voor Senior Managers</div>
-        </div>
-        <div class="item">
           <div>Hourly Wage</div>
           <div v-if="edit">
             <b-form-input v-model="model.hourlyWage" />
@@ -249,21 +227,6 @@
           <div v-else class="text-right">
             {{ model.otherExpenses }}
           </div>
-        </div>
-        <div class="item">
-          <div>Contract Signed{{ contractSigned.signDate }}</div>
-          <div v-if="edit">
-            <b-form-textarea v-model="contractSigned.autograph" />
-          </div>
-          <div v-else class="text-right">
-            {{ contractSigned.autograph }}
-          </div>
-        </div>
-        <div class="item">
-          <div>Online / Offline</div>
-        </div>
-        <div class="item">
-          <div>Location</div>
         </div>
       </div>
     </div>
@@ -348,11 +311,9 @@
 </template>
 
 <script>
-import jobsApi from "@/services/api/jobs";
-import usersApi from "@/services/api/users";
-import companyApi from "@/services/api/companies";
 import jobOfferApi from "@/services/api/joboffers";
 import ViewJobOffer from "./ViewJobOffer";
+import dateFormatter from "@/helpers/DateFormatter.js";
 
 export default {
   name: "Details",
@@ -435,7 +396,6 @@ export default {
         endDate: "endDate",
         completionDate: "completionDate"
       },
-      contractSigned: {},
       company: {
         name: "Kruidvat"
       },
@@ -443,163 +403,31 @@ export default {
         title: "Senior Operations Manager"
       },
       manager: {},
-      worker: {
-        firstName: "John",
-        lastName: "Simons",
-        location: "Amsterdam"
-      },
-
-      /*      {
-        name: {
-          type: String,
-            required: true
-        },
-        companyId: {
-          type: mongoose.Schema.Types.ObjectId,
-            ref: 'Company',
-            required: true
-        },
-        jobId: {
-          type: mongoose.Schema.Types.ObjectId,
-            ref: 'Job',
-            required: true
-        },
-        managerId: {
-          type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-            required: true
-        },
-        workerId: {
-          type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-            required: true
-        },
-        collectiveAgreement: {
-          type: mongoose.Schema.Types.ObjectId,
-            ref: 'CollectiveAgreement'
-        },
-        status: {
-          type: String,
-        enum: offerStates,
-        default: offerStates[0],
-            required: true
-        },
-        paymentAmount: [
-          {
-            type: Number,
-            required: true,
-            min: 1,
-            max: 9999999
-          }
-        ],
-          hourlyWage: {
-        type: Number
-      },
-        payRate: {
-          type: Number
-        },
-        travelExpenses: {
-          type: Number
-        },
-        travelHours: {
-          type: Number
-        },
-        otherExpenses: {
-          type: Number
-        },
-        substantiationForWage: {
-          type: String,
-            min: 1,
-            max: 10000
-        },
-        paymentType: [
-          {
-            type: String,
-            enum: paymentType,
-            default: paymentType[0],
-            required: true
-          }
-        ],
-          contractSigned: [
-        {
-          userID: {
-            type: mongoose.Schema.Types.ObjectId
-          },
-          role: {
-            type: String,
-            enum: roles,
-            default: roles[0]
-          },
-          signDate: {
-            type: Date,
-            default: Date.now
-          },
-          autograph: {
-            type: String
-          }
-        }
-      ],
-        startDate: {
-        type: Date,
-      default: Date.now,
-          select: false,
-          required: true
-      },
-        endDate: {
-          type: Date,
-        default: Date.now,
-            select: false
-        },
-        completionDate: {
-          type: Date,
-            select: false
-        }
-      },*/
+      worker: {},
       openViewOffer: false,
-      caoOptions: [
-        {
-          _id: "5e4eab5aa308b5e9503fb5e1",
-          name: "CAO 1 Test",
-          documentFilePath: "Test.docx"
-        },
-        {
-          _id: "5e4eab5efa19b59622bba86c",
-          name: "CAO 2 Test",
-          documentFilePath: "Tes2t.docx"
-        }
-      ]
+      caoOptions: []
     };
   },
   mounted() {
     this.getOfferDetails();
+    this.getCaoOptions();
   },
   methods: {
+    dateFormatter,
+    getCaoOptions() {
+      return jobOfferApi.getCaoOptions(this.model).then(res => {
+        this.caoOptions = res;
+      });
+    },
     lockSignSend() {
-      return jobOfferApi
-        .update(
-          Object.assign(this.model, {
-            status: "pending-worker"
-          })
-        )
-        .then(res => {
-          console.log("res", res);
-          this.model = Object.assign({}, this.model, {
-            status: "pending-worker"
-          });
-        });
+      return jobOfferApi.lock(this.model).then(res => {
+        this.model = res;
+      });
     },
     adjust() {
-      return jobOfferApi
-        .update(
-          Object.assign(this.model, {
-            status: "open"
-          })
-        )
-        .then(res => {
-          this.model = Object.assign({}, this.model, {
-            status: "open"
-          });
-        });
+      return jobOfferApi.adjust(this.model).then(res => {
+        this.model = res;
+      });
     },
     update() {
       return jobOfferApi.update(this.model).then(res => {
@@ -618,25 +446,21 @@ export default {
 
       return jobOfferApi.get({ companyId, offerId }).then(res => {
         this.model = res;
-        // this.model.status = 'open';
+        // this.model. = 'open';
         this.company = res.company[0];
         this.job = res.job[0];
         this.worker = res.worker[0];
         this.company = res.company[0];
         this.manager = res.manager[0];
-        this.contractSigned = res.contractSigned[0];
-      });
-    },
-    lockOffer() {
-      const { companyId, offerId } = this;
-
-      return jobOfferApi.lock({ companyId, offerId }).then(res => {
-        this.model = res;
-        this.company = res.company[0];
-        this.job = res.job[0];
-        this.worker = res.worker[0];
-        this.company = res.company[0];
-        this.manager = res.manager[0];
+        this.contractSigned =
+          res.contractSigned.filter(contract => {
+            return contract.userId === this.$store.state.user._id;
+          })[0] || {};
+        if (this.contractSigned) {
+          this.model.autograph = this.contractSigned.autograph;
+        }
+        // this.model.substantiationForWage = 'asdf';
+        delete this.model.contractSigned;
       });
     }
   }

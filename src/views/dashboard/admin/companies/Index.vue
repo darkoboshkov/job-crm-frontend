@@ -48,6 +48,7 @@
         :totalRows="totalRows"
         :rows="rows"
         :columns="columns"
+        :sort-options="{ enabled: false }"
         :pagination-options="paginationOptions"
         :isLoading.sync="isLoading"
         styleClass="custom-table"

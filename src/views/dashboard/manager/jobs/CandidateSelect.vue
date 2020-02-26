@@ -2,9 +2,9 @@
   <div id="page_jobs_select_candidate" class="dashboard-content">
     <div class="d-flex">
       <a
-          href="javascript:void(0)"
-          class="back pull-left"
-          @click.prevent="$router.go(-1)"
+        href="javascript:void(0)"
+        class="back pull-left"
+        @click.prevent="$router.go(-1)"
       >
         <i class="hiway-crm-icon icon-angle-left mr-2" />
         <span>{{ $t("common.back") }}</span>
@@ -19,23 +19,23 @@
       </p>
       <div class="search-form mt-5">
         <b-form-input
-            type="text"
-            required
-            class="custom-input search-candidate"
-            :placeholder="$t('page_jobs_select_candidate.form.search')"
-            v-model="search"
-            @keyup="searchCandidate"
+          type="text"
+          required
+          class="custom-input search-candidate"
+          :placeholder="$t('page_jobs_select_candidate.form.search')"
+          v-model="search"
+          @keyup="searchCandidate"
         />
         <ul class="search-result" v-if="users.length">
           <li
-              v-for="(user, index) of users"
-              :key="index"
-              @click="selectCandidate(user)"
+            v-for="(user, index) of users"
+            :key="index"
+            @click="selectCandidate(user)"
           >
             <div class="d-flex align-items-center">
               <img
-                  src="@/assets/image/avatar_nick.png"
-                  class="rounded-circle border mr-2"
+                src="@/assets/image/avatar_nick.png"
+                class="rounded-circle border mr-2"
               />
               <div>
                 <strong>
@@ -51,9 +51,9 @@
       </div>
       <div>
         <button
-            class="btn btn-red large mr-2"
-            style="min-width:260px;"
-            @click="sendOffer"
+          class="btn btn-red large mr-2"
+          style="min-width:260px;"
+          @click="sendOffer"
         >
           {{ $t("page_jobs_select_candidate.button.select") }}
         </button>

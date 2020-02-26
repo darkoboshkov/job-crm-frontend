@@ -22,10 +22,7 @@
         :rows="rows"
         :columns="columns"
         :pagination-options="paginationOptions"
-        :search-options="{
-          enabled: true,
-          externalQuery: searchTerm
-        }"
+        :search-options="{ enabled: false }"
         :isLoading.sync="isLoading"
         styleClass="custom-table"
       >

@@ -34,5 +34,42 @@ export default {
       resolve,
       reject
     );
+  },
+  upload(params, resolve, reject = null) {
+    return request(
+      "post",
+      `/joboffers/${params.companyId}/${params._id}/attachment`,
+      params,
+      resolve,
+      reject
+    );
+  },
+  lock(params, resolve, reject = null) {
+    // "Lock, Sign and Send" Contract by Manager
+    return request(
+      "patch",
+      `/joboffers/${params.companyId}/${params._id}/contract/lock`,
+      params,
+      resolve,
+      reject
+    );
+  },
+  adjust(params, resolve, reject = null) {
+    return request(
+      "patch",
+      `/joboffers/${params.companyId}/${params._id}/contract/adjust`,
+      params,
+      resolve,
+      reject
+    );
+  },
+  getCaoOptions(params, resolve, reject = null) {
+    return request(
+      "get",
+      `/joboffers/${params.companyId}/cao/all`,
+      params,
+      resolve,
+      reject
+    );
   }
 };

@@ -2,9 +2,9 @@
   <div id="page_jobs_choose_candidate" class="dashboard-content">
     <div class="d-flex">
       <a
-          href="javascript:void(0)"
-          class="back pull-left"
-          @click.prevent="$router.go(-1)"
+        href="javascript:void(0)"
+        class="back pull-left"
+        @click.prevent="$router.go(-1)"
       >
         <i class="hiway-crm-icon icon-angle-left mr-2" />
         <span>{{ $t("common.back") }}</span>
@@ -19,33 +19,33 @@
       </p>
       <div class="mt-5">
         <button
-            class="btn btn-red large mr-2"
-            @click="
-          $router.push({
-            name: 'manager-jobs-select-candidate',
-            params: {
-              jobId: $route.params.jobId
-            }
-          })
-        "
-            style="min-width:260px;"
+          class="btn btn-red large mr-2"
+          @click="
+            $router.push({
+              name: 'manager-jobs-select-candidate',
+              params: {
+                jobId: $route.params.jobId
+              }
+            })
+          "
+          style="min-width:260px;"
         >
           {{ $t("page_jobs_choose_candidate.button.search") }}
         </button>
 
         <button
-            class="btn btn-blue large ml-2"
-            @click="
-          $router.push({
-            name: 'manager-jobs-new-candidate',
-            params: {
+          class="btn btn-blue large ml-2"
+          @click="
+            $router.push({
+              name: 'manager-jobs-new-candidate',
               params: {
-                jobId: $route.params.jobId
+                params: {
+                  jobId: $route.params.jobId
+                }
               }
-            }
-          })
-        "
-            style="min-width:240px;"
+            })
+          "
+          style="min-width:240px;"
         >
           {{ $t("page_jobs_choose_candidate.button.new") }}
         </button>
