@@ -17,7 +17,26 @@ const modules = requireContext
     return { ...modules, [name]: module };
   }, {});
 
+const state = {
+  loading: false,
+};
+
+const mutations = {
+  UPDATE_LOADING (state, payload) {
+    state.loading = payload;
+  },
+};
+
+export const actions = {
+  updateLoading ({ commit }, payload) {
+    commit('UPDATE_LOADING', payload);
+  },
+}
+
 export default new Vuex.Store({
+  state,
+  mutations,
+  actions,
   modules,
   plugins
 });

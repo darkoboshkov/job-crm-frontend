@@ -1,0 +1,17 @@
+.loader, .loader .overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .overlay {
+    background-color: black;
+    opacity: 0.1;
+    z-index: 1000;
+  }
+}
