@@ -118,11 +118,14 @@
 </template>
 
 <script>
+import jobsApi from "@/services/api/jobs";
+
 export default {
   name: "position",
   data() {
     return {
-      collapsed: true
+      collapsed: true,
+      rows: []
     };
   },
   computed: {
@@ -133,7 +136,29 @@ export default {
       return this.$store.state.user.role;
     }
   },
+  mounted() {
+    this.getActiveJobs();
+  },
   methods: {
+    getActiveJobs() {
+      return jobsApi
+        .getAll(
+          Object.assign({
+            filter: {
+              status: "active"
+            },
+            limit: 3,
+            page: 1
+          })
+        )
+        .then(res => {
+          this.rows = res.docs;
+          this.rows.forEach(row => {
+            row.company = row.company[0];
+            row.position = row.position[0];
+          });
+        });
+    },
     hidePositionCard: function() {
       this.$emit("hide-position-card");
     },

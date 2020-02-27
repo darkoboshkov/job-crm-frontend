@@ -67,6 +67,14 @@
       "title": "Open Positions",
       "view_all": "View All"
     },
+    "users": {
+      "title": "Open Workers",
+      "view_all": "View All"
+    },
+    "companies": {
+      "title": "Open Companies",
+      "view_all": "View All"
+    },
     "birthday": {
       "title": "Upcoming Birthdays"
     },

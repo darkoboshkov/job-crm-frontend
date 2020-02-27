@@ -12,27 +12,11 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col md="8">
-          <!--<Statistics v-if="statisticsItem" v-on:hide-statistics-card="hideStatisticsCard"/>-->
-          <b-row>
-            <!--<b-col md="6">-->
-            <b-col md="12">
-              <Position
-                v-if="positionItem"
-                v-on:hide-position-card="hidePositionCard"
-              />
-            </b-col>
-            <!--<b-col md="6">-->
-            <!--<message v-if="messageItem" v-on:hide-message-card="hideMessageCard"/>-->
-            <!--</b-col>-->
-          </b-row>
-        </b-col>
-        <b-col md="4">
-          <Birthday
-            v-if="birthdayItem"
-            v-on:hide-birthday-card="hideBirthdayCard"
+        <b-col md="6">
+          <Positions
+            v-if="positionItem"
+            v-on:hide-position-card="hidePositionCard"
           />
-          <!--<Todo v-if="todoItem" v-on:hide-todo-card="hideTodoCard"/>-->
         </b-col>
       </b-row>
     </div>
@@ -45,22 +29,6 @@
       </template>
       <div>
         <ul class="custom-list">
-          <li class="d-flex responsive">
-            <div>
-              <p>{{ $t("page_dashboard.modal.adjust.message_area_title") }}</p>
-              <small>{{
-                $t("page_dashboard.modal.adjust.message_area_text")
-              }}</small>
-            </div>
-            <b-form-checkbox
-              class="rtl"
-              size="lg"
-              v-model="messageItem"
-              name="check-button"
-              switch
-            >
-            </b-form-checkbox>
-          </li>
           <li class="d-flex responsive">
             <div>
               <p>{{ $t("page_dashboard.modal.adjust.position_area_title") }}</p>
@@ -77,52 +45,17 @@
             >
             </b-form-checkbox>
           </li>
-
           <li class="d-flex responsive">
             <div>
-              <p>{{ $t("page_dashboard.modal.adjust.birthday_area_title") }}</p>
+              <p>{{ $t("page_dashboard.modal.adjust.users_area_title") }}</p>
               <small>{{
-                $t("page_dashboard.modal.adjust.birthday_area_text")
+                $t("page_dashboard.modal.adjust.users_area_text")
               }}</small>
             </div>
             <b-form-checkbox
               class="rtl"
               size="lg"
-              v-model="birthdayItem"
-              name="check-button"
-              switch
-            >
-            </b-form-checkbox>
-          </li>
-          <li class="d-flex responsive">
-            <div>
-              <p>{{ $t("page_dashboard.modal.adjust.todo_area_title") }}</p>
-              <small>{{
-                $t("page_dashboard.modal.adjust.todo_area_text")
-              }}</small>
-            </div>
-            <b-form-checkbox
-              class="rtl"
-              size="lg"
-              v-model="todoItem"
-              name="check-button"
-              switch
-            >
-            </b-form-checkbox>
-          </li>
-          <li class="d-flex responsive">
-            <div>
-              <p>
-                {{ $t("page_dashboard.modal.adjust.statistics_area_title") }}
-              </p>
-              <small>{{
-                $t("page_dashboard.modal.adjust.statistics_area_text")
-              }}</small>
-            </div>
-            <b-form-checkbox
-              class="rtl"
-              size="lg"
-              v-model="statisticsItem"
+              v-model="usersItem"
               name="check-button"
               switch
             >
@@ -135,49 +68,22 @@
 </template>
 
 <script>
-import Card from "@/components/common/Card.vue";
-import Message from "@/views/dashboard/components/Message.vue";
-import Position from "@/views/dashboard/components/Position.vue";
-import Statistics from "@/views/dashboard/components/Statistics.vue";
-import Birthday from "@/views/dashboard/components/Birthday.vue";
-import Todo from "@/views/dashboard/components/Todo.vue";
-import Trend from "vuetrend";
+import Positions from "./components/Positions.vue";
 
 export default {
   name: "dashboard",
   components: {
-    Card,
-    Trend,
-    Message,
-    Position,
-    Statistics,
-    Birthday,
-    Todo
+    Positions
   },
   data() {
     return {
-      messageItem: true,
       positionItem: true,
-      birthdayItem: true,
-      todoItem: true,
-      statisticsItem: true
+      usersItem: true
     };
   },
   methods: {
-    hideMessageCard: function() {
-      this.messageItem = false;
-    },
-    hideStatisticsCard: function() {
-      this.statisticsItem = false;
-    },
     hidePositionCard: function() {
       this.positionItem = false;
-    },
-    hideBirthdayCard: function() {
-      this.birthdayItem = false;
-    },
-    hideTodoCard: function() {
-      this.todoItem = false;
     }
   }
 };

@@ -51,7 +51,8 @@
         width: $dashboard-logo-height;
         height: $dashboard-logo-height;
         border-radius: 50%;
-        //background: var(--pinkish-grey);
+        background: var(--white-two);
+
         overflow: hidden;
         @include media-breakpoint-down(sm) {
           display: none;

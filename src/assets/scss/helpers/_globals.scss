@@ -104,3 +104,10 @@ hr {
   border-top: 1px solid var(--white-two);
   margin: 1rem 0 1.5rem 0;
 }
+
+.avatar-placeholder {
+  background: var(--white-two);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}

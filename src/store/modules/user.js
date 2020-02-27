@@ -7,7 +7,8 @@ let syncedData = {
   lastName: null,
   role: null,
   companyId: null,
-  verified: false
+  verified: false,
+  image: null
 };
 
 if (ls.get(STORAGE_KEY)) {
@@ -51,6 +52,7 @@ export const mutations = {
     state.role = user.role ? user.role : null;
     state.verified = user.verified ? user.verified : false;
     state.companyId = user.companyId ? user.companyId : null;
+    state.image = user.image ? user.image : null;
   }
 };
 

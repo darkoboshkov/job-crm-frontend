@@ -1,8 +1,4 @@
-import {
-  ifAuthenticated,
-  isAdminAuthorized,
-  isManagerAuthorized
-} from "../utils";
+import { ifAuthenticated, isManagerAuthorized } from "../utils";
 
 export default [
   {
@@ -63,7 +59,7 @@ export default [
       },
       {
         path: "jobs/:jobId",
-        name: "manage-jobs-detail",
+        name: "manager-jobs-detail",
         component: () =>
           import("../views/dashboard/manager/jobs/JobsDetail.vue"),
         beforeEnter: isManagerAuthorized

@@ -1,7 +1,7 @@
 <template>
   <div class="account-dropdown">
     <div class="account-dropdown__photo">
-      <img src="@/assets/image/avatar_nick.png" />
+      <img v-if="image" :src="image" />
     </div>
     <div class="account-dropdown__list">
       <a href="javascript;" @click.prevent="toggleDropdown">
@@ -31,7 +31,6 @@ export default {
   name: "AppHeaderAccountDropdown",
   data() {
     return {
-      photo: "", // To do from store
       collapsed: false
     };
   },
@@ -51,6 +50,12 @@ export default {
         return this.$store.state.user.role;
       }
       return "worker";
+    },
+    image() {
+      if (this.$store.state.user) {
+        return this.$store.state.user.image;
+      }
+      return null;
     }
   },
   methods: {
