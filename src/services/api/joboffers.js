@@ -27,9 +27,18 @@ export default {
       reject
     );
   },
-  upload(params, resolve, reject = null) {
+  upload(companyId, _id, params, resolve, reject = null) {
     return request(
       "post",
+      `/joboffers/${companyId}/${_id}/attachment`,
+      params,
+      resolve,
+      reject
+    );
+  },
+  addAttachment(params, resolve, reject = null) {
+    return request(
+      "patch",
       `/joboffers/${params.companyId}/${params._id}/attachment`,
       params,
       resolve,

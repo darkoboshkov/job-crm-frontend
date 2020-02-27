@@ -234,64 +234,44 @@
     <div class="card mt-4 contract-files">
       <div class="card-header">
         <span>Files</span>
-        <button
+        <input
+          type="file"
+          id="attachment"
+          name="attachment"
+          accept=".doc,.docx,.pdf"
+          @change="onFileChange"
+        />
+        <label
+          for="attachment"
           class="btn btn-blue ml-2"
-          @click="upload"
           style="min-width:160px;"
         >
           Upload
           <i class="hiway-crm-icon icon-upload"></i>
-        </button>
+        </label>
       </div>
       <div class="card-body">
-        <div class="item">
+        <div class="item" v-for="(attachment, idx) in attachments" :key="idx">
           <div>
             <img
-              src="@/assets/image/avatar_nick.png"
+              :src="
+                attachment.userId === worker._id
+                  ? worker.avatar
+                  : attachment.userId === manager._id
+                  ? manager.avatar
+                  : '@/assets/image/avatar_nick.png'
+              "
               class="rounded-circle border mr-4"
               style="width:45px"
             />
-            Kruidvat General Practice Document.pdf
+            {{ attachment.name }}
           </div>
           <div>
-            <span class="mr-5">Geupload op 23 juli 2019 om 15:09</span>
-            <span class="mr-5">2.3m</span>
-            <span class="mr-4"
-              ><i class="hiway-crm-icon icon-more-vertical"></i
-            ></span>
-            <span><i class="hiway-crm-icon icon-bin"></i></span>
-          </div>
-        </div>
-        <div class="item">
-          <div>
-            <img
-              src="@/assets/image/avatar_nick.png"
-              class="rounded-circle border mr-4"
-              style="width:45px"
-            />
-            Kruidvat Benefits Policy.docx
-          </div>
-          <div>
-            <span class="mr-5">Geupload op 23 juli 2019 om 15:09</span>
-            <span class="mr-5">2.3m</span>
-            <span class="mr-4"
-              ><i class="hiway-crm-icon icon-more-vertical"></i
-            ></span>
-            <span><i class="hiway-crm-icon icon-bin"></i></span>
-          </div>
-        </div>
-        <div class="item">
-          <div>
-            <img
-              src="@/assets/image/avatar_nick.png"
-              class="rounded-circle border mr-4"
-              style="width:45px"
-            />
-            Motivation Letter.docx
-          </div>
-          <div>
-            <span class="mr-5">Geupload op 23 juli 2019 om 15:09</span>
-            <span class="mr-5">2.3m</span>
+            <span class="mr-5"
+              >{{ dateFormatter(new Date(attachment.uploadedAt)) }}
+              {{ timeFormatter(new Date(attachment.uploadedAt)) }}</span
+            >
+            <span class="mr-5">{{ attachment.size }} B</span>
             <span class="mr-4"
               ><i class="hiway-crm-icon icon-more-vertical"></i
             ></span>
@@ -314,6 +294,7 @@
 import jobOfferApi from "@/services/api/joboffers";
 import ViewJobOffer from "./ViewJobOffer";
 import dateFormatter from "@/helpers/DateFormatter.js";
+import timeFormatter from "@/helpers/TimeFormatter.js";
 import { APP_URL } from "@/constants";
 
 export default {
@@ -405,7 +386,9 @@ export default {
       manager: {},
       worker: {},
       openViewOffer: false,
-      caoOptions: []
+      caoOptions: [],
+      imageData: {},
+      attachments: []
     };
   },
   mounted() {
@@ -414,6 +397,7 @@ export default {
   },
   methods: {
     dateFormatter,
+    timeFormatter,
     getCaoOptions() {
       return jobOfferApi.getCaoOptions(this.model).then(res => {
         this.caoOptions = res;
@@ -437,10 +421,10 @@ export default {
         this.worker = res.worker[0];
         this.company = res.company[0];
         this.manager = res.manager[0];
+        this.attachments = res.attachments;
       });
     },
     exportContract() {},
-    upload() {},
     getOfferDetails() {
       const { companyId, offerId } = this;
 
@@ -452,6 +436,7 @@ export default {
         this.worker = res.worker[0];
         this.company = res.company[0];
         this.manager = res.manager[0];
+        this.attachments = res.attachments;
         this.contractSigned =
           res.contractSigned.filter(contract => {
             return contract.userId === this.$store.state.user._id;
@@ -462,6 +447,56 @@ export default {
         // this.model.substantiationForWage = 'asdf';
         delete this.model.contractSigned;
       });
+    },
+    onFileChange(e) {
+      console.log("e", e);
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+
+      if (window.File && window.FileList && window.FileReader) {
+        if (files.length !== 1) return;
+        let file = files[0];
+
+        this.imageData = {
+          file: file,
+          name: file.name,
+          size: file.size.toString()
+        };
+
+        this.upload();
+      } else {
+        console.error("Your browser does not support File API");
+      }
+    },
+    upload() {
+      const data = new FormData();
+      data.append("file", this.imageData.file);
+
+      this.$store.dispatch("updateLoading", true);
+
+      jobOfferApi
+        .upload(this.$route.params.companyId, this.$route.params.offerId, data)
+        .then(response => {
+          this.imageData.path = response.path;
+
+          jobOfferApi
+            .addAttachment(
+              Object.assign(
+                {
+                  companyId: this.companyId,
+                  _id: this.offerId
+                },
+                this.imageData
+              )
+            )
+            .then(res => {
+              this.$store.dispatch("updateLoading", false);
+
+              this.attachments = res.attachments;
+            });
+        });
     }
   }
 };

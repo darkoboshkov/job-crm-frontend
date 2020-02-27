@@ -18,20 +18,20 @@ const modules = requireContext
   }, {});
 
 const state = {
-  loading: false,
+  loading: false
 };
 
 const mutations = {
-  UPDATE_LOADING (state, payload) {
+  UPDATE_LOADING(state, payload) {
     state.loading = payload;
-  },
+  }
 };
 
 export const actions = {
-  updateLoading ({ commit }, payload) {
-    commit('UPDATE_LOADING', payload);
-  },
-}
+  updateLoading({ commit }, payload) {
+    commit("UPDATE_LOADING", payload);
+  }
+};
 
 export default new Vuex.Store({
   state,

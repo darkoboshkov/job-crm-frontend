@@ -98,6 +98,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      input[type=file] {
+        visibility: hidden;
+      }
     }
     .card-body {
       .item {
