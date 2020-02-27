@@ -17,7 +17,7 @@
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
               <img
-                src="@/assets/image/avatar_nick.png"
+                :src="APP_URL + company.logo"
                 class="rounded-circle border mr-2"
                 style="width:65px"
               />
@@ -56,7 +56,7 @@
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
               <img
-                src="@/assets/image/avatar_nick.png"
+                :src="APP_URL + worker.image"
                 class="rounded-circle border mr-2"
                 style="width:65px"
               />
@@ -64,7 +64,7 @@
                 <div>
                   <strong>{{ worker.firstName }} {{ worker.lastName }}</strong>
                 </div>
-                <div>{{ worker.location }}</div>
+                <div>{{ worker.city }}, {{ worker.country }}</div>
               </div>
             </div>
             <div class="icon-group">
@@ -314,6 +314,7 @@
 import jobOfferApi from "@/services/api/joboffers";
 import ViewJobOffer from "./ViewJobOffer";
 import dateFormatter from "@/helpers/DateFormatter.js";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "Details",
@@ -325,8 +326,10 @@ export default {
       return this.model.status === "open";
     },
     selectedCaoOption() {
-      return this.caoOptions.find(
-        option => option._id === this.model.collectiveAgreement
+      return (
+        this.caoOptions.find(
+          option => option._id === this.model.collectiveAgreement
+        ) || {}
       );
     },
     managerState() {
@@ -371,6 +374,7 @@ export default {
   },
   data() {
     return {
+      APP_URL,
       // companyId: this.$route.params.companyId,
       companyId: "5aa1c2c35ef7a4e97b5e995e",
       // offerId: this.$route.params.offerId,
@@ -396,12 +400,8 @@ export default {
         endDate: "endDate",
         completionDate: "completionDate"
       },
-      company: {
-        name: "Kruidvat"
-      },
-      job: {
-        title: "Senior Operations Manager"
-      },
+      company: {},
+      job: {},
       manager: {},
       worker: {},
       openViewOffer: false,
