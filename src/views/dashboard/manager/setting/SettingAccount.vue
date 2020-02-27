@@ -120,7 +120,15 @@
     </div>
     <div class="setting-profile__photo">
       <div class="image-wrapper">
-        <img src="@/assets/image/avatar_nick.png" />
+        <img :src="imageData.preview" />
+        <b-spinner type="grow" label="Spinning" v-if="isImageLoading" />
+        <input
+          type="file"
+          class="form-control"
+          id="image_upload"
+          accept="image/*"
+          @change="onFileChange"
+        />
       </div>
     </div>
     <b-modal
@@ -147,46 +155,90 @@
 </template>
 
 <script>
-import settingsApi from "@/services/api/settings";
+  import settingsApi from "@/services/api/settings";
+  import { APP_URL } from "@/constants";
 
-export default {
-  name: "SettingAccount",
-  data() {
-    return {
-      model: {
-        role: "",
-        firstName: "",
-        middleName: "",
-        lastName: "",
-        gender: "male",
-        birthday: "",
-        bankNumber: "",
-        // street: "",
-        // houseNumber: "",
-        postalCode: "",
-        city: "",
-        email: "",
-        password: "",
-        passport: ""
-      }
-    };
-  },
-  mounted() {
-    settingsApi.get(this.$store.state.user).then(res => {
-      this.model = res;
-    });
-  },
-  methods: {
-    update() {
-      settingsApi
-        .patch(Object.assign(this.$store.state.user, this.model))
-        .then(res => {
-          this.$refs["modal-alert"].show();
-          console.log("response", res);
+  export default {
+    name: "SettingAccount",
+    data() {
+      return {
+        model: {
+          role: "",
+          firstName: "",
+          middleName: "",
+          lastName: "",
+          gender: "male",
+          birthday: "",
+          bankNumber: "",
+          // street: "",
+          // houseNumber: "",
+          postalCode: "",
+          city: "",
+          email: "",
+          password: "",
+          passport: "",
+          image: ""
+        },
+        maxSize: 2097152,
+        imageData: {
+          preview: null
+        },
+        isImageLoading: false
+      };
+    },
+    mounted() {
+      settingsApi.get(this.$store.state.user).then(res => {
+        this.model = res;
+        this.imageData.preview = res.image ? `${APP_URL}${res.image}` : null;
+      });
+    },
+    methods: {
+      onFileChange(e) {
+        let files = e.target.files || e.dataTransfer.files;
+        if (!files.length) {
+          return;
+        }
+
+        if (window.File && window.FileList && window.FileReader) {
+          let reader = new FileReader();
+          let vm = this;
+
+          if (files.length !== 1 || !files[0].type.match("image")) return;
+          let file = files[0];
+          reader.onload = e => {
+            let title = file.name;
+            let titleArray = title.split(".");
+            title = title.replace("." + titleArray[titleArray.length - 1], "");
+
+            vm.imageData = {
+              file: file,
+              preview: e.target.result,
+              title: title,
+              size: file.size
+            };
+          };
+          reader.readAsDataURL(file);
+        } else {
+          console.error("Your browser does not support File API");
+        }
+      },
+      update() {
+        const data = new FormData();
+        data.append("title", this.imageData.title);
+        data.append("file", this.imageData.file);
+        this.isImageLoading = true;
+        settingsApi.uploadImage(data).then(response => {
+          this.isImageLoading = false;
+          this.model.image = response.path;
+          settingsApi
+            .patch(Object.assign(this.$store.state.user, this.model))
+            .then(res => {
+              this.$refs["modal-alert"].show();
+            });
         });
+      }
     }
-  }
-};
+  };
 </script>
 
 <style scoped></style>
