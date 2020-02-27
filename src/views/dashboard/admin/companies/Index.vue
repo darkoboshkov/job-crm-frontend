@@ -81,10 +81,12 @@
             class="d-flex align-items-center"
           >
             <img
-              src="@/assets/image/company-flooop-logo.png"
+              v-if="props.row.logo"
+              :src="APP_URL + props.row.logo"
               class="rounded-circle border mr-2"
-              style="width:32px;"
+              style="width:50px;"
             />
+            <div v-else class="avatar-placeholder mr-2"></div>
           </div>
           <span v-else-if="props.column.field === 'activeState'">
             {{ props.formattedRow[props.column.field] ? "active" : "inactive" }}
@@ -121,12 +123,14 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import companyApi from "@/services/api/companies";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "CompanyList",
   components: { TableFilter },
   data() {
     return {
+      APP_URL,
       imageMode: true,
       isLoading: true,
       totalRows: 0,

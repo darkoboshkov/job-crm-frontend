@@ -79,10 +79,12 @@
             class="d-flex align-items-center"
           >
             <img
-              src="@/assets/image/avatar_nick.png"
+              v-if="props.row.image"
+              :src="APP_URL + props.row.image"
               class="rounded-circle border mr-2"
-              style="width:65px"
+              style="width:50px;"
             />
+            <div v-else class="avatar-placeholder mr-2"></div>
           </div>
           <span v-else>
             {{ props.formattedRow[props.column.field] }}
@@ -117,12 +119,14 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import userApi from "@/services/api/users";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "Candidates",
   components: { TableFilter },
   data() {
     return {
+      APP_URL,
       isLoading: true,
       totalRows: 0,
       paginationOptions: {

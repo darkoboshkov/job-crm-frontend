@@ -51,10 +51,12 @@
             class="d-flex align-items-center"
           >
             <img
-              src="@/assets/image/company-flooop-logo.png"
+              v-if="props.row.image"
+              :src="APP_URL + props.row.image"
               class="rounded-circle border mr-2"
-              style="width:32px;"
+              style="width:50px;"
             />
+            <div v-else class="avatar-placeholder mr-2"></div>
           </div>
           <span v-else>
             {{ props.formattedRow[props.column.field] }}
@@ -67,11 +69,13 @@
 
 <script>
 import jobsApi from "@/services/api/jobs";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "JobList",
   data() {
     return {
+      APP_URL,
       isLoading: true,
       paginationOptions: {
         enabled: true,
