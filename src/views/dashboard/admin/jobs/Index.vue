@@ -23,7 +23,6 @@
         :columns="columns"
         :pagination-options="paginationOptions"
         :search-options="{ enabled: false }"
-        :isLoading.sync="isLoading"
         styleClass="custom-table"
       >
         <template slot="table-row" slot-scope="props">
