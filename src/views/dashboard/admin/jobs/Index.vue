@@ -68,6 +68,7 @@
 
 <script>
 import jobsApi from "@/services/api/jobs";
+
 import { APP_URL } from "@/constants";
 
 export default {

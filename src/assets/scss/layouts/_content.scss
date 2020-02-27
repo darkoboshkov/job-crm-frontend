@@ -20,7 +20,8 @@
 }
 
 .dashboard-content {
-  padding: 48px 96px 48px 96px;
+  // padding: 48px 96px 48px 96px;
+  padding: calc(100vh * 0.05) calc(100vh * 0.1);
   position: relative;
   @include media-breakpoint-down(lg) {
     padding: 50px 30px;

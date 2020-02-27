@@ -19,7 +19,8 @@
       width: 112px;
       height: 112px;
       border-radius: 50%;
-      //background: var(--pinkish-grey);
+      border: 1px solid var(--pale-grey-two);
+      background: white;
       overflow: hidden;
       img {
        width: 100%;

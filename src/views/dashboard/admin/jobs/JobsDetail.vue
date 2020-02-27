@@ -407,6 +407,7 @@
 
 <script>
 import jobsApi from "@/services/api/jobs";
+import joboffersApi from "@/services/api/joboffers";
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 import constantsApi from "@/services/api/constants";
@@ -563,6 +564,19 @@ export default {
           manager => manager && manager._id === res.manager[0]._id
         );
       });
+    },
+    fetchJobOffers() {
+      joboffersApi.getAll(
+          {
+            companyId: this.companyId,
+            filter: {
+              jobId: this.jobId
+            }
+          }
+      ).then(res => {
+        console.log(res);
+        }
+      )
     },
     onEditJob() {
       this.editJob = !this.editJob;

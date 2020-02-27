@@ -1,6 +1,9 @@
 import request from "../request";
 
 export default {
+  getAll(params, resolve, reject = null) {
+    return request("get", `/joboffers/${params.companyId}`, params, resolve, reject);
+  },
   get(params, resolve, reject = null) {
     return request(
       "get",

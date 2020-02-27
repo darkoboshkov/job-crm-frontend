@@ -9,7 +9,7 @@
         <b-col md="12">
           <div class="profile-header">
             <div class="profile-header__photo">
-              <img src="@/assets/image/avatar_nick.png" />
+              <img v-if="model.image" :src="APP_URL + model.image" />
             </div>
             <div class="profile-header__description">
               <h2 class="fullName">{{ model.fullName }}</h2>
@@ -215,10 +215,11 @@ export default {
         overview: "",
         email: "",
         phone: "",
-        age: 29,
-        registeredAt: "08-09-2019",
-        location: "Arhem",
-        status: "available"
+        age: null,
+        registeredAt: "",
+        location: "",
+        status: "available",
+        image: ""
       },
       userId: null
     };
@@ -253,6 +254,7 @@ export default {
             this.model.age = "-";
           }
           this.model.registeredAt = new Date(res.createdAt).toDateString();
+          this.model.image = res.image;
         });
     },
     onEditProfile() {
