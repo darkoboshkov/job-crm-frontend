@@ -218,7 +218,11 @@
         "todo_area_title": "To Do Area",
         "todo_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         "statistics_area_title": "Statistics Area",
-        "statistics_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+        "statistics_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "users_area_title": "Users Area",
+        "users_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "companies_area_title": "Companies Area",
+        "companies_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
       }
     }
   },
