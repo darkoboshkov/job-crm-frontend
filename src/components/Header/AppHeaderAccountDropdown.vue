@@ -1,7 +1,7 @@
 <template>
   <div class="account-dropdown">
     <div class="account-dropdown__photo">
-      <img v-if="image" :src="image" />
+      <img v-if="image" :src="APP_URL + image" />
     </div>
     <div class="account-dropdown__list">
       <a href="javascript;" @click.prevent="toggleDropdown">
@@ -10,9 +10,7 @@
       </a>
       <ul v-if="collapsed">
         <li>
-          <a href="javascript:void(0);" @click.prevent="logout">{{
-            $t("common.logout")
-          }}</a>
+          <a href="#" @click.prevent="logout">{{ $t("common.logout") }}</a>
         </li>
         <li>
           <router-link :to="'/' + role + '/dashboard/privacy'">{{
@@ -26,12 +24,14 @@
 
 <script>
 import { handleLogout, Toast } from "@/utils";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "AppHeaderAccountDropdown",
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      APP_URL
     };
   },
   computed: {

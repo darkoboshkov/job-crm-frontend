@@ -35,7 +35,7 @@
           <div class="d-flex align-items-center">
             <img
               v-if="row.image"
-              :src="row.image"
+              :src="APP_URL + row.image"
               style="max-width: 45px; margin-right: 15px;"
             />
             <div v-else class="avatar-placeholder mr-2"></div>
@@ -61,12 +61,14 @@
 
 <script>
 import userApi from "@/services/api/users";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "users",
   data() {
     return {
-      rows: []
+      rows: [],
+      APP_URL
     };
   },
   computed: {

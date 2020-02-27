@@ -77,15 +77,17 @@
 
         ul {
           position: absolute;
+          width: calc(100% + 55px);
           margin: 0;
           padding: 0;
-          top: 40px;
+          top: 52px;
           right:  0;
           list-style: none;
           background: var(--white);
           border: 1px solid var(--white-four);
           li {
-            padding: 10px 30px;
+            padding: 5px 20px;
+            font-size: 12px;
             &:not(last-child){
               border-bottom: 1px solid var(--white-four);
             }
