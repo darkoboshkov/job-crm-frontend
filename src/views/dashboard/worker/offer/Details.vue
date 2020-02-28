@@ -17,10 +17,16 @@
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
               <img
+                v-if="company.logo"
                 :src="APP_URL + company.logo"
                 class="rounded-circle border mr-2"
                 style="width:65px"
               />
+              <div
+                v-else
+                class="avatar-placeholder mr-2"
+                style="width:65px;height:65px;"
+              ></div>
               <div>
                 <div>
                   <strong>{{ job.title }}</strong>
@@ -56,10 +62,16 @@
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
               <img
+                v-if="worker.image"
                 :src="APP_URL + worker.image"
                 class="rounded-circle border mr-2"
                 style="width:65px"
               />
+              <div
+                v-else
+                class="avatar-placeholder mr-2"
+                style="width:65px;height:65px;"
+              ></div>
               <div>
                 <div>
                   <strong>{{ worker.firstName }} {{ worker.lastName }}</strong>
@@ -93,36 +105,52 @@
         <span class="d-flex align-items-center contract-status">
           <i
             class="hiway-crm-icon icon-dot color-yellow mr-2"
-            style="font-size: 0.1em;"
+            style="font-size: 0.3em;"
           ></i>
           {{ $t("page_offer_detail.offer_states." + model.status) }}
         </span>
       </div>
       <div class="card-body d-flex justify-content-between">
         <div>
-          <div class="mb-3">
+          <div class="d-flex align-items-center mb-3">
             <img
+              v-if="manager.image"
               :src="APP_URL + manager.image"
               class="rounded-circle border mr-4"
               style="width:45px"
             />
-            <i
-              class="hiway-crm-icon icon-dot color-yellow mr-2"
-              style="font-size: 0.1em;"
-            ></i>
-            {{ managerState }}
+            <div
+              v-else
+              class="avatar-placeholder mr-2"
+              style="width:45px;height:45px;"
+            ></div>
+            <div>
+              <i
+                class="hiway-crm-icon icon-dot color-yellow mr-2"
+                style="font-size: 0.3em;"
+              ></i>
+              {{ managerState }}
+            </div>
           </div>
-          <div>
+          <div class="d-flex align-items-center">
             <img
+              v-if="worker.image"
               :src="APP_URL + worker.image"
               class="rounded-circle border mr-4"
               style="width:45px"
             />
-            <i
-              class="hiway-crm-icon icon-dot color-blue mr-2"
-              style="font-size: 0.1em;"
-            ></i>
-            {{ workerState }}
+            <div
+              v-else
+              class="avatar-placeholder mr-2"
+              style="width:45px;height:45px;"
+            ></div>
+            <div>
+              <i
+                class="hiway-crm-icon icon-dot color-blue mr-2"
+                style="font-size: 0.3em;"
+              ></i>
+              {{ workerState }}
+            </div>
           </div>
         </div>
         <div>
