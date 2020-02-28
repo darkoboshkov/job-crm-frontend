@@ -594,5 +594,9 @@
         "continue": "Continue"
       }
     }
+  },
+  "page_offers": {
+    "title": "My Job Offers",
+    "sub_title": "We have found {offers} offers"
   }
 }
