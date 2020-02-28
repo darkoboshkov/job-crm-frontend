@@ -75,9 +75,9 @@
                 });
                 this.getActiveOffers();
             },
-            goToJob(props) {
+            goToOffer(props) {
                 if (props && props.row) {
-                    this.$router.push(`/${this.role}/dashboard/jobs/${props.row._id}`);
+                    this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}`);
                 }
             },
             getActiveOffers() {}
