@@ -155,7 +155,6 @@
         </div>
         <div>
           <button
-            v-if="model.status === 'pending-worker'"
             class="btn btn-red mr-2"
             @click="decline"
             style="min-width:160px;"
@@ -164,9 +163,8 @@
           </button>
 
           <button
-            v-if="model.status === 'pending-worker'"
             class="btn btn-blue ml-2"
-            @click="sign"
+            @click="openSignContractModal"
             style="min-width:160px;"
           >
             Sign
@@ -178,15 +176,6 @@
             style="min-width:160px;"
           >
             Export Contract
-          </button>
-
-          <button
-            class="btn btn-secondary ml-2"
-            @click="openViewOffer = !openViewOffer"
-            :disabled="edit"
-            style="min-width:160px;"
-          >
-            View Contract
           </button>
         </div>
       </div>
@@ -315,6 +304,90 @@
       :manager="manager"
       :worker="worker"
     ></view-offer>
+
+    <b-modal
+      ref="modal-sign-contract"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-alert"
+    >
+      <div class="text-center">
+        Sign Contract
+      </div>
+      <div class="text-center">
+        Lorem ipsum
+      </div>
+      <div class="sign-item">
+        <div>
+          Payment interval
+        </div>
+        <div>
+          <b-form-select v-model="model.paymentInterval">
+            <option
+              v-for="option in paymentIntervalOptions"
+              :value="option"
+              :key="option"
+              >{{ option }}</option
+            >
+          </b-form-select>
+        </div>
+      </div>
+      <div class="sign-item">
+        <div>
+          Discount on taxes
+        </div>
+        <div>
+          <b-form-select v-model="model.discountOnTaxes">
+            <option
+              v-for="option in discountOnTaxesOptions"
+              :value="option"
+              :key="option"
+              >{{ option }}</option
+            >
+          </b-form-select>
+        </div>
+      </div>
+      <div class="sign-item">
+        <div>
+          Worker earlier as Flexworker
+        </div>
+        <div>
+          <b-form-select v-model="model.workedEarlierAsFlexWorker">
+            <option
+              v-for="option in workedEarlierAsFlexWorkerOptions"
+              :value="option"
+              :key="option"
+              >{{ option }}</option
+            >
+          </b-form-select>
+        </div>
+      </div>
+      <b-form-radio-group id="radio-slots" v-model="agreement">
+        <b-form-radio value="agree">
+          I hereby acknowledge and agree that I’ve read and agreed to the terms
+          in this contract. I understand that by clicking on the “Sign” button
+          below I digitally sign and bind myself to this contract.
+        </b-form-radio>
+      </b-form-radio-group>
+      <div>
+        <button
+          class="btn btn-red ml-2"
+          @click="openViewOffer = !openViewOffer"
+          style="min-width:160px;"
+        >
+          View Contract
+        </button>
+
+        <button
+          class="btn btn-blue ml-2"
+          @click="sign"
+          style="min-width:160px;"
+        >
+          Sign Contract
+        </button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -396,7 +469,15 @@ export default {
       caoOptions: [],
       imageData: {},
       attachments: [],
-      CAO: {}
+      CAO: {},
+      agreement: "agree",
+      paymentIntervalOptions: ["Week", "4 weeks", "Month"],
+      discountOnTaxesOptions: ["Yes", "No"],
+      workedEarlierAsFlexWorkerOptions: [
+        "No",
+        "Yes, in construction",
+        "Yes, not in construction"
+      ]
     };
   },
   mounted() {
@@ -405,6 +486,9 @@ export default {
   methods: {
     dateFormatter,
     timeFormatter,
+    openSignContractModal() {
+      this.$refs["modal-sign-contract"].show();
+    },
     sign() {
       return jobOfferApi.sign(this.model).then(res => {
         this.model = res;
@@ -431,9 +515,6 @@ export default {
       const { companyId, offerId } = this;
 
       return jobOfferApi.get({ companyId, offerId }).then(res => {
-        if (res.status === "open") {
-          return; // todo: back-end
-        }
         this.model = res;
         this.company = res.company[0];
         this.job = res.job[0];
@@ -511,4 +592,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.sign-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ced4da;
+}
+</style>
