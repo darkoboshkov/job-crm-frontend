@@ -159,11 +159,11 @@ export default {
           })
         )
         .then(res => {
-          this.rows = res.docs;
           this.totalRows = res.totalDocs;
-          this.rows.forEach(row => {
+          this.rows = res.docs.map(row => {
             row.company = row.company[0];
             row.position = row.position[0];
+            return row;
           });
         });
     },

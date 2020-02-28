@@ -40,9 +40,9 @@
             </template>
             <ul class="custom-list">
               <li
-                  v-for="(question, idx) in model.questions"
-                  :key="idx"
-                  class="d-flex justify-content-between align-items-center"
+                v-for="(question, idx) in model.questions"
+                :key="idx"
+                class="d-flex justify-content-between align-items-center"
               >
                 {{ idx + 1 }}
                 <div>
@@ -120,9 +120,9 @@
               <b-card class="mt-4">
                 <div class="d-flex">
                   <img
-                      src="@/assets/image/icon/mail-red.svg"
-                      style="width:31px"
-                      class="mr-3"
+                    src="@/assets/image/icon/mail-red.svg"
+                    style="width:31px"
+                    class="mr-3"
                   />
                   <span>{{ user.email }}</span>
                 </div>
@@ -133,9 +133,9 @@
               <b-card>
                 <div class="d-flex">
                   <img
-                      src="@/assets/image/icon/phone-red.svg"
-                      style="width: 22px"
-                      class="mr-3"
+                    src="@/assets/image/icon/phone-red.svg"
+                    style="width: 22px"
+                    class="mr-3"
                   />
                   <span>{{ user.phone }}</span>
                 </div>
@@ -225,97 +225,97 @@
 </template>
 
 <script>
-  import jobsApi from "@/services/api/jobs";
-  import joboffersApi from "@/services/api/joboffers";
-  import companiesApi from "@/services/api/companies";
-  import usersApi from "@/services/api/users";
-  import constantsApi from "@/services/api/constants";
-  import errorReader from "@/helpers/ErrorReader";
-  import { APP_URL } from "@/constants";
-  import dateFormatter from "../../../../helpers/DateFormatter";
+import jobsApi from "@/services/api/jobs";
+import joboffersApi from "@/services/api/joboffers";
+import companiesApi from "@/services/api/companies";
+import usersApi from "@/services/api/users";
+import constantsApi from "@/services/api/constants";
+import errorReader from "@/helpers/ErrorReader";
+import { APP_URL } from "@/constants";
+import dateFormatter from "../../../../helpers/DateFormatter";
 
-  export default {
-    name: "JobsDetail",
-    data() {
-      return {
-        APP_URL,
-        model: {
-          title: "",
-          companyId: 0,
-          managerId: 0,
-          positionId: 0,
-          rate: "",
-          level: null,
-          status: "",
-          skillIds: [],
-          description: "",
-          questions: [],
-          image: null,
-          startDate: null,
-          endDate: null,
+export default {
+  name: "JobsDetail",
+  data() {
+    return {
+      APP_URL,
+      model: {
+        title: "",
+        companyId: 0,
+        managerId: 0,
+        positionId: 0,
+        rate: "",
+        level: null,
+        status: "",
+        skillIds: [],
+        description: "",
+        questions: [],
+        image: null,
+        startDate: null,
+        endDate: null,
 
-          company: null,
-          manager: null,
-          position: null
-        },
-        companies: [],
-        managers: [],
-        levels: [],
-        state: [],
-        error: "",
-        jobId: "",
-        jobOffers: []
-      };
-    },
-    mounted() {
-      this.jobId = this.$route.params.jobId;
-      this.fetchJobDetails();
-      this.getLevels();
-      this.fetchJobOffers();
-    },
-    computed: {
-      user() {
-        return this.$store.state.user;
+        company: null,
+        manager: null,
+        position: null
       },
-      userName() {
-        return (
-            this.$store.state.user.firstName + " " + this.$store.state.user.lastName
-        );
-      }
+      companies: [],
+      managers: [],
+      levels: [],
+      state: [],
+      error: "",
+      jobId: "",
+      jobOffers: []
+    };
+  },
+  mounted() {
+    this.jobId = this.$route.params.jobId;
+    this.fetchJobDetails();
+    this.getLevels();
+    this.fetchJobOffers();
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
     },
-    methods: {
-      getLevels() {
-        constantsApi.getAll().then(res => {
-          this.levels = [null].concat(res.levels);
-        });
-      },
-      fetchJobDetails() {
-        jobsApi
-            .get({ companyId: this.user.companyId, id: this.jobId })
-            .then(res => {
-              this.model = res;
-              this.model.company = res.company[0];
-              this.model.manager = res.manager[0];
-              this.model.position = res.position[0];
-              this.model.startDate = dateFormatter(new Date(res.startDate));
-              this.model.endDate = dateFormatter(new Date(res.endDate));
-            });
-      },
-      fetchJobOffers() {
-        joboffersApi
-            .getAllByJobId({
-              companyId: this.user.companyId,
-              jobId: this.jobId,
-              limit: 10
-            })
-            .then(res => {
-              this.jobOffers = res.docs;
-              this.jobOffers.forEach(row => {
-                row.worker = row.worker[0];
-                row.createdAt = dateFormatter(new Date(row.createdAt));
-              });
-            });
-      }
+    userName() {
+      return (
+        this.$store.state.user.firstName + " " + this.$store.state.user.lastName
+      );
     }
-  };
+  },
+  methods: {
+    getLevels() {
+      constantsApi.getAll().then(res => {
+        this.levels = [null].concat(res.levels);
+      });
+    },
+    fetchJobDetails() {
+      jobsApi
+        .get({ companyId: this.user.companyId, id: this.jobId })
+        .then(res => {
+          this.model = res;
+          this.model.company = res.company[0];
+          this.model.manager = res.manager[0];
+          this.model.position = res.position[0];
+          this.model.startDate = dateFormatter(new Date(res.startDate));
+          this.model.endDate = dateFormatter(new Date(res.endDate));
+        });
+    },
+    fetchJobOffers() {
+      joboffersApi
+        .getAllByJobId({
+          companyId: this.user.companyId,
+          jobId: this.jobId,
+          limit: 10
+        })
+        .then(res => {
+          this.jobOffers = res.docs;
+          this.jobOffers.forEach(row => {
+            row.worker = row.worker[0];
+            row.createdAt = dateFormatter(new Date(row.createdAt));
+          });
+        });
+    }
+  }
+};
 </script>

@@ -10,12 +10,14 @@
       </a>
       <ul v-if="collapsed">
         <li>
+          <i class="hiway-crm-icon icon-exit mr-2" />
           <a href="#" @click.prevent="logout">{{ $t("common.logout") }}</a>
         </li>
         <li>
-          <router-link :to="'/' + role + '/dashboard/privacy'">{{
-            $t("common.privacy")
-          }}</router-link>
+          <router-link :to="'/' + role + '/dashboard/privacy'">
+            <i class="hiway-crm-icon icon-lock mr-2" />
+            <span>{{ $t("common.privacy") }}</span>
+          </router-link>
         </li>
       </ul>
     </div>

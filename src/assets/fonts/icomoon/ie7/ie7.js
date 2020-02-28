@@ -45,6 +45,8 @@
       "icon-equalizer": "&#xe911;",
       "icon-pencil": "&#xe912;",
       "icon-user-tie": "&#xe976;",
+      "icon-lock": "&#xe98f;",
+      "icon-exit": "&#xea14;",
       "0": 0
     },
     els = document.getElementsByTagName("*"),

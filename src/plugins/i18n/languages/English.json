@@ -596,7 +596,18 @@
     }
   },
   "page_offers": {
-    "title": "My Job Offers",
-    "sub_title": "We have found {offers} offers"
+    "title": "Job Offers",
+    "sub_title": "We have found {offers} offers",
+    "table": {
+      "image": "Image",
+      "manager": "Hiring Manager",
+      "job": "Job Title",
+      "payment_type": "Payment Type",
+      "payment_amount": "Payment Amount",
+      "created_at": "Created At",
+      "status": "Status",
+      "view_offer": "View Job Offer",
+      "actions": "Actions"
+    }
   }
 }

@@ -340,8 +340,7 @@ export default {
       return userApi
         .getCompanyWorkers(Object.assign(this.serverParams))
         .then(res => {
-          this.rows = res.docs;
-          this.rows.forEach(row => {
+          this.rows = res.docs.map(row => {
             if (row.birthday) {
               let thisYear = new Date().getFullYear();
               let birthYear = row.birthday.split("-")[0];
@@ -351,6 +350,7 @@ export default {
             }
             row.company = row.company[0];
             row.position = row.position[0];
+            return row;
           });
           this.totalRows = res.totalDocs;
         });

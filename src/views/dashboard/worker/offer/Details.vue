@@ -524,7 +524,7 @@ export default {
         this.CAO = res.CAO[0];
         this.attachments = res.attachments;
         this.contractSigned =
-          res.contractSigned.filter(contract => {
+          res.contractSigned?.filter(contract => {
             return contract.userId === this.$store.state.user._id;
           })[0] || {};
         if (this.contractSigned) {

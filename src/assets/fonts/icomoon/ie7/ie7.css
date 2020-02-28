@@ -82,4 +82,10 @@
 .icon-user-tie {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe976;');
 }
+.icon-lock {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe98f;');
+}
+.icon-exit {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea14;');
+}
 

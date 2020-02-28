@@ -84,9 +84,9 @@ export default {
           })
         )
         .then(res => {
-          this.rows = res.docs;
-          this.rows.forEach(row => {
+          this.rows = res.docs.map(row => {
             row.company = row.company[0];
+            return row;
           });
         });
     },

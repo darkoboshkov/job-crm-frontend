@@ -23,6 +23,17 @@ export default {
       reject
     );
   },
+  getAllByWorker(params, resolve, reject = null) {
+    const companyId = params.companyId;
+    delete params.companyId;
+    return request(
+      "get",
+      `/joboffers/${companyId}/worker`,
+      params,
+      resolve,
+      reject
+    );
+  },
   get(params, resolve, reject = null) {
     return request(
       "get",
