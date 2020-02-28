@@ -2,7 +2,26 @@ import request from "../request";
 
 export default {
   getAll(params, resolve, reject = null) {
-    return request("get", `/joboffers/${params.companyId}`, params, resolve, reject);
+    return request(
+      "get",
+      `/joboffers/${params.companyId}/all`,
+      params,
+      resolve,
+      reject
+    );
+  },
+  getAllByJobId(params, resolve, reject = null) {
+    const companyId = params.companyId;
+    const jobId = params.jobId;
+    delete params.companyId;
+    delete params.jobId;
+    return request(
+      "get",
+      `/joboffers/${companyId}/job/${jobId}`,
+      params,
+      resolve,
+      reject
+    );
   },
   get(params, resolve, reject = null) {
     return request(

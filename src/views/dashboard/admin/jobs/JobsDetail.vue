@@ -267,33 +267,34 @@
             </template>
             <div>
               <ul class="custom-list">
-                <li class="d-flex">
+                <li class="d-flex" v-for="offer in jobOffers" :key="offer._id">
                   <div class="flex-3">
-                    Offer - John Simons
+                    Offer - {{ offer.worker.firstName }}
+                    {{ offer.worker.lastName }}
                   </div>
                   <div class="flex-2">
-                    Added on 10th of july 2019 at 15:09
+                    {{ offer.createdAt }}
                   </div>
                   <div class="flex-1">
-                    Locked & sent
+                    {{ offer.status }}
                   </div>
                   <div>
-                    <i class="hiway-crm-icon icon-more-vertical mr-2" />
-                    <i class="hiway-crm-icon icon-bin" />
-                  </div>
-                </li>
-                <li class="d-flex">
-                  <div class="flex-3">
-                    Offer - Frank Jameson
-                  </div>
-                  <div class="flex-2">
-                    Added on 10th of july 2019 at 15:09
-                  </div>
-                  <div class="flex-1">
-                    Cancelled
-                  </div>
-                  <div>
-                    <i class="hiway-crm-icon icon-more-vertical mr-2" />
+                    <b-dropdown
+                      variant="link"
+                      toggle-class="text-decoration-none"
+                      no-caret
+                      offset="0"
+                      class="icon-dropdown m-2"
+                    >
+                      <template v-slot:button-content>
+                        <i
+                          class="hiway-crm-icon icon-more-vertical color-black"
+                        />
+                      </template>
+                      <b-dropdown-item @click="goToOfferDetails(offer._id)">{{
+                        $t("page_job_detail.view_offer")
+                      }}</b-dropdown-item>
+                    </b-dropdown>
                     <i class="hiway-crm-icon icon-bin" />
                   </div>
                 </li>
@@ -432,79 +433,18 @@ export default {
         image: null,
         startDate: null,
         endDate: null,
-
         company: null,
         manager: null,
         position: null
       },
-
-      /*
-           title: {
-        type: String,
-        required: true
-      },
-           companyId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Company'
-      },
-           managerId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-      },
-           positionId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Position',
-        default: '5aa1c2c35ef8a4e97b5e995a'
-      },
-           rate: {
-        type: Number
-      },
-           level: {
-        type: String,
-        enum: levels,
-        default: levels[0]
-      },
-           status: {
-        type: String,
-        enum: jobStates,
-        default: jobStates[0]
-      },
-           skillIds: [
-           {
-             type: mongoose.Schema.Types.ObjectId,
-             ref: 'Skill'
-           }
-           ],
-           description: {
-        type: String
-      },
-           questions: [
-           {
-             type: String
-           }
-           ],
-           image: {
-        type: String
-      },
-      startDate: {
-        type: Date,
-        default: Date.now,
-        select: false
-      },
-      endDate: {
-        type: Date,
-        default: Date.now,
-        select: false
-      }
-           */
       companies: [],
       managers: [],
       levels: [],
       state: [],
       error: "",
       companyId: "",
-      jobId: ""
+      jobId: "",
+      jobOffers: []
     };
   },
   mounted() {
@@ -515,6 +455,7 @@ export default {
         this.fetchJobDetails();
       });
     });
+    this.fetchJobOffers();
     this.getLevels();
   },
   computed: {
@@ -566,23 +507,33 @@ export default {
       });
     },
     fetchJobOffers() {
-      joboffersApi.getAll(
-          {
-            companyId: this.companyId,
-            filter: {
-              jobId: this.jobId
-            }
-          }
-      ).then(res => {
-        console.log(res);
-        }
-      )
+      joboffersApi
+        .getAllByJobId({
+          companyId: this.companyId,
+          jobId: this.jobId,
+          limit: 10
+        })
+        .then(res => {
+          this.jobOffers = res.docs;
+          this.jobOffers.forEach(row => {
+            row.worker = row.worker[0];
+          });
+        });
     },
     onEditJob() {
       this.editJob = !this.editJob;
       if (!this.editJob) {
         this.updateJob();
       }
+    },
+    goToOfferDetails(id) {
+      this.$router.push({
+        name: "admin-offer-details",
+        params: {
+          companyId: this.companyId,
+          offerId: id
+        }
+      });
     },
     updateJob() {
       this.model.companyId = this.model.company?._id;

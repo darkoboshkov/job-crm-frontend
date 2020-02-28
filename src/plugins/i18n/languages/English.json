@@ -386,6 +386,7 @@
       "start_date": "Start Date",
       "end_date": "End Date"
     },
+    "view_offer": "View JobOffer",
     "job_offers": "Job Offers",
     "files": "Files",
     "button": {

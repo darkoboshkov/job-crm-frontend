@@ -39,9 +39,7 @@
             $router.push({
               name: 'manager-jobs-new-candidate',
               params: {
-                params: {
-                  jobId: $route.params.jobId
-                }
+                jobId: $route.params.jobId
               }
             })
           "
