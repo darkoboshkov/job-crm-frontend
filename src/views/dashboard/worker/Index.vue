@@ -45,22 +45,6 @@
             >
             </b-form-checkbox>
           </li>
-          <li class="d-flex responsive">
-            <div>
-              <p>{{ $t("page_dashboard.modal.adjust.users_area_title") }}</p>
-              <small>{{
-                $t("page_dashboard.modal.adjust.users_area_text")
-              }}</small>
-            </div>
-            <b-form-checkbox
-              class="rtl"
-              size="lg"
-              v-model="usersItem"
-              name="check-button"
-              switch
-            >
-            </b-form-checkbox>
-          </li>
         </ul>
       </div>
     </b-modal>
