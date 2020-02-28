@@ -9,14 +9,19 @@
         <b-col md="12">
           <div class="job-detail-header">
             <div class="job-detail-header__photo">
-              <img v-if="model.image" :src="APP_URL + model.image" />
+              <img
+                v-if="model.company && model.company.logo"
+                :src="APP_URL + model.company.logo"
+              />
             </div>
             <div class="job-detail-header__description">
               <div>
                 <b-input v-if="editJob" v-model="model.title" />
                 <h2 v-else class="fullName">{{ model.title }}</h2>
               </div>
-              <h3 class="position">{{ userName }}</h3>
+              <h3 class="position">
+                {{ model.company && model.company.name }}
+              </h3>
             </div>
           </div>
           <div class="job-detail-edit">
@@ -44,44 +49,44 @@
             </div>
           </b-card>
 
-          <b-card class="mt-3">
-            <template v-slot:header>
-              <div
-                v-if="editJob"
-                class="d-flex justify-content-between align-items-end"
-              >
-                <h5 class="m-0">{{ $t("page_job_detail.form.questions") }}</h5>
-                <button
-                  data-v-74cd9a4e=""
-                  class="btn btn-red circle large"
-                  style="width: 50px;"
-                  @click="model.questions = model.questions.concat([''])"
-                >
-                  <i data-v-74cd9a4e="" class="hiway-crm-icon icon-add"></i>
-                </button>
-              </div>
-              <h5 class="m-0" v-else>
-                {{ $t("page_job_detail.form.questions") }}
-              </h5>
-            </template>
-            <ul class="custom-list">
-              <li
-                v-for="(question, idx) in model.questions"
-                :key="idx"
-                class="d-flex justify-content-between align-items-center"
-              >
-                {{ idx + 1
-                }}<b-input
-                  v-if="editJob"
-                  v-model="model.questions[idx]"
-                  class="question-input"
-                />
-                <div v-else>
-                  {{ question }}
-                </div>
-              </li>
-            </ul>
-          </b-card>
+          <!--<b-card class="mt-3">-->
+          <!--<template v-slot:header>-->
+          <!--<div-->
+          <!--v-if="editJob"-->
+          <!--class="d-flex justify-content-between align-items-end"-->
+          <!--&gt;-->
+          <!--<h5 class="m-0">{{ $t("page_job_detail.form.questions") }}</h5>-->
+          <!--<button-->
+          <!--data-v-74cd9a4e=""-->
+          <!--class="btn btn-red circle large"-->
+          <!--style="width: 50px;"-->
+          <!--@click="model.questions = model.questions.concat([''])"-->
+          <!--&gt;-->
+          <!--<i data-v-74cd9a4e="" class="hiway-crm-icon icon-add"></i>-->
+          <!--</button>-->
+          <!--</div>-->
+          <!--<h5 class="m-0" v-else>-->
+          <!--{{ $t("page_job_detail.form.questions") }}-->
+          <!--</h5>-->
+          <!--</template>-->
+          <!--<ul class="custom-list">-->
+          <!--<li-->
+          <!--v-for="(question, idx) in model.questions"-->
+          <!--:key="idx"-->
+          <!--class="d-flex justify-content-between align-items-center"-->
+          <!--&gt;-->
+          <!--{{ idx + 1-->
+          <!--}}<b-input-->
+          <!--v-if="editJob"-->
+          <!--v-model="model.questions[idx]"-->
+          <!--class="question-input"-->
+          <!--/>-->
+          <!--<div v-else>-->
+          <!--{{ question }}-->
+          <!--</div>-->
+          <!--</li>-->
+          <!--</ul>-->
+          <!--</b-card>-->
         </b-col>
 
         <b-col md="6">
@@ -108,34 +113,11 @@
                 </li>
 
                 <li>
-                  {{ $t("page_job_detail.form.level") }}
+                  {{ $t("page_job_detail.form.wage") }}
                   <div class="pull-right">
-                    <b-form-select
-                      v-if="editJob"
-                      v-model="model.level"
-                      class="normal-size"
-                      style="margin-top:-8px"
-                    >
-                      <option
-                        v-for="(level, index) in levels"
-                        :value="level"
-                        :key="index"
-                      >
-                        {{ level }}
-                      </option>
-                    </b-form-select>
+                    <b-input v-if="editJob" v-model="model.wage" />
                     <div v-else>
-                      {{ model.level }}
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  {{ $t("page_job_detail.form.rate") }}
-                  <div class="pull-right">
-                    <b-input v-if="editJob" v-model="model.rate" />
-                    <div v-else>
-                      {{ model.rate }}
+                      {{ model.wage }}
                     </div>
                   </div>
                 </li>
@@ -144,12 +126,12 @@
                   {{ $t("page_job_detail.form.start_date") }}
                   <div class="pull-right">
                     <b-input
-                      type="datetime-local"
+                      type="date"
                       v-if="editJob"
                       v-model="model.startDate"
                     />
                     <div v-else>
-                      {{ model.startDate }}
+                      {{ model.startDate | dateFormatter }}
                     </div>
                   </div>
                 </li>
@@ -158,12 +140,12 @@
                   {{ $t("page_job_detail.form.end_date") }}
                   <div class="pull-right">
                     <b-input
-                      type="datetime-local"
+                      type="date"
                       v-if="editJob"
                       v-model="model.endDate"
                     />
                     <div v-else>
-                      {{ model.endDate }}
+                      {{ model.endDate | dateFormatter }}
                     </div>
                   </div>
                 </li>
@@ -391,8 +373,7 @@ export default {
         companyId: 0,
         managerId: 0,
         positionId: 0,
-        rate: "",
-        level: null,
+        wage: "",
         status: "",
         skillIds: [],
         description: "",
@@ -407,17 +388,20 @@ export default {
       },
       companies: [],
       managers: [],
-      levels: [],
       state: [],
       error: "",
       jobId: "",
       jobOffers: []
     };
   },
+  filters: {
+    dateFormatter(string) {
+      return dateFormatter(new Date(string));
+    }
+  },
   mounted() {
     this.jobId = this.$route.params.jobId;
     this.fetchJobDetails();
-    this.getLevels();
     this.fetchJobOffers();
   },
   computed: {
@@ -431,11 +415,6 @@ export default {
     }
   },
   methods: {
-    getLevels() {
-      constantsApi.getAll().then(res => {
-        this.levels = [null].concat(res.levels);
-      });
-    },
     fetchJobDetails() {
       jobsApi
         .get({ companyId: this.user.companyId, id: this.jobId })
@@ -444,8 +423,6 @@ export default {
           this.model.company = res.company[0];
           this.model.manager = res.manager[0];
           this.model.position = res.position[0];
-          this.model.startDate = dateFormatter(new Date(res.startDate));
-          this.model.endDate = dateFormatter(new Date(res.endDate));
         });
     },
     fetchJobOffers() {

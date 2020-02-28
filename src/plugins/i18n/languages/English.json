@@ -388,7 +388,7 @@
       "company": "Company",
       "manager": "Manager",
       "level": "Level",
-      "rate": "Wage",
+      "wage": "Wage",
       "start_date": "Start Date",
       "end_date": "End Date"
     },

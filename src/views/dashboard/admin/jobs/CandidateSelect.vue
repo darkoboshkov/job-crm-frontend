@@ -34,9 +34,9 @@
           >
             <div class="d-flex align-items-center">
               <img
-                  v-if="user.image"
-                  :src="APP_URL + user.image"
-                  class="rounded-circle border mr-2"
+                v-if="user.image"
+                :src="APP_URL + user.image"
+                class="rounded-circle border mr-2"
               />
               <div v-else class="avatar-placeholder mr-2"></div>
               <div>
@@ -90,14 +90,14 @@ export default {
   methods: {
     fetchJobOffers() {
       jobOfferApi
-          .getAllByJobId({
-            companyId: this.companyId,
-            jobId: this.jobId,
-            limit: 10000
-          })
-          .then(res => {
-            this.offers = res.docs;
-          });
+        .getAllByJobId({
+          companyId: this.companyId,
+          jobId: this.jobId,
+          limit: 10000
+        })
+        .then(res => {
+          this.offers = res.docs;
+        });
     },
     /* eslint-disable-next-line */
     searchCandidate: _.debounce(function () {
@@ -118,7 +118,10 @@ export default {
         .then(result => {
           let workers = result.docs;
           workers = workers.filter(worker => {
-            return this.offers.findIndex( offer => offer.workerId === worker._id) === -1
+            return (
+              this.offers.findIndex(offer => offer.workerId === worker._id) ===
+              -1
+            );
           });
           this.users = workers.map(item => {
             return {
@@ -128,7 +131,7 @@ export default {
               id: item._id,
               city: item.city,
               image: item.image
-            }
+            };
           });
         });
     }, 500),
