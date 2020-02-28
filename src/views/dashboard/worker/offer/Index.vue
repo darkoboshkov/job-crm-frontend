@@ -1,5 +1,5 @@
 <template>
-	<div id="jobs_candidates" class="dashboard-content">
+	<div id="offers" class="dashboard-content">
 		<h1 class="title">
 			{{ $t("page_offers.title") }}
 		</h1>
