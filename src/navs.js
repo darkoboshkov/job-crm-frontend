@@ -45,6 +45,11 @@ export const items = [
     roles: ["worker"]
   },
   {
+    icon: "icon-contract",
+    path: "/worker/dashboard/joboffers",
+    roles: ["worker"]
+  },
+  {
     icon: "icon-mail",
     path: "/admin/dashboard/chats",
     roles: ["admin"]
