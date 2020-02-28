@@ -378,6 +378,7 @@ import usersApi from "@/services/api/users";
 import constantsApi from "@/services/api/constants";
 import errorReader from "@/helpers/ErrorReader";
 import { APP_URL } from "@/constants";
+import dateFormatter from "../../../../helpers/DateFormatter";
 
 export default {
   name: "JobsDetail",
@@ -443,6 +444,8 @@ export default {
           this.model.company = res.company[0];
           this.model.manager = res.manager[0];
           this.model.position = res.position[0];
+          this.model.startDate = dateFormatter(new Date(res.startDate));
+          this.model.endDate = dateFormatter(new Date(res.endDate));
         });
     },
     fetchJobOffers() {
@@ -456,6 +459,7 @@ export default {
           this.jobOffers = res.docs;
           this.jobOffers.forEach(row => {
             row.worker = row.worker[0];
+            row.createdAt = dateFormatter(new Date(row.createdAt));
           });
         });
     },
