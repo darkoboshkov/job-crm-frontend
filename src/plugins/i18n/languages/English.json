@@ -455,7 +455,7 @@
   "page_setting": {
     "title": "Settings",
     "account_setting": {
-      "title": "Account Setting",
+      "title": "User Settings",
       "form": {
         "first_name": "First Name",
         "last_name": "Last Name",
@@ -463,6 +463,7 @@
         "gender": "Gender",
         "man": "Man",
         "woman": "Woman",
+        "other": "Other",
         "birthday": "Birthday",
         "bank_account_number": "Bank Account Number",
         "overview": "Overview",
@@ -496,7 +497,7 @@
       }
     },
     "reset_password": {
-      "title": "Reset Password",
+      "title": "Change Password",
       "form": {
         "old_password": "Old Password",
         "new_password": "New Password",

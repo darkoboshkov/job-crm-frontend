@@ -39,12 +39,15 @@
           <b-form-radio v-model="model.gender" name="gender" value="female">{{
             $t("page_setting.account_setting.form.woman")
           }}</b-form-radio>
+          <b-form-radio v-model="model.gender" name="gender" value="other">{{
+            $t("page_setting.account_setting.form.other")
+          }}</b-form-radio>
         </div>
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.birthday") }}:</label>
         <b-form-input
-          type="text"
+          type="date"
           required
           class="custom-input"
           v-model="model.birthday"
