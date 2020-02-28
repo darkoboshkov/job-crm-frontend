@@ -28,15 +28,17 @@
         />
         <ul class="search-result" v-if="users.length">
           <li
-            v-for="(user, index) of users"
-            :key="index"
+            v-for="(user) of users"
+            :key="user._id"
             @click="selectCandidate(user)"
           >
             <div class="d-flex align-items-center">
               <img
-                src="@/assets/image/avatar_nick.png"
-                class="rounded-circle border mr-2"
+                  v-if="user.image"
+                  :src="APP_URL + user.image"
+                  class="rounded-circle border mr-2"
               />
+              <div v-else class="avatar-placeholder mr-2"></div>
               <div>
                 <strong>
                   {{ user.firstName }}
@@ -65,15 +67,18 @@
 <script>
 import userApi from "@/services/api/users";
 import jobOfferApi from "@/services/api/joboffers";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "CandidateSelect",
   data() {
     return {
+      APP_URL,
       search: "",
       users: [],
       jobId: null,
-      selectedUserId: null
+      selectedUserId: null,
+      offers: []
     };
   },
   computed: {
@@ -84,8 +89,20 @@ export default {
 
   mounted() {
     this.jobId = this.$route.params.jobId;
+    this.fetchJobOffers();
   },
   methods: {
+    fetchJobOffers() {
+      jobOfferApi
+          .getAllByJobId({
+            companyId: this.companyId,
+            jobId: this.jobId,
+            limit: 10000
+          })
+          .then(res => {
+            this.offers = res.docs;
+          });
+    },
     /* eslint-disable-next-line */
     searchCandidate: _.debounce(function () {
       if (!this.search) {
@@ -100,19 +117,22 @@ export default {
             lastName: this.search,
             middleName: this.search
           },
-          limit: 100
+          limit: 10000
         })
         .then(result => {
-          this.users = [];
-          result.docs.forEach(item => {
-            this.users.push({
+          let workers = result.docs;
+          workers = workers.filter(worker => {
+            return this.offers.findIndex( offer => offer.workerId === worker._id) === -1
+          });
+          this.users = workers.map(item => {
+            return {
               firstName: item.firstName,
               lastName: item.lastName,
               middleName: item.middleName,
               id: item._id,
               city: item.city,
               image: item.image
-            });
+            }
           });
         });
     }, 500),
@@ -130,12 +150,11 @@ export default {
           workerId: this.selectedUserId,
           jobId: this.jobId
         })
-        .then(response => {
-          console.log(response);
+        .then(res => {
           this.$router.push({
             name: "manager-offer-details",
             params: {
-              offerId: response._id
+              offerId: res._id
             }
           });
         });
