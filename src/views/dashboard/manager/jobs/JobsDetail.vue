@@ -9,7 +9,7 @@
         <b-col md="12">
           <div class="job-detail-header">
             <div class="job-detail-header__photo">
-              <img src="@/assets/image/avatar_nick.png" />
+              <img v-if="model.image" :src="APP_URL + model.image" />
             </div>
             <div class="job-detail-header__description">
               <div>
@@ -377,11 +377,13 @@ import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 import constantsApi from "@/services/api/constants";
 import errorReader from "@/helpers/ErrorReader";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "JobsDetail",
   data() {
     return {
+      APP_URL,
       editJob: false,
       model: {
         title: "",
