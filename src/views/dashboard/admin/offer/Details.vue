@@ -102,7 +102,7 @@
         <div>
           <div class="mb-3">
             <img
-              src="@/assets/image/avatar_nick.png"
+              :src="APP_URL + manager.image"
               class="rounded-circle border mr-4"
               style="width:45px"
             />
@@ -114,7 +114,7 @@
           </div>
           <div>
             <img
-              src="@/assets/image/avatar_nick.png"
+              :src="APP_URL + worker.image"
               class="rounded-circle border mr-4"
               style="width:45px"
             />
@@ -256,10 +256,10 @@
             <img
               :src="
                 attachment.userId === worker._id
-                  ? worker.avatar
+                  ? APP_URL + worker.image
                   : attachment.userId === manager._id
-                  ? manager.avatar
-                  : '@/assets/image/avatar_nick.png'
+                  ? APP_URL + manager.image
+                  : ''
               "
               class="rounded-circle border mr-4"
               style="width:45px"
@@ -356,31 +356,10 @@ export default {
   data() {
     return {
       APP_URL,
-      // companyId: this.$route.params.companyId,
-      companyId: "5aa1c2c35ef7a4e97b5e995e",
-      // offerId: this.$route.params.offerId,
-      offerId: "5df9f6e42b8d59733a96d5af",
+      companyId: this.$route.params.companyId,
+      offerId: this.$route.params.offerId,
 
-      model: {
-        name: "name",
-        companyId: "companyId",
-        jobId: "jobId",
-        managerId: "managerId",
-        workerId: "workerId",
-        collectiveAgreement: "collectiveAgreement",
-        status: "open",
-        paymentAmount: "paymentAmount",
-        hourlyWage: "hourlyWage",
-        payRate: "payRate",
-        travelExpenses: "travelExpenses",
-        travelHours: "travelHours",
-        otherExpenses: "otherExpenses",
-        substantiationForWage: "substantiationForWage",
-        paymentType: "paymentType",
-        startDate: "startDate",
-        endDate: "endDate",
-        completionDate: "completionDate"
-      },
+      model: {},
       company: {},
       job: {},
       manager: {},
@@ -399,9 +378,13 @@ export default {
     dateFormatter,
     timeFormatter,
     getCaoOptions() {
-      return jobOfferApi.getCaoOptions(this.model).then(res => {
-        this.caoOptions = res;
-      });
+      return jobOfferApi
+        .getCaoOptions({
+          companyId: this.companyId
+        })
+        .then(res => {
+          this.caoOptions = res;
+        });
     },
     lockSignSend() {
       return jobOfferApi.lock(this.model).then(res => {
@@ -430,7 +413,6 @@ export default {
 
       return jobOfferApi.get({ companyId, offerId }).then(res => {
         this.model = res;
-        // this.model. = 'open';
         this.company = res.company[0];
         this.job = res.job[0];
         this.worker = res.worker[0];
@@ -444,12 +426,10 @@ export default {
         if (this.contractSigned) {
           this.model.autograph = this.contractSigned.autograph;
         }
-        // this.model.substantiationForWage = 'asdf';
         delete this.model.contractSigned;
       });
     },
     onFileChange(e) {
-      console.log("e", e);
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) {
         return;
@@ -476,27 +456,25 @@ export default {
 
       this.$store.dispatch("updateLoading", true);
 
-      jobOfferApi
-        .upload(this.$route.params.companyId, this.$route.params.offerId, data)
-        .then(response => {
-          this.imageData.path = response.path;
+      jobOfferApi.upload(this.companyId, this.offerId, data).then(response => {
+        this.imageData.path = response.path;
 
-          jobOfferApi
-            .addAttachment(
-              Object.assign(
-                {
-                  companyId: this.companyId,
-                  _id: this.offerId
-                },
-                this.imageData
-              )
+        jobOfferApi
+          .addAttachment(
+            Object.assign(
+              {
+                companyId: this.companyId,
+                _id: this.offerId
+              },
+              this.imageData
             )
-            .then(res => {
-              this.$store.dispatch("updateLoading", false);
+          )
+          .then(res => {
+            this.$store.dispatch("updateLoading", false);
 
-              this.attachments = res.attachments;
-            });
-        });
+            this.attachments = res.attachments;
+          });
+      });
     }
   }
 };

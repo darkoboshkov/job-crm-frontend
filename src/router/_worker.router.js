@@ -1,4 +1,8 @@
-import { ifAuthenticated, isWorkerAuthorized } from "../utils";
+import {
+  ifAuthenticated,
+  isManagerAuthorized,
+  isWorkerAuthorized
+} from "../utils";
 
 export default [
   {
@@ -22,6 +26,12 @@ export default [
         name: "worker-jobs-detail",
         component: () =>
           import("../views/dashboard/worker/jobs/JobsDetail.vue"),
+        beforeEnter: isWorkerAuthorized
+      },
+      {
+        path: "joboffers/:offerId",
+        name: "worker-offer-details",
+        component: () => import("../views/dashboard/worker/offer/Details.vue"),
         beforeEnter: isWorkerAuthorized
       },
       {

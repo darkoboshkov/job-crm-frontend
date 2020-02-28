@@ -94,5 +94,24 @@ export default {
       resolve,
       reject
     );
+  },
+  sign(params, resolve, reject = null) {
+    // "Sign" Contract by Worker
+    return request(
+      "patch",
+      `/joboffers/${params.companyId}/${params._id}/contract/sign`,
+      params,
+      resolve,
+      reject
+    );
+  },
+  decline(params, resolve, reject = null) {
+    return request(
+      "patch",
+      `/joboffers/${params.companyId}/${params._id}/contract/decline`,
+      params,
+      resolve,
+      reject
+    );
   }
 };
