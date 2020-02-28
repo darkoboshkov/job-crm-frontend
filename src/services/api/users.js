@@ -7,6 +7,9 @@ export default {
   getAllWorkers(params, resolve, reject = null) {
     return request("get", "/users/workers", params, resolve, reject);
   },
+  getAllPendingWorkers(params, resolve, reject = null) {
+    return request("get", "/users/pending-workers", params, resolve, reject);
+  },
   getCompanyUsers(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;
@@ -77,5 +80,21 @@ export default {
       resolve,
       reject
     );
+  },
+  assignPendingWorker(params, resolve, reject = null) {
+    const id = params.id;
+    delete params.id;
+    return request(
+      "patch",
+      `/users/pending-workers/${id}/assign`,
+      params,
+      resolve,
+      reject
+    );
+  },
+  deletePendingWorker(params, resolve, reject = null) {
+    const id = params.id;
+    delete params.id;
+    return request("delete", `/users/pending-workers/${id}`, resolve, reject);
   }
 };

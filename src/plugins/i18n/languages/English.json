@@ -89,6 +89,31 @@
     },
     "todo": {
       "title": "To-do list today"
+    },
+    "pending_workers": {
+      "title": "Pending Workers",
+      "sub_title": "We have found {candidates} pending workers",
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "status": "Status",
+        "created_at": "Registered At",
+        "actions": "Actions",
+        "assign_company": "Assign Company"
+      },
+      "modal": {
+        "delete": {
+          "title": "Are you sure?",
+          "sub_title": "Are you really going to delete the user?",
+          "continue": "Continue"
+        },
+        "assign": {
+          "title": "Assign Company",
+          "sub_title": "Please select a company and click the assign button.",
+          "assign": "Assign",
+          "cancel": "Cancel"
+        }
+      }
     }
   },
   "page_404": {
@@ -222,7 +247,9 @@
         "users_area_title": "Users Area",
         "users_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         "companies_area_title": "Companies Area",
-        "companies_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+        "companies_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "pending_workers_area_title": "Pending Workers Area",
+        "pending_workers_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
       }
     }
   },

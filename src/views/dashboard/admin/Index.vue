@@ -28,6 +28,14 @@
           />
         </b-col>
       </b-row>
+      <b-row>
+        <b-col md="12">
+          <PendingWorkers
+            v-if="pendingWorkersItem"
+            v-on:hide-pending-workers-card="hidePendingWorkersCard"
+          />
+        </b-col>
+      </b-row>
     </div>
     <b-modal id="adjust_dashboard" footer-class="d-none" centered>
       <template v-slot:modal-header="{ close }">
@@ -88,6 +96,26 @@
             >
             </b-form-checkbox>
           </li>
+          <li class="d-flex responsive">
+            <div>
+              <p>
+                {{
+                  $t("page_dashboard.modal.adjust.pending_workers_area_title")
+                }}
+              </p>
+              <small>{{
+                $t("page_dashboard.modal.adjust.pending_workers_area_text")
+              }}</small>
+            </div>
+            <b-form-checkbox
+              class="rtl"
+              size="lg"
+              v-model="pendingWorkersItem"
+              name="check-button"
+              switch
+            >
+            </b-form-checkbox>
+          </li>
         </ul>
       </div>
     </b-modal>
@@ -98,10 +126,12 @@
 import Positions from "./components/Positions.vue";
 import Users from "./components/Users.vue";
 import Companies from "./components/Companies.vue";
+import PendingWorkers from "./components/PendingWorkers";
 
 export default {
   name: "dashboard",
   components: {
+    PendingWorkers,
     Positions,
     Users,
     Companies
@@ -110,18 +140,22 @@ export default {
     return {
       positionItem: true,
       usersItem: true,
-      companiesItem: true
+      companiesItem: true,
+      pendingWorkersItem: true
     };
   },
   methods: {
-    hidePositionCard: function() {
+    hidePositionCard() {
       this.positionItem = false;
     },
-    hideUsersCard: function() {
+    hideUsersCard() {
       this.positionItem = false;
     },
-    hideCompaniesCard: function() {
+    hideCompaniesCard() {
       this.companiesItem = false;
+    },
+    hidePendingWorkersCard() {
+      this.pendingWorkersItem = false;
     }
   }
 };

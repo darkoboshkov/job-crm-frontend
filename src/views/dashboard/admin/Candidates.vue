@@ -220,7 +220,7 @@ export default {
       return columns.concat([
         {
           label: this.$t("page_candidates.table.name"),
-          field: this.computedName(),
+          field: "name",
           name: "name",
           tdClass: "link"
         },
@@ -231,7 +231,7 @@ export default {
         },
         {
           label: this.$t("page_candidates.table.since"),
-          field: this.computedCreatedAt(),
+          field: "createdAt",
           name: "createdAt"
         },
         {
@@ -271,22 +271,6 @@ export default {
   methods: {
     imageView(mode) {
       this.imageMode = !!mode;
-    },
-    computedName() {
-      return function(row) {
-        if (row["firstName"]) {
-          return row["firstName"] + " " + row["lastName"];
-        }
-        return "";
-      };
-    },
-    computedCreatedAt() {
-      return function(row) {
-        let date = new Date(row["createdAt"]);
-
-        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}
-                ${date.getHours()}: ${date.getMinutes()}:${date.getSeconds()}`;
-      };
     },
     selectCandidate(props) {
       this.$refs["modal-alert"].show();
@@ -348,6 +332,13 @@ export default {
             }
             row.company = row.company[0];
             row.position = row.position[0];
+
+            const date = new Date(row.createdAt);
+            row.createdAt = `${date.getFullYear()}-${date.getMonth() +
+              1}-${date.getDate()}
+                ${date.getHours()}: ${date.getMinutes()}:${date.getSeconds()}`;
+            row.name = row.firstName ? row.firstName + " " + row.lastName : "";
+
             return row;
           });
           this.totalRows = res.totalDocs;
