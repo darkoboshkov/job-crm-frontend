@@ -30,9 +30,18 @@
               <template v-slot:button-content>
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
-              <b-dropdown-item href="#" @click="goToJob(props)">{{
-                $t("page_jobs.table.view_job")
-              }}</b-dropdown-item>
+              <b-dropdown-item @click="goToJob(props)">
+                <a
+                  :href="
+                    props && props.row
+                      ? `/${role}/dashboard/jobs/${props.row.company._id}/${props.row._id}`
+                      : '#'
+                  "
+                  class="text-decoration-none"
+                >
+                  {{ $t("page_jobs.table.view_job") }}
+                </a>
+              </b-dropdown-item>
             </b-dropdown>
           </div>
           <div
@@ -40,8 +49,19 @@
             class="d-flex align-items-center"
           >
             <img
-              v-if="props.row.image"
-              :src="APP_URL + props.row.image"
+              v-if="
+                props.row.status === 'active' ||
+                props.row.status === 'completed'
+                  ? props.row.image
+                  : props.row.status === 'open' && props.row.company.logo
+              "
+              :src="
+                props.row.status === 'active' ||
+                props.row.status === 'completed'
+                  ? APP_URL + props.row.image
+                  : props.row.status === 'open' &&
+                    APP_URL + props.row.company.logo
+              "
               class="rounded-circle border mr-2"
               style="width:50px;"
             />
@@ -77,9 +97,9 @@ export default {
           name: "image"
         },
         {
-          label: this.$t("page_jobs.table.title"),
-          field: "title",
-          name: "title"
+          label: this.$t("page_jobs.table.position"),
+          field: "position.name",
+          name: "position"
         },
         {
           label: this.$t("page_jobs.table.company"),
@@ -87,14 +107,44 @@ export default {
           name: "company"
         },
         {
+          label: this.$t("page_jobs.table.worker"),
+          field: this.computedWorkerName(),
+          name: "worker"
+        },
+        {
+          label: this.$t("page_jobs.table.manager"),
+          field: this.computedManagerName(),
+          name: "manager"
+        },
+        {
+          label: this.$t("page_jobs.table.wage"),
+          field: "wage",
+          name: "wage"
+        },
+        {
+          label: this.$t("page_jobs.table.rate"),
+          field: "rate",
+          name: "rate"
+        },
+        {
+          label: this.$t("page_jobs.table.start_date"),
+          field: "startDate",
+          name: "startDate"
+        },
+        {
+          label: this.$t("page_jobs.table.end_date"),
+          field: "endDate",
+          name: "endDate"
+        },
+        {
           label: this.$t("page_jobs.table.duration"),
           field: this.computedDuration(),
           name: "duration"
         },
         {
-          label: this.$t("page_jobs.table.position"),
-          field: "position.name",
-          name: "position"
+          label: this.$t("page_jobs.table.title"),
+          field: "title",
+          name: "title"
         },
         {
           label: this.$t("page_jobs.table.actions"),
@@ -124,7 +174,7 @@ export default {
     }
   },
   mounted() {
-    this.getActiveJobs();
+    this.getJobs();
   },
   methods: {
     computedDuration() {
@@ -138,7 +188,25 @@ export default {
           1}/${endDate.getFullYear()}`;
       };
     },
-    getActiveJobs() {
+    computedManagerName() {
+      return function(row) {
+        return (
+          row.manager &&
+          row.manager[0] &&
+          `${row.manager[0].firstName} ${row.manager[0].lastName}`
+        );
+      };
+    },
+    computedWorkerName() {
+      return function(row) {
+        return (
+          row.worker &&
+          row.worker[0] &&
+          `${row.worker[0].firstName} ${row.worker[0].lastName}`
+        );
+      };
+    },
+    getJobs() {
       return jobsApi
         .getCompanyJobs(
           Object.assign(this.serverParams, {
@@ -153,6 +221,7 @@ export default {
           this.rows = res.docs.map(row => {
             row.company = row.company[0];
             row.position = row.position[0];
+
             return row;
           });
         });
@@ -161,13 +230,13 @@ export default {
       this.serverParams = Object.assign({}, this.serverParams, {
         limit: e.currentPerPage
       });
-      this.getActiveJobs();
+      this.getJobs();
     },
     onPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {
         page: e.currentPage
       });
-      this.getActiveJobs();
+      this.getJobs();
     },
     goToJob(props) {
       if (props && props.row) {

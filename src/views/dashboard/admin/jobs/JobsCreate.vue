@@ -193,62 +193,6 @@
           <b-card>
             <template v-slot:header>
               <div class="d-flex">
-                <h5 class="m-0 flex-1">
-                  {{ $t("page_job_detail.job_offers") }}
-                </h5>
-                <div>
-                  <div class="float-right">
-                    <button class="btn btn-blue">
-                      {{ $t("page_job_detail.button.create_new_job_offer") }}
-                      <i class="hiway-crm-icon icon-pencil ml-2" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </template>
-            <div>
-              <ul class="custom-list">
-                <li class="d-flex">
-                  <div class="flex-3">
-                    Offer - John Simons
-                  </div>
-                  <div class="flex-2">
-                    Added on 10th of july 2019 at 15:09
-                  </div>
-                  <div class="flex-1">
-                    Locked & sent
-                  </div>
-                  <div>
-                    <i class="hiway-crm-icon icon-more-vertical mr-2" />
-                    <i class="hiway-crm-icon icon-bin" />
-                  </div>
-                </li>
-                <li class="d-flex">
-                  <div class="flex-3">
-                    Offer - Frank Jameson
-                  </div>
-                  <div class="flex-2">
-                    Added on 10th of july 2019 at 15:09
-                  </div>
-                  <div class="flex-1">
-                    Cancelled
-                  </div>
-                  <div>
-                    <i class="hiway-crm-icon icon-more-vertical mr-2" />
-                    <i class="hiway-crm-icon icon-bin" />
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </b-card>
-        </b-col>
-      </b-row>
-
-      <b-row class="mt-5">
-        <b-col md="12">
-          <b-card>
-            <template v-slot:header>
-              <div class="d-flex">
                 <h5 class="m-0 flex-1">{{ $t("page_job_detail.files") }}</h5>
                 <div>
                   <div class="float-right">
@@ -265,36 +209,36 @@
             </template>
             <div>
               <ul class="custom-list">
-                <li class="d-flex">
-                  <div class="flex-3">
-                    Kruidvat General Practice Document.pdf
-                  </div>
-                  <div class="flex-2">
-                    Geupload op 23 juli 2019 om 15:09
-                  </div>
-                  <div class="flex-1">
-                    2,3mb
-                  </div>
-                  <div>
-                    <i class="hiway-crm-icon icon-more-vertical mr-2" />
-                    <i class="hiway-crm-icon icon-bin" />
-                  </div>
-                </li>
-                <li class="d-flex">
-                  <div class="flex-3">
-                    Kruidvat Benefits Policy.docx
-                  </div>
-                  <div class="flex-2">
-                    Geupload op 23 juli 2019 om 15:09
-                  </div>
-                  <div class="flex-1">
-                    2,3mb
-                  </div>
-                  <div>
-                    <i class="hiway-crm-icon icon-more-vertical mr-2" />
-                    <i class="hiway-crm-icon icon-bin" />
-                  </div>
-                </li>
+                <!--<li class="d-flex">-->
+                <!--<div class="flex-3">-->
+                <!--Kruidvat General Practice Document.pdf-->
+                <!--</div>-->
+                <!--<div class="flex-2">-->
+                <!--Geupload op 23 juli 2019 om 15:09-->
+                <!--</div>-->
+                <!--<div class="flex-1">-->
+                <!--2,3mb-->
+                <!--</div>-->
+                <!--<div>-->
+                <!--<i class="hiway-crm-icon icon-more-vertical mr-2" />-->
+                <!--<i class="hiway-crm-icon icon-bin" />-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li class="d-flex">-->
+                <!--<div class="flex-3">-->
+                <!--Kruidvat Benefits Policy.docx-->
+                <!--</div>-->
+                <!--<div class="flex-2">-->
+                <!--Geupload op 23 juli 2019 om 15:09-->
+                <!--</div>-->
+                <!--<div class="flex-1">-->
+                <!--2,3mb-->
+                <!--</div>-->
+                <!--<div>-->
+                <!--<i class="hiway-crm-icon icon-more-vertical mr-2" />-->
+                <!--<i class="hiway-crm-icon icon-bin" />-->
+                <!--</div>-->
+                <!--</li>-->
               </ul>
             </div>
           </b-card>
