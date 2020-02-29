@@ -1,5 +1,21 @@
-.modal-alert {
+.modal-success {
   .success-image {
+    width: 24px;
+    height: 24px;
+  }
+  .success-title {
+    font-size: 26px;
+    margin-top: 20px;
+  }
+  .success-sub-title {
+    font-size: 16px;
+  }
+  button {
+    margin-top: 20px;
+  }
+}
+.modal-alert {
+  .alert-image {
     width: 24px;
     height: 24px;
   }
@@ -12,8 +28,5 @@
   }
   button {
     margin-top: 20px;
-  }
-  .modal-content {
-    padding: 20px;
   }
 }

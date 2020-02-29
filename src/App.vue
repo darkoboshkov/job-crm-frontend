@@ -2,13 +2,25 @@
   <div id="app">
     <router-view />
 
-    <div class="loader" v-if="$store.state.loading">
-      <div class="overlay"></div>
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
+    <loader></loader>
+    <success-modal></success-modal>
+    <error-modal></error-modal>
   </div>
 </template>
+
+<script>
+import Loader from "@/components/Loader.vue";
+import ErrorModal from "@/components/ErrorModal.vue";
+import SuccessModal from "@/components/SuccessModal.vue";
+
+export default {
+  name: "App",
+  components: {
+    loader: Loader,
+    "error-modal": ErrorModal,
+    "success-modal": SuccessModal
+  }
+};
+</script>
 
 <style></style>
