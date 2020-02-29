@@ -15,7 +15,7 @@
       <p class="success-sub-title">
         {{ subTitle }}
       </p>
-      <button class="btn btn-blue" @click="showSuccessModal = false">
+      <button class="btn btn-blue" @click="onButtonClick">
         {{ button }}
       </button>
     </div>
@@ -42,6 +42,15 @@ export default {
     },
     button() {
       return this.$store.state.successModalButton;
+    }
+  },
+  methods: {
+    onButtonClick() {
+      if (typeof this.$store.state.successModalOnButtonClick === "function") {
+        this.$store.state.successModalOnButtonClick();
+      } else {
+        this.showSuccessModal = false;
+      }
     }
   }
 };

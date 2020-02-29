@@ -24,11 +24,13 @@ const state = {
   errorModalTitle: "",
   errorModalSubTitle: "",
   errorModalButton: "",
+  errorModalOnButtonClick: () => {},
 
   showSuccessModal: false,
   successModalTitle: "",
   successModalSubTitle: "",
-  successModalButton: ""
+  successModalButton: "",
+  successModalOnButtonClick: () => {}
 };
 
 const mutations = {
@@ -47,6 +49,9 @@ const mutations = {
   UPDATE_ERROR_MODAL_BUTTON(state, payload) {
     state.errorModalButton = payload;
   },
+  UPDATE_ERROR_MODAL_ON_BUTTON_CLICK(state, payload) {
+    state.errorModalOnButtonClick = payload;
+  },
   UPDATE_SHOW_SUCCESS_MODAL(state, payload) {
     state.showSuccessModal = payload;
   },
@@ -58,6 +63,9 @@ const mutations = {
   },
   UPDATE_SUCCESS_MODAL_BUTTON(state, payload) {
     state.successModalButton = payload;
+  },
+  UPDATE_SUCCESS_MODAL_ON_BUTTON_CLICK(state, payload) {
+    state.successModalOnButtonClick = payload;
   }
 };
 
@@ -72,6 +80,7 @@ export const actions = {
     commit("UPDATE_ERROR_MODAL_TITLE", payload.title);
     commit("UPDATE_ERROR_MODAL_SUB_TITLE", payload.subTitle);
     commit("UPDATE_ERROR_MODAL_BUTTON", payload.button);
+    commit("UPDATE_ERROR_MODAL_ON_BUTTON_CLICK", payload.onButtonClick);
   },
   updateShowSuccessModal({ commit }, payload) {
     commit("UPDATE_SHOW_SUCCESS_MODAL", !!payload);
@@ -81,6 +90,7 @@ export const actions = {
     commit("UPDATE_SUCCESS_MODAL_TITLE", payload.title);
     commit("UPDATE_SUCCESS_MODAL_SUB_TITLE", payload.subTitle);
     commit("UPDATE_SUCCESS_MODAL_BUTTON", payload.button);
+    commit("UPDATE_SUCCESS_MODAL_ON_BUTTON_CLICK", payload.onButtonClick);
   }
 };
 

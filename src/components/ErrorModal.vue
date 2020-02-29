@@ -15,7 +15,7 @@
       <p class="alert-sub-title">
         {{ subTitle }}
       </p>
-      <button class="btn btn-blue" @click="showErrorModal = false">
+      <button class="btn btn-blue" @click="onButtonClick">
         {{ button }}
       </button>
     </div>
@@ -42,6 +42,15 @@ export default {
     },
     button() {
       return this.$store.state.errorModalButton;
+    }
+  },
+  methods: {
+    onButtonClick() {
+      if (typeof this.$store.state.errorModalOnButtonClick === "function") {
+        this.$store.state.errorModalOnButtonClick();
+      } else {
+        this.showErrorModal = false;
+      }
     }
   }
 };
