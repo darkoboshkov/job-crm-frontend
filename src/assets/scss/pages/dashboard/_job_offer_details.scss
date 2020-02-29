@@ -124,6 +124,15 @@
       }
     }
   }
+  .contract-files {
+    .card-body {
+      .item {
+        div:last-child {
+          text-align: right;
+        }
+      }
+    }
+  }
 }
 .modal-sign-contract {
   .modal-body {

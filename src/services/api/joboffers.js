@@ -124,5 +124,14 @@ export default {
       resolve,
       reject
     );
+  },
+  deleteAttachment(params, resolve, reject = null) {
+    return request(
+      "patch",
+      `/joboffers/${params.companyId}/${params._id}/attachment/${params.attachmentId}`,
+      params,
+      resolve,
+      reject
+    );
   }
 };

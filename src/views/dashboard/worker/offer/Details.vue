@@ -292,7 +292,13 @@
             <span class="mr-4"
               ><i class="hiway-crm-icon icon-more-vertical"></i
             ></span>
-            <span><i class="hiway-crm-icon icon-bin"></i></span>
+            <span
+              ><i
+                v-if="attachment.userId === user._id"
+                class="hiway-crm-icon icon-bin"
+                @click="confirmDelete(attachment)"
+              ></i
+            ></span>
           </div>
         </div>
       </div>
@@ -316,7 +322,10 @@
         <h1 class="color-red">Sign Contract</h1>
       </div>
       <div class="text-center mb-5">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra libero vitae sapien euismod, quis vestibulum ligula mollis. Sed luctus, nisi at malesuada lacinia, diam diam consequat augue, a efficitur risus lorem in neque.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra
+        libero vitae sapien euismod, quis vestibulum ligula mollis. Sed luctus,
+        nisi at malesuada lacinia, diam diam consequat augue, a efficitur risus
+        lorem in neque.
       </div>
       <div class="mb-5">
         <div class="sign-item">
@@ -326,10 +335,10 @@
           <div>
             <b-form-select v-model="model.paymentInterval">
               <option
-                      v-for="option in paymentIntervalOptions"
-                      :value="option.value"
-                      :key="option.value"
-              >{{ option.label }}</option
+                v-for="option in paymentIntervalOptions"
+                :value="option.value"
+                :key="option.value"
+                >{{ option.label }}</option
               >
             </b-form-select>
           </div>
@@ -341,10 +350,10 @@
           <div>
             <b-form-select v-model="model.discountOnTaxes">
               <option
-                      v-for="option in discountOnTaxesOptions"
-                      :value="option.value"
-                      :key="option.value"
-              >{{ option.label }}</option
+                v-for="option in discountOnTaxesOptions"
+                :value="option.value"
+                :key="option.value"
+                >{{ option.label }}</option
               >
             </b-form-select>
           </div>
@@ -356,10 +365,10 @@
           <div>
             <b-form-select v-model="model.workedEarlierAsFlexWorker">
               <option
-                      v-for="option in workedEarlierAsFlexWorkerOptions"
-                      :value="option.value"
-                      :key="option.value"
-              >{{ option.label }}</option
+                v-for="option in workedEarlierAsFlexWorkerOptions"
+                :value="option.value"
+                :key="option.value"
+                >{{ option.label }}</option
               >
             </b-form-select>
           </div>
@@ -368,9 +377,9 @@
       <div class="mb-4">
         <b-form-radio-group id="radio-slots" v-model="agreement">
           <b-form-radio value="agree" style="font-style: italic">
-            I hereby acknowledge and agree that I’ve read and agreed to the terms
-            in this contract. I understand that by clicking on the “Sign” button
-            below I digitally sign and bind myself to this contract.
+            I hereby acknowledge and agree that I’ve read and agreed to the
+            terms in this contract. I understand that by clicking on the “Sign”
+            button below I digitally sign and bind myself to this contract.
           </b-form-radio>
         </b-form-radio-group>
       </div>
@@ -383,11 +392,7 @@
           View Contract
         </button>
 
-        <button
-          class="btn btn-blue"
-          @click="sign"
-          style="min-width:160px;"
-        >
+        <button class="btn btn-blue" @click="sign" style="min-width:160px;">
           Sign Contract
         </button>
       </div>
@@ -410,6 +415,9 @@ export default {
   computed: {
     edit() {
       return this.model.status === "open";
+    },
+    user() {
+      return this.$store.state.user;
     },
     selectedCaoOption() {
       return (
@@ -477,34 +485,42 @@ export default {
       agreement: "agree",
       paymentIntervalOptions: [
         {
-          label: "Week", value: 'each-week',
+          label: "Week",
+          value: "each-week"
         },
         {
-          label: "4 weeks", value: 'each-4-weeks',
+          label: "4 weeks",
+          value: "each-4-weeks"
         },
         {
-          label: "Month", value: 'each-month',
-        },
+          label: "Month",
+          value: "each-month"
+        }
       ],
       discountOnTaxesOptions: [
         {
-          label: "Yes", value: "yes"
+          label: "Yes",
+          value: "yes"
         },
         {
-          label: "No", value: "no"
-        },
+          label: "No",
+          value: "no"
+        }
       ],
       workedEarlierAsFlexWorkerOptions: [
         {
-          label: "No", value: "no",
+          label: "No",
+          value: "no"
         },
         {
-          label: "Yes, in construction", value: "in-construction",
+          label: "Yes, in construction",
+          value: "in-construction"
         },
         {
-          label: "Yes, not in construction", value: "not-in-construction",
+          label: "Yes, not in construction",
+          value: "not-in-construction"
         }
-      ],
+      ]
     };
   },
   mounted() {
@@ -521,55 +537,90 @@ export default {
         this.model = res;
 
         this.$store.dispatch("updateShowSuccessModal", true);
-        this.$store.dispatch("updateSuccessModalContent", {
-          // title: this.$t("page_detail_company.modal.update_success.title"),
-          // subTitle: this.$t("page_detail_company.modal.update_success.sub_title"),
-          // button: this.$t("page_detail_company.modal.update_success.continue"),
-
-          title: this.$t("page_offer_details.modal.update_success.title"),
-          subTitle: this.$t("page_offer_details.modal.update_success.sub_title"),
-          button: this.$t("page_offer_details.modal.update_success.continue"),
-        });
+        this.$store
+          .dispatch("updateSuccessModalContent", {
+            title: this.$t("page_detail_offer.modal.sign_success.title"),
+            subTitle: this.$t("page_detail_offer.modal.sign_success.sub_title"),
+            button: this.$t("page_detail_offer.modal.sign_success.continue")
+          })
+          .catch(e => {
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_detail_offer.modal.sign_fail.title"),
+              subTitle: this.$t("page_detail_offer.modal.sign_fail.sub_title"),
+              button: this.$t("page_detail_offer.modal.sign_fail.continue")
+            });
+          });
       });
     },
     decline() {
-      return jobOfferApi.decline(this.model).then(res => {
-        this.model = res;
-      });
+      return jobOfferApi
+        .decline(this.model)
+        .then(res => {
+          this.model = res;
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_offer.modal.decline_fail.title"),
+            subTitle: this.$t("page_detail_offer.modal.decline_fail.sub_title"),
+            button: this.$t("page_detail_offer.modal.decline_fail.continue")
+          });
+        });
     },
     update() {
-      return jobOfferApi.update(this.model).then(res => {
-        this.model = res;
-        this.company = res.company[0];
-        this.job = res.job[0];
-        this.worker = res.worker[0];
-        this.company = res.company[0];
-        this.manager = res.manager[0];
-        this.attachments = res.attachments;
-      });
+      return jobOfferApi
+        .update(this.model)
+        .then(res => {
+          this.model = res;
+          this.company = res.company[0];
+          this.job = res.job[0];
+          this.worker = res.worker[0];
+          this.company = res.company[0];
+          this.manager = res.manager[0];
+          this.attachments = res.attachments;
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_offer.modal.update_fail.title"),
+            subTitle: this.$t("page_detail_offer.modal.update_fail.sub_title"),
+            button: this.$t("page_detail_offer.modal.update_fail.continue")
+          });
+        });
     },
     exportContract() {},
     getOfferDetails() {
       const { companyId, offerId } = this;
 
-      return jobOfferApi.get({ companyId, offerId }).then(res => {
-        this.model = res;
-        this.company = res.company[0];
-        this.job = res.job[0];
-        this.worker = res.worker[0];
-        this.company = res.company[0];
-        this.manager = res.manager[0];
-        this.CAO = res.CAO[0];
-        this.attachments = res.attachments;
-        this.contractSigned =
-          res.contractSigned?.filter(contract => {
-            return contract.userId === this.$store.state.user._id;
-          })[0] || {};
-        if (this.contractSigned) {
-          this.model.autograph = this.contractSigned.autograph;
-        }
-        delete this.model.contractSigned;
-      });
+      return jobOfferApi
+        .get({ companyId, offerId })
+        .then(res => {
+          this.model = res;
+          this.company = res.company[0];
+          this.job = res.job[0];
+          this.worker = res.worker[0];
+          this.company = res.company[0];
+          this.manager = res.manager[0];
+          this.CAO = res.CAO[0];
+          this.attachments = res.attachments;
+          this.contractSigned =
+            res.contractSigned?.filter(contract => {
+              return contract.userId === this.$store.state.user._id;
+            })[0] || {};
+          if (this.contractSigned) {
+            this.model.autograph = this.contractSigned.autograph;
+          }
+          delete this.model.contractSigned;
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_offer.modal.get_fail.title"),
+            subTitle: this.$t("page_detail_offer.modal.get_fail.sub_title"),
+            button: this.$t("page_detail_offer.modal.get_fail.continue")
+          });
+        });
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
@@ -614,9 +665,55 @@ export default {
           .then(res => {
             this.$store.dispatch("updateLoading", false);
 
-            this.attachments = res.attachments;
+            this.model = res;
           });
       });
+    },
+    confirmDelete(attachment) {
+      this.$store.dispatch("updateShowSuccessModal", true);
+      this.$store.dispatch("updateSuccessModalContent", {
+        // title: this.$t("page_detail_offer.modal.confirm_delete.title"),
+        // subTitle: this.$t("page_detail_offer.modal.confirm_delete.sub_title"),
+        // button: this.$t("page_detail_offer.modal.confirm_delete.continue"),
+
+        title: this.$t("Are you sure you want to delete?"),
+        subTitle: this.$t("This file will be removed permanently."),
+        button: this.$t("Delete"),
+        onButtonClick: () => {
+          this.deleteAttachment(attachment);
+        }
+      });
+    },
+    deleteAttachment(attachment) {
+      jobOfferApi
+        .deleteAttachment(
+          Object.assign(
+            {
+              companyId: this.companyId,
+              _id: this.offerId,
+              attachmentId: attachment._id
+            },
+            this.imageData
+          )
+        )
+        .then(res => {
+          this.$store.dispatch("updateLoading", false);
+
+          this.model = res;
+
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            // title: this.$t("page_detail_offer.modal.delete_success.title"),
+            // subTitle: this.$t(
+            //   "page_detail_offer.modal.delete_success.sub_title"
+            // ),
+            // button: this.$t("page_detail_offer.modal.delete_success.continue"),
+
+            title: this.$t("Success"),
+            subTitle: this.$t("The attachment is successfully removed!"),
+            button: this.$t("Continue")
+          });
+        });
     }
   },
   watch: {
@@ -630,5 +727,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

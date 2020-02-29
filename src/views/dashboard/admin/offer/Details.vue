@@ -415,47 +415,87 @@ export default {
         });
     },
     lockSignSend() {
-      return jobOfferApi.lock(this.model).then(res => {
-        this.model = res;
-      });
+      return jobOfferApi
+        .lock(this.model)
+        .then(res => {
+          this.model = res;
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_offer.modal.lock_fail.title"),
+            subTitle: this.$t("page_detail_offer.modal.lock_fail.sub_title"),
+            button: this.$t("page_detail_offer.modal.lock_fail.continue")
+          });
+        });
     },
     adjust() {
-      return jobOfferApi.adjust(this.model).then(res => {
-        this.model = res;
-      });
+      return jobOfferApi
+        .adjust(this.model)
+        .then(res => {
+          this.model = res;
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_offer.modal.adjust_fail.title"),
+            subTitle: this.$t("page_detail_offer.modal.adjust_fail.sub_title"),
+            button: this.$t("page_detail_offer.modal.adjust_fail.continue")
+          });
+        });
     },
     update() {
-      return jobOfferApi.update(this.model).then(res => {
-        this.model = res;
-        this.company = res.company[0];
-        this.job = res.job[0];
-        this.worker = res.worker[0];
-        this.company = res.company[0];
-        this.manager = res.manager[0];
-        this.attachments = res.attachments;
-      });
+      return jobOfferApi
+        .update(this.model)
+        .then(res => {
+          this.model = res;
+          this.company = res.company[0];
+          this.job = res.job[0];
+          this.worker = res.worker[0];
+          this.company = res.company[0];
+          this.manager = res.manager[0];
+          this.attachments = res.attachments;
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_offer.modal.update_fail.title"),
+            subTitle: this.$t("page_detail_offer.modal.update_fail.sub_title"),
+            button: this.$t("page_detail_offer.modal.update_fail.continue")
+          });
+        });
     },
     exportContract() {},
     getOfferDetails() {
       const { companyId, offerId } = this;
 
-      return jobOfferApi.get({ companyId, offerId }).then(res => {
-        this.model = res;
-        this.company = res.company[0];
-        this.job = res.job[0];
-        this.worker = res.worker[0];
-        this.company = res.company[0];
-        this.manager = res.manager[0];
-        this.attachments = res.attachments;
-        this.contractSigned =
-          res.contractSigned?.filter(contract => {
-            return contract.userId === this.$store.state.user._id;
-          })[0] || {};
-        if (this.contractSigned) {
-          this.model.autograph = this.contractSigned.autograph;
-        }
-        delete this.model.contractSigned;
-      });
+      return jobOfferApi
+        .get({ companyId, offerId })
+        .then(res => {
+          this.model = res;
+          this.company = res.company[0];
+          this.job = res.job[0];
+          this.worker = res.worker[0];
+          this.company = res.company[0];
+          this.manager = res.manager[0];
+          this.attachments = res.attachments;
+          this.contractSigned =
+            res.contractSigned?.filter(contract => {
+              return contract.userId === this.$store.state.user._id;
+            })[0] || {};
+          if (this.contractSigned) {
+            this.model.autograph = this.contractSigned.autograph;
+          }
+          delete this.model.contractSigned;
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_offer.modal.get_fail.title"),
+            subTitle: this.$t("page_detail_offer.modal.get_fail.sub_title"),
+            button: this.$t("page_detail_offer.modal.get_fail.continue")
+          });
+        });
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
@@ -484,25 +524,45 @@ export default {
 
       this.$store.dispatch("updateLoading", true);
 
-      jobOfferApi.upload(this.companyId, this.offerId, data).then(response => {
-        this.imageData.path = response.path;
+      jobOfferApi
+        .upload(this.companyId, this.offerId, data)
+        .then(response => {
+          this.imageData.path = response.path;
 
-        jobOfferApi
-          .addAttachment(
-            Object.assign(
-              {
-                companyId: this.companyId,
-                _id: this.offerId
-              },
-              this.imageData
+          jobOfferApi
+            .addAttachment(
+              Object.assign(
+                {
+                  companyId: this.companyId,
+                  _id: this.offerId
+                },
+                this.imageData
+              )
             )
-          )
-          .then(res => {
-            this.$store.dispatch("updateLoading", false);
+            .then(res => {
+              this.$store.dispatch("updateLoading", false);
 
-            this.attachments = res.attachments;
+              this.attachments = res.attachments;
+            })
+            .catch(e => {
+              this.$store.dispatch("updateShowErrorModal", true);
+              this.$store.dispatch("updateErrorModalContent", {
+                title: this.$t("page_detail_offer.modal.attach_fail.title"),
+                subTitle: this.$t(
+                  "page_detail_offer.modal.attach_fail.sub_title"
+                ),
+                button: this.$t("page_detail_offer.modal.attach_fail.continue")
+              });
+            });
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_offer.modal.upload_fail.title"),
+            subTitle: this.$t("page_detail_offer.modal.upload_fail.sub_title"),
+            button: this.$t("page_detail_offer.modal.upload_fail.continue")
           });
-      });
+        });
     }
   }
 };
