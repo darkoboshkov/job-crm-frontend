@@ -187,7 +187,10 @@ export default {
       this.$store.dispatch("updateErrorModalContent", {
         title: this.$t("component.pending_workers.modal.delete.title"),
         subTitle: this.$t("component.pending_workers.modal.delete.sub_title"),
-        button: this.$t("component.pending_workers.modal.delete.continue")
+        button: this.$t("component.pending_workers.modal.delete.continue"),
+        onButtonClick: () => {
+          this.deleteCandidate();
+        }
       });
 
       this.selectedCandidate = props.row;
