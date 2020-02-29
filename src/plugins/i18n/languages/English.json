@@ -701,5 +701,13 @@
       "view_offer": "View Job Offer",
       "actions": "Actions"
     }
+  },
+  "page_welcome": {
+    "title": "Welcome to your join",
+    "sub_title": "We will activate your account soon!",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur  consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur",
+    "button": {
+      "back": "Back Login"
+    }
   }
 }

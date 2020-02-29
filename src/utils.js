@@ -141,6 +141,10 @@ export const isManagerAuthorized = (to, from, next) => {
  */
 export const isWorkerAuthorized = (to, from, next) => {
   if (store.state.user && store.state.user.role === "worker") {
+    if (!store.state.user.companyId) {
+      next({ name: "welcome" });
+      return;
+    }
     next();
     return;
   }

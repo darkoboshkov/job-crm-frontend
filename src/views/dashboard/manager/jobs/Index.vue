@@ -128,11 +128,11 @@ export default {
           field: "company.name",
           name: "company"
         },
-        {
-          label: this.$t("page_jobs.table.worker"),
-          field: this.computedWorkerName(),
-          name: "worker"
-        },
+        // {
+        //   label: this.$t("page_jobs.table.worker"),
+        //   field: this.computedWorkerName(),
+        //   name: "worker"
+        // },
         {
           label: this.$t("page_jobs.table.manager"),
           field: this.computedManagerName(),

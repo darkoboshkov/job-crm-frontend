@@ -41,6 +41,17 @@ const routes = [
     component: () => import("../views/Common.vue")
   },
   {
+    path: "/welcome",
+    component: () => import("../containers/AuthContainer.vue"),
+    children: [
+      {
+        path: "/",
+        name: "welcome",
+        component: () => import("../views/Welcome.vue")
+      }
+    ]
+  },
+  {
     path: "*",
     component: () => import("../containers/AuthContainer.vue"),
     children: [
