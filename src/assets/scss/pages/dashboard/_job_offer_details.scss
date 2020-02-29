@@ -125,3 +125,23 @@
     }
   }
 }
+.modal-sign-contract {
+  .modal-body {
+    padding: 2rem;
+    .sign-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #ced4da;
+
+
+      div:last-child {
+        width: 50%;
+        .custom-select {
+          height: 36px;
+        }
+      }
+    }
+  }
+}

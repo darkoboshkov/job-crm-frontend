@@ -313,66 +313,70 @@
       modal-class="modal-sign-contract"
     >
       <div class="text-center">
-        Sign Contract
+        <h1 class="color-red">Sign Contract</h1>
       </div>
-      <div class="text-center">
-        Lorem ipsum
+      <div class="text-center mb-5">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra libero vitae sapien euismod, quis vestibulum ligula mollis. Sed luctus, nisi at malesuada lacinia, diam diam consequat augue, a efficitur risus lorem in neque.
       </div>
-      <div class="sign-item">
-        <div>
-          Payment interval
+      <div class="mb-5">
+        <div class="sign-item">
+          <div>
+            Payment interval
+          </div>
+          <div>
+            <b-form-select v-model="model.paymentInterval">
+              <option
+                      v-for="option in paymentIntervalOptions"
+                      :value="option.value"
+                      :key="option.value"
+              >{{ option.label }}</option
+              >
+            </b-form-select>
+          </div>
         </div>
-        <div>
-          <b-form-select v-model="model.paymentInterval">
-            <option
-              v-for="option in paymentIntervalOptions"
-              :value="option"
-              :key="option"
-              >{{ option }}</option
-            >
-          </b-form-select>
+        <div class="sign-item">
+          <div>
+            Discount on taxes
+          </div>
+          <div>
+            <b-form-select v-model="model.discountOnTaxes">
+              <option
+                      v-for="option in discountOnTaxesOptions"
+                      :value="option.value"
+                      :key="option.value"
+              >{{ option.label }}</option
+              >
+            </b-form-select>
+          </div>
+        </div>
+        <div class="sign-item">
+          <div>
+            Worker earlier as Flexworker
+          </div>
+          <div>
+            <b-form-select v-model="model.workedEarlierAsFlexWorker">
+              <option
+                      v-for="option in workedEarlierAsFlexWorkerOptions"
+                      :value="option.value"
+                      :key="option.value"
+              >{{ option.label }}</option
+              >
+            </b-form-select>
+          </div>
         </div>
       </div>
-      <div class="sign-item">
-        <div>
-          Discount on taxes
-        </div>
-        <div>
-          <b-form-select v-model="model.discountOnTaxes">
-            <option
-              v-for="option in discountOnTaxesOptions"
-              :value="option"
-              :key="option"
-              >{{ option }}</option
-            >
-          </b-form-select>
-        </div>
+      <div class="mb-4">
+        <b-form-radio-group id="radio-slots" v-model="agreement">
+          <b-form-radio value="agree" style="font-style: italic">
+            I hereby acknowledge and agree that I’ve read and agreed to the terms
+            in this contract. I understand that by clicking on the “Sign” button
+            below I digitally sign and bind myself to this contract.
+          </b-form-radio>
+        </b-form-radio-group>
       </div>
-      <div class="sign-item">
-        <div>
-          Worker earlier as Flexworker
-        </div>
-        <div>
-          <b-form-select v-model="model.workedEarlierAsFlexWorker">
-            <option
-              v-for="option in workedEarlierAsFlexWorkerOptions"
-              :value="option"
-              :key="option"
-              >{{ option }}</option
-            >
-          </b-form-select>
-        </div>
-      </div>
-      <b-form-radio-group id="radio-slots" v-model="agreement">
-        <b-form-radio value="agree">
-          I hereby acknowledge and agree that I’ve read and agreed to the terms
-          in this contract. I understand that by clicking on the “Sign” button
-          below I digitally sign and bind myself to this contract.
-        </b-form-radio>
-      </b-form-radio-group>
-      <div>
+      <div class="d-flex justify-content-around">
         <button
-          class="btn btn-red ml-2"
+          class="btn btn-red"
           @click="openViewOffer = !openViewOffer"
           style="min-width:160px;"
         >
@@ -380,7 +384,7 @@
         </button>
 
         <button
-          class="btn btn-blue ml-2"
+          class="btn btn-blue"
           @click="sign"
           style="min-width:160px;"
         >
@@ -471,13 +475,36 @@ export default {
       attachments: [],
       CAO: {},
       agreement: "agree",
-      paymentIntervalOptions: ["Week", "4 weeks", "Month"],
-      discountOnTaxesOptions: ["Yes", "No"],
+      paymentIntervalOptions: [
+        {
+          label: "Week", value: 'each-week',
+        },
+        {
+          label: "4 weeks", value: 'each-4-weeks',
+        },
+        {
+          label: "Month", value: 'each-month',
+        },
+      ],
+      discountOnTaxesOptions: [
+        {
+          label: "Yes", value: "yes"
+        },
+        {
+          label: "No", value: "no"
+        },
+      ],
       workedEarlierAsFlexWorkerOptions: [
-        "No",
-        "Yes, in construction",
-        "Yes, not in construction"
-      ]
+        {
+          label: "No", value: "no",
+        },
+        {
+          label: "Yes, in construction", value: "in-construction",
+        },
+        {
+          label: "Yes, not in construction", value: "not-in-construction",
+        }
+      ],
     };
   },
   mounted() {
@@ -492,6 +519,17 @@ export default {
     sign() {
       return jobOfferApi.sign(this.model).then(res => {
         this.model = res;
+
+        this.$store.dispatch("updateShowSuccessModal", true);
+        this.$store.dispatch("updateSuccessModalContent", {
+          // title: this.$t("page_detail_company.modal.update_success.title"),
+          // subTitle: this.$t("page_detail_company.modal.update_success.sub_title"),
+          // button: this.$t("page_detail_company.modal.update_success.continue"),
+
+          title: this.$t("page_offer_details.modal.update_success.title"),
+          subTitle: this.$t("page_offer_details.modal.update_success.sub_title"),
+          button: this.$t("page_offer_details.modal.update_success.continue"),
+        });
       });
     },
     decline() {
@@ -593,12 +631,4 @@ export default {
 </script>
 
 <style scoped>
-.sign-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ced4da;
-}
 </style>
