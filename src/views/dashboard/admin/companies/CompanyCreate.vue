@@ -294,27 +294,6 @@
         </div>
       </form>
     </div>
-
-    <b-modal
-      ref="modal-alert"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-alert"
-    >
-      <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/alert.svg" />
-        <p class="alert-title color-blue">
-          {{ $t("page_detail_company.modal.create_error.title") }}
-        </p>
-        <p class="alert-sub-title">
-          {{ error }}
-        </p>
-        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("page_detail_company.modal.create_error.continue") }}
-        </button>
-      </div>
-    </b-modal>
     <b-modal
       ref="modal-success"
       :hide-footer="true"
@@ -408,7 +387,12 @@ export default {
 
           this.error = err.response.data?.errors?.msg;
 
-          this.$refs["modal-alert"].show();
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_company.modal.create_error.title"),
+            subTitle: this.error,
+            button: this.$t("page_detail_company.modal.create_error.continue")
+          });
         });
     },
     catchSubmitCreate(e) {

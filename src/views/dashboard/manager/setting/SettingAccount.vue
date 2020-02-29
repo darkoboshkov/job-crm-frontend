@@ -131,26 +131,6 @@
         />
       </div>
     </div>
-    <b-modal
-      ref="modal-alert"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-alert"
-    >
-      <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/success.svg" />
-        <p class="alert-title color-blue">
-          {{ $t("page_setting.modal.account_change.title") }}
-        </p>
-        <p class="alert-sub-title">
-          {{ $t("page_setting.modal.account_change.sub_title") }}
-        </p>
-        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("page_setting.modal.account_change.continue") }}
-        </button>
-      </div>
-    </b-modal>
   </div>
 </template>
 
@@ -233,7 +213,12 @@ export default {
         settingsApi
           .patch(Object.assign(this.$store.state.user, this.model))
           .then(res => {
-            this.$refs["modal-alert"].show();
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_setting.modal.account_change.title"),
+              subTitle: this.$t("page_setting.modal.account_change.sub_title"),
+              button: this.$t("page_setting.modal.account_change.continue")
+            });
           });
       });
     }

@@ -50,26 +50,6 @@
         </div>
       </div>
     </div>
-    <b-modal
-      ref="modal-alert"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-alert"
-    >
-      <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/success.svg" />
-        <p class="alert-title color-blue">
-          {{ $t("page_users_create_invite.modal.invite.title") }}
-        </p>
-        <p class="alert-sub-title">
-          {{ $t("page_users_create_invite.modal.invite.sub_title") }}
-        </p>
-        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("page_users_create_invite.modal.invite.continue") }}
-        </button>
-      </div>
-    </b-modal>
   </div>
 </template>
 
@@ -117,8 +97,14 @@ export default {
         userApi
           .invite(params)
           .then(res => {
-            this.$refs["modal-alert"].show();
-            console.log(res);
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_users_create_invite.modal.invite.title"),
+              subTitle: this.$t(
+                "page_users_create_invite.modal.invite.sub_title"
+              ),
+              button: this.$t("page_users_create_invite.modal.invite.continue")
+            });
           })
           .catch(data => {
             let messages = data.response.data.errors.msg;

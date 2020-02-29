@@ -168,26 +168,6 @@
         </b-col>
       </b-row>
     </div>
-    <b-modal
-      ref="modal-alert"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-alert"
-    >
-      <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/success.svg" />
-        <p class="alert-title color-blue">
-          {{ $t("page_profile.modal.change.title") }}
-        </p>
-        <p class="alert-sub-title">
-          {{ $t("page_profile.modal.change.sub_title") }}
-        </p>
-        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("page_profile.modal.change.continue") }}
-        </button>
-      </div>
-    </b-modal>
   </div>
 </template>
 
@@ -271,7 +251,13 @@ export default {
         overview: this.model.overview
       };
       profileApi.patchById(data).then(res => {
-        this.$refs["modal-alert"].show();
+        this.$store.dispatch("updateShowErrorModal", true);
+        this.$store.dispatch("updateErrorModalContent", {
+          title: this.$t("page_profile.modal.change.title"),
+          subTitle: this.$t("page_profile.modal.change.sub_title"),
+          button: this.$t("page_profile.modal.change.continue")
+        });
+
         this.fetchProfile();
       });
     }

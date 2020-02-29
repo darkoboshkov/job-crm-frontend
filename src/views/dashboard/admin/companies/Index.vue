@@ -96,26 +96,6 @@
         </template>
       </vue-good-table>
     </div>
-    <b-modal
-      ref="modal-alert"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-alert"
-    >
-      <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/alert.svg" />
-        <p class="alert-title color-blue">
-          {{ $t("page_companies.modal.company_delete.title") }}
-        </p>
-        <p class="alert-sub-title">
-          {{ $t("page_companies.modal.company_delete.sub_title") }}
-        </p>
-        <button class="btn btn-blue" @click="deleteCompany">
-          {{ $t("page_companies.modal.company_delete.continue") }}
-        </button>
-      </div>
-    </b-modal>
   </div>
 </template>
 
@@ -279,11 +259,17 @@ export default {
       }
     },
     deleteCompanyConfirm(props) {
-      this.$refs["modal-alert"].show();
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_companies.modal.company_delete.title"),
+        subTitle: this.$t("page_companies.modal.company_delete.sub_title"),
+        button: this.$t("page_companies.modal.company_delete.continue")
+      });
+
       this.idToDelete = props?.row?._id;
     },
     deleteCompany() {
-      this.$refs["modal-alert"].hide();
+      this.$store.dispatch("updateShowErrorModal", false);
       companyApi
         .delete({
           companyId: this.idToDelete

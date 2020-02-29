@@ -310,7 +310,7 @@
       :hide-footer="true"
       :hide-header="true"
       centered
-      modal-class="modal-alert"
+      modal-class="modal-sign-contract"
     >
       <div class="text-center">
         Sign Contract

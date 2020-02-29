@@ -321,27 +321,6 @@
         </button>
       </div>
     </b-modal>
-
-    <b-modal
-      ref="modal-alert"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-alert"
-    >
-      <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/alert.svg" />
-        <p class="alert-title color-blue">
-          {{ $t("page_job_detail.modal.update_error.title") }}
-        </p>
-        <p class="alert-sub-title">
-          {{ error }}
-        </p>
-        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("page_job_detail.modal.update_error.continue") }}
-        </button>
-      </div>
-    </b-modal>
   </div>
 </template>
 
@@ -471,7 +450,12 @@ export default {
           let read = errorReader(err);
           this.error = read.param + " is " + read.msg.toLowerCase();
 
-          this.$refs["modal-alert"].show();
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_job_detail.modal.update_error.title"),
+            subTitle: this.error,
+            button: this.$t("page_job_detail.modal.update_error.continue")
+          });
         });
     },
     onFileChange(e) {

@@ -39,31 +39,11 @@
       </div>
     </div>
     <b-modal
-      ref="modal-alert"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-alert"
-    >
-      <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/alert.svg" />
-        <p class="alert-title color-blue">
-          {{ $t("page_setting.modal.reset_password.error_title") }}
-        </p>
-        <p class="alert-sub-title">
-          {{ error }}
-        </p>
-        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
-          {{ $t("page_setting.modal.reset_password.continue") }}
-        </button>
-      </div>
-    </b-modal>
-    <b-modal
       ref="modal-success"
       :hide-footer="true"
       :hide-header="true"
       centered
-      modal-class="modal-alert"
+      modal-class="modal-success"
     >
       <div class="text-center">
         <img class="success-image" src="@/assets/image/icon/success.svg" />
@@ -73,7 +53,7 @@
         <p class="alert-sub-title">
           {{ $t("page_setting.modal.reset_password.success_sub_title") }}
         </p>
-        <button class="btn btn-blue" @click="$refs['modal-alert'].hide()">
+        <button class="btn btn-blue" @click="$refs['modal-success'].hide()">
           {{ $t("page_setting.modal.reset_password.continue") }}
         </button>
       </div>
@@ -109,14 +89,23 @@ export default {
           let read = errorReader(err);
           this.error = read.param + " is " + read.msg.toLowerCase();
 
-          this.$refs["modal-alert"].show();
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_setting.modal.reset_password.error_title"),
+            subTitle: this.error,
+            button: this.$t("page_setting.modal.reset_password.continue")
+          });
         });
 
       settingsApi
         .patch(Object.assign(this.$store.state.user, this.model))
         .then(res => {
-          this.$refs["modal-alert"].show();
-          console.log("response", res);
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_setting.modal.reset_password.error_title"),
+            subTitle: this.error,
+            button: this.$t("page_setting.modal.reset_password.continue")
+          });
         });
     }
   }

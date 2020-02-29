@@ -74,27 +74,6 @@
       </div>
 
       <b-modal
-        ref="modal-alert"
-        :hide-footer="true"
-        :hide-header="true"
-        centered
-        modal-class="modal-alert"
-      >
-        <div class="text-center">
-          <img class="success-image" src="@/assets/image/icon/success.svg" />
-          <p class="alert-title color-blue">
-            {{ $t("component.pending_workers.modal.delete.title") }}
-          </p>
-          <p class="alert-sub-title">
-            {{ $t("component.pending_workers.modal.delete.sub_title") }}
-          </p>
-          <button class="btn btn-blue" @click="deleteCandidate">
-            {{ $t("component.pending_workers.modal.delete.continue") }}
-          </button>
-        </div>
-      </b-modal>
-
-      <b-modal
         ref="modal-assign"
         :hide-footer="true"
         :hide-header="true"
@@ -204,7 +183,13 @@ export default {
       this.selectedCandidate = props.row;
     },
     selectCandidate(props) {
-      this.$refs["modal-alert"].show();
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("component.pending_workers.modal.delete.title"),
+        subTitle: this.$t("component.pending_workers.modal.delete.sub_title"),
+        button: this.$t("component.pending_workers.modal.delete.continue")
+      });
+
       this.selectedCandidate = props.row;
     },
     onPageChange(e) {
@@ -224,7 +209,7 @@ export default {
       this.getWorkers();
     },
     deleteCandidate() {
-      this.$refs["modal-alert"].hide();
+      this.$store.dispatch("updateShowErrorModal", false);
       if (this.selectedCandidate) {
         userApi
           .deletePendingWorker({
