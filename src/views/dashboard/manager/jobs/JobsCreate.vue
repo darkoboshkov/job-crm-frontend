@@ -36,34 +36,34 @@
             />
           </b-card>
 
-          <b-card class="mt-3">
-            <template v-slot:header>
-              <div class="d-flex justify-content-between align-items-end">
-                <h5 class="m-0">{{ $t("page_job_detail.form.questions") }}</h5>
-                <button
-                  data-v-74cd9a4e=""
-                  class="btn btn-red circle large"
-                  style="width: 50px;"
-                  @click="model.questions = model.questions.concat([''])"
-                >
-                  <i data-v-74cd9a4e="" class="hiway-crm-icon icon-add"></i>
-                </button>
-              </div>
-            </template>
-            <ul class="custom-list">
-              <li
-                v-for="(question, idx) in model.questions"
-                :key="idx"
-                class="d-flex justify-content-between align-items-center"
-              >
-                {{ idx + 1
-                }}<b-input
-                  v-model="model.questions[idx]"
-                  class="question-input"
-                />
-              </li>
-            </ul>
-          </b-card>
+          <!--<b-card class="mt-3">-->
+          <!--<template v-slot:header>-->
+          <!--<div class="d-flex justify-content-between align-items-end">-->
+          <!--<h5 class="m-0">{{ $t("page_job_detail.form.questions") }}</h5>-->
+          <!--<button-->
+          <!--data-v-74cd9a4e=""-->
+          <!--class="btn btn-red circle large"-->
+          <!--style="width: 50px;"-->
+          <!--@click="model.questions = model.questions.concat([''])"-->
+          <!--&gt;-->
+          <!--<i data-v-74cd9a4e="" class="hiway-crm-icon icon-add"></i>-->
+          <!--</button>-->
+          <!--</div>-->
+          <!--</template>-->
+          <!--<ul class="custom-list">-->
+          <!--<li-->
+          <!--v-for="(question, idx) in model.questions"-->
+          <!--:key="idx"-->
+          <!--class="d-flex justify-content-between align-items-center"-->
+          <!--&gt;-->
+          <!--{{ idx + 1-->
+          <!--}}<b-input-->
+          <!--v-model="model.questions[idx]"-->
+          <!--class="question-input"-->
+          <!--/>-->
+          <!--</li>-->
+          <!--</ul>-->
+          <!--</b-card>-->
         </b-col>
 
         <b-col md="6">
@@ -90,28 +90,9 @@
                 </li>
 
                 <li>
-                  {{ $t("page_job_detail.form.level") }}
+                  {{ $t("page_job_detail.form.wage") }}
                   <div class="pull-right">
-                    <b-form-select
-                      v-model="model.level"
-                      class="normal-size"
-                      style="margin-top:-8px"
-                    >
-                      <option
-                        v-for="(level, index) in levels"
-                        :value="level"
-                        :key="index"
-                      >
-                        {{ level }}
-                      </option>
-                    </b-form-select>
-                  </div>
-                </li>
-
-                <li>
-                  {{ $t("page_job_detail.form.rate") }}
-                  <div class="pull-right">
-                    <b-input v-model="model.rate" />
+                    <b-input v-model="model.wage" />
                   </div>
                 </li>
 
@@ -166,54 +147,47 @@
         <b-col md="12">
           <b-card>
             <template v-slot:header>
-              <div class="d-flex">
+              <div class="d-flex align-items-center">
                 <h5 class="m-0 flex-1">{{ $t("page_job_detail.files") }}</h5>
-                <div>
-                  <div class="float-right">
-                    <button
-                      class="btn btn-blue upload"
-                      style="width:100px;justify-content:center;"
-                    >
-                      {{ $t("page_job_detail.button.upload") }}
-                      <i class="hiway-crm-icon icon-upload ml-2" />
-                    </button>
-                  </div>
-                </div>
+                <input
+                  type="file"
+                  id="attachment"
+                  class="d-none"
+                  name="attachment"
+                  accept=".doc,.docx,.pdf"
+                  @change="onFileChange"
+                />
+                <label
+                  for="attachment"
+                  class="btn btn-blue m-0"
+                  style="min-width:160px;"
+                >
+                  {{ $t("page_job_detail.button.upload") }}
+                  <i class="hiway-crm-icon icon-upload"></i>
+                </label>
               </div>
             </template>
-            <div>
-              <ul class="custom-list">
-                <!--<li class="d-flex">-->
-                <!--<div class="flex-3">-->
-                <!--Kruidvat General Practice Document.pdf-->
-                <!--</div>-->
-                <!--<div class="flex-2">-->
-                <!--Geupload op 23 juli 2019 om 15:09-->
-                <!--</div>-->
-                <!--<div class="flex-1">-->
-                <!--2,3mb-->
-                <!--</div>-->
-                <!--<div>-->
-                <!--<i class="hiway-crm-icon icon-more-vertical mr-2" />-->
-                <!--<i class="hiway-crm-icon icon-bin" />-->
-                <!--</div>-->
-                <!--</li>-->
-                <!--<li class="d-flex">-->
-                <!--<div class="flex-3">-->
-                <!--Kruidvat Benefits Policy.docx-->
-                <!--</div>-->
-                <!--<div class="flex-2">-->
-                <!--Geupload op 23 juli 2019 om 15:09-->
-                <!--</div>-->
-                <!--<div class="flex-1">-->
-                <!--2,3mb-->
-                <!--</div>-->
-                <!--<div>-->
-                <!--<i class="hiway-crm-icon icon-more-vertical mr-2" />-->
-                <!--<i class="hiway-crm-icon icon-bin" />-->
-                <!--</div>-->
-                <!--</li>-->
-              </ul>
+            <div class="card-body">
+              <div
+                class="d-flex justify-content-between"
+                v-for="(attachment, idx) in model.attachments"
+                :key="idx"
+              >
+                <div>
+                  {{ attachment.name }}
+                </div>
+                <div>
+                  <span class="mr-5"
+                    >{{ attachment.uploadedAt | dateFormatter }}
+                    {{ attachment.uploadedAt | timeFormatter }}</span
+                  >
+                  <span class="mr-5">{{ attachment.size }} B</span>
+                  <span class="mr-4"
+                    ><i class="hiway-crm-icon icon-more-vertical"></i
+                  ></span>
+                  <span><i class="hiway-crm-icon icon-bin"></i></span>
+                </div>
+              </div>
             </div>
           </b-card>
         </b-col>
@@ -272,7 +246,6 @@
 <script>
 import jobsApi from "@/services/api/jobs";
 import companiesApi from "@/services/api/companies";
-import constantsApi from "@/services/api/constants";
 import errorReader from "@/helpers/ErrorReader";
 
 export default {
@@ -285,7 +258,6 @@ export default {
         managerId: 0,
         positionId: 0,
         rate: "",
-        level: null,
         status: "available",
         skillIds: [],
         description: "",
@@ -298,67 +270,6 @@ export default {
         manager: null,
         position: null
       },
-
-      /*
-         title: {
-      type: String,
-      required: true
-    },
-         companyId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Company'
-    },
-         managerId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
-    },
-         positionId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Position',
-      default: '5aa1c2c35ef8a4e97b5e995a'
-    },
-         rate: {
-      type: Number
-    },
-         level: {
-      type: String,
-      enum: levels,
-      default: levels[0]
-    },
-         status: {
-      type: String,
-      enum: jobStates,
-      default: jobStates[0]
-    },
-         skillIds: [
-         {
-           type: mongoose.Schema.Types.ObjectId,
-           ref: 'Skill'
-         }
-         ],
-         description: {
-      type: String
-    },
-         questions: [
-         {
-           type: String
-         }
-         ],
-         image: {
-      type: String
-    },
-    startDate: {
-      type: Date,
-      default: Date.now,
-      select: false
-    },
-    endDate: {
-      type: Date,
-      default: Date.now,
-      select: false
-    }
-         */
       levels: [],
       state: [],
       error: ""
@@ -366,7 +277,6 @@ export default {
   },
   mounted() {
     this.getCompany();
-    this.getLevels();
   },
   computed: {
     user() {
@@ -387,11 +297,6 @@ export default {
         .then(res => {
           this.model.company = res;
         });
-    },
-    getLevels() {
-      constantsApi.getAll().then(res => {
-        this.levels = [null].concat(res.levels);
-      });
     },
     createJob() {
       this.model.companyId = this.user.companyId;
@@ -420,6 +325,53 @@ export default {
 
           this.$refs["modal-alert"].show();
         });
+    },
+    onFileChange(e) {
+      // let files = e.target.files || e.dataTransfer.files;
+      // if (!files.length) {
+      //   return;
+      // }
+      //
+      // if (window.File && window.FileList && window.FileReader) {
+      //   if (files.length !== 1) return;
+      //   let file = files[0];
+      //
+      //   this.imageData = {
+      //     file: file,
+      //     name: file.name,
+      //     size: file.size.toString()
+      //   };
+      //
+      //   this.upload();
+      // } else {
+      //   console.error("Your browser does not support File API");
+      // }
+    },
+    upload() {
+      // const data = new FormData();
+      // data.append("file", this.imageData.file);
+      //
+      // this.$store.dispatch("updateLoading", true);
+      //
+      // jobsApi.upload(this.companyId, this.jobId, data).then(response => {
+      //   this.imageData.path = response.path;
+      //
+      //   jobsApi
+      //     .addAttachment(
+      //       Object.assign(
+      //         {
+      //           companyId: this.companyId,
+      //           _id: this.jobId
+      //         },
+      //         this.imageData
+      //       )
+      //     )
+      //     .then(res => {
+      //       this.$store.dispatch("updateLoading", false);
+      //
+      //       this.attachments = res.attachments;
+      //     });
+      // });
     }
   }
 };

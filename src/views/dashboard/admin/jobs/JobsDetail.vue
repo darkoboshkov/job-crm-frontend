@@ -255,7 +255,7 @@
                     {{ offer.worker.lastName }}
                   </div>
                   <div class="flex-2">
-                    {{ offer.createdAt }}
+                    {{ offer.createdAt | dateFormatter }}
                   </div>
                   <div class="flex-1">
                     {{ offer.status }}
@@ -290,54 +290,47 @@
         <b-col md="12">
           <b-card>
             <template v-slot:header>
-              <div class="d-flex">
+              <div class="d-flex align-items-center">
                 <h5 class="m-0 flex-1">{{ $t("page_job_detail.files") }}</h5>
-                <div>
-                  <div class="float-right">
-                    <button
-                      class="btn btn-blue upload"
-                      style="width:100px;justify-content:center;"
-                    >
-                      {{ $t("page_job_detail.button.upload") }}
-                      <i class="hiway-crm-icon icon-upload ml-2" />
-                    </button>
-                  </div>
-                </div>
+                <input
+                  type="file"
+                  id="attachment"
+                  class="d-none"
+                  name="attachment"
+                  accept=".doc,.docx,.pdf"
+                  @change="onFileChange"
+                />
+                <label
+                  for="attachment"
+                  class="btn btn-blue m-0"
+                  style="min-width:160px;"
+                >
+                  {{ $t("page_job_detail.button.upload") }}
+                  <i class="hiway-crm-icon icon-upload"></i>
+                </label>
               </div>
             </template>
-            <div>
-              <ul class="custom-list">
-                <!--<li class="d-flex">-->
-                <!--<div class="flex-3">-->
-                <!--Kruidvat General Practice Document.pdf-->
-                <!--</div>-->
-                <!--<div class="flex-2">-->
-                <!--Geupload op 23 juli 2019 om 15:09-->
-                <!--</div>-->
-                <!--<div class="flex-1">-->
-                <!--2,3mb-->
-                <!--</div>-->
-                <!--<div>-->
-                <!--<i class="hiway-crm-icon icon-more-vertical mr-2" />-->
-                <!--<i class="hiway-crm-icon icon-bin" />-->
-                <!--</div>-->
-                <!--</li>-->
-                <!--<li class="d-flex">-->
-                <!--<div class="flex-3">-->
-                <!--Kruidvat Benefits Policy.docx-->
-                <!--</div>-->
-                <!--<div class="flex-2">-->
-                <!--Geupload op 23 juli 2019 om 15:09-->
-                <!--</div>-->
-                <!--<div class="flex-1">-->
-                <!--2,3mb-->
-                <!--</div>-->
-                <!--<div>-->
-                <!--<i class="hiway-crm-icon icon-more-vertical mr-2" />-->
-                <!--<i class="hiway-crm-icon icon-bin" />-->
-                <!--</div>-->
-                <!--</li>-->
-              </ul>
+            <div class="card-body">
+              <div
+                class="d-flex justify-content-between"
+                v-for="(attachment, idx) in model.attachments"
+                :key="idx"
+              >
+                <div>
+                  {{ attachment.name }}
+                </div>
+                <div>
+                  <span class="mr-5"
+                    >{{ attachment.uploadedAt | dateFormatter }}
+                    {{ attachment.uploadedAt | timeFormatter }}</span
+                  >
+                  <span class="mr-5">{{ attachment.size }} B</span>
+                  <span class="mr-4"
+                    ><i class="hiway-crm-icon icon-more-vertical"></i
+                  ></span>
+                  <span><i class="hiway-crm-icon icon-bin"></i></span>
+                </div>
+              </div>
             </div>
           </b-card>
         </b-col>
@@ -393,10 +386,10 @@ import jobsApi from "@/services/api/jobs";
 import joboffersApi from "@/services/api/joboffers";
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
-import constantsApi from "@/services/api/constants";
 import errorReader from "@/helpers/ErrorReader";
 import { APP_URL } from "@/constants";
-import dateFormatter from "../../../../helpers/DateFormatter";
+import dateFormatter from "@/helpers/DateFormatter.js";
+import timeFormatter from "@/helpers/TimeFormatter.js";
 
 export default {
   name: "JobsDetail",
@@ -427,12 +420,17 @@ export default {
       error: "",
       companyId: "",
       jobId: "",
-      jobOffers: []
+      jobOffers: [],
+      imageData: {},
+      attachments: []
     };
   },
   filters: {
     dateFormatter(string) {
       return dateFormatter(new Date(string));
+    },
+    timeFormatter(string) {
+      return timeFormatter(new Date(string));
     }
   },
   mounted() {
@@ -499,7 +497,6 @@ export default {
           this.jobOffers = res.docs;
           this.jobOffers.forEach(row => {
             row.worker = row.worker[0];
-            row.createdAt = dateFormatter(new Date(row.createdAt));
           });
         });
     },
@@ -541,6 +538,53 @@ export default {
 
           this.$refs["modal-alert"].show();
         });
+    },
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+
+      if (window.File && window.FileList && window.FileReader) {
+        if (files.length !== 1) return;
+        let file = files[0];
+
+        this.imageData = {
+          file: file,
+          name: file.name,
+          size: file.size.toString()
+        };
+
+        this.upload();
+      } else {
+        console.error("Your browser does not support File API");
+      }
+    },
+    upload() {
+      const data = new FormData();
+      data.append("file", this.imageData.file);
+
+      this.$store.dispatch("updateLoading", true);
+
+      jobsApi.upload(this.companyId, this.jobId, data).then(response => {
+        this.imageData.path = response.path;
+
+        jobsApi
+          .addAttachment(
+            Object.assign(
+              {
+                companyId: this.companyId,
+                _id: this.jobId
+              },
+              this.imageData
+            )
+          )
+          .then(res => {
+            this.$store.dispatch("updateLoading", false);
+
+            this.attachments = res.attachments;
+          });
+      });
     }
   }
 };
