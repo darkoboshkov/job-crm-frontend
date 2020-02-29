@@ -133,11 +133,11 @@ export default {
         //   field: this.computedWorkerName(),
         //   name: "worker"
         // },
-        {
-          label: this.$t("page_jobs.table.manager"),
-          field: this.computedManagerName(),
-          name: "manager"
-        },
+        // {
+        //   label: this.$t("page_jobs.table.manager"),
+        //   field: this.computedManagerName(),
+        //   name: "manager"
+        // },
         {
           label: this.$t("page_jobs.table.wage"),
           field: "wage",
@@ -201,13 +201,7 @@ export default {
   methods: {
     computedDuration() {
       return function(row) {
-        const startDate = new Date(row["startDate"]);
-        const endDate = new Date(row["endDate"]);
-
-        return `${startDate.getDate()}/${startDate.getMonth() +
-          1}/${startDate.getFullYear()} -
-                ${endDate.getDate()}/${endDate.getMonth() +
-          1}/${endDate.getFullYear()}`;
+        return `${new Date(row.startDate).toLocaleDateString()} - ${new Date(row.endDate).toLocaleDateString()}`;
       };
     },
     computedManagerName() {
@@ -240,7 +234,8 @@ export default {
           this.rows = res.docs.map(row => {
             row.company = row.company[0];
             row.position = row.position[0];
-
+            row.startDate = new Date(row.startDate).toLocaleDateString();
+            row.endDate = new Date(row.endDate).toLocaleDateString();
             return row;
           });
         });

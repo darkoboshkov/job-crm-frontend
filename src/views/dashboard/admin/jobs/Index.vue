@@ -102,6 +102,7 @@
 import jobsApi from "@/services/api/jobs";
 
 import { APP_URL } from "@/constants";
+import timeFormatter from "../../../../helpers/TimeFormatter";
 
 export default {
   name: "JobList",
@@ -159,11 +160,11 @@ export default {
           field: "endDate",
           name: "endDate"
         },
-        {
-          label: this.$t("page_jobs.table.duration"),
-          field: this.computedDuration(),
-          name: "duration"
-        },
+        // {
+        //   label: this.$t("page_jobs.table.duration"),
+        //   field: this.computedDuration(),
+        //   name: "duration"
+        // },
         {
           label: this.$t("page_jobs.table.title"),
           field: "title",
@@ -199,13 +200,7 @@ export default {
   methods: {
     computedDuration() {
       return function(row) {
-        const startDate = new Date(row["startDate"]);
-        const endDate = new Date(row["endDate"]);
-
-        return `${startDate.getDate()}/${startDate.getMonth() +
-          1}/${startDate.getFullYear()} -
-                ${endDate.getDate()}/${endDate.getMonth() +
-          1}/${endDate.getFullYear()}`;
+        return `${new Date(row.startDate).toLocaleDateString()} - ${new Date(row.endDate).toLocaleDateString()}`;
       };
     },
     computedManagerName() {
@@ -232,6 +227,8 @@ export default {
         this.rows = res.docs.map(row => {
           row.company = row.company[0];
           row.position = row.position[0];
+          row.startDate = new Date(row.startDate).toLocaleDateString();
+          row.endDate = new Date(row.endDate).toLocaleDateString();
 
           return row;
         });
