@@ -665,8 +665,24 @@ export default {
           .then(res => {
             this.$store.dispatch("updateLoading", false);
 
-            this.model = res;
+            this.getOfferDetails();
+          }).catch(e => {
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_detail_offer.modal.attach_fail.title"),
+              subTitle: this.$t(
+                "page_detail_offer.modal.attach_fail.sub_title"
+              ),
+              button: this.$t("page_detail_offer.modal.attach_fail.continue")
+            });
+        }).catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_detail_offer.modal.upload_fail.title"),
+            subTitle: this.$t("page_detail_offer.modal.upload_fail.sub_title"),
+            button: this.$t("page_detail_offer.modal.upload_fail.continue")
           });
+        });
       });
     },
     confirmDelete(attachment) {
@@ -687,19 +703,14 @@ export default {
     deleteAttachment(attachment) {
       jobOfferApi
         .deleteAttachment(
-          Object.assign(
             {
               companyId: this.companyId,
               _id: this.offerId,
               attachmentId: attachment._id
-            },
-            this.imageData
-          )
+            }
         )
         .then(res => {
           this.$store.dispatch("updateLoading", false);
-
-          this.model = res;
 
           this.$store.dispatch("updateShowSuccessModal", true);
           this.$store.dispatch("updateSuccessModalContent", {
@@ -711,7 +722,8 @@ export default {
 
             title: this.$t("Success"),
             subTitle: this.$t("The attachment is successfully removed!"),
-            button: this.$t("Continue")
+            button: this.$t("Continue"),
+            onButtonClick: () => { this.getOfferDetails(); }
           });
         });
     }

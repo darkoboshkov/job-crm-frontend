@@ -127,7 +127,7 @@ export default {
   },
   deleteAttachment(params, resolve, reject = null) {
     return request(
-      "patch",
+      "delete",
       `/joboffers/${params.companyId}/${params._id}/attachment/${params.attachmentId}`,
       params,
       resolve,

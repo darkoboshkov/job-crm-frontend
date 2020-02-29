@@ -303,7 +303,7 @@
             <span class="mr-4"
               ><i class="hiway-crm-icon icon-more-vertical"></i
             ></span>
-            <span><i class="hiway-crm-icon icon-bin"></i></span>
+            <span><i class="hiway-crm-icon icon-bin" @click="confirmDelete(attachment)"></i></span>
           </div>
         </div>
       </div>
@@ -540,7 +540,7 @@ export default {
           .then(res => {
             this.$store.dispatch("updateLoading", false);
 
-            this.attachments = res.attachments;
+            this.getOfferDetails();
           })
           .catch(e => {
             this.$store.dispatch("updateShowErrorModal", true);
@@ -563,6 +563,50 @@ export default {
             });
           });
       });
+    },
+    confirmDelete(attachment) {
+      this.$store.dispatch("updateShowSuccessModal", true);
+      this.$store.dispatch("updateSuccessModalContent", {
+        // title: this.$t("page_detail_offer.modal.confirm_delete.title"),
+        // subTitle: this.$t("page_detail_offer.modal.confirm_delete.sub_title"),
+        // button: this.$t("page_detail_offer.modal.confirm_delete.continue"),
+
+        title: this.$t("Are you sure you want to delete?"),
+        subTitle: this.$t("This file will be removed permanently."),
+        button: this.$t("Delete"),
+        onButtonClick: () => {
+          this.deleteAttachment(attachment);
+        }
+      });
+    },
+    deleteAttachment(attachment) {
+      jobOfferApi
+        .deleteAttachment(
+            {
+              companyId: this.companyId,
+              _id: this.offerId,
+              attachmentId: attachment._id
+            }
+        )
+        .then(res => {
+          this.$store.dispatch("updateLoading", false);
+
+          this.model = res;
+
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            // title: this.$t("page_detail_offer.modal.delete_success.title"),
+            // subTitle: this.$t(
+            //   "page_detail_offer.modal.delete_success.sub_title"
+            // ),
+            // button: this.$t("page_detail_offer.modal.delete_success.continue"),
+
+            title: this.$t("Success"),
+            subTitle: this.$t("The attachment is successfully removed!"),
+            button: this.$t("Continue"),
+            onButtonClick: () => { this.getOfferDetails(); }
+          });
+        });
     }
   }
 };
