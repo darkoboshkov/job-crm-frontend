@@ -310,26 +310,6 @@
         </div>
       </form>
     </div>
-    <b-modal
-      ref="modal-success"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-success"
-    >
-      <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/success.svg" />
-        <p class="alert-title color-blue">
-          {{ $t("page_detail_company.modal.update_success.title") }}
-        </p>
-        <p class="alert-sub-title">
-          {{ $t("page_detail_company.modal.update_success.sub_title") }}
-        </p>
-        <button class="btn btn-blue" @click="$refs['modal-success'].hide()">
-          {{ $t("page_detail_company.modal.update_success.continue") }}
-        </button>
-      </div>
-    </b-modal>
   </div>
 </template>
 
@@ -405,7 +385,15 @@ export default {
           })
         )
         .then(res => {
-          this.$refs["modal-success"].show();
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_detail_company.modal.update_success.title"),
+            subTitle: this.$t(
+              "page_detail_company.modal.update_success.sub_title"
+            ),
+            button: this.$t("page_detail_company.modal.update_success.continue")
+          });
+
           this.editCompany = !this.editCompany;
         })
         .catch(err => {
@@ -432,7 +420,15 @@ export default {
           companyId: this.companyId
         })
         .then(res => {
-          this.$refs["modal-success"].show();
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_detail_company.modal.update_success.title"),
+            subTitle: this.$t(
+              "page_detail_company.modal.update_success.sub_title"
+            ),
+            button: this.$t("page_detail_company.modal.update_success.continue")
+          });
+
           setTimeout(() => {
             this.$router.push("/admin/dashboard/companies");
           }, 3000);

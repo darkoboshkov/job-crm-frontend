@@ -320,7 +320,12 @@ export default {
           this.model.managerId = res.manager[0]._id;
           this.model.manager = res.manager[0];
 
-          this.$refs["modal-success"].show();
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_job_detail.modal.create_success.title"),
+            subTitle: this.$t("page_job_detail.modal.create_success.sub_title"),
+            button: this.$t("page_job_detail.modal.create_success.continue")
+          });
         })
         .catch(err => {
           let read = errorReader(err);
@@ -328,9 +333,9 @@ export default {
 
           this.$store.dispatch("updateShowErrorModal", true);
           this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_job_detail.modal.create_success.title"),
-            subTitle: this.$t("page_job_detail.modal.create_success.sub_title"),
-            button: this.$t("page_job_detail.modal.create_success.continue")
+            title: this.$t("page_job_detail.modal.create_error.title"),
+            subTitle: this.$t("page_job_detail.modal.create_error.sub_title"),
+            button: this.$t("page_job_detail.modal.create_error.continue")
           });
         });
     },

@@ -436,6 +436,7 @@
       },
       "create_error": {
         "title": "Error",
+        "sub_title": "Failed to create job!",
         "continue": "Click here to continue."
       },
       "update_success": {
