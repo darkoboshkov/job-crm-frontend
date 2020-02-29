@@ -69,26 +69,6 @@
         </div>
       </div>
     </div>
-    <b-modal
-      ref="modal-alert"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      modal-class="modal-alert"
-    >
-      <div class="text-center">
-        <img class="success-image" src="@/assets/image/icon/success.svg" />
-        <p class="alert-title color-blue">
-          {{ $t("page_accept.modal.accept.title") }}
-        </p>
-        <p class="alert-sub-title">
-          {{ $t("page_accept.modal.accept.sub_title") }}
-        </p>
-        <button class="btn btn-blue" @click="$router.push({ name: 'login' })">
-          {{ $t("page_accept.modal.accept.login") }}
-        </button>
-      </div>
-    </b-modal>
   </div>
 </template>
 
@@ -155,7 +135,15 @@ export default {
         return authApi
           .invitation(params)
           .then(res => {
-            this.$refs["modal-alert"].show();
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_accept.modal.accept.title"),
+              subTitle: this.$t("page_accept.modal.accept.sub_title"),
+              button: this.$t("page_accept.modal.accept.login"),
+              onButtonClick: () => {
+                this.$router.push({ name: "login" });
+              }
+            });
           })
           .catch(data => {
             let messages = data.response.data.errors.msg;

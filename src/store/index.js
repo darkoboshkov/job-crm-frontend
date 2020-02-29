@@ -24,13 +24,13 @@ const state = {
   errorModalTitle: "",
   errorModalSubTitle: "",
   errorModalButton: "",
-  errorModalOnButtonClick: () => {},
+  errorModalOnButtonClick: "",
 
   showSuccessModal: false,
   successModalTitle: "",
   successModalSubTitle: "",
   successModalButton: "",
-  successModalOnButtonClick: () => {}
+  successModalOnButtonClick: ""
 };
 
 const mutations = {
