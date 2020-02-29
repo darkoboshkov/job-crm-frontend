@@ -476,6 +476,63 @@
       "pending-worker": "Pending for Worker",
       "active": "Active",
       "completed": "Completed"
+    },
+    "modal": {
+      "sign_success": {
+        "title": "Success",
+        "sub_title": "You signed the contract successfully!",
+        "continue": "Continue"
+      },
+      "sign_fail": {
+        "title": "Failure",
+        "sub_title": "Failed to sign the contract.",
+        "continue": "Continue"
+      },
+      "decline_fail": {
+        "title": "Failure",
+        "sub_title": "Failed to decline the contract.",
+        "continue": "Continue"
+      },
+      "update_fail": {
+        "title": "Failure",
+        "sub_title": "Failed to update the contract.",
+        "continue": "Continue"
+      },
+      "get_fail": {
+        "title": "Failure",
+        "sub_title": "Failed to get the contract.",
+        "continue": "Continue"
+      },
+      "attach_fail": {
+        "title": "Failure",
+        "sub_title": "Failed to attach a file.",
+        "continue": "continue"
+      },
+      "confirm_delete": {
+        "title": "Are you sure you want to delete?",
+        "sub_title": "This file will be removed permanently.",
+        "continue": "Delete"
+      },
+      "delete_success": {
+        "title": "Success",
+        "sub_title": "The attachment is successfully removed!",
+        "continue": "Continue"
+      },
+      "upload_fail": {
+        "title": "Failure",
+        "sub_title": "Failed to upload file.",
+        "continue": "continue"
+      },
+      "lock_fail": {
+        "title": "Failure",
+        "sub_title": "Failed to lock the contract.",
+        "continue": "Continue"
+      },
+      "adjust_fail": {
+        "title": "Failure",
+        "sub_title": "Failed to adjust the contract.",
+        "continue": "Continue"
+      },
     }
   },
   "page_matching": {

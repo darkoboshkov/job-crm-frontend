@@ -539,16 +539,16 @@ export default {
         this.$store.dispatch("updateShowSuccessModal", true);
         this.$store
           .dispatch("updateSuccessModalContent", {
-            title: this.$t("page_detail_offer.modal.sign_success.title"),
-            subTitle: this.$t("page_detail_offer.modal.sign_success.sub_title"),
-            button: this.$t("page_detail_offer.modal.sign_success.continue")
+            title: this.$t("page_offer_detail.modal.sign_success.title"),
+            subTitle: this.$t("page_offer_detail.modal.sign_success.sub_title"),
+            button: this.$t("page_offer_detail.modal.sign_success.continue")
           })
           .catch(e => {
             this.$store.dispatch("updateShowErrorModal", true);
             this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_detail_offer.modal.sign_fail.title"),
-              subTitle: this.$t("page_detail_offer.modal.sign_fail.sub_title"),
-              button: this.$t("page_detail_offer.modal.sign_fail.continue")
+              title: this.$t("page_offer_detail.modal.sign_fail.title"),
+              subTitle: this.$t("page_offer_detail.modal.sign_fail.sub_title"),
+              button: this.$t("page_offer_detail.modal.sign_fail.continue")
             });
           });
       });
@@ -562,9 +562,9 @@ export default {
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
           this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_detail_offer.modal.decline_fail.title"),
-            subTitle: this.$t("page_detail_offer.modal.decline_fail.sub_title"),
-            button: this.$t("page_detail_offer.modal.decline_fail.continue")
+            title: this.$t("page_offer_detail.modal.decline_fail.title"),
+            subTitle: this.$t("page_offer_detail.modal.decline_fail.sub_title"),
+            button: this.$t("page_offer_detail.modal.decline_fail.continue")
           });
         });
     },
@@ -583,9 +583,9 @@ export default {
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
           this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_detail_offer.modal.update_fail.title"),
-            subTitle: this.$t("page_detail_offer.modal.update_fail.sub_title"),
-            button: this.$t("page_detail_offer.modal.update_fail.continue")
+            title: this.$t("page_offer_detail.modal.update_fail.title"),
+            subTitle: this.$t("page_offer_detail.modal.update_fail.sub_title"),
+            button: this.$t("page_offer_detail.modal.update_fail.continue")
           });
         });
     },
@@ -616,9 +616,9 @@ export default {
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
           this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_detail_offer.modal.get_fail.title"),
-            subTitle: this.$t("page_detail_offer.modal.get_fail.sub_title"),
-            button: this.$t("page_detail_offer.modal.get_fail.continue")
+            title: this.$t("page_offer_detail.modal.get_fail.title"),
+            subTitle: this.$t("page_offer_detail.modal.get_fail.sub_title"),
+            button: this.$t("page_offer_detail.modal.get_fail.continue")
           });
         });
     },
@@ -666,35 +666,35 @@ export default {
             this.$store.dispatch("updateLoading", false);
 
             this.getOfferDetails();
-          }).catch(e => {
+          })
+          .catch(e => {
             this.$store.dispatch("updateShowErrorModal", true);
             this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_detail_offer.modal.attach_fail.title"),
+              title: this.$t("page_offer_detail.modal.attach_fail.title"),
               subTitle: this.$t(
-                "page_detail_offer.modal.attach_fail.sub_title"
+                "page_offer_detail.modal.attach_fail.sub_title"
               ),
-              button: this.$t("page_detail_offer.modal.attach_fail.continue")
+              button: this.$t("page_offer_detail.modal.attach_fail.continue")
             });
-        }).catch(e => {
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_detail_offer.modal.upload_fail.title"),
-            subTitle: this.$t("page_detail_offer.modal.upload_fail.sub_title"),
-            button: this.$t("page_detail_offer.modal.upload_fail.continue")
+          })
+          .catch(e => {
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_offer_detail.modal.upload_fail.title"),
+              subTitle: this.$t(
+                "page_offer_detail.modal.upload_fail.sub_title"
+              ),
+              button: this.$t("page_offer_detail.modal.upload_fail.continue")
+            });
           });
-        });
       });
     },
     confirmDelete(attachment) {
       this.$store.dispatch("updateShowSuccessModal", true);
       this.$store.dispatch("updateSuccessModalContent", {
-        // title: this.$t("page_detail_offer.modal.confirm_delete.title"),
-        // subTitle: this.$t("page_detail_offer.modal.confirm_delete.sub_title"),
-        // button: this.$t("page_detail_offer.modal.confirm_delete.continue"),
-
-        title: this.$t("Are you sure you want to delete?"),
-        subTitle: this.$t("This file will be removed permanently."),
-        button: this.$t("Delete"),
+        title: this.$t("page_offer_detail.modal.confirm_delete.title"),
+        subTitle: this.$t("page_offer_detail.modal.confirm_delete.sub_title"),
+        button: this.$t("page_offer_detail.modal.confirm_delete.continue"),
         onButtonClick: () => {
           this.deleteAttachment(attachment);
         }
@@ -702,35 +702,30 @@ export default {
     },
     deleteAttachment(attachment) {
       jobOfferApi
-        .deleteAttachment(
-            {
-              companyId: this.companyId,
-              _id: this.offerId,
-              attachmentId: attachment._id
-            }
-        )
+        .deleteAttachment({
+          companyId: this.companyId,
+          _id: this.offerId,
+          attachmentId: attachment._id
+        })
         .then(res => {
           this.$store.dispatch("updateLoading", false);
 
           this.$store.dispatch("updateShowSuccessModal", true);
           this.$store.dispatch("updateSuccessModalContent", {
-            // title: this.$t("page_detail_offer.modal.delete_success.title"),
-            // subTitle: this.$t(
-            //   "page_detail_offer.modal.delete_success.sub_title"
-            // ),
-            // button: this.$t("page_detail_offer.modal.delete_success.continue"),
-
-            title: this.$t("Success"),
-            subTitle: this.$t("The attachment is successfully removed!"),
-            button: this.$t("Continue"),
-            onButtonClick: () => { this.getOfferDetails(); }
+            title: this.$t("page_offer_detail.modal.delete_success.title"),
+            subTitle: this.$t(
+              "page_offer_detail.modal.delete_success.sub_title"
+            ),
+            button: this.$t("page_offer_detail.modal.delete_success.continue"),
+            onButtonClick: () => {
+              this.getOfferDetails();
+            }
           });
         });
     }
   },
   watch: {
     "model.status"(value) {
-      console.log("model.status", value);
       if (value === "open") {
         this.$router.replace("/");
       }
