@@ -205,25 +205,31 @@ export default {
         console.error("Your browser does not support File API");
       }
     },
-    update() {
-      const data = new FormData();
-      data.append("title", this.imageData.title);
-      data.append("file", this.imageData.file);
-      this.isImageLoading = true;
-      settingsApi.uploadImage(data).then(response => {
+    async update() {
+      try {
+        if (this.imageData.file) {
+          this.isImageLoading = true;
+          const data = new FormData();
+          data.append("title", this.imageData.title);
+          data.append("file", this.imageData.file);
+          const response = await settingsApi.uploadImage(data);
+          this.isImageLoading = false;
+          this.model.image = response.path;
+          delete this.imageData.file;
+        }
+        await settingsApi.patch(
+          Object.assign(this.$store.state.user, this.model)
+        );
+        this.$store.dispatch("updateShowSuccessModal", true);
+        this.$store.dispatch("updateSuccessModalContent", {
+          title: this.$t("page_setting.modal.account_change.title"),
+          subTitle: this.$t("page_setting.modal.account_change.sub_title"),
+          button: this.$t("page_setting.modal.account_change.continue")
+        });
+      } catch (error) {
         this.isImageLoading = false;
-        this.model.image = response.path;
-        settingsApi
-          .patch(Object.assign(this.$store.state.user, this.model))
-          .then(res => {
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_setting.modal.account_change.title"),
-              subTitle: this.$t("page_setting.modal.account_change.sub_title"),
-              button: this.$t("page_setting.modal.account_change.continue")
-            });
-          });
-      });
+        console.log(error);
+      }
     }
   }
 };

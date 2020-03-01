@@ -321,11 +321,7 @@ export default {
             }
             row.company = row.company[0];
             row.position = row.position[0];
-
-            const date = new Date(row.createdAt);
-            row.createdAt = `${date.getFullYear()}-${date.getMonth() +
-              1}-${date.getDate()}
-                ${date.getHours()}: ${date.getMinutes()}:${date.getSeconds()}`;
+            row.createdAt = new Date(row.createdAt).toLocaleString();
             row.name = row.firstName ? row.firstName + " " + row.lastName : "";
 
             return row;

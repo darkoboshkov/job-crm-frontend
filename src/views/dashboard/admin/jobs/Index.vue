@@ -200,7 +200,9 @@ export default {
   methods: {
     computedDuration() {
       return function(row) {
-        return `${new Date(row.startDate).toLocaleDateString()} - ${new Date(row.endDate).toLocaleDateString()}`;
+        return `${new Date(row.startDate).toLocaleDateString()} - ${new Date(
+          row.endDate
+        ).toLocaleDateString()}`;
       };
     },
     computedManagerName() {

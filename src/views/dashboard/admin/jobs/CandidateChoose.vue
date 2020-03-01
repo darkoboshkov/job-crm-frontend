@@ -36,15 +36,7 @@
 
         <button
           class="btn btn-blue large ml-2"
-          @click="
-            $router.push({
-              name: 'admin-jobs-new-candidate',
-              params: {
-                companyId: $route.params.companyId,
-                jobId: $route.params.jobId
-              }
-            })
-          "
+          @click="$router.push({ name: 'admin-users-create' })"
           style="min-width:240px;"
         >
           {{ $t("page_jobs_choose_candidate.button.new") }}
