@@ -129,7 +129,6 @@ export default {
     return request(
       "delete",
       `/joboffers/${params.companyId}/${params._id}/attachment/${params.attachmentId}`,
-      params,
       resolve,
       reject
     );

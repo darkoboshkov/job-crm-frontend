@@ -21,14 +21,6 @@ export default {
     return request("patch", `/companies/${companyId}`, params, resolve, reject);
   },
   delete(params, resolve, reject = null) {
-    const companyId = params.companyId;
-    delete params.companyId;
-    return request(
-      "delete",
-      `/companies/${companyId}`,
-      params,
-      resolve,
-      reject
-    );
+    return request("delete", `/companies/${params.companyId}`, resolve, reject);
   }
 };

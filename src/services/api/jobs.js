@@ -39,7 +39,6 @@ export default {
     return request(
       "delete",
       `/jobs/${params.companyId}/${params._id}`,
-      params,
       resolve,
       reject
     );

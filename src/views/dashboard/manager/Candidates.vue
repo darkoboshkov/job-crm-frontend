@@ -177,8 +177,7 @@ export default {
         page: 1,
         limit: 5,
         sort: "",
-        order: "",
-        companyId: this.$store.state.user.companyId
+        order: ""
       },
       selectedCandidate: null,
       imageMode: true
@@ -255,16 +254,6 @@ export default {
     imageView(mode) {
       this.imageMode = !!mode;
     },
-    selectCandidate(props) {
-      this.$store.dispatch("updateShowErrorModal", true);
-      this.$store.dispatch("updateErrorModalContent", {
-        title: this.$t("page_candidates.modal.delete.title"),
-        subTitle: this.$t("page_candidates.modal.delete.sub_title"),
-        button: this.$t("page_candidates.modal.delete.continue")
-      });
-
-      this.selectedCandidate = props.row;
-    },
     goToProfile(props) {
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/profile/${props.row._id}`);
@@ -292,8 +281,21 @@ export default {
       this.getWorkers();
     },
     filter(v) {},
+    selectCandidate(props) {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_candidates.modal.delete.title"),
+        subTitle: this.$t("page_candidates.modal.delete.sub_title"),
+        button: this.$t("page_candidates.modal.delete.continue"),
+        onButtonClick: () => {
+          this.deleteCandidate();
+        }
+      });
+
+      this.selectedCandidate = props.row;
+    },
     deleteCandidate() {
-      this.$store.dispatch("updateShowErrorModal", false);
+      console.log(this.companyId);
       if (this.selectedCandidate) {
         userApi
           .delete({
@@ -301,13 +303,18 @@ export default {
             id: this.selectedCandidate._id
           })
           .then(() => {
+            this.$store.dispatch("updateShowErrorModal", false);
             this.getWorkers();
           });
       }
     },
     getWorkers() {
       return userApi
-        .getCompanyWorkers(Object.assign(this.serverParams))
+        .getCompanyWorkers(
+          Object.assign(this.serverParams, {
+            companyId: this.companyId
+          })
+        )
         .then(res => {
           this.rows = res.docs.map(row => {
             if (row.birthday) {

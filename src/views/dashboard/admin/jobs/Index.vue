@@ -62,7 +62,10 @@
                 </a>
               </b-dropdown-item>
             </b-dropdown>
-            <button class="btn btn-transparent" @click="deleteJob(props)">
+            <button
+              class="btn btn-transparent"
+              @click="deleteJobConfirm(props)"
+            >
               <i class="hiway-crm-icon icon-bin" />
             </button>
           </div>
@@ -186,7 +189,8 @@ export default {
         limit: 5,
         sort: "",
         order: ""
-      }
+      },
+      selectedJob: null
     };
   },
   computed: {
@@ -262,13 +266,27 @@ export default {
         );
       }
     },
-    deleteJob(props) {
+    deleteJobConfirm(props) {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_jobs.modal.delete.title"),
+        subTitle: this.$t("page_jobs.modal.delete.sub_title"),
+        button: this.$t("page_jobs.modal.delete.continue"),
+        onButtonClick: () => {
+          this.deleteJob();
+        }
+      });
+
+      this.selectedJob = props.row;
+    },
+    deleteJob() {
       return jobsApi
         .delete({
-          companyId: props.row.company._id,
-          _id: props.row._id
+          companyId: this.selectedJob.company._id,
+          _id: this.selectedJob._id
         })
         .then(res => {
+          this.$store.dispatch("updateShowErrorModal", false);
           this.getJobs();
         });
     }

@@ -9,6 +9,7 @@
     "register": "Register",
     "reset": "Reset",
     "accept": "Accept",
+    "no": "No",
     "ok": "Ok",
     "save": "Save",
     "cancel": "Cancel",
@@ -403,6 +404,13 @@
       "actions": "Actions",
       "start_matching": "Start Matching",
       "view_job": "View Job"
+    },
+    "modal": {
+      "delete": {
+        "title": "Are you sure?",
+        "sub_title": "Are you sure you want to delete this job?",
+        "continue": "Continue"
+      }
     }
   },
   "page_job_detail": {

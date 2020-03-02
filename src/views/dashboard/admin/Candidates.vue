@@ -251,19 +251,6 @@ export default {
     imageView(mode) {
       this.imageMode = !!mode;
     },
-    selectCandidate(props) {
-      this.$store.dispatch("updateShowErrorModal", true);
-      this.$store.dispatch("updateErrorModalContent", {
-        title: this.$t("page_candidates.modal.delete.title"),
-        subTitle: this.$t("page_candidates.modal.delete.sub_title"),
-        button: this.$t("page_candidates.modal.delete.continue"),
-        onButtonClick: () => {
-          this.deleteCandidate();
-        }
-      });
-
-      this.selectedCandidate = props.row;
-    },
     goToProfile(props) {
       if (props && props.row) {
         this.$router.push(
@@ -293,9 +280,20 @@ export default {
       this.getWorkers();
     },
     filter(v) {},
-    deleteCandidate() {
-      this.$store.dispatch("updateShowErrorModal", false);
+    selectCandidate(props) {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_candidates.modal.delete.title"),
+        subTitle: this.$t("page_candidates.modal.delete.sub_title"),
+        button: this.$t("page_candidates.modal.delete.continue"),
+        onButtonClick: () => {
+          this.deleteCandidate();
+        }
+      });
 
+      this.selectedCandidate = props.row;
+    },
+    deleteCandidate() {
       if (this.selectedCandidate) {
         userApi
           .delete({
@@ -303,6 +301,7 @@ export default {
             id: this.selectedCandidate._id
           })
           .then(() => {
+            this.$store.dispatch("updateShowErrorModal", false);
             this.getWorkers();
           });
       }

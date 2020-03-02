@@ -69,14 +69,9 @@ export default {
     );
   },
   delete(params, resolve, reject = null) {
-    const companyId = params.companyId;
-    const id = params.id;
-    delete params.companyId;
-    delete params.id;
     return request(
       "delete",
-      `/users/${companyId}/${id}`,
-      params,
+      `/users/${params.companyId}/${params.id}`,
       resolve,
       reject
     );
@@ -93,8 +88,11 @@ export default {
     );
   },
   deletePendingWorker(params, resolve, reject = null) {
-    const id = params.id;
-    delete params.id;
-    return request("delete", `/users/pending-workers/${id}`, resolve, reject);
+    return request(
+      "delete",
+      `/users/pending-workers/${params.id}`,
+      resolve,
+      reject
+    );
   }
 };

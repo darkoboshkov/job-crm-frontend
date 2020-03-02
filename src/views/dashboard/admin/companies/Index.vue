@@ -263,18 +263,21 @@ export default {
       this.$store.dispatch("updateErrorModalContent", {
         title: this.$t("page_companies.modal.company_delete.title"),
         subTitle: this.$t("page_companies.modal.company_delete.sub_title"),
-        button: this.$t("page_companies.modal.company_delete.continue")
+        button: this.$t("page_companies.modal.company_delete.continue"),
+        onButtonClick: () => {
+          this.deleteCompany();
+        }
       });
 
       this.idToDelete = props?.row?._id;
     },
     deleteCompany() {
-      this.$store.dispatch("updateShowErrorModal", false);
       companyApi
         .delete({
           companyId: this.idToDelete
         })
         .then(() => {
+          this.$store.dispatch("updateShowErrorModal", false);
           this.getCompanies();
         });
     },

@@ -295,7 +295,10 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-6 text-left">
-                  <button class="btn btn-red" @click.prevent="deleteCompany">
+                  <button
+                    class="btn btn-red"
+                    @click.prevent="deleteCompanyConfirm"
+                  >
                     {{ $t("page_detail_company.button.delete") }}
                   </button>
                 </div>
@@ -414,37 +417,25 @@ export default {
       e.preventDefault();
       this.update();
     },
+    deleteCompanyConfirm() {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_companies.modal.company_delete.title"),
+        subTitle: this.$t("page_companies.modal.company_delete.sub_title"),
+        button: this.$t("page_companies.modal.company_delete.continue"),
+        onButtonClick: () => {
+          this.deleteCompany();
+        }
+      });
+    },
     deleteCompany() {
       companyApi
         .delete({
           companyId: this.companyId
         })
         .then(res => {
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_detail_company.modal.update_success.title"),
-            subTitle: this.$t(
-              "page_detail_company.modal.update_success.sub_title"
-            ),
-            button: this.$t("page_detail_company.modal.update_success.continue")
-          });
-
-          setTimeout(() => {
-            this.$router.push("/admin/dashboard/companies");
-          }, 3000);
-        })
-        .catch(err => {
-          // let read = errorReader(err);
-          // this.error = read.param + ' is ' + read.msg.toLowerCase();
-
-          this.error = err.response.data?.errors?.msg;
-
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_detail_company.modal.update_error.title"),
-            subTitle: this.error,
-            button: this.$t("page_detail_company.modal.update_error.continue")
-          });
+          this.$store.dispatch("updateShowErrorModal", false);
+          this.$router.push("/admin/dashboard/companies");
         });
     }
   },
