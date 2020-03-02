@@ -104,7 +104,7 @@
                 </li>
                 <li>
                   {{ $t("page_profile.form.location") }}
-                  <span class="pull-right">{{ model.location }}</span>
+                  <span class="pull-right">{{ model.city }}</span>
                 </li>
               </ul>
             </div>
@@ -180,6 +180,7 @@ export default {
   name: "ProfileView",
   data() {
     return {
+      APP_URL,
       editProfile: false,
       userStates: [
         {
@@ -234,6 +235,7 @@ export default {
           }
           this.model.registeredAt = new Date(res.createdAt).toDateString();
           this.model.image = res.image;
+          this.model.city = res.city;
         });
     },
     onEditProfile() {

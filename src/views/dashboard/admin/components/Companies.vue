@@ -36,6 +36,7 @@
               v-if="row.logo"
               :src="APP_URL + row.logo"
               style="max-width: 45px; margin-right: 15px;"
+              class="rounded-circle"
             />
             <div v-else class="avatar-placeholder mr-2"></div>
             <div class="flex-1">
