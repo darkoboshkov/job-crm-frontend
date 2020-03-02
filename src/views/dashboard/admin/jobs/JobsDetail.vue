@@ -99,56 +99,65 @@
             <div>
               <ul class="custom-list">
                 <li>
-                  {{ $t("page_job_detail.form.company") }}
-                  <div class="pull-right">
-                    <b-form-select
-                      v-if="editJob"
-                      v-model="model.company"
-                      class="normal-size"
-                      style="margin-top:-8px"
-                    >
-                      <option
-                        v-for="(company, index) in companies"
-                        :value="company"
-                        :key="index"
+                  <div class="d-flex align-items-center">
+                    <span  class="flex-1">
+                      {{ $t("page_job_detail.form.company") }}
+                    </span>
+                    <div>
+                      <b-form-select
+                          v-if="editJob"
+                          v-model="model.company"
+                          class="normal-size"
+                          style="margin-top:-8px"
                       >
-                        {{ company && company.name }}
-                      </option>
-                    </b-form-select>
-                    <span v-else>{{
+                        <option
+                            v-for="(company, index) in companies"
+                            :value="company"
+                            :key="index"
+                        >
+                          {{ company && company.name }}
+                        </option>
+                      </b-form-select>
+                      <span v-else>{{
                       model.company && model.company.name
                     }}</span>
+                    </div>
                   </div>
+
+
                 </li>
 
                 <li>
-                  {{ $t("page_job_detail.form.manager") }}
-                  <div class="pull-right">
-                    <b-form-select
-                      v-if="editJob"
-                      v-model="model.manager"
-                      class="normal-size"
-                      style="margin-top:-8px"
-                    >
-                      <option
-                        v-for="(manager, index) in filteredManagers"
-                        :value="manager"
-                        :key="index"
+                  <div class="d-flex align-items-center">
+                    <span  class="flex-1">
+                       {{ $t("page_job_detail.form.manager") }}
+                    </span>
+                    <div>
+                      <b-form-select
+                          v-if="editJob"
+                          v-model="model.manager"
+                          class="normal-size"
                       >
-                        {{
+                        <option
+                            v-for="(manager, index) in filteredManagers"
+                            :value="manager"
+                            :key="index"
+                        >
+                          {{
                           manager && manager.firstName + " " + manager.lastName
-                        }}
-                      </option>
-                    </b-form-select>
-                    <span v-else>{{
+                          }}
+                        </option>
+                      </b-form-select>
+                      <span v-else>{{
                       model.manager &&
                         model.manager.firstName + " " + model.manager.lastName
                     }}</span>
+                    </div>
                   </div>
                 </li>
 
                 <li>
-                  <div class="d-flex">
+                  <div class="d-flex align-items-center">
                     <span  class="flex-1">
                        {{ $t("page_job_detail.form.wage") }}
                     </span>
@@ -162,7 +171,7 @@
                 </li>
 
                 <li>
-                  <div class="d-flex">
+                  <div class="d-flex align-items-center">
                     <span  class="flex-1">
                        {{ $t("page_job_detail.form.start_date") }}
                     </span>
@@ -180,7 +189,7 @@
                 </li>
 
                 <li>
-                  <div class="d-flex">
+                  <div class="d-flex align-items-center">
                     <span  class="flex-1">
                       {{ $t("page_job_detail.form.end_date") }}
                     </span>

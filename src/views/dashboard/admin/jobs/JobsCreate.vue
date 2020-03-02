@@ -115,7 +115,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="d-flex">
+                  <div class="d-flex align-items-center">
                     <span  class="flex-1">
                     {{ $t("page_job_detail.form.wage") }}
                     </span>
@@ -126,7 +126,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="d-flex">
+                  <div class="d-flex align-items-center">
                     <span  class="flex-1">
                       {{ $t("page_job_detail.form.start_date") }}
                     </span>
@@ -137,7 +137,7 @@
                 </li>
 
                 <li>
-                  <div class="d-flex">
+                  <div class="d-flex align-items-center">
                     <span  class="flex-1">
                       {{ $t("page_job_detail.form.end_date") }}
                     </span>
