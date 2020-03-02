@@ -148,39 +148,51 @@
                 </li>
 
                 <li>
-                  {{ $t("page_job_detail.form.wage") }}
-                  <div class="pull-right">
-                    <b-input v-if="editJob" v-model="model.wage" />
-                    <div v-else>
-                      {{ model.wage }}
+                  <div class="d-flex">
+                    <span  class="flex-1">
+                       {{ $t("page_job_detail.form.wage") }}
+                    </span>
+                    <div class="pull-right">
+                      <b-input v-if="editJob" v-model="model.wage" />
+                      <div v-else>
+                        {{ model.wage }}
+                      </div>
                     </div>
                   </div>
                 </li>
 
                 <li>
-                  {{ $t("page_job_detail.form.start_date") }}
-                  <div class="pull-right">
-                    <b-input
-                      type="date"
-                      v-if="editJob"
-                      v-model="model.startDate"
-                    />
-                    <div v-else>
-                      {{ model.startDate | dateFormatter }}
+                  <div class="d-flex">
+                    <span  class="flex-1">
+                       {{ $t("page_job_detail.form.start_date") }}
+                    </span>
+                    <div class="pull-right">
+                      <b-input
+                          type="date"
+                          v-if="editJob"
+                          v-model="model.startDate"
+                      />
+                      <div v-else>
+                        {{ model.startDate | dateFormatter }}
+                      </div>
                     </div>
                   </div>
                 </li>
 
                 <li>
-                  {{ $t("page_job_detail.form.end_date") }}
-                  <div class="pull-right">
-                    <b-input
-                      type="date"
-                      v-if="editJob"
-                      v-model="model.endDate"
-                    />
-                    <div v-else>
-                      {{ model.endDate | dateFormatter }}
+                  <div class="d-flex">
+                    <span  class="flex-1">
+                      {{ $t("page_job_detail.form.end_date") }}
+                    </span>
+                    <div>
+                      <b-input
+                          type="date"
+                          v-if="editJob"
+                          v-model="model.endDate"
+                      />
+                      <div v-else>
+                        {{ model.endDate | dateFormatter }}
+                      </div>
                     </div>
                   </div>
                 </li>

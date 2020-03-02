@@ -114,25 +114,36 @@
                     </b-form-select>
                   </div>
                 </li>
-
                 <li>
-                  {{ $t("page_job_detail.form.wage") }}
-                  <div class="pull-right">
-                    <b-input v-model="model.wage" />
+                  <div class="d-flex">
+                    <span  class="flex-1">
+                    {{ $t("page_job_detail.form.wage") }}
+                    </span>
+                    <div>
+                      <b-input v-model="model.wage" />
+                    </div>
+
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex">
+                    <span  class="flex-1">
+                      {{ $t("page_job_detail.form.start_date") }}
+                    </span>
+                    <div>
+                      <b-input type="datetime" v-model="model.startDate" />
+                    </div>
                   </div>
                 </li>
 
                 <li>
-                  {{ $t("page_job_detail.form.start_date") }}
-                  <div class="pull-right">
-                    <b-input type="datetime-local" v-model="model.startDate" />
-                  </div>
-                </li>
-
-                <li>
-                  {{ $t("page_job_detail.form.end_date") }}
-                  <div class="pull-right">
-                    <b-input type="datetime-local" v-model="model.endDate" />
+                  <div class="d-flex">
+                    <span  class="flex-1">
+                      {{ $t("page_job_detail.form.end_date") }}
+                    </span>
+                    <div>
+                      <b-input type="datetime" v-model="model.endDate" />
+                    </div>
                   </div>
                 </li>
               </ul>
