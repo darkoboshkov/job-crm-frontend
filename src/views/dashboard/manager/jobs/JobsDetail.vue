@@ -283,12 +283,14 @@
                   class="d-none"
                   name="attachment"
                   accept=".doc,.docx,.pdf"
+                  :disabled="!editJob"
                   @change="onFileChange"
                 />
                 <label
                   for="attachment"
                   class="btn btn-blue m-0"
                   style="min-width:160px;"
+                  :style="{'cursor': !editJob && 'not-allowed'}"
                 >
                   {{ $t("page_job_detail.button.upload") }}
                   <i class="hiway-crm-icon icon-upload" />
