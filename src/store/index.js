@@ -86,7 +86,6 @@ export const actions = {
     commit("UPDATE_SHOW_SUCCESS_MODAL", !!payload);
   },
   updateSuccessModalContent({ commit }, payload) {
-    console.log(payload);
     commit("UPDATE_SUCCESS_MODAL_TITLE", payload.title);
     commit("UPDATE_SUCCESS_MODAL_SUB_TITLE", payload.subTitle);
     commit("UPDATE_SUCCESS_MODAL_BUTTON", payload.button);
