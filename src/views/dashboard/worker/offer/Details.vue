@@ -649,7 +649,7 @@ export default {
 
       this.$store.dispatch("updateLoading", true);
 
-      jobOfferApi.upload(this.companyId, this.offerId, data).then(response => {
+      jobOfferApi.upload(data).then(response => {
         this.imageData.path = response.path;
 
         jobOfferApi

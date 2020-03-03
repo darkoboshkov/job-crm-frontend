@@ -60,10 +60,10 @@ export default {
       reject
     );
   },
-  upload(companyId, _id, params, resolve, reject = null) {
+  upload(params, resolve, reject = null) {
     return request(
       "post",
-      `/joboffers/${companyId}/${_id}/attachment`,
+      `/joboffers/attachment`,
       params,
       resolve,
       reject

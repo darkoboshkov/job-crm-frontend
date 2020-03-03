@@ -530,7 +530,7 @@ export default {
       this.$store.dispatch("updateLoading", true);
 
       jobOfferApi
-        .upload(this.companyId, this.offerId, data)
+        .upload(data)
         .then(response => {
           this.imageData.path = response.path;
 
