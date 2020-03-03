@@ -332,9 +332,6 @@
                         <b-dropdown-item @click="downloadFile(props)">
                           {{ $t("page_job_detail.download_file") }}
                         </b-dropdown-item>
-                        <b-dropdown-item @click="deleteFile(props)">
-                          {{ $t("page_job_detail.delete_file") }}
-                        </b-dropdown-item>
                       </b-dropdown>
                     </span>
                     <button
@@ -424,9 +421,12 @@ export default {
     }
   },
   methods: {
-    viewFile() {},
-    downloadFile() {},
-    deleteFile() {},
+    viewFile() {
+      //
+    },
+    downloadFile() {
+      //
+    },
     fetchJobDetails() {
       jobsApi.get({ companyId: this.companyId, id: this.jobId }).then(res => {
         this.model = res;
