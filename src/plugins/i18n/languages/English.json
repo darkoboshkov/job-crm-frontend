@@ -455,6 +455,11 @@
       "update_error": {
         "title": "Error",
         "continue": "Click here to continue."
+      },
+      "confirm_delete": {
+        "title": "Are you sure you want to delete?",
+        "sub_title": "This Job Offer will be removed permanently.",
+        "continue": "Delete"
       }
     }
   },

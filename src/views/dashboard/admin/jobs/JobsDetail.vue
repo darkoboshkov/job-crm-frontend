@@ -298,7 +298,9 @@
                         $t("page_job_detail.view_offer")
                       }}</b-dropdown-item>
                     </b-dropdown>
-                    <i class="hiway-crm-icon icon-bin" />
+                    <button class="btn btn-transparent" @click="showDeleteOfferModal(offer._id)">
+                      <i class="hiway-crm-icon icon-bin" />
+                    </button>
                   </div>
                 </li>
               </ul>
@@ -402,7 +404,8 @@ export default {
       companyId: "",
       jobId: "",
       jobOffers: [],
-      imageData: {}
+      imageData: {},
+      selectedJobOfferId: null
     };
   },
   filters: {
@@ -528,6 +531,29 @@ export default {
             button: this.$t("page_job_detail.modal.update_error.continue")
           });
         });
+    },
+    showDeleteOfferModal(offerId) {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_job_detail.modal.confirm_delete.title"),
+        subTitle: this.$t("page_job_detail.modal.confirm_delete.sub_title"),
+        button: this.$t("page_job_detail.modal.confirm_delete.continue"),
+        onButtonClick: () => {
+          this.deleteJobOffer();
+        }
+      });
+      this.selectedJobOfferId = offerId;
+    },
+    deleteJobOffer() {
+      return joboffersApi
+          .delete({
+            companyId: this.companyId,
+            _id: this.selectedJobOfferId
+          })
+          .then(res => {
+            this.$store.dispatch("updateShowErrorModal", false);
+            this.fetchJobOffers();
+          });
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
