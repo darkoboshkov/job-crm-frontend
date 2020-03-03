@@ -238,7 +238,8 @@ export default {
 
         company: null,
         manager: null,
-        position: null
+        position: null,
+        attachments: []
       },
       levels: [],
       state: [],
@@ -307,51 +308,36 @@ export default {
         });
     },
     onFileChange(e) {
-      // let files = e.target.files || e.dataTransfer.files;
-      // if (!files.length) {
-      //   return;
-      // }
-      //
-      // if (window.File && window.FileList && window.FileReader) {
-      //   if (files.length !== 1) return;
-      //   let file = files[0];
-      //
-      //   this.imageData = {
-      //     file: file,
-      //     name: file.name,
-      //     size: file.size.toString()
-      //   };
-      //
-      //   this.upload();
-      // } else {
-      //   console.error("Your browser does not support File API");
-      // }
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+
+      if (window.File && window.FileList && window.FileReader) {
+        if (files.length !== 1) return;
+        let file = files[0];
+
+        this.imageData = {
+          file: file,
+          name: file.name,
+          size: file.size.toString()
+        };
+
+        this.upload();
+      } else {
+        console.error("Your browser does not support File API");
+      }
     },
     upload() {
-      // const data = new FormData();
-      // data.append("file", this.imageData.file);
-      //
-      // this.$store.dispatch("updateLoading", true);
-      //
-      // jobsApi.upload(data).then(response => {
-      //   this.imageData.path = response.path;
-      //
-      //   jobsApi
-      //     .addAttachment(
-      //       Object.assign(
-      //         {
-      //           companyId: this.companyId,
-      //           _id: this.jobId
-      //         },
-      //         this.imageData
-      //       )
-      //     )
-      //     .then(res => {
-      //       this.$store.dispatch("updateLoading", false);
-      //
-      //       this.attachments = res.attachments;
-      //     });
-      // });
+      const data = new FormData();
+      data.append("file", this.imageData.file);
+      this.$store.dispatch("updateLoading", true);
+
+      jobsApi.upload(data).then(response => {
+        this.imageData.path = response.path;
+        this.model.attachments.push(this.imageData)
+        this.$store.dispatch("updateLoading", false);
+      });
     }
   }
 };

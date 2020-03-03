@@ -391,7 +391,8 @@ export default {
         endDate: null,
         company: null,
         manager: null,
-        position: null
+        position: null,
+        attachments: []
       },
       companies: [],
       managers: [],
@@ -400,8 +401,7 @@ export default {
       companyId: "",
       jobId: "",
       jobOffers: [],
-      imageData: {},
-      attachments: []
+      imageData: {}
     };
   },
   filters: {
@@ -571,7 +571,7 @@ export default {
           .then(res => {
             this.$store.dispatch("updateLoading", false);
 
-            this.attachments = res.attachments;
+            this.model.attachments = res.attachments;
           });
       });
     }
