@@ -460,6 +460,11 @@
         "title": "Are you sure you want to delete?",
         "sub_title": "This Job Offer will be removed permanently.",
         "continue": "Delete"
+      },
+      "confirm_delete_attach": {
+        "title": "Are you sure you want to delete?",
+        "sub_title": "This file will be removed permanently.",
+        "continue": "Delete"
       }
     }
   },

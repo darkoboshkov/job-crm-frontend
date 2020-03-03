@@ -303,10 +303,12 @@
                       {{ attachment.uploadedAt | timeFormatter }}</span
                     >
                     <span class="mr-5">{{ attachment.size }} B</span>
-                    <span class="mr-4"
-                    ><i class="hiway-crm-icon icon-more-vertical"></i
+                    <span class="mr-4">
+                      <i class="hiway-crm-icon icon-more-vertical"></i
                     ></span>
-                    <span><i class="hiway-crm-icon icon-bin"></i></span>
+                    <button class="btn btn-transparent" @click="showDeleteAttachmentModal(attachment._id)">
+                      <i class="hiway-crm-icon icon-bin" />
+                    </button>
                   </div>
                 </li>
               </ul>
@@ -359,7 +361,8 @@ export default {
       jobId: "",
       jobOffers: [],
       imageData: {},
-      selectedJobOfferId: null
+      selectedJobOfferId: null,
+      selectedAttachmentId: null
     };
   },
   filters: {
@@ -526,7 +529,31 @@ export default {
             this.model.attachments = res.attachments;
           });
       });
-    }
+    },
+    showDeleteAttachmentModal(attachmentId) {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_job_detail.modal.confirm_delete.title"),
+        subTitle: this.$t("page_job_detail.modal.confirm_delete_attach.sub_title"),
+        button: this.$t("page_job_detail.modal.confirm_delete_attach.continue"),
+        onButtonClick: () => {
+          this.deleteAttachment();
+        }
+      });
+      this.selectedAttachmentId = attachmentId;
+    },
+    deleteAttachment() {
+      return jobsApi
+          .deleteAttachment({
+            companyId: this.companyId,
+            _id: this.jobId,
+            attachmentId: this.selectedAttachmentId
+          })
+          .then(res => {
+            this.$store.dispatch("updateShowErrorModal", false);
+            this.fetchJobDetails();
+          });
+    },
   }
 };
 </script>

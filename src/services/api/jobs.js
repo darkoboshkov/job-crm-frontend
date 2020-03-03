@@ -60,5 +60,13 @@ export default {
       resolve,
       reject
     );
-  }
+  },
+  deleteAttachment(params, resolve, reject = null) {
+    return request(
+        "delete",
+        `/jobs/${params.companyId}/${params._id}/attachment/${params.attachmentId}`,
+        resolve,
+        reject
+    );
+  },
 };
