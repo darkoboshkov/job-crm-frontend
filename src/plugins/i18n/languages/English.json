@@ -430,6 +430,9 @@
     "view_offer": "View JobOffer",
     "job_offers": "Job Offers",
     "files": "Files",
+    "view_file": "View File",
+    "download_file": "Download File",
+    "delete_file": "Delete File",
     "button": {
       "upload": "Upload",
       "create_new_job_offer": "Create New Job Offer",
