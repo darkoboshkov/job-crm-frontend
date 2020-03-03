@@ -346,10 +346,8 @@
       "name": "Name",
       "company": "Company",
       "position": "Position",
-      "age": "Age",
       "status": "Status",
       "image": "Image",
-      "since": "Registered Since",
       "location": "Location",
       "actions": "Actions",
       "view_profile": "View Profile"

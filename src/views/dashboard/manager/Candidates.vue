@@ -209,19 +209,9 @@ export default {
           name: "position"
         },
         {
-          label: this.$t("page_candidates.table.since"),
-          field: "createdAt",
-          name: "createdAt"
-        },
-        {
           label: this.$t("page_candidates.table.company"),
           field: "company.name",
           name: "company"
-        },
-        {
-          label: this.$t("page_candidates.table.age"),
-          field: "age",
-          name: "age"
         },
         {
           label: this.$t("page_candidates.table.status"),
