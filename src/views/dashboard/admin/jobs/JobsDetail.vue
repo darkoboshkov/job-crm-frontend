@@ -367,8 +367,8 @@ import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 import errorReader from "@/helpers/ErrorReader";
 import { APP_URL } from "@/constants";
-import dateFormatter from "@/helpers/DateFormatter.js";
-import timeFormatter from "@/helpers/TimeFormatter.js";
+import dateFormatter from "@/helpers/DateFormatter";
+import timeFormatter from "@/helpers/TimeFormatter";
 
 export default {
   name: "JobsDetail",

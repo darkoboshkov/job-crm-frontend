@@ -46,7 +46,7 @@ export default {
   upload(params, resolve, reject = null) {
     return request(
       "post",
-      `/jobs/attachment`,
+      `/jobs/attachment/upload`,
       params,
       resolve,
       reject
