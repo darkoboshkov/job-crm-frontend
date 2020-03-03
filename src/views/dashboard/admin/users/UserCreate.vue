@@ -10,7 +10,7 @@
         <span>{{ $t("common.back") }}</span>
       </a>
     </div>
-    <div class="content">
+    <div class="content shadow-sm">
       <h1 class="title">{{ $t("page_users_create.title") }}</h1>
       <p class="mt-5">{{ $t("page_users_create.description") }}</p>
       <div class="mt-5">
