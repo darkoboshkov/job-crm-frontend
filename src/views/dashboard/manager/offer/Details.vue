@@ -106,7 +106,7 @@
           <i
             class="hiway-crm-icon icon-dot color-yellow mr-2"
             style="font-size: 0.3em;"
-          ></i>
+          />
           {{ $t("page_offer_detail.offer_states." + model.status) }}
         </span>
       </div>
@@ -128,7 +128,7 @@
               <i
                 class="hiway-crm-icon icon-dot color-yellow mr-2"
                 style="font-size: 0.3em;"
-              ></i>
+              />
               {{ managerState }}
             </div>
           </div>
@@ -148,7 +148,7 @@
               <i
                 class="hiway-crm-icon icon-dot color-blue mr-2"
                 style="font-size: 0.3em;"
-              ></i>
+              />
               {{ workerState }}
             </div>
           </div>
@@ -275,7 +275,7 @@
           style="min-width:160px;"
         >
           Upload
-          <i class="hiway-crm-icon icon-upload"></i>
+          <i class="hiway-crm-icon icon-upload" />
         </label>
       </div>
       <div class="card-body">
@@ -295,20 +295,22 @@
             {{ attachment.name }}
           </div>
           <div>
-            <span class="mr-5"
-              >{{ dateFormatter(new Date(attachment.uploadedAt)) }}
-              {{ timeFormatter(new Date(attachment.uploadedAt)) }}</span
-            >
+            <span class="mr-5">
+              {{ dateFormatter(new Date(attachment.uploadedAt)) }}
+              {{ timeFormatter(new Date(attachment.uploadedAt)) }}
+            </span>
             <span class="mr-5">{{ attachment.size }} B</span>
-            <span class="mr-4"
-              ><i class="hiway-crm-icon icon-more-vertical"></i
-            ></span>
-            <span
-              ><i
-                class="hiway-crm-icon icon-bin"
+            <span class="mr-4">
+              <i class="hiway-crm-icon icon-more-vertical" />
+            </span>
+            <span>
+              <button
+                class="btn btn-transparent"
                 @click="confirmDelete(attachment)"
-              ></i
-            ></span>
+              >
+                <i class="hiway-crm-icon icon-bin" />
+              </button>
+            </span>
           </div>
         </div>
       </div>
@@ -319,15 +321,15 @@
       :company="company"
       :manager="manager"
       :worker="worker"
-    ></view-offer>
+    />
   </div>
 </template>
 
 <script>
 import jobOfferApi from "@/services/api/joboffers";
 import ViewJobOffer from "./ViewJobOffer";
-import dateFormatter from "@/helpers/DateFormatter.js";
-import timeFormatter from "@/helpers/TimeFormatter.js";
+import dateFormatter from "@/helpers/DateFormatter";
+import timeFormatter from "@/helpers/TimeFormatter";
 import { APP_URL } from "@/constants";
 
 export default {
@@ -570,8 +572,8 @@ export default {
       });
     },
     confirmDelete(attachment) {
-      this.$store.dispatch("updateShowSuccessModal", true);
-      this.$store.dispatch("updateSuccessModalContent", {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
         title: this.$t("page_offer_detail.modal.confirm_delete.title"),
         subTitle: this.$t("page_offer_detail.modal.confirm_delete.sub_title"),
         button: this.$t("page_offer_detail.modal.confirm_delete.continue"),

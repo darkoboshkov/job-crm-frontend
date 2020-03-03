@@ -44,13 +44,7 @@ export default {
     );
   },
   upload(params, resolve, reject = null) {
-    return request(
-      "post",
-      `/jobs/attachment/upload`,
-      params,
-      resolve,
-      reject
-    );
+    return request("post", `/jobs/attachment/upload`, params, resolve, reject);
   },
   addAttachment(params, resolve, reject = null) {
     return request(
@@ -63,10 +57,10 @@ export default {
   },
   deleteAttachment(params, resolve, reject = null) {
     return request(
-        "delete",
-        `/jobs/${params.companyId}/${params._id}/attachment/${params.attachmentId}`,
-        resolve,
-        reject
+      "delete",
+      `/jobs/${params.companyId}/${params._id}/attachment/${params.attachmentId}`,
+      resolve,
+      reject
     );
-  },
+  }
 };

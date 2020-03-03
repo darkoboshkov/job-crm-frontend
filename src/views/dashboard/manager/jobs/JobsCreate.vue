@@ -91,18 +91,17 @@
 
                 <li>
                   <div class="d-flex align-items-center">
-                    <span  class="flex-1">
-                    {{ $t("page_job_detail.form.wage") }}
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.wage") }}
                     </span>
                     <div>
                       <b-input v-model="model.wage" />
                     </div>
-
                   </div>
                 </li>
                 <li>
                   <div class="d-flex align-items-center">
-                    <span  class="flex-1">
+                    <span class="flex-1">
                       {{ $t("page_job_detail.form.start_date") }}
                     </span>
                     <div>
@@ -113,7 +112,7 @@
 
                 <li>
                   <div class="d-flex align-items-center">
-                    <span  class="flex-1">
+                    <span class="flex-1">
                       {{ $t("page_job_detail.form.end_date") }}
                     </span>
                     <div>
@@ -181,21 +180,22 @@
             </template>
             <div class="card-body">
               <ul class="custom-list">
-                <li class="d-flex"
-                    v-for="(attachment, idx) in model.attachments"
-                    :key="idx"
+                <li
+                  class="d-flex"
+                  v-for="(attachment, idx) in model.attachments"
+                  :key="idx"
                 >
                   <div class="flex-1">
                     {{ attachment.name }}
                   </div>
                   <div>
                     <span class="mr-5"
-                    >{{ attachment.uploadedAt | dateFormatter }}
+                      >{{ attachment.uploadedAt | dateFormatter }}
                       {{ attachment.uploadedAt | timeFormatter }}</span
                     >
                     <span class="mr-5">{{ attachment.size }} B</span>
                     <span class="mr-4"
-                    ><i class="hiway-crm-icon icon-more-vertical"></i
+                      ><i class="hiway-crm-icon icon-more-vertical"></i
                     ></span>
                     <span><i class="hiway-crm-icon icon-bin"></i></span>
                   </div>
@@ -291,28 +291,28 @@ export default {
       }
 
       jobsApi
-          .create(this.model)
-          .then(res => {
-            this.model = res;
-            this.$store.dispatch("updateShowSuccessModal", true);
-            this.$store.dispatch("updateSuccessModalContent", {
-              title: this.$t("page_job_detail.modal.create_success.title"),
-              subTitle: this.$t("page_job_detail.modal.create_success.sub_title"),
-              button: this.$t("page_job_detail.modal.create_success.continue")
-            });
-            this.$router.push({name: "manager-jobs"})
-          })
-          .catch(err => {
-            let read = errorReader(err);
-            this.error = read.param + " is " + read.msg.toLowerCase();
-
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_job_detail.modal.create_error.title"),
-              subTitle: this.$t("page_job_detail.modal.create_error.sub_title"),
-              button: this.$t("page_job_detail.modal.create_error.continue")
-            });
+        .create(this.model)
+        .then(res => {
+          this.model = res;
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_job_detail.modal.create_success.title"),
+            subTitle: this.$t("page_job_detail.modal.create_success.sub_title"),
+            button: this.$t("page_job_detail.modal.create_success.continue")
           });
+          this.$router.push({ name: "manager-jobs" });
+        })
+        .catch(err => {
+          let read = errorReader(err);
+          this.error = read.param + " is " + read.msg.toLowerCase();
+
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_job_detail.modal.create_error.title"),
+            subTitle: this.$t("page_job_detail.modal.create_error.sub_title"),
+            button: this.$t("page_job_detail.modal.create_error.continue")
+          });
+        });
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
@@ -343,7 +343,7 @@ export default {
       jobsApi.upload(data).then(response => {
         this.imageData.path = response.path;
         this.imageData.uploadedAt = new Date();
-        this.model.attachments.push(this.imageData)
+        this.model.attachments.push(this.imageData);
         this.$store.dispatch("updateLoading", false);
       });
     }

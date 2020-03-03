@@ -116,18 +116,17 @@
                 </li>
                 <li>
                   <div class="d-flex align-items-center">
-                    <span  class="flex-1">
-                    {{ $t("page_job_detail.form.wage") }}
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.wage") }}
                     </span>
                     <div>
                       <b-input v-model="model.wage" />
                     </div>
-
                   </div>
                 </li>
                 <li>
                   <div class="d-flex align-items-center">
-                    <span  class="flex-1">
+                    <span class="flex-1">
                       {{ $t("page_job_detail.form.start_date") }}
                     </span>
                     <div>
@@ -138,7 +137,7 @@
 
                 <li>
                   <div class="d-flex align-items-center">
-                    <span  class="flex-1">
+                    <span class="flex-1">
                       {{ $t("page_job_detail.form.end_date") }}
                     </span>
                     <div>
@@ -200,29 +199,30 @@
                   style="min-width:160px;"
                 >
                   {{ $t("page_job_detail.button.upload") }}
-                  <i class="hiway-crm-icon icon-upload"></i>
+                  <i class="hiway-crm-icon icon-upload" />
                 </label>
               </div>
             </template>
             <div class="card-body">
               <ul class="custom-list">
-                <li class="d-flex"
-                    v-for="(attachment, idx) in model.attachments"
-                    :key="idx"
+                <li
+                  class="d-flex"
+                  v-for="(attachment, idx) in model.attachments"
+                  :key="idx"
                 >
                   <div class="flex-1">
                     {{ attachment.name }}
                   </div>
                   <div>
                     <span class="mr-5"
-                    >{{ attachment.uploadedAt | dateFormatter }}
+                      >{{ attachment.uploadedAt | dateFormatter }}
                       {{ attachment.uploadedAt | timeFormatter }}</span
                     >
                     <span class="mr-5">{{ attachment.size }} B</span>
-                    <span class="mr-4"
-                    ><i class="hiway-crm-icon icon-more-vertical"></i
-                    ></span>
-                    <span><i class="hiway-crm-icon icon-bin"></i></span>
+                    <span class="mr-4">
+                      <i class="hiway-crm-icon icon-more-vertical" />
+                    </span>
+                    <span><i class="hiway-crm-icon icon-bin"/></span>
                   </div>
                 </li>
               </ul>
@@ -341,7 +341,7 @@ export default {
             subTitle: this.$t("page_job_detail.modal.create_success.sub_title"),
             button: this.$t("page_job_detail.modal.create_success.continue")
           });
-          this.$router.push({name: "admin-jobs"})
+          this.$router.push({ name: "admin-jobs" });
         })
         .catch(err => {
           let read = errorReader(err);
@@ -384,7 +384,7 @@ export default {
       jobsApi.upload(data).then(response => {
         this.imageData.path = response.path;
         this.imageData.uploadedAt = new Date();
-        this.model.attachments.push(this.imageData)
+        this.model.attachments.push(this.imageData);
         this.$store.dispatch("updateLoading", false);
       });
     }

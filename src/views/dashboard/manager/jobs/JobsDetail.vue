@@ -16,7 +16,11 @@
             </div>
             <div class="job-detail-header__description">
               <div>
-                <b-input v-if="editJob" v-model="model.title" class="fullName"/>
+                <b-input
+                  v-if="editJob"
+                  v-model="model.title"
+                  class="fullName"
+                />
                 <h2 v-else class="fullName">{{ model.title }}</h2>
               </div>
               <h3 class="position mt-3">
@@ -114,8 +118,8 @@
 
                 <li>
                   <div class="d-flex align-items-center">
-                    <span  class="flex-1">
-                       {{ $t("page_job_detail.form.wage") }}
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.wage") }}
                     </span>
                     <div class="pull-right">
                       <b-input v-if="editJob" v-model="model.wage" />
@@ -128,14 +132,14 @@
 
                 <li>
                   <div class="d-flex align-items-center">
-                    <span  class="flex-1">
-                       {{ $t("page_job_detail.form.start_date") }}
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.start_date") }}
                     </span>
                     <div class="pull-right">
                       <b-input
-                          type="date"
-                          v-if="editJob"
-                          v-model="model.startDate"
+                        type="date"
+                        v-if="editJob"
+                        v-model="model.startDate"
                       />
                       <div v-else>
                         {{ model.startDate | dateFormatter }}
@@ -146,14 +150,14 @@
 
                 <li>
                   <div class="d-flex align-items-center">
-                    <span  class="flex-1">
+                    <span class="flex-1">
                       {{ $t("page_job_detail.form.end_date") }}
                     </span>
                     <div>
                       <b-input
-                          type="date"
-                          v-if="editJob"
-                          v-model="model.endDate"
+                        type="date"
+                        v-if="editJob"
+                        v-model="model.endDate"
                       />
                       <div v-else>
                         {{ model.endDate | dateFormatter }}
@@ -249,11 +253,14 @@
                           class="hiway-crm-icon icon-more-vertical color-black"
                         />
                       </template>
-                      <b-dropdown-item @click="goToOfferDetails(offer._id)">{{
-                        $t("page_job_detail.view_offer")
-                      }}</b-dropdown-item>
+                      <b-dropdown-item @click="goToOfferDetails(offer._id)">
+                        {{ $t("page_job_detail.view_offer") }}
+                      </b-dropdown-item>
                     </b-dropdown>
-                    <button class="btn btn-transparent" @click="showDeleteOfferModal(offer._id)">
+                    <button
+                      class="btn btn-transparent"
+                      @click="showDeleteOfferModal(offer._id)"
+                    >
                       <i class="hiway-crm-icon icon-bin" />
                     </button>
                   </div>
@@ -284,29 +291,33 @@
                   style="min-width:160px;"
                 >
                   {{ $t("page_job_detail.button.upload") }}
-                  <i class="hiway-crm-icon icon-upload"></i>
+                  <i class="hiway-crm-icon icon-upload" />
                 </label>
               </div>
             </template>
             <div class="card-body">
               <ul class="custom-list">
-                <li class="d-flex"
-                    v-for="(attachment, idx) in model.attachments"
-                    :key="idx"
+                <li
+                  class="d-flex"
+                  v-for="(attachment, idx) in model.attachments"
+                  :key="idx"
                 >
                   <div class="flex-1">
                     {{ attachment.name }}
                   </div>
                   <div>
                     <span class="mr-5"
-                    >{{ attachment.uploadedAt | dateFormatter }}
+                      >{{ attachment.uploadedAt | dateFormatter }}
                       {{ attachment.uploadedAt | timeFormatter }}</span
                     >
                     <span class="mr-5">{{ attachment.size }} B</span>
                     <span class="mr-4">
-                      <i class="hiway-crm-icon icon-more-vertical"></i
-                    ></span>
-                    <button class="btn btn-transparent" @click="showDeleteAttachmentModal(attachment._id)">
+                      <i class="hiway-crm-icon icon-more-vertical" />
+                    </span>
+                    <button
+                      class="btn btn-transparent"
+                      @click="showDeleteAttachmentModal(attachment._id)"
+                    >
                       <i class="hiway-crm-icon icon-bin" />
                     </button>
                   </div>
@@ -441,14 +452,14 @@ export default {
     },
     deleteJobOffer() {
       return joboffersApi
-          .delete({
-            companyId: this.companyId,
-            _id: this.selectedJobOfferId
-          })
-          .then(res => {
-            this.$store.dispatch("updateShowErrorModal", false);
-            this.fetchJobOffers();
-          });
+        .delete({
+          companyId: this.companyId,
+          _id: this.selectedJobOfferId
+        })
+        .then(res => {
+          this.$store.dispatch("updateShowErrorModal", false);
+          this.fetchJobOffers();
+        });
     },
     updateJob() {
       this.model.companyId = this.model.company?._id;
@@ -534,7 +545,9 @@ export default {
       this.$store.dispatch("updateShowErrorModal", true);
       this.$store.dispatch("updateErrorModalContent", {
         title: this.$t("page_job_detail.modal.confirm_delete.title"),
-        subTitle: this.$t("page_job_detail.modal.confirm_delete_attach.sub_title"),
+        subTitle: this.$t(
+          "page_job_detail.modal.confirm_delete_attach.sub_title"
+        ),
         button: this.$t("page_job_detail.modal.confirm_delete_attach.continue"),
         onButtonClick: () => {
           this.deleteAttachment();
@@ -544,16 +557,16 @@ export default {
     },
     deleteAttachment() {
       return jobsApi
-          .deleteAttachment({
-            companyId: this.companyId,
-            _id: this.jobId,
-            attachmentId: this.selectedAttachmentId
-          })
-          .then(res => {
-            this.$store.dispatch("updateShowErrorModal", false);
-            this.fetchJobDetails();
-          });
-    },
+        .deleteAttachment({
+          companyId: this.companyId,
+          _id: this.jobId,
+          attachmentId: this.selectedAttachmentId
+        })
+        .then(res => {
+          this.$store.dispatch("updateShowErrorModal", false);
+          this.fetchJobDetails();
+        });
+    }
   }
 };
 </script>

@@ -127,10 +127,10 @@ export default {
   },
   delete(params, resolve, reject = null) {
     return request(
-        "delete",
-        `/joboffers/${params.companyId}/${params._id}`,
-        resolve,
-        reject
+      "delete",
+      `/joboffers/${params.companyId}/${params._id}`,
+      resolve,
+      reject
     );
   },
   deleteAttachment(params, resolve, reject = null) {

@@ -340,7 +340,7 @@ export default {
 
       this.$store.dispatch("updateLoading", true);
 
-      jobsApi.upload( data).then(response => {
+      jobsApi.upload(data).then(response => {
         this.imageData.path = response.path;
 
         jobsApi
