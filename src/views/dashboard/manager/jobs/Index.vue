@@ -205,11 +205,11 @@ export default {
           field: "endDate",
           name: "endDate"
         },
-        {
-          label: this.$t("page_jobs.table.duration"),
-          field: this.computedDuration(),
-          name: "duration"
-        },
+        // {
+        //   label: this.$t("page_jobs.table.duration"),
+        //   field: this.computedDuration(),
+        //   name: "duration"
+        // },
         {
           label: this.$t("page_jobs.table.title"),
           field: "title",
