@@ -290,7 +290,7 @@
                   for="attachment"
                   class="btn btn-blue m-0"
                   style="min-width:160px;"
-                  :style="{'cursor': !editJob && 'not-allowed'}"
+                  :style="{'cursor': editJob ? 'pointer' : 'not-allowed'}"
                 >
                   {{ $t("page_job_detail.button.upload") }}
                   <i class="hiway-crm-icon icon-upload" />
