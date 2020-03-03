@@ -50,6 +50,31 @@
         </div>
       </div>
     </div>
+    <b-modal
+            ref="modal-invite-success"
+            :hide-footer="true"
+            :hide-header="true"
+            centered
+            modal-class="modal-success"
+    >
+      <div class="text-center">
+        <img class="success-image" src="@/assets/image/icon/success.svg" />
+        <p class="success-title color-blue">
+          {{ $t("page_users_create_invite.modal.invite.title") }}
+        </p>
+        <p class="success-sub-title">
+          {{ $t("page_users_create_invite.modal.invite.sub_title") }}
+        </p>
+        <div class="d-flex justify-content-around">
+          <button class="btn btn-blue" @click="$router.push({ name: 'manager-candidates' })">
+            {{ $t("page_users_create_invite.modal.invite.view_candidates") }}
+          </button>
+          <button class="btn btn-red" @click="clear">
+            {{ $t("page_users_create_invite.modal.invite.invite_more") }}
+          </button>
+        </div>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -88,6 +113,10 @@ export default {
 
       return valid;
     },
+    clear() {
+      this.form.email = "";
+      this.$refs['modal-invite-success'].hide();
+    },
     sendInvitation() {
       if (this.validate()) {
         const params = {
@@ -97,14 +126,7 @@ export default {
         userApi
           .invite(params)
           .then(res => {
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_users_create_invite.modal.invite.title"),
-              subTitle: this.$t(
-                "page_users_create_invite.modal.invite.sub_title"
-              ),
-              button: this.$t("page_users_create_invite.modal.invite.continue")
-            });
+            this.$refs['modal-invite-success'].show();
           })
           .catch(data => {
             let messages = data.response.data.errors.msg;

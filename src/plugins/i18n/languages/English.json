@@ -666,7 +666,8 @@
       "invite": {
         "title": "Successfully invited this user",
         "sub_title": "Thank you",
-        "continue": "Continue"
+        "view_candidates": "View candidates",
+        "invite_more": "Invite more"
       }
     }
   },
