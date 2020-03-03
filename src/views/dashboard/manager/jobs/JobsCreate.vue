@@ -13,7 +13,7 @@
             </div>
             <div class="job-create-header__description">
               <b-input
-                class="mb-3"
+                class="mb-3 fullName"
                 v-model="model.title"
                 placeholder="Add job title"
               />

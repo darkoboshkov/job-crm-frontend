@@ -16,7 +16,7 @@
             </div>
             <div class="job-detail-header__description">
               <div>
-                <b-input v-if="editJob" v-model="model.title" />
+                <b-input v-if="editJob" v-model="model.title" class="fullName"/>
                 <h2 v-else class="fullName">{{ model.title }}</h2>
               </div>
               <h3 class="position mt-3">
