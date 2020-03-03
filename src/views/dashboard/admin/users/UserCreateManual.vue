@@ -10,7 +10,7 @@
         <span>{{ $t("common.back") }}</span>
       </a>
     </div>
-    <div class="content">
+    <div class="content shadow-sm">
       <h1 class="title mt-5 text-center">
         {{ $t("page_users_create_manual.title") }}
       </h1>
