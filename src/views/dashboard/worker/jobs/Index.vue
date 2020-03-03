@@ -3,9 +3,25 @@
     <h1 class="title">
       {{ $t("page_jobs.title") }}
     </h1>
-    <p class="sub-title">
-      {{ $t("page_jobs.sub_title", { jobs: this.totalRows }) }}
-    </p>
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="sub-title">
+        {{ $t("page_jobs.sub_title", { jobs: this.totalRows }) }}
+      </p>
+      <div class="view-switch">
+        View:
+        <i
+                class="hiway-crm-icon icon-ol pointer"
+                @click="imageView(true)"
+                :style="{ opacity: imageMode ? 1 : 0.261 }"
+        ></i>
+        |
+        <i
+                class="hiway-crm-icon icon-ul pointer"
+                @click="imageView(false)"
+                :style="{ opacity: !imageMode ? 1 : 0.261 }"
+        ></i>
+      </div>
+    </div>
     <div class="jobs-list mt-5">
       <vue-good-table
         mode="remote"
@@ -90,12 +106,39 @@ export default {
         enabled: true,
         perPage: 5
       },
-      columns: [
-        {
-          label: this.$t("page_jobs.table.image"),
-          field: "image",
-          name: "image"
-        },
+      rows: [],
+      searchTerm: "",
+      matched: false,
+      totalRows: 0,
+      serverParams: {
+        columnFilters: {},
+        page: 1,
+        limit: 5,
+        sort: "",
+        order: ""
+      },
+      imageMode: true
+    };
+  },
+  computed: {
+    role() {
+      return this.$store.state.user.role;
+    },
+    companyId() {
+      return this.$store.state.user.companyId;
+    },
+    columns() {
+      let columns = this.imageMode
+              ? [
+                {
+                  label: this.$t("page_jobs.table.image"),
+                  field: "image",
+                  name: "image",
+                }
+              ]
+              : [];
+
+      return columns.concat([
         {
           label: this.$t("page_jobs.table.position"),
           field: "position.name",
@@ -151,32 +194,16 @@ export default {
           field: "actions",
           name: "actions"
         }
-      ],
-      rows: [],
-      searchTerm: "",
-      matched: false,
-      totalRows: 0,
-      serverParams: {
-        columnFilters: {},
-        page: 1,
-        limit: 5,
-        sort: "",
-        order: ""
-      }
-    };
-  },
-  computed: {
-    role() {
-      return this.$store.state.user.role;
+      ]);
     },
-    companyId() {
-      return this.$store.state.user.companyId;
-    }
   },
   mounted() {
     this.getJobs();
   },
   methods: {
+    imageView(mode) {
+      this.imageMode = !!mode;
+    },
     computedDuration() {
       return function(row) {
         return `${new Date(row.startDate).toLocaleDateString()} - ${new Date(
