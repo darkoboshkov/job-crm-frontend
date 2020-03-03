@@ -254,8 +254,8 @@ export default {
         overview: this.model.overview
       };
       profileApi.patchById(data).then(res => {
-        this.$store.dispatch("updateShowErrorModal", true);
-        this.$store.dispatch("updateErrorModalContent", {
+        this.$store.dispatch("updateShowSuccessModal", true);
+        this.$store.dispatch("updateSuccessModalContent", {
           title: this.$t("page_profile.modal.change.title"),
           subTitle: this.$t("page_profile.modal.change.sub_title"),
           button: this.$t("page_profile.modal.change.continue")
