@@ -177,22 +177,22 @@
             <template v-slot:header>
               <div class="d-flex align-items-center">
                 <h5 class="m-0 flex-1">{{ $t("page_job_detail.files") }}</h5>
-<!--                <input-->
-<!--                  type="file"-->
-<!--                  id="attachment"-->
-<!--                  class="d-none"-->
-<!--                  name="attachment"-->
-<!--                  accept=".doc,.docx,.pdf"-->
-<!--                  @change="onFileChange"-->
-<!--                />-->
-<!--                <label-->
-<!--                  for="attachment"-->
-<!--                  class="btn btn-blue m-0"-->
-<!--                  style="min-width:160px;"-->
-<!--                >-->
-<!--                  {{ $t("page_job_detail.button.upload") }}-->
-<!--                  <i class="hiway-crm-icon icon-upload"></i>-->
-<!--                </label>-->
+                <!--                <input-->
+                <!--                  type="file"-->
+                <!--                  id="attachment"-->
+                <!--                  class="d-none"-->
+                <!--                  name="attachment"-->
+                <!--                  accept=".doc,.docx,.pdf"-->
+                <!--                  @change="onFileChange"-->
+                <!--                />-->
+                <!--                <label-->
+                <!--                  for="attachment"-->
+                <!--                  class="btn btn-blue m-0"-->
+                <!--                  style="min-width:160px;"-->
+                <!--                >-->
+                <!--                  {{ $t("page_job_detail.button.upload") }}-->
+                <!--                  <i class="hiway-crm-icon icon-upload"></i>-->
+                <!--                </label>-->
               </div>
             </template>
             <div class="card-body">
@@ -210,9 +210,27 @@
                     {{ attachment.uploadedAt | timeFormatter }}</span
                   >
                   <span class="mr-5">{{ attachment.size }} B</span>
-                  <span class="mr-4"
-                    ><i class="hiway-crm-icon icon-more-vertical"></i
-                  ></span>
+                  <span class="mr-4">
+                    <b-dropdown
+                            variant="link"
+                            toggle-class="text-decoration-none"
+                            no-caret
+                            offset="0"
+                            class="icon-dropdown m-2"
+                    >
+                        <template v-slot:button-content>
+                          <i
+                                  class="hiway-crm-icon icon-more-vertical color-black"
+                          />
+                        </template>
+                        <b-dropdown-item @click="viewFile(props)">
+                          {{ $t("page_job_detail.view_file") }}
+                        </b-dropdown-item>
+                        <b-dropdown-item @click="downloadFile(props)">
+                          {{ $t("page_job_detail.download_file") }}
+                        </b-dropdown-item>
+                      </b-dropdown>
+                  </span>
                   <span><i class="hiway-crm-icon icon-bin"></i></span>
                 </div>
               </div>
@@ -291,6 +309,8 @@ export default {
     }
   },
   methods: {
+    viewFile() {},
+    downloadFile() {},
     fetchJobDetails() {
       jobsApi.get({ companyId: this.companyId, id: this.jobId }).then(res => {
         this.model = res;

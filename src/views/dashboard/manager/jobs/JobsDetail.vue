@@ -290,7 +290,7 @@
                   for="attachment"
                   class="btn btn-blue m-0"
                   style="min-width:160px;"
-                  :style="{'cursor': editJob ? 'pointer' : 'not-allowed'}"
+                  :style="{ cursor: editJob ? 'pointer' : 'not-allowed' }"
                 >
                   {{ $t("page_job_detail.button.upload") }}
                   <i class="hiway-crm-icon icon-upload" />
@@ -314,7 +314,28 @@
                     >
                     <span class="mr-5">{{ attachment.size }} B</span>
                     <span class="mr-4">
-                      <i class="hiway-crm-icon icon-more-vertical" />
+                      <b-dropdown
+                              variant="link"
+                              toggle-class="text-decoration-none"
+                              no-caret
+                              offset="0"
+                              class="icon-dropdown m-2"
+                      >
+                        <template v-slot:button-content>
+                          <i
+                                  class="hiway-crm-icon icon-more-vertical color-black"
+                          />
+                        </template>
+                        <b-dropdown-item @click="viewFile(props)">
+                          {{ $t("page_job_detail.view_file") }}
+                        </b-dropdown-item>
+                        <b-dropdown-item @click="downloadFile(props)">
+                          {{ $t("page_job_detail.download_file") }}
+                        </b-dropdown-item>
+                        <b-dropdown-item @click="deleteFile(props)">
+                          {{ $t("page_job_detail.delete_file") }}
+                        </b-dropdown-item>
+                      </b-dropdown>
                     </span>
                     <button
                       class="btn btn-transparent"
@@ -403,6 +424,9 @@ export default {
     }
   },
   methods: {
+    viewFile() {},
+    downloadFile() {},
+    deleteFile() {},
     fetchJobDetails() {
       jobsApi.get({ companyId: this.companyId, id: this.jobId }).then(res => {
         this.model = res;
