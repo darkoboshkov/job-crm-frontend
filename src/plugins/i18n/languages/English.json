@@ -330,7 +330,7 @@
     }
   },
   "page_candidates": {
-    "title": "Active Candidates",
+    "title": "Candidates",
     "sub_title": "We have found {candidates} candidates",
     "filter": {
       "name": "Name",
