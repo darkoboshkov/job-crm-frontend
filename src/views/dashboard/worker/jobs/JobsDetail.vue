@@ -177,22 +177,22 @@
             <template v-slot:header>
               <div class="d-flex align-items-center">
                 <h5 class="m-0 flex-1">{{ $t("page_job_detail.files") }}</h5>
-                <input
-                  type="file"
-                  id="attachment"
-                  class="d-none"
-                  name="attachment"
-                  accept=".doc,.docx,.pdf"
-                  @change="onFileChange"
-                />
-                <label
-                  for="attachment"
-                  class="btn btn-blue m-0"
-                  style="min-width:160px;"
-                >
-                  {{ $t("page_job_detail.button.upload") }}
-                  <i class="hiway-crm-icon icon-upload"></i>
-                </label>
+<!--                <input-->
+<!--                  type="file"-->
+<!--                  id="attachment"-->
+<!--                  class="d-none"-->
+<!--                  name="attachment"-->
+<!--                  accept=".doc,.docx,.pdf"-->
+<!--                  @change="onFileChange"-->
+<!--                />-->
+<!--                <label-->
+<!--                  for="attachment"-->
+<!--                  class="btn btn-blue m-0"-->
+<!--                  style="min-width:160px;"-->
+<!--                >-->
+<!--                  {{ $t("page_job_detail.button.upload") }}-->
+<!--                  <i class="hiway-crm-icon icon-upload"></i>-->
+<!--                </label>-->
               </div>
             </template>
             <div class="card-body">
