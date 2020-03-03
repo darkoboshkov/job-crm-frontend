@@ -332,26 +332,27 @@
               </div>
             </template>
             <div class="card-body">
-              <div
-                class="d-flex justify-content-between"
-                v-for="(attachment, idx) in model.attachments"
-                :key="idx"
-              >
-                <div>
-                  {{ attachment.name }}
-                </div>
-                <div>
-                  <span class="mr-5"
+              <ul class="custom-list">
+                <li class="d-flex"
+                    v-for="(attachment, idx) in model.attachments"
+                    :key="idx"
+                >
+                  <div class="flex-1">
+                    {{ attachment.name }}
+                  </div>
+                  <div>
+                    <span class="mr-5"
                     >{{ attachment.uploadedAt | dateFormatter }}
-                    {{ attachment.uploadedAt | timeFormatter }}</span
-                  >
-                  <span class="mr-5">{{ attachment.size }} B</span>
-                  <span class="mr-4"
-                    ><i class="hiway-crm-icon icon-more-vertical"></i
-                  ></span>
-                  <span><i class="hiway-crm-icon icon-bin"></i></span>
-                </div>
-              </div>
+                      {{ attachment.uploadedAt | timeFormatter }}</span
+                    >
+                      <span class="mr-5">{{ attachment.size }} B</span>
+                      <span class="mr-4"
+                      ><i class="hiway-crm-icon icon-more-vertical"></i
+                      ></span>
+                      <span><i class="hiway-crm-icon icon-bin"></i></span>
+                  </div>
+                </li>
+              </ul>
             </div>
           </b-card>
         </b-col>

@@ -180,26 +180,27 @@
               </div>
             </template>
             <div class="card-body">
-              <div
-                class="d-flex justify-content-between"
-                v-for="(attachment, idx) in model.attachments"
-                :key="idx"
-              >
-                <div>
-                  {{ attachment.name }}
-                </div>
-                <div>
-                  <span class="mr-5"
+              <ul class="custom-list">
+                <li class="d-flex"
+                    v-for="(attachment, idx) in model.attachments"
+                    :key="idx"
+                >
+                  <div class="flex-1">
+                    {{ attachment.name }}
+                  </div>
+                  <div>
+                    <span class="mr-5"
                     >{{ attachment.uploadedAt | dateFormatter }}
-                    {{ attachment.uploadedAt | timeFormatter }}</span
-                  >
-                  <span class="mr-5">{{ attachment.size }} B</span>
-                  <span class="mr-4"
+                      {{ attachment.uploadedAt | timeFormatter }}</span
+                    >
+                    <span class="mr-5">{{ attachment.size }} B</span>
+                    <span class="mr-4"
                     ><i class="hiway-crm-icon icon-more-vertical"></i
-                  ></span>
-                  <span><i class="hiway-crm-icon icon-bin"></i></span>
-                </div>
-              </div>
+                    ></span>
+                    <span><i class="hiway-crm-icon icon-bin"></i></span>
+                  </div>
+                </li>
+              </ul>
             </div>
           </b-card>
         </b-col>
@@ -217,6 +218,8 @@
 import jobsApi from "@/services/api/jobs";
 import companiesApi from "@/services/api/companies";
 import errorReader from "@/helpers/ErrorReader";
+import dateFormatter from "@/helpers/DateFormatter";
+import timeFormatter from "@/helpers/TimeFormatter";
 
 export default {
   name: "JobsCreate",
@@ -245,6 +248,14 @@ export default {
       state: [],
       error: ""
     };
+  },
+  filters: {
+    dateFormatter(string) {
+      return dateFormatter(new Date(string));
+    },
+    timeFormatter(string) {
+      return timeFormatter(new Date(string));
+    }
   },
   mounted() {
     this.getCompany();
@@ -280,32 +291,28 @@ export default {
       }
 
       jobsApi
-        .create(this.model)
-        .then(res => {
-          this.model = res;
-          this.model.companyId = res.company[0]._id;
-          this.model.company = res.company[0];
-          this.model.managerId = res.manager[0]._id;
-          this.model.manager = res.manager[0];
+          .create(this.model)
+          .then(res => {
+            this.model = res;
+            this.$store.dispatch("updateShowSuccessModal", true);
+            this.$store.dispatch("updateSuccessModalContent", {
+              title: this.$t("page_job_detail.modal.create_success.title"),
+              subTitle: this.$t("page_job_detail.modal.create_success.sub_title"),
+              button: this.$t("page_job_detail.modal.create_success.continue")
+            });
+            this.$router.push({name: "manager-jobs"})
+          })
+          .catch(err => {
+            let read = errorReader(err);
+            this.error = read.param + " is " + read.msg.toLowerCase();
 
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_job_detail.modal.create_success.title"),
-            subTitle: this.$t("page_job_detail.modal.create_success.sub_title"),
-            button: this.$t("page_job_detail.modal.create_success.continue")
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_job_detail.modal.create_error.title"),
+              subTitle: this.$t("page_job_detail.modal.create_error.sub_title"),
+              button: this.$t("page_job_detail.modal.create_error.continue")
+            });
           });
-        })
-        .catch(err => {
-          let read = errorReader(err);
-          this.error = read.param + " is " + read.msg.toLowerCase();
-
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_job_detail.modal.create_error.title"),
-            subTitle: this.error,
-            button: this.$t("page_job_detail.modal.create_error.continue")
-          });
-        });
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
@@ -335,6 +342,7 @@ export default {
 
       jobsApi.upload(data).then(response => {
         this.imageData.path = response.path;
+        this.imageData.uploadedAt = new Date();
         this.model.attachments.push(this.imageData)
         this.$store.dispatch("updateLoading", false);
       });
