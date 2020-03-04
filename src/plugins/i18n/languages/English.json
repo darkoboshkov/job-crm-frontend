@@ -687,12 +687,15 @@
       "male": "Man",
       "female": "Woman",
       "gender": "Gender",
-      "birthday": "Birthday",
-      "street-house": "Street HouseNumber",
+      "other": "Other",
+      "phone": "Phone Number",
+      "birthday": "Date of Birth",
+      "street-house": "Streetname & Number",
       "bankNumber": "Bank Account Number",
       "postalCode": "Postal Code",
       "city": "City",
       "password": "Password",
+      "repeat_password": "Repeat Password",
       "passport": "Passport"
     },
     "button": {

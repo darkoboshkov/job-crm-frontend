@@ -121,18 +121,80 @@
         </div>
         <div class="form-element d-flex align-items-center mt-5">
           <label class="flex-1">
-            {{ $t("page_users_create_manual.form.password") }}:
+            {{ $t("page_users_create_manual.form.phone") }}:
           </label>
           <div class="flex-3">
             <b-form-input
               type="text"
               required
               class="custom-input"
-              v-model="form.password"
+              v-model="form.phone"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="phoneError">
+              {{ $t(`validation.${phoneError}`) }}
+            </b-form-invalid-feedback>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.password") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+                    v-if="showPassword"
+                    type="text"
+                    required
+                    class="custom-input"
+                    v-model="form.password"
+            />
+            <b-form-input
+                    v-if="!showPassword"
+                    type="password"
+                    required
+                    class="custom-input"
+                    v-model="form.password"
             />
             <b-form-invalid-feedback class="d-block" v-if="passwordError">
               {{ $t(`validation.${passwordError}`) }}
             </b-form-invalid-feedback>
+            <b-form-checkbox
+                    class="rtl text-right"
+                    style="margin-right: 20px;"
+                    switch
+                    size="lg"
+                    v-model="showPassword"
+            ><span style="font-size: 0.75em;">Show</span></b-form-checkbox>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.repeat_password") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+                    v-if="showRepeatPassword"
+                    type="text"
+                    required
+                    class="custom-input"
+                    v-model="form.repeatPassword"
+            />
+            <b-form-input
+                    v-if="!showRepeatPassword"
+                    type="password"
+                    required
+                    class="custom-input"
+                    v-model="form.repeatPassword"
+            />
+            <b-form-invalid-feedback class="d-block" v-if="repeatPasswordError">
+              {{ $t(`validation.${repeatPasswordError}`) }}
+            </b-form-invalid-feedback>
+            <b-form-checkbox
+                    class="rtl text-right"
+                    style="margin-right: 20px;"
+                    switch
+                    size="lg"
+                    v-model="showRepeatPassword"
+            ><span style="font-size: 0.75em;">Show</span></b-form-checkbox>
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -147,6 +209,9 @@
               <b-form-radio v-model="form.gender" name="gender" value="female">
                 {{ $t("page_users_create_manual.form.female") }}
               </b-form-radio>
+              <b-form-radio v-model="form.other" name="gender" value="other">
+                {{ $t("page_users_create_manual.form.other") }}
+              </b-form-radio>
             </div>
           </div>
         </div>
@@ -156,7 +221,7 @@
           </label>
           <div class="flex-3">
             <b-form-input
-              type="text"
+              type="date"
               required
               class="custom-input"
               v-model="form.birthday"
@@ -243,22 +308,22 @@
             </b-form-invalid-feedback>
           </div>
         </div>
-        <div class="form-element d-flex align-items-center mt-5">
-          <label class="flex-1">
-            {{ $t("page_users_create_manual.form.passport") }}:
-          </label>
-          <div class="flex-3">
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="form.passport"
-            />
-            <b-form-invalid-feedback class="d-block" v-if="passportError">
-              {{ $t(`validation.${passportError}`) }}
-            </b-form-invalid-feedback>
-          </div>
-        </div>
+<!--        <div class="form-element d-flex align-items-center mt-5">-->
+<!--          <label class="flex-1">-->
+<!--            {{ $t("page_users_create_manual.form.passport") }}:-->
+<!--          </label>-->
+<!--          <div class="flex-3">-->
+<!--            <b-form-input-->
+<!--              type="text"-->
+<!--              required-->
+<!--              class="custom-input"-->
+<!--              v-model="form.passport"-->
+<!--            />-->
+<!--            <b-form-invalid-feedback class="d-block" v-if="passportError">-->
+<!--              {{ $t(`validation.${passportError}`) }}-->
+<!--            </b-form-invalid-feedback>-->
+<!--          </div>-->
+<!--        </div>-->
         <b-form-invalid-feedback class="d-block mt-5" v-if="error">
           {{ $t(`${error}`) }}
         </b-form-invalid-feedback>
@@ -288,6 +353,7 @@ export default {
         firstName: "",
         lastName: "",
         middleName: "",
+        phone: "",
         gender: "male",
         birthday: "",
         bankNumber: "",
@@ -296,6 +362,7 @@ export default {
         postalCode: "",
         city: "",
         password: "",
+        repeatPassword: "",
         passport: ""
       },
       roleError: "",
@@ -311,9 +378,13 @@ export default {
       houseNumberError: "",
       postalCodeError: "",
       cityError: "",
+      phoneError: "",
       passwordError: "",
+      repeatPasswordError: "",
       passportError: "",
-      error: ""
+      error: "",
+      showPassword: false,
+      showRepeatPassword: false,
     };
   },
   mounted() {
@@ -352,6 +423,12 @@ export default {
         valid = false;
       } else {
         this.passwordError = "";
+      }
+      if (this.form.password !== this.form.repeatPassword) {
+        this.repeatPasswordError = "PASSWORDS_NOT_MATCH";
+        valid = false;
+      } else {
+        this.repeatPasswordError = "";
       }
 
       return valid;
