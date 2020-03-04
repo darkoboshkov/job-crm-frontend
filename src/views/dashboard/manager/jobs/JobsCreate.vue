@@ -108,7 +108,7 @@
                       {{ $t("page_job_detail.form.start_date") }}
                     </span>
                     <div>
-                      <b-input type="datetime" v-model="model.startDate" />
+                      <b-input type="date" v-model="model.startDate" />
                     </div>
                   </div>
                 </li>
@@ -119,7 +119,7 @@
                       {{ $t("page_job_detail.form.end_date") }}
                     </span>
                     <div>
-                      <b-input type="datetime" v-model="model.endDate" />
+                      <b-input type="date" v-model="model.endDate" />
                     </div>
                   </div>
                 </li>
@@ -241,7 +241,7 @@ export default {
         description: "",
         questions: [],
         image: null,
-        startDate: new Date().toISOString().substring(0, 16),
+        startDate: new Date().toISOString().substring(0, 10),
         endDate: null,
 
         company: null,
