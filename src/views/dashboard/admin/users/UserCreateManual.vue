@@ -173,6 +173,13 @@
           </label>
           <div class="flex-3">
             <b-form-input
+                v-if="showRepeatPassword"
+                type="text"
+                required
+                class="custom-input"
+                v-model="form.c_password"
+            />
+            <b-form-input
               v-if="!showRepeatPassword"
               type="password"
               required
@@ -334,12 +341,14 @@
 
 <script>
 import companyApi from "@/services/api/companies";
+import positionApi from "@/services/api/positions";
 import userApi from "@/services/api/users";
 
 export default {
   name: "UserCreateManual",
   data() {
     return {
+      positions: [],
       companies: [],
       form: {
         companyId: "",
@@ -384,6 +393,7 @@ export default {
   },
   mounted() {
     this.getCompanies();
+    this.getPositions();
   },
   methods: {
     validate() {
@@ -431,6 +441,11 @@ export default {
     getCompanies() {
       return companyApi.getAll().then(res => {
         this.companies = res;
+      });
+    },
+    getPositions() {
+      return position.getAll().then(res => {
+        this.positions = res;
       });
     },
     createUser() {

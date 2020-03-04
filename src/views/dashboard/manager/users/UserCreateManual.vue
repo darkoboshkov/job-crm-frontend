@@ -151,6 +151,13 @@
           </label>
           <div class="flex-3">
             <b-form-input
+                v-if="showRepeatPassword"
+                type="text"
+                required
+                class="custom-input"
+                v-model="form.c_password"
+            />
+            <b-form-input
               v-if="!showRepeatPassword"
               type="password"
               required
