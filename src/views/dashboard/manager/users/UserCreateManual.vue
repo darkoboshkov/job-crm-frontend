@@ -99,6 +99,22 @@
         </div>
         <div class="form-element d-flex align-items-center mt-5">
           <label class="flex-1">
+            {{ $t("page_users_create_manual.form.position") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-select v-model="form.positionId">
+              <option value=""></option>
+              <option
+                  v-for="(position) in positions"
+                  :key="position._id"
+                  :value="position._id"
+              >{{ position.name }}</option
+              >
+            </b-form-select>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
             {{ $t("page_users_create_manual.form.phone") }}:
           </label>
           <div class="flex-3">
@@ -319,12 +335,14 @@
 
 <script>
 import companyApi from "@/services/api/companies";
+import positionApi from "@/services/api/positions";
 import userApi from "@/services/api/users";
 
 export default {
   name: "UserCreateManual",
   data() {
     return {
+      positions: [],
       companies: [],
       form: {
         role: "worker",
@@ -373,6 +391,7 @@ export default {
   },
   mounted() {
     this.getCompanies();
+    this.getPositions();
   },
   methods: {
     validate() {
@@ -414,6 +433,11 @@ export default {
     getCompanies() {
       return companyApi.getAll().then(res => {
         this.companies = res;
+      });
+    },
+    getPositions() {
+      positionApi.getAll().then(res => {
+        this.positions = res;
       });
     },
     createUser() {
