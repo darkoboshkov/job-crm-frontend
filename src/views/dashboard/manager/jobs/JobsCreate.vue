@@ -200,7 +200,11 @@
                     <span class="mr-4"
                       ><i class="hiway-crm-icon icon-more-vertical"></i
                     ></span>
-                    <span class="pointer"><i class="hiway-crm-icon icon-bin" @click="deleteFile(model.attachments, idx)" /></span>
+                    <span class="pointer"
+                      ><i
+                        class="hiway-crm-icon icon-bin"
+                        @click="deleteFile(model.attachments, idx)"
+                    /></span>
                   </div>
                 </li>
               </ul>

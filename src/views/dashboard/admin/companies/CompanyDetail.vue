@@ -33,12 +33,12 @@
             <img :src="imageData.preview" />
             <b-spinner type="grow" label="Spinning" v-if="isImageLoading" />
             <input
-                    type="file"
-                    class="form-control"
-                    id="image_upload"
-                    accept="image/*"
-                    :disabled="!editCompany"
-                    @change="onFileChange"
+              type="file"
+              class="form-control"
+              id="image_upload"
+              accept="image/*"
+              :disabled="!editCompany"
+              @change="onFileChange"
             />
           </div>
         </div>
@@ -444,36 +444,38 @@ export default {
         }
 
         companyApi
-                .patch(
-                        Object.assign(this.model, {
-                          companyId: this.model._id
-                        })
-                )
-                .then(res => {
-                  this.$store.dispatch("updateShowSuccessModal", true);
-                  this.$store.dispatch("updateSuccessModalContent", {
-                    title: this.$t("page_detail_company.modal.update_success.title"),
-                    subTitle: this.$t(
-                            "page_detail_company.modal.update_success.sub_title"
-                    ),
-                    button: this.$t("page_detail_company.modal.update_success.continue")
-                  });
+          .patch(
+            Object.assign(this.model, {
+              companyId: this.model._id
+            })
+          )
+          .then(res => {
+            this.$store.dispatch("updateShowSuccessModal", true);
+            this.$store.dispatch("updateSuccessModalContent", {
+              title: this.$t("page_detail_company.modal.update_success.title"),
+              subTitle: this.$t(
+                "page_detail_company.modal.update_success.sub_title"
+              ),
+              button: this.$t(
+                "page_detail_company.modal.update_success.continue"
+              )
+            });
 
-                  this.editCompany = !this.editCompany;
-                })
-                .catch(err => {
-                  // let read = errorReader(err);
-                  // this.error = read.param + ' is ' + read.msg.toLowerCase();
+            this.editCompany = !this.editCompany;
+          })
+          .catch(err => {
+            // let read = errorReader(err);
+            // this.error = read.param + ' is ' + read.msg.toLowerCase();
 
-                  this.error = err.response.data?.errors?.msg;
+            this.error = err.response.data?.errors?.msg;
 
-                  this.$store.dispatch("updateShowErrorModal", true);
-                  this.$store.dispatch("updateErrorModalContent", {
-                    title: this.$t("page_detail_company.modal.update_error.title"),
-                    subTitle: this.error,
-                    button: this.$t("page_detail_company.modal.update_error.continue")
-                  });
-                });
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_detail_company.modal.update_error.title"),
+              subTitle: this.error,
+              button: this.$t("page_detail_company.modal.update_error.continue")
+            });
+          });
       } catch (error) {
         this.isImageLoading = false;
         console.log(error);

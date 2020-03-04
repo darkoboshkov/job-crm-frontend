@@ -25,5 +25,5 @@ export default {
   },
   uploadLogo(params, resolve, reject = null) {
     return request("post", `/companies/logo/upload`, params, resolve, reject);
-  },
+  }
 };

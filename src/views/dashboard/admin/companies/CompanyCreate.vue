@@ -22,11 +22,11 @@
             <img :src="imageData.preview" />
             <b-spinner type="grow" label="Spinning" v-if="isImageLoading" />
             <input
-                    type="file"
-                    class="form-control"
-                    id="image_upload"
-                    accept="image/*"
-                    @change="onFileChange"
+              type="file"
+              class="form-control"
+              id="image_upload"
+              accept="image/*"
+              @change="onFileChange"
             />
           </div>
         </div>
@@ -414,34 +414,40 @@ export default {
           delete this.model.GAccount;
         }
 
-        companyApi.create(this.model).then(res => {
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_detail_company.modal.create_success.title"),
-            subTitle: this.$t(
-                    "page_detail_company.modal.create_success.sub_title"
-            ),
-            button: this.$t(
-                    "page_detail_company.modal.create_success.continue"
-            ),
-            onButtonClick: () => {
-              this.$router.push({name: "admin-companies-detail", params: {companyId: res._id}});
-              this.$store.dispatch("updateShowSuccessModal", false);
-            }
-          });
-        }).catch(err => {
-          // let read = errorReader(err);
-          // this.error = read.param + ' is ' + read.msg.toLowerCase();
+        companyApi
+          .create(this.model)
+          .then(res => {
+            this.$store.dispatch("updateShowSuccessModal", true);
+            this.$store.dispatch("updateSuccessModalContent", {
+              title: this.$t("page_detail_company.modal.create_success.title"),
+              subTitle: this.$t(
+                "page_detail_company.modal.create_success.sub_title"
+              ),
+              button: this.$t(
+                "page_detail_company.modal.create_success.continue"
+              ),
+              onButtonClick: () => {
+                this.$router.push({
+                  name: "admin-companies-detail",
+                  params: { companyId: res._id }
+                });
+                this.$store.dispatch("updateShowSuccessModal", false);
+              }
+            });
+          })
+          .catch(err => {
+            // let read = errorReader(err);
+            // this.error = read.param + ' is ' + read.msg.toLowerCase();
 
-          this.error = err.response.data?.errors?.msg;
+            this.error = err.response.data?.errors?.msg;
 
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_detail_company.modal.create_error.title"),
-            subTitle: this.error,
-            button: this.$t("page_detail_company.modal.create_error.continue")
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_detail_company.modal.create_error.title"),
+              subTitle: this.error,
+              button: this.$t("page_detail_company.modal.create_error.continue")
+            });
           });
-        });
       } catch (error) {
         this.isImageLoading = false;
         console.log(error);
