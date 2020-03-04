@@ -17,15 +17,15 @@
       <div class="view-switch">
         View:
         <i
-                class="hiway-crm-icon icon-ol pointer"
-                @click="imageView(true)"
-                :style="{ opacity: imageMode ? 1 : 0.261 }"
+          class="hiway-crm-icon icon-ol pointer"
+          @click="imageView(true)"
+          :style="{ opacity: imageMode ? 1 : 0.261 }"
         ></i>
         |
         <i
-                class="hiway-crm-icon icon-ul pointer"
-                @click="imageView(false)"
-                :style="{ opacity: !imageMode ? 1 : 0.261 }"
+          class="hiway-crm-icon icon-ul pointer"
+          @click="imageView(false)"
+          :style="{ opacity: !imageMode ? 1 : 0.261 }"
         ></i>
       </div>
     </div>
@@ -155,14 +155,14 @@ export default {
     },
     columns() {
       let columns = this.imageMode
-              ? [
-                {
-                  label: this.$t("page_jobs.table.image"),
-                  field: "image",
-                  name: "image",
-                }
-              ]
-              : [];
+        ? [
+            {
+              label: this.$t("page_jobs.table.image"),
+              field: "image",
+              name: "image"
+            }
+          ]
+        : [];
 
       return columns.concat([
         {
@@ -221,7 +221,7 @@ export default {
           name: "actions"
         }
       ]);
-    },
+    }
   },
   mounted() {
     this.getJobs();

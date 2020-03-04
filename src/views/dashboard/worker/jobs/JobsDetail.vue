@@ -212,24 +212,24 @@
                   <span class="mr-5">{{ attachment.size }} B</span>
                   <span class="mr-4">
                     <b-dropdown
-                            variant="link"
-                            toggle-class="text-decoration-none"
-                            no-caret
-                            offset="0"
-                            class="icon-dropdown m-2"
+                      variant="link"
+                      toggle-class="text-decoration-none"
+                      no-caret
+                      offset="0"
+                      class="icon-dropdown m-2"
                     >
-                        <template v-slot:button-content>
-                          <i
-                                  class="hiway-crm-icon icon-more-vertical color-black"
-                          />
-                        </template>
-                        <b-dropdown-item @click="viewFile(props)">
-                          {{ $t("page_job_detail.view_file") }}
-                        </b-dropdown-item>
-                        <b-dropdown-item @click="downloadFile(props)">
-                          {{ $t("page_job_detail.download_file") }}
-                        </b-dropdown-item>
-                      </b-dropdown>
+                      <template v-slot:button-content>
+                        <i
+                          class="hiway-crm-icon icon-more-vertical color-black"
+                        />
+                      </template>
+                      <b-dropdown-item @click="viewFile(props)">
+                        {{ $t("page_job_detail.view_file") }}
+                      </b-dropdown-item>
+                      <b-dropdown-item @click="downloadFile(props)">
+                        {{ $t("page_job_detail.download_file") }}
+                      </b-dropdown-item>
+                    </b-dropdown>
                   </span>
                   <span><i class="hiway-crm-icon icon-bin"></i></span>
                 </div>

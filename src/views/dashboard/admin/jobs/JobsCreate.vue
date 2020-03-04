@@ -9,7 +9,10 @@
         <b-col md="12">
           <div class="job-create-header">
             <div class="job-create-header__photo">
-              <img src="@/assets/image/avatar_nick.png" />
+              <img
+                v-if="model.company && model.company.logo"
+                :src="APP_URL + model.company.logo"
+              />
             </div>
             <div class="job-create-header__description">
               <b-input
@@ -246,11 +249,13 @@ import usersApi from "@/services/api/users";
 import errorReader from "@/helpers/ErrorReader";
 import dateFormatter from "@/helpers/DateFormatter";
 import timeFormatter from "@/helpers/TimeFormatter";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "JobsCreate",
   data() {
     return {
+      APP_URL,
       model: {
         title: "",
         companyId: 0,
