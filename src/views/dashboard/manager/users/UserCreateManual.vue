@@ -105,10 +105,10 @@
             <b-form-select v-model="form.positionId">
               <option value=""></option>
               <option
-                  v-for="(position) in positions"
-                  :key="position._id"
-                  :value="position._id"
-              >{{ position.name }}</option
+                v-for="position in positions"
+                :key="position._id"
+                :value="position._id"
+                >{{ position.name }}</option
               >
             </b-form-select>
           </div>
@@ -167,11 +167,11 @@
           </label>
           <div class="flex-3">
             <b-form-input
-                v-if="showRepeatPassword"
-                type="text"
-                required
-                class="custom-input"
-                v-model="form.c_password"
+              v-if="showRepeatPassword"
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.c_password"
             />
             <b-form-input
               v-if="!showRepeatPassword"

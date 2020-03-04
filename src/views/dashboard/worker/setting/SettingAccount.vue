@@ -42,9 +42,22 @@
         </div>
       </div>
       <div class="form-element mt-3">
+        <label>{{ $t("page_setting.account_setting.form.position") }}:</label>
+        <b-form-select v-model="model.positionId">
+          <option value=""></option>
+          <option
+              v-for="(position) in positions"
+              :key="position._id"
+              :value="position._id"
+          >{{ position.name }}</option
+          >
+        </b-form-select>
+      </div>
+
+      <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.overview") }}:</label>
         <b-form-textarea
-          col="5"
+          rows="10"
           required
           class="custom-input"
           v-model="model.overview"
@@ -154,12 +167,14 @@
 
 <script>
 import settingsApi from "@/services/api/settings";
+import positionApi from "@/services/api/positions";
 import { APP_URL } from "@/constants";
 
 export default {
   name: "SettingAccount",
   data() {
     return {
+      positions: [],
       model: {
         role: "",
         firstName: "",
@@ -177,7 +192,8 @@ export default {
         postalCode: "",
         email: "",
         passport: "",
-        image: ""
+        image: "",
+        positionId: ""
       },
       maxSize: 2097152,
       imageData: {
@@ -190,6 +206,9 @@ export default {
     settingsApi.get(this.$store.state.user).then(res => {
       this.model = res;
       this.imageData.preview = res.image ? `${APP_URL}${res.image}` : null;
+    });
+    positionApi.getAll().then(res => {
+      this.positions = res;
     });
   },
   methods: {
