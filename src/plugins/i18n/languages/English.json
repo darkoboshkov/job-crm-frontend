@@ -293,7 +293,7 @@
       "name": "Company Name",
       "kvk": "KVK Number",
       "limit_credit_safe": "Limit CreditSafe",
-      "owner": "Owner Email",
+      "owner": "Company Email",
       "phone": "Company Phone Number",
       "vat_shifted": "VAT Shifted",
       "g_account": "G Account",
