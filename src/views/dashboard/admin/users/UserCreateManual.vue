@@ -141,29 +141,30 @@
           </label>
           <div class="flex-3">
             <b-form-input
-                    v-if="showPassword"
-                    type="text"
-                    required
-                    class="custom-input"
-                    v-model="form.password"
+              v-if="showPassword"
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.password"
             />
             <b-form-input
-                    v-if="!showPassword"
-                    type="password"
-                    required
-                    class="custom-input"
-                    v-model="form.password"
+              v-if="!showPassword"
+              type="password"
+              required
+              class="custom-input"
+              v-model="form.password"
             />
             <b-form-invalid-feedback class="d-block" v-if="passwordError">
               {{ $t(`validation.${passwordError}`) }}
             </b-form-invalid-feedback>
             <b-form-checkbox
-                    class="rtl text-right"
-                    style="margin-right: 20px;"
-                    switch
-                    size="lg"
-                    v-model="showPassword"
-            ><span style="font-size: 0.75em;">Show</span></b-form-checkbox>
+              class="rtl text-right"
+              style="margin-right: 20px;"
+              switch
+              size="lg"
+              v-model="showPassword"
+              ><span style="font-size: 0.75em;">Show</span></b-form-checkbox
+            >
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -172,29 +173,30 @@
           </label>
           <div class="flex-3">
             <b-form-input
-                    v-if="showRepeatPassword"
-                    type="text"
-                    required
-                    class="custom-input"
-                    v-model="form.repeatPassword"
+              v-if="showRepeatPassword"
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.repeatPassword"
             />
             <b-form-input
-                    v-if="!showRepeatPassword"
-                    type="password"
-                    required
-                    class="custom-input"
-                    v-model="form.repeatPassword"
+              v-if="!showRepeatPassword"
+              type="password"
+              required
+              class="custom-input"
+              v-model="form.repeatPassword"
             />
             <b-form-invalid-feedback class="d-block" v-if="repeatPasswordError">
               {{ $t(`validation.${repeatPasswordError}`) }}
             </b-form-invalid-feedback>
             <b-form-checkbox
-                    class="rtl text-right"
-                    style="margin-right: 20px;"
-                    switch
-                    size="lg"
-                    v-model="showRepeatPassword"
-            ><span style="font-size: 0.75em;">Show</span></b-form-checkbox>
+              class="rtl text-right"
+              style="margin-right: 20px;"
+              switch
+              size="lg"
+              v-model="showRepeatPassword"
+              ><span style="font-size: 0.75em;">Show</span></b-form-checkbox
+            >
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -308,22 +310,22 @@
             </b-form-invalid-feedback>
           </div>
         </div>
-<!--        <div class="form-element d-flex align-items-center mt-5">-->
-<!--          <label class="flex-1">-->
-<!--            {{ $t("page_users_create_manual.form.passport") }}:-->
-<!--          </label>-->
-<!--          <div class="flex-3">-->
-<!--            <b-form-input-->
-<!--              type="text"-->
-<!--              required-->
-<!--              class="custom-input"-->
-<!--              v-model="form.passport"-->
-<!--            />-->
-<!--            <b-form-invalid-feedback class="d-block" v-if="passportError">-->
-<!--              {{ $t(`validation.${passportError}`) }}-->
-<!--            </b-form-invalid-feedback>-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="form-element d-flex align-items-center mt-5">-->
+        <!--          <label class="flex-1">-->
+        <!--            {{ $t("page_users_create_manual.form.passport") }}:-->
+        <!--          </label>-->
+        <!--          <div class="flex-3">-->
+        <!--            <b-form-input-->
+        <!--              type="text"-->
+        <!--              required-->
+        <!--              class="custom-input"-->
+        <!--              v-model="form.passport"-->
+        <!--            />-->
+        <!--            <b-form-invalid-feedback class="d-block" v-if="passportError">-->
+        <!--              {{ $t(`validation.${passportError}`) }}-->
+        <!--            </b-form-invalid-feedback>-->
+        <!--          </div>-->
+        <!--        </div>-->
         <b-form-invalid-feedback class="d-block mt-5" v-if="error">
           {{ $t(`${error}`) }}
         </b-form-invalid-feedback>
@@ -384,7 +386,7 @@ export default {
       passportError: "",
       error: "",
       showPassword: false,
-      showRepeatPassword: false,
+      showRepeatPassword: false
     };
   },
   mounted() {

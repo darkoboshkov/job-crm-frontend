@@ -260,7 +260,7 @@
     "table": {
       "image": "Image",
       "name": "Name",
-      "owner": "Owner",
+      "email": "Email",
       "kvk": "KVK Number",
       "since": "Registered since",
       "status": "Status",
@@ -269,7 +269,7 @@
     },
     "filter": {
       "name": "Name",
-      "email": "Owner Email",
+      "email": "Email",
       "status": "Status",
       "active": "Active",
       "inactive": "Inactive",
@@ -293,7 +293,7 @@
       "name": "Company Name",
       "kvk": "KVK Number",
       "limit_credit_safe": "Limit CreditSafe",
-      "owner": "Company Email",
+      "email": "Company Email",
       "phone": "Company Phone Number",
       "vat_shifted": "VAT Shifted",
       "g_account": "G Account",

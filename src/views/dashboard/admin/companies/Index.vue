@@ -180,7 +180,7 @@ export default {
           name: "name"
         },
         {
-          label: this.$t("page_companies.table.owner"),
+          label: this.$t("page_companies.table.email"),
           field: "email",
           name: "email"
         },

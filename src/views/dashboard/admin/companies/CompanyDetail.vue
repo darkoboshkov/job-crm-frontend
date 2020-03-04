@@ -52,7 +52,7 @@
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label>{{ $t("page_detail_company.form.owner") }}:</label>
+              <label>{{ $t("page_detail_company.form.email") }}:</label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-input

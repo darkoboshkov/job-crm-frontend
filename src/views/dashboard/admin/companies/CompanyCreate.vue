@@ -39,30 +39,30 @@
           </div>
           <div class="row mt-5 align-items-center">
             <div class="col-12 col-md-4">
-              <label>{{ $t("page_detail_company.form.owner") }}:</label>
+              <label>{{ $t("page_detail_company.form.email") }}:</label>
             </div>
             <div class="col-12 col-md-8">
-<!--              <b-form-select-->
-<!--                name="email"-->
-<!--                v-model="model.email"-->
-<!--                class="custom-input"-->
-<!--                style="margin-top:-8px"-->
-<!--              >-->
-<!--                <option-->
-<!--                  v-for="(manager, index) in managers"-->
-<!--                  :value="manager.email"-->
-<!--                  :key="index"-->
-<!--                >-->
-<!--                  {{ manager.email }}-->
-<!--                </option>-->
-<!--              </b-form-select>-->
+              <!--              <b-form-select-->
+              <!--                name="email"-->
+              <!--                v-model="model.email"-->
+              <!--                class="custom-input"-->
+              <!--                style="margin-top:-8px"-->
+              <!--              >-->
+              <!--                <option-->
+              <!--                  v-for="(manager, index) in managers"-->
+              <!--                  :value="manager.email"-->
+              <!--                  :key="index"-->
+              <!--                >-->
+              <!--                  {{ manager.email }}-->
+              <!--                </option>-->
+              <!--              </b-form-select>-->
 
               <b-form-input
-              type="email"
-              name="email"
-              required
-              class="custom-input"
-              v-model="model.email"
+                type="email"
+                name="email"
+                required
+                class="custom-input"
+                v-model="model.email"
               ></b-form-input>
             </div>
           </div>
