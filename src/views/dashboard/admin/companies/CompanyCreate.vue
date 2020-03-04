@@ -16,8 +16,21 @@
           {{ $t("page_detail_company.create_title") }}
         </h1>
       </div>
-      <div class="company-create__description text-center">
-        <p>
+      <div class="company-create__description d-flex align-items-center">
+        <div class="company-create__photo">
+          <div class="image-wrapper">
+            <img :src="imageData.preview" />
+            <b-spinner type="grow" label="Spinning" v-if="isImageLoading" />
+            <input
+                    type="file"
+                    class="form-control"
+                    id="image_upload"
+                    accept="image/*"
+                    @change="onFileChange"
+            />
+          </div>
+        </div>
+        <p class="m-0">
           {{ $t("page_detail_company.description") }}
         </p>
       </div>
@@ -326,10 +339,43 @@ export default {
       },
       managers: [],
       termsOfPayment: [],
-      error: ""
+      error: "",
+      imageData: {
+        preview: null
+      },
+      isImageLoading: false
     };
   },
   methods: {
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+
+      if (window.File && window.FileList && window.FileReader) {
+        let reader = new FileReader();
+        let vm = this;
+
+        if (files.length !== 1 || !files[0].type.match("image")) return;
+        let file = files[0];
+        reader.onload = e => {
+          let title = file.name;
+          let titleArray = title.split(".");
+          title = title.replace("." + titleArray[titleArray.length - 1], "");
+
+          vm.imageData = {
+            file: file,
+            preview: e.target.result,
+            title: title,
+            size: file.size
+          };
+        };
+        reader.readAsDataURL(file);
+      } else {
+        console.error("Your browser does not support File API");
+      }
+    },
     getManagers() {
       usersApi
         .getAll({
@@ -348,27 +394,42 @@ export default {
         this.model.termOfPayment = this.termsOfPayment[0];
       });
     },
-    create() {
-      if (!this.model.vatShiftedEnabled) {
-        delete this.model.VATShifted;
-      }
-      if (!this.model.gAccountEnabled) {
-        delete this.model.GAccount;
-      }
+    async create() {
+      try {
+        if (this.imageData.file) {
+          this.isImageLoading = true;
+          const data = new FormData();
+          data.append("title", this.imageData.title);
+          data.append("file", this.imageData.file);
+          const response = await companyApi.uploadLogo(data);
+          this.isImageLoading = false;
+          this.model.logo = response.path;
+          delete this.imageData.file;
+        }
 
-      companyApi
-        .create(this.model)
-        .then(res => {
+        if (!this.model.vatShiftedEnabled) {
+          delete this.model.VATShifted;
+        }
+        if (!this.model.gAccountEnabled) {
+          delete this.model.GAccount;
+        }
+
+        companyApi.create(this.model).then(res => {
           this.$store.dispatch("updateShowSuccessModal", true);
           this.$store.dispatch("updateSuccessModalContent", {
             title: this.$t("page_detail_company.modal.create_success.title"),
             subTitle: this.$t(
-              "page_detail_company.modal.create_success.sub_title"
+                    "page_detail_company.modal.create_success.sub_title"
             ),
-            button: this.$t("page_detail_company.modal.create_success.continue")
+            button: this.$t(
+                    "page_detail_company.modal.create_success.continue"
+            ),
+            onButtonClick: () => {
+              this.$router.push({name: "admin-companies-detail", params: {companyId: res._id}});
+              this.$store.dispatch("updateShowSuccessModal", false);
+            }
           });
-        })
-        .catch(err => {
+        }).catch(err => {
           // let read = errorReader(err);
           // this.error = read.param + ' is ' + read.msg.toLowerCase();
 
@@ -381,6 +442,10 @@ export default {
             button: this.$t("page_detail_company.modal.create_error.continue")
           });
         });
+      } catch (error) {
+        this.isImageLoading = false;
+        console.log(error);
+      }
     },
     catchSubmitCreate(e) {
       e.preventDefault();

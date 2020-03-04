@@ -27,8 +27,22 @@
         </h1>
       </div>
 
-      <div class="company-detail__description text-center">
-        <p>
+      <div class="company-detail__description d-flex align-items-center">
+        <div class="company-detail__photo">
+          <div class="image-wrapper">
+            <img :src="imageData.preview" />
+            <b-spinner type="grow" label="Spinning" v-if="isImageLoading" />
+            <input
+                    type="file"
+                    class="form-control"
+                    id="image_upload"
+                    accept="image/*"
+                    :disabled="!editCompany"
+                    @change="onFileChange"
+            />
+          </div>
+        </div>
+        <p class="m-0">
           {{ $t("page_detail_company.description") }}
         </p>
       </div>
@@ -320,6 +334,7 @@
 import companyApi from "../../../../services/api/companies.js";
 import constantsApi from "../../../../services/api/constants.js";
 import errorReader from "@/helpers/ErrorReader";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "CompanyDetails",
@@ -345,10 +360,43 @@ export default {
         members: []
       },
       termsOfPayment: [],
-      error: ""
+      error: "",
+      imageData: {
+        preview: null
+      },
+      isImageLoading: false
     };
   },
   methods: {
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+
+      if (window.File && window.FileList && window.FileReader) {
+        let reader = new FileReader();
+        let vm = this;
+
+        if (files.length !== 1 || !files[0].type.match("image")) return;
+        let file = files[0];
+        reader.onload = e => {
+          let title = file.name;
+          let titleArray = title.split(".");
+          title = title.replace("." + titleArray[titleArray.length - 1], "");
+
+          vm.imageData = {
+            file: file,
+            preview: e.target.result,
+            title: title,
+            size: file.size
+          };
+        };
+        reader.readAsDataURL(file);
+      } else {
+        console.error("Your browser does not support File API");
+      }
+    },
     onEditCompany() {
       if (this.editCompany) {
         this.update();
@@ -365,6 +413,8 @@ export default {
           this.model = res;
           this.vatShiftedEnabled = !!res.VATShifted;
           this.gAccountEnabled = !!res.GAccount;
+
+          this.imageData.preview = res.logo ? `${APP_URL}${res.logo}` : null;
         });
     },
     getTermsOfPayment() {
@@ -373,45 +423,61 @@ export default {
         this.model.termOfPayment = this.termsOfPayment[0];
       });
     },
-    update() {
-      if (!this.vatShiftedEnabled) {
-        delete this.model.VATShifted;
+    async update() {
+      try {
+        if (this.imageData.file) {
+          this.isImageLoading = true;
+          const data = new FormData();
+          data.append("title", this.imageData.title);
+          data.append("file", this.imageData.file);
+          const response = await companyApi.uploadLogo(data);
+          this.isImageLoading = false;
+          this.model.logo = response.path;
+          delete this.imageData.file;
+        }
+
+        if (!this.model.vatShiftedEnabled) {
+          delete this.model.VATShifted;
+        }
+        if (!this.model.gAccountEnabled) {
+          delete this.model.GAccount;
+        }
+
+        companyApi
+                .patch(
+                        Object.assign(this.model, {
+                          companyId: this.model._id
+                        })
+                )
+                .then(res => {
+                  this.$store.dispatch("updateShowSuccessModal", true);
+                  this.$store.dispatch("updateSuccessModalContent", {
+                    title: this.$t("page_detail_company.modal.update_success.title"),
+                    subTitle: this.$t(
+                            "page_detail_company.modal.update_success.sub_title"
+                    ),
+                    button: this.$t("page_detail_company.modal.update_success.continue")
+                  });
+
+                  this.editCompany = !this.editCompany;
+                })
+                .catch(err => {
+                  // let read = errorReader(err);
+                  // this.error = read.param + ' is ' + read.msg.toLowerCase();
+
+                  this.error = err.response.data?.errors?.msg;
+
+                  this.$store.dispatch("updateShowErrorModal", true);
+                  this.$store.dispatch("updateErrorModalContent", {
+                    title: this.$t("page_detail_company.modal.update_error.title"),
+                    subTitle: this.error,
+                    button: this.$t("page_detail_company.modal.update_error.continue")
+                  });
+                });
+      } catch (error) {
+        this.isImageLoading = false;
+        console.log(error);
       }
-      if (!this.gAccountEnabled) {
-        delete this.model.GAccount;
-      }
-
-      companyApi
-        .patch(
-          Object.assign(this.model, {
-            companyId: this.model._id
-          })
-        )
-        .then(res => {
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_detail_company.modal.update_success.title"),
-            subTitle: this.$t(
-              "page_detail_company.modal.update_success.sub_title"
-            ),
-            button: this.$t("page_detail_company.modal.update_success.continue")
-          });
-
-          this.editCompany = !this.editCompany;
-        })
-        .catch(err => {
-          // let read = errorReader(err);
-          // this.error = read.param + ' is ' + read.msg.toLowerCase();
-
-          this.error = err.response.data?.errors?.msg;
-
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_detail_company.modal.update_error.title"),
-            subTitle: this.error,
-            button: this.$t("page_detail_company.modal.update_error.continue")
-          });
-        });
     },
     catchSubmitUpdate(e) {
       e.preventDefault();

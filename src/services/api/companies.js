@@ -22,5 +22,8 @@ export default {
   },
   delete(params, resolve, reject = null) {
     return request("delete", `/companies/${params.companyId}`, resolve, reject);
-  }
+  },
+  uploadLogo(params, resolve, reject = null) {
+    return request("post", `/companies/logo/upload`, params, resolve, reject);
+  },
 };
