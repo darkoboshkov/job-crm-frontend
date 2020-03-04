@@ -90,19 +90,8 @@
             class="d-flex align-items-center"
           >
             <img
-              v-if="
-                props.row.status === 'active' ||
-                props.row.status === 'completed'
-                  ? props.row.image
-                  : props.row.status === 'open' && props.row.company.logo
-              "
-              :src="
-                props.row.status === 'active' ||
-                props.row.status === 'completed'
-                  ? APP_URL + props.row.image
-                  : props.row.status === 'open' &&
-                    APP_URL + props.row.company.logo
-              "
+              v-if="props.row.company.logo"
+              :src="APP_URL + props.row.company.logo"
               class="rounded-circle border mr-2"
               style="width:50px;"
             />
