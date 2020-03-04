@@ -46,10 +46,10 @@
         <b-form-select v-model="model.positionId">
           <option value=""></option>
           <option
-              v-for="(position) in positions"
-              :key="position._id"
-              :value="position._id"
-          >{{ position.name }}</option
+            v-for="position in positions"
+            :key="position._id"
+            :value="position._id"
+            >{{ position.name }}</option
           >
         </b-form-select>
       </div>

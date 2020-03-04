@@ -473,14 +473,15 @@ export default {
         userApi
           .create(params)
           .then(res => {
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
+            this.$store.dispatch("updateShowSuccessModal", true);
+            this.$store.dispatch("updateSuccessModalContent", {
               title: this.$t("page_users_create_manual.modal.create.title"),
               subTitle: this.$t(
                 "page_users_create_manual.modal.create.sub_title"
               ),
               button: this.$t("page_users_create_manual.modal.create.continue")
             });
+            this.$router.push({ name: "admin-candidates" });
           })
           .catch(data => {
             let messages = data.response.data.errors.msg;

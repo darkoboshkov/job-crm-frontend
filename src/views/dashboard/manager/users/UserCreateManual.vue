@@ -457,6 +457,7 @@ export default {
               ),
               button: this.$t("page_users_create_manual.modal.create.continue")
             });
+            this.$router.push({ name: "manager-candidates" });
           })
           .catch(data => {
             let messages = data.response.data.errors.msg;
