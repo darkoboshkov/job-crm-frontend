@@ -200,7 +200,7 @@
                     <span class="mr-4"
                       ><i class="hiway-crm-icon icon-more-vertical"></i
                     ></span>
-                    <span><i class="hiway-crm-icon icon-bin"></i></span>
+                    <span class="pointer"><i class="hiway-crm-icon icon-bin" @click="deleteFile(model.attachments, idx)" /></span>
                   </div>
                 </li>
               </ul>
@@ -276,6 +276,9 @@ export default {
     }
   },
   methods: {
+    deleteFile(attachments, idx) {
+      attachments.splice(idx, 1);
+    },
     getCompany() {
       companiesApi
         .getById({
