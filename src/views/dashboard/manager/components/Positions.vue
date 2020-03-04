@@ -33,8 +33,8 @@
         >
           <div class="d-flex align-items-center">
             <img
-              v-if="row.image"
-              :src="APP_URL + row.image"
+              v-if="row.company.logo"
+              :src="APP_URL + row.company.logo"
               style="max-width: 45px; margin-right: 15px;"
             />
             <div v-else class="avatar-placeholder mr-2"></div>
