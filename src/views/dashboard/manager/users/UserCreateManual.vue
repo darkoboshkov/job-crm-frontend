@@ -154,14 +154,14 @@
                     type="text"
                     required
                     class="custom-input"
-                    v-model="form.repeatPassword"
+                    v-model="form.c_password"
             />
             <b-form-input
                     v-if="!showRepeatPassword"
                     type="password"
                     required
                     class="custom-input"
-                    v-model="form.repeatPassword"
+                    v-model="form.c_password"
             />
             <b-form-invalid-feedback class="d-block" v-if="repeatPasswordError">
               {{ $t(`validation.${repeatPasswordError}`) }}
@@ -339,7 +339,7 @@ export default {
         postalCode: "",
         city: "",
         password: "",
-        repeatPassword: "",
+        c_password: "",
         passport: ""
       },
       roleError: "",
@@ -400,7 +400,7 @@ export default {
       } else {
         this.passwordError = "";
       }
-      if (this.form.password !== this.form.repeatPassword) {
+      if (this.form.password !== this.form.c_password) {
         this.repeatPasswordError = "PASSWORDS_NOT_MATCH";
         valid = false;
       } else {
