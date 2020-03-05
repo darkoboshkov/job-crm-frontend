@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'hiway-crm-icon';
-  src:  url('fonts/hiway-crm-icon.eot?asa4ma');
-  src:  url('fonts/hiway-crm-icon.eot?asa4ma#iefix') format('embedded-opentype'),
-    url('fonts/hiway-crm-icon.ttf?asa4ma') format('truetype'),
-    url('fonts/hiway-crm-icon.woff?asa4ma') format('woff'),
-    url('fonts/hiway-crm-icon.svg?asa4ma#hiway-crm-icon') format('svg');
+  src:  url('fonts/hiway-crm-icon.eot?qw7tpo');
+  src:  url('fonts/hiway-crm-icon.eot?qw7tpo#iefix') format('embedded-opentype'),
+    url('fonts/hiway-crm-icon.ttf?qw7tpo') format('truetype'),
+    url('fonts/hiway-crm-icon.woff?qw7tpo') format('woff'),
+    url('fonts/hiway-crm-icon.svg?qw7tpo#hiway-crm-icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-hourglass:before {
+  content: "\e91b";
+}
+.icon-list:before {
+  content: "\e91c";
+}
+.icon-watch:before {
+  content: "\e91d";
+}
+.icon-euro:before {
+  content: "\e91e";
+}
 .icon-dot:before {
   content: "\e91a";
 }
