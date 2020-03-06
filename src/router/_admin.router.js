@@ -140,6 +140,13 @@ export default [
         name: "admin-setting",
         component: () => import("../views/dashboard/admin/setting/Index.vue"),
         beforeEnter: isAdminAuthorized
+      },
+      {
+        path: "timesheets",
+        name: "admin-timesheets",
+        component: () =>
+          import("../views/dashboard/admin/timesheets/Index.vue"),
+        beforeEnter: isAdminAuthorized
       }
     ],
     beforeEnter: ifAuthenticated

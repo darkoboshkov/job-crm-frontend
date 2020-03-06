@@ -15,6 +15,21 @@ export const items = [
     roles: ["worker"]
   },
   {
+    icon: "icon-hours",
+    path: "/admin/dashboard/timesheets",
+    roles: ["admin"]
+  },
+  {
+    icon: "icon-hours",
+    path: "/manager/dashboard/timesheets",
+    roles: ["manager", "owner"]
+  },
+  {
+    icon: "icon-hours",
+    path: "/worker/dashboard/timesheets",
+    roles: ["worker"]
+  },
+  {
     icon: "icon-office",
     path: "/admin/dashboard/companies",
     roles: ["admin"]
@@ -48,20 +63,20 @@ export const items = [
     icon: "icon-contract",
     path: "/worker/dashboard/joboffers",
     roles: ["worker"]
-  },
-  {
-    icon: "icon-mail",
-    path: "/admin/dashboard/chats",
-    roles: ["admin"]
-  },
-  {
-    icon: "icon-mail",
-    path: "/manager/dashboard/chats",
-    roles: ["manager", "owner"]
-  },
-  {
-    icon: "icon-mail",
-    path: "/worker/dashboard/chats",
-    roles: ["worker"]
   }
+  // {
+  //   icon: "icon-mail",
+  //   path: "/admin/dashboard/chats",
+  //   roles: ["admin"]
+  // },
+  // {
+  //   icon: "icon-mail",
+  //   path: "/manager/dashboard/chats",
+  //   roles: ["manager", "owner"]
+  // },
+  // {
+  //   icon: "icon-mail",
+  //   path: "/worker/dashboard/chats",
+  //   roles: ["worker"]
+  // },
 ];

@@ -1,0 +1,33 @@
+#page_timesheets {
+  .card-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.75em;
+    height: 1.75em;
+
+    font-size: 2em;
+    color: #fff;
+    background-color: var(--lipstick-red);
+    padding: 0.5em;
+    border-radius: 50%;
+    margin-right: 0.5em;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-title {
+    font-size: 1.25rem;
+  }
+  .card-text {
+    display: flex;
+  }
+  .card-value {
+    color: var(--lipstick-red);
+    font-size: 2em;
+    font-weight: bold;
+  }
+}
