@@ -112,4 +112,16 @@ hr {
   width: 45px;
   height: 45px;
   border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar-image {
+  background: var(--white-two);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
 }

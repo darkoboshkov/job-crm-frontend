@@ -14,6 +14,11 @@
       //color: var(--lipstick-red)
     }
   }
+
+  li {
+    cursor: pointer;
+    min-height: 77px;
+  }
 }
 
 #adjust_dashboard {
@@ -42,11 +47,5 @@
       padding: 6px 12px;
       width: auto;
     }
-  }
-}
-
-#page_dashboard {
-  li {
-    cursor: pointer;
   }
 }

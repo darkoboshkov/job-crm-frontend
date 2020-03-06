@@ -77,13 +77,13 @@
             v-else-if="props.column.field === 'image'"
             class="d-flex align-items-center"
           >
-            <img
-              v-if="props.row.image"
-              :src="APP_URL + props.row.image"
-              class="rounded-circle border mr-2"
-              style="width:50px;"
-            />
-            <div v-else class="avatar-placeholder mr-2"></div>
+
+            <div class="avatar-image mr-2">
+              <img
+                  v-if="props.row.image"
+                  :src="APP_URL + props.row.image"
+              />
+            </div>
           </div>
           <span v-else>
             {{ props.formattedRow[props.column.field] }}

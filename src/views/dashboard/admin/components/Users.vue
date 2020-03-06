@@ -33,13 +33,9 @@
           "
         >
           <div class="d-flex align-items-center">
-            <img
-              v-if="row.image"
-              :src="APP_URL + row.image"
-              style="max-width: 45px; margin-right: 15px;"
-              class="rounded-circle"
-            />
-            <div v-else class="avatar-placeholder mr-2"></div>
+            <div  class="avatar-image mr-2">
+              <img v-if="row.image" :src="APP_URL + row.image"/>
+            </div>
             <div class="flex-1">
               <div>{{ row.firstName }} {{ row.lastName }}</div>
             </div>

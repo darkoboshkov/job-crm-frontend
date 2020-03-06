@@ -64,24 +64,23 @@
             v-else-if="props.column.field === 'image'"
             class="d-flex align-items-center"
           >
-            <img
-              v-if="
+            <div class="avatar-image mr-2">
+              <img
+                  v-if="
                 props.row.status === 'active' ||
                 props.row.status === 'completed'
                   ? props.row.image
                   : props.row.status === 'open' && props.row.company.logo
               "
-              :src="
+                  :src="
                 props.row.status === 'active' ||
                 props.row.status === 'completed'
                   ? APP_URL + props.row.image
                   : props.row.status === 'open' &&
                     APP_URL + props.row.company.logo
               "
-              class="rounded-circle border mr-2"
-              style="width:50px;"
-            />
-            <div v-else class="avatar-placeholder mr-2"></div>
+              />
+            </div>
           </div>
           <span v-else>
             {{ props.formattedRow[props.column.field] }}

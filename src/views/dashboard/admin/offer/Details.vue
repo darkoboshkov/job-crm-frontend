@@ -16,17 +16,15 @@
         <div class="card matching-item">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
-              <img
-                v-if="company.logo"
-                :src="APP_URL + company.logo"
-                class="rounded-circle border mr-2"
-                style="width:65px"
-              />
               <div
-                v-else
-                class="avatar-placeholder mr-2"
+                class="avatar-image mr-2"
                 style="width:65px;height:65px;"
-              ></div>
+              >
+                <img
+                    v-if="company.logo"
+                    :src="APP_URL + company.logo"
+                />
+              </div>
               <div>
                 <div>
                   <strong>{{ job.title }}</strong>
@@ -61,17 +59,15 @@
         <div class="card matching-item">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
-              <img
-                v-if="worker.image"
-                :src="APP_URL + worker.image"
-                class="rounded-circle border mr-2"
-                style="width:65px"
-              />
               <div
-                v-else
-                class="avatar-placeholder mr-2"
+                class="avatar-image mr-2"
                 style="width:65px;height:65px;"
-              ></div>
+              >
+                <img
+                    v-if="worker.image"
+                    :src="APP_URL + worker.image"
+                />
+              </div>
               <div>
                 <div>
                   <strong>{{ worker.firstName }} {{ worker.lastName }}</strong>
@@ -113,17 +109,9 @@
       <div class="card-body d-flex justify-content-between">
         <div>
           <div class="d-flex align-items-center mb-3">
-            <img
-              v-if="manager.image"
-              :src="APP_URL + manager.image"
-              class="rounded-circle border mr-4"
-              style="width:45px"
-            />
-            <div
-              v-else
-              class="avatar-placeholder mr-2"
-              style="width:45px;height:45px;"
-            ></div>
+            <div class="avatar-image mr-2">
+              <img v-if="manager.image" :src="APP_URL + manager.image"/>
+            </div>
             <div>
               <i
                 class="hiway-crm-icon icon-dot color-yellow mr-2"
@@ -133,17 +121,9 @@
             </div>
           </div>
           <div class="d-flex align-items-center">
-            <img
-              v-if="worker.image"
-              :src="APP_URL + worker.image"
-              class="rounded-circle border mr-4"
-              style="width:45px"
-            />
-            <div
-              v-else
-              class="avatar-placeholder mr-2"
-              style="width:45px;height:45px;"
-            ></div>
+            <div class="avatar-image mr-2">
+              <img v-if="worker.image" :src="APP_URL + worker.image"/>
+            </div>
             <div>
               <i
                 class="hiway-crm-icon icon-dot color-blue mr-2"
