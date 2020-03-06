@@ -83,7 +83,6 @@
               <img
                   v-if="props.row.logo"
                   :src="APP_URL + props.row.logo"
-                  class="rounded-circle border mr-2"
               />
             </div>
           </div>
