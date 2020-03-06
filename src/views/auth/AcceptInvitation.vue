@@ -135,13 +135,14 @@ export default {
         return authApi
           .invitation(params)
           .then(res => {
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
+            this.$store.dispatch("updateShowSuccessModal", true);
+            this.$store.dispatch("updateSuccessModalContent", {
               title: this.$t("page_accept.modal.accept.title"),
               subTitle: this.$t("page_accept.modal.accept.sub_title"),
               button: this.$t("page_accept.modal.accept.login"),
               onButtonClick: () => {
                 this.$router.push({ name: "login" });
+                this.$store.dispatch("updateShowSuccessModal", false);
               }
             });
           })
