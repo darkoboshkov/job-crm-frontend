@@ -354,13 +354,16 @@
         </div>
       </div>
       <div class="mb-4">
-        <b-form-radio-group id="radio-slots" v-model="agreement">
-          <b-form-radio value="agree" style="font-style: italic">
-            I hereby acknowledge and agree that I’ve read and agreed to the
-            terms in this contract. I understand that by clicking on the “Sign”
-            button below I digitally sign and bind myself to this contract.
-          </b-form-radio>
-        </b-form-radio-group>
+        <b-form-checkbox
+            v-model="agreement"
+            name="checkbox-1"
+            value="accepted"
+            unchecked-value="not_accepted"
+        >
+          I hereby acknowledge and agree that I’ve read and agreed to the
+          terms in this contract. I understand that by clicking on the “Sign”
+          button below I digitally sign and bind myself to this contract.
+        </b-form-checkbox>
       </div>
       <div class="d-flex justify-content-around">
         <button
@@ -461,7 +464,7 @@ export default {
       imageData: {},
       attachments: [],
       CAO: {},
-      agreement: "agree",
+      agreement: "not_accepted",
       paymentIntervalOptions: [
         {
           label: "Week",
@@ -512,6 +515,15 @@ export default {
       this.$refs["modal-sign-contract"].show();
     },
     sign() {
+      if( this.agreement !== "accepted") {
+        this.$store.dispatch("updateShowErrorModal", true);
+        this.$store.dispatch("updateErrorModalContent", {
+          title: this.$t("page_offer_detail.modal.accept_fail.title"),
+          subTitle: this.$t("page_offer_detail.modal.accept_fail.sub_title"),
+          button: this.$t("page_offer_detail.modal.accept_fail.continue")
+        });
+        return;
+      }
       return jobOfferApi.sign(this.model).then(res => {
         this.model = res;
         this.$refs["modal-sign-contract"].hide();

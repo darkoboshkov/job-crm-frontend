@@ -550,6 +550,11 @@
         "title": "Failure",
         "sub_title": "Failed to adjust the contract.",
         "continue": "Continue"
+      },
+      "accept_fail": {
+        "title": "Failure",
+        "sub_title": "Please accept the agreement.",
+        "continue": "Continue"
       }
     }
   },
