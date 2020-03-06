@@ -244,7 +244,7 @@
           style="min-width:160px;"
         >
           Upload
-          <i class="hiway-crm-icon icon-upload"></i>
+          <i class="hiway-crm-icon icon-upload"/>
         </label>
       </div>
       <div class="card-body">
@@ -270,15 +270,14 @@
             >
             <span class="mr-5">{{ attachment.size }} B</span>
             <span class="mr-4"
-              ><i class="hiway-crm-icon icon-more-vertical"></i
-            ></span>
+              ><i class="hiway-crm-icon icon-more-vertical"/>
+            </span>
             <span
               ><i
                 v-if="attachment.userId === user._id"
                 class="hiway-crm-icon icon-bin"
                 @click="confirmDelete(attachment)"
-              ></i
-            ></span>
+              /></span>
           </div>
         </div>
       </div>
@@ -289,7 +288,7 @@
       :company="company"
       :manager="manager"
       :worker="worker"
-    ></view-offer>
+    />
 
     <b-modal
       ref="modal-sign-contract"
@@ -515,7 +514,7 @@ export default {
     sign() {
       return jobOfferApi.sign(this.model).then(res => {
         this.model = res;
-
+        this.$refs["modal-sign-contract"].hide();
         this.$store.dispatch("updateShowSuccessModal", true);
         this.$store
           .dispatch("updateSuccessModalContent", {
