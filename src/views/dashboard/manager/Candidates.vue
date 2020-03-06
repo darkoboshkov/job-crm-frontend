@@ -78,10 +78,7 @@
             class="d-flex align-items-center"
           >
             <div class="avatar-image mr-2">
-              <img
-                  v-if="props.row.image"
-                  :src="APP_URL + props.row.image"
-              />
+              <img v-if="props.row.image" :src="APP_URL + props.row.image" />
             </div>
           </div>
           <span v-else>
@@ -203,9 +200,9 @@ export default {
           tdClass: "link"
         },
         {
-          label: this.$t("page_candidates.table.position"),
-          field: "position.name",
-          name: "position"
+          label: this.$t("page_candidates.table.profession"),
+          field: "profession",
+          name: "profession"
         },
         {
           label: this.$t("page_candidates.table.company"),
@@ -259,7 +256,7 @@ export default {
       this.getWorkers();
     },
     onCellClick(params) {
-      if (params.column.name === "name" || params.column.name === "image") {
+      if (params.column.name !== "actions") {
         this.goToProfile(params);
       }
     },
@@ -314,7 +311,7 @@ export default {
               row.age = " - ";
             }
             row.company = row.company[0];
-            row.position = row.position[0];
+            row.profession = row.position && row.position[0] ? row.position[0].name : "";
             row.createdAt = new Date(row.createdAt).toLocaleString();
             row.name = row.firstName ? row.firstName + " " + row.lastName : "";
 

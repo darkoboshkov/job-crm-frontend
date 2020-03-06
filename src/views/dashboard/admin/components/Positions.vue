@@ -33,8 +33,8 @@
           "
         >
           <div class="d-flex align-items-center">
-            <div  class="avatar-image mr-2">
-              <img v-if="row.company.logo" :src="APP_URL + row.company.logo"/>
+            <div class="avatar-image mr-2">
+              <img v-if="row.company.logo" :src="APP_URL + row.company.logo" />
             </div>
             <div class="flex-1">
               <div>

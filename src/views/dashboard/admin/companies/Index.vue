@@ -27,13 +27,13 @@
           class="hiway-crm-icon icon-ol pointer"
           @click="imageView(true)"
           :style="{ opacity: imageMode ? 1 : 0.261 }"
-        ></i>
+        />
         |
         <i
           class="hiway-crm-icon icon-ul pointer"
           @click="imageView(false)"
           :style="{ opacity: !imageMode ? 1 : 0.261 }"
-        ></i>
+        />
       </div>
     </div>
 
@@ -64,9 +64,9 @@
               <template v-slot:button-content>
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
-              <b-dropdown-item href="#" @click="goToCompany(props)">{{
-                $t("page_companies.table.view_company")
-              }}</b-dropdown-item>
+              <b-dropdown-item href="#" @click="goToCompany(props)">
+                {{ $t("page_companies.table.view_company") }}
+              </b-dropdown-item>
             </b-dropdown>
             <button
               class="btn btn-transparent"
@@ -80,10 +80,7 @@
             class="d-flex align-items-center"
           >
             <div class="avatar-image mr-2">
-              <img
-                  v-if="props.row.logo"
-                  :src="APP_URL + props.row.logo"
-              />
+              <img v-if="props.row.logo" :src="APP_URL + props.row.logo" />
             </div>
           </div>
           <span v-else-if="props.column.field === 'activeState'">
@@ -242,7 +239,11 @@ export default {
     onColumnFilter(e) {
       this.getCompanies();
     },
-    onCellClick(params) {},
+    onCellClick(params) {
+      if (params.column.name !== "actions") {
+        this.goToCompany(params);
+      }
+    },
     onPerPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {
         limit: e.currentPerPage

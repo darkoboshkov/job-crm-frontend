@@ -34,10 +34,7 @@
           >
             <div class="d-flex align-items-center">
               <div class="avatar-image mr-2">
-                <img
-                    v-if="user.image"
-                    :src="APP_URL + user.image"
-                />
+                <img v-if="user.image" :src="APP_URL + user.image" />
               </div>
               <div>
                 <strong>

@@ -8,7 +8,7 @@
           required
           class="custom-input"
           v-model="model.firstName"
-        ></b-form-input>
+        />
       </div>
       <div class="form-element mt-3">
         <label
@@ -19,7 +19,7 @@
           required
           class="custom-input"
           v-model="model.middleName"
-        ></b-form-input>
+        />
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.last_name") }}:</label>
@@ -28,7 +28,7 @@
           required
           class="custom-input"
           v-model="model.lastName"
-        ></b-form-input>
+        />
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.gender") }}:</label>
@@ -42,9 +42,9 @@
         </div>
       </div>
       <div class="form-element mt-3">
-        <label>{{ $t("page_setting.account_setting.form.position") }}:</label>
+        <label>{{ $t("page_setting.account_setting.form.profession") }}:</label>
         <b-form-select v-model="model.positionId">
-          <option value=""></option>
+          <option value=""/>
           <option
             v-for="position in positions"
             :key="position._id"
@@ -61,7 +61,7 @@
           required
           class="custom-input"
           v-model="model.overview"
-        ></b-form-textarea>
+        />
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.phone") }}:</label>
@@ -70,7 +70,7 @@
           required
           class="custom-input"
           v-model="model.phone"
-        ></b-form-input>
+        />
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.country") }}:</label>
@@ -79,7 +79,7 @@
           required
           class="custom-input"
           v-model="model.country"
-        ></b-form-input>
+        />
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.city") }}:</label>
@@ -88,7 +88,7 @@
           required
           class="custom-input"
           v-model="model.city"
-        ></b-form-input>
+        />
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.street") }}:</label>
@@ -97,7 +97,7 @@
           required
           class="custom-input"
           v-model="model.street"
-        ></b-form-input>
+        />
       </div>
       <div class="form-element mt-3">
         <label
@@ -128,20 +128,18 @@
           required
           class="custom-input"
           v-model="model.birthday"
-        ></b-form-input>
+        />
       </div>
       <div class="form-element mt-3">
-        <label
-          >{{
-            $t("page_setting.account_setting.form.bank_account_number")
-          }}:</label
-        >
+        <label>
+          {{ $t("page_setting.account_setting.form.bank_account_number") }}:
+        </label>
         <b-form-input
           type="text"
           required
           class="custom-input"
           v-model="model.bankNumber"
-        ></b-form-input>
+        />
       </div>
       <div class="form-element mt-3">
         <button class="btn btn-blue" @click="update">

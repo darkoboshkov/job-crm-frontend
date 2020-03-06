@@ -32,8 +32,8 @@
           "
         >
           <div class="d-flex align-items-center">
-            <div  class="avatar-image mr-2">
-              <img v-if="row.logo" :src="APP_URL + row.logo"/>
+            <div class="avatar-image mr-2">
+              <img v-if="row.logo" :src="APP_URL + row.logo" />
             </div>
             <div class="flex-1">
               <div>

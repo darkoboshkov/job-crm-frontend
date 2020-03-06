@@ -16,14 +16,8 @@
         <div class="card matching-item">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
-              <div
-                class="avatar-image mr-2"
-                style="width:65px;height:65px;"
-              >
-                <img
-                    v-if="company.logo"
-                    :src="APP_URL + company.logo"
-                />
+              <div class="avatar-image mr-2" style="width:65px;height:65px;">
+                <img v-if="company.logo" :src="APP_URL + company.logo" />
               </div>
               <div>
                 <div>
@@ -59,14 +53,8 @@
         <div class="card matching-item">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
-              <div
-                class="avatar-image mr-2"
-                style="width:65px;height:65px;"
-              >
-                <img
-                    v-if="worker.image"
-                    :src="APP_URL + worker.image"
-                />
+              <div class="avatar-image mr-2" style="width:65px;height:65px;">
+                <img v-if="worker.image" :src="APP_URL + worker.image" />
               </div>
               <div>
                 <div>
@@ -109,13 +97,8 @@
       <div class="card-body d-flex justify-content-between">
         <div>
           <div class="d-flex align-items-center mb-3">
-            <div
-              class="avatar-image mr-2"
-            >
-              <img
-                  v-if="manager.image"
-                  :src="APP_URL + manager.image"
-              />
+            <div class="avatar-image mr-2">
+              <img v-if="manager.image" :src="APP_URL + manager.image" />
             </div>
             <div>
               <i
@@ -127,7 +110,7 @@
           </div>
           <div class="d-flex align-items-center">
             <div class="avatar-image mr-2">
-              <img v-if="worker.image" :src="APP_URL + worker.image"/>
+              <img v-if="worker.image" :src="APP_URL + worker.image" />
             </div>
             <div>
               <i

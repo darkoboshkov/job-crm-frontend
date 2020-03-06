@@ -34,6 +34,7 @@
         mode="remote"
         @on-page-change="onPageChange"
         @on-per-page-change="onPerPageChange"
+        @on-cell-click="onCellClick"
         :totalRows="totalRows"
         :rows="rows"
         :columns="columns"
@@ -54,28 +55,10 @@
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
               <b-dropdown-item @click="goToJob(props)">
-                <a
-                  :href="
-                    props && props.row
-                      ? `/${role}/dashboard/jobs/${props.row.company._id}/${props.row._id}`
-                      : '#'
-                  "
-                  class="text-decoration-none"
-                >
-                  {{ $t("page_jobs.table.view_job") }}
-                </a>
+                {{ $t("page_jobs.table.view_job") }}
               </b-dropdown-item>
               <b-dropdown-item @click="goToMatching(props)">
-                <a
-                  :href="
-                    props && props.row
-                      ? `/${role}/dashboard/jobs/${props.row.company._id}/${props.row._id}/matching`
-                      : '#'
-                  "
-                  class="text-decoration-none"
-                >
-                  {{ $t("page_jobs.table.start_matching") }}
-                </a>
+                {{ $t("page_jobs.table.start_matching") }}
               </b-dropdown-item>
             </b-dropdown>
             <button
@@ -91,8 +74,8 @@
           >
             <div class="avatar-image mr-2">
               <img
-                  v-if="props.row.company.logo"
-                  :src="APP_URL + props.row.company.logo"
+                v-if="props.row.company.logo"
+                :src="APP_URL + props.row.company.logo"
               />
             </div>
           </div>
@@ -154,25 +137,15 @@ export default {
 
       return columns.concat([
         {
-          label: this.$t("page_jobs.table.position"),
-          field: "position.name",
-          name: "position"
+          label: this.$t("page_jobs.table.title"),
+          field: "title",
+          name: "title"
         },
         {
           label: this.$t("page_jobs.table.company"),
           field: "company.name",
           name: "company"
         },
-        // {
-        //   label: this.$t("page_jobs.table.worker"),
-        //   field: this.computedWorkerName(),
-        //   name: "worker"
-        // },
-        // {
-        //   label: this.$t("page_jobs.table.manager"),
-        //   field: this.computedManagerName(),
-        //   name: "manager"
-        // },
         {
           label: this.$t("page_jobs.table.wage"),
           field: "wage",
@@ -193,16 +166,6 @@ export default {
           field: "endDate",
           name: "endDate"
         },
-        // {
-        //   label: this.$t("page_jobs.table.duration"),
-        //   field: this.computedDuration(),
-        //   name: "duration"
-        // },
-        {
-          label: this.$t("page_jobs.table.title"),
-          field: "title",
-          name: "title"
-        },
         {
           label: this.$t("page_jobs.table.actions"),
           field: "actions",
@@ -217,31 +180,6 @@ export default {
   methods: {
     imageView(mode) {
       this.imageMode = !!mode;
-    },
-    computedDuration() {
-      return function(row) {
-        return `${new Date(row.startDate).toLocaleDateString()} - ${new Date(
-          row.endDate
-        ).toLocaleDateString()}`;
-      };
-    },
-    computedManagerName() {
-      return function(row) {
-        return (
-          row.manager &&
-          row.manager[0] &&
-          `${row.manager[0].firstName} ${row.manager[0].lastName}`
-        );
-      };
-    },
-    computedWorkerName() {
-      return function(row) {
-        return (
-          row.worker &&
-          row.worker[0] &&
-          `${row.worker[0].firstName} ${row.worker[0].lastName}`
-        );
-      };
     },
     getJobs() {
       return jobsApi
@@ -272,6 +210,11 @@ export default {
         page: e.currentPage
       });
       this.getJobs();
+    },
+    onCellClick(params) {
+      if (params.column.name !== "actions") {
+        this.goToJob(params);
+      }
     },
     goToJob(props) {
       if (props && props.row) {

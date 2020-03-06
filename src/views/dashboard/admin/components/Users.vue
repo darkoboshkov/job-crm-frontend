@@ -33,8 +33,8 @@
           "
         >
           <div class="d-flex align-items-center">
-            <div  class="avatar-image mr-2">
-              <img v-if="row.image" :src="APP_URL + row.image"/>
+            <div class="avatar-image mr-2">
+              <img v-if="row.image" :src="APP_URL + row.image" />
             </div>
             <div class="flex-1">
               <div>{{ row.firstName }} {{ row.lastName }}</div>

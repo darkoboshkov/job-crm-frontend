@@ -121,7 +121,7 @@
         </div>
         <div class="form-element d-flex align-items-center mt-5">
           <label class="flex-1">
-            {{ $t("page_users_create_manual.form.position") }}:
+            {{ $t("page_users_create_manual.form.profession") }}:
           </label>
           <div class="flex-3">
             <b-form-select v-model="form.positionId">

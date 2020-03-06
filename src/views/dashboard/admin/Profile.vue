@@ -219,9 +219,7 @@ export default {
         .get({ companyId: this.companyId, id: this.$route.params.id })
         .then(res => {
           this.model.fullName = res.firstName + " " + res.lastName;
-          if (res.position && res.position.length) {
-            this.model.position = res.position[0].name;
-          }
+          this.model.position = res.position && res.position[0] ? res.position[0].name : "";
           this.model.overview = res.overview ? res.overview : "";
           this.model.email = res.email;
           this.model.phone = res.phone;

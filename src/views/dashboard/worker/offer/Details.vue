@@ -16,14 +16,8 @@
         <div class="card matching-item">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
-              <div
-                class="avatar-image mr-2"
-                style="width:65px;height:65px;"
-              >
-                <img
-                    v-if="company.logo"
-                    :src="APP_URL + company.logo"
-                />
+              <div class="avatar-image mr-2" style="width:65px;height:65px;">
+                <img v-if="company.logo" :src="APP_URL + company.logo" />
               </div>
               <div>
                 <div>
@@ -59,14 +53,8 @@
         <div class="card matching-item">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
-              <div
-                class="avatar-image mr-2"
-                style="width:65px;height:65px;"
-              >
-                <img
-                    v-if="worker.image"
-                    :src="APP_URL + worker.image"
-                />
+              <div class="avatar-image mr-2" style="width:65px;height:65px;">
+                <img v-if="worker.image" :src="APP_URL + worker.image" />
               </div>
               <div>
                 <div>
@@ -110,7 +98,7 @@
         <div>
           <div class="d-flex align-items-center mb-3">
             <div class="avatar-image mr-2">
-              <img v-if="manager.image" :src="APP_URL + manager.image"/>
+              <img v-if="manager.image" :src="APP_URL + manager.image" />
             </div>
             <div>
               <i
@@ -122,7 +110,7 @@
           </div>
           <div class="d-flex align-items-center">
             <div class="avatar-image mr-2">
-              <img v-if="worker.image" :src="APP_URL + worker.image"/>
+              <img v-if="worker.image" :src="APP_URL + worker.image" />
             </div>
             <div>
               <i
@@ -244,7 +232,7 @@
           style="min-width:160px;"
         >
           Upload
-          <i class="hiway-crm-icon icon-upload"/>
+          <i class="hiway-crm-icon icon-upload" />
         </label>
       </div>
       <div class="card-body">
@@ -270,14 +258,14 @@
             >
             <span class="mr-5">{{ attachment.size }} B</span>
             <span class="mr-4"
-              ><i class="hiway-crm-icon icon-more-vertical"/>
+              ><i class="hiway-crm-icon icon-more-vertical" />
             </span>
             <span
               ><i
                 v-if="attachment.userId === user._id"
                 class="hiway-crm-icon icon-bin"
                 @click="confirmDelete(attachment)"
-              /></span>
+            /></span>
           </div>
         </div>
       </div>
@@ -355,14 +343,14 @@
       </div>
       <div class="mb-4">
         <b-form-checkbox
-            v-model="agreement"
-            name="checkbox-1"
-            value="accepted"
-            unchecked-value="not_accepted"
+          v-model="agreement"
+          name="checkbox-1"
+          value="accepted"
+          unchecked-value="not_accepted"
         >
-          I hereby acknowledge and agree that I’ve read and agreed to the
-          terms in this contract. I understand that by clicking on the “Sign”
-          button below I digitally sign and bind myself to this contract.
+          I hereby acknowledge and agree that I’ve read and agreed to the terms
+          in this contract. I understand that by clicking on the “Sign” button
+          below I digitally sign and bind myself to this contract.
         </b-form-checkbox>
       </div>
       <div class="d-flex justify-content-around">
@@ -515,7 +503,7 @@ export default {
       this.$refs["modal-sign-contract"].show();
     },
     sign() {
-      if( this.agreement !== "accepted") {
+      if (this.agreement !== "accepted") {
         this.$store.dispatch("updateShowErrorModal", true);
         this.$store.dispatch("updateErrorModalContent", {
           title: this.$t("page_offer_detail.modal.accept_fail.title"),

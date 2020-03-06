@@ -27,6 +27,7 @@
         mode="remote"
         @on-page-change="onPageChange"
         @on-per-page-change="onPerPageChange"
+        @on-cell-click="onCellClick"
         :totalRows="totalRows"
         :rows="rows"
         :columns="columns"
@@ -47,16 +48,7 @@
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
               <b-dropdown-item @click="goToJob(props)">
-                <a
-                  :href="
-                    props && props.row
-                      ? `/${role}/dashboard/jobs/${props.row.company._id}/${props.row._id}`
-                      : '#'
-                  "
-                  class="text-decoration-none"
-                >
-                  {{ $t("page_jobs.table.view_job") }}
-                </a>
+                {{ $t("page_jobs.table.view_job") }}
               </b-dropdown-item>
             </b-dropdown>
           </div>
@@ -66,19 +58,19 @@
           >
             <div class="avatar-image mr-2">
               <img
-                  v-if="
-                props.row.status === 'active' ||
-                props.row.status === 'completed'
-                  ? props.row.image
-                  : props.row.status === 'open' && props.row.company.logo
-              "
-                  :src="
-                props.row.status === 'active' ||
-                props.row.status === 'completed'
-                  ? APP_URL + props.row.image
-                  : props.row.status === 'open' &&
-                    APP_URL + props.row.company.logo
-              "
+                v-if="
+                  props.row.status === 'active' ||
+                  props.row.status === 'completed'
+                    ? props.row.image
+                    : props.row.status === 'open' && props.row.company.logo
+                "
+                :src="
+                  props.row.status === 'active' ||
+                  props.row.status === 'completed'
+                    ? APP_URL + props.row.image
+                    : props.row.status === 'open' &&
+                      APP_URL + props.row.company.logo
+                "
               />
             </div>
           </div>
@@ -139,9 +131,9 @@ export default {
 
       return columns.concat([
         {
-          label: this.$t("page_jobs.table.position"),
-          field: "position.name",
-          name: "position"
+          label: this.$t("page_jobs.table.title"),
+          field: "title",
+          name: "title"
         },
         {
           label: this.$t("page_jobs.table.company"),
@@ -149,13 +141,8 @@ export default {
           name: "company"
         },
         {
-          label: this.$t("page_jobs.table.worker"),
-          field: this.computedWorkerName(),
-          name: "worker"
-        },
-        {
           label: this.$t("page_jobs.table.manager"),
-          field: this.computedManagerName(),
+          field: "manager",
           name: "manager"
         },
         {
@@ -178,16 +165,6 @@ export default {
           field: "endDate",
           name: "endDate"
         },
-        // {
-        //   label: this.$t("page_jobs.table.duration"),
-        //   field: this.computedDuration(),
-        //   name: "duration"
-        // },
-        {
-          label: this.$t("page_jobs.table.title"),
-          field: "title",
-          name: "title"
-        },
         {
           label: this.$t("page_jobs.table.actions"),
           field: "actions",
@@ -203,31 +180,6 @@ export default {
     imageView(mode) {
       this.imageMode = !!mode;
     },
-    computedDuration() {
-      return function(row) {
-        return `${new Date(row.startDate).toLocaleDateString()} - ${new Date(
-          row.endDate
-        ).toLocaleDateString()}`;
-      };
-    },
-    computedManagerName() {
-      return function(row) {
-        return (
-          row.manager &&
-          row.manager[0] &&
-          `${row.manager[0].firstName} ${row.manager[0].lastName}`
-        );
-      };
-    },
-    computedWorkerName() {
-      return function(row) {
-        return (
-          row.worker &&
-          row.worker[0] &&
-          `${row.worker[0].firstName} ${row.worker[0].lastName}`
-        );
-      };
-    },
     getJobs() {
       return jobsApi
         .getCompanyJobs(
@@ -242,9 +194,12 @@ export default {
           this.totalRows = res.totalDocs;
           this.rows = res.docs.map(row => {
             row.company = row.company[0];
-            row.position = row.position[0];
             row.startDate = new Date(row.startDate).toLocaleDateString();
             row.endDate = new Date(row.endDate).toLocaleDateString();
+            row.manager =
+              row.manager && row.manager[0]
+                ? `${row.manager[0].firstName} ${row.manager[0].lastName}`
+                : "";
             return row;
           });
         });
@@ -260,6 +215,11 @@ export default {
         page: e.currentPage
       });
       this.getJobs();
+    },
+    onCellClick(params) {
+      if (params.column.name !== "actions") {
+        this.goToJob(params);
+      }
     },
     goToJob(props) {
       if (props && props.row) {

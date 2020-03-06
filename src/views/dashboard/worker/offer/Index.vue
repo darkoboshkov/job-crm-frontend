@@ -11,6 +11,7 @@
         mode="remote"
         @on-page-change="onPageChange"
         @on-per-page-change="onPerPageChange"
+        @on-cell-click="onCellClick"
         :totalRows="totalRows"
         :rows="rows"
         :columns="columns"
@@ -30,9 +31,9 @@
               <template v-slot:button-content>
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
-              <b-dropdown-item href="#" @click="goToOffer(props)">{{
-                $t("page_offers.table.view_offer")
-              }}</b-dropdown-item>
+              <b-dropdown-item href="#" @click="goToOffer(props)">
+                {{ $t("page_offers.table.view_offer") }}
+              </b-dropdown-item>
             </b-dropdown>
           </div>
           <div
@@ -40,10 +41,7 @@
             class="d-flex align-items-center"
           >
             <div class="avatar-image mr-2">
-              <img
-                  v-if="props.row.image"
-                  :src="APP_URL + props.row.image"
-              />
+              <img v-if="props.row.image" :src="APP_URL + props.row.image" />
             </div>
           </div>
           <span v-else>
@@ -144,6 +142,11 @@ export default {
       });
       this.getActiveOffers();
     },
+    onCellClick(params) {
+      if (params.column.name !== "actions") {
+        this.goToOffer(params);
+      }
+    },
     goToOffer(props) {
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}`);
@@ -159,9 +162,10 @@ export default {
             row.job = row.job ? row.job[0].title : "";
             row.image = row.job ? row.job[0].image : "";
             row.createdAt = dateFormatter(new Date(row.createdAt));
-            row.manager = row.manager
-              ? `${row.manager[0].firstName} ${row.manager[0].lastName}`
-              : "";
+            row.manager =
+              row.manager && row.manager[0]
+                ? `${row.manager[0].firstName} ${row.manager[0].lastName}`
+                : "";
             return row;
           });
           this.totalRows = res.totalDocs;
