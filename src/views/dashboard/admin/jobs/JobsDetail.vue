@@ -23,7 +23,7 @@
                 />
                 <h2 v-else class="fullName">{{ model.title }}</h2>
               </div>
-              <h3 class="position mt-3">
+              <h3 class="profession mt-3">
                 {{ model.company && model.company.name }}
               </h3>
             </div>
@@ -122,9 +122,7 @@
                           {{ company && company.name }}
                         </option>
                       </b-form-select>
-                      <span v-else>{{
-                        model.company && model.company.name
-                      }}</span>
+                      <span v-else>{{ model.company && model.company.name }}</span>
                     </div>
                   </div>
                 </li>
@@ -415,7 +413,7 @@ export default {
         title: "",
         companyId: 0,
         managerId: 0,
-        positionId: 0,
+        professionId: 0,
         wage: "",
         status: "",
         skillIds: [],
@@ -426,7 +424,7 @@ export default {
         endDate: null,
         company: null,
         manager: null,
-        position: null,
+        profession: null,
         attachments: []
       },
       companies: [],
@@ -540,7 +538,7 @@ export default {
     updateJob() {
       this.model.companyId = this.model.company?._id;
       this.model.managerId = this.model.manager?._id;
-      this.model.positionId = this.model.position[0]?._id;
+      this.model.professionId = this.model.profession?._id;
       if (!this.model.endDate) {
         delete this.model.endDate;
       }

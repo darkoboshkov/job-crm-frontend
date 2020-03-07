@@ -124,13 +124,13 @@
             {{ $t("page_users_create_manual.form.profession") }}:
           </label>
           <div class="flex-3">
-            <b-form-select v-model="form.positionId">
+            <b-form-select v-model="form.professionId">
               <option value=""></option>
               <option
-                v-for="position in positions"
-                :key="position._id"
-                :value="position._id"
-                >{{ position.name }}</option
+                v-for="profession in professions"
+                :key="profession._id"
+                :value="profession._id"
+                >{{ profession.name }}</option
               >
             </b-form-select>
           </div>
@@ -357,18 +357,18 @@
 
 <script>
 import companyApi from "@/services/api/companies";
-import positionApi from "@/services/api/positions";
+import professionApi from "@/services/api/professions";
 import userApi from "@/services/api/users";
 
 export default {
   name: "UserCreateManual",
   data() {
     return {
-      positions: [],
+      professions: [],
       companies: [],
       form: {
         companyId: "",
-        positionId: "",
+        professionId: "",
         role: "worker",
         email: "",
         firstName: "",
@@ -410,7 +410,7 @@ export default {
   },
   mounted() {
     this.getCompanies();
-    this.getPositions();
+    this.getProfessions();
   },
   methods: {
     validate() {
@@ -460,9 +460,9 @@ export default {
         this.companies = res;
       });
     },
-    getPositions() {
-      positionApi.getAll().then(res => {
-        this.positions = res;
+    getProfessions() {
+      professionApi.getAll().then(res => {
+        this.professions = res;
       });
     },
     createUser() {

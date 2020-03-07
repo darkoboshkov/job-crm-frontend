@@ -43,13 +43,13 @@
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.profession") }}:</label>
-        <b-form-select v-model="model.positionId">
+        <b-form-select v-model="model.professionId">
           <option value=""/>
           <option
-            v-for="position in positions"
-            :key="position._id"
-            :value="position._id"
-            >{{ position.name }}</option
+            v-for="profession in professions"
+            :key="profession._id"
+            :value="profession._id"
+            >{{ profession.name }}</option
           >
         </b-form-select>
       </div>
@@ -165,14 +165,14 @@
 
 <script>
 import settingsApi from "@/services/api/settings";
-import positionApi from "@/services/api/positions";
+import professionApi from "@/services/api/professions";
 import { APP_URL } from "@/constants";
 
 export default {
   name: "SettingAccount",
   data() {
     return {
-      positions: [],
+      professions: [],
       model: {
         role: "",
         firstName: "",
@@ -191,7 +191,7 @@ export default {
         email: "",
         passport: "",
         image: "",
-        positionId: ""
+        professionId: ""
       },
       maxSize: 2097152,
       imageData: {
@@ -205,8 +205,8 @@ export default {
       this.model = res;
       this.imageData.preview = res.image ? `${APP_URL}${res.image}` : null;
     });
-    positionApi.getAll().then(res => {
-      this.positions = res;
+    professionApi.getAll().then(res => {
+      this.professions = res;
     });
   },
   methods: {

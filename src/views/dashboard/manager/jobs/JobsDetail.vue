@@ -23,7 +23,7 @@
                 />
                 <h2 v-else class="fullName">{{ model.title }}</h2>
               </div>
-              <h3 class="position mt-3">
+              <h3 class="profession mt-3">
                 {{ model.company && model.company.name }}
               </h3>
             </div>
@@ -369,7 +369,7 @@ export default {
         title: "",
         companyId: 0,
         managerId: 0,
-        positionId: 0,
+        professionId: 0,
         wage: "",
         status: "",
         skillIds: [],
@@ -381,7 +381,7 @@ export default {
 
         company: null,
         manager: null,
-        position: null,
+        profession: null,
         attachments: []
       },
       companies: [],
@@ -432,7 +432,7 @@ export default {
         this.model = res;
         this.model.company = res.company[0];
         this.model.manager = res.manager[0];
-        this.model.position = res.position[0];
+        this.model.profession = res.profession && res.profession[0] ? res.profession[0] : null;
       });
     },
     fetchJobOffers() {
@@ -490,7 +490,7 @@ export default {
     updateJob() {
       this.model.companyId = this.model.company?._id;
       this.model.managerId = this.model.manager?._id;
-      this.model.positionId = this.model.position?._id;
+      this.model.professionId = this.model.profession?._id;
       if (!this.model.endDate) {
         delete this.model.endDate;
       }

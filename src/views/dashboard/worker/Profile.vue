@@ -13,7 +13,7 @@
             </div>
             <div class="profile-header__description">
               <h2 class="fullName">{{ model.fullName }}</h2>
-              <h3 class="position">{{ model.position }}</h3>
+              <h3 class="profession">{{ model.profession }}</h3>
             </div>
           </div>
           <div class="profile-edit">
@@ -191,7 +191,7 @@ export default {
       ],
       model: {
         fullName: "",
-        position: "",
+        profession: "",
         overview: "",
         email: "",
         phone: "",
@@ -219,9 +219,7 @@ export default {
         .get({ companyId: this.companyId, id: this.userId })
         .then(res => {
           this.model.fullName = res.firstName + " " + res.lastName;
-          if (res.position && res.position.length) {
-            this.model.position = res.position[0].name;
-          }
+          this.model.profession = res.profession && res.profession[0] ? res.profession[0].name : "";
           this.model.overview = res.overview ? res.overview : "";
           this.model.email = res.email;
           this.model.phone = res.phone;

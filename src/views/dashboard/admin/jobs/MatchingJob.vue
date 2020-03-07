@@ -48,7 +48,7 @@
             style="width:65px"
           />
           <div>{{ item.fullName }}</div>
-          <div>{{ item.position }}</div>
+          <div>{{ item.profession }}</div>
           <div>{{ item.birthday }}</div>
           <div>{{ item.age }} {{ $t("common.years") }}</div>
           <div>{{ item.status }}</div>
@@ -75,7 +75,7 @@ const dummyItems = [
   {
     _id: "123456567",
     fullName: "Magalie Lindeboom",
-    position: "Visual Designer",
+    profession: "Visual Designer",
     birthday: "12-06-2018",
     age: 28,
     status: "Not Available",
@@ -84,7 +84,7 @@ const dummyItems = [
   {
     _id: "123456567",
     fullName: "Magalie Lindeboom",
-    position: "Visual Designer",
+    profession: "Visual Designer",
     birthday: "12-06-2018",
     age: 28,
     status: "Not Available",
@@ -93,7 +93,7 @@ const dummyItems = [
   {
     _id: "123456567",
     fullName: "Magalie Lindeboom",
-    position: "Visual Designer",
+    profession: "Visual Designer",
     birthday: "12-06-2018",
     age: 28,
     status: "Not Available",
@@ -102,7 +102,7 @@ const dummyItems = [
   {
     _id: "123456567",
     fullName: "Magalie Lindeboom",
-    position: "Visual Designer",
+    profession: "Visual Designer",
     birthday: "12-06-2018",
     age: 28,
     status: "Not Available",
@@ -111,7 +111,7 @@ const dummyItems = [
   {
     _id: "123456567",
     fullName: "Magalie Lindeboom",
-    position: "Visual Designer",
+    profession: "Visual Designer",
     birthday: "12-06-2018",
     age: 28,
     status: "Not Available",

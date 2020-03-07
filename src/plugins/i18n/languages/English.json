@@ -335,7 +335,7 @@
     "filter": {
       "name": "Name",
       "company": "Company",
-      "position": "Profession",
+      "profession": "Profession",
       "age": "Age",
       "status": "Status",
       "available": "Available",
@@ -398,7 +398,7 @@
       "start_date": "Start Date",
       "end_date": "End Date",
       "duration": "Duration",
-      "position": "Position",
+      "profession": "Profession",
       "actions": "Actions",
       "start_matching": "Start Matching",
       "view_job": "View Job"

@@ -18,7 +18,7 @@
               <div>
                 <h2 class="fullName">{{ model.title }}</h2>
               </div>
-              <h3 class="position">
+              <h3 class="profession">
                 {{ model.company && model.company.name }}
               </h3>
             </div>
@@ -258,7 +258,7 @@ export default {
         title: "",
         companyId: 0,
         managerId: 0,
-        positionId: 0,
+        professionId: 0,
         wage: "",
         level: null,
         status: "",
@@ -271,7 +271,7 @@ export default {
 
         company: null,
         manager: null,
-        position: null
+        profession: null
       },
       companies: [],
       managers: [],
@@ -316,7 +316,7 @@ export default {
         this.model = res;
         this.model.company = res.company[0];
         this.model.manager = res.manager[0];
-        this.model.position = res.position[0];
+        this.model.profession = res.profession && res.profession[0] ? res.profession[0] : null;
       });
     },
     fetchJobOffers() {

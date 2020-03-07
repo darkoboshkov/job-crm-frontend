@@ -20,7 +20,7 @@
                 v-model="model.title"
                 placeholder="Add job title"
               />
-              <h3 class="position mt-3">{{ userName }}</h3>
+              <h3 class="profession mt-3">{{ userName }}</h3>
             </div>
           </div>
         </b-col>
@@ -238,7 +238,7 @@ export default {
         title: "",
         companyId: 0,
         managerId: 0,
-        positionId: 0,
+        professionId: 0,
         rate: "",
         status: "available",
         skillIds: [],
@@ -250,7 +250,7 @@ export default {
 
         company: null,
         manager: null,
-        position: null,
+        profession: null,
         attachments: []
       },
       levels: [],
