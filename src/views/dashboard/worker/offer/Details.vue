@@ -123,27 +123,42 @@
         </div>
         <div>
           <button
-            class="btn btn-red mr-2"
+            class="btn mr-2"
+            :class="signed ? 'btn-secondary' : 'btn-red'"
             @click="decline"
             style="min-width:160px;"
+            :disabled="signed"
           >
             Decline
           </button>
 
           <button
-            class="btn btn-blue ml-2"
+            class="btn ml-2"
+            :class="signed ? 'btn-secondary' : 'btn-blue'"
             @click="openSignContractModal"
             style="min-width:160px;"
+            :disabled="signed"
           >
             Sign
           </button>
 
           <button
-            class="btn btn-secondary ml-2"
+            class="btn ml-2"
+            :class="signed ? 'btn-red' : 'btn-secondary'"
             @click="exportContract"
             style="min-width:160px;"
           >
             Export Contract
+          </button>
+
+          <button
+            class="btn ml-2"
+            :class="signed ? 'btn-blue' : 'btn-secondary'"
+            @click="openViewOffer = !openViewOffer"
+            :disabled="edit"
+            style="min-width:160px;"
+          >
+            View Contract
           </button>
         </div>
       </div>
@@ -434,6 +449,9 @@ export default {
       }
 
       return workerState;
+    },
+    signed() {
+      return this.model.status === 'active';
     }
   },
   data() {
