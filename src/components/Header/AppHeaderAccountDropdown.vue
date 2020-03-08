@@ -4,7 +4,7 @@
       <img v-if="image" :src="APP_URL + image" />
     </div>
     <div class="account-dropdown__list">
-      <a href="javascript;" @click.prevent="toggleDropdown">
+      <a href="javascript;" @click.stop.prevent="toggleDropdown">
         {{ fullName }}
         <i class="hiway-crm-icon icon-angle-down ml-3" />
       </a>
@@ -64,12 +64,21 @@ export default {
     toggleDropdown() {
       this.collapsed = !this.collapsed;
     },
+    closeDropdown() {
+      this.collapsed = false;
+    },
     logout() {
       handleLogout();
       Toast("Logged out successfully!", "success");
       this.$router.push("/login");
     }
-  }
+  },
+  mounted() {
+    document.addEventListener('click', this.closeDropdown.bind(this));
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.closeDropdown);
+  },
 };
 </script>
 
