@@ -579,7 +579,7 @@
         "man": "Man",
         "woman": "Woman",
         "other": "Other",
-        "birthday": "Birthday",
+        "birthday": "Date of Birth",
         "bank_account_number": "Bank Account Number",
         "overview": "Overview",
         "phone": "Phone",
@@ -589,7 +589,12 @@
         "house_number": "House Number",
         "postal_code": "Postal Code",
         "password": "Password",
-        "c_password": "Confirm Password"
+        "c_password": "Confirm Password",
+        "title": "Title",
+        "mr": "Mr.",
+        "mrs": "Mrs.",
+        "ms": "Ms.",
+        "miss": "Miss."
       },
       "button": {
         "update": "Update Setting"

@@ -44,7 +44,7 @@
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.profession") }}:</label>
         <b-form-select v-model="model.professionId">
-          <option value=""/>
+          <option value="" />
           <option
             v-for="profession in professions"
             :key="profession._id"

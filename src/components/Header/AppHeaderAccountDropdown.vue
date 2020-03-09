@@ -74,11 +74,11 @@ export default {
     }
   },
   mounted() {
-    document.addEventListener('click', this.closeDropdown.bind(this));
+    document.addEventListener("click", this.closeDropdown.bind(this));
   },
   beforeDestroy() {
-    document.removeEventListener('click', this.closeDropdown);
-  },
+    document.removeEventListener("click", this.closeDropdown);
+  }
 };
 </script>
 

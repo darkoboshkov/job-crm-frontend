@@ -39,12 +39,32 @@
           <b-form-radio v-model="model.gender" name="gender" value="female">{{
             $t("page_setting.account_setting.form.woman")
           }}</b-form-radio>
+          <b-form-radio v-model="model.gender" name="gender" value="other">{{
+            $t("page_setting.account_setting.form.other")
+          }}</b-form-radio>
+        </div>
+      </div>
+      <div class="form-element mt-3">
+        <label>{{ $t("page_setting.account_setting.form.title") }}:</label>
+        <div class="gender">
+          <b-form-radio v-model="model.title" name="title" value="mr">{{
+            $t("page_setting.account_setting.form.mr")
+          }}</b-form-radio>
+          <b-form-radio v-model="model.title" name="title" value="mrs">{{
+            $t("page_setting.account_setting.form.mrs")
+          }}</b-form-radio>
+          <b-form-radio v-model="model.title" name="title" value="ms">{{
+            $t("page_setting.account_setting.form.ms")
+          }}</b-form-radio>
+          <b-form-radio v-model="model.title" name="title" value="miss">{{
+            $t("page_setting.account_setting.form.miss")
+          }}</b-form-radio>
         </div>
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.birthday") }}:</label>
         <b-form-input
-          type="text"
+          type="date"
           required
           class="custom-input"
           v-model="model.birthday"
@@ -67,15 +87,15 @@
       <!--class="custom-input"-->
       <!--/>-->
       <!--</div>-->
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('POSTAL_CODE') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.postalCode"-->
-      <!--/>-->
-      <!--</div>-->
+      <div class="form-element mt-3">
+        <label>{{ $t("page_setting.account_setting.form.country") }}:</label>
+        <b-form-input
+          type="text"
+          required
+          class="custom-input"
+          v-model="model.country"
+        />
+      </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.city") }}:</label>
         <b-form-input
@@ -83,6 +103,46 @@
           required
           class="custom-input"
           v-model="model.city"
+        />
+      </div>
+      <div class="form-element mt-3">
+        <label>{{ $t("page_setting.account_setting.form.street") }}:</label>
+        <b-form-input
+          type="text"
+          required
+          class="custom-input"
+          v-model="model.street"
+        />
+      </div>
+      <div class="form-element mt-3">
+        <label
+          >{{ $t("page_setting.account_setting.form.house_number") }}:</label
+        >
+        <b-form-input
+          type="text"
+          required
+          class="custom-input"
+          v-model="model.houseNumber"
+        />
+      </div>
+      <div class="form-element mt-3">
+        <label
+          >{{ $t("page_setting.account_setting.form.postal_code") }}:</label
+        >
+        <b-form-input
+          type="text"
+          required
+          class="custom-input"
+          v-model="model.postalCode"
+        />
+      </div>
+      <div class="form-element mt-3">
+        <label>{{ $t("page_setting.account_setting.form.phone") }}:</label>
+        <b-form-input
+          type="text"
+          required
+          class="custom-input"
+          v-model="model.phone"
         />
       </div>
       <!--<div class="form-element mt-3">-->
@@ -150,14 +210,15 @@ export default {
         gender: "male",
         birthday: "",
         bankNumber: "",
-        // street: "",
-        // houseNumber: "",
+        street: "",
+        houseNumber: "",
         postalCode: "",
         city: "",
         email: "",
         password: "",
         passport: "",
-        image: ""
+        image: "",
+        title: "mr"
       },
       maxSize: 2097152,
       imageData: {

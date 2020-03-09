@@ -311,7 +311,8 @@ export default {
               row.age = " - ";
             }
             row.company = row.company[0];
-            row.profession = row.profession && row.profession[0] ? row.profession[0].name : "";
+            row.profession =
+              row.profession && row.profession[0] ? row.profession[0].name : "";
             row.createdAt = new Date(row.createdAt).toLocaleString();
             row.name = row.firstName ? row.firstName + " " + row.lastName : "";
 

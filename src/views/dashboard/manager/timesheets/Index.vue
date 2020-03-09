@@ -1,60 +1,60 @@
 <template>
   <div id="page_timesheets" class="dashboard-content">
     <div class="container-fluid">
-<!--      <div class="row">-->
-<!--        <div class="col-md-3 d-flex">-->
-<!--          <b-card-->
-<!--            title="Worked Hours this month"-->
-<!--            tag="article"-->
-<!--            style="max-width: 20rem;"-->
-<!--            class="mb-2"-->
-<!--          >-->
-<!--            <b-card-text>-->
-<!--              <i class="card-icon hiway-crm-icon icon-watch"></i>-->
-<!--              <span class="card-value">156</span>-->
-<!--            </b-card-text>-->
-<!--          </b-card>-->
-<!--        </div>-->
-<!--        <div class="col-md-3 d-flex">-->
-<!--          <b-card-->
-<!--            title="Approved Hours this month"-->
-<!--            tag="article"-->
-<!--            style="max-width: 20rem;"-->
-<!--            class="mb-2"-->
-<!--          >-->
-<!--            <b-card-text>-->
-<!--              <i class="card-icon hiway-crm-icon icon-list"></i>-->
-<!--              <span class="card-value">123</span>-->
-<!--            </b-card-text>-->
-<!--          </b-card>-->
-<!--        </div>-->
-<!--        <div class="col-md-3 d-flex">-->
-<!--          <b-card-->
-<!--            title="Hours to be approved"-->
-<!--            tag="article"-->
-<!--            style="max-width: 20rem;"-->
-<!--            class="mb-2"-->
-<!--          >-->
-<!--            <b-card-text>-->
-<!--              <i class="card-icon hiway-crm-icon icon-hourglass"></i>-->
-<!--              <span class="card-value">33</span>-->
-<!--            </b-card-text>-->
-<!--          </b-card>-->
-<!--        </div>-->
-<!--        <div class="col-md-3 d-flex">-->
-<!--          <b-card-->
-<!--            title="Total Expenses this month"-->
-<!--            tag="article"-->
-<!--            style="max-width: 20rem;"-->
-<!--            class="mb-2"-->
-<!--          >-->
-<!--            <b-card-text>-->
-<!--              <i class="card-icon hiway-crm-icon icon-euro"></i>-->
-<!--              <span class="card-value">€2350.36</span>-->
-<!--            </b-card-text>-->
-<!--          </b-card>-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="row">-->
+      <!--        <div class="col-md-3 d-flex">-->
+      <!--          <b-card-->
+      <!--            title="Worked Hours this month"-->
+      <!--            tag="article"-->
+      <!--            style="max-width: 20rem;"-->
+      <!--            class="mb-2"-->
+      <!--          >-->
+      <!--            <b-card-text>-->
+      <!--              <i class="card-icon hiway-crm-icon icon-watch"></i>-->
+      <!--              <span class="card-value">156</span>-->
+      <!--            </b-card-text>-->
+      <!--          </b-card>-->
+      <!--        </div>-->
+      <!--        <div class="col-md-3 d-flex">-->
+      <!--          <b-card-->
+      <!--            title="Approved Hours this month"-->
+      <!--            tag="article"-->
+      <!--            style="max-width: 20rem;"-->
+      <!--            class="mb-2"-->
+      <!--          >-->
+      <!--            <b-card-text>-->
+      <!--              <i class="card-icon hiway-crm-icon icon-list"></i>-->
+      <!--              <span class="card-value">123</span>-->
+      <!--            </b-card-text>-->
+      <!--          </b-card>-->
+      <!--        </div>-->
+      <!--        <div class="col-md-3 d-flex">-->
+      <!--          <b-card-->
+      <!--            title="Hours to be approved"-->
+      <!--            tag="article"-->
+      <!--            style="max-width: 20rem;"-->
+      <!--            class="mb-2"-->
+      <!--          >-->
+      <!--            <b-card-text>-->
+      <!--              <i class="card-icon hiway-crm-icon icon-hourglass"></i>-->
+      <!--              <span class="card-value">33</span>-->
+      <!--            </b-card-text>-->
+      <!--          </b-card>-->
+      <!--        </div>-->
+      <!--        <div class="col-md-3 d-flex">-->
+      <!--          <b-card-->
+      <!--            title="Total Expenses this month"-->
+      <!--            tag="article"-->
+      <!--            style="max-width: 20rem;"-->
+      <!--            class="mb-2"-->
+      <!--          >-->
+      <!--            <b-card-text>-->
+      <!--              <i class="card-icon hiway-crm-icon icon-euro"></i>-->
+      <!--              <span class="card-value">€2350.36</span>-->
+      <!--            </b-card-text>-->
+      <!--          </b-card>-->
+      <!--        </div>-->
+      <!--      </div>-->
     </div>
     <div class="row justify-content-end">
       <button class="btn btn-red">
@@ -63,39 +63,46 @@
       </button>
     </div>
     <table-filter
-            class="companies-filters"
-            @table-filter="filter"
-            :title="'Filter Options'"
-            :options="filterOptions"
+      class="companies-filters"
+      @table-filter="filter"
+      :title="'Filter Options'"
+      :options="filterOptions"
     />
     <div class="row">
       <div class="timesheets-list mt-3">
         <vue-good-table
-                mode="remote"
-                @on-page-change="onPageChange"
-                @on-sort-change="onSortChange"
-                @on-column-filter="onColumnFilter"
-                @on-cell-click="onCellClick"
-                @on-per-page-change="onPerPageChange"
-                :totalRows="totalRows"
-                :rows="rows"
-                :columns="columns"
-                :sort-options="{ enabled: false }"
-                :pagination-options="paginationOptions"
-                styleClass="custom-table"
+          mode="remote"
+          @on-page-change="onPageChange"
+          @on-sort-change="onSortChange"
+          @on-column-filter="onColumnFilter"
+          @on-cell-click="onCellClick"
+          @on-per-page-change="onPerPageChange"
+          :totalRows="totalRows"
+          :rows="rows"
+          :columns="columns"
+          :sort-options="{ enabled: false }"
+          :pagination-options="paginationOptions"
+          styleClass="custom-table"
         >
           <template slot="table-row" slot-scope="props">
-            <div v-if="props.column.field === 'kind'" class="d-flex align-items-center">
-              <i v-if="props.row.kind === 'hour'" class="table-icon hiway-crm-icon icon-watch" style="background-color: var(--cobalt-blue)"></i>
+            <div
+              v-if="props.column.field === 'kind'"
+              class="d-flex align-items-center"
+            >
+              <i
+                v-if="props.row.kind === 'hour'"
+                class="table-icon hiway-crm-icon icon-watch"
+                style="background-color: var(--cobalt-blue)"
+              ></i>
               <i v-else class="table-icon hiway-crm-icon icon-euro"></i>
             </div>
             <div v-else-if="props.column.field === 'actions'" class="d-flex">
               <b-dropdown
-                      variant="link"
-                      toggle-class="text-decoration-none"
-                      no-caret
-                      offset="0"
-                      class="icon-dropdown m-2"
+                variant="link"
+                toggle-class="text-decoration-none"
+                no-caret
+                offset="0"
+                class="icon-dropdown m-2"
               >
                 <template v-slot:button-content>
                   <i class="hiway-crm-icon icon-more-vertical color-black" />
@@ -105,14 +112,16 @@
                 </b-dropdown-item>
               </b-dropdown>
               <button
-                      class="btn btn-transparent"
-                      @click="deleteTimesheetConfirm(props)"
+                class="btn btn-transparent"
+                @click="deleteTimesheetConfirm(props)"
               >
                 <i class="hiway-crm-icon icon-bin" />
               </button>
             </div>
             <span v-else-if="props.column.field === 'activeState'">
-              {{ props.formattedRow[props.column.field] ? "active" : "inactive" }}
+              {{
+                props.formattedRow[props.column.field] ? "active" : "inactive"
+              }}
             </span>
             <span v-else>
               {{ props.formattedRow[props.column.field] }}
@@ -121,13 +130,12 @@
         </vue-good-table>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-  import TableFilter from "@/components/common/TableFilter";
-  import { APP_URL } from "@/constants";
+import TableFilter from "@/components/common/TableFilter";
+import { APP_URL } from "@/constants";
 
 export default {
   name: "timesheets",
@@ -230,29 +238,77 @@ export default {
     getTimesheets() {
       this.rows = [
         {
-          kind: 'hour', week: 51, hand_in_date: 'Maandag 8 december 2', hours: '38', price: null, employer: 'Kruidvat', status: 'In afwachting',
+          kind: "hour",
+          week: 51,
+          hand_in_date: "Maandag 8 december 2",
+          hours: "38",
+          price: null,
+          employer: "Kruidvat",
+          status: "In afwachting"
         },
         {
-          kind: 'expense', week: 51, hand_in_date: 'Maandag 8 december 2', hours: null, price: 238.77, employer: 'Kruidvat', status: 'In afwachting',
+          kind: "expense",
+          week: 51,
+          hand_in_date: "Maandag 8 december 2",
+          hours: null,
+          price: 238.77,
+          employer: "Kruidvat",
+          status: "In afwachting"
         },
         {
-          kind: 'hour', week: 51, hand_in_date: 'Maandag 8 december 2', hours: '38', price: null, employer: 'Kruidvat', status: 'In afwachting',
+          kind: "hour",
+          week: 51,
+          hand_in_date: "Maandag 8 december 2",
+          hours: "38",
+          price: null,
+          employer: "Kruidvat",
+          status: "In afwachting"
         },
         {
-          kind: 'expense', week: 51, hand_in_date: 'Maandag 8 december 2', hours: null, price: 238.77, employer: 'Kruidvat', status: 'In afwachting',
+          kind: "expense",
+          week: 51,
+          hand_in_date: "Maandag 8 december 2",
+          hours: null,
+          price: 238.77,
+          employer: "Kruidvat",
+          status: "In afwachting"
         },
         {
-          kind: 'hour', week: 51, hand_in_date: 'Maandag 8 december 2', hours: '38', price: null, employer: 'Kruidvat', status: 'In afwachting',
+          kind: "hour",
+          week: 51,
+          hand_in_date: "Maandag 8 december 2",
+          hours: "38",
+          price: null,
+          employer: "Kruidvat",
+          status: "In afwachting"
         },
         {
-          kind: 'expense', week: 51, hand_in_date: 'Maandag 8 december 2', hours: null, price: 238.77, employer: 'Kruidvat', status: 'In afwachting',
+          kind: "expense",
+          week: 51,
+          hand_in_date: "Maandag 8 december 2",
+          hours: null,
+          price: 238.77,
+          employer: "Kruidvat",
+          status: "In afwachting"
         },
         {
-          kind: 'hour', week: 51, hand_in_date: 'Maandag 8 december 2', hours: '38', price: null, employer: 'Kruidvat', status: 'In afwachting',
+          kind: "hour",
+          week: 51,
+          hand_in_date: "Maandag 8 december 2",
+          hours: "38",
+          price: null,
+          employer: "Kruidvat",
+          status: "In afwachting"
         },
         {
-          kind: 'expense', week: 51, hand_in_date: 'Maandag 8 december 2', hours: null, price: 238.77, employer: 'Kruidvat', status: 'In afwachting',
-        },
+          kind: "expense",
+          week: 51,
+          hand_in_date: "Maandag 8 december 2",
+          hours: null,
+          price: 238.77,
+          employer: "Kruidvat",
+          status: "In afwachting"
+        }
       ];
     },
     onPageChange(e) {
@@ -284,7 +340,7 @@ export default {
     deleteTimesheetConfirm() {},
     goToTimesheet() {
       //
-    },
+    }
   }
 };
 </script>

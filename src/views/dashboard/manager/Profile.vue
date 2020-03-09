@@ -221,7 +221,8 @@ export default {
         .get({ companyId: this.companyId, id: this.$route.params.id })
         .then(res => {
           this.model.fullName = res.firstName + " " + res.lastName;
-          this.model.profession = res.profession && res.profession[0] ? res.profession[0].name : "";
+          this.model.profession =
+            res.profession && res.profession[0] ? res.profession[0].name : "";
           this.model.overview = res.overview ? res.overview : "";
           this.model.email = res.email;
           this.model.phone = res.phone;

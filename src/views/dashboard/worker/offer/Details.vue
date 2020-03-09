@@ -451,7 +451,7 @@ export default {
       return workerState;
     },
     signed() {
-      return this.model.status === 'active';
+      return this.model.status === "active";
     }
   },
   data() {

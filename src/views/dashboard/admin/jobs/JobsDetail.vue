@@ -122,7 +122,9 @@
                           {{ company && company.name }}
                         </option>
                       </b-form-select>
-                      <span v-else>{{ model.company && model.company.name }}</span>
+                      <span v-else>{{
+                        model.company && model.company.name
+                      }}</span>
                     </div>
                   </div>
                 </li>

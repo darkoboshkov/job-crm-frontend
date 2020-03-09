@@ -316,7 +316,8 @@ export default {
         this.model = res;
         this.model.company = res.company[0];
         this.model.manager = res.manager[0];
-        this.model.profession = res.profession && res.profession[0] ? res.profession[0] : null;
+        this.model.profession =
+          res.profession && res.profession[0] ? res.profession[0] : null;
       });
     },
     fetchJobOffers() {
