@@ -647,6 +647,26 @@
       }
     }
   },
+  "page_timesheets": {
+    "table": {
+      "kind": "Kind",
+      "week": "Week",
+      "hand_in_date": "Hand In Date",
+      "price": "€",
+      "employer": "Employer",
+      "status": "Status",
+      "actions": "Actions",
+      "view_timesheet": "View Timesheet"
+    },
+    "filter": {
+      "name": "Name",
+      "email": "Email",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "city": "City"
+    }
+  },
   "page_users_create": {
     "title": "Add Users",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ",
