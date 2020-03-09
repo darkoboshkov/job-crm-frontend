@@ -1,4 +1,4 @@
-import { ifAuthenticated, isManagerAuthorized } from "../utils";
+import {ifAuthenticated, isAdminAuthorized, isManagerAuthorized} from "../utils";
 
 export default [
   {
@@ -122,7 +122,13 @@ export default [
         name: "manager-setting",
         component: () => import("../views/dashboard/manager/setting/Index.vue"),
         beforeEnter: isManagerAuthorized
-      }
+      },
+      {
+        path: "timesheets",
+        name: "manager-timesheets",
+        component: () => import("../views/dashboard/manager/timesheets/Index.vue"),
+        beforeEnter: isManagerAuthorized
+      },
     ],
     beforeEnter: ifAuthenticated
   }

@@ -1,4 +1,4 @@
-import { ifAuthenticated, isWorkerAuthorized } from "../utils";
+import {ifAuthenticated, isManagerAuthorized, isWorkerAuthorized} from "../utils";
 
 export default [
   {
@@ -59,7 +59,13 @@ export default [
         name: "worker-setting",
         component: () => import("../views/dashboard/worker/setting/Index.vue"),
         beforeEnter: isWorkerAuthorized
-      }
+      },
+      {
+        path: "timesheets",
+        name: "worker-timesheets",
+        component: () => import("../views/dashboard/worker/timesheets/Index.vue"),
+        beforeEnter: isWorkerAuthorized
+      },
     ],
     beforeEnter: ifAuthenticated
   }
