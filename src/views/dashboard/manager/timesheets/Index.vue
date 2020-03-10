@@ -1,5 +1,6 @@
 <template>
   <div id="page_timesheets" class="dashboard-content">
+    <h1 class="color-red">Timesheets & Expenses</h1>
     <div class="container-fluid">
       <!--      <div class="row">-->
       <!--        <div class="col-md-3 d-flex">-->
@@ -207,6 +208,11 @@ export default {
           label: this.$t("page_timesheets.table.hand_in_date"),
           field: "hand_in_date",
           name: "hand_in_date"
+        },
+        {
+          label: this.$t("page_timesheets.table.hours"),
+          field: "hours",
+          name: "hours"
         },
         {
           label: this.$t("page_timesheets.table.price"),
