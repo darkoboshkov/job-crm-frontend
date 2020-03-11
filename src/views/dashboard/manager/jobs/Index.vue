@@ -192,7 +192,6 @@ export default {
           this.totalRows = res.totalDocs;
           this.rows = res.docs.map(row => {
             row.company = row.company[0];
-            row.position = row.position[0];
             row.startDate = new Date(row.startDate).toLocaleDateString();
             row.endDate = new Date(row.endDate).toLocaleDateString();
             return row;

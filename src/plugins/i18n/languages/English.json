@@ -480,7 +480,9 @@
     "title": "Select Candidate",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
     "form": {
-      "search": "Search name"
+      "search": "Search Worker",
+      "hiring_company": "Select Hiring Company",
+      "hiring_manager": "Select Hiring Manager"
     },
     "button": {
       "select": "Select Candidate"

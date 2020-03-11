@@ -21,13 +21,18 @@
     margin-top: 50px;
   }
 
-  .search-form {
+  .select-form {
     width: 480px;
     margin: 0 auto;
     position: relative;
+    text-align: left;
+
+    .search-worker {
+      position: relative;
+    }
 
     ul.search-result {
-      top: 52px;
+      top: 85px;
       list-style: none;
       padding: 0;
       box-shadow: 0 2px 0 0 #ebecf0;
@@ -55,6 +60,6 @@
   }
 
   button {
-    margin-top: 270px;
+    margin-top: 200px;
   }
 }

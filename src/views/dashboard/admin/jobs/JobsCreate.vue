@@ -327,7 +327,7 @@ export default {
           filter: {
             role: "manager"
           },
-          limit: 100
+          pagination: 0
         })
         .then(res => {
           this.managers = res.docs;

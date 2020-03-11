@@ -17,36 +17,69 @@
       <p class="description text-center mt-5">
         {{ $t("page_jobs_select_candidate.description") }}
       </p>
-      <div class="search-form mt-5">
-        <b-form-input
-          type="text"
-          required
-          class="custom-input search-candidate"
-          :placeholder="$t('page_jobs_select_candidate.form.search')"
-          v-model="search"
-          @keyup="searchCandidate"
-        />
-        <ul class="search-result" v-if="users.length">
-          <li
-            v-for="(user, index) of users"
-            :key="index"
-            @click="selectCandidate(user)"
+      <div class="select-form mt-5">
+        <b-form-group class="mt-3">
+          <label>{{ $t('page_jobs_select_candidate.form.hiring_company') }}</label>
+          <b-form-select
+              v-model="model.hiringCompanyId"
           >
-            <div class="d-flex align-items-center">
-              <div class="avatar-image mr-2">
-                <img v-if="user.image" :src="APP_URL + user.image" />
+            <option value="" disabled />
+            <option
+                v-for="(company, index) in companies"
+                :value="company._id"
+                :key="index"
+            >
+              {{ company && company.name }}
+            </option>
+          </b-form-select>
+        </b-form-group>
+        <b-form-group class="mt-3">
+          <label>{{ $t('page_jobs_select_candidate.form.hiring_manager') }}</label>
+          <b-form-select
+              v-model="model.hiringManagerId"
+          >
+            <option value="" disabled />
+            <option
+                v-for="(manager, index) in filteredManagers"
+                :value="manager._id"
+                :key="index"
+            >
+              {{ manager && manager.firstName + " " + manager.lastName }}
+            </option>
+          </b-form-select>
+        </b-form-group>
+
+        <div class="search-worker">
+          <label>{{ $t('page_jobs_select_candidate.form.search') }}</label>
+          <b-form-input
+              type="text"
+              required
+              class="custom-input search-candidate"
+              v-model="search"
+              @keyup="searchCandidate"
+          />
+          <ul class="search-result" v-if="users.length">
+            <li
+                v-for="(user, index) of users"
+                :key="index"
+                @click="selectCandidate(user)"
+            >
+              <div class="d-flex align-items-center">
+                <div class="avatar-image mr-2">
+                  <img v-if="user.image" :src="APP_URL + user.image" />
+                </div>
+                <div>
+                  <strong>
+                    {{ user.firstName }}
+                    {{ user.middleName ? ` ${user.middleName}` : "" }}
+                    {{ user.lastName }}
+                  </strong>
+                  <p>{{ user.city }}</p>
+                </div>
               </div>
-              <div>
-                <strong>
-                  {{ user.firstName }}
-                  {{ user.middleName ? ` ${user.middleName}` : "" }}
-                  {{ user.lastName }}
-                </strong>
-                <p>{{ user.city }}</p>
-              </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
       <div>
         <button
@@ -62,7 +95,8 @@
 </template>
 
 <script>
-import userApi from "@/services/api/users";
+import usersApi from "@/services/api/users";
+import companiesApi from "@/services/api/companies";
 import jobOfferApi from "@/services/api/joboffers";
 import { APP_URL } from "@/constants";
 
@@ -72,25 +106,57 @@ export default {
     return {
       APP_URL,
       search: "",
+      model: {
+        hiringCompanyId: "",
+        hiringManagerId: "",
+        selectedUserId: null
+      },
       users: [],
       companyId: null,
       jobId: null,
-      selectedUserId: null,
-      offers: []
+      offers: [],
+      companies: [],
+      managers: [],
     };
   },
-  mounted() {
+  computed: {
+    filteredManagers() {
+      return this.managers.filter(
+        manager => manager.companyId === this.model.hiringCompanyId
+      )
+    }
+  },
+  async mounted() {
     this.companyId = this.$route.params.companyId;
     this.jobId = this.$route.params.jobId;
     this.fetchJobOffers();
+    this.fetchManagers();
+    this.fetchCompanies();
   },
   methods: {
+    fetchCompanies() {
+      return companiesApi.getAll().then(res => {
+        this.companies = res;
+      });
+    },
+    fetchManagers() {
+      return usersApi
+          .getAll({
+            filter: {
+              role: "manager"
+            },
+            pagination: 0
+          })
+          .then(res => {
+            this.managers = res.docs;
+          });
+    },
     fetchJobOffers() {
       jobOfferApi
         .getAllByJobId({
           companyId: this.companyId,
           jobId: this.jobId,
-          limit: 10000
+          pagination: 0
         })
         .then(res => {
           this.offers = res.docs;
@@ -102,7 +168,7 @@ export default {
         this.users = [];
         return;
       }
-      userApi
+      usersApi
         .getCompanyWorkers({
           companyId: this.companyId,
           filter: {
@@ -110,7 +176,7 @@ export default {
             lastName: this.search,
             middleName: this.search
           },
-          limit: 1000
+          pagination: 0
         })
         .then(result => {
           let workers = result.docs;
@@ -136,15 +202,17 @@ export default {
       this.search = `${user.firstName}${
         user.middleName ? " " + user.middleName : ""
       } ${user.lastName}`;
-      this.selectedUserId = user.id;
+      this.model.selectedUserId = user.id;
       this.users = [];
     },
     sendOffer() {
       jobOfferApi
         .create({
           companyId: this.companyId,
-          workerId: this.selectedUserId,
-          jobId: this.jobId
+          jobId: this.jobId,
+          workerId: this.model.selectedUserId,
+          hiringCompanyId: this.model.hiringCompanyId,
+          hiringManagerId: this.model.hiringManagerId
         })
         .then(response => {
           console.log(response);
