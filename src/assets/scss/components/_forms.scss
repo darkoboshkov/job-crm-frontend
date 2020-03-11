@@ -25,6 +25,7 @@ $new-custom-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.
 
 select.custom-select {
   height: 50px;
+  color: var(--cobalt-blue);
   background: #fff escape-svg($new-custom-select-indicator) no-repeat right 0.5rem center/14px 12px;
   &.normal-size {
     height: initial;

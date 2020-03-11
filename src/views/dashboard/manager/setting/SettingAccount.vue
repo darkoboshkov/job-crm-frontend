@@ -228,7 +228,7 @@ export default {
     };
   },
   mounted() {
-    settingsApi.get(this.$store.state.user).then(res => {
+    settingsApi.get().then(res => {
       this.model = res;
       this.imageData.preview = res.image ? `${APP_URL}${res.image}` : null;
     });

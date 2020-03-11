@@ -88,33 +88,6 @@
           v-model="model.city"
         />
       </div>
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t("page_setting.account_setting.form.email") }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.email"-->
-      <!--/>-->
-      <!--</div>-->
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('PASSWORD') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.password"-->
-      <!--/>-->
-      <!--</div>-->
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('PASSPORT') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.passport"-->
-      <!--/>-->
-      <!--</div>-->
       <div class="form-element mt-3">
         <button class="btn btn-blue" @click="update">
           {{ $t("page_setting.account_setting.button.update") }}
@@ -170,7 +143,7 @@ export default {
     };
   },
   mounted() {
-    settingsApi.get(this.$store.state.user).then(res => {
+    settingsApi.get().then(res => {
       this.model = res;
       this.imageData.preview = res.image ? `${APP_URL}${res.image}` : null;
     });

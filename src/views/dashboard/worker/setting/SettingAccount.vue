@@ -39,6 +39,26 @@
           <b-form-radio v-model="model.gender" name="gender" value="female">
             {{ $t("page_setting.account_setting.form.woman") }}
           </b-form-radio>
+          <b-form-radio v-model="model.gender" name="gender" value="other">
+            {{ $t("page_setting.account_setting.form.other") }}
+          </b-form-radio>
+        </div>
+      </div>
+      <div class="form-element mt-3">
+        <label>{{ $t("page_setting.account_setting.form.honorific_title") }}:</label>
+        <div class="gender">
+          <b-form-radio v-model="model.honorificTitle" name="honorific" value="mr">
+            {{ $t("page_setting.account_setting.form.mr") }}
+          </b-form-radio>
+          <b-form-radio v-model="model.honorificTitle" name="honorific" value="mrs">
+            {{ $t("page_setting.account_setting.form.mrs") }}
+          </b-form-radio>
+          <b-form-radio v-model="model.honorificTitle" name="honorific" value="ms">
+            {{ $t("page_setting.account_setting.form.ms") }}
+          </b-form-radio>
+          <b-form-radio v-model="model.honorificTitle" name="honorific" value="miss">
+            {{ $t("page_setting.account_setting.form.miss") }}
+          </b-form-radio>
         </div>
       </div>
       <div class="form-element mt-3">
@@ -124,7 +144,7 @@
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.birthday") }}:</label>
         <b-form-input
-          type="text"
+          type="date"
           required
           class="custom-input"
           v-model="model.birthday"
@@ -142,6 +162,60 @@
         />
       </div>
       <div class="form-element mt-3">
+        <label>
+          {{ $t("page_setting.account_setting.form.social_security_number") }}:
+        </label>
+        <b-form-input
+            type="text"
+            required
+            class="custom-input"
+            v-model="model.socialSecurityNumber"
+        />
+      </div>
+      <div class="form-element mt-3">
+        <label>
+          {{ $t("page_setting.account_setting.form.id_type") }}:
+        </label>
+        <b-form-select v-model="model.identificationType">
+          <option value="" />
+          <option value="id">{{ $t("page_setting.account_setting.form.id") }}</option>
+          <option value="passport">{{ $t("page_setting.account_setting.form.passport") }}</option>
+        </b-form-select>
+      </div>
+      <div class="form-element mt-3">
+        <label>
+          {{ $t("page_setting.account_setting.form.id_number") }}:
+        </label>
+        <b-form-input
+            type="text"
+            required
+            class="custom-input"
+            v-model="model.identificationNumber"
+        />
+      </div>
+      <div class="form-element mt-3">
+        <label>
+          {{ $t("page_setting.account_setting.form.id_exp_date") }}:
+        </label>
+        <b-form-input
+            type="date"
+            required
+            class="custom-input"
+            v-model="model.identificationExpirationDate"
+        />
+      </div>
+      <div class="form-element mt-3">
+        <label>
+          {{ $t("page_setting.account_setting.form.id_image") }}:
+        </label>
+        <b-form-input
+            type="text"
+            required
+            class="custom-input"
+            v-model="model.identificationImage"
+        />
+      </div>
+      <div class="form-element mt-5">
         <button class="btn btn-blue" @click="update">
           {{ $t("page_setting.account_setting.button.update") }}
         </button>
@@ -179,6 +253,7 @@ export default {
         middleName: "",
         lastName: "",
         gender: "male",
+        honorificTitle: "mr",
         birthday: "",
         bankNumber: "",
         overview: "",
@@ -191,7 +266,12 @@ export default {
         email: "",
         passport: "",
         image: "",
-        professionId: ""
+        professionId: "",
+        socialSecurityNumber: "",
+        identificationType: "",
+        identificationNumber: "",
+        identificationExpirationDate: "",
+        identificationImage: ""
       },
       maxSize: 2097152,
       imageData: {
@@ -201,7 +281,7 @@ export default {
     };
   },
   mounted() {
-    settingsApi.get(this.$store.state.user).then(res => {
+    settingsApi.get().then(res => {
       this.model = res;
       this.imageData.preview = res.image ? `${APP_URL}${res.image}` : null;
     });
