@@ -454,14 +454,6 @@ export default {
           this.company = res.company[0];
           this.manager = res.manager[0];
           this.attachments = res.attachments;
-          this.contractSigned =
-            res.contractSigned?.filter(contract => {
-              return contract.userId === this.$store.state.user._id;
-            })[0] || {};
-          if (this.contractSigned) {
-            this.model.autograph = this.contractSigned.autograph;
-          }
-          delete this.model.contractSigned;
         })
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
