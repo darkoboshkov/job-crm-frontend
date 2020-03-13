@@ -58,6 +58,10 @@
       <!--      </div>-->
     </div>
     <div class="row justify-content-end">
+<!--      <button class="btn btn-blue mr-3">-->
+<!--        Add hours-->
+<!--        <i class="hiway-crm-icon icon-watch ml-4"></i>-->
+<!--      </button>-->
       <button class="btn btn-red">
         Add expenses
         <i class="hiway-crm-icon icon-euro ml-4"></i>
@@ -70,7 +74,7 @@
       :options="filterOptions"
     />
     <div class="row">
-      <div class="timesheets-list mt-3">
+      <div class="col timesheets-list mt-3">
         <vue-good-table
           mode="remote"
           @on-page-change="onPageChange"

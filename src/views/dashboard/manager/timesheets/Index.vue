@@ -58,7 +58,11 @@
       <!--      </div>-->
     </div>
     <div class="row justify-content-end">
-      <button class="btn btn-red">
+      <button class="btn btn-blue mr-3" @click="showAddHoursModal = true">
+        Add hours
+        <i class="hiway-crm-icon icon-watch ml-4"></i>
+      </button>
+      <button class="btn btn-red" @click="showAddExpensesModal = true">
         Add expenses
         <i class="hiway-crm-icon icon-euro ml-4"></i>
       </button>
@@ -131,16 +135,26 @@
         </vue-good-table>
       </div>
     </div>
+    <add-hours-modal
+      :modal-open.sync="showAddHoursModal"
+    ></add-hours-modal>
+    <add-expenses-modal
+      :modal-open.sync="showAddExpensesModal"
+    ></add-expenses-modal>
   </div>
 </template>
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import { APP_URL } from "@/constants";
+import AddHoursModal from "./AddHoursModal";
+import AddExpensesModal from "./AddExpensesModal";
 
 export default {
   name: "timesheets",
   components: {
+    AddHoursModal,
+    AddExpensesModal,
     TableFilter
   },
   data() {
@@ -234,7 +248,9 @@ export default {
           field: "actions",
           name: "actions"
         }
-      ]
+      ],
+      showAddHoursModal: false,
+      showAddExpensesModal: false,
     };
   },
   mounted() {

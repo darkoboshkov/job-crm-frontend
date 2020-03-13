@@ -55,14 +55,34 @@ select.custom-select.hide-icon {
     background: var(--cobalt-blue) none;
     border-radius: 50%;
 
-    top: 0.5rem;
-    left: -1.25rem;
-    width: 0.5rem;
-    height: 0.5rem;
+    top: 0.5em;
+    left: -1.25em;
+    width: 0.5em;
+    height: 0.5em;
   }
 
   .custom-control-input:focus ~ .custom-control-label::before {
     box-shadow: none;
+  }
+
+  &.big-red {
+    .custom-control-input ~ .custom-control-label::before, .custom-control-input ~ .custom-control-label::after {
+      font-size: 1.5em;
+    }
+    .custom-control-input ~ .custom-control-label::before {
+      top: 0.1em;
+      left: -0.9em;
+      width: 0.8em;
+      height: 0.8em;
+    }
+    .custom-control-input:checked ~ .custom-control-label::after {
+      background: var(--lipstick-red) none;
+
+      top: 0.2em;
+      left: -0.8em;
+      width: 0.6em;
+      height: 0.6em;
+    }
   }
 
   input, label {
