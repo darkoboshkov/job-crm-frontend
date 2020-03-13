@@ -21,7 +21,7 @@
         gevestigd en kantoorhoudende te {{ company.city }} aan
         {{ company.street }} {{ company.houseNumber }},
         {{ company.postalCode }} {{ company.city }}, vertegenwoordigd door de
-        {{ manager.firstName }} {{ manager.lastName }}.
+        {{ manager.title }} {{ manager.firstName }} {{ manager.lastName }}.
         <br />
         <br />
         <strong>en</strong>
@@ -462,10 +462,10 @@
       </div>
       <div class="row">
         <div class="col-6">
-          MANAGERTITLE {{ manager.firstName }} {{ manager.lastName }}
+          {{ manager.title }} {{ manager.firstName }} {{ manager.lastName }}
         </div>
         <div class="col-6">
-          WORKERTITLE {{ worker.firstName }} {{ worker.lastName }}
+          {{ worker.title }} {{ worker.firstName }} {{ worker.lastName }}
         </div>
       </div>
       <br />
