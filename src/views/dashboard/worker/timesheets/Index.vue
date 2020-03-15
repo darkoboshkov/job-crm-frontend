@@ -70,7 +70,7 @@
       :options="filterOptions"
     />
     <div class="row">
-      <div class="timesheets-list mt-3">
+      <div class="col timesheets-list mt-3">
         <vue-good-table
           mode="remote"
           @on-page-change="onPageChange"
