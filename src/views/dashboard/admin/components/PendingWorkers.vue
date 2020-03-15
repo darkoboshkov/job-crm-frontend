@@ -135,7 +135,6 @@ export default {
       },
       rows: [],
       serverParams: {
-        columnFilters: {},
         page: 1,
         limit: 5,
         sort: "",

@@ -102,7 +102,6 @@ export default {
       matched: false,
       totalRows: 0,
       serverParams: {
-        columnFilters: {},
         page: 1,
         limit: 5,
         sort: "",

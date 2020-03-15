@@ -45,20 +45,34 @@
         </div>
       </div>
       <div class="form-element mt-3">
-        <label>{{ $t("page_setting.account_setting.form.honorific_title") }}:</label>
+        <label
+          >{{ $t("page_setting.account_setting.form.honorific_title") }}:</label
+        >
         <div class="gender">
-          <b-form-radio v-model="model.honorificTitle" name="honorific" value="mr">{{
-            $t("page_setting.account_setting.form.mr")
-          }}</b-form-radio>
-          <b-form-radio v-model="model.honorificTitle" name="honorific" value="mrs">{{
-            $t("page_setting.account_setting.form.mrs")
-          }}</b-form-radio>
-          <b-form-radio v-model="model.honorificTitle" name="honorific" value="ms">{{
-            $t("page_setting.account_setting.form.ms")
-          }}</b-form-radio>
-          <b-form-radio v-model="model.honorificTitle" name="honorific" value="miss">{{
-            $t("page_setting.account_setting.form.miss")
-          }}</b-form-radio>
+          <b-form-radio
+            v-model="model.honorificTitle"
+            name="honorific"
+            value="mr"
+            >{{ $t("page_setting.account_setting.form.mr") }}</b-form-radio
+          >
+          <b-form-radio
+            v-model="model.honorificTitle"
+            name="honorific"
+            value="mrs"
+            >{{ $t("page_setting.account_setting.form.mrs") }}</b-form-radio
+          >
+          <b-form-radio
+            v-model="model.honorificTitle"
+            name="honorific"
+            value="ms"
+            >{{ $t("page_setting.account_setting.form.ms") }}</b-form-radio
+          >
+          <b-form-radio
+            v-model="model.honorificTitle"
+            name="honorific"
+            value="miss"
+            >{{ $t("page_setting.account_setting.form.miss") }}</b-form-radio
+          >
         </div>
       </div>
       <div class="form-element mt-3">

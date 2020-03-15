@@ -19,30 +19,30 @@
       </p>
       <div class="select-form mt-5">
         <b-form-group class="mt-3">
-          <label>{{ $t('page_jobs_select_candidate.form.hiring_company') }}</label>
-          <b-form-select
-              v-model="model.hiringCompanyId"
-          >
+          <label>{{
+            $t("page_jobs_select_candidate.form.hiring_company")
+          }}</label>
+          <b-form-select v-model="model.hiringCompanyId">
             <option value="" disabled />
             <option
-                v-for="(company, index) in companies"
-                :value="company._id"
-                :key="index"
+              v-for="(company, index) in companies"
+              :value="company._id"
+              :key="index"
             >
               {{ company && company.name }}
             </option>
           </b-form-select>
         </b-form-group>
         <b-form-group class="mt-3">
-          <label>{{ $t('page_jobs_select_candidate.form.hiring_manager') }}</label>
-          <b-form-select
-              v-model="model.hiringManagerId"
-          >
+          <label>{{
+            $t("page_jobs_select_candidate.form.hiring_manager")
+          }}</label>
+          <b-form-select v-model="model.hiringManagerId">
             <option value="" disabled />
             <option
-                v-for="(manager, index) in filteredManagers"
-                :value="manager._id"
-                :key="index"
+              v-for="(manager, index) in filteredManagers"
+              :value="manager._id"
+              :key="index"
             >
               {{ manager && manager.firstName + " " + manager.lastName }}
             </option>
@@ -50,19 +50,19 @@
         </b-form-group>
 
         <div class="search-worker">
-          <label>{{ $t('page_jobs_select_candidate.form.search') }}</label>
+          <label>{{ $t("page_jobs_select_candidate.form.search") }}</label>
           <b-form-input
-              type="text"
-              required
-              class="custom-input search-candidate"
-              v-model="search"
-              @keyup="searchCandidate"
+            type="text"
+            required
+            class="custom-input search-candidate"
+            v-model="search"
+            @keyup="searchCandidate"
           />
           <ul class="search-result" v-if="users.length">
             <li
-                v-for="(user, index) of users"
-                :key="index"
-                @click="selectCandidate(user)"
+              v-for="(user, index) of users"
+              :key="index"
+              @click="selectCandidate(user)"
             >
               <div class="d-flex align-items-center">
                 <div class="avatar-image mr-2">
@@ -116,14 +116,14 @@ export default {
       jobId: null,
       offers: [],
       companies: [],
-      managers: [],
+      managers: []
     };
   },
   computed: {
     filteredManagers() {
       return this.managers.filter(
         manager => manager.companyId === this.model.hiringCompanyId
-      )
+      );
     }
   },
   async mounted() {
@@ -141,15 +141,15 @@ export default {
     },
     fetchManagers() {
       return usersApi
-          .getAll({
-            filter: {
-              role: "manager"
-            },
-            pagination: 0
-          })
-          .then(res => {
-            this.managers = res.docs;
-          });
+        .getAll({
+          filter: {
+            role: "manager"
+          },
+          pagination: 0
+        })
+        .then(res => {
+          this.managers = res.docs;
+        });
     },
     fetchJobOffers() {
       jobOfferApi

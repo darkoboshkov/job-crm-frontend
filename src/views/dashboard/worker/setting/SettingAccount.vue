@@ -45,18 +45,36 @@
         </div>
       </div>
       <div class="form-element mt-3">
-        <label>{{ $t("page_setting.account_setting.form.honorific_title") }}:</label>
+        <label
+          >{{ $t("page_setting.account_setting.form.honorific_title") }}:</label
+        >
         <div class="gender">
-          <b-form-radio v-model="model.honorificTitle" name="honorific" value="mr">
+          <b-form-radio
+            v-model="model.honorificTitle"
+            name="honorific"
+            value="mr"
+          >
             {{ $t("page_setting.account_setting.form.mr") }}
           </b-form-radio>
-          <b-form-radio v-model="model.honorificTitle" name="honorific" value="mrs">
+          <b-form-radio
+            v-model="model.honorificTitle"
+            name="honorific"
+            value="mrs"
+          >
             {{ $t("page_setting.account_setting.form.mrs") }}
           </b-form-radio>
-          <b-form-radio v-model="model.honorificTitle" name="honorific" value="ms">
+          <b-form-radio
+            v-model="model.honorificTitle"
+            name="honorific"
+            value="ms"
+          >
             {{ $t("page_setting.account_setting.form.ms") }}
           </b-form-radio>
-          <b-form-radio v-model="model.honorificTitle" name="honorific" value="miss">
+          <b-form-radio
+            v-model="model.honorificTitle"
+            name="honorific"
+            value="miss"
+          >
             {{ $t("page_setting.account_setting.form.miss") }}
           </b-form-radio>
         </div>
@@ -166,20 +184,22 @@
           {{ $t("page_setting.account_setting.form.social_security_number") }}:
         </label>
         <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="model.socialSecurityNumber"
+          type="text"
+          required
+          class="custom-input"
+          v-model="model.socialSecurityNumber"
         />
       </div>
       <div class="form-element mt-3">
-        <label>
-          {{ $t("page_setting.account_setting.form.id_type") }}:
-        </label>
+        <label> {{ $t("page_setting.account_setting.form.id_type") }}: </label>
         <b-form-select v-model="model.identificationType">
           <option value="" />
-          <option value="id">{{ $t("page_setting.account_setting.form.id") }}</option>
-          <option value="passport">{{ $t("page_setting.account_setting.form.passport") }}</option>
+          <option value="id">{{
+            $t("page_setting.account_setting.form.id")
+          }}</option>
+          <option value="passport">{{
+            $t("page_setting.account_setting.form.passport")
+          }}</option>
         </b-form-select>
       </div>
       <div class="form-element mt-3">
@@ -187,10 +207,10 @@
           {{ $t("page_setting.account_setting.form.id_number") }}:
         </label>
         <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="model.identificationNumber"
+          type="text"
+          required
+          class="custom-input"
+          v-model="model.identificationNumber"
         />
       </div>
       <div class="form-element mt-3">
@@ -198,21 +218,19 @@
           {{ $t("page_setting.account_setting.form.id_exp_date") }}:
         </label>
         <b-form-input
-            type="date"
-            required
-            class="custom-input"
-            v-model="model.identificationExpirationDate"
+          type="date"
+          required
+          class="custom-input"
+          v-model="model.identificationExpirationDate"
         />
       </div>
       <div class="form-element mt-3">
-        <label>
-          {{ $t("page_setting.account_setting.form.id_image") }}:
-        </label>
+        <label> {{ $t("page_setting.account_setting.form.id_image") }}: </label>
         <b-form-input
-            type="text"
-            required
-            class="custom-input"
-            v-model="model.identificationImage"
+          type="text"
+          required
+          class="custom-input"
+          v-model="model.identificationImage"
         />
       </div>
       <div class="form-element mt-5">

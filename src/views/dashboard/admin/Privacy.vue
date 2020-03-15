@@ -6,11 +6,13 @@
         <p>{{ $t("page_privacy.controller_description1") }}</p>
         <p>{{ $t("page_privacy.controller_description2") }}</p>
         <p>
-          {{ $t("page_privacy.controller_description3") }}<br>
-          {{ $t("page_privacy.controller_description4") }}<br>
-          {{ $t("page_privacy.controller_description5") }}<br>
-          {{ $t("page_privacy.controller_description6") }}<br>
+          {{ $t("page_privacy.controller_description3") }}<br />
+          {{ $t("page_privacy.controller_description4") }}<br />
+          {{ $t("page_privacy.controller_description5") }}<br />
+          {{ $t("page_privacy.controller_description6") }}<br />
           {{ $t("page_privacy.controller_description7") }}
+        </p>
+
         <p>{{ $t("page_privacy.controller_description8") }}</p>
         <p>{{ $t("page_privacy.controller_description9") }}</p>
         <p>{{ $t("page_privacy.controller_description10") }}</p>
@@ -106,14 +108,14 @@
 </template>
 
 <script>
-  import Card from "@/components/common/Card.vue";
+import Card from "@/components/common/Card.vue";
 
-  export default {
-    name: "privacy",
-    components: {
-      Card
-    }
-  };
+export default {
+  name: "privacy",
+  components: {
+    Card
+  }
+};
 </script>
 
 <style scoped></style>
