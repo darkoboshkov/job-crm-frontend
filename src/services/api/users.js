@@ -26,6 +26,17 @@ export default {
       reject
     );
   },
+  getAvailableCompanyWorkers(params, resolve, reject = null) {
+    const companyId = params.companyId;
+    delete params.companyId;
+    return request(
+        "get",
+        `/users/${companyId}/available-workers/all`,
+        params,
+        resolve,
+        reject
+    );
+  },
   get(params, resolve, reject = null) {
     const companyId = params.companyId;
     const userId = params.userId;
