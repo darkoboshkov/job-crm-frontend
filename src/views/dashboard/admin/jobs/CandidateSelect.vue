@@ -114,7 +114,6 @@ export default {
       users: [],
       companyId: null,
       jobId: null,
-      offers: [],
       companies: [],
       managers: []
     };
@@ -129,7 +128,6 @@ export default {
   async mounted() {
     this.companyId = this.$route.params.companyId;
     this.jobId = this.$route.params.jobId;
-    this.fetchJobOffers();
     this.fetchManagers();
     this.fetchCompanies();
   },
@@ -151,17 +149,6 @@ export default {
           this.managers = res.docs;
         });
     },
-    fetchJobOffers() {
-      jobOfferApi
-        .getAllByJobId({
-          companyId: this.companyId,
-          jobId: this.jobId,
-          pagination: 0
-        })
-        .then(res => {
-          this.offers = res.docs;
-        });
-    },
     /* eslint-disable-next-line */
     searchCandidate: _.debounce(function () {
       if (!this.search) {
@@ -169,7 +156,7 @@ export default {
         return;
       }
       usersApi
-        .getCompanyWorkers({
+        .getAvailableCompanyWorkers({
           companyId: this.companyId,
           filter: {
             firstName: this.search,
@@ -180,12 +167,6 @@ export default {
         })
         .then(result => {
           let workers = result.docs;
-          workers = workers.filter(worker => {
-            return (
-              this.offers.findIndex(offer => offer.workerId === worker._id) ===
-              -1
-            );
-          });
           this.users = workers.map(item => {
             return {
               firstName: item.firstName,
