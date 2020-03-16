@@ -147,6 +147,7 @@
             :class="signed ? 'btn-red' : 'btn-secondary'"
             @click="exportContract"
             style="min-width:160px;"
+            :disabled="!signed"
           >
             Export Contract
           </button>
@@ -155,7 +156,7 @@
             class="btn ml-2"
             :class="signed ? 'btn-blue' : 'btn-secondary'"
             @click="openViewOffer = !openViewOffer"
-            :disabled="edit"
+            :disabled="!signed"
             style="min-width:160px;"
           >
             View Contract
@@ -399,7 +400,7 @@ export default {
   },
   computed: {
     edit() {
-      return this.model.status === "open";
+      return this.model.status === "pending-worker";
     },
     user() {
       return this.$store.state.user;
@@ -573,7 +574,6 @@ export default {
           this.company = res.company[0];
           this.job = res.job[0];
           this.worker = res.worker[0];
-          this.company = res.company[0];
           this.manager = res.manager[0];
           this.attachments = res.attachments;
         })
