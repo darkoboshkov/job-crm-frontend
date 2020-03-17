@@ -41,7 +41,7 @@
             <option value="" disabled />
             <option
               v-for="(manager, index) in filteredManagers"
-              :value="manager"
+              :value="manager._id"
               :key="index"
             >
               {{ manager && manager.firstName + " " + manager.lastName }}
