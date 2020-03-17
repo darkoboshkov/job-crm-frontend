@@ -1,6 +1,6 @@
 <template>
   <div class="table-filter">
-    <div v-b-toggle.collapse_table-filter class="table-filter__title">
+    <div v-b-toggle.collapse_table-filter class="table-filter__title d-inline-block">
       <h5>
         <i class="hiway-crm-icon icon-equalizer mr-2" />
         <span class="when-opened">{{ $t("common.close") }}</span
