@@ -597,7 +597,6 @@ export default {
           this.company = res.company[0];
           this.job = res.job[0];
           this.worker = res.worker[0];
-          this.company = res.company[0];
           this.manager = res.manager[0];
           this.CAO = res.CAO[0];
           this.attachments = res.attachments;
