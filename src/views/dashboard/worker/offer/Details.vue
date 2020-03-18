@@ -182,7 +182,7 @@
               >
             </b-form-select>
           </div>
-          <div v-else class="text-right">{{ CAO.name }}</div>
+          <div v-else class="text-right">{{ selectedCaoOption.name }}</div>
         </div>
         <div class="item">
           <div>Hourly Wage</div>
@@ -389,8 +389,8 @@
 <script>
 import jobOfferApi from "@/services/api/joboffers";
 import ViewJobOffer from "./ViewJobOffer";
-import dateFormatter from "@/helpers/DateFormatter.js";
-import timeFormatter from "@/helpers/TimeFormatter.js";
+import dateFormatter from "@/helpers/DateFormatter";
+import timeFormatter from "@/helpers/TimeFormatter";
 import { APP_URL } from "@/constants";
 
 export default {
@@ -470,7 +470,6 @@ export default {
       caoOptions: [],
       imageData: {},
       attachments: [],
-      CAO: {},
       agreement: "not_accepted",
       paymentIntervalOptions: [
         {
@@ -514,10 +513,20 @@ export default {
   },
   mounted() {
     this.getOfferDetails();
+    this.getCaoOptions();
   },
   methods: {
     dateFormatter,
     timeFormatter,
+    getCaoOptions() {
+      return jobOfferApi
+          .getCaoOptions({
+            companyId: this.companyId
+          })
+          .then(res => {
+            this.caoOptions = res;
+          });
+    },
     openSignContractModal() {
       this.$refs["modal-sign-contract"].show();
     },
@@ -598,7 +607,6 @@ export default {
           this.job = res.job[0];
           this.worker = res.worker[0];
           this.manager = res.manager[0];
-          this.CAO = res.CAO[0];
           this.attachments = res.attachments;
         })
         .catch(e => {
