@@ -256,9 +256,9 @@ export default {
       APP_URL,
       model: {
         title: "",
-        companyId: 0,
-        managerId: 0,
-        professionId: 0,
+        companyId: "",
+        managerId: "",
+        professionId: "",
         wage: "",
         level: null,
         status: "",

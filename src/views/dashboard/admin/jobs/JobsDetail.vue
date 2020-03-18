@@ -413,9 +413,9 @@ export default {
       editJob: false,
       model: {
         title: "",
-        companyId: 0,
-        managerId: 0,
-        professionId: 0,
+        companyId: "",
+        managerId: "",
+        professionId: "",
         wage: "",
         status: "",
         skillIds: [],
