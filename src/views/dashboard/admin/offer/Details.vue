@@ -297,8 +297,8 @@
 <script>
 import jobOfferApi from "@/services/api/joboffers";
 import ViewJobOffer from "./ViewJobOffer";
-import dateFormatter from "@/helpers/DateFormatter.js";
-import timeFormatter from "@/helpers/TimeFormatter.js";
+import dateFormatter from "@/helpers/DateFormatter";
+import timeFormatter from "@/helpers/TimeFormatter";
 import { APP_URL } from "@/constants";
 
 export default {

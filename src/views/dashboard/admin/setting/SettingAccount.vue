@@ -33,15 +33,15 @@
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.gender") }}:</label>
         <div class="gender">
-          <b-form-radio v-model="model.gender" name="gender" value="male">{{
-            $t("page_setting.account_setting.form.man")
-          }}</b-form-radio>
-          <b-form-radio v-model="model.gender" name="gender" value="female">{{
-            $t("page_setting.account_setting.form.woman")
-          }}</b-form-radio>
-          <b-form-radio v-model="model.gender" name="gender" value="other">{{
-            $t("page_setting.account_setting.form.other")
-          }}</b-form-radio>
+          <b-form-radio v-model="model.gender" name="gender" value="male">
+            {{ $t("page_setting.account_setting.form.man") }}
+          </b-form-radio>
+          <b-form-radio v-model="model.gender" name="gender" value="female">
+            {{ $t("page_setting.account_setting.form.woman") }}
+          </b-form-radio>
+          <b-form-radio v-model="model.gender" name="gender" value="other">
+            {{ $t("page_setting.account_setting.form.other") }}
+          </b-form-radio>
         </div>
       </div>
       <div class="form-element mt-3">
@@ -53,32 +53,6 @@
           v-model="model.birthday"
         />
       </div>
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('BANK_ACCOUNT_NUMBER') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.bankNumber"-->
-      <!--/>-->
-      <!--</div>-->
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('ADDRESS') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--/>-->
-      <!--</div>-->
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('POSTAL_CODE') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.postalCode"-->
-      <!--/>-->
-      <!--</div>-->
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.city") }}:</label>
         <b-form-input
@@ -88,7 +62,7 @@
           v-model="model.city"
         />
       </div>
-      <div class="form-element mt-3">
+      <div class="form-element mt-5">
         <button class="btn btn-blue" @click="update">
           {{ $t("page_setting.account_setting.button.update") }}
         </button>

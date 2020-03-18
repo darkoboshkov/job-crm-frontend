@@ -227,7 +227,7 @@ export default {
           this.model.status = res.status;
           if (res.birthday) {
             const thisYear = new Date().getFullYear();
-            const birthYear = res.birthday.split("-")[0];
+            const birthYear = new Date(res.birthday).getFullYear();
             this.model.age = thisYear - birthYear;
           } else {
             this.model.age = "-";
