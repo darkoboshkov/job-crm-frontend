@@ -1,6 +1,6 @@
 <template>
   <div id="page_timesheets" class="dashboard-content">
-    <h1 class="color-red">Timesheets & Expenses</h1>
+    <h1 class="color-red">TimeSheets & Expenses</h1>
     <div class="container-fluid">
       <!--      <div class="row">-->
       <!--        <div class="col-md-3 d-flex">-->
@@ -58,10 +58,6 @@
       <!--      </div>-->
     </div>
     <div class="row justify-content-end">
-<!--      <button class="btn btn-blue mr-3">-->
-<!--        Add hours-->
-<!--        <i class="hiway-crm-icon icon-watch ml-4"></i>-->
-<!--      </button>-->
       <button class="btn btn-red">
         Add expenses
         <i class="hiway-crm-icon icon-euro ml-4"></i>
@@ -80,7 +76,7 @@
           @on-page-change="onPageChange"
           @on-sort-change="onSortChange"
           @on-column-filter="onColumnFilter"
-          @on-cell-click="onCellClick"
+          @on-row-click="onRowClick"
           @on-per-page-change="onPerPageChange"
           :totalRows="totalRows"
           :rows="rows"
@@ -95,7 +91,7 @@
               class="d-flex align-items-center"
             >
               <i
-                v-if="props.row.kind === 'hour'"
+                v-if="props.row.type === 'timesheet'"
                 class="table-icon hiway-crm-icon icon-watch"
                 style="background-color: var(--cobalt-blue)"
               ></i>
@@ -116,12 +112,6 @@
                   {{ $t("page_timesheets.table.view_timesheet") }}
                 </b-dropdown-item>
               </b-dropdown>
-              <button
-                class="btn btn-transparent"
-                @click="deleteTimesheetConfirm(props)"
-              >
-                <i class="hiway-crm-icon icon-bin" />
-              </button>
             </div>
             <span v-else-if="props.column.field === 'activeState'">
               {{
@@ -135,17 +125,29 @@
         </vue-good-table>
       </div>
     </div>
+    <time-sheets-modal
+            :row-data.sync="selectedRow"
+            :modal-open.sync="showTimeSheetsModal"
+    ></time-sheets-modal>
+    <!--    <expenses-modal-->
+    <!--            :modal-open.sync="showAddExpensesModal"-->
+    <!--    ></expenses-modal>-->
   </div>
 </template>
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import { APP_URL } from "@/constants";
+import { APP_URL, TIME_SHEET_STATE } from "@/constants";
+import workLogApi from "@/services/api/workLog";
+import TimeSheetsModal from "./TimeSheetsModal";
+// import ExpensesModal from "./ExpensesModal";
 
 export default {
   name: "timesheets",
   components: {
-    TableFilter
+    TableFilter,
+    TimeSheetsModal,
+    // ExpensesModal,
   },
   data() {
     return {
@@ -209,22 +211,22 @@ export default {
         },
         {
           label: this.$t("page_timesheets.table.hand_in_date"),
-          field: "hand_in_date",
+          field: "submitDate",
           name: "hand_in_date"
         },
         {
           label: this.$t("page_timesheets.table.hours"),
-          field: "hours",
+          field: this.summedHours(),
           name: "hours"
         },
         {
           label: this.$t("page_timesheets.table.price"),
-          field: "price",
+          field: this.expensePrice(),
           name: "price"
         },
         {
           label: this.$t("page_timesheets.table.employer"),
-          field: "employer",
+          field: this.hiringManager(),
           name: "employer"
         },
         {
@@ -237,88 +239,43 @@ export default {
           field: "actions",
           name: "actions"
         }
-      ]
+      ],
+      showTimeSheetsModal: false,
+      showAddExpensesModal: false,
+      selectedRow: {},
+      TIME_SHEET_STATE,
     };
   },
   mounted() {
-    this.getTimesheets();
+    this.getTimeSheets();
   },
   methods: {
-    getTimesheets() {
-      this.rows = [
-        {
-          kind: "hour",
-          week: 51,
-          hand_in_date: "Maandag 8 december 2",
-          hours: "38",
-          price: null,
-          employer: "Kruidvat",
-          status: "In afwachting"
-        },
-        {
-          kind: "expense",
-          week: 51,
-          hand_in_date: "Maandag 8 december 2",
-          hours: null,
-          price: 238.77,
-          employer: "Kruidvat",
-          status: "In afwachting"
-        },
-        {
-          kind: "hour",
-          week: 51,
-          hand_in_date: "Maandag 8 december 2",
-          hours: "38",
-          price: null,
-          employer: "Kruidvat",
-          status: "In afwachting"
-        },
-        {
-          kind: "expense",
-          week: 51,
-          hand_in_date: "Maandag 8 december 2",
-          hours: null,
-          price: 238.77,
-          employer: "Kruidvat",
-          status: "In afwachting"
-        },
-        {
-          kind: "hour",
-          week: 51,
-          hand_in_date: "Maandag 8 december 2",
-          hours: "38",
-          price: null,
-          employer: "Kruidvat",
-          status: "In afwachting"
-        },
-        {
-          kind: "expense",
-          week: 51,
-          hand_in_date: "Maandag 8 december 2",
-          hours: null,
-          price: 238.77,
-          employer: "Kruidvat",
-          status: "In afwachting"
-        },
-        {
-          kind: "hour",
-          week: 51,
-          hand_in_date: "Maandag 8 december 2",
-          hours: "38",
-          price: null,
-          employer: "Kruidvat",
-          status: "In afwachting"
-        },
-        {
-          kind: "expense",
-          week: 51,
-          hand_in_date: "Maandag 8 december 2",
-          hours: null,
-          price: 238.77,
-          employer: "Kruidvat",
-          status: "In afwachting"
-        }
-      ];
+    getTimeSheets() {
+      return workLogApi.getAll(this.serverParams)
+              .then(({ docs }) => {
+                this.rows = docs;
+              });
+    },
+    summedHours() {
+      return function(row) {
+        return (row.type === 'timesheet' && row.timeSheetData.totalNormalWageHours) || (row.type === 'expense' && row.expenseData.hoursWorked);
+      };
+    },
+    expensePrice() {
+      return function(row) {
+        return (row.type === 'timesheet' && ' ') || (row.type === 'expense' && row.expenseData.amount);
+      };
+    },
+    hiringManager() {
+      return function(row) {
+        return (row.hiringManager && row.hiringManager[0]) ? (row.hiringManager[0].firstName + ' ' + row.hiringManager[0].lastName) : ''
+      };
+    },
+    onRowClick(prop) {
+      this.selectedRow = prop.row;
+      if (prop.row.type === 'timesheet') {
+        this.showTimeSheetsModal = true;
+      }
     },
     onPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {
@@ -327,15 +284,10 @@ export default {
       this.getCompanies();
     },
     onSortChange(e) {
-      this.getCompanies();
+      //
     },
     onColumnFilter(e) {
-      this.getCompanies();
-    },
-    onCellClick(params) {
-      if (params.column.name !== "actions") {
-        this.goToCompany(params);
-      }
+      //
     },
     onPerPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {

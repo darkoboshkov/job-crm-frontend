@@ -751,6 +751,23 @@
       "active": "Active",
       "inactive": "Inactive",
       "city": "City"
+    },
+    "modal": {
+      "add_hours": "Add Hours",
+      "employer": "Employer",
+      "employee": "Employee",
+      "week": "Week",
+      "date": "Date",
+      "hours": "Hours",
+      "percentage": "Percentage",
+      "travel_expenses": "Travel Expenses",
+      "adjust_travel_expenses": "Adjust travel expenses",
+      "save_hours": "Save Hours",
+      "send_hours": "Send hours",
+      "approve_hours": "Approve hours",
+      "decline_hours": "Decline hours",
+      "adjust_hours": "Adjust Hours",
+      "worked_total_hours": "In week {selectedWeekNumber} you worked a total of {totalHours} hours."
     }
   },
   "page_users_create": {
