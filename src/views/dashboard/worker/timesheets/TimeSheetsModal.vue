@@ -136,11 +136,11 @@
           return this.rowData;
         },
         set(v) {
-          this.$emit('update:row-data', v);
+          this.$emit('update:rowData', v);
         },
       },
       inputDisabled() {
-        return this.timeSheetsData.status === TIME_SHEET_STATE.APPROVED;
+        return this.timeSheetsData.status === TIME_SHEET_STATE.SUBMITTED || this.timeSheetsData.status === TIME_SHEET_STATE.APPROVED;
       },
       employer() {
         if (
@@ -180,16 +180,18 @@
       },
       totalNormalWageHours() {
         return this.daysOfSelectedWeek.reduce(function(acc, day) {
-          return acc + day.normalWageHours;
+          return acc + Number(day.normalWageHours);
         }, 0);
       },
       totalAdjustedWageHours() {
         return this.daysOfSelectedWeek.reduce(function(acc, day) {
-          return acc + day.adjustedWageHours;
+          return acc + Number(day.adjustedWageHours);
         }, 0);
       },
       totalHours() {
-        return this.totalNormalWageHours + this.totalAdjustedWageHours;
+        return this.daysOfSelectedWeek.reduce(function(acc, day) {
+          return acc + Number(day.normalWageHours) + Number(day.adjustedWageHours) * Number(day.percentOfAdjustedWage);
+        }, 0);
       },
     },
     data() {
@@ -226,7 +228,8 @@
         }
       },
       adjustHours() {
-        const { companyId, _id } = this.timeSheetsData;
+        const { _id } = this.timeSheetsData;
+        const { companyId } = this.$store.state.user;
 
         workLogApi.adjust({
           companyId,
@@ -244,11 +247,11 @@
         });
       },
       saveHours() {
-        const { companyId, _id } = this.timeSheetsData;
+        const { companyId } = this.$store.state.user;
 
         workLogApi.save({
-          companyId,
-          _id
+          ...this.timeSheetsData,
+          companyId
         }).then(res => {
           const { timeSheetData, status } = res;
           this.timeSheetsData = {
@@ -262,11 +265,11 @@
         });
       },
       sendHours() {
-        const { companyId, _id } = this.timeSheetsData;
+        const { companyId } = this.$store.state.user;
 
         workLogApi.send({
-          companyId,
-          _id
+          ...this.timeSheetsData,
+          companyId
         }).then(res => {
           const { timeSheetData, status } = res;
           this.timeSheetsData = {
@@ -279,49 +282,13 @@
           };
         });
       },
-      approveHours() {
-        const { companyId, _id } = this.timeSheetsData;
-
-        workLogApi.approve({
-          companyId,
-          _id,
-        }).then(res => {
-          const { timeSheetData, status } = res;
-          this.timeSheetsData = {
-            ...this.timeSheetsData,
-            timeSheetData: {
-              ...this.timeSheetsData.timeSheetData,
-              ...timeSheetData
-            },
-            status,
-          };
-        });
-      },
-      declineHours() {
-        const { companyId, _id } = this.timeSheetsData;
-
-        workLogApi.decline({
-          companyId,
-          _id
-        }).then(res => {
-          const { timeSheetData, status } = res;
-          this.timeSheetsData = {
-            ...this.timeSheetsData,
-            timeSheetData: {
-              ...this.timeSheetsData.timeSheetData,
-              ...timeSheetData
-            },
-            status,
-          };
-        });
-      }
     },
     mounted() {
       this.selectedWeekNumber = 2 + Math.floor((new Date().getTime() - new Date(this.year, 0, this.startOfSecondWeek).getTime()) / this.oneWeekTimeInterval); // current week number
     },
     watch: {
-      selectedWeekNumber() {
-        // this.getDaysOfSelectedWeek();
+      selectedWeekNumber(w) {
+        //
       },
       'timeSheetsData.timeSheetData.data'(weekDays) {
         this.selectedWeekNumber = 2 + Math.floor((new Date(weekDays[0].date).getTime() - new Date(this.year, 0, this.startOfSecondWeek).getTime()) / this.oneWeekTimeInterval); // current week number

@@ -180,16 +180,18 @@
       },
       totalNormalWageHours() {
         return this.daysOfSelectedWeek.reduce(function(acc, day) {
-          return acc + day.normalWageHours;
+          return acc + Number(day.normalWageHours);
         }, 0);
       },
       totalAdjustedWageHours() {
         return this.daysOfSelectedWeek.reduce(function(acc, day) {
-          return acc + day.adjustedWageHours;
+          return acc + Number(day.adjustedWageHours);
         }, 0);
       },
       totalHours() {
-        return this.totalNormalWageHours + this.totalAdjustedWageHours;
+        return this.daysOfSelectedWeek.reduce(function(acc, day) {
+          return acc + Number(day.normalWageHours) + Number(day.adjustedWageHours) * Number(day.percentOfAdjustedWage);
+        }, 0);
       },
     },
     data() {
@@ -226,11 +228,8 @@
         }
       },
       saveHours() {
-        const { companyId, _id } = this.timeSheetsData;
-
         workLogApi.save({
-          companyId,
-          _id
+          ...this.timeSheetsData,
         }).then(res => {
           const { timeSheetData, status } = res;
           this.timeSheetsData = {
@@ -244,7 +243,8 @@
         });
       },
       approveHours() {
-        const { companyId, _id } = this.timeSheetsData;
+        const { _id } = this.timeSheetsData;
+        const { companyId } = this.$store.state.user;
 
         workLogApi.approve({
           companyId,
@@ -262,7 +262,8 @@
         });
       },
       declineHours() {
-        const { companyId, _id } = this.timeSheetsData;
+        const { _id } = this.timeSheetsData;
+        const { companyId } = this.$store.state.user;
 
         workLogApi.decline({
           companyId,

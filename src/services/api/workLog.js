@@ -10,6 +10,12 @@ export default {
 
     return request("get", `/worklogs/${companyId}/all`, params, resolve, reject);
   },
+  getByWorker(params, resolve, reject = null) {
+    const companyId = params.companyId;
+    delete params.companyId;
+
+    return request("get", `/worklogs/${companyId}/worker`, params, resolve, reject);
+  },
   approve(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;
