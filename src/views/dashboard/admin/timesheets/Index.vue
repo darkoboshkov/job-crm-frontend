@@ -128,10 +128,10 @@
     <time-sheets-modal
             :row-data.sync="selectedRow"
             :modal-open.sync="showTimeSheetsModal"
-    ></time-sheets-modal>
+    />
     <!--    <expenses-modal-->
     <!--            :modal-open.sync="showAddExpensesModal"-->
-    <!--    ></expenses-modal>-->
+    <!--    />-->
   </div>
 </template>
 
@@ -206,7 +206,7 @@ export default {
         },
         {
           label: this.$t("page_timesheets.table.week"),
-          field: "week",
+          field: "timeSheetData.weekNumber",
           name: "week"
         },
         {
@@ -258,7 +258,7 @@ export default {
     },
     summedHours() {
       return function(row) {
-        return (row.type === 'timesheet' && row.timeSheetData.totalNormalWageHours) || (row.type === 'expense' && row.expenseData.hoursWorked);
+        return (row.type === 'timesheet' && row.timeSheetData.totalHours.toString()) || (row.type === 'expense' && row.expenseData.hoursWorked.toString());
       };
     },
     expensePrice() {
@@ -298,8 +298,7 @@ export default {
     filter() {
       //
     },
-    deleteTimesheetConfirm() {},
-    goToTimesheet() {
+    goToTimeSheet() {
       //
     }
   }

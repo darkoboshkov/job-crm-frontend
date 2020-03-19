@@ -135,10 +135,10 @@
     <time-sheets-modal
       :row-data.sync="selectedRow"
       :modal-open.sync="showTimeSheetsModal"
-    ></time-sheets-modal>
-    <expenses-modal
-      :modal-open.sync="showAddExpensesModal"
-    ></expenses-modal>
+    />
+<!--    <expenses-modal-->
+<!--      :modal-open.sync="showAddExpensesModal"-->
+<!--    />-->
   </div>
 </template>
 
@@ -147,12 +147,12 @@ import TableFilter from "@/components/common/TableFilter";
 import { APP_URL, TIME_SHEET_STATE } from "@/constants";
 import workLogApi from "@/services/api/workLog";
 import TimeSheetsModal from "./TimeSheetsModal";
-import ExpensesModal from "./ExpensesModal";
+// import ExpensesModal from "./ExpensesModal";
 
 export default {
   name: "timesheets",
   components: {
-    ExpensesModal,
+    // ExpensesModal,
     TableFilter,
     TimeSheetsModal,
   },
@@ -213,7 +213,7 @@ export default {
         },
         {
           label: this.$t("page_timesheets.table.week"),
-          field: "week",
+          field: "timeSheetData.weekNumber",
           name: "week"
         },
         {
@@ -272,7 +272,7 @@ export default {
     },
     summedHours() {
       return function(row) {
-        return (row.type === 'timesheet' && row.timeSheetData.totalNormalWageHours) || (row.type === 'expense' && row.expenseData.hoursWorked);
+        return (row.type === 'timesheet' && row.timeSheetData.totalHours.toString()) || (row.type === 'expense' && row.expenseData.hoursWorked.toString());
       };
     },
     expensePrice() {
@@ -312,7 +312,9 @@ export default {
     filter() {
       //
     },
-    deleteTimesheetConfirm() {},
+    deleteTimeSheetConfirm(props) {
+      // todo: show delete confirmation modal
+    },
     goToTimesheet() {
       //
     }
