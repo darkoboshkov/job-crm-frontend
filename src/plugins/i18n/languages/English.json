@@ -65,15 +65,15 @@
   },
   "component": {
     "position": {
-      "title": "Open Positions",
+      "title": "Most recent positions",
       "view_all": "View All"
     },
     "users": {
-      "title": "Open Workers",
+      "title": "Most recent workers",
       "view_all": "View All"
     },
     "companies": {
-      "title": "Open Companies",
+      "title": "Most recent companies",
       "view_all": "View All"
     },
     "birthday": {
@@ -466,6 +466,13 @@
       "actions": "Actions",
       "start_matching": "Start Matching",
       "view_job": "View Job"
+    },
+    "filter": {
+      "title": "Title",
+      "wage": "Wage",
+      "rate": "Rate",
+      "start_date": "Start Date",
+      "end_date": "End Date"
     },
     "modal": {
       "delete": {

@@ -221,7 +221,12 @@
                     style="width:31px"
                     class="mr-3"
                   />
-                  <span>{{ model.manager && model.manager.email }}</span>
+                  <span>
+                    <a  v-if="model.manager"
+                        :href="'mailto:'+ model.manager.email">
+                      {{ model.manager.email }}
+                    </a>
+                  </span>
                 </div>
               </b-card>
             </b-col>

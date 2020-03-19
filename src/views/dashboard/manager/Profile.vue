@@ -47,7 +47,7 @@
                     style="width:31px"
                     class="mr-3"
                   />
-                  <span>{{ model.email }}</span>
+                  <span><a :href="'mailto:'+ model.email">{{ model.email }}</a></span>
                 </div>
               </b-card>
             </b-col>

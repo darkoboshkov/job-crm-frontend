@@ -1,18 +1,18 @@
 .app-sidebar {
-  height: calc(100vh - #{$header-height} - 3px);
+  height: calc(100vh - #{$header-height} - 1px);
   width: calc(#{$sidebar-width} + 1px);
   border-right: 1px solid var(--white-two);
   border-left: 1px solid var(--white-two);
   border-bottom: 1px solid var(--white-two);
   background-color: white;
   position: absolute;
-  top: calc(#{$header-height} + 2px);
+  top: $header-height;
   left: 0;
 
   @include media-breakpoint-down(sm) {
     height: initial;
     width: calc(#{$mobile-sidebar-width} + 1px);
-    top: calc(#{$mobile-header-height} + 2px);
+    top: $mobile-header-height;
   }
 
   a.nav-link {

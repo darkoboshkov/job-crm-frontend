@@ -1,20 +1,18 @@
 <template>
   <b-card id="open_users" body-class="pt-0">
     <template v-slot:header>
-      <div class="row">
-        <div class="col-md-6">
+      <div class="d-flex">
+        <div class="flex-1">
           <h2 class="m-0">{{ $t("component.companies.title") }}</h2>
         </div>
-        <div class="col-md-6">
-          <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            @click="hideCompaniesCard"
-          >
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          @click="hideCompaniesCard"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
     </template>
     <div>

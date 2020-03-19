@@ -227,7 +227,7 @@
       <ul style="padding: 0 0 0 20px; margin: 0;">
         <li style="list-style-type: decimal;">
           Deze cao/beloningsregeling is van toepassing:
-          {{ offer.CAO[0] && offer.CAO[0].name }}
+          {{ offer.CAO && offer.CAO[0] && offer.CAO[0].name }}
         </li>
         <li style="list-style-type: decimal;">
           Het bruto feitelijk (uur)loon bedraagt: € {{ offer.hourlyWage }}
@@ -574,7 +574,7 @@
 </template>
 
 <script>
-import dateFormatter from "@/helpers/DateFormatter.js";
+import dateFormatter from "@/helpers/DateFormatter";
 
 export default {
   name: "ViewJobOffer",

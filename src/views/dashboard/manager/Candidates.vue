@@ -324,11 +324,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.icon-dropdown >>> button {
-  color: black;
-}
-.view-switch {
-  min-width: fit-content;
-}
-</style>
+<style scoped></style>

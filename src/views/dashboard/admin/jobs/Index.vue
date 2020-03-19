@@ -13,7 +13,14 @@
     <p class="sub-title">
       {{ $t("page_jobs.sub_title", { jobs: this.totalRows }) }}
     </p>
-    <div class="d-flex justify-content-between align-items-center">
+    <hr />
+    <div class="d-flex justify-content-between">
+      <table-filter
+          class="candidate-filters"
+          @table-filter="filter"
+          :title="'Filter Options'"
+          :options="filterOptions"
+      />
       <div class="view-switch">
         View:
         <i
@@ -89,11 +96,13 @@
 </template>
 
 <script>
+import TableFilter from "@/components/common/TableFilter";
 import jobsApi from "@/services/api/jobs";
 import { APP_URL } from "@/constants";
 
 export default {
   name: "JobList",
+  components: { TableFilter },
   data() {
     return {
       APP_URL,
@@ -103,6 +112,33 @@ export default {
         perPage: 5
       },
       rows: [],
+      filterOptions: [
+        {
+          title: this.$t("page_jobs.filter.title"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_jobs.filter.wage"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_jobs.filter.rate"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_jobs.filter.start_date"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_jobs.filter.end_date"),
+          type: "text",
+          value: ""
+        },
+      ],
       searchTerm: "",
       matched: false,
       totalRows: 0,
@@ -215,6 +251,7 @@ export default {
         this.goToJob(params);
       }
     },
+    filter(v) {},
     goToJob(props) {
       if (props && props.row) {
         this.$router.push(

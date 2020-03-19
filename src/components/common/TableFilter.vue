@@ -53,7 +53,7 @@
                   :label="option.title"
                   :value="option.value"
                   :unit="option.unit"
-                ></slider>
+                />
               </template>
             </div>
           </div>

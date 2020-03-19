@@ -178,7 +178,7 @@
                     style="width:31px"
                     class="mr-3"
                   />
-                  <span>{{ user.email }}</span>
+                  <span><a :href="'mailto:'+ user.email">{{ user.email }}</a></span>
                 </div>
               </b-card>
             </b-col>

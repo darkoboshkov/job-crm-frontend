@@ -1,20 +1,18 @@
 <template>
   <b-card id="pending_workers" body-bg-variant="transparent">
     <template v-slot:header>
-      <div class="row">
-        <div class="col-md-6">
+      <div class="d-flex">
+        <div class="flex-1">
           <h2 class="m-0">{{ $t("component.pending_workers.title") }}</h2>
         </div>
-        <div class="col-md-6">
-          <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            @click="hidePendingWorkersCard"
-          >
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          @click="hidePendingWorkersCard"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
     </template>
     <div>

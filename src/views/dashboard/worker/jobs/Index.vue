@@ -3,10 +3,17 @@
     <h1 class="title">
       {{ $t("page_jobs.title") }}
     </h1>
-    <div class="d-flex justify-content-between align-items-center">
-      <p class="sub-title">
-        {{ $t("page_jobs.sub_title", { jobs: this.totalRows }) }}
-      </p>
+    <p class="sub-title">
+      {{ $t("page_jobs.sub_title", { jobs: this.totalRows }) }}
+    </p>
+    <hr />
+    <div class="d-flex justify-content-between">
+      <table-filter
+          class="candidate-filters"
+          @table-filter="filter"
+          :title="'Filter Options'"
+          :options="filterOptions"
+      />
       <div class="view-switch">
         View:
         <i
@@ -22,7 +29,7 @@
         />
       </div>
     </div>
-    <div class="jobs-list mt-5">
+    <div class="jobs-list mt-3">
       <vue-good-table
         mode="remote"
         @on-page-change="onPageChange"
@@ -84,11 +91,13 @@
 </template>
 
 <script>
+import TableFilter from "@/components/common/TableFilter";
 import jobsApi from "@/services/api/jobs";
 import { APP_URL } from "@/constants";
 
 export default {
   name: "JobList",
+  components: { TableFilter },
   data() {
     return {
       APP_URL,
@@ -98,6 +107,33 @@ export default {
         perPage: 5
       },
       rows: [],
+      filterOptions: [
+        {
+          title: this.$t("page_jobs.filter.title"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_jobs.filter.wage"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_jobs.filter.rate"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_jobs.filter.start_date"),
+          type: "text",
+          value: ""
+        },
+        {
+          title: this.$t("page_jobs.filter.end_date"),
+          type: "text",
+          value: ""
+        },
+      ],
       searchTerm: "",
       matched: false,
       totalRows: 0,
@@ -220,6 +256,7 @@ export default {
         this.goToJob(params);
       }
     },
+    filter(v) {},
     goToJob(props) {
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/jobs/${props.row._id}`);
