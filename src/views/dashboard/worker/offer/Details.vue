@@ -82,11 +82,12 @@
           <div class="down">
             <ul>
               <li>
-                {{ $("page_offer_detail.hourly_wage") }}: {{ model.hourlyWage }}
+                {{ $t("page_offer_detail.hourly_wage") }}:
+                {{ model.hourlyWage }}
               </li>
               <li>
                 {{ model.hoursPerWeek }}
-                {{ $("page_offer_detail.hours_per_week") }}
+                {{ $t("page_offer_detail.hours_per_week") }}
               </li>
             </ul>
           </div>

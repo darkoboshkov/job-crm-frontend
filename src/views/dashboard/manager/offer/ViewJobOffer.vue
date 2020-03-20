@@ -316,7 +316,10 @@
         <div class="col-6">
           {{ $t("page_offer_detail.contract.company") }}: {{ company.name }}
         </div>
-        <div class="col-6">{{ $t("page_offer_detail.contract.worker") }}:</div>
+        <div class="col-6">
+          {{ $t("page_offer_detail.contract.worker") }}:
+          {{ worker | fullNameFormatter }}
+        </div>
       </div>
       <div class="row">
         <div class="col-12">
@@ -391,9 +394,7 @@
       </div>
       <div>{{ $t("page_offer_detail.contract.description24_6") }}</div>
       <div>{{ company.city }}, {{ offer.startDate | dateFormatter }}</div>
-      <div>
-        {{ $t("page_offer_detail.contract.for_approval") }}
-      </div>
+      <div>{{ $t("page_offer_detail.contract.for_approval") }},</div>
       <br />
       <br />
       <br />
