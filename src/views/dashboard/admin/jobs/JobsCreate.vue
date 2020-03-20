@@ -218,7 +218,7 @@
                     <span class="mr-5">
                       {{ attachment.uploadedAt | dateTimeFormatter }}
                     </span>
-                    <span class="mr-5">{{ attachment.size }} B</span>
+                    <span class="mr-5">{{ attachment.size | fileSizeFormatter }} </span>
                     <span class="mr-4">
                       <i class="hiway-crm-icon icon-more-vertical" />
                     </span>
