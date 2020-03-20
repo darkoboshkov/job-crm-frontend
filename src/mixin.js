@@ -1,30 +1,35 @@
 import { APP_URL } from "@/constants";
 
+const timeStringOptions = {
+  hour12: false,
+  hour: "2-digit",
+  minute: "2-digit"
+};
+
 const dateStringOptions = {
   year: "numeric",
   month: "2-digit",
   day: "2-digit"
 };
 
-const timeStringOptions = {
-  hour12: true,
-  hour: "2-digit",
-  minute: "2-digit"
+const dateTimeStringOptions = {
+  ...dateStringOptions,
+  ...timeStringOptions
 };
 
 const getLocalDateString = string => {
   //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
-  return new Date(string).toLocaleDateString();
+  return new Date(string).toLocaleDateString("en-US", dateStringOptions);
 };
 
 const getLocalDateTimeString = string => {
   //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
-  return new Date(string).toLocaleString();
+  return new Date(string).toLocaleString("en-US", dateTimeStringOptions);
 };
 
 const getLocalTimeString = string => {
   // return new Date(string).toLocaleTimeString("nl-NL", timeStringOptions);
-  return new Date(string).toLocaleTimeString();
+  return new Date(string).toLocaleTimeString("en-US", timeStringOptions);
 };
 
 const getFullName = user => {
