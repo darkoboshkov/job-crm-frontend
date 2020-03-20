@@ -97,7 +97,6 @@
                   </div>
                 </li>
 
-
                 <li>
                   {{ $t("page_job_detail.form.start_date") }}
                   <div class="pull-right">
@@ -266,7 +265,7 @@ export default {
         wage: null,
         hourlyWage: null,
         payRate: null,
-        paymentType: 'EUR',
+        paymentType: "EUR",
         level: null,
         status: "",
         skillIds: [],

@@ -64,9 +64,9 @@
               <template v-slot:button-content>
                 <i class="hiway-crm-icon icon-more-vertical color-black" />
               </template>
-              <b-dropdown-item href="#" @click="goToProfile(props)">{{
-                $t("page_candidates.table.view_profile")
-              }}</b-dropdown-item>
+              <b-dropdown-item href="#" @click="goToProfile(props)">
+                {{ $t("page_candidates.table.view_profile") }}
+              </b-dropdown-item>
             </b-dropdown>
 
             <button class="btn btn-transparent" @click="selectCandidate(props)">

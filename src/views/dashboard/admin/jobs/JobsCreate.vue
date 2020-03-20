@@ -119,14 +119,14 @@
                   {{ $t("page_job_detail.form.payment_type") }}
                   <div class="pull-right">
                     <b-form-select
-                        v-model="model.paymentType"
-                        class="normal-size"
-                        style="margin-top:-8px"
+                      v-model="model.paymentType"
+                      class="normal-size"
+                      style="margin-top:-8px"
                     >
                       <option
-                          v-for="(payment, index) in paymentType"
-                          :value="payment"
-                          :key="index"
+                        v-for="(payment, index) in paymentType"
+                        :value="payment"
+                        :key="index"
                       >
                         {{ payment }}
                       </option>
@@ -271,7 +271,7 @@ export default {
         wage: null,
         hourlyWage: null,
         payRate: null,
-        paymentType: 'EUR',
+        paymentType: "EUR",
         status: "available",
         skillIds: [],
         description: "",

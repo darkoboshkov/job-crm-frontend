@@ -40,7 +40,10 @@
           </div>
           <div class="down">
             <ul>
-              <li>Start Date: {{ model.startDate | dateFormatter }}</li>
+              <li>
+                {{ $t("page_offer_detail.start_date") }}:
+                {{ model.startDate | dateFormatter }}
+              </li>
             </ul>
           </div>
         </div>
@@ -78,8 +81,14 @@
           </div>
           <div class="down">
             <ul>
-              <li>Hourly Wage: {{ model.hourlyWage }}</li>
-              <li>{{ model.hoursPerWeek }} Hours per week</li>
+              <li>
+                {{ $t("page_offer_detail.hourly_wage") }}:
+                {{ model.hourlyWage }}
+              </li>
+              <li>
+                {{ model.hoursPerWeek }}
+                {{ $t("page_offer_detail.hours_per_week") }}
+              </li>
             </ul>
           </div>
         </div>
@@ -138,7 +147,7 @@
             @click="adjust"
             style="min-width:160px;"
           >
-            Adjust
+            {{ $t("page_offer_detail.button.adjust") }}
           </button>
 
           <button
@@ -147,7 +156,7 @@
             @click="lockSignSend"
             style="min-width:160px;"
           >
-            Lock, Sign and Send
+            {{ $t("page_offer_detail.button.lock") }}
           </button>
 
           <button
@@ -155,7 +164,7 @@
             @click="exportContract"
             style="min-width:160px;"
           >
-            Export Contract
+            {{ $t("page_offer_detail.button.export_contract") }}
           </button>
 
           <button
@@ -164,7 +173,7 @@
             :disabled="edit"
             style="min-width:160px;"
           >
-            View Contract
+            {{ $t("page_offer_detail.button.view_contract") }}
           </button>
         </div>
       </div>
@@ -172,15 +181,15 @@
 
     <div class="card mt-4 contract-specifications">
       <div class="card-header">
-        Specifications
+        {{ $t("page_offer_detail.specifications") }}
       </div>
       <div class="card-body">
         <div class="item">
           <div>CAO</div>
           <div v-if="edit">
             <b-form-select
-                class="normal-size"
-                v-model="model.collectiveAgreement"
+              class="normal-size"
+              v-model="model.collectiveAgreement"
             >
               <option
                 v-for="caoOption in caoOptions"
@@ -193,7 +202,7 @@
           <div v-else class="text-right">{{ selectedCaoOption.name }}</div>
         </div>
         <div class="item">
-          <div>Wage</div>
+          <div>{{ $t("page_offer_detail.form.wage") }}</div>
           <div v-if="edit">
             <b-form-input type="number" v-model="model.wage" />
           </div>
@@ -202,7 +211,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Hourly Wage</div>
+          <div>{{ $t("page_offer_detail.form.hourly_wage") }}</div>
           <div v-if="edit">
             <b-form-input type="number" v-model="model.hourlyWage" />
           </div>
@@ -211,7 +220,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Pay Rate</div>
+          <div>{{ $t("page_offer_detail.form.pay_rate") }}</div>
           <div v-if="edit">
             <b-form-input type="number" v-model="model.payRate" />
           </div>
@@ -220,16 +229,13 @@
           </div>
         </div>
         <div class="item">
-          <div>Payment Type</div>
+          <div>{{ $t("page_offer_detail.form.payment_type") }}</div>
           <div v-if="edit">
-            <b-form-select
-                v-model="model.paymentType"
-                class="normal-size"
-            >
+            <b-form-select v-model="model.paymentType" class="normal-size">
               <option
-                  v-for="(payment, index) in paymentType"
-                  :value="payment"
-                  :key="index"
+                v-for="(payment, index) in paymentType"
+                :value="payment"
+                :key="index"
               >
                 {{ payment }}
               </option>
@@ -240,7 +246,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Hours Per Week</div>
+          <div>{{ $t("page_offer_detail.form.hours_per_week") }}</div>
           <div v-if="edit">
             <b-form-input type="number" v-model="model.hoursPerWeek" />
           </div>
@@ -249,7 +255,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Travel Expenses</div>
+          <div>{{ $t("page_offer_detail.form.travel_expenses") }}</div>
           <div v-if="edit">
             <b-form-input type="number" v-model="model.travelExpenses" />
           </div>
@@ -258,7 +264,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Travel Hours</div>
+          <div>{{ $t("page_offer_detail.form.travel_hours") }}</div>
           <div v-if="edit">
             <b-form-input type="number" v-model="model.travelHours" />
           </div>
@@ -267,7 +273,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Other Expenses</div>
+          <div>{{ $t("page_offer_detail.form.other_expenses") }}</div>
           <div v-if="edit">
             <b-form-input type="number" v-model="model.otherExpenses" />
           </div>
@@ -280,7 +286,7 @@
 
     <div class="card mt-4 contract-files">
       <div class="card-header">
-        <span>Files</span>
+        <span>{{ $t("page_offer_detail.files") }}</span>
         <input
           type="file"
           id="attachment"
@@ -293,7 +299,7 @@
           class="btn btn-blue ml-2"
           style="min-width:160px;"
         >
-          Upload
+          {{ $t("page_offer_detail.button.upload") }}
           <i class="hiway-crm-icon icon-upload" />
         </label>
       </div>
@@ -418,7 +424,7 @@ export default {
       caoOptions: [],
       imageData: {},
       attachments: [],
-      paymentType: [],
+      paymentType: []
     };
   },
   mounted() {

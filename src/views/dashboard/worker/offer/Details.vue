@@ -40,7 +40,10 @@
           </div>
           <div class="down">
             <ul>
-              <li>Start Date: {{ model.startDate | dateFormatter }}</li>
+              <li>
+                {{ $t("page_offer_detail.start_date") }}:
+                {{ model.startDate | dateFormatter }}
+              </li>
             </ul>
           </div>
         </div>
@@ -78,8 +81,13 @@
           </div>
           <div class="down">
             <ul>
-              <li>Hourly Wage: {{ model.hourlyWage }}</li>
-              <li>{{ model.hoursPerWeek }} Hours per week</li>
+              <li>
+                {{ $("page_offer_detail.hourly_wage") }}: {{ model.hourlyWage }}
+              </li>
+              <li>
+                {{ model.hoursPerWeek }}
+                {{ $("page_offer_detail.hours_per_week") }}
+              </li>
             </ul>
           </div>
         </div>
@@ -139,7 +147,7 @@
             style="min-width:160px;"
             :disabled="signed"
           >
-            Decline
+            {{ $t("page_offer_detail.button.decline") }}
           </button>
 
           <button
@@ -149,7 +157,7 @@
             style="min-width:160px;"
             :disabled="signed"
           >
-            Sign
+            {{ $t("page_offer_detail.button.sign") }}
           </button>
 
           <button
@@ -159,7 +167,7 @@
             style="min-width:160px;"
             :disabled="!signed"
           >
-            Export Contract
+            {{ $t("page_offer_detail.button.export_contract") }}
           </button>
 
           <button
@@ -168,7 +176,7 @@
             @click="openViewOffer = !openViewOffer"
             style="min-width:160px;"
           >
-            View Contract
+            {{ $t("page_offer_detail.button.view_contract") }}
           </button>
         </div>
       </div>
@@ -176,11 +184,11 @@
 
     <div class="card mt-4 contract-specifications">
       <div class="card-header">
-        Specifications
+        {{ $t("page_offer_detail.specifications") }}
       </div>
       <div class="card-body">
         <div class="item">
-          <div>CAO</div>
+          <div>{{ $t("page_offer_detail.form.cao") }}</div>
           <div v-if="edit">
             <b-form-select v-model="model.collectiveAgreement">
               <option
@@ -194,7 +202,7 @@
           <div v-else class="text-right">{{ selectedCaoOption.name }}</div>
         </div>
         <div class="item">
-          <div>Wage</div>
+          <div>{{ $t("page_offer_detail.form.wage") }}</div>
           <div v-if="edit">
             <b-form-input v-model="model.wage" />
           </div>
@@ -203,7 +211,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Hourly Wage</div>
+          <div>{{ $t("page_offer_detail.form.hourly_wage") }}</div>
           <div v-if="edit">
             <b-form-input v-model="model.hourlyWage" />
           </div>
@@ -212,7 +220,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Pay Rate</div>
+          <div>{{ $t("page_offer_detail.form.pay_rate") }}</div>
           <div v-if="edit">
             <b-form-input v-model="model.payRate" />
           </div>
@@ -221,16 +229,13 @@
           </div>
         </div>
         <div class="item">
-          <div>Payment Type</div>
+          <div>{{ $t("page_offer_detail.form.payment_type") }}</div>
           <div v-if="edit">
-            <b-form-select
-                v-model="model.paymentType"
-                class="normal-size"
-            >
+            <b-form-select v-model="model.paymentType" class="normal-size">
               <option
-                  v-for="(payment, index) in paymentType"
-                  :value="payment"
-                  :key="index"
+                v-for="(payment, index) in paymentType"
+                :value="payment"
+                :key="index"
               >
                 {{ payment }}
               </option>
@@ -241,7 +246,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Hours Per Week</div>
+          <div>{{ $t("page_offer_detail.form.hours_per_week") }}</div>
           <div v-if="edit">
             <b-form-input type="number" v-model="model.hoursPerWeek" />
           </div>
@@ -250,7 +255,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Travel Expenses</div>
+          <div>{{ $t("page_offer_detail.form.travel_expenses") }}</div>
           <div v-if="edit">
             <b-form-input v-model="model.travelExpenses" />
           </div>
@@ -259,7 +264,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Travel Hours</div>
+          <div>{{ $t("page_offer_detail.form.travel_hours") }}</div>
           <div v-if="edit">
             <b-form-input v-model="model.travelHours" />
           </div>
@@ -268,7 +273,7 @@
           </div>
         </div>
         <div class="item">
-          <div>Other Expenses</div>
+          <div>{{ $t("page_offer_detail.form.other_expenses") }}</div>
           <div v-if="edit">
             <b-form-input v-model="model.otherExpenses" />
           </div>
@@ -281,7 +286,7 @@
 
     <div class="card mt-4 contract-files">
       <div class="card-header">
-        <span>Files</span>
+        <span>{{ $t("page_offer_detail.files") }}</span>
         <input
           type="file"
           id="attachment"
@@ -294,7 +299,7 @@
           class="btn btn-blue ml-2"
           style="min-width:160px;"
         >
-          Upload
+          {{ $t("page_offer_detail.button.upload") }}
           <i class="hiway-crm-icon icon-upload" />
         </label>
       </div>
@@ -348,18 +353,17 @@
       modal-class="modal-sign-contract"
     >
       <div class="text-center">
-        <h1 class="color-red">Sign Contract</h1>
+        <h1 class="color-red">
+          {{ $t("page_offer_detail.modal.sign_contract.title") }}
+        </h1>
       </div>
       <div class="text-center mb-5">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra
-        libero vitae sapien euismod, quis vestibulum ligula mollis. Sed luctus,
-        nisi at malesuada lacinia, diam diam consequat augue, a efficitur risus
-        lorem in neque.
+        {{ $t("page_offer_detail.modal.sign_contract.description") }}
       </div>
       <div class="mb-5">
         <div class="sign-item">
           <div>
-            Payment interval
+            {{ $t("page_offer_detail.modal.sign_contract.payment_interval") }}
           </div>
           <div>
             <b-form-select v-model="model.paymentInterval">
@@ -374,7 +378,7 @@
         </div>
         <div class="sign-item">
           <div>
-            Discount on taxes
+            {{ $t("page_offer_detail.modal.sign_contract.discount_on_taxes") }}
           </div>
           <div>
             <b-form-select v-model="model.discountOnTaxes">
@@ -389,7 +393,11 @@
         </div>
         <div class="sign-item">
           <div>
-            Worker earlier as Flexworker
+            {{
+              $t(
+                "page_offer_detail.modal.sign_contract.work_earlier_as_flexworker"
+              )
+            }}
           </div>
           <div>
             <b-form-select v-model="model.workedEarlierAsFlexWorker">
@@ -410,9 +418,7 @@
           value="accepted"
           unchecked-value="not_accepted"
         >
-          I hereby acknowledge and agree that I’ve read and agreed to the terms
-          in this contract. I understand that by clicking on the “Sign” button
-          below I digitally sign and bind myself to this contract.
+          {{ $t("page_offer_detail.modal.sign_contract.accept_term") }}
         </b-form-checkbox>
       </div>
       <div class="d-flex justify-content-around">
@@ -421,11 +427,11 @@
           @click="openViewOffer = !openViewOffer"
           style="min-width:160px;"
         >
-          View Contract
+          {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
         </button>
 
         <button class="btn btn-blue" @click="sign" style="min-width:160px;">
-          Sign Contract
+          {{ $t("page_offer_detail.modal.sign_contract.sign_contract") }}
         </button>
       </div>
     </b-modal>
