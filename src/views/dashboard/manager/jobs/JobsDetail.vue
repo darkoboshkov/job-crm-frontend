@@ -379,6 +379,8 @@ export default {
     fetchJobDetails() {
       jobsApi.get({ companyId: this.companyId, id: this.jobId }).then(res => {
         this.model = res;
+        this.model.startDate = this.getISODateString(res.startDate);
+        this.model.endDate = this.getISODateString(res.endDate);
         this.model.company = res.company[0];
         this.model.manager = res.manager[0];
         this.model.profession =

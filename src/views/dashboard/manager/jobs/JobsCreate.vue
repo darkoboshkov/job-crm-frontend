@@ -27,8 +27,8 @@
       </b-row>
 
       <b-row class="mt-1">
-        <b-col md="6">
-          <b-card class="mt-4">
+        <b-col md="6" class="mt-4">
+          <b-card class="h-100">
             <template v-slot:header>
               <h5 class="m-0">{{ $t("page_job_detail.form.description") }}</h5>
             </template>
@@ -38,39 +38,9 @@
               placeholder="Please add your job description here."
             />
           </b-card>
-
-          <!--<b-card class="mt-3">-->
-          <!--<template v-slot:header>-->
-          <!--<div class="d-flex justify-content-between align-items-end">-->
-          <!--<h5 class="m-0">{{ $t("page_job_detail.form.questions") }}</h5>-->
-          <!--<button-->
-          <!--data-v-74cd9a4e=""-->
-          <!--class="btn btn-red circle large"-->
-          <!--style="width: 50px;"-->
-          <!--@click="model.questions = model.questions.concat([''])"-->
-          <!--&gt;-->
-          <!--<i data-v-74cd9a4e="" class="hiway-crm-icon icon-add"></i>-->
-          <!--</button>-->
-          <!--</div>-->
-          <!--</template>-->
-          <!--<ul class="custom-list">-->
-          <!--<li-->
-          <!--v-for="(question, idx) in model.questions"-->
-          <!--:key="idx"-->
-          <!--class="d-flex justify-content-between align-items-center"-->
-          <!--&gt;-->
-          <!--{{ idx + 1-->
-          <!--}}<b-input-->
-          <!--v-model="model.questions[idx]"-->
-          <!--class="question-input"-->
-          <!--/>-->
-          <!--</li>-->
-          <!--</ul>-->
-          <!--</b-card>-->
         </b-col>
-
-        <b-col md="6">
-          <b-card class="mt-4">
+        <b-col md="6" class="mt-4">
+          <b-card>
             <template v-slot:header>
               <h5 class="m-0">
                 {{ $t("page_job_detail.form.specifications") }}
@@ -240,9 +210,8 @@ export default {
         description: "",
         questions: [],
         image: null,
-        startDate: new Date().toISOString().substring(0, 10),
-        endDate: null,
-
+        startDate: this.getISODateString(new Date()),
+        endDate: this.getISODateString(new Date()),
         company: null,
         manager: null,
         profession: null,

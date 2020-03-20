@@ -58,6 +58,9 @@
     display: inline-block;
     width: calc(100% - 15px);
   }
+  textarea {
+    height: 100%;
+  }
 }
 
 #page_job_detail {
@@ -119,5 +122,8 @@
   .question-input {
     display: inline-block;
     width: calc(100% - 15px);
+  }
+  textarea {
+    height: 100%;
   }
 }

@@ -77,6 +77,9 @@ export default {
     }
   },
   methods: {
+    getISODateString(string) {
+      return new Date(string).toISOString().slice(0, 10);
+    },
     getAppUrl(string) {
       return APP_URL + string;
     },

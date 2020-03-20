@@ -259,9 +259,9 @@
                           class="hiway-crm-icon icon-more-vertical color-black"
                         />
                       </template>
-                      <b-dropdown-item @click="goToOfferDetails(offer._id)">{{
-                        $t("page_job_detail.view_offer")
-                      }}</b-dropdown-item>
+                      <b-dropdown-item @click="goToOfferDetails(offer._id)">
+                        {{ $t("page_job_detail.view_offer") }}
+                      </b-dropdown-item>
                     </b-dropdown>
                     <button
                       class="btn btn-transparent"
@@ -447,6 +447,8 @@ export default {
     fetchJobDetails() {
       jobsApi.get({ companyId: this.companyId, id: this.jobId }).then(res => {
         this.model = res;
+        this.model.startDate = this.getISODateString(res.startDate);
+        this.model.endDate = this.getISODateString(res.endDate);
         this.model.company = this.companies.find(
           company => company && company._id === res.company[0]._id
         );
