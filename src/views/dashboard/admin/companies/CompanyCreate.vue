@@ -311,10 +311,9 @@
 </template>
 
 <script>
-import companyApi from "../../../../services/api/companies.js";
-import constantsApi from "../../../../services/api/constants.js";
+import companyApi from "@/services/api/companies";
+import constantsApi from "@/services/api/constants";
 import usersApi from "@/services/api/users";
-import errorReader from "@/helpers/ErrorReader";
 
 export default {
   name: "CompanyCreate",

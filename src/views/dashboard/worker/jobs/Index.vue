@@ -185,8 +185,8 @@ export default {
         },
         {
           label: this.$t("page_jobs.table.rate"),
-          field: "rate",
-          name: "rate"
+          field: "payRate",
+          name: "payRate"
         },
         {
           label: this.$t("page_jobs.table.start_date"),

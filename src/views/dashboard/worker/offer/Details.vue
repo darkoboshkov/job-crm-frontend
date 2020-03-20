@@ -79,7 +79,7 @@
           <div class="down">
             <ul>
               <li>Hourly Wage: {{ model.hourlyWage }}</li>
-              <li>40 Hours per week</li>
+              <li>{{ model.hoursPerWeek }} Hours per week</li>
             </ul>
           </div>
         </div>
@@ -194,6 +194,15 @@
           <div v-else class="text-right">{{ selectedCaoOption.name }}</div>
         </div>
         <div class="item">
+          <div>Wage</div>
+          <div v-if="edit">
+            <b-form-input v-model="model.wage" />
+          </div>
+          <div v-else class="text-right">
+            {{ model.wage }}
+          </div>
+        </div>
+        <div class="item">
           <div>Hourly Wage</div>
           <div v-if="edit">
             <b-form-input v-model="model.hourlyWage" />
@@ -209,6 +218,35 @@
           </div>
           <div v-else class="text-right">
             {{ model.payRate }}
+          </div>
+        </div>
+        <div class="item">
+          <div>Payment Type</div>
+          <div v-if="edit">
+            <b-form-select
+                v-model="model.paymentType"
+                class="normal-size"
+            >
+              <option
+                  v-for="(payment, index) in paymentType"
+                  :value="payment"
+                  :key="index"
+              >
+                {{ payment }}
+              </option>
+            </b-form-select>
+          </div>
+          <div v-else class="text-right">
+            {{ model.paymentType }}
+          </div>
+        </div>
+        <div class="item">
+          <div>Hours Per Week</div>
+          <div v-if="edit">
+            <b-form-input type="number" v-model="model.hoursPerWeek" />
+          </div>
+          <div v-else class="text-right">
+            {{ model.hoursPerWeek }}
           </div>
         </div>
         <div class="item">
@@ -397,6 +435,7 @@
 <script>
 import jobOfferApi from "@/services/api/joboffers";
 import ViewJobOffer from "./ViewJobOffer";
+import constantsApi from "@/services/api/constants";
 
 export default {
   name: "Details",
@@ -475,6 +514,7 @@ export default {
       imageData: {},
       attachments: [],
       agreement: "not_accepted",
+      paymentType: [],
       paymentIntervalOptions: [
         {
           label: "Week",
@@ -518,6 +558,7 @@ export default {
   mounted() {
     this.getOfferDetails();
     this.getCaoOptions();
+    this.getPaymentType();
   },
   methods: {
     getCaoOptions() {
@@ -528,6 +569,11 @@ export default {
         .then(res => {
           this.caoOptions = res;
         });
+    },
+    getPaymentType() {
+      return constantsApi.getAll().then(res => {
+        this.paymentType = res.paymentType;
+      });
     },
     openSignContractModal() {
       this.$refs["modal-sign-contract"].show();

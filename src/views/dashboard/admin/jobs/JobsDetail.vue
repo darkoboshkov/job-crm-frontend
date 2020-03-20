@@ -114,7 +114,6 @@
                     </div>
                   </div>
                 </li>
-
                 <li>
                   <div class="d-flex align-items-center">
                     <span class="flex-1">
@@ -128,7 +127,58 @@
                     </div>
                   </div>
                 </li>
-
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.hourly_wage") }}
+                    </span>
+                    <div class="pull-right">
+                      <b-input v-if="editJob" v-model="model.hourlyWage" />
+                      <div v-else>
+                        {{ model.hourlyWage }}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.rate") }}
+                    </span>
+                    <div>
+                      <b-input v-if="editJob" v-model="model.payRate" />
+                      <div v-else>
+                        {{ model.payRate }}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.payment_type") }}
+                    </span>
+                    <div class="pull-right">
+                      <b-form-select
+                          v-if="editJob"
+                          v-model="model.paymentType"
+                          class="normal-size"
+                          style="margin-top:-8px"
+                      >
+                        <option
+                            v-for="(payment, index) in paymentType"
+                            :value="payment"
+                            :key="index"
+                        >
+                          {{ payment }}
+                        </option>
+                      </b-form-select>
+                      <div v-else>
+                        {{ model.paymentType }}
+                      </div>
+                    </div>
+                  </div>
+                </li>
                 <li>
                   <div class="d-flex align-items-center">
                     <span class="flex-1">
@@ -363,6 +413,7 @@ import jobsApi from "@/services/api/jobs";
 import joboffersApi from "@/services/api/joboffers";
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
+import constantsApi from "@/services/api/constants";
 import errorReader from "@/helpers/ErrorReader";
 
 export default {
@@ -375,7 +426,10 @@ export default {
         companyId: "",
         managerId: "",
         professionId: "",
-        wage: "",
+        wage: null,
+        hourlyWage: null,
+        payRate: null,
+        paymentType: 'EUR',
         status: "",
         skillIds: [],
         description: "",
@@ -391,6 +445,7 @@ export default {
       companies: [],
       managers: [],
       state: [],
+      paymentType: [],
       error: "",
       companyId: "",
       jobId: "",
@@ -409,6 +464,7 @@ export default {
       });
     });
     this.fetchJobOffers();
+    this.getPaymentType();
   },
   computed: {
     userName() {
@@ -432,6 +488,11 @@ export default {
     getCompanies() {
       return companiesApi.getAll().then(res => {
         this.companies = [null].concat(res);
+      });
+    },
+    getPaymentType() {
+      return constantsApi.getAll().then(res => {
+        this.paymentType = res.paymentType;
       });
     },
     getManagers() {

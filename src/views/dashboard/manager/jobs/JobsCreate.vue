@@ -61,7 +61,6 @@
                     <span>{{ userName }}</span>
                   </div>
                 </li>
-
                 <li>
                   <div class="d-flex align-items-center">
                     <span class="flex-1">
@@ -70,6 +69,44 @@
                     <div>
                       <b-input v-model="model.wage" />
                     </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.hourly_wage") }}
+                    </span>
+                    <div>
+                      <b-input v-model="model.hourlyWage" />
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.rate") }}
+                    </span>
+                    <div>
+                      <b-input v-model="model.payRate" />
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  {{ $t("page_job_detail.form.payment_type") }}
+                  <div class="pull-right">
+                    <b-form-select
+                        v-model="model.paymentType"
+                        class="normal-size"
+                        style="margin-top:-8px"
+                    >
+                      <option
+                          v-for="(payment, index) in paymentType"
+                          :value="payment"
+                          :key="index"
+                      >
+                        {{ payment }}
+                      </option>
+                    </b-form-select>
                   </div>
                 </li>
                 <li>
@@ -165,17 +202,16 @@
                     <span class="mr-5">
                       {{ attachment.uploadedAt | dateTimeFormatter }}
                     </span>
-                    <span class="mr-5">{{
-                      attachment.size | fileSizeFormatter
-                    }}</span>
-                    <span class="mr-4"
-                      ><i class="hiway-crm-icon icon-more-vertical"></i
-                    ></span>
-                    <span class="pointer"
-                      ><i
-                        class="hiway-crm-icon icon-bin"
-                        @click="deleteFile(model.attachments, idx)"
-                    /></span>
+                    <span class="mr-5">
+                      {{ attachment.size | fileSizeFormatter }}
+                    </span>
+                    <span class="mr-4">
+                      <i class="hiway-crm-icon icon-more-vertical"/>
+                    </span>
+                    <span class="pointer">
+                      <i class="hiway-crm-icon icon-bin"
+                        @click="deleteFile(model.attachments, idx)"/>
+                    </span>
                   </div>
                 </li>
               </ul>
@@ -195,6 +231,7 @@
 <script>
 import jobsApi from "@/services/api/jobs";
 import companiesApi from "@/services/api/companies";
+import constantsApi from "@/services/api/constants";
 import errorReader from "@/helpers/ErrorReader";
 
 export default {
@@ -205,8 +242,10 @@ export default {
         title: "",
         companyId: "",
         managerId: "",
-        rate: "",
-        wage: "",
+        wage: null,
+        hourlyWage: null,
+        payRate: null,
+        paymentType: 'EUR',
         status: "available",
         skillIds: [],
         description: "",
@@ -220,12 +259,14 @@ export default {
         attachments: []
       },
       levels: [],
+      paymentType: [],
       state: [],
       error: ""
     };
   },
   mounted() {
     this.getCompany();
+    this.getPaymentType();
   },
   computed: {
     user() {
@@ -238,6 +279,12 @@ export default {
   methods: {
     deleteFile(attachments, idx) {
       attachments.splice(idx, 1);
+    },
+    getPaymentType() {
+      return constantsApi.getAll().then(res => {
+        this.paymentType = res.paymentType;
+        this.model.paymentType = this.paymentType[0];
+      });
     },
     getCompany() {
       companiesApi

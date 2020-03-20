@@ -98,6 +98,44 @@
                 <li>
                   <div class="d-flex align-items-center">
                     <span class="flex-1">
+                      {{ $t("page_job_detail.form.hourly_wage") }}
+                    </span>
+                    <div>
+                      <b-input v-model="model.hourlyWage" />
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.rate") }}
+                    </span>
+                    <div>
+                      <b-input v-model="model.payRate" />
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  {{ $t("page_job_detail.form.payment_type") }}
+                  <div class="pull-right">
+                    <b-form-select
+                        v-model="model.paymentType"
+                        class="normal-size"
+                        style="margin-top:-8px"
+                    >
+                      <option
+                          v-for="(payment, index) in paymentType"
+                          :value="payment"
+                          :key="index"
+                      >
+                        {{ payment }}
+                      </option>
+                    </b-form-select>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
                       {{ $t("page_job_detail.form.start_date") }}
                     </span>
                     <div>
@@ -219,6 +257,7 @@
 import jobsApi from "@/services/api/jobs";
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
+import constantsApi from "@/services/api/constants";
 import errorReader from "@/helpers/ErrorReader";
 
 export default {
@@ -229,8 +268,10 @@ export default {
         title: "",
         companyId: "",
         managerId: "",
-        rate: "",
-        wage: "",
+        wage: null,
+        hourlyWage: null,
+        payRate: null,
+        paymentType: 'EUR',
         status: "available",
         skillIds: [],
         description: "",
@@ -247,6 +288,7 @@ export default {
       managers: [],
       levels: [],
       state: [],
+      paymentType: [],
       error: "",
       imageData: {}
     };
@@ -254,6 +296,7 @@ export default {
   mounted() {
     this.getCompanies();
     this.getManagers();
+    this.getPaymentType();
   },
   computed: {
     userName() {
@@ -270,6 +313,12 @@ export default {
   methods: {
     deleteFile(attachments, idx) {
       attachments.splice(idx, 1);
+    },
+    getPaymentType() {
+      return constantsApi.getAll().then(res => {
+        this.paymentType = res.paymentType;
+        this.model.paymentType = this.paymentType[0];
+      });
     },
     getCompanies() {
       companiesApi.getAll().then(res => {

@@ -8,6 +8,12 @@
   }
 }
 
+input.form-control {
+  color: var(--cobalt-blue);
+}
+textarea.form-control {
+  color: var(--cobalt-blue);
+}
 input.custom-input {
   height: 50px;
   border-radius: 4px;

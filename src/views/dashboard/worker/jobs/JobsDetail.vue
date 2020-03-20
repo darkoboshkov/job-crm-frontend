@@ -71,6 +71,34 @@
                 </li>
 
                 <li>
+                  {{ $t("page_job_detail.form.hourly_wage") }}
+                  <div class="pull-right">
+                    <div>
+                      {{ model.hourlyWage }}
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  {{ $t("page_job_detail.form.rate") }}
+                  <div class="pull-right">
+                    <div>
+                      {{ model.payRate }}
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  {{ $t("page_job_detail.form.payment_type") }}
+                  <div class="pull-right">
+                    <div>
+                      {{ model.paymentType }}
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
                   {{ $t("page_job_detail.form.start_date") }}
                   <div class="pull-right">
                     <div>
@@ -235,7 +263,10 @@ export default {
         companyId: "",
         managerId: "",
         professionId: "",
-        wage: "",
+        wage: null,
+        hourlyWage: null,
+        payRate: null,
+        paymentType: 'EUR',
         level: null,
         status: "",
         skillIds: [],

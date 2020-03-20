@@ -492,7 +492,10 @@
       "company": "Company",
       "manager": "Manager",
       "level": "Level",
+      "rate": "Pay Rate",
       "wage": "Wage",
+      "hourly_wage": "Hourly Wage",
+      "payment_type": "Payment Type",
       "start_date": "Start Date",
       "end_date": "End Date"
     },
