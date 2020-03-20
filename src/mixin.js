@@ -48,6 +48,9 @@ const getFullName = user => {
 
 export default {
   filters: {
+    dateISOFormatter(string) {
+      return new Date(string).toISOString().slice(0, 10);
+    },
     dateFormatter(string) {
       return getLocalDateString(string);
     },

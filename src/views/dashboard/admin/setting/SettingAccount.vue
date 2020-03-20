@@ -118,6 +118,7 @@ export default {
   mounted() {
     settingsApi.get().then(res => {
       this.model = res;
+      this.model.birthday = this.getISODateString(res.birthday);
       this.imageData.preview = res.image ? this.getAppUrl(res.image) : null;
     });
   },

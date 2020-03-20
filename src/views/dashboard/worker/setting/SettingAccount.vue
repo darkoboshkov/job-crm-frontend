@@ -194,12 +194,12 @@
         <label> {{ $t("page_setting.account_setting.form.id_type") }}: </label>
         <b-form-select v-model="model.identificationType">
           <option value="" />
-          <option value="id">{{
-            $t("page_setting.account_setting.form.id")
-          }}</option>
-          <option value="passport">{{
-            $t("page_setting.account_setting.form.passport")
-          }}</option>
+          <option value="id">
+            {{ $t("page_setting.account_setting.form.id") }}
+          </option>
+          <option value="passport">
+            {{ $t("page_setting.account_setting.form.passport") }}
+          </option>
         </b-form-select>
       </div>
       <div class="form-element mt-3">
@@ -300,6 +300,7 @@ export default {
   mounted() {
     settingsApi.get().then(res => {
       this.model = res;
+      this.model.birthday = this.getISODateString(res.birthday);
       this.model.identificationExpirationDate = this.getISODateString(
         res.identificationExpirationDate
       );
