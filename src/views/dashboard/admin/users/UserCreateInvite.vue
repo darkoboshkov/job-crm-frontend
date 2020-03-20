@@ -36,7 +36,7 @@
         <div class="form-element mt-5">
           <label>{{ $t("page_users_create_invite.form.email") }}:</label>
           <b-form-input
-            type="text"
+            type="email"
             required
             class="custom-input"
             v-model="form.email"

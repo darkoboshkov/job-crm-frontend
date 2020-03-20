@@ -39,7 +39,7 @@
           </label>
           <div class="flex-3">
             <b-form-input
-              type="text"
+              type="email"
               required
               class="custom-input"
               v-model="form.email"

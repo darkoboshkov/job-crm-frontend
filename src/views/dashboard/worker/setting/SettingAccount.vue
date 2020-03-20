@@ -300,6 +300,9 @@ export default {
   mounted() {
     settingsApi.get().then(res => {
       this.model = res;
+      this.model.identificationExpirationDate = this.getISODateString(
+        res.identificationExpirationDate
+      );
       this.imageData.preview = res.image ? this.getAppUrl(res.image) : null;
     });
     professionApi.getAll().then(res => {

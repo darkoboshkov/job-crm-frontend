@@ -275,7 +275,9 @@
                     <span class="mr-5">
                       {{ attachment.uploadedAt | dateTimeFormatter }}
                     </span>
-                    <span class="mr-5">{{ attachment.size | fileSizeFormatter }} </span>
+                    <span class="mr-5"
+                      >{{ attachment.size | fileSizeFormatter }}
+                    </span>
                     <span class="mr-4">
                       <b-dropdown
                         variant="link"

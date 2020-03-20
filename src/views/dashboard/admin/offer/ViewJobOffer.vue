@@ -61,13 +61,13 @@
         <div style="width: 200px; display: inline-block;">
           Identificatiebewijs
         </div>
-        : {{ worker.idType }}
+        : {{ worker.identificationType }}
       </div>
       <div>
         <div style="width: 200px; display: inline-block;">
           Geldig tot
         </div>
-        : {{ worker.idExpirationDate }}
+        : {{ worker.identificationExpirationDate | dateFormatter }}
       </div>
       <br />
       <strong>

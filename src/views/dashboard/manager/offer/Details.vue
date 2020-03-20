@@ -195,7 +195,7 @@
         <div class="item">
           <div>Hourly Wage</div>
           <div v-if="edit">
-            <b-form-input v-model="model.hourlyWage" />
+            <b-form-input type="number" v-model="model.hourlyWage" />
           </div>
           <div v-else class="text-right">
             {{ model.hourlyWage }}
@@ -204,7 +204,7 @@
         <div class="item">
           <div>Pay Rate</div>
           <div v-if="edit">
-            <b-form-input v-model="model.payRate" />
+            <b-form-input type="number" v-model="model.payRate" />
           </div>
           <div v-else class="text-right">
             {{ model.payRate }}
@@ -213,7 +213,7 @@
         <div class="item">
           <div>Travel Expenses</div>
           <div v-if="edit">
-            <b-form-input v-model="model.travelExpenses" />
+            <b-form-input type="number" v-model="model.travelExpenses" />
           </div>
           <div v-else class="text-right">
             {{ model.travelExpenses }}
@@ -222,7 +222,7 @@
         <div class="item">
           <div>Travel Hours</div>
           <div v-if="edit">
-            <b-form-input v-model="model.travelHours" />
+            <b-form-input type="number" v-model="model.travelHours" />
           </div>
           <div v-else class="text-right">
             {{ model.travelHours }}
@@ -231,7 +231,7 @@
         <div class="item">
           <div>Other Expenses</div>
           <div v-if="edit">
-            <b-form-input v-model="model.otherExpenses" />
+            <b-form-input type="number" v-model="model.otherExpenses" />
           </div>
           <div v-else class="text-right">
             {{ model.otherExpenses }}
