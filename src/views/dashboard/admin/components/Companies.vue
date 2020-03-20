@@ -31,7 +31,7 @@
         >
           <div class="d-flex align-items-center">
             <div class="avatar-image mr-2">
-              <img v-if="row.logo" :src="APP_URL + row.logo" />
+              <img v-if="row.logo" :src="row.logo | appUrlFormatter" />
             </div>
             <div class="flex-1">
               <div>
@@ -54,14 +54,12 @@
 
 <script>
 import companyApi from "@/services/api/companies";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "users",
   data() {
     return {
-      rows: [],
-      APP_URL
+      rows: []
     };
   },
   mounted() {

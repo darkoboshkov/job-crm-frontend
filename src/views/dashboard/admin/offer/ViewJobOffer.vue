@@ -21,7 +21,7 @@
         gevestigd en kantoorhoudende te {{ company.city }} aan
         {{ company.street }} {{ company.houseNumber }},
         {{ company.postalCode }} {{ company.city }}, vertegenwoordigd door de
-        {{ manager.honorificTitle }} {{ manager.firstName }} {{ manager.lastName }}.
+        {{ manager.honorificTitle }} {{ manager | fullNameFormatter }}.
         <br />
         <br />
         <strong>en</strong>
@@ -31,7 +31,7 @@
       </div>
       <div>
         <div style="width: 200px; display: inline-block;">Naam</div>
-        : {{ worker.firstName }} {{ worker.lastName }}
+        : {{ worker | fullNameFormatter }}
       </div>
       <div>
         <div style="width: 200px; display: inline-block;">
@@ -105,7 +105,7 @@
         <div style="width: 200px; display: inline-block;">
           Contactpersoon
         </div>
-        : {{ manager.firstName }} {{ manager.lastName }}
+        : {{ manager | fullNameFormatter }}
       </div>
       <div>
         <div style="width: 200px; display: inline-block;">
@@ -117,7 +117,7 @@
         <div style="width: 200px; display: inline-block;">
           Verwachte datum aanvang werkzaamheden
         </div>
-        : {{ dateFormatter(new Date(offer.startDate)) }}
+        : {{ offer.startDate | dateFormatter }}
       </div>
       <div>
         <div style="width: 200px; display: inline-block;">
@@ -428,20 +428,16 @@
         <div class="col-6">
           <!--Datum : MANAGERDATETIMESTAMP-->
           Datum :
-          {{
-            managerSign && managerSign.signDate
-              ? dateFormatter(new Date(managerSign.signDate))
-              : ""
-          }}
+          <template v-if="managerSign && managerSign.signDate">
+            {{ managerSign.signDate | dateFormatter }}
+          </template>
         </div>
         <div class="col-6">
           <!--Datum : WORKERDATETIMESTAMP-->
           Datum :
-          {{
-            workerSign && workerSign.signDate
-              ? dateFormatter(new Date(workerSign.signDate))
-              : ""
-          }}
+          <template v-if="workerSign && workerSign.signDate">
+            {{ workerSign.signDate | dateFormatter }}
+          </template>
         </div>
       </div>
       <div class="row">
@@ -463,10 +459,10 @@
       </div>
       <div class="row">
         <div class="col-6">
-          {{ manager.honorificTitle }} {{ manager.firstName }} {{ manager.lastName }}
+          {{ manager.honorificTitle }} {{ manager | fullNameFormatter }}
         </div>
         <div class="col-6">
-          {{ worker.honorificTitle }} {{ worker.firstName }} {{ worker.lastName }}
+          {{ worker.honorificTitle }} {{ worker | fullNameFormatter }}
         </div>
       </div>
       <br />
@@ -559,9 +555,7 @@
         Middels ondertekening van deze overeenkomst verklaart u op de hoogte te
         zijn van onze privacyverklaring.
       </div>
-      <div>
-        {{ company.city }}, {{ dateFormatter(new Date(offer.startDate)) }}
-      </div>
+      <div>{{ company.city }}, {{ offer.startDate | dateFormatter }}</div>
       <div>
         Voor akkoord,
       </div>
@@ -574,8 +568,6 @@
 </template>
 
 <script>
-import dateFormatter from "@/helpers/DateFormatter.js";
-
 export default {
   name: "ViewJobOffer",
   props: {
@@ -624,9 +616,6 @@ export default {
         ? this.contract.find(sign => sign.role === "worker")
         : {};
     }
-  },
-  methods: {
-    dateFormatter
   },
   watch: {
     open(value, old) {

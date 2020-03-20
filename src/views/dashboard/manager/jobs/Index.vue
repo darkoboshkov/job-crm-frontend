@@ -16,10 +16,10 @@
     <hr />
     <div class="d-flex justify-content-between">
       <table-filter
-          class="candidate-filters"
-          @table-filter="filter"
-          :title="'Filter Options'"
-          :options="filterOptions"
+        class="candidate-filters"
+        @table-filter="filter"
+        :title="'Filter Options'"
+        :options="filterOptions"
       />
       <div class="view-switch">
         View:
@@ -82,7 +82,7 @@
             <div class="avatar-image mr-2">
               <img
                 v-if="props.row.company.logo"
-                :src="APP_URL + props.row.company.logo"
+                :src="props.row.company.logo | appUrlFormatter"
               />
             </div>
           </div>
@@ -98,14 +98,12 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import jobsApi from "@/services/api/jobs";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "JobList",
   components: { TableFilter },
   data() {
     return {
-      APP_URL,
       isLoading: true,
       paginationOptions: {
         enabled: true,
@@ -137,7 +135,7 @@ export default {
           title: this.$t("page_jobs.filter.end_date"),
           type: "text",
           value: ""
-        },
+        }
       ],
       searchTerm: "",
       matched: false,
@@ -227,8 +225,8 @@ export default {
           this.totalRows = res.totalDocs;
           this.rows = res.docs.map(row => {
             row.company = row.company[0];
-            row.startDate = new Date(row.startDate).toLocaleDateString();
-            row.endDate = new Date(row.endDate).toLocaleDateString();
+            row.startDate = this.getDateString(row.startDate);
+            row.endDate = this.getDateString(row.endDate);
             return row;
           });
         });

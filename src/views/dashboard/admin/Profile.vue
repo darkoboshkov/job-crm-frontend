@@ -9,7 +9,7 @@
         <b-col md="12">
           <div class="profile-header">
             <div class="profile-header__photo">
-              <img v-if="model.image" :src="APP_URL + model.image" />
+              <img v-if="model.image" :src="model.image | appUrlFormatter" />
             </div>
             <div class="profile-header__description">
               <h2 class="fullName">{{ model.fullName }}</h2>
@@ -47,7 +47,11 @@
                     style="width:31px"
                     class="mr-3"
                   />
-                  <span><a :href="'mailto:'+ model.email">{{ model.email }}</a></span>
+                  <span
+                    ><a :href="'mailto:' + model.email">{{
+                      model.email
+                    }}</a></span
+                  >
                 </div>
               </b-card>
             </b-col>
@@ -99,7 +103,7 @@
                         {{ status.label }}
                       </option>
                     </b-form-select>
-                    <span v-else>{{ $t(model.status) }}</span>
+                    <span v-else>{{ $t("status." + model.status) }}</span>
                   </div>
                 </li>
                 <li>
@@ -174,13 +178,11 @@
 
 <script>
 import profileApi from "@/services/api/profile";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "ProfileView",
   data() {
     return {
-      APP_URL,
       editProfile: false,
       userStates: [
         {
@@ -218,21 +220,15 @@ export default {
       profileApi
         .get({ companyId: this.companyId, id: this.$route.params.id })
         .then(res => {
-          this.model.fullName = res.firstName + " " + res.lastName;
+          this.model.fullName = this.getFullName(res);
           this.model.profession =
             res.profession && res.profession[0] ? res.profession[0].name : "";
           this.model.overview = res.overview ? res.overview : "";
           this.model.email = res.email;
           this.model.phone = res.phone;
           this.model.status = res.status;
-          if (res.birthday) {
-            const thisYear = new Date().getFullYear();
-            const birthYear = new Date(res.birthday).getFullYear();
-            this.model.age = thisYear - birthYear;
-          } else {
-            this.model.age = "-";
-          }
-          this.model.registeredAt = new Date(res.createdAt).toDateString();
+          this.model.age = this.getAge(res.birthday);
+          this.model.registeredAt = this.getDateString(res.createdAt);
           this.model.image = res.image;
           this.model.city = res.city;
         });

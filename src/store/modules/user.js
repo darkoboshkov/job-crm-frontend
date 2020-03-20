@@ -4,6 +4,7 @@ let syncedData = {
   _id: null,
   email: null,
   firstName: null,
+  middleName: null,
   lastName: null,
   role: null,
   companyId: null,
@@ -35,6 +36,9 @@ export const mutations = {
   UPDATE_FIRST_NAME(state, payload) {
     state.firstName = payload;
   },
+  UPDATE_MIDDLE_NAME(state, payload) {
+    state.middleName = payload;
+  },
   UPDATE_LAST_NAME(state, payload) {
     state.lastName = payload;
   },
@@ -48,6 +52,7 @@ export const mutations = {
     state._id = user._id ? user._id : null;
     state.email = user.email ? user.email : null;
     state.firstName = user.firstName ? user.firstName : null;
+    state.middleName = user.middleName ? user.middleName : null;
     state.lastName = user.lastName ? user.lastName : null;
     state.role = user.role ? user.role : null;
     state.verified = user.verified ? user.verified : false;
@@ -65,6 +70,9 @@ export const actions = {
   },
   updateFirstName({ commit }, payload) {
     commit("UPDATE_FIRST_NAME", payload);
+  },
+  updateMiddleName({ commit }, payload) {
+    commit("UPDATE_MIDDLE_NAME", payload);
   },
   updateLastName({ commit }, payload) {
     commit("UPDATE_LAST_NAME", payload);

@@ -78,7 +78,10 @@
             class="d-flex align-items-center"
           >
             <div class="avatar-image mr-2">
-              <img v-if="props.row.image" :src="APP_URL + props.row.image" />
+              <img
+                v-if="props.row.image"
+                :src="props.row.image | appUrlFormatter"
+              />
             </div>
           </div>
           <span v-else>
@@ -93,14 +96,12 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import userApi from "@/services/api/users";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "Candidates",
   components: { TableFilter },
   data() {
     return {
-      APP_URL,
       isLoading: true,
       totalRows: 0,
       paginationOptions: {
@@ -306,8 +307,8 @@ export default {
             row.company = row.company[0];
             row.profession =
               row.profession && row.profession[0] ? row.profession[0].name : "";
-            row.createdAt = new Date(row.createdAt).toLocaleString();
-            row.name = row.firstName ? row.firstName + " " + row.lastName : "";
+            row.createdAt = this.getDateString(row.createdAt);
+            row.name = this.getFullName(row);
 
             return row;
           });

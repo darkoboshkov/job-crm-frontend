@@ -4,7 +4,7 @@
       <div class="d-flex">
         <div class="flex-1">
           <h2 class="m-0">{{ $t("component.position.title") }}</h2>
-      </div>
+        </div>
         <button
           type="button"
           class="close"
@@ -32,7 +32,10 @@
         >
           <div class="d-flex align-items-center">
             <div class="avatar-image mr-2">
-              <img v-if="row.company.logo" :src="APP_URL + row.company.logo" />
+              <img
+                v-if="row.company.logo"
+                :src="row.company.logo | appUrlFormatter"
+              />
             </div>
             <div class="flex-1">
               <div>
@@ -58,14 +61,12 @@
 
 <script>
 import jobsApi from "@/services/api/jobs";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "positions",
   data() {
     return {
-      rows: [],
-      APP_URL
+      rows: []
     };
   },
   mounted() {

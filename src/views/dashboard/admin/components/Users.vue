@@ -32,10 +32,10 @@
         >
           <div class="d-flex align-items-center">
             <div class="avatar-image mr-2">
-              <img v-if="row.image" :src="APP_URL + row.image" />
+              <img v-if="row.image" :src="row.image | appUrlFormatter" />
             </div>
             <div class="flex-1">
-              <div>{{ row.firstName }} {{ row.lastName }}</div>
+              <div>{{ row | fullNameFormatter }}</div>
             </div>
             <i class="hiway-crm-icon icon-angle-right" />
           </div>
@@ -53,14 +53,12 @@
 
 <script>
 import userApi from "@/services/api/users";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "users",
   data() {
     return {
-      rows: [],
-      APP_URL
+      rows: []
     };
   },
   mounted() {

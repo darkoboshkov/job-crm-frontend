@@ -44,7 +44,7 @@
               :value="manager._id"
               :key="index"
             >
-              {{ manager && manager.firstName + " " + manager.lastName }}
+              {{ manager | fullNameFormatter }}
             </option>
           </b-form-select>
         </b-form-group>
@@ -66,13 +66,11 @@
             >
               <div class="d-flex align-items-center">
                 <div class="avatar-image mr-2">
-                  <img v-if="user.image" :src="APP_URL + user.image" />
+                  <img v-if="user.image" :src="user.image | appUrlFormatter" />
                 </div>
                 <div>
                   <strong>
-                    {{ user.firstName }}
-                    {{ user.middleName ? ` ${user.middleName}` : "" }}
-                    {{ user.lastName }}
+                    {{ user | fullNameFormatter }}
                   </strong>
                   <p>{{ user.city }}</p>
                 </div>
@@ -98,13 +96,11 @@
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 import jobOfferApi from "@/services/api/joboffers";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "CandidateSelect",
   data() {
     return {
-      APP_URL,
       search: "",
       model: {
         hiringCompanyId: "",
@@ -183,9 +179,7 @@ export default {
         });
     }, 500),
     selectCandidate(user) {
-      this.search = `${user.firstName}${
-        user.middleName ? " " + user.middleName : ""
-      } ${user.lastName}`;
+      this.search = this.getFullName(user);
       this.model.selectedUserId = user.id;
       this.users = [];
     },

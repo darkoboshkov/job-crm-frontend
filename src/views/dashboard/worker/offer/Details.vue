@@ -17,7 +17,10 @@
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
               <div class="avatar-image mr-2" style="width:65px;height:65px;">
-                <img v-if="company.logo" :src="APP_URL + company.logo" />
+                <img
+                  v-if="company.logo"
+                  :src="company.logo | appUrlFormatter"
+                />
               </div>
               <div>
                 <div>
@@ -37,9 +40,7 @@
           </div>
           <div class="down">
             <ul>
-              <li>Detail 1</li>
-              <li>Detail 2</li>
-              <li>Detail 3</li>
+              <li>Start Date: {{ model.startDate | dateFormatter }}</li>
             </ul>
           </div>
         </div>
@@ -54,11 +55,14 @@
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
               <div class="avatar-image mr-2" style="width:65px;height:65px;">
-                <img v-if="worker.image" :src="APP_URL + worker.image" />
+                <img
+                  v-if="worker.image"
+                  :src="worker.image | appUrlFormatter"
+                />
               </div>
               <div>
                 <div>
-                  <strong>{{ worker.firstName }} {{ worker.lastName }}</strong>
+                  <strong>{{ worker | fullNameFormatter }}</strong>
                 </div>
                 <div>{{ worker.city }}, {{ worker.country }}</div>
               </div>
@@ -74,9 +78,8 @@
           </div>
           <div class="down">
             <ul>
-              <li>Detail 1</li>
-              <li>Detail 2</li>
-              <li>Detail 3</li>
+              <li>Hourly Wage: {{ model.hourlyWage }}</li>
+              <li>40 Hours per week</li>
             </ul>
           </div>
         </div>
@@ -90,33 +93,40 @@
           <i
             class="hiway-crm-icon icon-dot color-yellow mr-2"
             style="font-size: 0.3em;"
-          ></i>
-          {{ $t("page_offer_detail.offer_states." + model.status) }}
+          />
+          {{
+            model.status
+              ? $t("page_offer_detail.offer_states." + model.status)
+              : ""
+          }}
         </span>
       </div>
       <div class="card-body d-flex justify-content-between">
         <div>
           <div class="d-flex align-items-center mb-3">
             <div class="avatar-image mr-2">
-              <img v-if="manager.image" :src="APP_URL + manager.image" />
+              <img
+                v-if="manager.image"
+                :src="manager.image | appUrlFormatter"
+              />
             </div>
             <div>
               <i
                 class="hiway-crm-icon icon-dot color-yellow mr-2"
                 style="font-size: 0.3em;"
-              ></i>
+              />
               {{ managerState }}
             </div>
           </div>
           <div class="d-flex align-items-center">
             <div class="avatar-image mr-2">
-              <img v-if="worker.image" :src="APP_URL + worker.image" />
+              <img v-if="worker.image" :src="worker.image | appUrlFormatter" />
             </div>
             <div>
               <i
                 class="hiway-crm-icon icon-dot color-blue mr-2"
                 style="font-size: 0.3em;"
-              ></i>
+              />
               {{ workerState }}
             </div>
           </div>
@@ -156,7 +166,6 @@
             class="btn ml-2"
             :class="signed ? 'btn-blue' : 'btn-secondary'"
             @click="openViewOffer = !openViewOffer"
-            :disabled="!signed"
             style="min-width:160px;"
           >
             View Contract
@@ -256,11 +265,11 @@
           <div>
             <img
               :src="
-                attachment.userId === worker._id
-                  ? APP_URL + worker.image
+                (attachment.userId === worker._id
+                  ? worker.image
                   : attachment.userId === manager._id
-                  ? APP_URL + manager.image
-                  : ''
+                  ? manager.image
+                  : '') | dateFormatter
               "
               class="rounded-circle border mr-4"
               style="width:45px"
@@ -269,8 +278,8 @@
           </div>
           <div>
             <span class="mr-5"
-              >{{ dateFormatter(new Date(attachment.uploadedAt)) }}
-              {{ timeFormatter(new Date(attachment.uploadedAt)) }}</span
+              >{{ attachment.uploadedAt | dateFormatter }}
+              {{ attachment.uploadedAt | timeFormatter }}</span
             >
             <span class="mr-5">{{ attachment.size }} B</span>
             <span class="mr-4"
@@ -389,9 +398,6 @@
 <script>
 import jobOfferApi from "@/services/api/joboffers";
 import ViewJobOffer from "./ViewJobOffer";
-import dateFormatter from "@/helpers/DateFormatter";
-import timeFormatter from "@/helpers/TimeFormatter";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "Details",
@@ -457,7 +463,6 @@ export default {
   },
   data() {
     return {
-      APP_URL,
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
 
@@ -516,16 +521,14 @@ export default {
     this.getCaoOptions();
   },
   methods: {
-    dateFormatter,
-    timeFormatter,
     getCaoOptions() {
       return jobOfferApi
-          .getCaoOptions({
-            companyId: this.companyId
-          })
-          .then(res => {
-            this.caoOptions = res;
-          });
+        .getCaoOptions({
+          companyId: this.companyId
+        })
+        .then(res => {
+          this.caoOptions = res;
+        });
     },
     openSignContractModal() {
       this.$refs["modal-sign-contract"].show();

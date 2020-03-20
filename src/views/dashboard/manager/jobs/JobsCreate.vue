@@ -11,7 +11,7 @@
             <div class="job-create-header__photo">
               <img
                 v-if="model.company && model.company.logo"
-                :src="APP_URL + model.company.logo"
+                :src="model.company.logo | appUrlFormatter"
               />
             </div>
             <div class="job-create-header__description">
@@ -225,15 +225,11 @@
 import jobsApi from "@/services/api/jobs";
 import companiesApi from "@/services/api/companies";
 import errorReader from "@/helpers/ErrorReader";
-import dateFormatter from "@/helpers/DateFormatter";
-import timeFormatter from "@/helpers/TimeFormatter";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "JobsCreate",
   data() {
     return {
-      APP_URL,
       model: {
         title: "",
         companyId: "",
@@ -258,14 +254,6 @@ export default {
       error: ""
     };
   },
-  filters: {
-    dateFormatter(string) {
-      return dateFormatter(new Date(string));
-    },
-    timeFormatter(string) {
-      return timeFormatter(new Date(string));
-    }
-  },
   mounted() {
     this.getCompany();
   },
@@ -274,9 +262,7 @@ export default {
       return this.$store.state.user;
     },
     userName() {
-      return (
-        this.$store.state.user.firstName + " " + this.$store.state.user.lastName
-      );
+      return this.getFullName(this.$store.state.user);
     }
   },
   methods: {

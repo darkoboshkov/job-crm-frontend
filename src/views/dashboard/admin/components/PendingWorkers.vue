@@ -236,11 +236,8 @@ export default {
         .getAllPendingWorkers(Object.assign(this.serverParams))
         .then(res => {
           this.rows = res.docs.map(row => {
-            const date = new Date(row.createdAt);
-            row.createdAt = `${date.getFullYear()}-${date.getMonth() +
-              1}-${date.getDate()} ${date.getHours()}: ${date.getMinutes()}:${date.getSeconds()}`;
-            row.name = row.firstName ? row.firstName + " " + row.lastName : "";
-
+            row.createdAt = this.getDateTimeString(row.createdAt);
+            row.name = this.getFullName(row);
             return row;
           });
           this.totalRows = res.totalDocs;

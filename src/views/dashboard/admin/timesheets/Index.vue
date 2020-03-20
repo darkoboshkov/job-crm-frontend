@@ -126,8 +126,8 @@
       </div>
     </div>
     <time-sheets-modal
-            :row-data.sync="selectedRow"
-            :modal-open.sync="showTimeSheetsModal"
+      :row-data.sync="selectedRow"
+      :modal-open.sync="showTimeSheetsModal"
     />
     <!--    <expenses-modal-->
     <!--            :modal-open.sync="showAddExpensesModal"-->
@@ -137,7 +137,7 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import { APP_URL, TIME_SHEET_STATE } from "@/constants";
+import { TIME_SHEET_STATE } from "@/constants";
 import workLogApi from "@/services/api/workLog";
 import TimeSheetsModal from "./TimeSheetsModal";
 // import ExpensesModal from "./ExpensesModal";
@@ -146,12 +146,11 @@ export default {
   name: "timesheets",
   components: {
     TableFilter,
-    TimeSheetsModal,
+    TimeSheetsModal
     // ExpensesModal,
   },
   data() {
     return {
-      APP_URL,
       imageMode: true,
       isLoading: true,
       totalRows: 0,
@@ -216,17 +215,17 @@ export default {
         },
         {
           label: this.$t("page_timesheets.table.hours"),
-          field: this.summedHours(),
+          field: this.summedHours,
           name: "hours"
         },
         {
           label: this.$t("page_timesheets.table.price"),
-          field: this.expensePrice(),
+          field: this.expensePrice,
           name: "price"
         },
         {
           label: this.$t("page_timesheets.table.employer"),
-          field: this.hiringManager(),
+          field: this.hiringManager,
           name: "employer"
         },
         {
@@ -243,7 +242,7 @@ export default {
       showTimeSheetsModal: false,
       showAddExpensesModal: false,
       selectedRow: {},
-      TIME_SHEET_STATE,
+      TIME_SHEET_STATE
     };
   },
   mounted() {
@@ -251,29 +250,33 @@ export default {
   },
   methods: {
     getTimeSheets() {
-      return workLogApi.getAll(this.serverParams)
-              .then(({ docs }) => {
-                this.rows = docs;
-              });
+      return workLogApi.getAll(this.serverParams).then(({ docs }) => {
+        this.rows = docs;
+      });
     },
-    summedHours() {
-      return function(row) {
-        return (row.type === 'timesheet' && row.timeSheetData.totalHours.toString()) || (row.type === 'expense' && row.expenseData.hoursWorked.toString());
-      };
+    summedHours(row) {
+      if (row && row.type === "timesheet") {
+        return row.timeSheetData.totalHours.toString();
+      }
+      if (row && row.type === "expense") {
+        return row.expenseData.hoursWorked.toString();
+      }
+      return "";
     },
-    expensePrice() {
-      return function(row) {
-        return (row.type === 'timesheet' && ' ') || (row.type === 'expense' && row.expenseData.amount);
-      };
+    expensePrice(row) {
+      if (row && row.type === "expense") {
+        return row.expenseData.amount;
+      }
+      return "";
     },
-    hiringManager() {
-      return function(row) {
-        return (row.hiringManager && row.hiringManager[0]) ? (row.hiringManager[0].firstName + ' ' + row.hiringManager[0].lastName) : ''
-      };
+    hiringManager(row) {
+      return row.hiringManager && row.hiringManager[0]
+        ? this.getFullName(row.hiringManager[0])
+        : "";
     },
     onRowClick(prop) {
       this.selectedRow = prop.row;
-      if (prop.row.type === 'timesheet') {
+      if (prop.row.type === "timesheet") {
         this.showTimeSheetsModal = true;
       }
     },

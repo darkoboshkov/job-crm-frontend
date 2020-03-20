@@ -13,12 +13,14 @@ import "@/assets/fonts/icomoon/style.css";
 import "@/assets/scss/app.scss";
 import { i18n } from "@/plugins/i18n";
 import * as lodash from "lodash";
+import mixin from "./mixin";
 
 window._ = lodash;
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
 Vue.use(VueGoodTablePlugin);
 Vue.config.productionTip = false;
+Vue.mixin(mixin);
 
 new Vue({
   router,

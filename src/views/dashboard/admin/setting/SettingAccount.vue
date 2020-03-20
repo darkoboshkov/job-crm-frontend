@@ -86,7 +86,6 @@
 
 <script>
 import settingsApi from "@/services/api/settings";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "SettingAccount",
@@ -119,7 +118,7 @@ export default {
   mounted() {
     settingsApi.get().then(res => {
       this.model = res;
-      this.imageData.preview = res.image ? `${APP_URL}${res.image}` : null;
+      this.imageData.preview = res.image ? this.getAppUrl(res.image) : null;
     });
   },
   methods: {

@@ -113,76 +113,66 @@
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-              >{{ $t("page_detail_company.form.country") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.country") }}:</label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
-                      name="country"
-                      class="custom-input"
-                      v-model="model.country"
-                      :disabled="!editCompany"
+                name="country"
+                class="custom-input"
+                v-model="model.country"
+                :disabled="!editCompany"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-              >{{ $t("page_detail_company.form.city") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.city") }}:</label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
-                      name="country"
-                      class="custom-input"
-                      v-model="model.city"
-                      :disabled="!editCompany"
+                name="country"
+                class="custom-input"
+                v-model="model.city"
+                :disabled="!editCompany"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-              >{{ $t("page_detail_company.form.street") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.street") }}:</label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
-                      name="country"
-                      class="custom-input"
-                      v-model="model.street"
-                      :disabled="!editCompany"
+                name="country"
+                class="custom-input"
+                v-model="model.street"
+                :disabled="!editCompany"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-              >{{ $t("page_detail_company.form.houseNumber") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.houseNumber") }}:</label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
-                      name="country"
-                      class="custom-input"
-                      v-model="model.houseNumber"
-                      :disabled="!editCompany"
+                name="country"
+                class="custom-input"
+                v-model="model.houseNumber"
+                :disabled="!editCompany"
               ></b-form-input>
             </div>
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-              >{{ $t("page_detail_company.form.postalCode") }}:</label
-              >
+              <label>{{ $t("page_detail_company.form.postalCode") }}:</label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
-                      name="country"
-                      class="custom-input"
-                      v-model="model.postalCode"
-                      :disabled="!editCompany"
+                name="country"
+                class="custom-input"
+                v-model="model.postalCode"
+                :disabled="!editCompany"
               ></b-form-input>
             </div>
           </div>
@@ -408,8 +398,6 @@
 <script>
 import companyApi from "../../../../services/api/companies.js";
 import constantsApi from "../../../../services/api/constants.js";
-import errorReader from "@/helpers/ErrorReader";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "CompanyDetails",
@@ -489,7 +477,7 @@ export default {
           this.vatShiftedEnabled = !!res.VATShifted;
           this.gAccountEnabled = !!res.GAccount;
 
-          this.imageData.preview = res.logo ? `${APP_URL}${res.logo}` : null;
+          this.imageData.preview = res.logo ? this.getAppUrl(res.logo) : null;
         });
     },
     getTermsOfPayment() {

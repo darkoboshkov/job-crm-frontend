@@ -80,7 +80,10 @@
             class="d-flex align-items-center"
           >
             <div class="avatar-image mr-2">
-              <img v-if="props.row.logo" :src="APP_URL + props.row.logo" />
+              <img
+                v-if="props.row.logo"
+                :src="props.row.logo | appUrlFormatter"
+              />
             </div>
           </div>
           <span v-else-if="props.column.field === 'activeState'">
@@ -98,14 +101,12 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import companyApi from "@/services/api/companies";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "CompanyList",
   components: { TableFilter },
   data() {
     return {
-      APP_URL,
       imageMode: true,
       isLoading: true,
       totalRows: 0,
@@ -186,7 +187,7 @@ export default {
         },
         {
           label: this.$t("page_companies.table.since"),
-          field: this.formattedDateTime(),
+          field: this.formattedDateTime,
           name: "createdAt"
         },
         {
@@ -212,19 +213,8 @@ export default {
     imageView(mode) {
       this.imageMode = !!mode;
     },
-    formattedDateTime() {
-      return function(row) {
-        const dateStringOptions = {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit"
-        };
-
-        return new Date(row["createdAt"]).toLocaleDateString(
-          "nl-NL",
-          dateStringOptions
-        );
-      };
+    formattedDateTime(row) {
+      return this.getDateString(row["createdAt"]);
     },
     onPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {

@@ -83,6 +83,20 @@ ul.custom-list {
   outline: none;
 }
 
+.dropdown-menu li{
+  padding: 0 !important;
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+}
+
+.dropdown-item {
+  color: black;
+  &:hover {
+    color: var(--cobalt-blue);
+  }
+}
+
 .back {
   display: flex;
   align-items: center;

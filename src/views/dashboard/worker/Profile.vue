@@ -99,7 +99,7 @@
                         {{ status.label }}
                       </option>
                     </b-form-select>
-                    <span v-else>{{ $t(model.status) }}</span>
+                    <span v-else>{{ $t("status." + model.status) }}</span>
                   </div>
                 </li>
                 <li>
@@ -218,21 +218,15 @@ export default {
       profileApi
         .get({ companyId: this.companyId, id: this.userId })
         .then(res => {
-          this.model.fullName = res.firstName + " " + res.lastName;
+          this.model.fullName = this.getFullName(res);
           this.model.profession =
             res.profession && res.profession[0] ? res.profession[0].name : "";
           this.model.overview = res.overview ? res.overview : "";
           this.model.email = res.email;
           this.model.phone = res.phone;
           this.model.status = res.status;
-          if (res.birthday) {
-            const thisYear = new Date().getFullYear();
-            const birthYear = new Date(res.birthday).getFullYear();
-            this.model.age = thisYear - birthYear;
-          } else {
-            this.model.age = "-";
-          }
-          this.model.registeredAt = new Date(res.createdAt).toDateString();
+          this.model.age = this.getAge(res.birthday);
+          this.model.registeredAt = this.getDateString(res.createdAt);
         });
     },
     onEditProfile() {

@@ -1,11 +1,11 @@
 <template>
   <div class="account-dropdown">
     <div class="account-dropdown__photo">
-      <img v-if="image" :src="APP_URL + image" />
+      <img v-if="image" :src="image | appUrlFormatter" />
     </div>
     <div class="account-dropdown__list">
       <a href="javascript;" @click.stop.prevent="toggleDropdown">
-        {{ fullName }}
+        {{ user | fullNameFormatter }}
         <i class="hiway-crm-icon icon-angle-down ml-3" />
       </a>
       <ul v-if="collapsed">
@@ -26,26 +26,17 @@
 
 <script>
 import { handleLogout, Toast } from "@/utils";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "AppHeaderAccountDropdown",
   data() {
     return {
-      collapsed: false,
-      APP_URL
+      collapsed: false
     };
   },
   computed: {
-    fullName() {
-      if (this.$store.state.user) {
-        return (
-          this.$store.state.user.firstName +
-          " " +
-          this.$store.state.user.lastName
-        );
-      }
-      return "";
+    user() {
+      return this.$store.state.user;
     },
     role() {
       if (this.$store.state.user) {

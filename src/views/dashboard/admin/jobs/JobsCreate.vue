@@ -11,7 +11,7 @@
             <div class="job-create-header__photo">
               <img
                 v-if="model.company && model.company.logo"
-                :src="APP_URL + model.company.logo"
+                :src="model.company.logo | appUrlFormatter"
               />
             </div>
             <div class="job-create-header__description">
@@ -110,9 +110,7 @@
                         :value="manager"
                         :key="index"
                       >
-                        {{
-                          manager && manager.firstName + " " + manager.lastName
-                        }}
+                        {{ manager | fullNameFormatter }}
                       </option>
                     </b-form-select>
                   </div>
@@ -251,15 +249,11 @@ import jobsApi from "@/services/api/jobs";
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 import errorReader from "@/helpers/ErrorReader";
-import dateFormatter from "@/helpers/DateFormatter";
-import timeFormatter from "@/helpers/TimeFormatter";
-import { APP_URL } from "@/constants";
 
 export default {
   name: "JobsCreate",
   data() {
     return {
-      APP_URL,
       model: {
         title: "",
         companyId: "",
@@ -286,23 +280,13 @@ export default {
       imageData: {}
     };
   },
-  filters: {
-    dateFormatter(string) {
-      return dateFormatter(new Date(string));
-    },
-    timeFormatter(string) {
-      return timeFormatter(new Date(string));
-    }
-  },
   mounted() {
     this.getCompanies();
     this.getManagers();
   },
   computed: {
     userName() {
-      return (
-        this.$store.state.user.firstName + " " + this.$store.state.user.lastName
-      );
+      return this.getFullName(this.$store.state.user);
     },
     filteredManagers() {
       return [null].concat(

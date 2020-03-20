@@ -11,7 +11,7 @@
             <div class="job-detail-header__photo">
               <img
                 v-if="model.company && model.company.logo"
-                :src="APP_URL + model.company.logo"
+                :src="model.company.logo | appUrlFormatter"
               />
             </div>
             <div class="job-detail-header__description">
@@ -42,8 +42,8 @@
       </b-row>
 
       <b-row class="mt-1">
-        <b-col md="6">
-          <b-card class="mt-4">
+        <b-col md="6" class="mt-4">
+          <b-card class="h-100">
             <template v-slot:header>
               <h5 class="m-0">{{ $t("page_job_detail.form.description") }}</h5>
             </template>
@@ -52,49 +52,10 @@
               {{ model.description }}
             </div>
           </b-card>
-
-          <!--<b-card class="mt-3">-->
-          <!--<template v-slot:header>-->
-          <!--<div-->
-          <!--v-if="editJob"-->
-          <!--class="d-flex justify-content-between align-items-end"-->
-          <!--&gt;-->
-          <!--<h5 class="m-0">{{ $t("page_job_detail.form.questions") }}</h5>-->
-          <!--<button-->
-          <!--data-v-74cd9a4e=""-->
-          <!--class="btn btn-red circle large"-->
-          <!--style="width: 50px;"-->
-          <!--@click="model.questions = model.questions.concat([''])"-->
-          <!--&gt;-->
-          <!--<i data-v-74cd9a4e="" class="hiway-crm-icon icon-add"></i>-->
-          <!--</button>-->
-          <!--</div>-->
-          <!--<h5 class="m-0" v-else>-->
-          <!--{{ $t("page_job_detail.form.questions") }}-->
-          <!--</h5>-->
-          <!--</template>-->
-          <!--<ul class="custom-list">-->
-          <!--<li-->
-          <!--v-for="(question, idx) in model.questions"-->
-          <!--:key="idx"-->
-          <!--class="d-flex justify-content-between align-items-center"-->
-          <!--&gt;-->
-          <!--{{ idx + 1-->
-          <!--}}<b-input-->
-          <!--v-if="editJob"-->
-          <!--v-model="model.questions[idx]"-->
-          <!--class="question-input"-->
-          <!--/>-->
-          <!--<div v-else>-->
-          <!--{{ question }}-->
-          <!--</div>-->
-          <!--</li>-->
-          <!--</ul>-->
-          <!--</b-card>-->
         </b-col>
 
-        <b-col md="6">
-          <b-card class="mt-4">
+        <b-col md="6" class="mt-4">
+          <b-card>
             <template v-slot:header>
               <h5 class="m-0">
                 {{ $t("page_job_detail.form.specifications") }}
@@ -178,7 +139,11 @@
                     style="width:31px"
                     class="mr-3"
                   />
-                  <span><a :href="'mailto:'+ user.email">{{ user.email }}</a></span>
+                  <span
+                    ><a :href="'mailto:' + user.email">{{
+                      user.email
+                    }}</a></span
+                  >
                 </div>
               </b-card>
             </b-col>
@@ -231,8 +196,7 @@
               <ul class="custom-list">
                 <li class="d-flex" v-for="offer in jobOffers" :key="offer._id">
                   <div class="flex-3">
-                    Offer - {{ offer.worker.firstName }}
-                    {{ offer.worker.lastName }}
+                    Offer - {{ offer.worker | fullNameFormatter }}
                   </div>
                   <div class="flex-2">
                     {{ offer.createdAt | dateFormatter }}
@@ -246,7 +210,7 @@
                       toggle-class="text-decoration-none"
                       no-caret
                       offset="0"
-                      class="icon-dropdown m-2"
+                      class="icon-dropdown mx-2"
                     >
                       <template v-slot:button-content>
                         <i
@@ -319,17 +283,17 @@
                         toggle-class="text-decoration-none"
                         no-caret
                         offset="0"
-                        class="icon-dropdown m-2"
+                        class="icon-dropdown mx-2"
                       >
                         <template v-slot:button-content>
                           <i
                             class="hiway-crm-icon icon-more-vertical color-black"
                           />
                         </template>
-                        <b-dropdown-item @click="viewFile(props)">
+                        <b-dropdown-item @click="viewFile(attachment)">
                           {{ $t("page_job_detail.view_file") }}
                         </b-dropdown-item>
-                        <b-dropdown-item @click="downloadFile(props)">
+                        <b-dropdown-item @click="downloadFile(attachment)">
                           {{ $t("page_job_detail.download_file") }}
                         </b-dropdown-item>
                       </b-dropdown>
@@ -355,15 +319,11 @@
 import jobsApi from "@/services/api/jobs";
 import joboffersApi from "@/services/api/joboffers";
 import errorReader from "@/helpers/ErrorReader";
-import { APP_URL } from "@/constants";
-import dateFormatter from "@/helpers/DateFormatter";
-import timeFormatter from "@/helpers/TimeFormatter";
 
 export default {
   name: "JobsDetail",
   data() {
     return {
-      APP_URL,
       editJob: false,
       model: {
         title: "",
@@ -396,14 +356,6 @@ export default {
       selectedAttachmentId: null
     };
   },
-  filters: {
-    dateFormatter(string) {
-      return dateFormatter(new Date(string));
-    },
-    timeFormatter(string) {
-      return timeFormatter(new Date(string));
-    }
-  },
   mounted() {
     this.companyId = this.$store.state.user.companyId;
     this.jobId = this.$route.params.jobId;
@@ -415,16 +367,14 @@ export default {
       return this.$store.state.user;
     },
     userName() {
-      return (
-        this.$store.state.user.firstName + " " + this.$store.state.user.lastName
-      );
+      return this.getFullName(this.$store.state.user);
     }
   },
   methods: {
-    viewFile() {
+    viewFile(attachment) {
       //
     },
-    downloadFile() {
+    downloadFile(attachment) {
       //
     },
     fetchJobDetails() {

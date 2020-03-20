@@ -41,7 +41,10 @@
             class="d-flex align-items-center"
           >
             <div class="avatar-image mr-2">
-              <img v-if="props.row.image" :src="APP_URL + props.row.image" />
+              <img
+                v-if="props.row.image"
+                :src="props.row.image | appUrlFormatter"
+              />
             </div>
           </div>
           <span v-else>
@@ -55,14 +58,11 @@
 
 <script>
 import offersApi from "@/services/api/joboffers";
-import { APP_URL } from "@/constants";
-import dateFormatter from "../../../../helpers/DateFormatter";
 
 export default {
   name: "OfferList",
   data() {
     return {
-      APP_URL,
       isLoading: true,
       paginationOptions: {
         enabled: true,
@@ -160,10 +160,10 @@ export default {
           this.rows = res.docs.map(row => {
             row.job = row.job ? row.job[0].title : "";
             row.image = row.job ? row.job[0].image : "";
-            row.createdAt = dateFormatter(new Date(row.createdAt));
+            row.createdAt = this.getDateString(row.createdAt);
             row.manager =
               row.manager && row.manager[0]
-                ? `${row.manager[0].firstName} ${row.manager[0].lastName}`
+                ? this.getFullName(row.manager[0])
                 : "";
             return row;
           });

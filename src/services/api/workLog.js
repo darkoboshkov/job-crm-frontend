@@ -8,44 +8,86 @@ export default {
     const companyId = params.companyId;
     delete params.companyId;
 
-    return request("get", `/worklogs/${companyId}/all`, params, resolve, reject);
+    return request(
+      "get",
+      `/worklogs/${companyId}/all`,
+      params,
+      resolve,
+      reject
+    );
   },
   getByWorker(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;
 
-    return request("get", `/worklogs/${companyId}/worker`, params, resolve, reject);
+    return request(
+      "get",
+      `/worklogs/${companyId}/worker`,
+      params,
+      resolve,
+      reject
+    );
   },
   approve(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;
 
-    return request("patch", `/worklogs/${companyId}/${params._id}/approve`, params, resolve, reject);
+    return request(
+      "patch",
+      `/worklogs/${companyId}/${params._id}/approve`,
+      params,
+      resolve,
+      reject
+    );
   },
   decline(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;
 
-    return request("patch", `/worklogs/${companyId}/${params._id}/decline`, params, resolve, reject);
+    return request(
+      "patch",
+      `/worklogs/${companyId}/${params._id}/decline`,
+      params,
+      resolve,
+      reject
+    );
   },
   save(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;
 
-    return request("patch", `/worklogs/${companyId}/${params._id}/save`, params, resolve, reject);
+    return request(
+      "patch",
+      `/worklogs/${companyId}/${params._id}/save`,
+      params,
+      resolve,
+      reject
+    );
   },
   send(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;
 
-    return request("patch", `/worklogs/${companyId}/${params._id}/submit`, params, resolve, reject);
+    return request(
+      "patch",
+      `/worklogs/${companyId}/${params._id}/submit`,
+      params,
+      resolve,
+      reject
+    );
   },
   adjust(params, resolve, reject = null) {
     const companyId = params.companyId;
     delete params.companyId;
 
-    return request("patch", `/worklogs/${companyId}/${params._id}/adjust`, params, resolve, reject);
-  },
+    return request(
+      "patch",
+      `/worklogs/${companyId}/${params._id}/adjust`,
+      params,
+      resolve,
+      reject
+    );
+  }
 
   // getAllWorkers(params, resolve, reject = null) {
   //   return request("get", "/users/workers", params, resolve, reject);
