@@ -187,7 +187,7 @@ export default {
         },
         {
           label: this.$t("page_companies.table.since"),
-          field: this.formattedDateTime,
+          field: this.formattedDateTime(),
           name: "createdAt"
         },
         {
@@ -213,8 +213,10 @@ export default {
     imageView(mode) {
       this.imageMode = !!mode;
     },
-    formattedDateTime(row) {
-      return this.getDateString(row["createdAt"]);
+    formattedDateTime() {
+      return row => {
+        return this.getDateString(row["createdAt"]);
+      };
     },
     onPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {

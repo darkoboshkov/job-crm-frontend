@@ -5,7 +5,7 @@
     </div>
     <div class="account-dropdown__list">
       <a href="javascript;" @click.stop.prevent="toggleDropdown">
-        {{ user | fullNameFormatter }}
+        {{ userName }}
         <i class="hiway-crm-icon icon-angle-down ml-3" />
       </a>
       <ul v-if="collapsed">
@@ -35,8 +35,8 @@ export default {
     };
   },
   computed: {
-    user() {
-      return this.$store.state.user;
+    userName() {
+      return this.getFullName(this.$store.state.user);
     },
     role() {
       if (this.$store.state.user) {

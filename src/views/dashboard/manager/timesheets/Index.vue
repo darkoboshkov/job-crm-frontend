@@ -94,8 +94,8 @@
                 v-if="props.row.type === 'timesheet'"
                 class="table-icon hiway-crm-icon icon-watch"
                 style="background-color: var(--cobalt-blue)"
-              ></i>
-              <i v-else class="table-icon hiway-crm-icon icon-euro"></i>
+              />
+              <i v-else class="table-icon hiway-crm-icon icon-euro" />
             </div>
             <div v-else-if="props.column.field === 'actions'" class="d-flex">
               <b-dropdown
@@ -108,13 +108,13 @@
                 <template v-slot:button-content>
                   <i class="hiway-crm-icon icon-more-vertical color-black" />
                 </template>
-                <b-dropdown-item href="#" @click="goToTimesheet(props)">
+                <b-dropdown-item href="#" @click="goToTimeSheet(props)">
                   {{ $t("page_timesheets.table.view_timesheet") }}
                 </b-dropdown-item>
               </b-dropdown>
               <button
                 class="btn btn-transparent"
-                @click.stop="deleteTimesheetConfirm(props)"
+                @click.stop="deleteTimeSheetConfirm(props)"
                 v-if="props.row.status !== TIME_SHEET_STATE.SUBMITTED"
               >
                 <i class="hiway-crm-icon icon-bin" />
@@ -222,17 +222,17 @@ export default {
         },
         {
           label: this.$t("page_timesheets.table.hours"),
-          field: this.summedHours,
+          field: this.summedHours(),
           name: "hours"
         },
         {
           label: this.$t("page_timesheets.table.price"),
-          field: this.expensePrice,
+          field: this.expensePrice(),
           name: "price"
         },
         {
           label: this.$t("page_timesheets.table.employer"),
-          field: this.hiringManager,
+          field: this.hiringManager(),
           name: "employer"
         },
         {
@@ -258,7 +258,6 @@ export default {
   methods: {
     getTimeSheets() {
       const { companyId } = this.$store.state.user;
-
       return workLogApi
         .getByCompany({
           ...this.serverParams,
@@ -269,25 +268,32 @@ export default {
           this.totalRows = totalDocs;
         });
     },
-    summedHours(row) {
-      if (row && row.type === "timesheet") {
-        return row.timeSheetData.totalHours.toString();
-      }
-      if (row && row.type === "expense") {
-        return row.expenseData.hoursWorked.toString();
-      }
-      return "";
+    summedHours() {
+      return row => {
+        if (row && row.type === "timesheet") {
+          return row.timeSheetData.totalHours.toString();
+        }
+        if (row && row.type === "expense") {
+          return row.expenseData.hoursWorked.toString();
+        }
+        return "";
+      };
     },
-    expensePrice(row) {
-      if (row && row.type === "expense") {
-        return row.expenseData.amount;
-      }
-      return "";
+    expensePrice() {
+      return row => {
+        if (row && row.type === "expense") {
+          return row.expenseData.amount;
+        }
+        return "";
+      };
     },
-    hiringManager(row) {
-      return row.hiringManager && row.hiringManager[0]
-        ? this.getFullName(row.hiringManager[0])
-        : "";
+    hiringManager() {
+      return row => {
+        if (row.hiringManager && row.hiringManager[0]) {
+          return this.getFullName(row.hiringManager[0]);
+        }
+        return "";
+      };
     },
     onRowClick(prop) {
       this.selectedRow = prop.row;
@@ -319,7 +325,7 @@ export default {
     deleteTimeSheetConfirm(props) {
       // todo: show delete confirmation modal
     },
-    goToTimesheet() {
+    goToTimeSheet(props) {
       //
     }
   }
