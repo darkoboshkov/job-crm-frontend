@@ -47,7 +47,7 @@ export default {
       return getLocalDateString(string);
     },
     dateTimeFormatter(string) {
-      return getLocalDateString(string);
+      return getLocalDateTimeString(string);
     },
     timeFormatter(string) {
       return getLocalTimeString(string);
