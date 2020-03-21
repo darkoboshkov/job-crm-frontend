@@ -229,23 +229,23 @@
             {{ model.payRate }}
           </div>
         </div>
-        <div class="item">
-          <div>{{ $t("page_offer_detail.form.payment_type") }}</div>
-          <div v-if="edit">
-            <b-form-select v-model="model.paymentType" class="normal-size">
-              <option
-                v-for="(payment, index) in paymentType"
-                :value="payment"
-                :key="index"
-              >
-                {{ payment }}
-              </option>
-            </b-form-select>
-          </div>
-          <div v-else class="text-right">
-            {{ model.paymentType }}
-          </div>
-        </div>
+<!--        <div class="item">-->
+<!--          <div>{{ $t("page_offer_detail.form.payment_type") }}</div>-->
+<!--          <div v-if="edit">-->
+<!--            <b-form-select v-model="model.paymentType" class="normal-size">-->
+<!--              <option-->
+<!--                v-for="(payment, index) in paymentType"-->
+<!--                :value="payment"-->
+<!--                :key="index"-->
+<!--              >-->
+<!--                {{ payment }}-->
+<!--              </option>-->
+<!--            </b-form-select>-->
+<!--          </div>-->
+<!--          <div v-else class="text-right">-->
+<!--            {{ model.paymentType }}-->
+<!--          </div>-->
+<!--        </div>-->
         <div class="item">
           <div>{{ $t("page_offer_detail.form.hours_per_week") }}</div>
           <div v-if="edit">

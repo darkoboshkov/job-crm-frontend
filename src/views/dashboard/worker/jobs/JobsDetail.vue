@@ -88,14 +88,14 @@
                   </div>
                 </li>
 
-                <li>
-                  {{ $t("page_job_detail.form.payment_type") }}
-                  <div class="pull-right">
-                    <div>
-                      {{ model.paymentType }}
-                    </div>
-                  </div>
-                </li>
+<!--                <li>-->
+<!--                  {{ $t("page_job_detail.form.payment_type") }}-->
+<!--                  <div class="pull-right">-->
+<!--                    <div>-->
+<!--                      {{ model.paymentType }}-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </li>-->
 
                 <li>
                   {{ $t("page_job_detail.form.start_date") }}
@@ -127,7 +127,13 @@
                     style="width:31px"
                     class="mr-3"
                   />
-                  <span>{{ user.email }}</span>
+                  <span>
+                    <a
+                        v-if="model.manager"
+                        :href="'mailto:' + model.manager.email">
+                      {{ model.manager.email}}
+                    </a>
+                  </span>
                 </div>
               </b-card>
             </b-col>
@@ -140,7 +146,9 @@
                     style="width: 22px"
                     class="mr-3"
                   />
-                  <span>{{ user.phone }}</span>
+                  <span>
+                    {{ model.manager ? model.manager.phone : "" }}
+                  </span>
                 </div>
               </b-card>
             </b-col>
@@ -160,15 +168,62 @@
             </template>
             <div>
               <ul class="custom-list">
-                <li class="d-flex" v-for="offer in jobOffers" :key="offer._id">
+                <li class="d-flex color-gray">
                   <div class="flex-3">
-                    Offer - {{ offer.worker | fullNameFormatter }}
+                    {{ $t("page_job_detail.form.worker") }}
                   </div>
+                  <!--                  <div class="flex-2">-->
+                  <!--                    Last Updated-->
+                  <!--                  </div>-->
                   <div class="flex-2">
-                    {{ offer.createdAt | dateFormatter }}
+                    {{ $t("page_job_detail.form.hiring_company") }}
+                  </div>
+                  <div class="flex-3">
+                    {{ $t("page_job_detail.form.hiring_manager") }}
                   </div>
                   <div class="flex-1">
+                    {{ $t("page_job_detail.form.wage") }}
+                  </div>
+                  <div class="flex-1">
+                    {{ $t("page_job_detail.form.rate") }}
+                  </div>
+                  <div class="flex-2">
+                    {{ $t("page_job_detail.form.status") }}
+                  </div>
+                  <div class="flex-2">
+                    {{ $t("page_job_detail.form.start_date") }}
+                  </div>
+                  <div class="flex-2">
+                    {{ $t("page_job_detail.form.end_date") }}
+                  </div>
+                </li>
+                <li class="d-flex" v-for="offer in jobOffers" :key="offer._id">
+                  <div class="flex-3">
+                    {{ $t("page_job_detail.form.offer") }} - {{ offer.worker | fullNameFormatter }}
+                  </div>
+                  <!--                  <div class="flex-2">-->
+                  <!--                    {{ offer.updatedAt | dateFormatter }}-->
+                  <!--                  </div>-->
+                  <div class="flex-2">
+                    {{ offer.hiringCompany.name }}
+                  </div>
+                  <div class="flex-3">
+                    {{ offer.hiringManager | fullNameFormatter }}
+                  </div>
+                  <div class="flex-1">
+                    {{ offer.wage }}
+                  </div>
+                  <div class="flex-1">
+                    {{ offer.payRate }}
+                  </div>
+                  <div class="flex-2">
                     {{ offer.status }}
+                  </div>
+                  <div class="flex-2">
+                    {{ offer.startDate | dateFormatter }}
+                  </div>
+                  <div class="flex-2">
+                    {{ offer.endDate ? (offer.endDate | dateFormatter) : ""}}
                   </div>
                 </li>
               </ul>
@@ -327,6 +382,8 @@ export default {
           this.jobOffers = res.docs;
           this.jobOffers.forEach(row => {
             row.worker = row.worker[0];
+            row.hiringCompany = row.hiringCompany[0];
+            row.hiringManager = row.hiringManager[0];
           });
         });
     },
