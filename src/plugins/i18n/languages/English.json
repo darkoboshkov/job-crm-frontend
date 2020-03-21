@@ -907,7 +907,17 @@
       "approve_hours": "Approve hours",
       "decline_hours": "Decline hours",
       "adjust_hours": "Adjust Hours",
-      "worked_total_hours": "In week {selectedWeekNumber} you worked a total of {totalHours} hours."
+      "worked_total_hours": "In week {selectedWeekNumber} you worked a total of {totalHours} hours.",
+      "delete_confirm": {
+        "title": "Are you sure you want to {method} this {type}?",
+        "sub_title": "",
+        "continue": "Continue"
+      },
+      "delete_success": {
+        "title": "The {type} is deleted successfully.",
+        "sub_title": "",
+        "continue": "Ok"
+      }
     }
   },
   "page_users_create": {

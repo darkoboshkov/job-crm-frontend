@@ -42,8 +42,8 @@
           >
             <div class="avatar-image mr-2">
               <img
-                  v-if="props.row.hiringCompany.logo"
-                  :src="props.row.hiringCompany.logo | appUrlFormatter"
+                v-if="props.row.hiringCompany.logo"
+                :src="props.row.hiringCompany.logo | appUrlFormatter"
               />
             </div>
           </div>
@@ -160,8 +160,8 @@ export default {
           this.rows = res.docs.map(row => {
             row.job = row.job ? row.job[0].title : "";
             row.image = row.job ? row.job[0].image : "";
-            row.company =  row.company[0];
-            row.hiringCompany =  row.hiringCompany[0];
+            row.company = row.company[0];
+            row.hiringCompany = row.hiringCompany[0];
             row.createdAt = this.getDateString(row.createdAt);
             row.manager =
               row.manager && row.manager[0]

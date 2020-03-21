@@ -46,7 +46,7 @@
           menu-class="week-number-menu"
           toggle-class="week-number-toggle"
           v-model="selectedWeekNumber"
-          :disabled="inputDisabled"
+          disabled
         >
           <b-dropdown-item
             v-for="weekNumber in Array(52)
@@ -90,6 +90,7 @@
           <div class="flex-1">{{ d.date | dateFormatter }}</div>
           <div style="width: 100px;">
             <b-input
+              type="number"
               style="width: 60px;"
               :disabled="inputDisabled"
               v-model="d.normalWageHours"
@@ -97,6 +98,7 @@
           </div>
           <div style="width: 100px;">
             <b-input
+              type="number"
               style="width: 60px;"
               :disabled="inputDisabled"
               v-model="d.adjustedWageHours"
@@ -104,6 +106,7 @@
           </div>
           <div style="width: 100px;">
             <b-input
+              type="number"
               style="width: 60px;"
               :disabled="inputDisabled"
               v-model="d.percentOfAdjustedWage"
@@ -119,6 +122,7 @@
           </div>
           <div class="d-flex align-items-center" style="width: 100px;">
             <b-input
+              type="number"
               style="width: 60px; margin-right: 0.5rem;"
               :disabled="inputDisabled"
               v-model="d.distanceTraveled"
@@ -207,7 +211,10 @@ export default {
       }
     },
     inputDisabled() {
-      return this.timeSheetsData.status === TIME_SHEET_STATE.APPROVED;
+      return (
+        this.timeSheetsData.status === TIME_SHEET_STATE.APPROVED ||
+        this.timeSheetsData.status === TIME_SHEET_STATE.SUBMITTED
+      );
     },
     employer() {
       if (this.timeSheetsData.worker && this.timeSheetsData.worker[0]) {
@@ -254,9 +261,7 @@ export default {
     totalHours() {
       return this.daysOfSelectedWeek.reduce(function(acc, day) {
         return (
-          acc +
-          Number(day.normalWageHours) +
-          Number(day.adjustedWageHours) * Number(day.percentOfAdjustedWage)
+          acc + Number(day.normalWageHours) + Number(day.adjustedWageHours)
         );
       }, 0);
     }
@@ -270,36 +275,6 @@ export default {
     };
   },
   methods: {
-    getDaysOfSelectedWeek() {
-      const firstDayOfSelectedWeek = new Date(
-        new Date(this.year, 0, this.startOfSecondWeek).getTime() +
-          (this.selectedWeekNumber - 2) * this.oneWeekTimeInterval
-      );
-      this.daysOfSelectedWeek = [
-        {
-          date: firstDayOfSelectedWeek.toDateString(),
-          normalWageHours: 0,
-          adjustedWageHours: 0,
-          percentOfAdjustedWage: 0,
-          isTravelExpense: false,
-          distanceTraveled: 0
-        }
-      ];
-      let i = 6;
-      while (i > 0) {
-        this.daysOfSelectedWeek.push({
-          date: new Date(
-            firstDayOfSelectedWeek.getTime() + 24 * 60 * 60 * 1000 * (7 - i)
-          ).toDateString(),
-          normalWageHours: 0,
-          adjustedWageHours: 0,
-          percentOfAdjustedWage: 0,
-          isTravelExpense: false,
-          distanceTraveled: 0
-        });
-        i--;
-      }
-    },
     saveHours() {
       workLogApi
         .save({
@@ -315,11 +290,12 @@ export default {
             },
             status
           };
+          this.$emit("refresh");
         });
     },
     approveHours() {
       const { _id } = this.timeSheetsData;
-      const { companyId } = this.$store.state.user;
+      const { companyId } = this.timeSheetsData;
 
       workLogApi
         .approve({
@@ -336,11 +312,12 @@ export default {
             },
             status
           };
+          this.$emit("refresh");
         });
     },
     declineHours() {
       const { _id } = this.timeSheetsData;
-      const { companyId } = this.$store.state.user;
+      const { companyId } = this.timeSheetsData;
 
       workLogApi
         .decline({
@@ -357,31 +334,17 @@ export default {
             },
             status
           };
+          this.$emit("refresh");
         });
     }
   },
   mounted() {
-    this.selectedWeekNumber =
-      2 +
-      Math.floor(
-        (new Date().getTime() -
-          new Date(this.year, 0, this.startOfSecondWeek).getTime()) /
-          this.oneWeekTimeInterval
-      ); // current week number
+    //
   },
   watch: {
-    selectedWeekNumber() {
-      // this.getDaysOfSelectedWeek();
-    },
-    "timeSheetsData.timeSheetData.data"(weekDays) {
-      this.selectedWeekNumber =
-        2 +
-        Math.floor(
-          (new Date(weekDays[0].date).getTime() -
-            new Date(this.year, 0, this.startOfSecondWeek).getTime()) /
-            this.oneWeekTimeInterval
-        ); // current week number
-      this.daysOfSelectedWeek = weekDays;
+    timeSheetsData(v) {
+      this.daysOfSelectedWeek = this.timeSheetsData.timeSheetData.data;
+      this.selectedWeekNumber = this.timeSheetsData.timeSheetData.weekNumber;
     }
   }
 };

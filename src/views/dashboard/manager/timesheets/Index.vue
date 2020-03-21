@@ -57,11 +57,16 @@
       <!--        </div>-->
       <!--      </div>-->
     </div>
-    <div class="row justify-content-end">
-      <button class="btn btn-red" @click="showAddExpensesModal = true">
-        Add expenses
-        <i class="hiway-crm-icon icon-euro ml-4"></i>
-      </button>
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-red">
+            Add expenses
+            <i class="hiway-crm-icon icon-euro ml-4"></i>
+          </button>
+        </div>
+        <hr />
+      </div>
     </div>
     <table-filter
       class="companies-filters"
@@ -115,7 +120,10 @@
               <button
                 class="btn btn-transparent"
                 @click.stop="deleteTimeSheetConfirm(props)"
-                v-if="props.row.status !== TIME_SHEET_STATE.SUBMITTED"
+                v-if="
+                  props.row.status !== TIME_SHEET_STATE.SUBMITTED &&
+                    props.row.status !== TIME_SHEET_STATE.APPROVED
+                "
               >
                 <i class="hiway-crm-icon icon-bin" />
               </button>
@@ -124,6 +132,9 @@
               {{
                 props.formattedRow[props.column.field] ? "active" : "inactive"
               }}
+            </span>
+            <span v-else-if="props.column.field === 'submitDate'">
+              {{ props.formattedRow[props.column.field] | dateFormatter }}
             </span>
             <span v-else>
               {{ props.formattedRow[props.column.field] }}
@@ -135,10 +146,12 @@
     <time-sheets-modal
       :row-data.sync="selectedRow"
       :modal-open.sync="showTimeSheetsModal"
+      @refresh="getTimeSheets()"
     />
-    <!--    <expenses-modal-->
-    <!--      :modal-open.sync="showAddExpensesModal"-->
-    <!--    />-->
+    <expenses-modal
+      :row-data.sync="selectedRow"
+      :modal-open.sync="showAddExpensesModal"
+    />
   </div>
 </template>
 
@@ -147,12 +160,12 @@ import TableFilter from "@/components/common/TableFilter";
 import { TIME_SHEET_STATE } from "@/constants";
 import workLogApi from "@/services/api/workLog";
 import TimeSheetsModal from "./TimeSheetsModal";
-// import ExpensesModal from "./ExpensesModal";
+import ExpensesModal from "./ExpensesModal";
 
 export default {
   name: "timesheets",
   components: {
-    // ExpensesModal,
+    ExpensesModal,
     TableFilter,
     TimeSheetsModal
   },
@@ -322,11 +335,43 @@ export default {
     filter() {
       //
     },
-    deleteTimeSheetConfirm(props) {
-      // todo: show delete confirmation modal
-    },
     goToTimeSheet(props) {
       //
+    },
+    deleteWorkLog(props) {
+      return workLogApi
+        .delete({
+          ...props.row
+        })
+        .then(res => {
+          this.getTimeSheets();
+        });
+    },
+    deleteTimeSheetConfirm(props) {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_timesheets.modal.delete_confirm.title", {
+          type: "timesheet",
+          method: "clear"
+        }),
+        subTitle: this.$t("page_timesheets.modal.delete_confirm.sub_title"),
+        button: this.$t("page_timesheets.modal.delete_confirm.continue"),
+        onButtonClick: () => {
+          this.deleteWorkLog(props).then(() => {
+            this.$store.dispatch("updateShowErrorModal", false);
+            this.$store.dispatch("updateShowSuccessModal", true);
+            this.$store.dispatch("updateSuccessModalContent", {
+              title: this.$t("page_timesheets.modal.delete_success.title", {
+                type: "timesheet"
+              }),
+              subTitle: this.$t(
+                "page_timesheets.modal.delete_success.sub_title"
+              ),
+              button: this.$t("page_timesheets.modal.delete_success.continue")
+            });
+          });
+        }
+      });
     }
   }
 };
