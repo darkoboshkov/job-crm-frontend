@@ -292,14 +292,14 @@
         <div class="col-6">
           <!--Datum : MANAGERDATETIMESTAMP-->
           {{ $t("page_offer_detail.contract.sign_date") }}
-          <template v-if="managerSign && managerSign.signDate">
+          <template v-if="managerSign">
             {{ managerSign.signDate | dateFormatter }}
           </template>
         </div>
         <div class="col-6">
           <!--Datum : WORKERDATETIMESTAMP-->
           {{ $t("page_offer_detail.contract.sign_date") }}
-          <template v-if="workerSign && workerSign.signDate">
+          <template v-if="workerSign">
             {{ workerSign.signDate | dateFormatter }}
           </template>
         </div>

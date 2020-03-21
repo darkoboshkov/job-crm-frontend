@@ -169,3 +169,73 @@ export const handleLogout = () => {
   store.dispatch("token/removeToken");
   delete axios.defaults.headers["Authorization"];
 };
+
+/**
+ * Serialize Contract Status
+ */
+export const serializeContractStatus = (role, status) => {
+  let state = {
+    text: "",
+    color: ""
+  };
+
+  if (role === "worker") {
+    switch (status) {
+      case "open":
+        state = {
+          text: "Not able to see",
+          color: "color-yellow"
+        };
+        break;
+      case "pending-worker":
+        state = {
+          text: "Pending",
+          color: "color-yellow"
+        };
+        break;
+      case "active":
+        state = {
+          text: "Signed",
+          color: "color-blue"
+        };
+        break;
+      case "completed":
+        state = {
+          text: "Signed",
+          color: "color-red"
+        };
+        break;
+    }
+  }
+
+  if (role === "manager") {
+    switch (status) {
+      case "open":
+        state = {
+          text: "Pending",
+          color: "color-yellow"
+        };
+        break;
+      case "pending-worker":
+        state = {
+          text: "Signed",
+          color: "color-blu"
+        };
+        break;
+      case "active":
+        state = {
+          text: "Signed",
+          color: "color-blue"
+        };
+        break;
+      case "completed":
+        state = {
+          text: "Signed",
+          color: "color-red"
+        };
+        break;
+    }
+  }
+
+  return state;
+};

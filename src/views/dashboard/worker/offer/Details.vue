@@ -8,7 +8,7 @@
       <i class="hiway-crm-icon icon-angle-left mr-2" />
       <span>{{ $t("common.back") }}</span>
     </a>
-    <h1 class="title">
+    <h1 class="title mt-5">
       {{ $t("page_offer_detail.title") }}
     </h1>
     <div class="mt-5 row">
@@ -100,14 +100,13 @@
         <span>{{ $t("page_offer_detail.status_actions") }}</span>
         <span class="d-flex align-items-center contract-status">
           <i
-            class="hiway-crm-icon icon-dot color-yellow mr-2"
+            class="hiway-crm-icon icon-dot mr-2"
+            :class="model.status === 'open' ? ' color-yellow' : 'color-blue'"
             style="font-size: 0.3em;"
           />
-          {{
-            model.status
-              ? $t("page_offer_detail.offer_states." + model.status)
-              : ""
-          }}
+          <template v-if="model.status">
+            {{ $t("page_offer_detail.offer_states." + model.status) }}
+          </template>
         </span>
       </div>
       <div class="card-body d-flex justify-content-between">
@@ -121,10 +120,11 @@
             </div>
             <div>
               <i
-                class="hiway-crm-icon icon-dot color-yellow mr-2"
+                class="hiway-crm-icon icon-dot mr-2"
+                :class="managerState.color"
                 style="font-size: 0.3em;"
               />
-              {{ managerState }}
+              {{ managerState.text }}
             </div>
           </div>
           <div class="d-flex align-items-center">
@@ -133,10 +133,11 @@
             </div>
             <div>
               <i
-                class="hiway-crm-icon icon-dot color-blue mr-2"
+                class="hiway-crm-icon icon-dot mr-2"
+                :class="workerState.color"
                 style="font-size: 0.3em;"
               />
-              {{ workerState }}
+              {{ workerState.text }}
             </div>
           </div>
         </div>
@@ -229,23 +230,23 @@
             {{ model.payRate }}
           </div>
         </div>
-<!--        <div class="item">-->
-<!--          <div>{{ $t("page_offer_detail.form.payment_type") }}</div>-->
-<!--          <div v-if="edit">-->
-<!--            <b-form-select v-model="model.paymentType" class="normal-size">-->
-<!--              <option-->
-<!--                v-for="(payment, index) in paymentType"-->
-<!--                :value="payment"-->
-<!--                :key="index"-->
-<!--              >-->
-<!--                {{ payment }}-->
-<!--              </option>-->
-<!--            </b-form-select>-->
-<!--          </div>-->
-<!--          <div v-else class="text-right">-->
-<!--            {{ model.paymentType }}-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="item">-->
+        <!--          <div>{{ $t("page_offer_detail.form.payment_type") }}</div>-->
+        <!--          <div v-if="edit">-->
+        <!--            <b-form-select v-model="model.paymentType" class="normal-size">-->
+        <!--              <option-->
+        <!--                v-for="(payment, index) in paymentType"-->
+        <!--                :value="payment"-->
+        <!--                :key="index"-->
+        <!--              >-->
+        <!--                {{ payment }}-->
+        <!--              </option>-->
+        <!--            </b-form-select>-->
+        <!--          </div>-->
+        <!--          <div v-else class="text-right">-->
+        <!--            {{ model.paymentType }}-->
+        <!--          </div>-->
+        <!--        </div>-->
         <div class="item">
           <div>{{ $t("page_offer_detail.form.hours_per_week") }}</div>
           <div v-if="edit">
@@ -313,7 +314,7 @@
                   ? worker.image
                   : attachment.userId === manager._id
                   ? manager.image
-                  : '') | dateFormatter
+                  : '') | appUrlFormatter
               "
               class="rounded-circle border mr-4"
               style="width:45px"
@@ -441,8 +442,9 @@
 
 <script>
 import jobOfferApi from "@/services/api/joboffers";
-import ViewJobOffer from "./ViewJobOffer";
 import constantsApi from "@/services/api/constants";
+import ViewJobOffer from "./ViewJobOffer";
+import { serializeContractStatus } from "@/utils";
 
 export default {
   name: "Details",
@@ -464,43 +466,10 @@ export default {
       );
     },
     managerState() {
-      let managerState = "";
-
-      switch (this.model.status) {
-        case "open":
-          managerState = "pending";
-          break;
-        case "pending-worker":
-          managerState = "signed";
-          break;
-        case "active":
-          managerState = "signed";
-          break;
-        case "completed":
-          managerState = "completed";
-          break;
-      }
-
-      return managerState;
+      return serializeContractStatus("manager", this.model.status);
     },
     workerState() {
-      let workerState = "";
-      switch (this.model.status) {
-        case "open":
-          workerState = "not able to see";
-          break;
-        case "pending-worker":
-          workerState = "pending";
-          break;
-        case "active":
-          workerState = "signed";
-          break;
-        case "completed":
-          workerState = "completed";
-          break;
-      }
-
-      return workerState;
+      return serializeContractStatus("worker", this.model.status);
     },
     signed() {
       return this.model.status === "active";

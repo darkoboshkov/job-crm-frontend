@@ -88,14 +88,14 @@
                   </div>
                 </li>
 
-<!--                <li>-->
-<!--                  {{ $t("page_job_detail.form.payment_type") }}-->
-<!--                  <div class="pull-right">-->
-<!--                    <div>-->
-<!--                      {{ model.paymentType }}-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </li>-->
+                <!--                <li>-->
+                <!--                  {{ $t("page_job_detail.form.payment_type") }}-->
+                <!--                  <div class="pull-right">-->
+                <!--                    <div>-->
+                <!--                      {{ model.paymentType }}-->
+                <!--                    </div>-->
+                <!--                  </div>-->
+                <!--                </li>-->
 
                 <li>
                   {{ $t("page_job_detail.form.start_date") }}
@@ -129,9 +129,10 @@
                   />
                   <span>
                     <a
-                        v-if="model.manager"
-                        :href="'mailto:' + model.manager.email">
-                      {{ model.manager.email}}
+                      v-if="model.manager"
+                      :href="'mailto:' + model.manager.email"
+                    >
+                      {{ model.manager.email }}
                     </a>
                   </span>
                 </div>
@@ -199,7 +200,8 @@
                 </li>
                 <li class="d-flex" v-for="offer in jobOffers" :key="offer._id">
                   <div class="flex-3">
-                    {{ $t("page_job_detail.form.offer") }} - {{ offer.worker | fullNameFormatter }}
+                    {{ $t("page_job_detail.form.offer") }} -
+                    {{ offer.worker | fullNameFormatter }}
                   </div>
                   <!--                  <div class="flex-2">-->
                   <!--                    {{ offer.updatedAt | dateFormatter }}-->
@@ -223,7 +225,7 @@
                     {{ offer.startDate | dateFormatter }}
                   </div>
                   <div class="flex-2">
-                    {{ offer.endDate ? (offer.endDate | dateFormatter) : ""}}
+                    {{ offer.endDate | dateFormatter }}
                   </div>
                 </li>
               </ul>

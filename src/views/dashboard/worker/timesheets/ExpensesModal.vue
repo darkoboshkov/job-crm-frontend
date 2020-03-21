@@ -111,7 +111,6 @@
 <script>
 import companyApi from "@/services/api/companies";
 import userApi from "@/services/api/users";
-// import dateFormatter from "@/helpers/DateFormatter";
 
 export default {
   name: "ExpensesModal",

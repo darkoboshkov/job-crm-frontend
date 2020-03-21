@@ -571,7 +571,7 @@
     "status_actions": "Contract Status & Actions",
     "offer_states": {
       "open": "Open",
-      "pending-worker": "Pending for Worker",
+      "pending-worker": "Pending for worker",
       "active": "Active",
       "completed": "Completed"
     },
@@ -771,7 +771,7 @@
       "description24_2": "Verwerking van uw gegevens beperken",
       "description24_3": "Recht om gegevens over te dragen",
       "description24_4": "Recht om vergeten te worden",
-      "description24_5": "Middels ondertekening van deze overeenkomst geeft u{companyName} toestemming om correspondentie met betrekking tot uwdienstverband bij {companyName} waaronder verzending van uwloonstrook en jaaropgave, per e-mail te verzenden naar het e-mailadreszoals vermeld op pagina 1 van deze overeenkomst.",
+      "description24_5": "Middels ondertekening van deze overeenkomst geeft u {companyName} toestemming om correspondentie met betrekking tot uwdienstverband bij {companyName} waaronder verzending van uwloonstrook en jaaropgave, per e-mail te verzenden naar het e-mailadreszoals vermeld op pagina 1 van deze overeenkomst.",
       "description24_6": "Middels ondertekening van deze overeenkomst verklaart u op de hoogte te zijn van onze privacyverklaring.",
       "for_approval": "Voor akkoord"
     }

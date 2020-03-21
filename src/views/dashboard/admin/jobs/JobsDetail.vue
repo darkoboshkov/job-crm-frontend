@@ -153,32 +153,32 @@
                     </div>
                   </div>
                 </li>
-<!--                <li>-->
-<!--                  <div class="d-flex align-items-center">-->
-<!--                    <span class="flex-1">-->
-<!--                      {{ $t("page_job_detail.form.payment_type") }}-->
-<!--                    </span>-->
-<!--                    <div class="pull-right">-->
-<!--                      <b-form-select-->
-<!--                        v-if="editJob"-->
-<!--                        v-model="model.paymentType"-->
-<!--                        class="normal-size"-->
-<!--                        style="margin-top:-8px"-->
-<!--                      >-->
-<!--                        <option-->
-<!--                          v-for="(payment, index) in paymentType"-->
-<!--                          :value="payment"-->
-<!--                          :key="index"-->
-<!--                        >-->
-<!--                          {{ payment }}-->
-<!--                        </option>-->
-<!--                      </b-form-select>-->
-<!--                      <div v-else>-->
-<!--                        {{ model.paymentType }}-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </li>-->
+                <!--                <li>-->
+                <!--                  <div class="d-flex align-items-center">-->
+                <!--                    <span class="flex-1">-->
+                <!--                      {{ $t("page_job_detail.form.payment_type") }}-->
+                <!--                    </span>-->
+                <!--                    <div class="pull-right">-->
+                <!--                      <b-form-select-->
+                <!--                        v-if="editJob"-->
+                <!--                        v-model="model.paymentType"-->
+                <!--                        class="normal-size"-->
+                <!--                        style="margin-top:-8px"-->
+                <!--                      >-->
+                <!--                        <option-->
+                <!--                          v-for="(payment, index) in paymentType"-->
+                <!--                          :value="payment"-->
+                <!--                          :key="index"-->
+                <!--                        >-->
+                <!--                          {{ payment }}-->
+                <!--                        </option>-->
+                <!--                      </b-form-select>-->
+                <!--                      <div v-else>-->
+                <!--                        {{ model.paymentType }}-->
+                <!--                      </div>-->
+                <!--                    </div>-->
+                <!--                  </div>-->
+                <!--                </li>-->
                 <li>
                   <div class="d-flex align-items-center">
                     <span class="flex-1">
@@ -290,9 +290,9 @@
                   <div class="flex-3">
                     {{ $t("page_job_detail.form.worker") }}
                   </div>
-<!--                  <div class="flex-2">-->
-<!--                    Last Updated-->
-<!--                  </div>-->
+                  <!--                  <div class="flex-2">-->
+                  <!--                    Last Updated-->
+                  <!--                  </div>-->
                   <div class="flex-2">
                     {{ $t("page_job_detail.form.hiring_company") }}
                   </div>
@@ -318,11 +318,12 @@
                 </li>
                 <li class="d-flex" v-for="offer in jobOffers" :key="offer._id">
                   <div class="flex-3">
-                    {{ $t("page_job_detail.form.offer") }} - {{ offer.worker | fullNameFormatter }}
+                    {{ $t("page_job_detail.form.offer") }} -
+                    {{ offer.worker | fullNameFormatter }}
                   </div>
-<!--                  <div class="flex-2">-->
-<!--                    {{ offer.updatedAt | dateFormatter }}-->
-<!--                  </div>-->
+                  <!--                  <div class="flex-2">-->
+                  <!--                    {{ offer.updatedAt | dateFormatter }}-->
+                  <!--                  </div>-->
                   <div class="flex-2">
                     {{ offer.hiringCompany.name }}
                   </div>
@@ -342,7 +343,7 @@
                     {{ offer.startDate | dateFormatter }}
                   </div>
                   <div class="flex-2">
-                    {{ offer.endDate ? (offer.endDate | dateFormatter) : ""}}
+                    {{ offer.endDate | dateFormatter }}
                   </div>
                   <div class="flex-2 d-flex">
                     <b-dropdown

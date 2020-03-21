@@ -18,18 +18,27 @@ const dateTimeStringOptions = {
 };
 
 const getLocalDateString = string => {
-  //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
-  return new Date(string).toLocaleDateString("en-US", dateStringOptions);
+  if (string) {
+    //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
+    return new Date(string).toLocaleDateString("en-US", dateStringOptions);
+  }
+  return "";
 };
 
 const getLocalDateTimeString = string => {
-  //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
-  return new Date(string).toLocaleString("en-US", dateTimeStringOptions);
+  if (string) {
+    //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
+    return new Date(string).toLocaleString("en-US", dateTimeStringOptions);
+  }
+  return "";
 };
 
 const getLocalTimeString = string => {
-  // return new Date(string).toLocaleTimeString("nl-NL", timeStringOptions);
-  return new Date(string).toLocaleTimeString("en-US", timeStringOptions);
+  if (string) {
+    // return new Date(string).toLocaleTimeString("nl-NL", timeStringOptions);
+    return new Date(string).toLocaleTimeString("en-US", timeStringOptions);
+  }
+  return "";
 };
 
 const getFullName = user => {
