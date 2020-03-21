@@ -886,7 +886,7 @@
       "hand_in_date": "Hand In Date",
       "hours": "Hours",
       "price": "€",
-      "employer": "Employer",
+      "hiring_manager": "Hiring Manager",
       "status": "Status",
       "actions": "Actions",
       "view_timesheet": "View Timesheet"
@@ -901,8 +901,8 @@
     },
     "modal": {
       "add_hours": "Add Hours",
-      "employer": "Employer",
-      "employee": "Employee",
+      "worker": "Worker",
+      "hiring_manager": "Hiring Manager",
       "week": "Week",
       "date": "Date",
       "hours": "Hours",

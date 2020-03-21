@@ -14,24 +14,24 @@
     <b-card class="mb-2">
       <div class="d-flex justify-content-between">
         <div class="d-inline-block">
-          <span class="color-blue mr3">
-            {{ $t("page_timesheets.modal.employer") }}:
+          <span class="color-blue mr-3">
+            {{ $t("page_timesheets.modal.worker") }}:
           </span>
           &nbsp;<b-input
             class="d-inline-block"
             style="width: 175px;"
-            :value="employer"
+            :value="worker"
             disabled
           />
         </div>
         <div class="d-inline-block">
-          <span class="color-blue mr3">
-            {{ $t("page_timesheets.modal.employee") }}:
+          <span class="color-blue mr-3">
+            {{ $t("page_timesheets.modal.hiring_manager") }}:
           </span>
           &nbsp;<b-input
             class="d-inline-block"
             style="width: 175px;"
-            :value="employee"
+            :value="hiringManager"
             disabled
           />
         </div>
@@ -216,14 +216,14 @@ export default {
         this.timeSheetsData.status === TIME_SHEET_STATE.SUBMITTED
       );
     },
-    employer() {
+    worker() {
       if (this.timeSheetsData.worker && this.timeSheetsData.worker[0]) {
         return this.getFullName(this.timeSheetsData.worker[0]);
       }
 
       return "";
     },
-    employee() {
+    hiringManager() {
       if (
         this.timeSheetsData.hiringManager &&
         this.timeSheetsData.hiringManager[0]
