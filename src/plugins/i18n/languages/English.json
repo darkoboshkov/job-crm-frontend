@@ -878,6 +878,8 @@
     }
   },
   "page_timesheets": {
+    "title": "TimeSheets & Expenses",
+    "add_expenses": "Add expenses",
     "table": {
       "kind": "Kind",
       "week": "Week",

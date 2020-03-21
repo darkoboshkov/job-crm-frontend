@@ -1,6 +1,8 @@
 <template>
   <div id="page_timesheets" class="dashboard-content">
-    <h1 class="color-red">TimeSheets & Expenses</h1>
+    <h1 class="color-red">
+      {{ $t("page_timesheets.title") }}
+    </h1>
     <div class="container-fluid">
       <!--      <div class="row">-->
       <!--        <div class="col-md-3 d-flex">-->
@@ -61,7 +63,7 @@
       <div class="col">
         <div class="d-flex justify-content-end">
           <button class="btn btn-red">
-            Add expenses
+            {{ $t("page_timesheets.add_expenses") }}
             <i class="hiway-crm-icon icon-euro ml-4"></i>
           </button>
         </div>
