@@ -65,19 +65,8 @@
           >
             <div class="avatar-image mr-2">
               <img
-                v-if="
-                  props.row.status === 'active' ||
-                  props.row.status === 'completed'
-                    ? props.row.image
-                    : props.row.status === 'open' && props.row.company.logo
-                "
-                :src="
-                  (props.row.status === 'active' ||
-                  props.row.status === 'completed'
-                    ? props.row.image
-                    : props.row.status === 'open' && props.row.company.logo)
-                    | appUrlFormatter
-                "
+                v-if="props.row.company.logo"
+                :src="props.row.company.logo | appUrlFormatter"
               />
             </div>
           </div>
