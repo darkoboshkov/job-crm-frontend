@@ -103,7 +103,8 @@
             <b-input
               placeholder="Choose file"
               :value="
-                model.expenseData.attachments[0] &&
+                model.expenseData.attachments &&
+                  model.expenseData.attachments[0] &&
                   model.expenseData.attachments[0].name
               "
             />
@@ -128,19 +129,39 @@
 
     <b-card class="mb-2">
       <div class="text-right">
-        <button class="btn btn-red" @click="submitExpenses">
-          Send Expenses
+        <button class="btn btn-red" @click="createExpenses" v-if="addMode">
+          Create Expenses
         </button>
+        <template
+          v-else-if="
+            model.status === EXPENSE_STATE.NOT_SUBMITTED ||
+              model.status === EXPENSE_STATE.DECLINED
+          "
+        >
+          <button class="btn btn-blue" @click="saveExpenses">
+            {{ $t("page_timesheets.modal.save_hours") }}
+          </button>
+          <button class="btn btn-red ml-3" @click="submitExpenses">
+            {{ $t("page_timesheets.modal.send_hours") }}
+          </button>
+        </template>
+        <template v-else-if="model.status === EXPENSE_STATE.SUBMITTED">
+          <button class="btn btn-red" @click="adjustExpenses">
+            {{ $t("page_timesheets.modal.adjust_hours") }}
+          </button>
+        </template>
+        <template v-else-if="model.status === EXPENSE_STATE.APPROVED">
+          <!-- nothing to show -->
+        </template>
       </div>
     </b-card>
   </b-modal>
 </template>
 
 <script>
-import companyApi from "@/services/api/companies";
-import userApi from "@/services/api/users";
 import jobOfferApi from "@/services/api/joboffers";
 import workLogApi from "@/services/api/workLog";
+import { EXPENSE_STATE } from "@/constants";
 
 export default {
   name: "ExpensesModal",
@@ -194,7 +215,7 @@ export default {
       },
 
       imageData: {},
-      workers: []
+      EXPENSE_STATE
     };
   },
   created() {
@@ -252,12 +273,51 @@ export default {
         this.$store.dispatch("updateLoading", false);
       });
     },
-    submitExpenses() {
+    createExpenses() {
       const { companyId } = this.$store.state.user;
 
       workLogApi
         .createExpense({
           ...this.model.expenseData,
+          companyId
+        })
+        .then(res => {
+          this.$emit("refresh");
+          this.showModal = false;
+        });
+    },
+    submitExpenses() {
+      const { companyId } = this.$store.state.user;
+
+      workLogApi
+        .send({
+          ...this.model,
+          companyId
+        })
+        .then(res => {
+          this.$emit("refresh");
+          this.showModal = false;
+        });
+    },
+    saveExpenses() {
+      const { companyId } = this.$store.state.user;
+
+      workLogApi
+        .save({
+          ...this.model,
+          companyId
+        })
+        .then(res => {
+          this.$emit("refresh");
+          this.showModal = false;
+        });
+    },
+    adjustExpenses() {
+      const { companyId } = this.$store.state.user;
+
+      workLogApi
+        .adjust({
+          ...this.model,
           companyId
         })
         .then(res => {
@@ -272,9 +332,11 @@ export default {
   watch: {
     rowData() {
       this.model = this.rowData;
-      this.model.expenseData.date = this.getISODateString(
-        this.model.expenseData.date
-      );
+      if (this.model.expenseData.date) {
+        this.model.expenseData.date = this.getISODateString(
+          this.model.expenseData.date
+        );
+      }
     }
   }
 };

@@ -103,7 +103,8 @@
             <b-input
               placeholder="Choose file"
               :value="
-                model.expenseData.attachments[0] &&
+                model.expenseData.attachments &&
+                  model.expenseData.attachments[0] &&
                   model.expenseData.attachments[0].name
               "
             />
@@ -128,18 +129,35 @@
 
     <b-card class="mb-2">
       <div class="text-right">
-        <button class="btn btn-red" @click="submitExpenses">
-          Send Expenses
-        </button>
+        <template
+          v-if="
+            model.status === EXPENSE_STATE.NOT_SUBMITTED ||
+              model.status === EXPENSE_STATE.DECLINED
+          "
+        >
+          <button class="btn btn-blue" @click="saveExpenses">
+            {{ $t("page_timesheets.modal.save_hours") }}
+          </button>
+        </template>
+        <template v-else-if="model.status === EXPENSE_STATE.SUBMITTED">
+          <button class="btn btn-red" @click="approveExpenses">
+            {{ $t("page_timesheets.modal.approve_hours") }}
+          </button>
+          <button class="btn btn-secondary ml-3" @click="declineExpenses">
+            {{ $t("page_timesheets.modal.decline_hours") }}
+          </button>
+        </template>
+        <template v-else-if="model.status === EXPENSE_STATE.APPROVED">
+          <!-- nothing to show -->
+        </template>
       </div>
     </b-card>
   </b-modal>
 </template>
 
 <script>
-import companyApi from "@/services/api/companies";
-import userApi from "@/services/api/users";
 import workLogApi from "@/services/api/workLog";
+import { EXPENSE_STATE } from "@/constants";
 
 export default {
   name: "ExpensesModal",
@@ -193,10 +211,49 @@ export default {
       },
 
       imageData: {},
-      workers: []
+      EXPENSE_STATE
     };
   },
   methods: {
+    saveExpenses() {
+      const { companyId } = this.model;
+
+      workLogApi
+        .save({
+          ...this.model,
+          companyId
+        })
+        .then(res => {
+          this.$emit("refresh");
+          this.showModal = false;
+        });
+    },
+    approveExpenses() {
+      const { companyId } = this.model;
+
+      workLogApi
+        .approve({
+          ...this.model,
+          companyId
+        })
+        .then(res => {
+          this.$emit("refresh");
+          this.showModal = false;
+        });
+    },
+    declineExpenses() {
+      const { companyId } = this.model;
+
+      workLogApi
+        .decline({
+          ...this.model,
+          companyId
+        })
+        .then(res => {
+          this.$emit("refresh");
+          this.showModal = false;
+        });
+    },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) {
@@ -210,7 +267,8 @@ export default {
         this.imageData = {
           file: file,
           name: file.name,
-          size: file.size.toString()
+          size: file.size.toString(),
+          userId: this.$store.state.user._id
         };
 
         this.upload();
@@ -246,9 +304,11 @@ export default {
         this.rowData.hiringManager && this.rowData.hiringManager[0]
           ? this.getFullName(this.rowData.hiringManager[0])
           : "";
-      this.model.expenseData.date = this.getISODateString(
-        this.model.expenseData.date
-      );
+      if (this.model.expenseData.date) {
+        this.model.expenseData.date = this.getISODateString(
+          this.model.expenseData.date
+        );
+      }
     }
   }
 };

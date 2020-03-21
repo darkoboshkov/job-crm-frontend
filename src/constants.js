@@ -6,6 +6,7 @@ export const EXPENSE_STATE = {
   DECLINED: "declined",
   APPROVED: "approved"
 };
+
 export const TIME_SHEET_STATE = {
   NOT_SUBMITTED: "not-submitted",
   SUBMITTED: "submitted",
