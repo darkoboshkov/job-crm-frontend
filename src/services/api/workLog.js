@@ -1,76 +1,60 @@
 import request from "../request";
 
 export default {
-  getAll(params, resolve, reject = null) {
-    return request("get", "/worklogs/all", params, resolve, reject);
+  getAll(params) {
+    return request("get", "/worklogs/all", params);
   },
-  getByCompany(params, resolve, reject = null) {
-    return request(
-      "get",
-      `/worklogs/${params.companyId}/all`,
-      params,
-      resolve,
-      reject
-    );
+  getByCompany(params) {
+    return request("get", `/worklogs/${params.companyId}/all`, params);
   },
-  getByWorker(params, resolve, reject = null) {
-    return request(
-      "get",
-      `/worklogs/${params.companyId}/worker`,
-      params,
-      resolve,
-      reject
-    );
+  getByWorker(params) {
+    return request("get", `/worklogs/${params.companyId}/worker`, params);
   },
-  approve(params, resolve, reject = null) {
+  approve(params) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/approve`,
-      params,
-      resolve,
-      reject
+      params
     );
   },
-  decline(params, resolve, reject = null) {
+  decline(params) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/decline`,
-      params,
-      resolve,
-      reject
+      params
     );
   },
-  save(params, resolve, reject = null) {
+  save(params) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/save`,
-      params,
-      resolve,
-      reject
+      params
     );
   },
-  send(params, resolve, reject = null) {
+  send(params) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/submit`,
-      params,
-      resolve,
-      reject
+      params
     );
   },
-  adjust(params, resolve, reject = null) {
+  adjust(params) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/adjust`,
-      params,
-      resolve,
-      reject
+      params
     );
   },
-  delete(params, resolve, reject = null) {
+  delete(params) {
     return request(
       "delete",
       `/worklogs/${params.companyId}/${params._id}/${params.type}`
     );
+  },
+  upload(params) {
+    return request("post", `/worklogs/attachment/upload`, params);
+  },
+  createExpense(params) {
+    return request("post", `/worklogs/${params.companyId}/expense`, params);
   }
 };

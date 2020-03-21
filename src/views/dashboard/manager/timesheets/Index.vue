@@ -59,17 +59,6 @@
       <!--        </div>-->
       <!--      </div>-->
     </div>
-    <div class="row">
-      <div class="col">
-        <div class="d-flex justify-content-end">
-          <button class="btn btn-red">
-            {{ $t("page_timesheets.add_expenses") }}
-            <i class="hiway-crm-icon icon-euro ml-4"></i>
-          </button>
-        </div>
-        <hr />
-      </div>
-    </div>
     <table-filter
       class="companies-filters"
       @table-filter="filter"
@@ -146,13 +135,15 @@
       </div>
     </div>
     <time-sheets-modal
-      :row-data.sync="selectedRow"
+      :row-data.sync="selectedTimeSheetRow"
       :modal-open.sync="showTimeSheetsModal"
       @refresh="getTimeSheets()"
     />
     <expenses-modal
-      :row-data.sync="selectedRow"
-      :modal-open.sync="showAddExpensesModal"
+      :row-data.sync="selectedExpenseRow"
+      :modal-open.sync="showExpensesModal"
+      :mode="expensesModalMode"
+      @refresh="getTimeSheets()"
     />
   </div>
 </template>
@@ -227,7 +218,7 @@ export default {
         },
         {
           label: this.$t("page_timesheets.table.week"),
-          field: "timeSheetData.weekNumber",
+          field: this.timeSheetWeek(),
           name: "week"
         },
         {
@@ -246,9 +237,9 @@ export default {
           name: "price"
         },
         {
-          label: this.$t("page_timesheets.table.employer"),
+          label: this.$t("page_timesheets.table.hiring_manager"),
           field: this.hiringManager(),
-          name: "employer"
+          name: "hiring_manager"
         },
         {
           label: this.$t("page_timesheets.table.status"),
@@ -262,7 +253,10 @@ export default {
         }
       ],
       showTimeSheetsModal: false,
-      showAddExpensesModal: false,
+      showExpensesModal: false,
+      selectedTimeSheetRow: {},
+      selectedExpenseRow: {},
+      expensesModalMode: "edit",
       selectedRow: {},
       TIME_SHEET_STATE
     };
@@ -283,14 +277,21 @@ export default {
           this.totalRows = totalDocs;
         });
     },
+    timeSheetWeek() {
+      return row => {
+        if (row && row.type === "timesheet") {
+          return row.timeSheetData.weekNumber;
+        }
+
+        return "";
+      };
+    },
     summedHours() {
       return row => {
         if (row && row.type === "timesheet") {
           return row.timeSheetData.totalHours.toString();
         }
-        if (row && row.type === "expense") {
-          return row.expenseData.hoursWorked.toString();
-        }
+
         return "";
       };
     },
@@ -311,9 +312,23 @@ export default {
       };
     },
     onRowClick(prop) {
-      this.selectedRow = prop.row;
       if (prop.row.type === "timesheet") {
+        this.selectedTimeSheetRow = prop.row;
         this.showTimeSheetsModal = true;
+
+        this.selectedExpenseRow = {
+          expenseData: {
+            amount: "",
+            attachments: [],
+            commentDescription: "",
+            category: "other"
+          }
+        };
+      }
+      if (prop.row.type === "expense") {
+        this.expensesModalMode = "edit";
+        this.selectedExpenseRow = prop.row;
+        this.showExpensesModal = true;
       }
     },
     onPageChange(e) {

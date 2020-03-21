@@ -64,9 +64,22 @@
 }
 
 .modal-add-expenses {
-  .row .col span:first-child {
-    display: inline-block;
-    width: 100px;
-    text-align: right;
+  .row .col {
+    display: flex;
+    align-items: center;
+
+    span:first-child {
+      display: inline-block;
+      width: 120px;
+      text-align: right;
+    }
+
+    label.file-selector {
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+    }
   }
 }
