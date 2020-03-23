@@ -40,24 +40,33 @@
 
     <b-card no-body class="mb-2">
       <div style="padding: 20px; border-bottom: 1px solid #ececec;">
-        <b-dropdown
-          :text="`Week ${selectedWeekNumber}`"
-          variant="transparent"
-          menu-class="week-number-menu"
-          toggle-class="week-number-toggle"
-          v-model="selectedWeekNumber"
-          disabled
-        >
-          <b-dropdown-item
-            v-for="weekNumber in Array(52)
-              .fill()
-              .map((i, idx) => idx)"
-            :key="weekNumber"
-            @click="selectedWeekNumber = weekNumber"
-          >
-            {{ $t("page_timesheets.modal.week") }} {{ weekNumber }}
-          </b-dropdown-item>
-        </b-dropdown>
+        <span class="color-blue mr-3">
+          Week:
+        </span>
+        <b-input
+            class="d-inline-block"
+            style="width: 175px;"
+            :value="selectedWeekNumber"
+            disabled
+        />
+<!--        <b-dropdown-->
+<!--          :text="`Week ${selectedWeekNumber}`"-->
+<!--          variant="transparent"-->
+<!--          menu-class="week-number-menu"-->
+<!--          toggle-class="week-number-toggle"-->
+<!--          v-model="selectedWeekNumber"-->
+<!--          disabled-->
+<!--        >-->
+<!--          <b-dropdown-item-->
+<!--            v-for="weekNumber in Array(52)-->
+<!--              .fill()-->
+<!--              .map((i, idx) => idx)"-->
+<!--            :key="weekNumber"-->
+<!--            @click="selectedWeekNumber = weekNumber"-->
+<!--          >-->
+<!--            {{ $t("page_timesheets.modal.week") }} {{ weekNumber }}-->
+<!--          </b-dropdown-item>-->
+<!--        </b-dropdown>-->
       </div>
       <div>
         <div
