@@ -55,6 +55,15 @@ export default {
       reject
     );
   },
+  downloadAttachment(params, resolve, reject = null) {
+    return request(
+      "get",
+      `/jobs/${params.companyId}/${params.id}/attachment/${params.attachmentId}/download`,
+      params,
+      resolve,
+      reject
+    );
+  },
   deleteAttachment(params, resolve, reject = null) {
     return request(
       "delete",
