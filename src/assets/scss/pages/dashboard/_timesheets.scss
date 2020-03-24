@@ -73,6 +73,10 @@
   .table-body {
     .table-row {
       border-bottom: solid 1px #ececec;
+      &:nth-child(2n) {
+        background-color: rgba(245, 246, 251, 0.41);
+      }
+
       & > div {
         height: 62px;
         font-size: 18px;
@@ -112,9 +116,14 @@
       align-items: center;
       height: 62px;
       font-size: 18px;
-      font-weight: bold;
-      color: #272727;
     }
+  }
+  .empress {
+    font-weight: bold;
+    color: #272727;
+  }
+  .conclusion {
+    font-size: 18px;
   }
   .week-number-menu {
     max-height: 240px;

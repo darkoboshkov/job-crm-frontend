@@ -153,13 +153,13 @@
         <div
                 class="d-flex justify-content-between align-items-center table-footer"
         >
-          <div class="flex-1">
+          <div class="flex-1 empress">
             Total
           </div>
-          <div>
+          <div class="empress">
             {{ totalNormalWageHours }} hours
           </div>
-          <div>
+          <div class="empress">
             {{ totalAdjustedWageHours }} hours
           </div>
           <div>
@@ -168,7 +168,7 @@
           <div>
 
           </div>
-          <div>
+          <div class="empress">
             {{ totalTraveledKm }} km
           </div>
         </div>
@@ -177,13 +177,12 @@
 
     <b-card class="mb-3 timesheet-contractors">
       <div class="d-flex justify-content-between align-items-center">
-        <div class="d-inline-block">
-          {{
-            $t("page_timesheets.modal.worked_total_hours", {
-              selectedWeekNumber: this.selectedWeekNumber,
-              totalHours: this.totalHours
-            })
-          }}
+        <div class="d-inline-block conclusion">
+          {{ $t("page_timesheets.modal.worked_overview_1") }}
+          <span class="empress">{{ $t("page_timesheets.modal.worked_overview_2") }} {{ selectedWeekNumber }}</span>
+          {{ $t("page_timesheets.modal.worked_overview_3") }}
+          <span class="empress">{{ totalHours }} {{ $t("page_timesheets.modal.worked_overview_4") }}</span>
+          {{ $t("page_timesheets.modal.worked_overview_5") }}.
         </div>
         <div class="d-inline-block">
           <template

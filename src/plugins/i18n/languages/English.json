@@ -917,7 +917,11 @@
       "approve_hours": "Approve hours",
       "decline_hours": "Decline hours",
       "adjust_hours": "Adjust Hours",
-      "worked_total_hours": "In week {selectedWeekNumber} you worked a total of {totalHours} hours.",
+      "worked_overview_1": "In",
+      "worked_overview_2": "week",
+      "worked_overview_3": "you worked a total of",
+      "worked_overview_4": "hours",
+      "worked_overview_5": "",
       "delete_confirm": {
         "title": "Are you sure you want to {method} this {type}?",
         "sub_title": "",
