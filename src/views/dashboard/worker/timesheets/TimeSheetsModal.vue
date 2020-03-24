@@ -44,35 +44,37 @@
           Week:
         </span>
         <b-input
-            class="d-inline-block"
-            style="width: 175px;"
-            :value="selectedWeekNumber"
-            disabled
+          class="d-inline-block"
+          style="width: 175px;"
+          :value="selectedWeekNumber"
+          disabled
         />
-<!--        <b-dropdown-->
-<!--          :text="`Week ${selectedWeekNumber}`"-->
-<!--          variant="transparent"-->
-<!--          menu-class="week-number-menu"-->
-<!--          toggle-class="week-number-toggle"-->
-<!--          v-model="selectedWeekNumber"-->
-<!--          disabled-->
-<!--        >-->
-<!--          <b-dropdown-item-->
-<!--            v-for="weekNumber in Array(52)-->
-<!--              .fill()-->
-<!--              .map((i, idx) => idx)"-->
-<!--            :key="weekNumber"-->
-<!--            @click="selectedWeekNumber = weekNumber"-->
-<!--          >-->
-<!--            {{ $t("page_timesheets.modal.week") }} {{ weekNumber }}-->
-<!--          </b-dropdown-item>-->
-<!--        </b-dropdown>-->
+        <!--        <b-dropdown-->
+        <!--          :text="`Week ${selectedWeekNumber}`"-->
+        <!--          variant="transparent"-->
+        <!--          menu-class="week-number-menu"-->
+        <!--          toggle-class="week-number-toggle"-->
+        <!--          v-model="selectedWeekNumber"-->
+        <!--          disabled-->
+        <!--        >-->
+        <!--          <b-dropdown-item-->
+        <!--            v-for="weekNumber in Array(52)-->
+        <!--              .fill()-->
+        <!--              .map((i, idx) => idx)"-->
+        <!--            :key="weekNumber"-->
+        <!--            @click="selectedWeekNumber = weekNumber"-->
+        <!--          >-->
+        <!--            {{ $t("page_timesheets.modal.week") }} {{ weekNumber }}-->
+        <!--          </b-dropdown-item>-->
+        <!--        </b-dropdown>-->
       </div>
       <div class="custom-table">
         <div
           class="d-flex justify-content-between align-items-center table-header"
         >
-          <div class="flex-1 d-flex align-items-center">{{ $t("page_timesheets.modal.date") }}</div>
+          <div class="flex-1 d-flex align-items-center">
+            {{ $t("page_timesheets.modal.date") }}
+          </div>
           <div>
             {{ $t("page_timesheets.modal.hours") }}
             <div class="text-small">
@@ -103,74 +105,64 @@
         </div>
         <div class="table-body">
           <div
-                  class="d-flex justify-content-between align-items-center table-row"
-                  v-for="d in daysOfSelectedWeek"
-                  :key="d.date"
+            class="d-flex justify-content-between align-items-center table-row"
+            v-for="d in daysOfSelectedWeek"
+            :key="d.date"
           >
             <div class="flex-1">{{ d.date | dateFormatter }}</div>
             <div style="width: 100px;">
               <b-input
-                      type="number"
-                      style="width: 60px;"
-                      :disabled="inputDisabled"
-                      v-model="d.normalWageHours"
+                type="number"
+                style="width: 60px;"
+                :disabled="inputDisabled"
+                v-model="d.normalWageHours"
               />
             </div>
             <div style="width: 100px;">
               <b-input
-                      type="number"
-                      style="width: 60px;"
-                      :disabled="inputDisabled"
-                      v-model="d.adjustedWageHours"
+                type="number"
+                style="width: 60px;"
+                :disabled="inputDisabled"
+                v-model="d.adjustedWageHours"
               />
             </div>
             <div style="width: 100px;">
               <b-input
-                      type="number"
-                      style="width: 60px;"
-                      :disabled="inputDisabled"
-                      v-model="d.percentOfAdjustedWage"
+                type="number"
+                style="width: 60px;"
+                :disabled="inputDisabled"
+                v-model="d.percentOfAdjustedWage"
               />
             </div>
             <div style="width: 80px;">
               <b-check
-                      switch
-                      size="lg"
-                      :disabled="inputDisabled"
-                      v-model="d.isTravelExpense"
+                switch
+                size="lg"
+                :disabled="inputDisabled"
+                v-model="d.isTravelExpense"
               />
             </div>
             <div class="d-flex align-items-center" style="width: 200px;">
               <b-input
-                      type="number"
-                      style="width: 60px; margin-right: 0.5rem;"
-                      :disabled="inputDisabled"
-                      v-model="d.distanceTraveled"
+                type="number"
+                style="width: 60px; margin-right: 0.5rem;"
+                :disabled="inputDisabled"
+                v-model="d.distanceTraveled"
               />km
             </div>
           </div>
         </div>
         <div
-                class="d-flex justify-content-between align-items-center table-footer"
+          class="d-flex justify-content-between align-items-center table-footer"
         >
           <div class="flex-1 empress">
             Total
           </div>
-          <div class="empress">
-            {{ totalNormalWageHours }} hours
-          </div>
-          <div class="empress">
-            {{ totalAdjustedWageHours }} hours
-          </div>
-          <div>
-
-          </div>
-          <div>
-
-          </div>
-          <div class="empress">
-            {{ totalTraveledKm }} km
-          </div>
+          <div class="empress">{{ totalNormalWageHours }} hours</div>
+          <div class="empress">{{ totalAdjustedWageHours }} hours</div>
+          <div></div>
+          <div></div>
+          <div class="empress">{{ totalTraveledKm }} km</div>
         </div>
       </div>
     </b-card>
@@ -179,9 +171,15 @@
       <div class="d-flex justify-content-between align-items-center">
         <div class="d-inline-block conclusion">
           {{ $t("page_timesheets.modal.worked_overview_1") }}
-          <span class="empress">{{ $t("page_timesheets.modal.worked_overview_2") }} {{ selectedWeekNumber }}</span>
+          <span class="empress"
+            >{{ $t("page_timesheets.modal.worked_overview_2") }}
+            {{ selectedWeekNumber }}</span
+          >
           {{ $t("page_timesheets.modal.worked_overview_3") }}
-          <span class="empress">{{ totalHours }} {{ $t("page_timesheets.modal.worked_overview_4") }}</span>
+          <span class="empress"
+            >{{ totalHours }}
+            {{ $t("page_timesheets.modal.worked_overview_4") }}</span
+          >
           {{ $t("page_timesheets.modal.worked_overview_5") }}.
         </div>
         <div class="d-inline-block">

@@ -432,9 +432,9 @@
                             class="hiway-crm-icon icon-more-vertical color-black"
                           />
                         </template>
-<!--                        <b-dropdown-item @click="viewFile(attachment)">-->
-<!--                          {{ $t("page_job_detail.view_file") }}-->
-<!--                        </b-dropdown-item>-->
+                        <!--                        <b-dropdown-item @click="viewFile(attachment)">-->
+                        <!--                          {{ $t("page_job_detail.view_file") }}-->
+                        <!--                        </b-dropdown-item>-->
                         <b-dropdown-item @click="downloadFile(attachment)">
                           {{ $t("page_job_detail.download_file") }}
                         </b-dropdown-item>
@@ -532,18 +532,20 @@ export default {
       console.log(attachment);
     },
     downloadFile(attachment) {
-      jobsApi.downloadAttachment({
-        companyId: this.companyId,
-        id: this.jobId,
-        attachmentId: attachment._id
-      }).then(res => {
-        const fileURL = window.URL.createObjectURL(new Blob([res]));
-        const fileLink = document.createElement('a');
-        fileLink.href = fileURL;
-        fileLink.setAttribute('download', attachment.name);
-        document.body.appendChild(fileLink);
-        fileLink.click();
-      });
+      jobsApi
+        .downloadAttachment({
+          companyId: this.companyId,
+          id: this.jobId,
+          attachmentId: attachment._id
+        })
+        .then(res => {
+          const fileURL = window.URL.createObjectURL(new Blob([res]));
+          const fileLink = document.createElement("a");
+          fileLink.href = fileURL;
+          fileLink.setAttribute("download", attachment.name);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        });
     },
     getCompanies() {
       return companiesApi.getAll().then(res => {
