@@ -5,7 +5,7 @@
     :hide-footer="true"
     :hide-header="true"
     centered
-    modal-class="modal-add-hours"
+    modal-class="modal-timesheet"
     v-model="showModal"
   >
     <h2 class="color-red py-4">
@@ -141,7 +141,7 @@
       </div>
     </b-card>
 
-    <b-card class="mb-2">
+    <b-card class="mb-3 timesheet-contractors">
       <div class="d-flex justify-content-between align-items-center">
         <div class="d-inline-block">
           {{

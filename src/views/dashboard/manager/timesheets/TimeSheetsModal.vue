@@ -5,13 +5,13 @@
     :hide-footer="true"
     :hide-header="true"
     centered
-    modal-class="modal-add-hours"
+    modal-class="modal-timesheet"
     v-model="showModal"
   >
     <h2 class="color-red py-4">
       {{ $t("page_timesheets.modal.add_hours") }}
     </h2>
-    <b-card class="mb-2">
+    <b-card class="mb-2 timesheet-contractors">
       <div class="d-flex justify-content-between">
         <div class="d-inline-block">
           <span class="color-blue mr-3">

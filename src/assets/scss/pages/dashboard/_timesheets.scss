@@ -50,7 +50,12 @@
   }
 }
 
-.modal-add-hours {
+.modal-timesheet {
+  .timesheet-contractors {
+    .card-body {
+      padding: 1rem 2rem;
+    }
+  }
   .week-number-menu {
     max-height: 240px;
     overflow-y: scroll;
