@@ -57,9 +57,53 @@
     }
   }
   .table-header {
-    padding: 12px 20px;
     border-bottom: 1px solid #ececec;
     background-color: #f5f6fb;
+    & > div {
+      height: 72px;
+      font-size: 18px;
+      color: #272727;
+
+      .text-small {
+        font-size: 12px;
+        color: rgba(39, 39, 39, 0.5);
+      }
+    }
+  }
+  .table-body {
+    .table-row {
+      border-bottom: solid 1px #ececec;
+      & > div {
+        height: 62px;
+        font-size: 18px;
+        color: #272727;
+
+        &:first-child {
+          display: flex;
+          align-items: center;
+        }
+
+        .text-small {
+          font-size: 12px;
+          color: rgba(39, 39, 39, 0.5);
+        }
+      }
+    }
+  }
+  .table-header, .table-body .table-row {
+    & > div {
+      padding: 12px 20px;
+
+      &:not(:first-child) {
+        width: 135px;
+      }
+      &:last-child {
+        width: 250px;
+      }
+      &:not(:last-child) {
+        border-right: solid 1px #ececec;
+      }
+    }
   }
   .week-number-menu {
     max-height: 240px;

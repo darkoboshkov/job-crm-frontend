@@ -1,7 +1,7 @@
 <template>
   <b-modal
     ref="modal-time-sheets"
-    size="lg"
+    size="xl"
     :hide-footer="true"
     :hide-header="true"
     centered
@@ -68,73 +68,78 @@
 <!--          </b-dropdown-item>-->
 <!--        </b-dropdown>-->
       </div>
-      <div>
+      <div class="table">
         <div
           class="d-flex justify-content-between align-items-center table-header"
         >
           <div class="flex-1">{{ $t("page_timesheets.modal.date") }}</div>
-          <div style="width: 100px;">
-            {{ $t("page_timesheets.modal.hours") }}
+          <div>
+            {{ $t("page_timesheets.modal.hours") }}<br/>
+            <div class="text-small">Normal Wage</div>
           </div>
-          <div style="width: 100px;">
+          <div>
             {{ $t("page_timesheets.modal.hours") }}
+            <div class="text-small">Adjusted Wage</div>
           </div>
-          <div style="width: 100px;">
+          <div>
             {{ $t("page_timesheets.modal.percentage") }}
+            <div class="text-small">Adjusted Wage</div>
           </div>
-          <div style="width: 80px;">
+          <div>
             {{ $t("page_timesheets.modal.travel_expenses") }}
           </div>
-          <div style="width: 200px;">
+          <div>
             {{ $t("page_timesheets.modal.adjust_travel_expenses") }}
+            <div class="text-small">Fill in total traveled km</div>
           </div>
         </div>
-        <div
-          class="d-flex justify-content-between align-items-center"
-          style="padding: 12px 20px;"
-          v-for="d in daysOfSelectedWeek"
-          :key="d.date"
-        >
-          <div class="flex-1">{{ d.date | dateFormatter }}</div>
-          <div style="width: 100px;">
-            <b-input
-              type="number"
-              style="width: 60px;"
-              :disabled="inputDisabled"
-              v-model="d.normalWageHours"
-            />
-          </div>
-          <div style="width: 100px;">
-            <b-input
-              type="number"
-              style="width: 60px;"
-              :disabled="inputDisabled"
-              v-model="d.adjustedWageHours"
-            />
-          </div>
-          <div style="width: 100px;">
-            <b-input
-              type="number"
-              style="width: 60px;"
-              :disabled="inputDisabled"
-              v-model="d.percentOfAdjustedWage"
-            />
-          </div>
-          <div style="width: 80px;">
-            <b-check
-              switch
-              size="lg"
-              :disabled="inputDisabled"
-              v-model="d.isTravelExpense"
-            />
-          </div>
-          <div class="d-flex align-items-center" style="width: 200px;">
-            <b-input
-              type="number"
-              style="width: 60px; margin-right: 0.5rem;"
-              :disabled="inputDisabled"
-              v-model="d.distanceTraveled"
-            />km
+        <div class="table-body">
+          <div
+                  class="d-flex justify-content-between align-items-center table-row"
+                  v-for="d in daysOfSelectedWeek"
+                  :key="d.date"
+          >
+            <div class="flex-1 d-flex align-items-center">{{ d.date | dateFormatter }}</div>
+            <div style="width: 100px;">
+              <b-input
+                      type="number"
+                      style="width: 60px;"
+                      :disabled="inputDisabled"
+                      v-model="d.normalWageHours"
+              />
+            </div>
+            <div style="width: 100px;">
+              <b-input
+                      type="number"
+                      style="width: 60px;"
+                      :disabled="inputDisabled"
+                      v-model="d.adjustedWageHours"
+              />
+            </div>
+            <div style="width: 100px;">
+              <b-input
+                      type="number"
+                      style="width: 60px;"
+                      :disabled="inputDisabled"
+                      v-model="d.percentOfAdjustedWage"
+              />
+            </div>
+            <div style="width: 80px;">
+              <b-check
+                      switch
+                      size="lg"
+                      :disabled="inputDisabled"
+                      v-model="d.isTravelExpense"
+              />
+            </div>
+            <div class="d-flex align-items-center" style="width: 200px;">
+              <b-input
+                      type="number"
+                      style="width: 60px; margin-right: 0.5rem;"
+                      :disabled="inputDisabled"
+                      v-model="d.distanceTraveled"
+              />km
+            </div>
           </div>
         </div>
       </div>
