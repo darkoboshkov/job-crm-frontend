@@ -75,7 +75,7 @@
         <div
           class="d-flex justify-content-between align-items-center table-header"
         >
-          <div class="flex-1 d-flex align-items-center">
+          <div class="flex-1 fw-500">
             {{ $t("page_timesheets.modal.date") }}
           </div>
           <div>
@@ -115,7 +115,7 @@
             <div class="flex-1 d-flex align-items-center">
               {{ d.date | dateFormatter }}
             </div>
-            <div style="width: 100px;">
+            <div>
               <b-input
                 type="text"
                 style="width: 60px;"
@@ -123,7 +123,7 @@
                 v-model="d.normalWageHours"
               />
             </div>
-            <div style="width: 100px;">
+            <div>
               <b-input
                 type="text"
                 style="width: 60px;"
@@ -131,7 +131,7 @@
                 v-model="d.adjustedWageHours"
               />
             </div>
-            <div style="width: 100px;">
+            <div>
               <b-input
                 type="text"
                 style="width: 60px;"
@@ -139,7 +139,7 @@
                 v-model="d.percentOfAdjustedWage"
               />
             </div>
-            <div style="width: 80px;">
+            <div class='d-flex align-items-center'>
               <b-check
                 switch
                 size="lg"
@@ -147,9 +147,10 @@
                 v-model="d.isTravelExpense"
               />
             </div>
-            <div class="d-flex align-items-center" style="width: 200px;">
+            <div>
               <b-input
                 type="text"
+                class='d-inline-block'
                 style="width: 60px; margin-right: 0.5rem;"
                 :disabled="inputDisabled"
                 v-model="d.distanceTraveled"
