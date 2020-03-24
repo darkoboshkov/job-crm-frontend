@@ -917,6 +917,7 @@
       "approve_hours": "Approve hours",
       "decline_hours": "Decline hours",
       "adjust_hours": "Adjust Hours",
+      "through": "From {from} to {to}",
       "worked_overview_1": "In",
       "worked_overview_2": "week",
       "worked_overview_3": "you worked a total of",

@@ -67,6 +67,9 @@
         <!--            {{ $t("page_timesheets.modal.week") }} {{ weekNumber }}-->
         <!--          </b-dropdown-item>-->
         <!--        </b-dropdown>-->
+        <span class='through'>
+          {{ $t("page_timesheets.modal.through", {from: daysOfSelectedWeek[0] && getISODateString(daysOfSelectedWeek[0].date), to: daysOfSelectedWeek[6] && getISODateString(daysOfSelectedWeek[6].date)}) }}
+        </span>
       </div>
       <div class="custom-table">
         <div
