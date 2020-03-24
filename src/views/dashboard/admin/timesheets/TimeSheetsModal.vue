@@ -70,8 +70,7 @@
       </div>
       <div>
         <div
-          class="d-flex justify-content-between align-items-center"
-          style="padding: 12px 20px; border-bottom: 1px solid #ececec;"
+          class="d-flex justify-content-between align-items-center table-header"
         >
           <div class="flex-1">{{ $t("page_timesheets.modal.date") }}</div>
           <div style="width: 100px;">
@@ -86,7 +85,7 @@
           <div style="width: 80px;">
             {{ $t("page_timesheets.modal.travel_expenses") }}
           </div>
-          <div style="width: 100px;">
+          <div style="width: 200px;">
             {{ $t("page_timesheets.modal.adjust_travel_expenses") }}
           </div>
         </div>
@@ -129,7 +128,7 @@
               v-model="d.isTravelExpense"
             />
           </div>
-          <div class="d-flex align-items-center" style="width: 100px;">
+          <div class="d-flex align-items-center" style="width: 200px;">
             <b-input
               type="number"
               style="width: 60px; margin-right: 0.5rem;"
