@@ -112,7 +112,7 @@
             <div class="flex-1">{{ d.date | dateFormatter }}</div>
             <div style="width: 100px;">
               <b-input
-                type="number"
+                type="text"
                 style="width: 60px;"
                 :disabled="inputDisabled"
                 v-model="d.normalWageHours"
@@ -120,7 +120,7 @@
             </div>
             <div style="width: 100px;">
               <b-input
-                type="number"
+                type="text"
                 style="width: 60px;"
                 :disabled="inputDisabled"
                 v-model="d.adjustedWageHours"
@@ -128,7 +128,7 @@
             </div>
             <div style="width: 100px;">
               <b-input
-                type="number"
+                type="text"
                 style="width: 60px;"
                 :disabled="inputDisabled"
                 v-model="d.percentOfAdjustedWage"
@@ -144,7 +144,7 @@
             </div>
             <div class="d-flex align-items-center" style="width: 200px;">
               <b-input
-                type="number"
+                type="text"
                 style="width: 60px; margin-right: 0.5rem;"
                 :disabled="inputDisabled"
                 v-model="d.distanceTraveled"

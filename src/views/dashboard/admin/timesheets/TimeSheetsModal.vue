@@ -114,7 +114,7 @@
             </div>
             <div>
               <b-input
-                type="number"
+                type="text"
                 style="width: 60px;"
                 :disabled="inputDisabled"
                 v-model="d.normalWageHours"
@@ -122,7 +122,7 @@
             </div>
             <div>
               <b-input
-                type="number"
+                type="text"
                 style="width: 60px;"
                 :disabled="inputDisabled"
                 v-model="d.adjustedWageHours"
@@ -130,7 +130,7 @@
             </div>
             <div>
               <b-input
-                type="number"
+                type="text"
                 style="width: 60px;"
                 :disabled="inputDisabled"
                 v-model="d.percentOfAdjustedWage"
@@ -146,7 +146,7 @@
             </div>
             <div class="d-flex align-items-center">
               <b-input
-                type="number"
+                type="text"
                 style="width: 60px; margin-right: 0.5rem;"
                 :disabled="inputDisabled"
                 v-model="d.distanceTraveled"
