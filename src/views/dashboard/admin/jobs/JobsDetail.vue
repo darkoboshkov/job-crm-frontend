@@ -120,7 +120,11 @@
                       {{ $t("page_job_detail.form.wage") }}
                     </span>
                     <div class="pull-right">
-                      <b-input v-if="editJob" v-model="model.wage" />
+                      <b-input
+                        v-if="editJob"
+                        type="number"
+                        v-model="model.wage"
+                      />
                       <div v-else>
                         {{ model.wage }}
                       </div>
@@ -133,7 +137,11 @@
                       {{ $t("page_job_detail.form.hourly_wage") }}
                     </span>
                     <div class="pull-right">
-                      <b-input v-if="editJob" v-model="model.hourlyWage" />
+                      <b-input
+                        v-if="editJob"
+                        type="number"
+                        v-model="model.hourlyWage"
+                      />
                       <div v-else>
                         {{ model.hourlyWage }}
                       </div>
@@ -146,7 +154,11 @@
                       {{ $t("page_job_detail.form.rate") }}
                     </span>
                     <div>
-                      <b-input v-if="editJob" v-model="model.payRate" />
+                      <b-input
+                        v-if="editJob"
+                        type="number"
+                        v-model="model.payRate"
+                      />
                       <div v-else>
                         {{ model.payRate }}
                       </div>
@@ -432,9 +444,9 @@
                             class="hiway-crm-icon icon-more-vertical color-black"
                           />
                         </template>
-<!--                        <b-dropdown-item @click="viewFile(attachment)">-->
-<!--                          {{ $t("page_job_detail.view_file") }}-->
-<!--                        </b-dropdown-item>-->
+                        <!--                        <b-dropdown-item @click="viewFile(attachment)">-->
+                        <!--                          {{ $t("page_job_detail.view_file") }}-->
+                        <!--                        </b-dropdown-item>-->
                         <b-dropdown-item @click="downloadFile(attachment)">
                           {{ $t("page_job_detail.download_file") }}
                         </b-dropdown-item>
@@ -532,18 +544,20 @@ export default {
       console.log(attachment);
     },
     downloadFile(attachment) {
-      jobsApi.downloadAttachment({
-        companyId: this.companyId,
-        id: this.jobId,
-        attachmentId: attachment._id
-      }).then(res => {
-        const fileURL = window.URL.createObjectURL(new Blob([res]));
-        const fileLink = document.createElement('a');
-        fileLink.href = fileURL;
-        fileLink.setAttribute('download', attachment.name);
-        document.body.appendChild(fileLink);
-        fileLink.click();
-      });
+      jobsApi
+        .downloadAttachment({
+          companyId: this.companyId,
+          id: this.jobId,
+          attachmentId: attachment._id
+        })
+        .then(res => {
+          const fileURL = window.URL.createObjectURL(new Blob([res]));
+          const fileLink = document.createElement("a");
+          fileLink.href = fileURL;
+          fileLink.setAttribute("download", attachment.name);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        });
     },
     getCompanies() {
       return companiesApi.getAll().then(res => {

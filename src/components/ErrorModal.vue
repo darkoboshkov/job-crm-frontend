@@ -18,7 +18,7 @@
       <button class="btn btn-black mr-3" @click="showErrorModal = false">
         {{ $t("common.cancel") }}
       </button>
-      <button class="btn btn-blue" @click="onButtonClick">
+      <button v-if="button" class="btn btn-blue" @click="onButtonClick">
         {{ button }}
       </button>
     </div>

@@ -715,12 +715,12 @@
       "subject10": "Artikel 7. Functie aard werkzaamheden",
       "description10": "De uitzendkracht zal in de functie van {jobTitle} bij de opdrachtgever de volgende werkzaamheden verrichten: alle voorkomende werkzaamheden. De uitzendkracht verklaart tevens dat hij/zij geen gegevens van welke aard dan ook te hebben verzwegen die het aanvaarden van deze aanstelling in de functie van {jobTitle}. in de weg zouden kunnen staan.",
       "subject11": "Artikel. 8 Loon, toeslagen, vergoedingen en inhoudingen",
-      "description11_1": "1. Deze cao/beloningsregeling is van toepassing:",
-      "description11_2": "2. Het bruto feitelijk (uur)loon bedraagt: ",
-      "description11_3": "3. De van toepassing zijnde toeslagen voor overwerk, onregelmatigheid, ploegen, fysieke omstandigheden, feestdagen en/of verschoven uren bedragen:",
-      "description11_4": "4. De van toepassing zijnde vergoedingen bedragen: €0,19 per kilometer.",
-      "description11_5": "5. De van toepassing zijnde inhoudingen waarvoor u middels ondertekening toestemming voor geeft bedragen: n.v.t.",
-      "description11_6": "6. Indien bekend, de initiële loonsverhoging: conform CAO",
+      "description11_1": "Deze cao/beloningsregeling is van toepassing:",
+      "description11_2": "Het bruto feitelijk (uur)loon bedraagt:",
+      "description11_3": "De van toepassing zijnde toeslagen voor overwerk, onregelmatigheid, ploegen, fysieke omstandigheden, feestdagen en/of verschoven uren bedragen:",
+      "description11_4": "De van toepassing zijnde vergoedingen bedragen:",
+      "description11_5": "De van toepassing zijnde inhoudingen waarvoor u middels ondertekening toestemming voor geeft bedragen: n.v.t.",
+      "description11_6": "Indien bekend, de initiële loonsverhoging: conform CAO",
       "description11_7": "De uitzendkracht kan aan meerdere opdrachtgevers ter beschikking worden gesteld. Indien de uitzendkracht aan een andere opdrachtgever ter beschikking wordt gesteld, dan kan dit ertoe leiden dat bovenstaande arbeidsvoorwaarden worden aangepast. De uitzendonderneming zal de aangepaste arbeidsvoorwaarden schriftelijk aan de uitzendkracht bevestigen.",
       "description11_8": "Uitsluitend de uitzendonderneming en nooit de opdrachtgever is loon verschuldigd aan de uitzendkracht.",
       "description11_9": "Middels ondertekening van deze overeenkomst verzoekt de uitzendkracht de uitzendonderneming om de loonheffingskorting toe te passen. De ingangsdatum voor het toepassen van de loonheffingskorting is gelijk aan de startdatum conform deze overeenkomst. Mocht de uitzendkracht hiervan willen afwijken moet hij/zij een loonbelastingverklaring formulier aanleveren waarop staat dat hij geen loonheffingskorting wil toepassen.",
@@ -1009,6 +1009,13 @@
       "status": "Status",
       "view_offer": "View Job Offer",
       "actions": "Actions"
+    },
+    "modal": {
+      "disallow": {
+        "title": "You can't access to the page",
+        "sub_title": "Manager is currently editing the job offer details",
+        "continue": "Continue"
+      }
     }
   },
   "page_welcome": {

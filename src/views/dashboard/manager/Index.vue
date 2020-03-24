@@ -12,14 +12,11 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col md="4">
-          <Positions
-            v-if="positionItem"
-            v-on:hide-position-card="hidePositionCard"
-          />
+        <b-col md="4" v-if="positionItem">
+          <Positions v-on:hide-position-card="hidePositionCard" />
         </b-col>
-        <b-col md="4">
-          <Users v-if="usersItem" v-on:hide-users-card="hideUsersCard" />
+        <b-col md="4" v-if="usersItem">
+          <Users v-on:hide-users-card="hideUsersCard" />
         </b-col>
       </b-row>
     </div>
@@ -28,7 +25,7 @@
         <h2>
           {{ $t("page_dashboard.modal.adjust.title") }}
         </h2>
-        <b-button>{{ $t("common.save") }}</b-button>
+        <b-button @click="close">{{ $t("common.save") }}</b-button>
       </template>
       <div>
         <ul class="custom-list">
@@ -91,7 +88,7 @@ export default {
       this.positionItem = false;
     },
     hideUsersCard: function() {
-      this.positionItem = false;
+      this.usersItem = false;
     }
   }
 };

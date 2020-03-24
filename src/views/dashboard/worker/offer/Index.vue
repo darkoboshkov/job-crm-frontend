@@ -147,6 +147,15 @@ export default {
       }
     },
     goToOffer(props) {
+      if (props.row.status === "open") {
+        this.$store.dispatch("updateShowErrorModal", true);
+        this.$store.dispatch("updateErrorModalContent", {
+          title: this.$t("page_offers.modal.disallow.title"),
+          subTitle: this.$t("page_offers.modal.disallow.sub_title"),
+          button: ""
+        });
+        return false;
+      }
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}`);
       }

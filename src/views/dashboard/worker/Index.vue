@@ -12,11 +12,8 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col md="6">
-          <Positions
-            v-if="positionItem"
-            v-on:hide-position-card="hidePositionCard"
-          />
+        <b-col md="6" v-if="positionItem">
+          <Positions v-on:hide-position-card="hidePositionCard" />
         </b-col>
       </b-row>
     </div>
@@ -25,7 +22,7 @@
         <h2>
           {{ $t("page_dashboard.modal.adjust.title") }}
         </h2>
-        <b-button>{{ $t("common.save") }}</b-button>
+        <b-button @click="close">{{ $t("common.save") }}</b-button>
       </template>
       <div>
         <ul class="custom-list">

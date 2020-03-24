@@ -83,7 +83,11 @@
                       {{ $t("page_job_detail.form.wage") }}
                     </span>
                     <div class="pull-right">
-                      <b-input v-if="editJob" v-model="model.wage" />
+                      <b-input
+                        v-if="editJob"
+                        type="number"
+                        v-model="model.wage"
+                      />
                       <div v-else>
                         {{ model.wage }}
                       </div>
@@ -96,7 +100,11 @@
                       {{ $t("page_job_detail.form.hourly_wage") }}
                     </span>
                     <div class="pull-right">
-                      <b-input v-if="editJob" v-model="model.hourlyWage" />
+                      <b-input
+                        v-if="editJob"
+                        type="number"
+                        v-model="model.hourlyWage"
+                      />
                       <div v-else>
                         {{ model.hourlyWage }}
                       </div>
@@ -109,7 +117,11 @@
                       {{ $t("page_job_detail.form.rate") }}
                     </span>
                     <div>
-                      <b-input v-if="editJob" v-model="model.payRate" />
+                      <b-input
+                        v-if="editJob"
+                        type="number"
+                        v-model="model.payRate"
+                      />
                       <div v-else>
                         {{ model.payRate }}
                       </div>

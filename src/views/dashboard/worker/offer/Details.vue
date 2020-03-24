@@ -747,7 +747,7 @@ export default {
   watch: {
     "model.status"(value) {
       if (value === "open") {
-        this.$router.replace("/");
+        this.$router.push({ name: "worker-offers" });
       }
     }
   }

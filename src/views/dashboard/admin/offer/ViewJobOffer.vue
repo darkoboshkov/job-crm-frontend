@@ -193,7 +193,11 @@
       <ul style="padding: 0 0 0 20px; margin: 0;">
         <li style="list-style-type: decimal;">
           {{ $t("page_offer_detail.contract.description11_1") }}
-          {{ offer.CAO && offer.CAO[0] && offer.CAO[0].name }}
+          {{
+            offer.CAO && offer.CAO[0] && offer.CAO[0].name
+              ? offer.CAO[0].name
+              : ""
+          }}
         </li>
         <li style="list-style-type: decimal;">
           {{ $t("page_offer_detail.contract.description11_2") }} €
@@ -204,6 +208,7 @@
         </li>
         <li style="list-style-type: decimal;">
           {{ $t("page_offer_detail.contract.description11_4") }}
+          €{{ offer.travelExpenses }} per kilometer
         </li>
         <li style="list-style-type: decimal;">
           {{ $t("page_offer_detail.contract.description11_5") }}
@@ -293,14 +298,14 @@
           <!--Datum : MANAGERDATETIMESTAMP-->
           {{ $t("page_offer_detail.contract.sign_date") }}
           <template v-if="managerSign">
-            {{ managerSign.signDate | dateFormatter }}
+            {{ managerSign.signDate | dateTimeFormatter }}
           </template>
         </div>
         <div class="col-6">
           <!--Datum : WORKERDATETIMESTAMP-->
           {{ $t("page_offer_detail.contract.sign_date") }}
           <template v-if="workerSign">
-            {{ workerSign.signDate | dateFormatter }}
+            {{ workerSign.signDate | dateTimeFormatter }}
           </template>
         </div>
       </div>

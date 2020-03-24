@@ -3,7 +3,8 @@ import { APP_URL } from "@/constants";
 const timeStringOptions = {
   hour12: false,
   hour: "2-digit",
-  minute: "2-digit"
+  minute: "2-digit",
+  second: "2-digit"
 };
 
 const dateStringOptions = {
