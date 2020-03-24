@@ -50,7 +50,85 @@
   }
 }
 
-.modal-add-hours {
+.modal-timesheet {
+  .timesheet-contractors {
+    .card-body {
+      padding: 1rem 2rem;
+    }
+  }
+  .table-header {
+    border-bottom: 1px solid #ececec;
+    background-color: #f5f6fb;
+    & > div {
+      height: 72px;
+      font-size: 18px;
+      color: #272727;
+
+      .text-small {
+        font-size: 12px;
+        color: rgba(39, 39, 39, 0.5);
+      }
+    }
+  }
+  .table-body {
+    .table-row {
+      border-bottom: solid 1px #ececec;
+      &:nth-child(2n) {
+        background-color: rgba(245, 246, 251, 0.41);
+      }
+
+      & > div {
+        height: 62px;
+        font-size: 18px;
+        color: #272727;
+
+        &:first-child {
+          display: flex;
+          align-items: center;
+        }
+
+        .text-small {
+          font-size: 12px;
+          color: rgba(39, 39, 39, 0.5);
+        }
+      }
+    }
+  }
+  .table-header, .table-body .table-row, .table-footer {
+    & > div {
+      padding: 12px 20px;
+
+      &:not(:first-child) {
+        width: 135px;
+      }
+      &:last-child {
+        width: 250px;
+      }
+      &:not(:last-child) {
+        border-right: solid 1px #ececec;
+      }
+    }
+  }
+  .table-footer {
+    border-top: 1px solid #000;
+    & > div {
+      display: flex;
+      align-items: center;
+      height: 62px;
+      font-size: 18px;
+    }
+  }
+  .empress {
+    font-weight: bold;
+    color: #272727;
+  }
+  .through {
+    margin-left: 2rem;
+    color: rgba(39, 39, 39, 0.3);
+  }
+  .conclusion {
+    font-size: 18px;
+  }
   .week-number-menu {
     max-height: 240px;
     overflow-y: scroll;
