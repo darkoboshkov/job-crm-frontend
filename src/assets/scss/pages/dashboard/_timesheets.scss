@@ -90,7 +90,7 @@
       }
     }
   }
-  .table-header, .table-body .table-row {
+  .table-header, .table-body .table-row, .table-footer {
     & > div {
       padding: 12px 20px;
 
@@ -103,6 +103,17 @@
       &:not(:last-child) {
         border-right: solid 1px #ececec;
       }
+    }
+  }
+  .table-footer {
+    border-top: 1px solid #000;
+    & > div {
+      display: flex;
+      align-items: center;
+      height: 62px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #272727;
     }
   }
   .week-number-menu {

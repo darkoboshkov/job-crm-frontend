@@ -11,7 +11,7 @@
     <h2 class="color-red py-4">
       {{ $t("page_timesheets.modal.add_hours") }}
     </h2>
-    <b-card class="mb-2">
+    <b-card class="mb-3">
       <div class="d-flex justify-content-between">
         <div class="d-inline-block">
           <span class="color-blue mr-3">
@@ -38,7 +38,7 @@
       </div>
     </b-card>
 
-    <b-card no-body class="mb-2">
+    <b-card no-body class="mb-3">
       <div style="padding: 20px; border-bottom: 1px solid #ececec;">
         <span class="color-blue mr-3">
           Week:
@@ -68,7 +68,7 @@
 <!--          </b-dropdown-item>-->
 <!--        </b-dropdown>-->
       </div>
-      <div class="table">
+      <div class="custom-table">
         <div
           class="d-flex justify-content-between align-items-center table-header"
         >
@@ -150,7 +150,28 @@
             </div>
           </div>
         </div>
+        <div
+                class="d-flex justify-content-between align-items-center table-footer"
+        >
+          <div class="flex-1">
+            Total
+          </div>
+          <div>
+            {{ totalNormalWageHours }} hours
+          </div>
+          <div>
+            {{ totalAdjustedWageHours }} hours
+          </div>
+          <div>
 
+          </div>
+          <div>
+
+          </div>
+          <div>
+            {{ totalTraveledKm }} km
+          </div>
+        </div>
       </div>
     </b-card>
 
@@ -278,6 +299,11 @@ export default {
     totalAdjustedWageHours() {
       return this.daysOfSelectedWeek.reduce(function(acc, day) {
         return acc + Number(day.adjustedWageHours);
+      }, 0);
+    },
+    totalTraveledKm() {
+      return this.daysOfSelectedWeek.reduce(function(acc, day) {
+        return acc + Number(day.distanceTraveled);
       }, 0);
     },
     totalHours() {
