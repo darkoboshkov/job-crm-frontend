@@ -52,6 +52,17 @@ const routes = [
     ]
   },
   {
+    path: "/language",
+    component: () => import("../containers/AuthContainer.vue"),
+    children: [
+      {
+        path: "/",
+        name: "language",
+        component: () => import("../views/Language.vue")
+      }
+    ]
+  },
+  {
     path: "*",
     component: () => import("../containers/AuthContainer.vue"),
     children: [
