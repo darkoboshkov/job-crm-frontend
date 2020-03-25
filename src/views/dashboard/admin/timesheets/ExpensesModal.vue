@@ -62,7 +62,7 @@
       <div class="row mb-3">
         <div class="col">
           <span class="mr-3">Category:</span>&nbsp;
-          <b-form-group class="d-inline-block">
+          <b-form-group class="d-inline-block mb-0">
             <b-form-radio
               v-model="model.expenseData.category"
               name="some-radios"
@@ -99,6 +99,8 @@
             class="d-none"
             placeholder="Choose file"
           />
+          <i
+                  class="hiway-crm-icon icon-ul pointer" />
           <div class="d-inline-block w-50 position-relative">
             <b-input
               placeholder="Choose file"
@@ -111,7 +113,8 @@
             <label
               class="position-absolute file-selector"
               for="attachment"
-            ></label>
+            />
+            <i class="hiway-crm-icon icon-upload position-absolute" style="top: 11px;right: 11px;"/>
           </div>
         </div>
       </div>
