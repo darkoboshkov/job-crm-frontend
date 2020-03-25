@@ -61,30 +61,30 @@
   },
   "status": {
     "available": "Available",
-    "unavailable": "Not Available"
+    "unavailable": "Not available"
   },
   "component": {
     "position": {
       "title": "Most recent positions",
-      "view_all": "View All"
+      "view_all": "View al"
     },
     "users": {
       "title": "Most recent workers",
-      "view_all": "View All"
+      "view_all": "View all"
     },
     "companies": {
       "title": "Most recent companies",
-      "view_all": "View All"
+      "view_all": "View all"
     },
     "birthday": {
-      "title": "Upcoming Birthdays"
+      "title": "Upcoming birthdays"
     },
     "message": {
       "title": "Messages"
     },
     "statistics": {
-      "title": "Mail Statistics",
-      "wage_level": "Wage Level",
+      "title": "Mail statistics",
+      "wage_level": "Wage level",
       "performance": "PERFORMANCE",
       "export": "Export"
     },
@@ -92,15 +92,15 @@
       "title": "To-do list today"
     },
     "pending_workers": {
-      "title": "Pending Workers",
+      "title": "Pending workers",
       "sub_title": "We have found {candidates} pending workers",
       "table": {
         "name": "Name",
         "email": "Email",
         "status": "Status",
-        "created_at": "Registered At",
+        "created_at": "Registered at",
         "actions": "Actions",
-        "assign_company": "Assign Company"
+        "assign_company": "Assign company"
       },
       "modal": {
         "delete": {
@@ -109,7 +109,7 @@
           "continue": "Continue"
         },
         "assign": {
-          "title": "Assign Company",
+          "title": "Assign company",
           "sub_title": "Please select a company and click the assign button.",
           "assign": "Assign",
           "cancel": "Cancel"
@@ -120,7 +120,7 @@
   "page_404": {
     "title": "404",
     "sub_title": "Oops, something is going wrong ...",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    "text": "Click the button below to go back to your dashboard",
     "button": {
       "back": "Back to your dashboard"
     }
@@ -128,26 +128,26 @@
   "page_login": {
     "title": "Login",
     "form": {
-      "email": "E-mail Address",
+      "email": "E-mail address",
       "password": "Password",
       "forgot": "Forgot"
     },
     "button": {
       "login": "Login",
-      "create": "Create Account"
+      "create": "Create account"
     }
   },
   "page_signup": {
-    "title": "Sign Up",
+    "title": "Sign up",
     "form": {
-      "first_name": "First Name",
-      "last_name": "Last Name",
-      "email": "E-mail Address",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "E-mail address",
       "password": "Password",
-      "c_password": "Confirm Password"
+      "c_password": "Confirm password"
     },
     "button": {
-      "signup": "Sign Up",
+      "signup": "Sign up",
       "login": "Login"
     }
   },
@@ -155,18 +155,18 @@
     "note": "Please verify your email address to login to Hiway CRM!",
     "text1": "We've just sent an email to your address",
     "text2": "Please check your email and click on the link provided to verify your address.",
-    "text3": "If you haven't received email, request",
-    "resend": "resend",
-    "here": "here."
+    "text3": "If you haven't received an email then click",
+    "resend": "here",
+    "here": "to send a new one."
   },
   "page_accept": {
-    "title": "Accept Invitation",
+    "title": "Accept invitation",
     "form": {
-      "first_name": "First Name",
-      "last_name": "Last Name",
-      "middle_name": "Middle Name",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "middle_name": "Middle name",
       "password": "Password",
-      "c_password": "Confirm Password"
+      "c_password": "Confirm password"
     },
     "button": {
       "accept": "Accept"
@@ -194,7 +194,7 @@
     "title": "Reset my password",
     "form": {
       "password": "Password",
-      "c_password": "confirm Password"
+      "c_password": "confirm password"
     },
     "button": {
       "reset": "Reset password"
@@ -285,30 +285,30 @@
     "privacy15_description1": "If you have any questions (or comments) concerning this Privacy Policy, you are most welcome to send us an email to the following address at support@hiway.io"
   },
   "page_dashboard": {
-    "title": "Your Dashboard",
+    "title": "Your dashboard",
     "button": {
-      "adjust": "Adjust Dashboard"
+      "adjust": "Adjust dashboard"
     },
     "modal": {
       "adjust": {
-        "title": "Adjust Dashboard",
+        "title": "Adjust dashboard",
         "save": "Save",
-        "message_area_title": "Message Area",
-        "message_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        "position_area_title": "Position Area",
-        "position_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        "birthday_area_title": "Birthday Area",
-        "birthday_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        "todo_area_title": "To Do Area",
-        "todo_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        "statistics_area_title": "Statistics Area",
-        "statistics_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        "users_area_title": "Users Area",
-        "users_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        "companies_area_title": "Companies Area",
-        "companies_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        "pending_workers_area_title": "Pending Workers Area",
-        "pending_workers_area_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+        "message_area_title": "Messages",
+        "message_area_text": "This widget shows your latest messages.",
+        "position_area_title": "Positions",
+        "position_area_text": "This widget shows latest positions.",
+        "birthday_area_title": "Birthdays",
+        "birthday_area_text": "This widget shows upcoming birthdays..",
+        "todo_area_title": "To do's",
+        "todo_area_text": "This widget shows your to do's.",
+        "statistics_area_title": "Statistics",
+        "statistics_area_text": "This widget shows statistics.",
+        "users_area_title": "Users",
+        "users_area_text": "This widget shows your latest users.",
+        "companies_area_title": "Companies",
+        "companies_area_text": "This widget shows your latest companies.",
+        "pending_workers_area_title": "Unassigned workers",
+        "pending_workers_area_text": "This widget shows that have not been assigned to a company yet."
       }
     }
   },
@@ -319,11 +319,11 @@
       "image": "Image",
       "name": "Name",
       "email": "Email",
-      "kvk": "KVK Number",
+      "kvk": "KVK number",
       "since": "Registered since",
       "status": "Status",
       "actions": "Actions",
-      "view_company": "View Company"
+      "view_company": "View company"
     },
     "filter": {
       "name": "Name",
@@ -342,34 +342,34 @@
     }
   },
   "page_detail_company": {
-    "create_title": "Add New Company",
-    "edit_title": "Company Details",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida dui eget magna pretium imperdiet. Aliquam nec feugiat massa. Ut vitae est vitae nisi lacinia rhoncus sed vel ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Quisque justo lacus, auctor nec vehicula in, efficitur vel nibh. Vestibulum efficitur urna sed augue lacinia, et pulvinar nulla iaculis.",
-    "save": "Save company",
-    "edit": "Edit company",
+    "create_title": "Add new company",
+    "edit_title": "Company details",
+    "description": "Please fill out the company details and click on: Create company.",
+    "save": "Save adjustments",
+    "edit": "Edit company details",
     "form": {
-      "name": "Company Name",
-      "kvk": "KVK Number",
-      "limit_credit_safe": "Limit CreditSafe",
+      "name": "Company name",
+      "kvk": "KVK number",
+      "limit_credit_safe": "Limit creditSafe",
       "country": "Country",
       "city": "City",
       "street": "Street",
-      "houseNumber": "House Number",
-      "postalCode": "Postal Code",
-      "email": "Company Email",
-      "phone": "Company Phone Number",
-      "vat_shifted": "VAT Shifted",
-      "g_account": "G Account",
-      "terms_of_payment": "Terms Of Payment",
-      "automatic_collection": "Automatic Collection",
-      "charge_travel_expenses": "Charge Travel Expenses",
-      "charge_other_expenses": "Charge Other Expenses",
-      "is_active": "Is Active"
+      "houseNumber": "House number",
+      "postalCode": "Postal code",
+      "email": "Company email",
+      "phone": "Company phone number",
+      "vat_shifted": "VAT shifted",
+      "g_account": "G account",
+      "terms_of_payment": "Terms of payment",
+      "automatic_collection": "Automatic collection",
+      "charge_travel_expenses": "Charge travel expenses",
+      "charge_other_expenses": "Charge other expenses",
+      "is_active": "Is active"
     },
     "button": {
-      "create": "Create Company",
-      "update": "Update Company",
-      "delete": "Delete Company"
+      "create": "Create company",
+      "update": "Update company",
+      "delete": "Delete company"
     },
     "modal": {
       "create_success": {
@@ -413,7 +413,7 @@
       "image": "Image",
       "location": "Location",
       "actions": "Actions",
-      "view_profile": "View Profile"
+      "view_profile": "View profile"
     },
     "modal": {
       "delete": {
@@ -424,12 +424,12 @@
     }
   },
   "page_profile": {
-    "edit": "Edit Profile",
-    "save": "Save Profile",
+    "edit": "Edit profile",
+    "save": "Save profile",
     "form": {
       "overview": "Overview",
       "specifications": "Specifications",
-      "since": "Registered Since",
+      "since": "Registered since",
       "age": "Age",
       "years": "years",
       "location": "Location",
@@ -458,20 +458,20 @@
       "manager": "Manager",
       "wage": "Wage",
       "rate": "Rate",
-      "start_date": "Start Date",
-      "end_date": "End Date",
+      "start_date": "Start date",
+      "end_date": "End date",
       "duration": "Duration",
       "profession": "Profession",
       "actions": "Actions",
-      "start_matching": "Start Matching",
-      "view_job": "View Job"
+      "start_matching": "Start natching",
+      "view_job": "View job"
     },
     "filter": {
       "title": "Title",
       "wage": "Wage",
       "rate": "Rate",
-      "start_date": "Start Date",
-      "end_date": "End Date"
+      "start_date": "Start date",
+      "end_date": "End date"
     },
     "modal": {
       "delete": {
@@ -482,35 +482,35 @@
     }
   },
   "page_job_detail": {
-    "edit": "Edit Job",
-    "save": "Save Job",
+    "edit": "Edit job",
+    "save": "Save job",
     "form": {
       "description": "Description",
       "specifications": "Specifications",
       "questions": "Questions",
       "company": "Company",
       "manager": "Manager",
-      "hiring_manager": "Hiring Manager",
-      "hiring_company": "Hiring Company",
+      "hiring_manager": "Hiring manager",
+      "hiring_company": "Hiring company",
       "worker": "Worker",
       "offer": "Offer",
       "level": "Level",
       "rate": "Pay Rate",
       "wage": "Wage",
-      "hourly_wage": "Hourly Wage",
-      "payment_type": "Payment Type",
+      "hourly_wage": "Hourly wage",
+      "payment_type": "Payment type",
       "status": "Status",
-      "start_date": "Start Date",
-      "end_date": "End Date"
+      "start_date": "Start date",
+      "end_date": "End date"
     },
-    "view_offer": "View JobOffer",
-    "job_offers": "Job Offers",
+    "view_offer": "View joboffer",
+    "job_offers": "Job offers",
     "files": "Files",
-    "view_file": "View File",
-    "download_file": "Download File",
+    "view_file": "View file",
+    "download_file": "Download file",
     "button": {
       "upload": "Upload",
-      "create_new_job_offer": "Create New Job Offer",
+      "create_new_job_offer": "Create new job offer",
       "create": "Create job",
       "update": "Update job"
     },
@@ -547,70 +547,70 @@
     }
   },
   "page_jobs_choose_candidate": {
-    "title": "Choose Candidate",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    "title": "Choose candidate",
+    "description": "Select an existing worker or add a new worker.",
     "button": {
-      "search": "Search Candidates",
-      "new": "Add new Candidate"
+      "search": "Search candidates",
+      "new": "Add new candidate"
     }
   },
   "page_jobs_select_candidate": {
-    "title": "Select Candidate",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    "title": "Select candidate",
+    "description": "Search for workers by entering their name into the search field. Select the correct worker and click: Select candidate.",
     "form": {
-      "search": "Search Worker",
-      "hiring_company": "Select Hiring Company",
-      "hiring_manager": "Select Hiring Manager"
+      "search": "Search worker",
+      "hiring_company": "Select hiring company",
+      "hiring_manager": "Select hiring manager"
     },
     "button": {
-      "select": "Select Candidate"
+      "select": "Select candidate"
     }
   },
   "page_offer_detail": {
-    "title": "Job Offer Details",
-    "status_actions": "Contract Status & Actions",
+    "title": "Job offer details",
+    "status_actions": "Contract status & actions",
     "offer_states": {
       "open": "Open",
       "pending-worker": "Pending for worker",
       "active": "Active",
       "completed": "Completed"
     },
-    "start_date": "Start Date",
-    "hourly_wage": "Hourly Wage",
-    "hours_per_week": "Hours Per Week",
+    "start_date": "Start date",
+    "hourly_wage": "Hourly wage",
+    "hours_per_week": "Hours per week",
     "specifications": "Specifications",
     "files": "Files",
     "form": {
       "cao": "CAO",
       "wage": "Wage",
-      "hourly_wage": "Hourly Wage",
-      "pay_rate": "Pay Rate",
-      "hours_per_week": "Hours Per Week",
-      "payment_type": "Payment Type",
-      "travel_expenses": "Travel Expenses",
-      "travel_hours": "Travel Hours",
-      "other_expenses": "Other Expenses"
+      "hourly_wage": "Hourly wage",
+      "pay_rate": "Pay rate",
+      "hours_per_week": "Hours per week",
+      "payment_type": "Payment type",
+      "travel_expenses": "Travel expenses",
+      "travel_hours": "Travel hours",
+      "other_expenses": "Other expenses"
     },
     "button": {
       "adjust": "Adjust",
       "decline": "Decline",
       "sign": "Sign",
       "accept": "Accept",
-      "lock": "Lock, Sign and Send",
-      "export_contract": "Export Contract",
-      "view_contract": "View Contract",
+      "lock": "Lock, sign and send",
+      "export_contract": "Export contract",
+      "view_contract": "View contract",
       "upload": "Upload"
     },
     "modal": {
       "sign_contract": {
-        "title": "Sign Contract",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra libero vitae sapien euismod, quis vestibulum ligula mollis. Sed luctus, nisi at malesuada lacinia, diam diam consequat augue, a efficitur risus lorem in neque.",
-        "payment_interval": "Payment Interval",
+        "title": "Sign contract",
+        "description": "Please read the attached contract carefully. Before signing choose your payment interval, discount on taxes preferences and select your working history as a flexworker. If everything is correct you can click the checkmark and digitally sign the contract by clicking: Sign contract.",
+        "payment_interval": "Payment interval",
         "discount_on_taxes": "Discount on taxes",
-        "work_earlier_as_flexworker": "Worker earlier as Flexworker",
-        "accept_term": "I hereby acknowledge and agree that I’ve read and agreed to the termsin this contract. I understand that by clicking on the “Sign” button below I digitally sign and bind myself to this contract.",
-        "view_contract": "View Contract",
-        "sign_contract": "Sign Contract"
+        "work_earlier_as_flexworker": "Worker earlier as flexworker",
+        "accept_term": "I hereby acknowledge and agree that I’ve read and agreed to the terms in this contract. I understand that by clicking on the “Sign contract” button below I digitally sign and bind myself to this contract.",
+        "view_contract": "View contract",
+        "sign_contract": "Sign contract"
       },
       "sign_success": {
         "title": "Success",
@@ -655,7 +655,7 @@
       "upload_fail": {
         "title": "Failure",
         "sub_title": "Failed to upload file.",
-        "continue": "continue"
+        "continue": "Continue"
       },
       "lock_fail": {
         "title": "Failure",
@@ -778,74 +778,74 @@
   },
   "page_matching": {
     "title": "Matching",
-    "match_detail": "Matching Detail",
+    "match_detail": "Matching detail",
     "match_result": "{candidates} Candidates matches "
   },
   "page_matching_detail": {
-    "title": "Matching Detail"
+    "title": "Matching detail"
   },
   "page_setting": {
     "title": "Settings",
     "account_setting": {
-      "title": "User Settings",
+      "title": "User settings",
       "form": {
-        "first_name": "First Name",
-        "last_name": "Last Name",
-        "middle_name": "Middle Name",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "middle_name": "Middle name",
         "profession": "Profession",
         "gender": "Gender",
         "man": "Man",
         "woman": "Woman",
         "other": "Other",
-        "birthday": "Date of Birth",
-        "bank_account_number": "Bank Account Number",
+        "birthday": "Date of birth",
+        "bank_account_number": "Bank account number",
         "overview": "Overview",
         "phone": "Phone",
         "country": "Country",
         "city": "City",
         "street": "Street",
-        "house_number": "House Number",
-        "postal_code": "Postal Code",
+        "house_number": "House number",
+        "postal_code": "Postal code",
         "password": "Password",
-        "c_password": "Confirm Password",
-        "honorific_title": "Honorific Title",
+        "c_password": "Confirm password",
+        "honorific_title": "Honorific title",
         "mr": "Mr.",
         "mrs": "Mrs.",
         "ms": "Ms.",
         "miss": "Miss.",
-        "social_security_number": "Social Security Number",
-        "id_type": "ID Type",
-        "id_exp_date": "ID Expiration Date",
-        "id_number": "ID Number",
+        "social_security_number": "Social security number",
+        "id_type": "ID type",
+        "id_exp_date": "ID expiration date",
+        "id_number": "ID number",
         "id_image": "Upload ID",
         "id": "National ID",
         "passport": "Passport"
       },
       "button": {
-        "update": "Update Setting"
+        "update": "Update setting"
       }
     },
     "system_setting": {
-      "title": "System Setting",
+      "title": "System setting",
       "form": {
-        "back_color": "Background Color",
-        "font_family": "Font Family",
+        "back_color": "Background color",
+        "font_family": "Font family",
         "notifications": "Notifications",
-        "mail_notifications": "Mail Notifications",
-        "phone_message": "Phone Message",
+        "mail_notifications": "Mail notifications",
+        "phone_message": "Phone nessage",
         "timezone": "Timezone",
-        "select_option": "Select Option",
-        "week_start_at": "Week Start At"
+        "select_option": "Select option",
+        "week_start_at": "Week start at"
       },
       "button": {
-        "update": "Update Setting"
+        "update": "Update setting"
       }
     },
     "reset_password": {
-      "title": "Change Password",
+      "title": "Change password",
       "form": {
-        "old_password": "Old Password",
-        "new_password": "New Password",
+        "old_password": "Old password",
+        "new_password": "New password",
         "confirm": "Confirm"
       },
       "button": {
@@ -853,10 +853,10 @@
       }
     },
     "notification_setting": {
-      "title": "Notification Setting"
+      "title": "Notification setting"
     },
     "other_setting": {
-      "title": "Other Setting"
+      "title": "Other setting"
     },
     "modal": {
       "account_change": {
@@ -878,20 +878,20 @@
     }
   },
   "page_timesheets": {
-    "title": "Timesheets & Expenses",
+    "title": "Timesheets & expenses",
     "sub_title": "We have found {timesheetsCount} timesheets and {expensesCount} expenses",
     "add_expenses": "Add expenses",
     "table": {
       "kind": "Kind",
       "week": "Week",
-      "hand_in_date": "Hand In Date",
+      "hand_in_date": "Hand In date",
       "hours": "Hours",
       "price": "€",
-      "hiring_manager": "Hiring Manager",
+      "hiring_manager": "Hiring manager",
       "status": "Status",
       "actions": "Actions",
-      "view_timesheet": "View Timesheet",
-      "view_expense": "View Expense"
+      "view_timesheet": "View timesheet",
+      "view_expense": "View expense"
     },
     "filter": {
       "name": "Name",
@@ -904,26 +904,26 @@
     "modal": {
       "add_hours": "Add hours",
       "worker": "Worker",
-      "hiring_manager": "Hiring Manager",
+      "hiring_manager": "Hiring manager",
       "week": "Week",
       "date": "Date",
       "hours": "Hours",
-      "normal_wage": "Normal Wage",
-      "adjusted_wage": "Adjusted Wage",
+      "normal_wage": "Normal wage",
+      "adjusted_wage": "Adjusted wage",
       "fill_in_total_traveled_km": "Fill in total traveled km",
       "percentage": "Percentage",
       "travel_expenses": "Travel Expenses",
       "adjust_travel_expenses": "Adjust travel expenses",
-      "save_hours": "Save Hours",
+      "save_hours": "Save hours",
       "send_hours": "Send hours",
       "approve_hours": "Approve hours",
       "decline_hours": "Decline hours",
-      "adjust_hours": "Adjust Hours",
-      "save_expenses": "Save Expenses",
-      "send_expenses": "Send Expenses",
-      "approve_expenses": "Approve Expenses",
-      "decline_expenses": "Decline Expenses",
-      "adjust_expenses": "Adjust Expenses",
+      "adjust_hours": "Adjust hours",
+      "save_expenses": "Save expenses",
+      "send_expenses": "Send expenses",
+      "approve_expenses": "Approve expenses",
+      "decline_expenses": "Decline expenses",
+      "adjust_expenses": "Adjust expenses",
       "through": "From {from} to {to}",
       "worked_overview_1": "In",
       "worked_overview_2": "week",
@@ -943,8 +943,8 @@
     }
   },
   "page_users_create": {
-    "title": "Add Users",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ",
+    "title": "Add users",
+    "description": "Add a new user by sending an email invitation or manually add a user.",
     "button": {
       "invite": "Invite Users to sign up",
       "manual": "Manually Add Users"
@@ -952,16 +952,16 @@
   },
   "page_users_create_invite": {
     "title": "New User Invitation",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ",
+    "description": "Fill out the users email address, role and click: Send invitation.",
     "form": {
-      "company_list": "Select Company",
+      "company_list": "Select company",
       "manager": "Manager",
       "worker": "Worker",
       "owner": "Owner",
-      "email": "E-mail Address"
+      "email": "E-mail address"
     },
     "button": {
-      "send": "Send Invitation"
+      "send": "Send invitation"
     },
     "modal": {
       "invite": {
@@ -973,35 +973,35 @@
     }
   },
   "page_users_create_manual": {
-    "title": "Manually Add User",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum consectetur adipiscing elit Lorem ipsum dolor sit amet, consecteturconsectetur adipiscing elit Lorem ipsum dolor sit amet, consecteturconsectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur",
+    "title": "Manually add user",
+    "description": "Fill out known user details and click: Create user. The user will receive a confirmation email with username and password.",
     "form": {
-      "company_list": "Select Company",
+      "company_list": "Select company",
       "manager": "Manager",
       "worker": "Worker",
       "owner": "Owner",
-      "email": "E-mail Address",
+      "email": "E-mail address",
       "role": "Role",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "middleName": "Middle Name",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "middleName": "Middle name",
       "profession": "Profession",
       "male": "Man",
       "female": "Woman",
       "gender": "Gender",
       "other": "Other",
-      "phone": "Phone Number",
-      "birthday": "Date of Birth",
-      "street-house": "Streetname & Number",
-      "bankNumber": "Bank Account Number",
-      "postalCode": "Postal Code",
+      "phone": "Phone number",
+      "birthday": "Date of birth",
+      "street-house": "Streetname & number",
+      "bankNumber": "Bank Account number",
+      "postalCode": "Postal code",
       "city": "City",
       "password": "Password",
-      "repeat_password": "Repeat Password",
+      "repeat_password": "Repeat password",
       "passport": "Passport"
     },
     "button": {
-      "create": "Create User"
+      "create": "Create user"
     },
     "modal": {
       "create": {
@@ -1012,17 +1012,17 @@
     }
   },
   "page_offers": {
-    "title": "Job Offers",
+    "title": "Job offers",
     "sub_title": "We have found {offers} offers",
     "table": {
       "image": "Image",
-      "manager": "Hiring Manager",
-      "job": "Job Title",
-      "payment_type": "Payment Type",
-      "payment_amount": "Payment Amount",
-      "created_at": "Created At",
+      "manager": "Hiring manager",
+      "job": "Job title",
+      "payment_type": "Payment type",
+      "payment_amount": "Payment amount",
+      "created_at": "Created at",
       "status": "Status",
-      "view_offer": "View Job Offer",
+      "view_offer": "View job offer",
       "actions": "Actions"
     },
     "modal": {
@@ -1034,11 +1034,11 @@
     }
   },
   "page_welcome": {
-    "title": "Welcome to your join",
-    "sub_title": "We will activate your account soon!",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum consectetur adipiscing elit Lorem ipsum dolor sit amet, consecteturconsectetur adipiscing elit Lorem ipsum dolor sit amet, consecteturconsectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur",
+    "title": "Welcome to Hiway!",
+    "sub_title": "Your registration is currently pending!",
+    "description": "Once your registration has been processed you will be able to use Hiway.",
     "button": {
-      "back": "Back Login"
+      "back": "Back to Login"
     }
   }
 }
