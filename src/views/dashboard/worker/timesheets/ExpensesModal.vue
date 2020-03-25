@@ -45,6 +45,7 @@
             class="d-inline-block expense-input"
             type="date"
             v-model="model.expenseData.date"
+            :disabled="inputDisabled"
           />
         </div>
       </div>
@@ -55,6 +56,7 @@
             class="d-inline-block expense-input"
             placeholder="€0.00"
             v-model="model.expenseData.amount"
+            :disabled="inputDisabled"
           />
         </div>
       </div>
@@ -62,7 +64,7 @@
       <div class="row mb-3">
         <div class="col">
           <span class="mr-3">Category:</span>&nbsp;
-          <b-form-group class="d-inline-block mb-0">
+          <b-form-group class="d-inline-block mb-0" :disabled="inputDisabled">
             <b-form-radio
               v-model="model.expenseData.category"
               name="some-radios"
@@ -98,10 +100,12 @@
             @change="onFileChange"
             class="d-none"
             placeholder="Choose file"
+            :disabled="inputDisabled"
           />
           <div class="d-inline-block expense-input position-relative">
             <b-input
               placeholder="Choose file"
+              :disabled="inputDisabled"
               :value="
                 model.expenseData.attachments &&
                   model.expenseData.attachments[0] &&
@@ -123,13 +127,14 @@
             class="d-inline-block expense-input"
             placeholder="Add a note..."
             v-model="model.expenseData.commentDescription"
+            :disabled="inputDisabled"
           />
         </div>
       </div>
 
       <div class="text-right">
         <button class="btn btn-red" @click="createExpenses" v-if="addMode">
-          Create Expenses
+          {{ $t("page_timesheets.modal.save_expenses") }}
         </button>
         <template
                 v-else-if="
@@ -138,15 +143,15 @@
           "
         >
           <button class="btn btn-blue" @click="saveExpenses">
-            {{ $t("page_timesheets.modal.save_hours") }}
+            {{ $t("page_timesheets.modal.save_expenses") }}
           </button>
           <button class="btn btn-red ml-3" @click="submitExpenses">
-            {{ $t("page_timesheets.modal.send_hours") }}
+            {{ $t("page_timesheets.modal.send_expenses") }}
           </button>
         </template>
         <template v-else-if="model.status === EXPENSE_STATE.SUBMITTED">
           <button class="btn btn-red" @click="adjustExpenses">
-            {{ $t("page_timesheets.modal.adjust_hours") }}
+            {{ $t("page_timesheets.modal.adjust_expenses") }}
           </button>
         </template>
         <template v-else-if="model.status === EXPENSE_STATE.APPROVED">
@@ -196,7 +201,13 @@ export default {
     },
     editMode() {
       return this.mode === "edit";
-    }
+    },
+    inputDisabled() {
+      return (
+        this.model.status === EXPENSE_STATE.APPROVED ||
+        this.model.status === EXPENSE_STATE.SUBMITTED
+      );
+    },
   },
   data() {
     return {
@@ -321,7 +332,7 @@ export default {
         })
         .then(res => {
           this.$emit("refresh");
-          this.showModal = false;
+          this.model = res;
         });
     }
   },
