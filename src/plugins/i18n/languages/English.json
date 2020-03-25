@@ -890,7 +890,8 @@
       "hiring_manager": "Hiring Manager",
       "status": "Status",
       "actions": "Actions",
-      "view_timesheet": "View Timesheet"
+      "view_timesheet": "View Timesheet",
+      "view_expense": "View Expense"
     },
     "filter": {
       "name": "Name",
