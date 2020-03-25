@@ -12,13 +12,13 @@
       {{ mode === "edit" ? "Expenses" : "Add Expenses" }}
     </h2>
 
-    <div class="py-3">
+    <div class="py-3 p-4">
       <div class="row mb-3">
         <div class="col">
           <span class="color-blue mr-3"
             >{{ $t("page_timesheets.modal.hiring_manager") }}:</span
           >&nbsp;<b-input
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             v-model="hiringManagerFullName"
             disabled
           />
@@ -30,7 +30,7 @@
           <span class="color-blue mr-3"
             >{{ $t("page_timesheets.modal.worker") }}:</span
           >&nbsp;<b-input
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             :value="workerFullName"
             disabled
           />
@@ -38,11 +38,11 @@
       </div>
     </div>
 
-    <div class="py-3">
+    <div class="py-3 p-4">
       <div class="row mb-3">
         <div class="col">
           <span class="mr-3">Date:</span>&nbsp;<b-input
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             type="date"
             v-model="model.expenseData.date"
           />
@@ -52,7 +52,7 @@
       <div class="row mb-3">
         <div class="col">
           <span class="mr-3">Amount:</span>&nbsp;<b-input
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             placeholder="€0.00"
             v-model="model.expenseData.amount"
           />
@@ -99,7 +99,7 @@
             class="d-none"
             placeholder="Choose file"
           />
-          <div class="d-inline-block w-50 position-relative">
+          <div class="d-inline-block expense-input position-relative">
             <b-input
               placeholder="Choose file"
               :value="
@@ -120,14 +120,14 @@
       <div class="row mb-3">
         <div class="col align-items-baseline">
           <span class="mr-3">Note:</span>&nbsp;<b-textarea
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             placeholder="Add a note..."
             v-model="model.expenseData.commentDescription"
           />
         </div>
       </div>
 
-      <div class="text-right" style="margin-right: 100px;">
+      <div class="text-right">
         <button class="btn btn-red" @click="createExpenses" v-if="addMode">
           Create Expenses
         </button>

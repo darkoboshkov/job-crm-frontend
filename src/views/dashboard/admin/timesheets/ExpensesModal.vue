@@ -18,7 +18,7 @@
           <span class="color-blue mr-3"
             >{{ $t("page_timesheets.modal.hiring_manager") }}:</span
           >&nbsp;<b-input
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             v-model="hiringManagerFullName"
             disabled
           />
@@ -30,7 +30,7 @@
           <span class="color-blue mr-3"
             >{{ $t("page_timesheets.modal.worker") }}:</span
           >&nbsp;<b-input
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             :value="workerFullName"
             disabled
           />
@@ -42,7 +42,7 @@
       <div class="row mb-3">
         <div class="col">
           <span class="mr-3">Date:</span>&nbsp;<b-input
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             type="date"
             v-model="model.expenseData.date"
           />
@@ -52,7 +52,7 @@
       <div class="row mb-3">
         <div class="col">
           <span class="mr-3">Amount:</span>&nbsp;<b-input
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             placeholder="€0.00"
             v-model="model.expenseData.amount"
           />
@@ -101,7 +101,7 @@
           />
           <i
                   class="hiway-crm-icon icon-ul pointer" />
-          <div class="d-inline-block w-50 position-relative">
+          <div class="d-inline-block expense-input position-relative">
             <b-input
               placeholder="Choose file"
               :value="
@@ -122,14 +122,14 @@
       <div class="row mb-3">
         <div class="col align-items-baseline">
           <span class="mr-3">Note:</span>&nbsp;<b-textarea
-            class="d-inline-block w-50"
+            class="d-inline-block expense-input"
             placeholder="Add a note..."
             v-model="model.expenseData.commentDescription"
           />
         </div>
       </div>
 
-      <div class="text-right" style="margin-right: 100px;">
+      <div class="text-right">
         <template
                 v-if="
             model.status === EXPENSE_STATE.NOT_SUBMITTED ||
