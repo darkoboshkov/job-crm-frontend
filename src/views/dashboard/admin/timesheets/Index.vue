@@ -3,6 +3,9 @@
     <h1 class="color-red">
       {{ $t("page_timesheets.title") }}
     </h1>
+    <p class="sub-title">
+      {{ $t("page_timesheets.sub_title", { timesheetsCount: this.timesheetsCount, expensesCount: this.expensesCount }) }}
+    </p>
     <div class="container-fluid">
       <!--      <div class="row">-->
       <!--        <div class="col-md-3 d-flex">-->
@@ -257,11 +260,16 @@ export default {
       selectedTimeSheetRow: {},
       selectedExpenseRow: {},
       expensesModalMode: "edit",
-      TIME_SHEET_STATE
+      TIME_SHEET_STATE,
+
+      timesheetsCount: 0,
+      expensesCount: 0
     };
   },
   mounted() {
     this.getTimeSheets();
+    this.getTimeSheetsCount();
+    this.getExpensesCount();
   },
   methods: {
     getTimeSheets() {
@@ -270,6 +278,30 @@ export default {
         .then(({ docs, totalDocs }) => {
           this.rows = docs;
           this.totalRows = totalDocs;
+        });
+    },
+    getTimeSheetsCount() {
+      return workLogApi
+        .getAll({
+          ...this.serverParams,
+          filter: {
+            type: 'timesheet'
+          }
+        })
+        .then(({ docs, totalDocs }) => {
+          this.timesheetsCount = totalDocs;
+        });
+    },
+    getExpensesCount() {
+      return workLogApi
+        .getAll({
+          ...this.serverParams,
+          filter: {
+            type: 'expense'
+          }
+        })
+        .then(({ docs, totalDocs }) => {
+          this.expensesCount = totalDocs;
         });
     },
     timeSheetWeek() {

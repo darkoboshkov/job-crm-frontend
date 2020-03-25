@@ -3,6 +3,9 @@
     <h1 class="color-red">
       {{ $t("page_timesheets.title") }}
     </h1>
+    <p class="sub-title">
+      {{ $t("page_timesheets.sub_title", { timesheetsCount: this.timesheetsCount, expensesCount: this.expensesCount }) }}
+    </p>
     <div class="container-fluid">
       <!--      <div class="row">-->
       <!--        <div class="col-md-3 d-flex">-->
@@ -269,11 +272,16 @@ export default {
       selectedExpenseRow: {},
       expensesModalMode: "edit",
       selectedRow: {},
-      TIME_SHEET_STATE
+      TIME_SHEET_STATE,
+
+      timesheetsCount: 0,
+      expensesCount: 0
     };
   },
   mounted() {
     this.getTimeSheets();
+    this.getTimeSheetsCount();
+    this.getExpensesCount();
   },
   methods: {
     showAddExpenseModal() {
@@ -300,6 +308,36 @@ export default {
           this.rows = docs;
           this.totalRows = totalDocs;
         });
+    },
+    getTimeSheetsCount() {
+      const {companyId} = this.$store.state.user;
+
+      return workLogApi
+        .getByWorker({
+          ...this.serverParams,
+          filter: {
+            type: 'timesheet'
+          },
+          companyId
+        })
+        .then(({docs, totalDocs}) => {
+          this.timesheetsCount = totalDocs;
+        });
+    },
+    getExpensesCount() {
+      const { companyId } = this.$store.state.user;
+
+        return workLogApi
+          .getByWorker({
+            ...this.serverParams,
+            filter: {
+              type: 'expense'
+            },
+            companyId
+          })
+          .then(({ docs, totalDocs }) => {
+            this.expensesCount = totalDocs;
+          });
     },
     timeSheetWeek() {
       return row => {

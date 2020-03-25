@@ -878,7 +878,8 @@
     }
   },
   "page_timesheets": {
-    "title": "TimeSheets & Expenses",
+    "title": "Timesheets & Expenses",
+    "sub_title": "We have found {timesheetsCount} timesheets and {expensesCount} expenses",
     "add_expenses": "Add expenses",
     "table": {
       "kind": "Kind",
