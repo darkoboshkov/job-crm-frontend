@@ -64,9 +64,7 @@
       <div class="row mb-3">
         <div class="col">
           <span class="mr-3">Category:</span>&nbsp;
-          <b-form-group class="d-inline-block mb-0"
-                        :disabled="inputDisabled"
-          >
+          <b-form-group class="d-inline-block mb-0" :disabled="inputDisabled">
             <b-form-radio
               v-model="model.expenseData.category"
               name="some-radios"
@@ -114,11 +112,11 @@
               "
               :disabled="inputDisabled"
             />
-            <label
-              class="position-absolute file-selector"
-              for="attachment"
+            <label class="position-absolute file-selector" for="attachment" />
+            <i
+              class="hiway-crm-icon icon-upload position-absolute"
+              style="top: 11px;right: 11px;"
             />
-            <i class="hiway-crm-icon icon-upload position-absolute" style="top: 11px;right: 11px;"/>
           </div>
         </div>
       </div>
@@ -136,7 +134,7 @@
 
       <div class="text-right">
         <template
-                v-if="
+          v-if="
             model.status === EXPENSE_STATE.NOT_SUBMITTED ||
               model.status === EXPENSE_STATE.DECLINED
           "
@@ -202,10 +200,10 @@ export default {
     },
     inputDisabled() {
       return (
-              this.model.status === EXPENSE_STATE.APPROVED ||
-              this.model.status === EXPENSE_STATE.SUBMITTED
+        this.model.status === EXPENSE_STATE.APPROVED ||
+        this.model.status === EXPENSE_STATE.SUBMITTED
       );
-    },
+    }
   },
   data() {
     return {

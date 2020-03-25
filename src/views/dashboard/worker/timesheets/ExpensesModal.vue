@@ -112,11 +112,11 @@
                   model.expenseData.attachments[0].name
               "
             />
-            <label
-              class="position-absolute file-selector"
-              for="attachment"
+            <label class="position-absolute file-selector" for="attachment" />
+            <i
+              class="hiway-crm-icon icon-upload position-absolute"
+              style="top: 11px;right: 11px;"
             />
-            <i class="hiway-crm-icon icon-upload position-absolute" style="top: 11px;right: 11px;"/>
           </div>
         </div>
       </div>
@@ -136,11 +136,15 @@
         <button class="btn btn-blue" @click="createExpenses" v-if="addMode">
           {{ $t("page_timesheets.modal.save_expenses") }}
         </button>
-        <button class="btn btn-red ml-3" @click="createAndSubmitExpenses" v-if="addMode">
+        <button
+          class="btn btn-red ml-3"
+          @click="createAndSubmitExpenses"
+          v-if="addMode"
+        >
           {{ $t("page_timesheets.modal.send_expenses") }}
         </button>
         <template
-                v-else-if="
+          v-else-if="
             model.status === EXPENSE_STATE.NOT_SUBMITTED ||
               model.status === EXPENSE_STATE.DECLINED
           "
@@ -210,7 +214,7 @@ export default {
         this.model.status === EXPENSE_STATE.APPROVED ||
         this.model.status === EXPENSE_STATE.SUBMITTED
       );
-    },
+    }
   },
   data() {
     return {

@@ -68,11 +68,16 @@
         <!--          </b-dropdown-item>-->
         <!--        </b-dropdown>-->
 
-        <span class='through'>
-          {{ $t("page_timesheets.modal.through", {
-            from: daysOfSelectedWeek[0] &&
-            getISODateString(daysOfSelectedWeek[0].date),
-            to: daysOfSelectedWeek[6] && getISODateString(daysOfSelectedWeek[6].date)})
+        <span class="through">
+          {{
+            $t("page_timesheets.modal.through", {
+              from:
+                daysOfSelectedWeek[0] &&
+                getISODateString(daysOfSelectedWeek[0].date),
+              to:
+                daysOfSelectedWeek[6] &&
+                getISODateString(daysOfSelectedWeek[6].date)
+            })
           }}
         </span>
       </div>
@@ -142,7 +147,7 @@
                 v-model="d.percentOfAdjustedWage"
               />
             </div>
-            <div class='d-flex align-items-center'>
+            <div class="d-flex align-items-center">
               <b-check
                 switch
                 size="lg"
@@ -153,7 +158,7 @@
             <div>
               <b-input
                 type="text"
-                class='d-inline-block'
+                class="d-inline-block"
                 style="width: 60px; margin-right: 0.5rem;"
                 :disabled="inputDisabled"
                 v-model="d.distanceTraveled"

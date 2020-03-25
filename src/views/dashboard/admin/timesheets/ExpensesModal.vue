@@ -102,8 +102,7 @@
             placeholder="Choose file"
             :disabled="inputDisabled"
           />
-          <i
-                  class="hiway-crm-icon icon-ul pointer" />
+          <i class="hiway-crm-icon icon-ul pointer" />
           <div class="d-inline-block expense-input position-relative">
             <b-input
               placeholder="Choose file"
@@ -114,11 +113,11 @@
               "
               :disabled="inputDisabled"
             />
-            <label
-              class="position-absolute file-selector"
-              for="attachment"
+            <label class="position-absolute file-selector" for="attachment" />
+            <i
+              class="hiway-crm-icon icon-upload position-absolute"
+              style="top: 11px;right: 11px;"
             />
-            <i class="hiway-crm-icon icon-upload position-absolute" style="top: 11px;right: 11px;"/>
           </div>
         </div>
       </div>
@@ -136,7 +135,7 @@
 
       <div class="text-right">
         <template
-                v-if="
+          v-if="
             model.status === EXPENSE_STATE.NOT_SUBMITTED ||
               model.status === EXPENSE_STATE.DECLINED
           "
@@ -202,10 +201,10 @@ export default {
     },
     inputDisabled() {
       return (
-              this.model.status === EXPENSE_STATE.APPROVED ||
-              this.model.status === EXPENSE_STATE.SUBMITTED
+        this.model.status === EXPENSE_STATE.APPROVED ||
+        this.model.status === EXPENSE_STATE.SUBMITTED
       );
-    },
+    }
   },
   data() {
     return {

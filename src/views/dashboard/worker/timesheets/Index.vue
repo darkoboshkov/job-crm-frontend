@@ -4,7 +4,12 @@
       {{ $t("page_timesheets.title") }}
     </h1>
     <p class="sub-title">
-      {{ $t("page_timesheets.sub_title", { timesheetsCount: this.timesheetsCount, expensesCount: this.expensesCount }) }}
+      {{
+        $t("page_timesheets.sub_title", {
+          timesheetsCount: this.timesheetsCount,
+          expensesCount: this.expensesCount
+        })
+      }}
     </p>
     <hr />
     <div class="container-fluid">
@@ -76,23 +81,23 @@
     <hr />
     <div class="d-flex justify-content-between">
       <table-filter
-              class="companies-filters"
-              @table-filter="filter"
-              :title="'Filter Options'"
-              :options="filterOptions"
+        class="companies-filters"
+        @table-filter="filter"
+        :title="'Filter Options'"
+        :options="filterOptions"
       />
       <div class="view-switch">
         View:
         <i
-                class="hiway-crm-icon icon-ol pointer"
-                @click="imageView(true)"
-                :style="{ opacity: imageMode ? 1 : 0.261 }"
+          class="hiway-crm-icon icon-ol pointer"
+          @click="imageView(true)"
+          :style="{ opacity: imageMode ? 1 : 0.261 }"
         />
         |
         <i
-                class="hiway-crm-icon icon-ul pointer"
-                @click="imageView(false)"
-                :style="{ opacity: !imageMode ? 1 : 0.261 }"
+          class="hiway-crm-icon icon-ul pointer"
+          @click="imageView(false)"
+          :style="{ opacity: !imageMode ? 1 : 0.261 }"
         />
       </div>
     </div>
@@ -135,16 +140,10 @@
                 <template v-slot:button-content>
                   <i class="hiway-crm-icon icon-more-vertical color-black" />
                 </template>
-                <b-dropdown-item
-                        v-if="props.row.type === 'timesheet'"
-                        href="#"
-                >
+                <b-dropdown-item v-if="props.row.type === 'timesheet'" href="#">
                   {{ $t("page_timesheets.table.view_timesheet") }}
                 </b-dropdown-item>
-                <b-dropdown-item
-                        v-if="props.row.type === 'expense'"
-                        href="#"
-                >
+                <b-dropdown-item v-if="props.row.type === 'expense'" href="#">
                   {{ $t("page_timesheets.table.view_expense") }}
                 </b-dropdown-item>
               </b-dropdown>
@@ -270,14 +269,14 @@ export default {
   computed: {
     columns() {
       let columns = this.imageMode
-              ? [
-                {
-                  label: this.$t("page_timesheets.table.kind"),
-                  field: "kind",
-                  name: "kind"
-                },
-              ]
-              : [];
+        ? [
+            {
+              label: this.$t("page_timesheets.table.kind"),
+              field: "kind",
+              name: "kind"
+            }
+          ]
+        : [];
 
       return columns.concat([
         {
@@ -348,34 +347,34 @@ export default {
         });
     },
     getTimeSheetsCount() {
-      const {companyId} = this.$store.state.user;
+      const { companyId } = this.$store.state.user;
 
       return workLogApi
         .getByWorker({
           ...this.serverParams,
           filter: {
-            type: 'timesheet'
+            type: "timesheet"
           },
           companyId
         })
-        .then(({docs, totalDocs}) => {
+        .then(({ docs, totalDocs }) => {
           this.timesheetsCount = totalDocs;
         });
     },
     getExpensesCount() {
       const { companyId } = this.$store.state.user;
 
-        return workLogApi
-          .getByWorker({
-            ...this.serverParams,
-            filter: {
-              type: 'expense'
-            },
-            companyId
-          })
-          .then(({ docs, totalDocs }) => {
-            this.expensesCount = totalDocs;
-          });
+      return workLogApi
+        .getByWorker({
+          ...this.serverParams,
+          filter: {
+            type: "expense"
+          },
+          companyId
+        })
+        .then(({ docs, totalDocs }) => {
+          this.expensesCount = totalDocs;
+        });
     },
     timeSheetWeek() {
       return row => {
