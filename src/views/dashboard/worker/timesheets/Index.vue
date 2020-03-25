@@ -6,6 +6,7 @@
     <p class="sub-title">
       {{ $t("page_timesheets.sub_title", { timesheetsCount: this.timesheetsCount, expensesCount: this.expensesCount }) }}
     </p>
+    <hr />
     <div class="container-fluid">
       <!--      <div class="row">-->
       <!--        <div class="col-md-3 d-flex">-->
@@ -70,15 +71,31 @@
             <i class="hiway-crm-icon icon-euro ml-4"></i>
           </button>
         </div>
-        <hr />
       </div>
     </div>
-    <table-filter
-      class="companies-filters"
-      @table-filter="filter"
-      :title="'Filter Options'"
-      :options="filterOptions"
-    />
+    <hr />
+    <div class="d-flex justify-content-between">
+      <table-filter
+              class="companies-filters"
+              @table-filter="filter"
+              :title="'Filter Options'"
+              :options="filterOptions"
+      />
+      <div class="view-switch">
+        View:
+        <i
+                class="hiway-crm-icon icon-ol pointer"
+                @click="imageView(true)"
+                :style="{ opacity: imageMode ? 1 : 0.261 }"
+        />
+        |
+        <i
+                class="hiway-crm-icon icon-ul pointer"
+                @click="imageView(false)"
+                :style="{ opacity: !imageMode ? 1 : 0.261 }"
+        />
+      </div>
+    </div>
     <div class="row">
       <div class="col timesheets-list mt-3">
         <vue-good-table
@@ -233,12 +250,36 @@ export default {
         //   value: ""
         // }
       ],
-      columns: [
-        {
-          label: this.$t("page_timesheets.table.kind"),
-          field: "kind",
-          name: "kind"
-        },
+      showTimeSheetsModal: false,
+      showExpensesModal: false,
+      selectedTimeSheetRow: {},
+      selectedExpenseRow: {},
+      expensesModalMode: "edit",
+      selectedRow: {},
+      TIME_SHEET_STATE,
+
+      timesheetsCount: 0,
+      expensesCount: 0
+    };
+  },
+  mounted() {
+    this.getTimeSheets();
+    this.getTimeSheetsCount();
+    this.getExpensesCount();
+  },
+  computed: {
+    columns() {
+      let columns = this.imageMode
+              ? [
+                {
+                  label: this.$t("page_timesheets.table.kind"),
+                  field: "kind",
+                  name: "kind"
+                },
+              ]
+              : [];
+
+      return columns.concat([
         {
           label: this.$t("page_timesheets.table.week"),
           field: this.timeSheetWeek(),
@@ -274,25 +315,13 @@ export default {
           field: "actions",
           name: "actions"
         }
-      ],
-      showTimeSheetsModal: false,
-      showExpensesModal: false,
-      selectedTimeSheetRow: {},
-      selectedExpenseRow: {},
-      expensesModalMode: "edit",
-      selectedRow: {},
-      TIME_SHEET_STATE,
-
-      timesheetsCount: 0,
-      expensesCount: 0
-    };
-  },
-  mounted() {
-    this.getTimeSheets();
-    this.getTimeSheetsCount();
-    this.getExpensesCount();
+      ]);
+    }
   },
   methods: {
+    imageView(mode) {
+      this.imageMode = !!mode;
+    },
     showAddExpenseModal() {
       this.selectedExpenseRow = {
         expenseData: {
