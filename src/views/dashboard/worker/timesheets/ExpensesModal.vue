@@ -133,8 +133,11 @@
       </div>
 
       <div class="text-right">
-        <button class="btn btn-red" @click="createExpenses" v-if="addMode">
+        <button class="btn btn-blue" @click="createExpenses" v-if="addMode">
           {{ $t("page_timesheets.modal.save_expenses") }}
+        </button>
+        <button class="btn btn-red ml-3" @click="createAndSubmitExpenses" v-if="addMode">
+          {{ $t("page_timesheets.modal.send_expenses") }}
         </button>
         <template
                 v-else-if="
@@ -307,6 +310,29 @@ export default {
         .then(res => {
           this.$emit("refresh");
           this.showModal = false;
+        });
+    },
+    createAndSubmitExpenses() {
+      const { companyId } = this.$store.state.user;
+
+      workLogApi
+        .createExpense({
+          ...this.model.expenseData,
+          companyId
+        })
+        .then(res => {
+          this.$emit("refresh");
+          this.model = res;
+
+          workLogApi
+            .send({
+              ...this.model,
+              companyId
+            })
+            .then(res => {
+              this.$emit("refresh");
+              this.showModal = false;
+            });
         });
     },
     saveExpenses() {
