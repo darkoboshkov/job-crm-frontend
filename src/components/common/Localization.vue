@@ -1,15 +1,17 @@
 <template>
   <div class="locale-changer">
-    <b-form-select
-      v-model="$i18n.locale"
-      :options="langs"
-      class="lang-selector hide-icon"
-      value-field="lang"
-      text-field="lang"
-    />
-    <!--<select v-model="$i18n.locale">-->
-    <!--<option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{ lang }}</option>-->
-    <!--</select>-->
+    <div class="form-element">
+      <label>
+        {{ $t("page_setting.language_setting.form.select_language") }}:
+      </label>
+      <b-form-select
+          v-model="$i18n.locale"
+          :options="langs"
+          class="lang-selector hide-icon"
+          value-field="lang"
+          text-field="lang"
+      />
+    </div>
   </div>
 </template>
 
@@ -23,11 +25,4 @@ export default {
 </script>
 
 <style scoped>
-.lang-selector {
-  display: none;
-  height: 40px;
-  border: none;
-  outline: none;
-  box-shadow: none;
-}
 </style>

@@ -852,6 +852,12 @@
         "update": "Reset"
       }
     },
+    "language_setting": {
+      "title": "Language Setting",
+      "form": {
+        "select_language": "Select Language"
+      }
+    },
     "notification_setting": {
       "title": "Notification setting"
     },

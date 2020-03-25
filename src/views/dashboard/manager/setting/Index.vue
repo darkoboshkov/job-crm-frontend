@@ -6,14 +6,12 @@
         <b-tab :title="$t('page_setting.account_setting.title')" active>
           <setting-account />
         </b-tab>
-        <!--        <b-tab :title="$t('page_setting.system_setting.title')">-->
-        <!--          <setting-system />-->
-        <!--        </b-tab>-->
         <b-tab :title="$t('page_setting.reset_password.title')">
           <reset-password />
         </b-tab>
-        <!--        <b-tab :title="$t('page_setting.notification_setting.title')"> </b-tab>-->
-        <!--        <b-tab :title="$t('page_setting.other_setting.title')"> </b-tab>-->
+        <b-tab :title="$t('page_setting.language_setting.title')">
+          <localization />
+        </b-tab>
       </b-tabs>
     </div>
   </div>
@@ -23,9 +21,11 @@
 import SettingAccount from "./SettingAccount";
 import SettingSystem from "./SettingSystem";
 import ResetPassword from "./ResetPassword";
+import Localization from "@/components/common/Localization";
+
 export default {
   name: "Setting",
-  components: { SettingSystem, SettingAccount, ResetPassword }
+  components: { Localization, SettingSystem, SettingAccount, ResetPassword }
 };
 </script>
 

@@ -1,10 +1,14 @@
 .locale-changer {
-  position: fixed;
-  top: 34px;
-  right: 20px;
-  z-index: 2000;
-  @include media-breakpoint-down(sm) {
-    top: 13px;
-    right: 30px;
+  .form-element {
+    display: flex;
+    align-items: center;
+
+    label {
+      margin-right: 20px;
+    }
+
+    select {
+      flex: 1;
+    }
   }
 }
