@@ -345,6 +345,7 @@ export default {
             status
           };
           this.$emit("refresh");
+          this.showModal = false;
         });
     },
     approveHours() {
