@@ -126,12 +126,10 @@
           />
         </div>
       </div>
-    </div>
 
-    <b-card class="mb-2">
-      <div class="text-right">
+      <div class="text-right" style="margin-right: 100px;">
         <template
-          v-if="
+                v-if="
             model.status === EXPENSE_STATE.NOT_SUBMITTED ||
               model.status === EXPENSE_STATE.DECLINED
           "
@@ -152,7 +150,7 @@
           <!-- nothing to show -->
         </template>
       </div>
-    </b-card>
+    </div>
   </b-modal>
 </template>
 
