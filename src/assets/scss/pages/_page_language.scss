@@ -7,4 +7,62 @@
     color: var(--lipstick-red);
     text-align: center;
   }
+
+  .change-box {
+    border: 1px solid #3c82fa;
+    min-height: 50px;
+  }
+
+  .alpaca-json {
+    border-radius: 0;
+    max-height: 600px;
+    overflow: auto;
+    font-family: "dejavu sans mono", "droid sans mono", consolas, monaco, "lucida console", "courier new", courier, monospace, sans-serif;
+    line-height: 1.3;
+    font-size: 13px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .alpaca-line,
+  .alpaca-k,
+  .alpaca-string {
+    height: 0;
+    line-height: 0;
+    display: block;
+    opacity: 0;
+  }
+
+  .alpaca-upd,
+  .alpaca-add,
+  .alpaca-del {
+    .alpaca-line,
+    .alpaca-k,
+    .alpaca-string {
+      height: auto;
+      line-height: 1.3;
+      display: initial;
+      opacity: 1;
+    }
+  }
+
+  .alpaca-del {
+    background-color: #efbfc5;
+  }
+
+  .alpaca-add {
+    background-color: #8de0a4;
+  }
+
+  .alpaca-upd {
+    background-color: #f9f3ab;
+  }
+
+  .alpaca-k {
+    color: black;
+  }
+  .alpaca-string {
+    color: #118108;
+  }
 }
