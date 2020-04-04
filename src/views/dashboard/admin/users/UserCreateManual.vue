@@ -24,7 +24,7 @@
           </label>
           <div class="flex-3">
             <b-form-select v-model="form.companyId">
-              <option value=""></option>
+              <option value="" />
               <option
                 v-for="(company, idx) in companies"
                 :key="idx"

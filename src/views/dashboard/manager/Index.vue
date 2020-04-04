@@ -5,9 +5,9 @@
         <b-col>
           <div class="d-flex responsive justify-content-between content-header">
             <h1 class="title text-center">{{ $t("page_dashboard.title") }}</h1>
-            <b-button v-b-modal.adjust_dashboard>{{
-              $t("page_dashboard.button.adjust")
-            }}</b-button>
+            <b-button v-b-modal.adjust_dashboard>
+              {{ $t("page_dashboard.button.adjust") }}
+            </b-button>
           </div>
         </b-col>
       </b-row>
@@ -30,11 +30,11 @@
       <div>
         <ul class="custom-list">
           <li class="d-flex responsive">
-            <div>
+            <div class="content">
               <p>{{ $t("page_dashboard.modal.adjust.position_area_title") }}</p>
-              <small>{{
-                $t("page_dashboard.modal.adjust.position_area_text")
-              }}</small>
+              <small>
+                {{ $t("page_dashboard.modal.adjust.position_area_text") }}
+              </small>
             </div>
             <b-form-checkbox
               class="rtl"
@@ -46,11 +46,11 @@
             </b-form-checkbox>
           </li>
           <li class="d-flex responsive">
-            <div>
+            <div class="content">
               <p>{{ $t("page_dashboard.modal.adjust.users_area_title") }}</p>
-              <small>{{
-                $t("page_dashboard.modal.adjust.users_area_text")
-              }}</small>
+              <small>
+                {{ $t("page_dashboard.modal.adjust.users_area_text") }}
+              </small>
             </div>
             <b-form-checkbox
               class="rtl"

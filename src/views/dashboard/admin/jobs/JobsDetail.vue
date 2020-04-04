@@ -165,32 +165,6 @@
                     </div>
                   </div>
                 </li>
-                <!--                <li>-->
-                <!--                  <div class="d-flex align-items-center">-->
-                <!--                    <span class="flex-1">-->
-                <!--                      {{ $t("page_job_detail.form.payment_type") }}-->
-                <!--                    </span>-->
-                <!--                    <div class="pull-right">-->
-                <!--                      <b-form-select-->
-                <!--                        v-if="editJob"-->
-                <!--                        v-model="model.paymentType"-->
-                <!--                        class="normal-size"-->
-                <!--                        style="margin-top:-8px"-->
-                <!--                      >-->
-                <!--                        <option-->
-                <!--                          v-for="(payment, index) in paymentType"-->
-                <!--                          :value="payment"-->
-                <!--                          :key="index"-->
-                <!--                        >-->
-                <!--                          {{ payment }}-->
-                <!--                        </option>-->
-                <!--                      </b-form-select>-->
-                <!--                      <div v-else>-->
-                <!--                        {{ model.paymentType }}-->
-                <!--                      </div>-->
-                <!--                    </div>-->
-                <!--                  </div>-->
-                <!--                </li>-->
                 <li>
                   <div class="d-flex align-items-center">
                     <span class="flex-1">
@@ -302,9 +276,6 @@
                   <div class="flex-3">
                     {{ $t("page_job_detail.form.worker") }}
                   </div>
-                  <!--                  <div class="flex-2">-->
-                  <!--                    Last Updated-->
-                  <!--                  </div>-->
                   <div class="flex-2">
                     {{ $t("page_job_detail.form.hiring_company") }}
                   </div>
@@ -444,9 +415,6 @@
                             class="hiway-crm-icon icon-more-vertical color-black"
                           />
                         </template>
-                        <!--                        <b-dropdown-item @click="viewFile(attachment)">-->
-                        <!--                          {{ $t("page_job_detail.view_file") }}-->
-                        <!--                        </b-dropdown-item>-->
                         <b-dropdown-item @click="downloadFile(attachment)">
                           {{ $t("page_job_detail.download_file") }}
                         </b-dropdown-item>

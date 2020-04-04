@@ -27,11 +27,13 @@
       <div>
         <ul class="custom-list">
           <li class="d-flex responsive">
-            <div>
+            <div class="content">
               <p>{{ $t("page_dashboard.modal.adjust.position_area_title") }}</p>
-              <small>{{
-                $t("page_dashboard.modal.adjust.position_area_text")
-              }}</small>
+              <small>
+                {{
+                  $t("page_dashboard.modal.adjust.position_area_text")
+                }}</small
+              >
             </div>
             <b-form-checkbox
               class="rtl"

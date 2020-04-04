@@ -187,7 +187,7 @@ export default {
         },
         {
           label: this.$t("page_companies.table.since"),
-          field: this.formattedDateTime(),
+          field: "createdAt",
           name: "createdAt"
         },
         {
@@ -212,11 +212,6 @@ export default {
   methods: {
     imageView(mode) {
       this.imageMode = !!mode;
-    },
-    formattedDateTime() {
-      return row => {
-        return this.getDateString(row["createdAt"]);
-      };
     },
     onPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {
@@ -275,7 +270,11 @@ export default {
     getCompanies() {
       return companyApi.get(this.serverParams).then(res => {
         this.totalRows = res.totalDocs;
-        this.rows = res.docs;
+        this.rows = res.docs.map(row => {
+          row.createdAt = this.getDateString(row["createdAt"]);
+
+          return row;
+        });
       });
     }
   }

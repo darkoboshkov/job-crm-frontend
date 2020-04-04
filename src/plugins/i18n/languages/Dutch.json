@@ -13,7 +13,7 @@
     "ok": "Ok",
     "save": "Opslaan",
     "cancel": "Annuleren",
-    "open": "Openen",
+    "open": "Open",
     "filters": "Filters",
     "close": "Sluiten",
     "complete": "Voltooien",
@@ -779,7 +779,7 @@
   "page_matching": {
     "title": "Matchen",
     "match_detail": "Match eigenschappen",
-    "match_result": "{candidates} Passende werknemers gevonden "
+    "match_result": "{candidates} geschikte werknemers gevonden "
   },
   "page_matching_detail": {
     "title": "Match eigenschappen"
@@ -876,7 +876,7 @@
         "continue": "Doorgaan"
       },
       "reset_password": {
-        "success_title": "Je wachtwoorden succesvol aangepast",
+        "success_title": "Je wachtwoord is succesvol aangepast",
         "error_title": "Het aanpassen van je wachtwoord is mislukt",
         "success_sub_title": "Bedankt",
         "continue": "Doorgaan"
@@ -884,8 +884,8 @@
     }
   },
   "page_timesheets": {
-    "title": "Timesheets & expenses",
-    "sub_title": "We hebben {timesheetsCount} urenbriefjes en {expensesCount} onkostenbriefjes gevonden",
+    "title": "Uren & Onkosten Declaraties",
+    "sub_title": "We hebben {timesheetsCount} uren declaraties en {expensesCount} onkosten declaraties gevonden",
     "add_expenses": "Onkosten indienen",
     "table": {
       "kind": "Soort",
@@ -896,8 +896,8 @@
       "hiring_manager": "Inhurende manager",
       "status": "Status",
       "actions": "Acties",
-      "view_timesheet": "Bekijk urenbriefje",
-      "view_expense": "Bekijk onkostenbriefje"
+      "view_timesheet": "Bekijk uren declaraties",
+      "view_expense": "Bekijk onkosten declaraties"
     },
     "filter": {
       "name": "Naam",
@@ -937,12 +937,12 @@
       "worked_overview_4": "uur gewerkt.",
       "worked_overview_5": "",
       "delete_confirm": {
-        "title": "Weet je zeker dat je deze briefje wilt leegmaken?",
+        "title": "Weet je zeker dat je deze declaratie wilt leegmaken?",
         "sub_title": "",
         "continue": "Leegmaken"
       },
       "delete_success": {
-        "title": "Het briefje is succesvol verwijderd.",
+        "title": "deze declaratie is succesvol verwijderd.",
         "sub_title": "",
         "continue": "Ok"
       }
@@ -950,7 +950,7 @@
   },
   "page_users_create": {
     "title": "Gebruiker toevoegen",
-    "description": "Voeg een nieuwe gebruiker toe door een uitnodiging per e-mail te sturen of maken handmatig een nieuwe gebruiker aan.",
+    "description": "Voeg een nieuwe gebruiker toe door een uitnodiging per e-mail te sturen of maak handmatig een nieuwe gebruiker aan.",
     "button": {
       "invite": "Gebruiker uitnodigen",
       "manual": "Handmatig invoeren"

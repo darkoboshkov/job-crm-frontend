@@ -1,15 +1,17 @@
 import { ls, STORAGE_KEY } from "../plugins";
 
 let syncedData = {
-  _id: null,
-  email: null,
-  firstName: null,
-  middleName: null,
-  lastName: null,
-  role: null,
-  companyId: null,
-  verified: false,
-  image: null
+  user: {
+    _id: null,
+    email: null,
+    firstName: null,
+    middleName: null,
+    lastName: null,
+    role: null,
+    companyId: null,
+    verified: false,
+    image: null
+  }
 };
 
 if (ls.get(STORAGE_KEY)) {

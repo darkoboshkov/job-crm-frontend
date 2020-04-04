@@ -19,7 +19,7 @@
             >{{ $t("page_timesheets.modal.hiring_manager") }}:</span
           >&nbsp;<b-input
             class="d-inline-block expense-input"
-            v-model="hiringManagerFullName"
+            v-model="model.hiringManager"
             disabled
           />
         </div>
@@ -31,7 +31,7 @@
             >{{ $t("page_timesheets.modal.worker") }}:</span
           >&nbsp;<b-input
             class="d-inline-block expense-input"
-            :value="workerFullName"
+            :value="model.worker"
             disabled
           />
         </div>
@@ -307,14 +307,6 @@ export default {
   watch: {
     rowData() {
       this.model = this.rowData;
-      this.workerFullName =
-        this.rowData.worker && this.rowData.worker[0]
-          ? this.getFullName(this.rowData.worker[0])
-          : "";
-      this.hiringManagerFullName =
-        this.rowData.hiringManager && this.rowData.hiringManager[0]
-          ? this.getFullName(this.rowData.hiringManager[0])
-          : "";
       if (this.model.expenseData.date) {
         this.model.expenseData.date = this.getISODateString(
           this.model.expenseData.date

@@ -115,63 +115,6 @@
           </b-card>
         </b-col>
       </b-row>
-
-      <!--      <b-row class="mt-5">-->
-      <!--        <b-col md="12">-->
-      <!--          <b-card>-->
-      <!--            <template v-slot:header>-->
-      <!--              <div class="d-flex">-->
-      <!--                <h5 class="m-0 flex-1">{{ $t("page_profile.form.files") }}</h5>-->
-      <!--                <div>-->
-      <!--                  <div class="float-right">-->
-      <!--                    <button-->
-      <!--                      class="btn btn-blue upload"-->
-      <!--                      style="width:100px;justify-content:center;"-->
-      <!--                    >-->
-      <!--                      {{ $t("page_profile.button.upload") }}-->
-      <!--                      <i class="hiway-crm-icon icon-upload ml-2" />-->
-      <!--                    </button>-->
-      <!--                  </div>-->
-      <!--                </div>-->
-      <!--              </div>-->
-      <!--            </template>-->
-      <!--            <div>-->
-      <!--              <ul class="custom-list">-->
-      <!--                <li class="d-flex">-->
-      <!--                  <div class="flex-3">-->
-      <!--                    CV-magalie-2019.pdf-->
-      <!--                  </div>-->
-      <!--                  <div class="flex-2">-->
-      <!--                    Geupload op 23 juli 2019 om 15:09-->
-      <!--                  </div>-->
-      <!--                  <div class="flex-1">-->
-      <!--                    2,3mb-->
-      <!--                  </div>-->
-      <!--                  <div>-->
-      <!--                    <i class="hiway-crm-icon icon-more-vertical mr-2" />-->
-      <!--                    <i class="hiway-crm-icon icon-bin" />-->
-      <!--                  </div>-->
-      <!--                </li>-->
-      <!--                <li class="d-flex">-->
-      <!--                  <div class="flex-3">-->
-      <!--                    Motivatie.docx-->
-      <!--                  </div>-->
-      <!--                  <div class="flex-2">-->
-      <!--                    Geupload op 23 juli 2019 om 15:09-->
-      <!--                  </div>-->
-      <!--                  <div class="flex-1">-->
-      <!--                    2,3mb-->
-      <!--                  </div>-->
-      <!--                  <div>-->
-      <!--                    <i class="hiway-crm-icon icon-more-vertical mr-2" />-->
-      <!--                    <i class="hiway-crm-icon icon-bin" />-->
-      <!--                  </div>-->
-      <!--                </li>-->
-      <!--              </ul>-->
-      <!--            </div>-->
-      <!--          </b-card>-->
-      <!--        </b-col>-->
-      <!--      </b-row>-->
     </div>
   </div>
 </template>

@@ -61,7 +61,7 @@
                 class="custom-input"
                 v-model="model.name"
                 :disabled="!editCompany"
-              ></b-form-input>
+              />
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -76,7 +76,7 @@
                 class="custom-input"
                 v-model="model.email"
                 :disabled="!editCompany"
-              ></b-form-input>
+              />
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -91,14 +91,14 @@
                 class="custom-input"
                 v-model="model.kvkNumber"
                 :disabled="!editCompany"
-              ></b-form-input>
+              />
             </div>
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-                >{{ $t("page_detail_company.form.limit_credit_safe") }}:</label
-              >
+              <label>
+                {{ $t("page_detail_company.form.limit_credit_safe") }}:
+              </label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
@@ -108,7 +108,7 @@
                 class="custom-input"
                 v-model="model.limitCreditSafe"
                 :disabled="!editCompany"
-              ></b-form-input>
+              />
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -121,7 +121,7 @@
                 class="custom-input"
                 v-model="model.country"
                 :disabled="!editCompany"
-              ></b-form-input>
+              />
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -134,7 +134,7 @@
                 class="custom-input"
                 v-model="model.city"
                 :disabled="!editCompany"
-              ></b-form-input>
+              />
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -147,7 +147,7 @@
                 class="custom-input"
                 v-model="model.street"
                 :disabled="!editCompany"
-              ></b-form-input>
+              />
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -160,7 +160,7 @@
                 class="custom-input"
                 v-model="model.houseNumber"
                 :disabled="!editCompany"
-              ></b-form-input>
+              />
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -173,7 +173,7 @@
                 class="custom-input"
                 v-model="model.postalCode"
                 :disabled="!editCompany"
-              ></b-form-input>
+              />
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -210,7 +210,7 @@
                         :disabled="!vatShiftedEnabled || !editCompany"
                         class="custom-input"
                         v-model="model.VATShifted"
-                      ></b-form-input>
+                      />
                     </div>
                   </div>
                 </div>
@@ -251,7 +251,7 @@
                         :disabled="!gAccountEnabled || !editCompany"
                         class="custom-input"
                         v-model="model.GAccount"
-                      ></b-form-input>
+                      />
                     </div>
                   </div>
                 </div>
@@ -260,9 +260,9 @@
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-                >{{ $t("page_detail_company.form.terms_of_payment") }}:</label
-              >
+              <label>
+                {{ $t("page_detail_company.form.terms_of_payment") }}:
+              </label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-group class="mb-2">
@@ -273,17 +273,15 @@
                   name="term_of_payment"
                   style="outline: none;"
                   :disabled="!editCompany"
-                ></b-form-radio-group>
+                />
               </b-form-group>
             </div>
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-                >{{
-                  $t("page_detail_company.form.automatic_collection")
-                }}:</label
-              >
+              <label>
+                {{ $t("page_detail_company.form.automatic_collection") }}:
+              </label>
             </div>
             <div class="col-12 col-md-6">
               <b-form-group class="mb-2">
@@ -302,11 +300,9 @@
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-                >{{
-                  $t("page_detail_company.form.charge_travel_expenses")
-                }}:</label
-              >
+              <label>
+                {{ $t("page_detail_company.form.charge_travel_expenses") }}:
+              </label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-group class="mb-2">
@@ -325,11 +321,9 @@
           </div>
           <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
-              <label
-                >{{
-                  $t("page_detail_company.form.charge_other_expenses")
-                }}:</label
-              >
+              <label>
+                {{ $t("page_detail_company.form.charge_other_expenses") }}:
+              </label>
             </div>
             <div class="col-12 col-md-8">
               <b-form-group class="mb-2">
@@ -346,30 +340,6 @@
               </b-form-group>
             </div>
           </div>
-          <div class="row">
-            <!--<div class="col-12 col-md-6">-->
-            <!--<div class="form-element">-->
-            <!--<b-form-checkbox-->
-            <!--v-model="model.active"-->
-            <!--class="custom-input"-->
-            <!--name="is_active"-->
-            <!--&gt;-->
-            <!--{{ $t("page_detail_company.form.is_active") }}-->
-            <!--</b-form-checkbox>-->
-            <!--</div>-->
-            <!--</div>-->
-            <div class="col-12 col-md-6">
-              <!--<div class="form-element">-->
-              <!--<label>{{ $t("COMPANY_MEMBERS") }}:</label>-->
-              <!--<b-form-input-->
-              <!--type="text"-->
-              <!--required-->
-              <!--class="custom-input"-->
-              <!--v-model="model.members"-->
-              <!--/>-->
-              <!--</div>-->
-            </div>
-          </div>
           <div class="row mt-5">
             <div class="col-12">
               <div class="row">
@@ -381,11 +351,6 @@
                     {{ $t("page_detail_company.button.delete") }}
                   </button>
                 </div>
-                <!--<div class="col-6 text-right">-->
-                <!--<button type="submit" class="btn btn-blue">-->
-                <!--{{ $t("page_detail_company.button.update") }}-->
-                <!--</button>-->
-                <!--</div>-->
               </div>
             </div>
           </div>
@@ -396,8 +361,8 @@
 </template>
 
 <script>
-import companyApi from "../../../../services/api/companies.js";
-import constantsApi from "../../../../services/api/constants.js";
+import companyApi from "@/services/api/companies";
+import constantsApi from "@/services/api/constants";
 
 export default {
   name: "CompanyDetails",

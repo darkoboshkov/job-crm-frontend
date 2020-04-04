@@ -114,32 +114,8 @@ export default {
     this.get();
   },
   methods: {
-    get() {
-      // systemSettingsApi.get(this.$store.state.user).then(res => {
-      //   this.bgColor = res.bgColor;
-      //   this.fontFamily = res.fontFamily;
-      //   this.notificationEnabled = res.notificationEnabled;
-      //   this.messageEnabled = res.messageEnabled;
-      //   this.weekStartAt = res.weekStartAt;
-      //   this.timezone = res.timezone;
-      // });
-    },
-    update() {
-      // systemSettingsApi
-      //   .patch(
-      //     Object.assign(this.$store.state.user, {
-      //       bgColor: this.bgColor,
-      //       fontFamily: this.fontFamily,
-      //       notificationEnabled: this.notificationEnabled,
-      //       messageEnabled: this.messageEnabled,
-      //       weekStartAt: this.weekStartAt,
-      //       timezone: this.timezone
-      //     })
-      //   )
-      //   .then(res => {
-      //     console.log("response", res);
-      //   });
-    }
+    get() {},
+    update() {}
   }
 };
 </script>

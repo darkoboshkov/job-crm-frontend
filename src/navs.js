@@ -63,7 +63,7 @@ export const items = [
     icon: "icon-hours",
     path: "/worker/dashboard/timesheets",
     roles: ["worker"]
-  },
+  }
   // {
   //   icon: "icon-mail",
   //   path: "/admin/dashboard/chats",

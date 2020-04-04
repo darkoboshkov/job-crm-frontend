@@ -889,11 +889,13 @@
     "add_expenses": "Add expenses",
     "table": {
       "kind": "Kind",
+      "worker": "Worker",
       "week": "Week",
       "hand_in_date": "Hand In date",
       "hours": "Hours",
       "price": "€",
       "hiring_manager": "Hiring manager",
+      "hiring_company": "Hiring Company",
       "status": "Status",
       "actions": "Actions",
       "view_timesheet": "View timesheet",

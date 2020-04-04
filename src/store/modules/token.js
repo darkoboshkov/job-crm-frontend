@@ -1,8 +1,10 @@
 import { ls, STORAGE_KEY } from "../plugins";
 
 let syncedData = {
-  jwt: null,
-  expiresIn: null
+  token: {
+    jwt: null,
+    expiresIn: null
+  }
 };
 if (ls.get(STORAGE_KEY)) {
   try {

@@ -12,62 +12,6 @@
       }}
     </p>
     <hr />
-    <div class="container-fluid">
-      <!--      <div class="row">-->
-      <!--        <div class="col-md-3 d-flex">-->
-      <!--          <b-card-->
-      <!--            title="Worked Hours this month"-->
-      <!--            tag="article"-->
-      <!--            style="max-width: 20rem;"-->
-      <!--            class="mb-2"-->
-      <!--          >-->
-      <!--            <b-card-text>-->
-      <!--              <i class="card-icon hiway-crm-icon icon-watch"></i>-->
-      <!--              <span class="card-value">156</span>-->
-      <!--            </b-card-text>-->
-      <!--          </b-card>-->
-      <!--        </div>-->
-      <!--        <div class="col-md-3 d-flex">-->
-      <!--          <b-card-->
-      <!--            title="Approved Hours this month"-->
-      <!--            tag="article"-->
-      <!--            style="max-width: 20rem;"-->
-      <!--            class="mb-2"-->
-      <!--          >-->
-      <!--            <b-card-text>-->
-      <!--              <i class="card-icon hiway-crm-icon icon-list"></i>-->
-      <!--              <span class="card-value">123</span>-->
-      <!--            </b-card-text>-->
-      <!--          </b-card>-->
-      <!--        </div>-->
-      <!--        <div class="col-md-3 d-flex">-->
-      <!--          <b-card-->
-      <!--            title="Hours to be approved"-->
-      <!--            tag="article"-->
-      <!--            style="max-width: 20rem;"-->
-      <!--            class="mb-2"-->
-      <!--          >-->
-      <!--            <b-card-text>-->
-      <!--              <i class="card-icon hiway-crm-icon icon-hourglass"></i>-->
-      <!--              <span class="card-value">33</span>-->
-      <!--            </b-card-text>-->
-      <!--          </b-card>-->
-      <!--        </div>-->
-      <!--        <div class="col-md-3 d-flex">-->
-      <!--          <b-card-->
-      <!--            title="Total Expenses this month"-->
-      <!--            tag="article"-->
-      <!--            style="max-width: 20rem;"-->
-      <!--            class="mb-2"-->
-      <!--          >-->
-      <!--            <b-card-text>-->
-      <!--              <i class="card-icon hiway-crm-icon icon-euro"></i>-->
-      <!--              <span class="card-value">€2350.36</span>-->
-      <!--            </b-card-text>-->
-      <!--          </b-card>-->
-      <!--        </div>-->
-      <!--      </div>-->
-    </div>
     <div class="d-flex justify-content-between">
       <table-filter
         class="companies-filters"
@@ -206,38 +150,7 @@ export default {
         sort: "",
         order: ""
       },
-      filterOptions: [
-        // {
-        //   title: this.$t("page_companies.filter.name"),
-        //   type: "text",
-        //   value: ""
-        // },
-        // {
-        //   title: this.$t("page_companies.filter.email"),
-        //   type: "text",
-        //   value: ""
-        // },
-        // {
-        //   title: this.$t("page_companies.filter.status"),
-        //   type: "checkbox",
-        //   value: "",
-        //   options: [
-        //     {
-        //       label: this.$t("page_companies.filter.active"),
-        //       checked: false
-        //     },
-        //     {
-        //       label: this.$t("page_companies.filter.inactive"),
-        //       checked: false
-        //     }
-        //   ]
-        // },
-        // {
-        //   title: this.$t("page_companies.filter.city"),
-        //   type: "text",
-        //   value: ""
-        // }
-      ],
+      filterOptions: [],
       showTimeSheetsModal: false,
       showExpensesModal: false,
       selectedTimeSheetRow: {},
@@ -270,8 +183,13 @@ export default {
       return columns.concat([
         {
           label: this.$t("page_timesheets.table.week"),
-          field: this.timeSheetWeek(),
+          field: "week",
           name: "week"
+        },
+        {
+          label: this.$t("page_timesheets.table.worker"),
+          field: "worker",
+          name: "worker"
         },
         {
           label: this.$t("page_timesheets.table.hand_in_date"),
@@ -280,18 +198,23 @@ export default {
         },
         {
           label: this.$t("page_timesheets.table.hours"),
-          field: this.summedHours(),
+          field: "hours",
           name: "hours"
         },
         {
           label: this.$t("page_timesheets.table.price"),
-          field: this.expensePrice(),
+          field: "price",
           name: "price"
         },
         {
           label: this.$t("page_timesheets.table.hiring_manager"),
-          field: this.hiringManager(),
+          field: "hiringManager",
           name: "hiring_manager"
+        },
+        {
+          label: this.$t("page_timesheets.table.hiring_company"),
+          field: "hiringCompany",
+          name: "hiring_company"
         },
         {
           label: this.$t("page_timesheets.table.status"),
@@ -318,7 +241,24 @@ export default {
           companyId
         })
         .then(({ docs, totalDocs }) => {
-          this.rows = docs;
+          this.rows = docs.map(row => {
+            row.hiringManager = row.hiringManager[0]
+              ? this.getFullName(row.hiringManager[0])
+              : "";
+            row.hiringCompany = row.hiringCompany[0]
+              ? row.hiringCompany[0].name
+              : "";
+            row.worker = row.worker[0] ? this.getFullName(row.worker[0]) : "";
+            row.hours =
+              row.type === "timesheet"
+                ? row.timeSheetData.totalHours.toString()
+                : "";
+            row.price = row.type === "expense" ? row.expenseData.amount : "";
+            row.week =
+              row.type === "timesheet" ? row.timeSheetData.weekNumber : "";
+
+            return row;
+          });
           this.totalRows = totalDocs;
         });
     },
@@ -351,40 +291,6 @@ export default {
         .then(({ docs, totalDocs }) => {
           this.expensesCount = totalDocs;
         });
-    },
-    timeSheetWeek() {
-      return row => {
-        if (row && row.type === "timesheet") {
-          return row.timeSheetData.weekNumber;
-        }
-
-        return "";
-      };
-    },
-    summedHours() {
-      return row => {
-        if (row && row.type === "timesheet") {
-          return row.timeSheetData.totalHours.toString();
-        }
-
-        return "";
-      };
-    },
-    expensePrice() {
-      return row => {
-        if (row && row.type === "expense") {
-          return row.expenseData.amount;
-        }
-        return "";
-      };
-    },
-    hiringManager() {
-      return row => {
-        if (row.hiringManager && row.hiringManager[0]) {
-          return this.getFullName(row.hiringManager[0]);
-        }
-        return "";
-      };
     },
     onRowClick(prop) {
       if (prop.row.type === "timesheet") {

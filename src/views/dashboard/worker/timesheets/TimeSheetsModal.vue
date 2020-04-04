@@ -49,25 +49,6 @@
           :value="selectedWeekNumber"
           disabled
         />
-        <!--        <b-dropdown-->
-        <!--          :text="`Week ${selectedWeekNumber}`"-->
-        <!--          variant="transparent"-->
-        <!--          menu-class="week-number-menu"-->
-        <!--          toggle-class="week-number-toggle"-->
-        <!--          v-model="selectedWeekNumber"-->
-        <!--          disabled-->
-        <!--        >-->
-        <!--          <b-dropdown-item-->
-        <!--            v-for="weekNumber in Array(52)-->
-        <!--              .fill()-->
-        <!--              .map((i, idx) => idx)"-->
-        <!--            :key="weekNumber"-->
-        <!--            @click="selectedWeekNumber = weekNumber"-->
-        <!--          >-->
-        <!--            {{ $t("page_timesheets.modal.week") }} {{ weekNumber }}-->
-        <!--          </b-dropdown-item>-->
-        <!--        </b-dropdown>-->
-
         <span class="through">
           {{
             $t("page_timesheets.modal.through", {
@@ -271,21 +252,10 @@ export default {
       );
     },
     worker() {
-      if (this.timeSheetsData.worker && this.timeSheetsData.worker[0]) {
-        return this.getFullName(this.timeSheetsData.worker[0]);
-      }
-
-      return "";
+      return this.timeSheetsData.worker;
     },
     hiringManager() {
-      if (
-        this.timeSheetsData.hiringManager &&
-        this.timeSheetsData.hiringManager[0]
-      ) {
-        return this.getFullName(this.timeSheetsData.hiringManager[0]);
-      }
-
-      return "";
+      return this.timeSheetsData.hiringManager;
     },
     year() {
       return new Date().getFullYear();
