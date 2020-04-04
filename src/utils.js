@@ -1,6 +1,7 @@
 const Swal = require("sweetalert2");
 import store from "./store";
 import axios from "./axios";
+import html2pdf from "html2pdf.js";
 
 /**
  * Toast
@@ -171,7 +172,7 @@ export const handleLogout = () => {
 };
 
 /**
- *
+ * Download File
  */
 export const downloadFile = (blob, fileName) => {
   const fileURL = window.URL.createObjectURL(new Blob([blob]));
@@ -181,6 +182,25 @@ export const downloadFile = (blob, fileName) => {
   document.body.appendChild(fileLink);
   fileLink.click();
   document.body.removeChild(fileLink);
+};
+
+/**
+ * Export PDF
+ */
+export const exportPDF = async (elementId, fileName) => {
+  const element = document.getElementById(elementId);
+  const opt = {
+    margin: 0.5,
+    filename: fileName,
+    image: { type: "pdf", quality: 0.98 },
+    html2canvas: { scale: 1, letterRendering: true },
+    jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    pagebreak: { mode: ["avoid-all", "css", "legacy"] }
+  };
+  await html2pdf()
+    .from(element)
+    .set(opt)
+    .save();
 };
 
 /**

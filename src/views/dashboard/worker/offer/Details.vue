@@ -175,7 +175,7 @@
           <button
             class="btn ml-2"
             :class="signed ? 'btn-blue' : 'btn-secondary'"
-            @click="openViewOffer = !openViewOffer"
+            @click="viewContract"
             style="min-width:160px;"
           >
             {{ $t("page_offer_detail.button.view_contract") }}
@@ -362,14 +362,22 @@
         </ul>
       </div>
     </div>
-    <view-offer
-      :open="openViewOffer"
-      :offer="model"
-      :company="company"
-      :manager="manager"
-      :worker="worker"
-    />
-
+    <b-modal
+      ref="modal-view-contract"
+      size="lg"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      :modal-class="{ invisible: exportingContract }"
+    >
+      <Contract
+        :offer="model"
+        :company="company"
+        :manager="manager"
+        :worker="worker"
+        :job="job"
+      />
+    </b-modal>
     <b-modal
       ref="modal-sign-contract"
       :hide-footer="true"
@@ -466,13 +474,13 @@
 <script>
 import jobOfferApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
-import ViewJobOffer from "./ViewJobOffer";
-import { serializeContractStatus, downloadFile } from "@/utils";
+import Contract from "./Contract";
+import { serializeContractStatus, downloadFile, exportPDF } from "@/utils";
 
 export default {
   name: "Details",
   components: {
-    "view-offer": ViewJobOffer
+    Contract: Contract
   },
   computed: {
     edit() {
@@ -502,13 +510,12 @@ export default {
     return {
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
-
+      exportingContract: false,
       model: {},
       company: {},
       job: {},
       manager: {},
       worker: {},
-      openViewOffer: false,
       caoOptions: [],
       imageData: {},
       attachments: [],
@@ -653,7 +660,18 @@ export default {
           });
         });
     },
-    exportContract() {},
+    viewContract() {
+      this.$refs["modal-view-contract"].show();
+    },
+    exportContract() {
+      this.exportingContract = true;
+      this.$refs["modal-view-contract"].show();
+      setTimeout(() => {
+        exportPDF("joboffer_contract", "contract.pdf");
+        this.$refs["modal-view-contract"].hide();
+        this.exportingContract = false;
+      }, 100);
+    },
     getOfferDetails() {
       const { companyId, offerId } = this;
 

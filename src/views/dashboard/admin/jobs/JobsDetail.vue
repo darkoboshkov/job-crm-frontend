@@ -385,7 +385,7 @@
                 </label>
               </div>
             </template>
-            <div class="card-body">
+            <div>
               <ul class="custom-list">
                 <li
                   class="d-flex"
