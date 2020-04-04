@@ -381,7 +381,7 @@
                   :style="{ cursor: editJob ? 'pointer' : 'not-allowed' }"
                 >
                   {{ $t("page_job_detail.button.upload") }}
-                  <i class="hiway-crm-icon icon-upload"></i>
+                  <i class="hiway-crm-icon icon-upload" />
                 </label>
               </div>
             </template>
@@ -444,6 +444,7 @@ import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 import constantsApi from "@/services/api/constants";
 import errorReader from "@/helpers/ErrorReader";
+import { downloadFile } from "@/utils";
 
 export default {
   name: "JobsDetail",
@@ -519,12 +520,7 @@ export default {
           attachmentId: attachment._id
         })
         .then(res => {
-          const fileURL = window.URL.createObjectURL(new Blob([res]));
-          const fileLink = document.createElement("a");
-          fileLink.href = fileURL;
-          fileLink.setAttribute("download", attachment.name);
-          document.body.appendChild(fileLink);
-          fileLink.click();
+          downloadFile(res, attachment.name);
         });
     },
     getCompanies() {
@@ -692,8 +688,9 @@ export default {
           )
           .then(res => {
             this.$store.dispatch("updateLoading", false);
-
-            this.model.attachments = res.attachments;
+            this.$nextTick(() => {
+              this.model.attachments = res.attachments;
+            });
           });
       });
     },

@@ -1,22 +1,22 @@
 import request from "../request";
 
 export default {
-  login(params, resolve, reject = null) {
-    return request("post", "/auth/login", params, resolve, reject);
+  login(params, config = {}) {
+    return request("post", "/auth/login", params, config);
   },
-  signup(params, resolve, reject = null) {
-    return request("post", "/auth/register", params, resolve, reject);
+  signup(params, config = {}) {
+    return request("post", "/auth/register", params, config);
   },
-  verify(params, resolve, reject = null) {
-    return request("post", "/auth/verify", params, resolve, reject);
+  verify(params, config = {}) {
+    return request("post", "/auth/verify", params, config);
   },
-  forgot(params, resolve, reject = null) {
-    return request("post", "/auth/forgot", params, resolve, reject);
+  forgot(params, config = {}) {
+    return request("post", "/auth/forgot", params, config);
   },
-  reset(params, resolve, reject = null) {
-    return request("post", "/auth/reset", params, resolve, reject);
+  reset(params, config = {}) {
+    return request("post", "/auth/reset", params, config);
   },
-  invitation(params, resolve, reject = null) {
-    return request("post", "/auth/invitation", params, resolve, reject);
+  invitation(params, config = {}) {
+    return request("post", "/auth/invitation", params, config);
   }
 };

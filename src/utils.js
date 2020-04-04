@@ -171,6 +171,19 @@ export const handleLogout = () => {
 };
 
 /**
+ *
+ */
+export const downloadFile = (blob, fileName) => {
+  const fileURL = window.URL.createObjectURL(new Blob([blob]));
+  const fileLink = document.createElement("a");
+  fileLink.href = fileURL;
+  fileLink.setAttribute("download", fileName);
+  document.body.appendChild(fileLink);
+  fileLink.click();
+  document.body.removeChild(fileLink);
+};
+
+/**
  * Serialize Contract Status
  */
 export const serializeContractStatus = (role, status) => {

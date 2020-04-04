@@ -1,22 +1,16 @@
 import request from "../request";
 
 export default {
-  get(params, resolve, reject = null) {
-    return request("get", "/settings", resolve, reject);
+  get(params, config = {}) {
+    return request("get", "/settings", {}, config);
   },
-  patch(params, resolve, reject = null) {
-    return request(
-      "patch",
-      "/settings/" + params.role,
-      params,
-      resolve,
-      reject
-    );
+  patch(params, config = {}) {
+    return request("patch", `/settings/${params.role}`, params, config);
   },
-  uploadImage(params, resolve, reject = null) {
-    return request("post", "/settings/image", params, resolve, reject);
+  uploadImage(params, config = {}) {
+    return request("post", "/settings/image", params, config);
   },
-  resetPassword(params, resolve, reject = null) {
-    return request("post", "/settings/changePassword", params, resolve, reject);
+  resetPassword(params, config = {}) {
+    return request("post", "/settings/changePassword", params, config);
   }
 };

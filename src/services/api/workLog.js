@@ -1,60 +1,77 @@
 import request from "../request";
 
 export default {
-  getAll(params) {
-    return request("get", "/worklogs/all", params);
+  getAll(params, config = {}) {
+    return request("get", "/worklogs/all", params, config);
   },
-  getByCompany(params) {
-    return request("get", `/worklogs/${params.companyId}/all`, params);
+  getByCompany(params, config = {}) {
+    return request("get", `/worklogs/${params.companyId}/all`, params, config);
   },
-  getByWorker(params) {
-    return request("get", `/worklogs/${params.companyId}/worker`, params);
+  getByWorker(params, config = {}) {
+    return request(
+      "get",
+      `/worklogs/${params.companyId}/worker`,
+      params,
+      config
+    );
   },
-  approve(params) {
+  approve(params, config = {}) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/approve`,
-      params
+      params,
+      config
     );
   },
-  decline(params) {
+  decline(params, config = {}) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/decline`,
-      params
+      params,
+      config
     );
   },
-  save(params) {
+  save(params, config = {}) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/save`,
-      params
+      params,
+      config
     );
   },
-  send(params) {
+  send(params, config = {}) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/submit`,
-      params
+      params,
+      config
     );
   },
-  adjust(params) {
+  adjust(params, config = {}) {
     return request(
       "patch",
       `/worklogs/${params.companyId}/${params._id}/adjust`,
-      params
+      params,
+      config
     );
   },
-  delete(params) {
+  delete(params, config = {}) {
     return request(
       "delete",
-      `/worklogs/${params.companyId}/${params._id}/${params.type}`
+      `/worklogs/${params.companyId}/${params._id}/${params.type}`,
+      {},
+      config
     );
   },
-  upload(params) {
-    return request("post", `/worklogs/attachment/upload`, params);
+  upload(params, config = {}) {
+    return request("post", `/worklogs/attachment/upload`, params, config);
   },
-  createExpense(params) {
-    return request("post", `/worklogs/${params.companyId}/expense`, params);
+  createExpense(params, config = {}) {
+    return request(
+      "post",
+      `/worklogs/${params.companyId}/expense`,
+      params,
+      config
+    );
   }
 };

@@ -1,109 +1,78 @@
 import request from "../request";
 
 export default {
-  getAll(params, resolve, reject = null) {
-    return request("get", "/users", params, resolve, reject);
+  getAll(params, config = {}) {
+    return request("get", "/users", params, config);
   },
-  getAllWorkers(params, resolve, reject = null) {
-    return request("get", "/users/workers", params, resolve, reject);
+  getAllWorkers(params, config = {}) {
+    return request("get", "/users/workers", params, config);
   },
-  getAllPendingWorkers(params, resolve, reject = null) {
-    return request("get", "/users/pending-workers", params, resolve, reject);
+  getAllPendingWorkers(params, config = {}) {
+    return request("get", "/users/pending-workers", params, config);
   },
-  getCompanyUsers(params, resolve, reject = null) {
+  getCompanyUsers(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
-    return request("get", `/users/${companyId}/all`, params, resolve, reject);
+    return request("get", `/users/${companyId}/all`, params, config);
   },
-  getCompanyWorkers(params, resolve, reject = null) {
+  getCompanyWorkers(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
-    return request(
-      "get",
-      `/users/${companyId}/workers/all`,
-      params,
-      resolve,
-      reject
-    );
+    return request("get", `/users/${companyId}/workers/all`, params, config);
   },
-  getAvailableCompanyWorkers(params, resolve, reject = null) {
+  getAvailableCompanyWorkers(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
     return request(
       "get",
       `/users/${companyId}/available-workers/all`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  get(params, resolve, reject = null) {
+  get(params, config = {}) {
     const companyId = params.companyId;
     const userId = params.userId;
     delete params.companyId;
     delete params.userId;
-    return request(
-      "get",
-      `/users/${companyId}/${userId}`,
-      params,
-      resolve,
-      reject
-    );
+    return request("get", `/users/${companyId}/${userId}`, params, config);
   },
-  create(params, resolve, reject = null) {
+  create(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
-    return request("post", `/users/${companyId}`, params, resolve, reject);
+    return request("post", `/users/${companyId}`, params, config);
   },
-  invite(params, resolve, reject = null) {
+  invite(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
-    return request(
-      "post",
-      `/users/${companyId}/invite`,
-      params,
-      resolve,
-      reject
-    );
+    return request("post", `/users/${companyId}/invite`, params, config);
   },
-  update(params, resolve, reject = null) {
+  update(params, config = {}) {
     const companyId = params.companyId;
     const id = params.id;
     delete params.companyId;
     delete params.id;
-    return request(
-      "patch",
-      `/users/${companyId}/${id}`,
-      params,
-      resolve,
-      reject
-    );
+    return request("patch", `/users/${companyId}/${id}`, params, config);
   },
-  delete(params, resolve, reject = null) {
+  delete(params, config = {}) {
     return request(
       "delete",
       `/users/${params.companyId}/${params.id}`,
-      resolve,
-      reject
+      {},
+      config
     );
   },
-  assignPendingWorker(params, resolve, reject = null) {
+  assignPendingWorker(params, config = {}) {
     const id = params.id;
     delete params.id;
     return request(
       "patch",
       `/users/pending-workers/${id}/assign`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  deletePendingWorker(params, resolve, reject = null) {
-    return request(
-      "delete",
-      `/users/pending-workers/${params.id}`,
-      resolve,
-      reject
-    );
+  deletePendingWorker(params, config = {}) {
+    return request("delete", `/users/pending-workers/${params.id}`, {}, config);
   }
 };

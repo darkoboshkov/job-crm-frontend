@@ -197,8 +197,8 @@
                 v-for="caoOption in caoOptions"
                 :value="caoOption._id"
                 :key="caoOption._id"
-                >{{ caoOption.name }}</option
-              >
+                >{{ caoOption.name }}
+              </option>
             </b-form-select>
           </div>
           <div v-else class="text-right">{{ selectedCaoOption.name }}</div>
@@ -306,37 +306,60 @@
         </label>
       </div>
       <div class="card-body">
-        <div class="item" v-for="(attachment, idx) in attachments" :key="idx">
-          <div>
-            <img
-              :src="
-                (attachment.userId === worker._id
-                  ? worker.image
-                  : attachment.userId === manager._id
-                  ? manager.image
-                  : '') | appUrlFormatter
-              "
-              class="rounded-circle border mr-4"
-              style="width:45px"
-            />
-            {{ attachment.name }}
-          </div>
-          <div>
-            <span class="mr-5">
-              {{ attachment.uploadedAt | dateTimeFormatter }}
-            </span>
-            <span class="mr-5">{{ attachment.size | fileSizeFormatter }}</span>
-            <span class="mr-4"
-              ><i class="hiway-crm-icon icon-more-vertical" />
-            </span>
-            <span
-              ><i
-                v-if="attachment.userId === user._id"
-                class="hiway-crm-icon icon-bin"
-                @click="confirmDelete(attachment)"
-            /></span>
-          </div>
-        </div>
+        <ul class="custom-list">
+          <li
+            class="d-flex"
+            v-for="(attachment, idx) in attachments"
+            :key="idx"
+          >
+            <div class="flex-1">
+              <img
+                v-if="attachment.userId === worker._id"
+                :src="worker.image | appUrlFormatter"
+                class="rounded-circle border mr-4"
+                style="width:45px"
+              />
+              <img
+                v-if="attachment.userId === manager._id"
+                :src="manager.image | appUrlFormatter"
+                class="rounded-circle border mr-4"
+                style="width:45px"
+              />
+              {{ attachment.name }}
+            </div>
+            <div>
+              <span class="mr-5">
+                {{ attachment.uploadedAt | dateTimeFormatter }}
+              </span>
+              <span class="mr-5">{{
+                attachment.size | fileSizeFormatter
+              }}</span>
+              <span class="mr-4">
+                <b-dropdown
+                  variant="link"
+                  toggle-class="text-decoration-none"
+                  no-caret
+                  offset="0"
+                  class="icon-dropdown mx-2"
+                >
+                  <template v-slot:button-content>
+                    <i class="hiway-crm-icon icon-more-vertical color-black" />
+                  </template>
+                  <b-dropdown-item @click="downloadFile(attachment)">
+                    {{ $t("page_offer_detail.download_file") }}
+                  </b-dropdown-item>
+                </b-dropdown>
+              </span>
+              <span>
+                <i
+                  v-if="attachment.userId === user._id"
+                  class="hiway-crm-icon icon-bin"
+                  @click="confirmDelete(attachment)"
+                />
+              </span>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
     <view-offer
@@ -373,8 +396,8 @@
                 v-for="option in paymentIntervalOptions"
                 :value="option.value"
                 :key="option.value"
-                >{{ option.label }}</option
-              >
+                >{{ option.label }}
+              </option>
             </b-form-select>
           </div>
         </div>
@@ -388,8 +411,8 @@
                 v-for="option in discountOnTaxesOptions"
                 :value="option.value"
                 :key="option.value"
-                >{{ option.label }}</option
-              >
+                >{{ option.label }}
+              </option>
             </b-form-select>
           </div>
         </div>
@@ -407,8 +430,8 @@
                 v-for="option in workedEarlierAsFlexWorkerOptions"
                 :value="option.value"
                 :key="option.value"
-                >{{ option.label }}</option
-              >
+                >{{ option.label }}
+              </option>
             </b-form-select>
           </div>
         </div>
@@ -444,7 +467,7 @@
 import jobOfferApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
 import ViewJobOffer from "./ViewJobOffer";
-import { serializeContractStatus } from "@/utils";
+import { serializeContractStatus, downloadFile } from "@/utils";
 
 export default {
   name: "Details",
@@ -537,6 +560,17 @@ export default {
     this.getPaymentType();
   },
   methods: {
+    downloadFile(attachment) {
+      jobOfferApi
+        .downloadAttachment({
+          companyId: this.companyId,
+          id: this.offerId,
+          attachmentId: attachment._id
+        })
+        .then(res => {
+          downloadFile(res, attachment.name);
+        });
+    },
     getCaoOptions() {
       return jobOfferApi
         .getCaoOptions({

@@ -409,9 +409,9 @@
                             class="hiway-crm-icon icon-more-vertical color-black"
                           />
                         </template>
-                        <b-dropdown-item @click="viewFile(attachment)">
-                          {{ $t("page_job_detail.view_file") }}
-                        </b-dropdown-item>
+                        <!--                        <b-dropdown-item @click="viewFile(attachment)">-->
+                        <!--                          {{ $t("page_job_detail.view_file") }}-->
+                        <!--                        </b-dropdown-item>-->
                         <b-dropdown-item @click="downloadFile(attachment)">
                           {{ $t("page_job_detail.download_file") }}
                         </b-dropdown-item>
@@ -439,6 +439,7 @@ import jobsApi from "@/services/api/jobs";
 import joboffersApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
 import errorReader from "@/helpers/ErrorReader";
+import { downloadFile } from "@/utils";
 
 export default {
   name: "JobsDetail",
@@ -500,7 +501,15 @@ export default {
       //
     },
     downloadFile(attachment) {
-      //
+      jobsApi
+        .downloadAttachment({
+          companyId: this.companyId,
+          id: this.jobId,
+          attachmentId: attachment._id
+        })
+        .then(res => {
+          downloadFile(res, attachment.name);
+        });
     },
     getPaymentType() {
       return constantsApi.getAll().then(res => {
@@ -648,7 +657,9 @@ export default {
           )
           .then(res => {
             this.$store.dispatch("updateLoading", false);
-            this.model.attachments = res.attachments;
+            this.$nextTick(() => {
+              this.model.attachments = res.attachments;
+            });
           });
       });
     },

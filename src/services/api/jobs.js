@@ -1,75 +1,63 @@
 import request from "../request";
 
 export default {
-  getAll(params, resolve, reject = null) {
-    return request("get", `/jobs`, params, resolve, reject);
+  getAll(params, config = {}) {
+    return request("get", `/jobs`, params, config);
   },
-  getCompanyJobs(params, resolve, reject = null) {
+  getCompanyJobs(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
-    return request("get", `/jobs/${companyId}/all`, params, resolve, reject);
+    return request("get", `/jobs/${companyId}/all`, params, config);
   },
-  get(params, resolve, reject = null) {
-    return request(
-      "get",
-      `/jobs/${params.companyId}/${params.id}`,
-      resolve,
-      reject
-    );
+  get(params, config = {}) {
+    return request("get", `/jobs/${params.companyId}/${params.id}`, {}, config);
   },
-  create(params, resolve, reject = null) {
-    return request(
-      "post",
-      `/jobs/${params.companyId}`,
-      params,
-      resolve,
-      reject
-    );
+  create(params, config = {}) {
+    return request("post", `/jobs/${params.companyId}`, params, config);
   },
-  update(params, resolve, reject = null) {
+  update(params, config = {}) {
     return request(
       "patch",
       `/jobs/${params.companyId}/${params._id}`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  delete(params, resolve, reject = null) {
+  delete(params, config = {}) {
     return request(
       "delete",
       `/jobs/${params.companyId}/${params._id}`,
-      resolve,
-      reject
+      {},
+      config
     );
   },
-  upload(params, resolve, reject = null) {
-    return request("post", `/jobs/attachment/upload`, params, resolve, reject);
+  upload(params, config = {}) {
+    return request("post", `/jobs/attachment/upload`, params, config);
   },
-  addAttachment(params, resolve, reject = null) {
+  addAttachment(params, config = {}) {
     return request(
       "patch",
       `/jobs/${params.companyId}/${params._id}/attachment`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  downloadAttachment(params, resolve, reject = null) {
+  downloadAttachment(params, config = {}) {
     return request(
-      "get",
+      "post",
       `/jobs/${params.companyId}/${params.id}/attachment/${params.attachmentId}/download`,
-      params,
-      resolve,
-      reject
+      {},
+      {
+        responseType: "blob"
+      }
     );
   },
-  deleteAttachment(params, resolve, reject = null) {
+  deleteAttachment(params, config = {}) {
     return request(
       "delete",
       `/jobs/${params.companyId}/${params._id}/attachment/${params.attachmentId}`,
-      resolve,
-      reject
+      {},
+      config
     );
   }
 };

@@ -1,16 +1,10 @@
 import request from "../request";
 
 export default {
-  getAll(params, resolve, reject = null) {
-    return request(
-      "get",
-      `/joboffers/${params.companyId}/all`,
-      params,
-      resolve,
-      reject
-    );
+  getAll(params, config = {}) {
+    return request("get", `/joboffers/${params.companyId}/all`, params, config);
   },
-  getAllByJobId(params, resolve, reject = null) {
+  getAllByJobId(params, config = {}) {
     const companyId = params.companyId;
     const jobId = params.jobId;
     delete params.companyId;
@@ -19,126 +13,110 @@ export default {
       "get",
       `/joboffers/${companyId}/job/${jobId}`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  getAllByWorker(params, resolve, reject = null) {
+  getAllByWorker(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
-    return request(
-      "get",
-      `/joboffers/${companyId}/worker`,
-      params,
-      resolve,
-      reject
-    );
+    return request("get", `/joboffers/${companyId}/worker`, params, config);
   },
-  get(params, resolve, reject = null) {
+  get(params, config = {}) {
     return request(
       "get",
       `/joboffers/${params.companyId}/${params.offerId}`,
-      resolve,
-      reject
+      {},
+      config
     );
   },
-  create(params, resolve, reject = null) {
-    return request(
-      "post",
-      `/joboffers/${params.companyId}`,
-      params,
-      resolve,
-      reject
-    );
+  create(params, config = {}) {
+    return request("post", `/joboffers/${params.companyId}`, params, config);
   },
-  update(params, resolve, reject = null) {
+  update(params, config = {}) {
     return request(
       "patch",
       `/joboffers/${params.companyId}/${params._id}`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  upload(params, resolve, reject = null) {
-    return request(
-      "post",
-      `/joboffers/attachment/upload`,
-      params,
-      resolve,
-      reject
-    );
-  },
-  addAttachment(params, resolve, reject = null) {
-    return request(
-      "patch",
-      `/joboffers/${params.companyId}/${params._id}/attachment`,
-      params,
-      resolve,
-      reject
-    );
-  },
-  lock(params, resolve, reject = null) {
+  lock(params, config = {}) {
     // "Lock, Sign and Send" Contract by Manager
     return request(
       "patch",
       `/joboffers/${params.companyId}/${params._id}/contract/lock`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  adjust(params, resolve, reject = null) {
+  adjust(params, config = {}) {
     return request(
       "patch",
       `/joboffers/${params.companyId}/${params._id}/contract/adjust`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  getCaoOptions(params, resolve, reject = null) {
+  getCaoOptions(params, config = {}) {
     return request(
       "get",
       `/joboffers/${params.companyId}/cao/all`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  sign(params, resolve, reject = null) {
+  sign(params, config = {}) {
     // "Sign" Contract by Worker
     return request(
       "patch",
       `/joboffers/${params.companyId}/${params._id}/contract/sign`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  decline(params, resolve, reject = null) {
+  decline(params, config = {}) {
     return request(
       "patch",
       `/joboffers/${params.companyId}/${params._id}/contract/decline`,
       params,
-      resolve,
-      reject
+      config
     );
   },
-  delete(params, resolve, reject = null) {
+  delete(params, config = {}) {
     return request(
       "delete",
       `/joboffers/${params.companyId}/${params._id}`,
-      resolve,
-      reject
+      {},
+      config
     );
   },
-  deleteAttachment(params, resolve, reject = null) {
+  upload(params, config = {}) {
+    return request("post", `/joboffers/attachment/upload`, params, config);
+  },
+  addAttachment(params, config = {}) {
+    return request(
+      "patch",
+      `/joboffers/${params.companyId}/${params._id}/attachment`,
+      params,
+      config
+    );
+  },
+  downloadAttachment(params, config = {}) {
+    return request(
+      "post",
+      `/joboffers/${params.companyId}/${params.id}/attachment/${params.attachmentId}/download`,
+      {},
+      {
+        responseType: "blob"
+      }
+    );
+  },
+  deleteAttachment(params, config = {}) {
     return request(
       "delete",
       `/joboffers/${params.companyId}/${params._id}/attachment/${params.attachmentId}`,
-      resolve,
-      reject
+      {},
+      config
     );
   }
 };

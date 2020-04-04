@@ -1,11 +1,11 @@
 import axios from "../axios.js";
 
-const request = function(method, path, params) {
+const request = function(method, path, params, config = {}) {
   return new Promise(function(resolve, reject) {
     try {
       if (method === "get") {
         axios
-          .get(path, { params })
+          .get(path, { params }, config)
           .then(response => {
             resolve(response.data);
           })
@@ -14,7 +14,7 @@ const request = function(method, path, params) {
           });
       } else if (method === "post") {
         axios
-          .post(path, params)
+          .post(path, params, config)
           .then(response => {
             resolve(response.data);
           })
@@ -23,7 +23,7 @@ const request = function(method, path, params) {
           });
       } else if (method === "put") {
         axios
-          .put(path, params)
+          .put(path, params, config)
           .then(response => {
             resolve(response.data);
           })
@@ -32,7 +32,7 @@ const request = function(method, path, params) {
           });
       } else if (method === "delete") {
         axios
-          .delete(path, params)
+          .delete(path, params, config)
           .then(response => {
             resolve(response.data);
           })
@@ -41,7 +41,7 @@ const request = function(method, path, params) {
           });
       } else if (method === "patch") {
         axios
-          .patch(path, params)
+          .patch(path, params, config)
           .then(response => {
             resolve(response.data);
           })

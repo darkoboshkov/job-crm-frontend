@@ -287,15 +287,15 @@
                           class="hiway-crm-icon icon-more-vertical color-black"
                         />
                       </template>
-                      <b-dropdown-item @click="viewFile(attachment)">
-                        {{ $t("page_job_detail.view_file") }}
-                      </b-dropdown-item>
+                      <!--                      <b-dropdown-item @click="viewFile(attachment)">-->
+                      <!--                        {{ $t("page_job_detail.view_file") }}-->
+                      <!--                      </b-dropdown-item>-->
                       <b-dropdown-item @click="downloadFile(attachment)">
                         {{ $t("page_job_detail.download_file") }}
                       </b-dropdown-item>
                     </b-dropdown>
                   </span>
-                  <span><i class="hiway-crm-icon icon-bin"></i></span>
+                  <span><i class="hiway-crm-icon icon-bin"/></span>
                 </div>
               </div>
             </div>
@@ -309,6 +309,7 @@
 <script>
 import jobsApi from "@/services/api/jobs";
 import joboffersApi from "@/services/api/joboffers";
+import { downloadFile } from "@/utils";
 
 export default {
   name: "JobsDetail",
@@ -363,7 +364,17 @@ export default {
   },
   methods: {
     viewFile(attachment) {},
-    downloadFile(attachment) {},
+    downloadFile(attachment) {
+      jobsApi
+        .downloadAttachment({
+          companyId: this.companyId,
+          id: this.jobId,
+          attachmentId: attachment._id
+        })
+        .then(res => {
+          downloadFile(res, attachment.name);
+        });
+    },
     fetchJobDetails() {
       jobsApi.get({ companyId: this.companyId, id: this.jobId }).then(res => {
         this.model = res;

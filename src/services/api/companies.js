@@ -1,29 +1,29 @@
 import request from "../request";
 
 export default {
-  getAll(params, resolve, reject = null) {
-    return request("get", `/companies/all`, resolve, reject);
+  getAll(params, config = {}) {
+    return request("get", `/companies/all`, {}, config);
   },
-  get(params, resolve, reject = null) {
-    return request("get", `/companies`, params, resolve, reject);
+  get(params, config = {}) {
+    return request("get", `/companies`, params, config);
   },
-  create(params, resolve, reject = null) {
-    return request("post", `/companies`, params, resolve, reject);
+  create(params, config = {}) {
+    return request("post", `/companies`, params, config);
   },
-  getById(params, resolve, reject = null) {
+  getById(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
-    return request("get", `/companies/${companyId}`, params, resolve, reject);
+    return request("get", `/companies/${companyId}`, params, config);
   },
-  patch(params, resolve, reject = null) {
+  patch(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
-    return request("patch", `/companies/${companyId}`, params, resolve, reject);
+    return request("patch", `/companies/${companyId}`, params, config);
   },
-  delete(params, resolve, reject = null) {
-    return request("delete", `/companies/${params.companyId}`, resolve, reject);
+  delete(params, config = {}) {
+    return request("delete", `/companies/${params.companyId}`, {}, config);
   },
-  uploadLogo(params, resolve, reject = null) {
-    return request("post", `/companies/logo/upload`, params, resolve, reject);
+  uploadLogo(params, config = {}) {
+    return request("post", `/companies/logo/upload`, params, config);
   }
 };
