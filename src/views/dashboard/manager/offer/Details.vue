@@ -144,8 +144,10 @@
         <div>
           <button
             v-if="!edit"
-            class="btn btn-red mr-2"
+            class="btn mr-2"
+            :class="signed ? 'btn-secondary' : 'btn-red'"
             @click="adjust"
+            :disabled="signed"
             style="min-width:160px;"
           >
             {{ $t("page_offer_detail.button.adjust") }}
@@ -161,15 +163,18 @@
           </button>
 
           <button
-            class="btn btn-secondary ml-2"
+            class="btn ml-2"
+            :class="signed ? 'btn-red' : 'btn-secondary'"
             @click="exportContract"
             style="min-width:160px;"
+            :disabled="!signed"
           >
             {{ $t("page_offer_detail.button.export_contract") }}
           </button>
 
           <button
-            class="btn btn-secondary ml-2"
+            class="btn ml-2"
+            :class="signed ? 'btn-blue' : 'btn-secondary'"
             @click="viewContract"
             :disabled="edit"
             style="min-width:160px;"
@@ -376,6 +381,11 @@ export default {
     Contract: Contract
   },
   computed: {
+    signed() {
+      return (
+        this.model.status === "active" || this.model.status === "completed"
+      );
+    },
     edit() {
       return this.model.status === "open";
     },

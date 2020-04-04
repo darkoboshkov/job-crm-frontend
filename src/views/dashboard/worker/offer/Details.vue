@@ -503,7 +503,9 @@ export default {
       return serializeContractStatus("worker", this.model.status);
     },
     signed() {
-      return this.model.status === "active";
+      return (
+        this.model.status === "active" || this.model.status === "completed"
+      );
     }
   },
   data() {
