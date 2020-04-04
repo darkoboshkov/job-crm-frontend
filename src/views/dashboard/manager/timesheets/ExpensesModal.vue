@@ -168,19 +168,13 @@ export default {
   props: {
     modalOpen: {
       type: Boolean,
-      default: function() {
-        return false;
-      }
+      default: false
     },
     rowData: {
-      default: function() {
-        return {};
-      }
+      default: {}
     },
     mode: {
-      default: function() {
-        return "edit";
-      }
+      default: "edit"
     }
   },
   computed: {

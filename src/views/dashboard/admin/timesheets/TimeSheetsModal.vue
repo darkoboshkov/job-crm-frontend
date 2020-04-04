@@ -221,14 +221,10 @@ export default {
   props: {
     modalOpen: {
       type: Boolean,
-      default: function() {
-        return false;
-      }
+      default: false
     },
     rowData: {
-      default: function() {
-        return {};
-      }
+      default: {}
     }
   },
   computed: {
