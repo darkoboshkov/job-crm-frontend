@@ -296,17 +296,16 @@ export default {
       addMode: false,
       selectedWeekNumber: 1,
       daysOfSelectedWeek: [],
-      TIME_SHEET_STATE
+      TIME_SHEET_STATE,
+      companyId: this.$store.state.user.companyId
     };
   },
   methods: {
     adjustHours() {
       const { _id } = this.timeSheetsData;
-      const { companyId } = this.$store.state.user;
-
       workLogApi
         .adjust({
-          companyId,
+          companyId: this.companyId,
           _id
         })
         .then(res => {
@@ -323,12 +322,10 @@ export default {
         });
     },
     saveHours() {
-      const { companyId } = this.$store.state.user;
-
       workLogApi
         .save({
           ...this.timeSheetsData,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           const { timeSheetData, status } = res;
@@ -344,12 +341,10 @@ export default {
         });
     },
     sendHours() {
-      const { companyId } = this.$store.state.user;
-
       workLogApi
         .send({
           ...this.timeSheetsData,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           const { timeSheetData, status } = res;

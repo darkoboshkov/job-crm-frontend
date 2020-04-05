@@ -160,7 +160,8 @@ export default {
       TIME_SHEET_STATE,
 
       timesheetsCount: 0,
-      expensesCount: 0
+      expensesCount: 0,
+      companyId: this.$store.state.user.companyId
     };
   },
   mounted() {
@@ -234,11 +235,10 @@ export default {
       this.imageMode = !!mode;
     },
     getTimeSheets() {
-      const { companyId } = this.$store.state.user;
       return workLogApi
         .getByCompany({
           ...this.serverParams,
-          companyId
+          companyId: this.companyId
         })
         .then(({ docs, totalDocs }) => {
           this.rows = docs.map(row => {
@@ -263,30 +263,26 @@ export default {
         });
     },
     getTimeSheetsCount() {
-      const { companyId } = this.$store.state.user;
-
       return workLogApi
         .getByCompany({
           ...this.serverParams,
           filter: {
             type: "timesheet"
           },
-          companyId
+          companyId: this.companyId
         })
         .then(({ docs, totalDocs }) => {
           this.timesheetsCount = totalDocs;
         });
     },
     getExpensesCount() {
-      const { companyId } = this.$store.state.user;
-
       return workLogApi
         .getByCompany({
           ...this.serverParams,
           filter: {
             type: "expense"
           },
-          companyId
+          companyId: this.companyId
         })
         .then(({ docs, totalDocs }) => {
           this.expensesCount = totalDocs;

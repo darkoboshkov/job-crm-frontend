@@ -232,7 +232,8 @@ export default {
       },
 
       imageData: {},
-      EXPENSE_STATE
+      EXPENSE_STATE,
+      companyId: this.$store.state.user.companyId
     };
   },
   created() {
@@ -242,7 +243,7 @@ export default {
     getHiringManager() {
       jobOfferApi
         .getAllByWorker({
-          companyId: this.$store.state.user.companyId,
+          companyId: this.companyId,
           filter: {
             status: "active"
           }
@@ -291,12 +292,10 @@ export default {
       });
     },
     createExpenses() {
-      const { companyId } = this.$store.state.user;
-
       workLogApi
         .createExpense({
           ...this.model.expenseData,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           this.$emit("refresh");
@@ -304,12 +303,10 @@ export default {
         });
     },
     submitExpenses() {
-      const { companyId } = this.$store.state.user;
-
       workLogApi
         .send({
           ...this.model,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           this.$emit("refresh");
@@ -317,12 +314,10 @@ export default {
         });
     },
     createAndSubmitExpenses() {
-      const { companyId } = this.$store.state.user;
-
       workLogApi
         .createExpense({
           ...this.model.expenseData,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           this.$emit("refresh");
@@ -331,7 +326,7 @@ export default {
           workLogApi
             .send({
               ...this.model,
-              companyId
+              companyId: this.companyId
             })
             .then(res => {
               this.$emit("refresh");
@@ -340,12 +335,10 @@ export default {
         });
     },
     saveExpenses() {
-      const { companyId } = this.$store.state.user;
-
       workLogApi
         .save({
           ...this.model,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           this.$emit("refresh");
@@ -353,12 +346,10 @@ export default {
         });
     },
     adjustExpenses() {
-      const { companyId } = this.$store.state.user;
-
       workLogApi
         .adjust({
           ...this.model,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           this.$emit("refresh");

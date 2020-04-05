@@ -212,17 +212,18 @@ export default {
       },
 
       imageData: {},
-      EXPENSE_STATE
+      EXPENSE_STATE,
+      companyId: this.$store.state.user.companyId
     };
+  },
+  mounted() {
   },
   methods: {
     saveExpenses() {
-      const { companyId } = this.model;
-
       workLogApi
         .save({
           ...this.model,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           this.$emit("refresh");
@@ -230,12 +231,10 @@ export default {
         });
     },
     approveExpenses() {
-      const { companyId } = this.model;
-
       workLogApi
         .approve({
           ...this.model,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           this.$emit("refresh");
@@ -243,12 +242,10 @@ export default {
         });
     },
     declineExpenses() {
-      const { companyId } = this.model;
-
       workLogApi
         .decline({
           ...this.model,
-          companyId
+          companyId: this.companyId
         })
         .then(res => {
           this.$emit("refresh");
@@ -290,9 +287,6 @@ export default {
         this.$store.dispatch("updateLoading", false);
       });
     }
-  },
-  mounted() {
-    //
   },
   watch: {
     rowData() {

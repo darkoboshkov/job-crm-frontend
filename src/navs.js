@@ -39,11 +39,11 @@ export const items = [
     path: "/manager/dashboard/jobs",
     roles: ["manager", "owner"]
   },
-  {
-    icon: "icon-hand",
-    path: "/worker/dashboard/jobs",
-    roles: ["worker"]
-  },
+  // {
+  //   icon: "icon-hand",
+  //   path: "/worker/dashboard/jobs",
+  //   roles: ["worker"]
+  // },
   {
     icon: "icon-contract",
     path: "/worker/dashboard/joboffers",
