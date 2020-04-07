@@ -102,7 +102,6 @@
             placeholder="Choose file"
             :disabled="inputDisabled"
           />
-          <i class="hiway-crm-icon icon-ul pointer" />
           <div class="d-inline-block expense-input position-relative">
             <b-input
               placeholder="Choose file"
