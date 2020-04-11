@@ -190,11 +190,11 @@ export const downloadFile = (blob, fileName) => {
 export const exportPDF = async (elementId, fileName) => {
   const element = document.getElementById(elementId);
   const opt = {
-    margin: 0.5,
+    margin: 0.35,
     filename: fileName,
-    image: { type: "pdf", quality: 0.98 },
+    image: { type: "pdf", quality: 0.1 },
     html2canvas: { scale: 1, letterRendering: true },
-    jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    jsPDF: { unit: "in", format: "b4", orientation: "portrait", compress: true },
     pagebreak: { mode: ["avoid-all", "css", "legacy"] }
   };
   await html2pdf()
