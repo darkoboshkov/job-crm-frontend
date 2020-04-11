@@ -260,21 +260,15 @@ export default {
         })
         .then(({ docs, totalDocs }) => {
           this.rows = docs.map(row => {
-            row.hiringManager = row.hiringManager[0]
-              ? this.getFullName(row.hiringManager[0])
-              : "";
-            row.hiringCompany = row.hiringCompany[0]
-              ? row.hiringCompany[0].name
-              : "";
-            row.worker = row.worker[0] ? this.getFullName(row.worker[0]) : "";
-            row.hours =
-              row.type === "timesheet"
-                ? row.timeSheetData.totalHours.toString()
-                : "";
-            row.price = row.type === "expense" ? row.expenseData.amount : "";
-            row.week =
-              row.type === "timesheet" ? row.timeSheetData.weekNumber : "";
-
+            row.hiringManager = this.getFullName(row.hiringManager[0]);
+            row.hiringCompany = row.hiringCompany[0].name;
+            row.worker = this.getFullName(row.worker[0]);
+            if (row.type === "timesheet") {
+              row.hours = row.timeSheetData.totalHours.toString();
+              row.week = row.timeSheetData.weekNumber;
+            } else if (row.type === "expense") {
+              row.price = row.expenseData.amount;
+            }
             return row;
           });
           this.totalRows = totalDocs;

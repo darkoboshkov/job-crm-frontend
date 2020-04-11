@@ -303,19 +303,11 @@ export default {
         )
         .then(res => {
           this.rows = res.docs.map(row => {
-            if (row.birthday) {
-              let thisYear = new Date().getFullYear();
-              let birthYear = row.birthday.split("-")[0];
-              row.age = thisYear - birthYear;
-            } else {
-              row.age = " - ";
-            }
+            row.age = this.getAge(row.birthday);
             row.company = row.company[0];
-            row.profession =
-              row.profession && row.profession[0] ? row.profession[0].name : "";
+            row.profession = row.profession ? row.profession[0].name : "";
             row.createdAt = this.getDateString(row.createdAt);
-            row.name = row.firstName ? row.firstName + " " + row.lastName : "";
-
+            row.name = this.getFullName(row);
             return row;
           });
           this.totalRows = res.totalDocs;

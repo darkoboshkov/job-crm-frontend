@@ -218,10 +218,7 @@ export default {
             row.company = row.company[0];
             row.startDate = this.getDateString(row.startDate);
             row.endDate = this.getDateString(row.endDate);
-            row.manager =
-              row.manager && row.manager[0]
-                ? this.getFullName(row.manager[0])
-                : "";
+            row.manager = this.getFullName(row.manager[0]);
             return row;
           });
         });

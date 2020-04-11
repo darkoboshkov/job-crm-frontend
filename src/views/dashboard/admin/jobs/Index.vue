@@ -223,7 +223,7 @@ export default {
           row.company = row.company[0];
           row.startDate = this.getDateString(row.startDate);
           row.endDate = this.getDateString(row.endDate);
-          row.manager = this.getFullName(row.manager ? row.manager[0] : null);
+          row.manager = this.getFullName(row.manager[0]);
           return row;
         });
       });

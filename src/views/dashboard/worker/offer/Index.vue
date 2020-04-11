@@ -172,10 +172,7 @@ export default {
             row.company = row.company[0];
             row.hiringCompany = row.hiringCompany[0];
             row.createdAt = this.getDateString(row.createdAt);
-            row.manager =
-              row.manager && row.manager[0]
-                ? this.getFullName(row.manager[0])
-                : "";
+            row.manager = this.getFullName(row.manager[0]);
             return row;
           });
           this.totalRows = res.totalDocs;

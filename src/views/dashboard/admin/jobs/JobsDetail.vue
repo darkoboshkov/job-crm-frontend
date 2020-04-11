@@ -483,14 +483,12 @@ export default {
       selectedAttachmentId: null
     };
   },
-  mounted() {
+  async mounted() {
     this.companyId = this.$route.params.companyId;
     this.jobId = this.$route.params.jobId;
-    this.getCompanies().then(() => {
-      this.getManagers().then(() => {
-        this.fetchJobDetails();
-      });
-    });
+    await this.getCompanies();
+    await this.getManagers();
+    await this.fetchJobDetails();
     this.fetchJobOffers();
     this.getPaymentType();
   },
@@ -521,7 +519,7 @@ export default {
           downloadFile(res, attachment.name);
         });
     },
-    getCompanies() {
+    async getCompanies() {
       companiesApi.getAll().then(res => {
         this.companies = [null].concat(res);
       });
@@ -531,7 +529,7 @@ export default {
         this.paymentType = res.paymentType;
       });
     },
-    getManagers() {
+    async getManagers() {
       usersApi
         .getAll({
           filter: {
@@ -543,7 +541,7 @@ export default {
           this.managers = res.docs;
         });
     },
-    fetchJobDetails() {
+    async fetchJobDetails() {
       jobsApi.get({ companyId: this.companyId, id: this.jobId }).then(res => {
         this.model = res;
         this.model.startDate = this.getISODateString(res.startDate);
