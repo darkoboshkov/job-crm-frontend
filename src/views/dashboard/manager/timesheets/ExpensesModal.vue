@@ -216,8 +216,7 @@ export default {
       companyId: this.$store.state.user.companyId
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     saveExpenses() {
       workLogApi
