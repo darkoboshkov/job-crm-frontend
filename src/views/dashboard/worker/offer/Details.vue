@@ -783,8 +783,8 @@ export default {
       });
     },
     confirmDelete(attachment) {
-      this.$store.dispatch("updateShowSuccessModal", true);
-      this.$store.dispatch("updateSuccessModalContent", {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
         title: this.$t("page_offer_detail.modal.confirm_delete.title"),
         subTitle: this.$t("page_offer_detail.modal.confirm_delete.sub_title"),
         button: this.$t("page_offer_detail.modal.confirm_delete.continue"),
@@ -801,19 +801,9 @@ export default {
           attachmentId: attachment._id
         })
         .then(res => {
-          this.$store.dispatch("updateLoading", false);
-
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_offer_detail.modal.delete_success.title"),
-            subTitle: this.$t(
-              "page_offer_detail.modal.delete_success.sub_title"
-            ),
-            button: this.$t("page_offer_detail.modal.delete_success.continue"),
-            onButtonClick: () => {
-              this.getOfferDetails();
-            }
-          });
+          this.model = res;
+          this.$store.dispatch("updateShowErrorModal", false);
+          this.getOfferDetails();
         });
     }
   },

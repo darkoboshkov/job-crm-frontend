@@ -639,21 +639,9 @@ export default {
           attachmentId: attachment._id
         })
         .then(res => {
-          this.$store.dispatch("updateLoading", false);
-
           this.model = res;
-
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_offer_detail.modal.delete_success.title"),
-            subTitle: this.$t(
-              "page_offer_detail.modal.delete_success.sub_title"
-            ),
-            button: this.$t("page_offer_detail.modal.delete_success.continue"),
-            onButtonClick: () => {
-              this.getOfferDetails();
-            }
-          });
+          this.$store.dispatch("updateShowErrorModal", false);
+          this.getOfferDetails();
         });
     }
   }
