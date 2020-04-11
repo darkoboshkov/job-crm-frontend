@@ -521,7 +521,7 @@ export default {
         this.model.endDate = this.getISODateString(res.endDate);
         this.model.company = res.company[0];
         this.model.manager = res.manager[0];
-        this.model.profession = res.profession ? res.profession[0] : "";
+        this.model.profession = res.profession ? res.profession[0]?.name : "";
       });
     },
     fetchJobOffers() {

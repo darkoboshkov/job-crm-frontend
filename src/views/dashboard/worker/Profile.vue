@@ -219,7 +219,7 @@ export default {
         .get({ companyId: this.companyId, id: this.userId })
         .then(res => {
           this.model.fullName = this.getFullName(res);
-          this.model.profession = res.profession ? res.profession[0].name : "";
+          this.model.profession = res.profession ? res.profession[0]?.name : "";
           this.model.overview = res.overview;
           this.model.email = res.email;
           this.model.phone = res.phone;

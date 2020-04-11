@@ -305,7 +305,7 @@ export default {
           this.rows = res.docs?.map(row => {
             row.age = this.getAge(row.birthday);
             row.company = row.company[0];
-            row.profession = row.profession ? row.profession[0].name : "";
+            row.profession = row.profession ? row.profession[0]?.name : "";
             row.createdAt = this.getDateString(row.createdAt);
             row.name = this.getFullName(row);
             return row;
