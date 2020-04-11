@@ -678,7 +678,7 @@
       "title": "Uitzendovereenkomst Fase A",
       "sub_title": "met uitzendbeding",
       "subject1": "Werkgever, de uitzendonderneming",
-      "description1": "{companyName}., gevestigd en kantoorhoudende te {companyCity} aan {companyStreet} {companyHouseNumber}, {companyPostalCode} {companyCity}, vertegenwoordigd door de {honorificTitle} {manager}.",
+      "description1": "{companyName}, gevestigd en kantoorhoudende te {companyCity} aan {companyStreet} {companyHouseNumber}, {companyPostalCode} {companyCity}, vertegenwoordigd door de {honorificTitle} {manager}.",
       "and": "en",
       "subject2": "Werknemer, de uitzendkracht",
       "name": "Naam",

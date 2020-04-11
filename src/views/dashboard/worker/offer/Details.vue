@@ -100,9 +100,19 @@
         <span>{{ $t("page_offer_detail.status_actions") }}</span>
         <span class="d-flex align-items-center contract-status">
           <i
-            class="hiway-crm-icon icon-dot mr-2"
-            :class="model.status === 'open' ? ' color-yellow' : 'color-blue'"
-            style="font-size: 0.3em;"
+             v-if="model.status === 'open'"
+             class="hiway-crm-icon icon-dot mr-2 color-yellow"
+             style="font-size: 0.3em;"
+          />
+          <i
+              v-else-if="model.status === 'pending-worker'"
+              class="hiway-crm-icon icon-dot mr-2 color-blue"
+              style="font-size: 0.3em;"
+          />
+          <i
+              v-else-if="model.status === 'active'"
+              class="hiway-crm-icon icon-dot mr-2 color-green"
+              style="font-size: 0.3em;"
           />
           <template v-if="model.status">
             {{ $t("page_offer_detail.offer_states." + model.status) }}
@@ -320,10 +330,16 @@
                 style="width:45px"
               />
               <img
-                v-if="attachment.userId === manager._id"
+                v-else-if="attachment.userId === manager._id"
                 :src="manager.image | appUrlFormatter"
                 class="rounded-circle border mr-4"
                 style="width:45px"
+              />
+              <img
+                  v-else-if="attachment.userId === hiringManager._id"
+                  :src="hiringManager.image | appUrlFormatter"
+                  class="rounded-circle border mr-4"
+                  style="width:45px"
               />
               {{ attachment.name }}
             </div>
@@ -517,6 +533,7 @@ export default {
       company: {},
       job: {},
       manager: {},
+      hiringManager: {},
       worker: {},
       caoOptions: [],
       imageData: {},
@@ -651,6 +668,7 @@ export default {
           this.job = res.job[0];
           this.worker = res.worker[0];
           this.manager = res.manager[0];
+          this.hiringManager = res.hiringManager[0];
           this.attachments = res.attachments;
         })
         .catch(e => {
@@ -685,6 +703,7 @@ export default {
           this.job = res.job[0];
           this.worker = res.worker[0];
           this.manager = res.manager[0];
+          this.hiringManager = res.hiringManager[0];
           this.attachments = res.attachments;
         })
         .catch(e => {

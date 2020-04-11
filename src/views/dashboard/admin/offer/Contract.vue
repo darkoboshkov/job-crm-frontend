@@ -29,43 +29,43 @@
       <strong>{{ $t("page_offer_detail.contract.subject2") }}</strong>
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.name") }}
       </div>
       : {{ worker | fullNameFormatter }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.address") }}
       </div>
       : {{ worker.street }} {{ worker.houseNumber }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.postal_code_city") }}
       </div>
       : {{ worker.postalCode }} {{ worker.city }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.social_security_number") }}
       </div>
       : {{ worker.socialSecurityNumber }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.birthday") }}
       </div>
       : {{ worker.birthday }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.id_type") }}
       </div>
       : {{ worker.identificationType }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.id_expiration") }}
       </div>
       : {{ worker.identificationExpirationDate | dateFormatter }}
@@ -78,43 +78,43 @@
     <br />
     <br />
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.company_name") }}
       </div>
       : {{ company.name }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.address") }}
       </div>
       : {{ company.street }} {{ company.houseNumber }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.postal_code_city") }}
       </div>
       : {{ company.postalCode }} {{ company.city }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.manager") }}
       </div>
       : {{ manager | fullNameFormatter }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.telephone_number") }}
       </div>
       : {{ manager.phone }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.expected_start_date") }}
       </div>
       : {{ offer.startDate | dateFormatter }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.agreed_working_hours") }}
       </div>
       : {{ offer.hoursPerWeek }}
@@ -388,9 +388,9 @@
       }}
     </div>
     <div>{{ $t("page_offer_detail.contract.description24_6") }}</div>
+    <br />
     <div>{{ company.city }}, {{ offer.startDate | dateFormatter }}</div>
     <div>{{ $t("page_offer_detail.contract.for_approval") }},</div>
-    <br />
     <br />
     <br />
     {{ worker | fullNameFormatter }}

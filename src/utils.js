@@ -229,12 +229,12 @@ export const serializeContractStatus = (role, status) => {
       case "active":
         state = {
           text: "Signed",
-          color: "color-blue"
+          color: "color-green"
         };
         break;
       case "completed":
         state = {
-          text: "Signed",
+          text: "Completed",
           color: "color-red"
         };
         break;
@@ -252,18 +252,18 @@ export const serializeContractStatus = (role, status) => {
       case "pending-worker":
         state = {
           text: "Signed",
-          color: "color-blu"
+          color: "color-blue"
         };
         break;
       case "active":
         state = {
           text: "Signed",
-          color: "color-blue"
+          color: "color-green"
         };
         break;
       case "completed":
         state = {
-          text: "Signed",
+          text: "Completed",
           color: "color-red"
         };
         break;
