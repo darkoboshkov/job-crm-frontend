@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     getActiveJobs() {
-      return jobsApi
+      jobsApi
         .getCompanyJobs(
           Object.assign({
             filter: {

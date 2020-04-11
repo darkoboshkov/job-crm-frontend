@@ -203,7 +203,7 @@ export default {
       this.imageMode = !!mode;
     },
     getJobs() {
-      return jobsApi
+      jobsApi
         .getCompanyJobs(
           Object.assign(this.serverParams, {
             companyId: this.companyId,

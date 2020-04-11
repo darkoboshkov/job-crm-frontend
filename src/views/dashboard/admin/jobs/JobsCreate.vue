@@ -297,7 +297,7 @@ export default {
       attachments.splice(idx, 1);
     },
     getPaymentType() {
-      return constantsApi.getAll().then(res => {
+      constantsApi.getAll().then(res => {
         this.paymentType = res.paymentType;
         this.model.paymentType = this.paymentType[0];
       });

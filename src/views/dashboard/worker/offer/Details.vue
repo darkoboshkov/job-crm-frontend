@@ -347,9 +347,9 @@
               <span class="mr-5">
                 {{ attachment.uploadedAt | dateTimeFormatter }}
               </span>
-              <span class="mr-5">{{
-                attachment.size | fileSizeFormatter
-              }}</span>
+              <span class="mr-5">
+                {{ attachment.size | fileSizeFormatter }}
+              </span>
               <span class="mr-4">
                 <b-dropdown
                   variant="link"
@@ -473,7 +473,7 @@
       <div class="d-flex justify-content-around">
         <button
           class="btn btn-red"
-          @click="openViewOffer = !openViewOffer"
+          @click="viewContract"
           style="min-width:160px;"
         >
           {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
@@ -598,7 +598,7 @@ export default {
         });
     },
     getCaoOptions() {
-      return jobOfferApi
+      jobOfferApi
         .getCaoOptions({
           companyId: this.companyId
         })
@@ -607,7 +607,7 @@ export default {
         });
     },
     getPaymentType() {
-      return constantsApi.getAll().then(res => {
+      constantsApi.getAll().then(res => {
         this.paymentType = res.paymentType;
       });
     },
@@ -624,28 +624,29 @@ export default {
         });
         return;
       }
-      return jobOfferApi.sign(this.model).then(res => {
-        this.model = res;
-        this.$refs["modal-sign-contract"].hide();
-        this.$store.dispatch("updateShowSuccessModal", true);
-        this.$store
-          .dispatch("updateSuccessModalContent", {
+      jobOfferApi
+        .sign(this.model)
+        .then(res => {
+          this.model = res;
+          this.$refs["modal-sign-contract"].hide();
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
             title: this.$t("page_offer_detail.modal.sign_success.title"),
             subTitle: this.$t("page_offer_detail.modal.sign_success.sub_title"),
             button: this.$t("page_offer_detail.modal.sign_success.continue")
-          })
-          .catch(e => {
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_offer_detail.modal.sign_fail.title"),
-              subTitle: this.$t("page_offer_detail.modal.sign_fail.sub_title"),
-              button: this.$t("page_offer_detail.modal.sign_fail.continue")
-            });
           });
-      });
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_offer_detail.modal.sign_fail.title"),
+            subTitle: this.$t("page_offer_detail.modal.sign_fail.sub_title"),
+            button: this.$t("page_offer_detail.modal.sign_fail.continue")
+          });
+        });
     },
     decline() {
-      return jobOfferApi
+      jobOfferApi
         .decline(this.model)
         .then(res => {
           this.model = res;
@@ -660,7 +661,7 @@ export default {
         });
     },
     update() {
-      return jobOfferApi
+      jobOfferApi
         .update(this.model)
         .then(res => {
           this.model = res;
@@ -695,7 +696,7 @@ export default {
     getOfferDetails() {
       const { companyId, offerId } = this;
 
-      return jobOfferApi
+      jobOfferApi
         .get({ companyId, offerId })
         .then(res => {
           this.model = res;

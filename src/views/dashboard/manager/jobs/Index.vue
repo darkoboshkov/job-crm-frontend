@@ -215,7 +215,7 @@ export default {
       this.imageMode = !!mode;
     },
     getJobs() {
-      return jobsApi
+      jobsApi
         .getCompanyJobs(
           Object.assign(this.serverParams, {
             companyId: this.companyId
@@ -275,7 +275,7 @@ export default {
       this.selectedJob = props.row;
     },
     deleteJob() {
-      return jobsApi
+      jobsApi
         .delete({
           companyId: this.selectedJob.company._id,
           _id: this.selectedJob._id

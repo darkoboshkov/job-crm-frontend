@@ -605,6 +605,7 @@
     "modal": {
       "sign_contract": {
         "title": "Sign contract",
+        "manager_description": "Read the contract carefully. If everything is correct, check the box and click on ‘Sign contract‘ to digitally sign the contract.",
         "description": "Please read the attached contract carefully. Before signing choose your payment interval, discount on taxes preferences and select your working history as a flexworker. If everything is correct you can click the checkmark and digitally sign the contract by clicking: Sign contract.",
         "payment_interval": "Payment interval",
         "discount_on_taxes": "Discount on taxes",

@@ -235,7 +235,7 @@ export default {
       this.imageMode = !!mode;
     },
     getTimeSheets() {
-      return workLogApi
+      workLogApi
         .getByCompany({
           ...this.serverParams,
           companyId: this.companyId
@@ -263,7 +263,7 @@ export default {
         });
     },
     getTimeSheetsCount() {
-      return workLogApi
+      workLogApi
         .getByCompany({
           ...this.serverParams,
           filter: {
@@ -276,7 +276,7 @@ export default {
         });
     },
     getExpensesCount() {
-      return workLogApi
+      workLogApi
         .getByCompany({
           ...this.serverParams,
           filter: {
@@ -333,7 +333,7 @@ export default {
       //
     },
     deleteWorkLog(props) {
-      return workLogApi
+      workLogApi
         .delete({
           ...props.row
         })

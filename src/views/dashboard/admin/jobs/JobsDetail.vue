@@ -522,17 +522,17 @@ export default {
         });
     },
     getCompanies() {
-      return companiesApi.getAll().then(res => {
+      companiesApi.getAll().then(res => {
         this.companies = [null].concat(res);
       });
     },
     getPaymentType() {
-      return constantsApi.getAll().then(res => {
+      constantsApi.getAll().then(res => {
         this.paymentType = res.paymentType;
       });
     },
     getManagers() {
-      return usersApi
+      usersApi
         .getAll({
           filter: {
             role: "manager"
@@ -634,7 +634,7 @@ export default {
       this.selectedJobOfferId = offerId;
     },
     deleteJobOffer() {
-      return joboffersApi
+      joboffersApi
         .delete({
           companyId: this.companyId,
           _id: this.selectedJobOfferId
@@ -711,7 +711,7 @@ export default {
       this.selectedAttachmentId = attachmentId;
     },
     deleteAttachment() {
-      return jobsApi
+      jobsApi
         .deleteAttachment({
           companyId: this.companyId,
           _id: this.jobId,

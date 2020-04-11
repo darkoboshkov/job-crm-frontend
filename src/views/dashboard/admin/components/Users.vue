@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     getActiveUsers() {
-      return userApi
+      userApi
         .getAllWorkers(
           Object.assign({
             filter: {

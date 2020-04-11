@@ -510,7 +510,7 @@ export default {
         });
     },
     getPaymentType() {
-      return constantsApi.getAll().then(res => {
+      constantsApi.getAll().then(res => {
         this.paymentType = res.paymentType;
       });
     },
@@ -569,7 +569,7 @@ export default {
       this.selectedJobOfferId = offerId;
     },
     deleteJobOffer() {
-      return joboffersApi
+      joboffersApi
         .delete({
           companyId: this.companyId,
           _id: this.selectedJobOfferId
@@ -680,7 +680,7 @@ export default {
       this.selectedAttachmentId = attachmentId;
     },
     deleteAttachment() {
-      return jobsApi
+      jobsApi
         .deleteAttachment({
           companyId: this.companyId,
           _id: this.jobId,

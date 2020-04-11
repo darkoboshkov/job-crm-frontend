@@ -166,7 +166,7 @@
           <button
             v-if="edit"
             class="btn btn-blue ml-2"
-            @click="lockSignSend"
+            @click="openSignContractModal"
             style="min-width:160px;"
           >
             {{ $t("page_offer_detail.button.lock") }}
@@ -380,6 +380,49 @@
         :job="job"
       />
     </b-modal>
+    <b-modal
+      ref="modal-sign-contract"
+      :hide-footer="true"
+      :hide-header="true"
+      centered
+      modal-class="modal-sign-contract"
+    >
+      <div class="text-center">
+        <h1 class="color-red">
+          {{ $t("page_offer_detail.modal.sign_contract.title") }}
+        </h1>
+      </div>
+      <div class="text-center mb-5">
+        {{ $t("page_offer_detail.modal.sign_contract.manager_description") }}
+      </div>
+      <div class="mb-4">
+        <b-form-checkbox
+          v-model="agreement"
+          name="checkbox-1"
+          value="accepted"
+          unchecked-value="not_accepted"
+        >
+          {{ $t("page_offer_detail.modal.sign_contract.accept_term") }}
+        </b-form-checkbox>
+      </div>
+      <div class="d-flex justify-content-around">
+        <button
+          class="btn btn-red"
+          @click="viewContract"
+          style="min-width:160px;"
+        >
+          {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
+        </button>
+
+        <button
+          class="btn btn-blue"
+          @click="lockSignSend"
+          style="min-width:160px;"
+        >
+          {{ $t("page_offer_detail.modal.sign_contract.sign_contract") }}
+        </button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -431,7 +474,8 @@ export default {
       caoOptions: [],
       imageData: {},
       attachments: [],
-      paymentType: []
+      paymentType: [],
+      agreement: "not_accepted"
     };
   },
   mounted() {
@@ -452,12 +496,12 @@ export default {
         });
     },
     getPaymentType() {
-      return constantsApi.getAll().then(res => {
+      constantsApi.getAll().then(res => {
         this.paymentType = res.paymentType;
       });
     },
     getCaoOptions() {
-      return jobOfferApi
+      jobOfferApi
         .getCaoOptions({
           companyId: this.companyId
         })
@@ -465,11 +509,31 @@ export default {
           this.caoOptions = res;
         });
     },
+    openSignContractModal() {
+      this.$refs["modal-sign-contract"].show();
+    },
     lockSignSend() {
-      return jobOfferApi
+      if (this.agreement !== "accepted") {
+        this.$refs["modal-sign-contract"].hide();
+        this.$store.dispatch("updateShowErrorModal", true);
+        this.$store.dispatch("updateErrorModalContent", {
+          title: this.$t("page_offer_detail.modal.accept_fail.title"),
+          subTitle: this.$t("page_offer_detail.modal.accept_fail.sub_title"),
+          button: this.$t("page_offer_detail.modal.accept_fail.continue")
+        });
+        return;
+      }
+      jobOfferApi
         .lock(this.model)
         .then(res => {
           this.model = res;
+          this.$refs["modal-sign-contract"].hide();
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_offer_detail.modal.sign_success.title"),
+            subTitle: this.$t("page_offer_detail.modal.sign_success.sub_title"),
+            button: this.$t("page_offer_detail.modal.sign_success.continue")
+          });
         })
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
@@ -481,7 +545,7 @@ export default {
         });
     },
     adjust() {
-      return jobOfferApi
+      jobOfferApi
         .adjust(this.model)
         .then(res => {
           this.model = res;
@@ -496,7 +560,7 @@ export default {
         });
     },
     update() {
-      return jobOfferApi
+      jobOfferApi
         .update(this.model)
         .then(res => {
           this.model = res;
@@ -532,7 +596,7 @@ export default {
     getOfferDetails() {
       const { companyId, offerId } = this;
 
-      return jobOfferApi
+      jobOfferApi
         .get({ companyId, offerId })
         .then(res => {
           this.model = res;

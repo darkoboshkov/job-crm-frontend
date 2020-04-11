@@ -173,7 +173,7 @@ export default {
       this.matchedWorkers = dummyItems;
     },
     getJob() {
-      return jobsApi
+      jobsApi
         .get({
           companyId: this.companyId,
           id: this.jobId

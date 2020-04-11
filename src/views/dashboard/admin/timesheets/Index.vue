@@ -233,32 +233,30 @@ export default {
       this.imageMode = !!mode;
     },
     getTimeSheets() {
-      return workLogApi
-        .getAll(this.serverParams)
-        .then(({ docs, totalDocs }) => {
-          this.rows = docs.map(row => {
-            row.hiringManager = row.hiringManager[0]
-              ? this.getFullName(row.hiringManager[0])
+      workLogApi.getAll(this.serverParams).then(({ docs, totalDocs }) => {
+        this.rows = docs.map(row => {
+          row.hiringManager = row.hiringManager[0]
+            ? this.getFullName(row.hiringManager[0])
+            : "";
+          row.hiringCompany = row.hiringCompany[0]
+            ? row.hiringCompany[0].name
+            : "";
+          row.worker = row.worker[0] ? this.getFullName(row.worker[0]) : "";
+          row.hours =
+            row.type === "timesheet"
+              ? row.timeSheetData.totalHours.toString()
               : "";
-            row.hiringCompany = row.hiringCompany[0]
-              ? row.hiringCompany[0].name
-              : "";
-            row.worker = row.worker[0] ? this.getFullName(row.worker[0]) : "";
-            row.hours =
-              row.type === "timesheet"
-                ? row.timeSheetData.totalHours.toString()
-                : "";
-            row.price = row.type === "expense" ? row.expenseData.amount : "";
-            row.week =
-              row.type === "timesheet" ? row.timeSheetData.weekNumber : "";
+          row.price = row.type === "expense" ? row.expenseData.amount : "";
+          row.week =
+            row.type === "timesheet" ? row.timeSheetData.weekNumber : "";
 
-            return row;
-          });
-          this.totalRows = totalDocs;
+          return row;
         });
+        this.totalRows = totalDocs;
+      });
     },
     getTimeSheetsCount() {
-      return workLogApi
+      workLogApi
         .getAll({
           ...this.serverParams,
           filter: {
@@ -270,7 +268,7 @@ export default {
         });
     },
     getExpensesCount() {
-      return workLogApi
+      workLogApi
         .getAll({
           ...this.serverParams,
           filter: {
@@ -326,7 +324,7 @@ export default {
       //
     },
     deleteWorkLog(props) {
-      return workLogApi
+      workLogApi
         .delete({
           ...props.row
         })

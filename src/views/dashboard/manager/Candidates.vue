@@ -295,7 +295,7 @@ export default {
       }
     },
     getWorkers() {
-      return userApi
+      userApi
         .getCompanyWorkers(
           Object.assign(this.serverParams, {
             companyId: this.companyId

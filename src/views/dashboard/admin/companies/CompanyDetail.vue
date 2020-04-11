@@ -446,7 +446,7 @@ export default {
         });
     },
     getTermsOfPayment() {
-      return constantsApi.getAll().then(res => {
+      constantsApi.getAll().then(res => {
         this.termsOfPayment = res.termsOfPayments;
         this.model.termOfPayment = this.termsOfPayment[0];
       });

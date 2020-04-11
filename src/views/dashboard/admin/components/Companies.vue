@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     getCompanies() {
-      return companyApi
+      companyApi
         .get(
           Object.assign({
             limit: 3,

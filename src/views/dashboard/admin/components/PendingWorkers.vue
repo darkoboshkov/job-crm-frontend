@@ -221,7 +221,7 @@ export default {
       }
     },
     assignToCompany() {
-      return userApi
+      userApi
         .assignPendingWorker({
           id: this.selectedCandidate._id,
           companyId: this.selectedCompany
@@ -232,7 +232,7 @@ export default {
         });
     },
     getWorkers() {
-      return userApi
+      userApi
         .getAllPendingWorkers(Object.assign(this.serverParams))
         .then(res => {
           this.rows = res.docs.map(row => {
@@ -244,7 +244,7 @@ export default {
         });
     },
     getCompanies() {
-      return companyApi.getAll().then(res => {
+      companyApi.getAll().then(res => {
         this.companies = res;
       });
     },

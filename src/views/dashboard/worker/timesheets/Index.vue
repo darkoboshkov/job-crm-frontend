@@ -253,7 +253,7 @@ export default {
       this.showExpensesModal = true;
     },
     getTimeSheets() {
-      return workLogApi
+      workLogApi
         .getByWorker({
           ...this.serverParams,
           companyId: this.companyId
@@ -281,7 +281,7 @@ export default {
         });
     },
     getTimeSheetsCount() {
-      return workLogApi
+      workLogApi
         .getByWorker({
           ...this.serverParams,
           filter: {
@@ -294,7 +294,7 @@ export default {
         });
     },
     getExpensesCount() {
-      return workLogApi
+      workLogApi
         .getByWorker({
           ...this.serverParams,
           filter: {
@@ -352,7 +352,7 @@ export default {
       //
     },
     deleteWorkLog(props) {
-      return workLogApi
+      workLogApi
         .delete({
           ...props.row
         })

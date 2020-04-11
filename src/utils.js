@@ -194,7 +194,12 @@ export const exportPDF = async (elementId, fileName) => {
     filename: fileName,
     image: { type: "pdf", quality: 0.1 },
     html2canvas: { scale: 1, letterRendering: true },
-    jsPDF: { unit: "in", format: "b4", orientation: "portrait", compress: true },
+    jsPDF: {
+      unit: "in",
+      format: "b4",
+      orientation: "portrait",
+      compress: true
+    },
     pagebreak: { mode: ["avoid-all", "css", "legacy"] }
   };
   await html2pdf()

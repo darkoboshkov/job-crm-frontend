@@ -217,7 +217,7 @@ export default {
       this.imageMode = !!mode;
     },
     getJobs() {
-      return jobsApi.getAll(this.serverParams).then(res => {
+      jobsApi.getAll(this.serverParams).then(res => {
         this.totalRows = res.totalDocs;
         this.rows = res.docs.map(row => {
           row.company = row.company[0];
@@ -274,7 +274,7 @@ export default {
       this.selectedJob = props.row;
     },
     deleteJob() {
-      return jobsApi
+      jobsApi
         .delete({
           companyId: this.selectedJob.company._id,
           _id: this.selectedJob._id

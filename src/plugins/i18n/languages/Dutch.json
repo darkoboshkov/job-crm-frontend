@@ -604,6 +604,7 @@
     "modal": {
       "sign_contract": {
         "title": "Contract tekenen",
+        "manager_description": "Lees het contract aandachtig door. Als alles correct is zet je een vinkje en klik je op: ‘Contract tekenen’ om het contract digitaal te tekenen.",
         "description": "Lees het contract aandachtig door. Kies voordat je tekent je betalingstermijn, gewenste toepassing van loonheffingskorting en je historie als uitzendkracht. Als alles correct is zet je een vinkje en klik je op: 'Contract tekenen' om het contract digitaal te tekenen.",
         "payment_interval": "Betalingstermijn",
         "discount_on_taxes": "Loonheffingskorting",
