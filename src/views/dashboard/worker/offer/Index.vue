@@ -166,7 +166,7 @@ export default {
           companyId: this.companyId
         })
         .then(res => {
-          this.rows = res.docs.map(row => {
+          this.rows = res.docs?.map(row => {
             row.job = row.job ? row.job[0].title : "";
             row.image = row.job ? row.job[0].image : "";
             row.company = row.company[0];

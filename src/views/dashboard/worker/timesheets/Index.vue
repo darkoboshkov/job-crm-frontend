@@ -259,7 +259,7 @@ export default {
           companyId: this.companyId
         })
         .then(({ docs, totalDocs }) => {
-          this.rows = docs.map(row => {
+          this.rows = docs?.map(row => {
             row.hiringManager = this.getFullName(row.hiringManager[0]);
             row.hiringCompany = row.hiringCompany[0].name;
             row.worker = this.getFullName(row.worker[0]);

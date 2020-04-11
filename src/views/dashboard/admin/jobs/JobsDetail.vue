@@ -520,7 +520,7 @@ export default {
         });
     },
     async getCompanies() {
-      companiesApi.getAll().then(res => {
+      return companiesApi.getAll().then(res => {
         this.companies = [null].concat(res);
       });
     },
@@ -530,7 +530,7 @@ export default {
       });
     },
     async getManagers() {
-      usersApi
+      return usersApi
         .getAll({
           filter: {
             role: "manager"
@@ -542,17 +542,19 @@ export default {
         });
     },
     async fetchJobDetails() {
-      jobsApi.get({ companyId: this.companyId, id: this.jobId }).then(res => {
-        this.model = res;
-        this.model.startDate = this.getISODateString(res.startDate);
-        this.model.endDate = this.getISODateString(res.endDate);
-        this.model.company = this.companies.find(
-          company => company && company._id === res.company[0]._id
-        );
-        this.model.manager = this.managers.find(
-          manager => manager && manager._id === res.manager[0]._id
-        );
-      });
+      return jobsApi
+        .get({ companyId: this.companyId, id: this.jobId })
+        .then(res => {
+          this.model = res;
+          this.model.startDate = this.getISODateString(res.startDate);
+          this.model.endDate = this.getISODateString(res.endDate);
+          this.model.company = this.companies.find(
+            company => company && company._id === res.company[0]._id
+          );
+          this.model.manager = this.managers.find(
+            manager => manager && manager._id === res.manager[0]._id
+          );
+        });
     },
     fetchJobOffers() {
       joboffersApi
@@ -562,11 +564,11 @@ export default {
           pagination: 0
         })
         .then(res => {
-          this.jobOffers = res.docs;
-          this.jobOffers.forEach(row => {
+          this.jobOffers = res.docs?.map(row => {
             row.worker = row.worker[0];
             row.hiringCompany = row.hiringCompany[0];
             row.hiringManager = row.hiringManager[0];
+            return row;
           });
         });
     },

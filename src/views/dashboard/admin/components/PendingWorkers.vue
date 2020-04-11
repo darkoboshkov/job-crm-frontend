@@ -235,7 +235,7 @@ export default {
       userApi
         .getAllPendingWorkers(Object.assign(this.serverParams))
         .then(res => {
-          this.rows = res.docs.map(row => {
+          this.rows = res.docs?.map(row => {
             row.createdAt = this.getDateTimeString(row.createdAt);
             row.name = this.getFullName(row);
             return row;

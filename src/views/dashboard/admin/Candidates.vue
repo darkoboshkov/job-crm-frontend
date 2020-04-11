@@ -294,7 +294,7 @@ export default {
     },
     getWorkers() {
       userApi.getAllWorkers(Object.assign(this.serverParams)).then(res => {
-        this.rows = res.docs.map(row => {
+        this.rows = res.docs?.map(row => {
           row.age = this.getAge(row.birthday);
           row.company = row.company[0];
           row.profession = row.profession ? row.profession[0].name : "";

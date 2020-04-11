@@ -161,16 +161,15 @@ export default {
           },
           pagination: 0
         })
-        .then(result => {
-          let workers = result.docs;
-          this.users = workers.map(item => {
+        .then(res => {
+          this.users = res.docs?.map(row => {
             return {
-              firstName: item.firstName,
-              lastName: item.lastName,
-              middleName: item.middleName,
-              id: item._id,
-              city: item.city,
-              image: item.image
+              firstName: row.firstName,
+              lastName: row.lastName,
+              middleName: row.middleName,
+              id: row._id,
+              city: row.city,
+              image: row.image
             };
           });
         });
@@ -189,12 +188,11 @@ export default {
           hiringCompanyId: this.model.hiringCompanyId,
           hiringManagerId: this.model.hiringManagerId
         })
-        .then(response => {
-          console.log(response);
+        .then(res => {
           this.$router.push({
             name: "admin-offer-details",
             params: {
-              offerId: response._id,
+              offerId: res._id,
               companyId: this.companyId
             }
           });

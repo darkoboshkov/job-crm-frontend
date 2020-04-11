@@ -284,8 +284,8 @@ export default {
 
       this.$store.dispatch("updateLoading", true);
 
-      workLogApi.upload(data).then(response => {
-        this.imageData.path = response.path;
+      workLogApi.upload(data).then(res => {
+        this.imageData.path = res.path;
         this.model.expenseData.attachments = [this.imageData];
 
         this.$store.dispatch("updateLoading", false);

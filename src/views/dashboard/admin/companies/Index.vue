@@ -270,7 +270,7 @@ export default {
     getCompanies() {
       companyApi.get(this.serverParams).then(res => {
         this.totalRows = res.totalDocs;
-        this.rows = res.docs.map(row => {
+        this.rows = res.docs?.map(row => {
           row.createdAt = this.getDateString(row["createdAt"]);
           return row;
         });

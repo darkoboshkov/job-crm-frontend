@@ -391,11 +391,11 @@ export default {
           limit: 10
         })
         .then(res => {
-          this.jobOffers = res.docs;
-          this.jobOffers.forEach(row => {
+          this.jobOffers = res.docs?.map(row => {
             row.worker = row.worker[0];
             row.hiringCompany = row.hiringCompany[0];
             row.hiringManager = row.hiringManager[0];
+            return row;
           });
         });
     },

@@ -379,8 +379,8 @@ export default {
       data.append("file", this.imageData.file);
       this.$store.dispatch("updateLoading", true);
 
-      jobsApi.upload(data).then(response => {
-        this.imageData.path = response.path;
+      jobsApi.upload(data).then(res => {
+        this.imageData.path = res.path;
         this.imageData.uploadedAt = new Date();
         this.model.attachments.push(this.imageData);
         this.$store.dispatch("updateLoading", false);

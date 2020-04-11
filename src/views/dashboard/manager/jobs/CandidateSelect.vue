@@ -164,9 +164,8 @@ export default {
           },
           pagination: 0
         })
-        .then(result => {
-          let workers = result.docs;
-          this.users = workers.map(item => {
+        .then(res => {
+          this.users = res.docs?.map(item => {
             return {
               firstName: item.firstName,
               lastName: item.lastName,

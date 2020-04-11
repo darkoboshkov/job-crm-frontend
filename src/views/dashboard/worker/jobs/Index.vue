@@ -214,7 +214,7 @@ export default {
         )
         .then(res => {
           this.totalRows = res.totalDocs;
-          this.rows = res.docs.map(row => {
+          this.rows = res.docs?.map(row => {
             row.company = row.company[0];
             row.startDate = this.getDateString(row.startDate);
             row.endDate = this.getDateString(row.endDate);
