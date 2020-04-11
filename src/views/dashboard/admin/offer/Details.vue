@@ -105,14 +105,14 @@
 							style="font-size: 0.3em;"
 					/>
           <i
-              v-else-if="model.status === 'pending-worker'"
-              class="hiway-crm-icon icon-dot mr-2 color-blue"
-              style="font-size: 0.3em;"
+							v-else-if="model.status === 'pending-worker'"
+							class="hiway-crm-icon icon-dot mr-2 color-blue"
+							style="font-size: 0.3em;"
 					/>
           <i
-              v-else-if="model.status === 'active'"
-              class="hiway-crm-icon icon-dot mr-2 color-green"
-              style="font-size: 0.3em;"
+							v-else-if="model.status === 'active'"
+							class="hiway-crm-icon icon-dot mr-2 color-green"
+							style="font-size: 0.3em;"
 					/>
           <template v-if="model.status">
             {{ $t("page_offer_detail.offer_states." + model.status) }}
@@ -576,7 +576,6 @@
       upload() {
         const data = new FormData();
         data.append("file", this.imageData.file);
-
         this.$store.dispatch("updateLoading", true);
 
         jobOfferApi
@@ -600,6 +599,7 @@
                 this.getOfferDetails();
               })
               .catch(e => {
+                this.$store.dispatch("updateLoading", false);
                 this.$store.dispatch("updateShowErrorModal", true);
                 this.$store.dispatch("updateErrorModalContent", {
                   title: this.$t("page_offer_detail.modal.attach_fail.title"),
@@ -611,6 +611,7 @@
               });
           })
           .catch(e => {
+            this.$store.dispatch("updateLoading", false);
             this.$store.dispatch("updateShowErrorModal", true);
             this.$store.dispatch("updateErrorModalContent", {
               title: this.$t("page_offer_detail.modal.upload_fail.title"),
