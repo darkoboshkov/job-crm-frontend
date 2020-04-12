@@ -117,6 +117,26 @@
                 <li>
                   <div class="d-flex align-items-center">
                     <span class="flex-1">
+                      {{ $t("page_job_detail.form.location") }}
+                    </span>
+                    <div>
+                      <b-input v-model="model.location" />
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.hours_per_week") }}
+                    </span>
+                    <div>
+                      <b-input v-model="model.hoursPerWeek" />
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
                       {{ $t("page_job_detail.form.wage") }}
                     </span>
                     <div class="pull-right">
@@ -455,6 +475,7 @@ export default {
         managerId: "",
         professionId: "",
         wage: null,
+        hoursPerWeek: null,
         hourlyWage: null,
         payRate: null,
         paymentType: "EUR",
@@ -467,6 +488,7 @@ export default {
         endDate: null,
         company: null,
         manager: null,
+        location: null,
         profession: null,
         attachments: []
       },

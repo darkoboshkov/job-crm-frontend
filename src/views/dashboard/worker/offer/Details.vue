@@ -276,6 +276,15 @@
           </div>
         </div>
         <div class="item">
+          <div>{{ $t("page_offer_detail.form.one_way_distance") }}</div>
+          <div v-if="edit">
+            <b-form-input type="number" v-model="model.oneWayTravelExpenseDistance" />
+          </div>
+          <div v-else class="text-right">
+            {{ model.oneWayTravelExpenseDistance }}
+          </div>
+        </div>
+        <div class="item">
           <div>{{ $t("page_offer_detail.form.travel_hours") }}</div>
           <div v-if="edit">
             <b-form-input v-model="model.travelHours" />

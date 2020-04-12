@@ -497,6 +497,8 @@
       "level": "Level",
       "rate": "Pay Rate",
       "wage": "Wage",
+      "hours_per_week": "Hours Per Week",
+      "location": "Location",
       "hourly_wage": "Hourly wage",
       "payment_type": "Payment type",
       "status": "Status",
@@ -590,7 +592,8 @@
       "payment_type": "Payment type",
       "travel_expenses": "Travel expenses",
       "travel_hours": "Travel hours",
-      "other_expenses": "Other expenses"
+      "other_expenses": "Other expenses",
+      "one_way_distance": "Travel expenses one way distance"
     },
     "button": {
       "adjust": "Adjust",
