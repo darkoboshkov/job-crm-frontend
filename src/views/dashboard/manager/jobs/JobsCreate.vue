@@ -54,11 +54,30 @@
                     <span>{{ model.company && model.company.name }}</span>
                   </div>
                 </li>
-
                 <li>
                   {{ $t("page_job_detail.form.manager") }}
                   <div class="pull-right">
                     <span>{{ userName }}</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.location") }}
+                    </span>
+                    <div>
+                      <b-input v-model="model.location" />
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.hours_per_week") }}
+                    </span>
+                    <div>
+                      <b-input v-model="model.hoursPerWeek" />
+                    </div>
                   </div>
                 </li>
                 <li>
@@ -244,6 +263,7 @@ export default {
         title: "",
         companyId: "",
         managerId: "",
+        hoursPerWeek: null,
         wage: null,
         hourlyWage: null,
         payRate: null,
@@ -257,6 +277,7 @@ export default {
         endDate: this.getISODateString(new Date()),
         company: null,
         manager: null,
+        location: null,
         profession: null,
         attachments: []
       },
