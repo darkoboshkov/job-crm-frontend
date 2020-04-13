@@ -603,21 +603,6 @@ export default {
           });
         });
     },
-    update() {
-      jobOfferApi
-        .update(this.model)
-        .then(res => {
-          this.getOfferDetails();
-        })
-        .catch(e => {
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_offer_detail.modal.update_fail.title"),
-            subTitle: this.$t("page_offer_detail.modal.update_fail.sub_title"),
-            button: this.$t("page_offer_detail.modal.update_fail.continue")
-          });
-        });
-    },
     viewContract() {
       this.$refs["modal-view-contract"].show();
     },
