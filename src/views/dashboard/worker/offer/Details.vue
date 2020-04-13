@@ -218,14 +218,14 @@
           <div v-if="edit">
             <b-form-input v-model="model.wage" />
           </div>
-          <div v-else class="text-right">
+          <div v-else type="number" class="text-right">
             {{ model.wage }}
           </div>
         </div>
         <div class="item">
           <div>{{ $t("page_offer_detail.form.hourly_wage") }}</div>
           <div v-if="edit">
-            <b-form-input v-model="model.hourlyWage" />
+            <b-form-input type="number" v-model="model.hourlyWage" />
           </div>
           <div v-else class="text-right">
             {{ model.hourlyWage }}
@@ -234,7 +234,7 @@
         <div class="item">
           <div>{{ $t("page_offer_detail.form.pay_rate") }}</div>
           <div v-if="edit">
-            <b-form-input v-model="model.payRate" />
+            <b-form-input type="number"  v-model="model.payRate" />
           </div>
           <div v-else class="text-right">
             {{ model.payRate }}
@@ -269,7 +269,7 @@
         <div class="item">
           <div>{{ $t("page_offer_detail.form.travel_expenses") }}</div>
           <div v-if="edit">
-            <b-form-input v-model="model.travelExpenses" />
+            <b-form-input type="number" v-model="model.travelExpenses" />
           </div>
           <div v-else class="text-right">
             {{ model.travelExpenses }}
@@ -287,7 +287,7 @@
         <div class="item">
           <div>{{ $t("page_offer_detail.form.travel_hours") }}</div>
           <div v-if="edit">
-            <b-form-input v-model="model.travelHours" />
+            <b-form-input type="number" v-model="model.travelHours" />
           </div>
           <div v-else class="text-right">
             {{ model.travelHours }}
@@ -296,10 +296,28 @@
         <div class="item">
           <div>{{ $t("page_offer_detail.form.other_expenses") }}</div>
           <div v-if="edit">
-            <b-form-input v-model="model.otherExpenses" />
+            <b-form-input type="number" v-model="model.otherExpenses" />
           </div>
           <div v-else class="text-right">
             {{ model.otherExpenses }}
+          </div>
+        </div>
+        <div class="item">
+          <div>{{ $t("page_offer_detail.form.start_date") }}</div>
+          <div v-if="edit">
+            <b-form-input type="date" v-model="model.startDate" />
+          </div>
+          <div v-else class="text-right">
+            {{ model.startDate }}
+          </div>
+        </div>
+        <div class="item">
+          <div>{{ $t("page_offer_detail.form.end_date") }}</div>
+          <div v-if="edit">
+            <b-form-input type="date" v-model="model.endDate" />
+          </div>
+          <div v-else class="text-right">
+            {{ model.endDate }}
           </div>
         </div>
       </div>
@@ -538,7 +556,22 @@ export default {
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
       exportingContract: false,
-      model: {},
+      model: {
+        collectiveAgreement: "",
+        wage: null,
+        hourlyWage: null,
+        payRate: null,
+        travelExpenses: null,
+        oneWayTravelExpenseDistance: null,
+        travelHours: null,
+        otherExpenses: null,
+        startDate: null,
+        endDate: null,
+        status: null,
+        paymentInterval: "",
+        discountOnTaxes: "",
+        workedEarlierAsFlexWorker: ""
+      },
       company: {},
       job: {},
       manager: {},
@@ -673,7 +706,9 @@ export default {
       jobOfferApi
         .update(this.model)
         .then(res => {
-          this.model = res;
+          res.startDate = this.getISODateString(res.startDate);
+          res.endDate = this.getISODateString(res.endDate);
+          this.model = { ...this.model, ...res};
           this.company = res.company[0];
           this.job = res.job[0];
           this.worker = res.worker[0];
@@ -708,7 +743,9 @@ export default {
       jobOfferApi
         .get({ companyId, offerId })
         .then(res => {
-          this.model = res;
+          res.startDate = this.getISODateString(res.startDate);
+          res.endDate = this.getISODateString(res.endDate);
+          this.model = { ...this.model, ...res};
           this.company = res.company[0];
           this.job = res.job[0];
           this.worker = res.worker[0];

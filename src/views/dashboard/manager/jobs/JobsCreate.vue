@@ -76,7 +76,7 @@
                       {{ $t("page_job_detail.form.hours_per_week") }}
                     </span>
                     <div>
-                      <b-input v-model="model.hoursPerWeek" />
+                      <b-input type="number" v-model="model.hoursPerWeek" />
                     </div>
                   </div>
                 </li>
@@ -86,7 +86,7 @@
                       {{ $t("page_job_detail.form.wage") }}
                     </span>
                     <div>
-                      <b-input v-model="model.wage" />
+                      <b-input type="number" v-model="model.wage" />
                     </div>
                   </div>
                 </li>
@@ -96,7 +96,7 @@
                       {{ $t("page_job_detail.form.hourly_wage") }}
                     </span>
                     <div>
-                      <b-input v-model="model.hourlyWage" />
+                      <b-input type="number" v-model="model.hourlyWage" />
                     </div>
                   </div>
                 </li>
@@ -106,7 +106,7 @@
                       {{ $t("page_job_detail.form.rate") }}
                     </span>
                     <div>
-                      <b-input v-model="model.payRate" />
+                      <b-input type="number" v-model="model.payRate" />
                     </div>
                   </div>
                 </li>

@@ -289,6 +289,24 @@
             {{ model.otherExpenses }}
           </div>
         </div>
+        <div class="item">
+          <div>{{ $t("page_offer_detail.form.start_date") }}</div>
+          <div v-if="edit">
+            <b-form-input type="date" v-model="model.startDate" />
+          </div>
+          <div v-else class="text-right">
+            {{ model.startDate }}
+          </div>
+        </div>
+        <div class="item">
+          <div>{{ $t("page_offer_detail.form.end_date") }}</div>
+          <div v-if="edit">
+            <b-form-input type="date" v-model="model.endDate" />
+          </div>
+          <div v-else class="text-right">
+            {{ model.endDate }}
+          </div>
+        </div>
       </div>
     </div>
 
@@ -474,7 +492,19 @@ export default {
       exportingContract: false,
       companyId: this.$route.params.companyId,
       offerId: this.$route.params.offerId,
-      model: {},
+      model: {
+        collectiveAgreement: "",
+        wage: null,
+        hourlyWage: null,
+        payRate: null,
+        travelExpenses: null,
+        oneWayTravelExpenseDistance: null,
+        travelHours: null,
+        otherExpenses: null,
+        startDate: null,
+        endDate: null,
+        status: null
+      },
       company: {},
       job: {},
       manager: {},
@@ -572,7 +602,9 @@ export default {
       jobOfferApi
         .update(this.model)
         .then(res => {
-          this.model = res;
+          res.startDate = this.getISODateString(res.startDate);
+          res.endDate = this.getISODateString(res.endDate);
+          this.model = { ...this.model, ...res};
           this.company = res.company[0];
           this.job = res.job[0];
           this.worker = res.worker[0];
@@ -608,7 +640,9 @@ export default {
       jobOfferApi
         .get({ companyId, offerId })
         .then(res => {
-          this.model = res;
+          res.startDate = this.getISODateString(res.startDate);
+          res.endDate = this.getISODateString(res.endDate);
+          this.model = { ...this.model, ...res};
           this.company = res.company[0];
           this.job = res.job[0];
           this.worker = res.worker[0];

@@ -18,7 +18,7 @@ const dateTimeStringOptions = {
   ...timeStringOptions
 };
 
-const getLocalDateString = string => {
+const convertLocalDateString = string => {
   if (string) {
     //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
     return new Date(string).toLocaleDateString("en-US", dateStringOptions);
@@ -26,7 +26,7 @@ const getLocalDateString = string => {
   return "";
 };
 
-const getLocalDateTimeString = string => {
+const convertLocalDateTimeString = string => {
   if (string) {
     //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
     return new Date(string).toLocaleString("en-US", dateTimeStringOptions);
@@ -34,7 +34,7 @@ const getLocalDateTimeString = string => {
   return "";
 };
 
-const getLocalTimeString = string => {
+const convertLocalTimeString = string => {
   if (string) {
     // return new Date(string).toLocaleTimeString("nl-NL", timeStringOptions);
     return new Date(string).toLocaleTimeString("en-US", timeStringOptions);
@@ -42,7 +42,14 @@ const getLocalTimeString = string => {
   return "";
 };
 
-const getFullName = user => {
+const convertISODateString = string => {
+  if (string) {
+    return new Date(string).toISOString().slice(0, 10);
+  }
+  return "";
+}
+
+const convertFullName = user => {
   let name = "";
   if (user && user.firstName) {
     name = user.firstName;
@@ -59,22 +66,22 @@ const getFullName = user => {
 export default {
   filters: {
     dateISOFormatter(string) {
-      return new Date(string).toISOString().slice(0, 10);
+      return convertISODateString(string);
     },
     dateFormatter(string) {
-      return getLocalDateString(string);
+      return convertLocalDateString(string);
     },
     dateTimeFormatter(string) {
-      return getLocalDateTimeString(string);
+      return convertLocalDateTimeString(string);
     },
     timeFormatter(string) {
-      return getLocalTimeString(string);
+      return convertLocalTimeString(string);
     },
     appUrlFormatter(string) {
       return APP_URL + string;
     },
     fullNameFormatter(user) {
-      return getFullName(user);
+      return convertFullName(user);
     },
     fileSizeFormatter(bytes) {
       const decimals = 2;
@@ -91,22 +98,22 @@ export default {
   },
   methods: {
     getISODateString(string) {
-      return new Date(string).toISOString().slice(0, 10);
+      return convertISODateString(string);
     },
     getAppUrl(string) {
       return APP_URL + string;
     },
     getDateString(string) {
-      return getLocalDateString(string);
+      return convertLocalDateString(string);
     },
     getDateTimeString(string) {
-      return getLocalDateTimeString(string);
+      return convertLocalDateTimeString(string);
     },
     getTimeString(string) {
-      return getLocalTimeString(string);
+      return convertLocalTimeString(string);
     },
     getFullName(user) {
-      return getFullName(user);
+      return convertFullName(user);
     },
     getAge(birthday) {
       if (birthday) {

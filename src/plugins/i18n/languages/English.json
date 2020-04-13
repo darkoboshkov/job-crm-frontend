@@ -593,7 +593,9 @@
       "travel_expenses": "Travel expenses",
       "travel_hours": "Travel hours",
       "other_expenses": "Other expenses",
-      "one_way_distance": "Travel expenses one way distance"
+      "one_way_distance": "Travel expenses one way distance",
+      "start_date": "Start Date",
+      "end_date": "End Date"
     },
     "button": {
       "adjust": "Adjust",
