@@ -76,7 +76,30 @@
                     <span>{{ userName }}</span>
                   </div>
                 </li>
-
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.location") }}
+                    </span>
+                    <div class="pull-right">
+                      <b-input v-if="editJob" v-model="model.location" />
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center">
+                    <span class="flex-1">
+                      {{ $t("page_job_detail.form.hours_per_week") }}
+                    </span>
+                    <div class="pull-right">
+                      <b-input
+                          v-if="editJob"
+                          type="number"
+                          v-model="model.hoursPerWeek"
+                      />
+                    </div>
+                  </div>
+                </li>
                 <li>
                   <div class="d-flex align-items-center">
                     <span class="flex-1">
@@ -449,6 +472,7 @@ export default {
         companyId: "",
         managerId: "",
         professionId: "",
+        hoursPerWeek: null,
         wage: null,
         hourlyWage: null,
         payRate: null,
@@ -460,9 +484,9 @@ export default {
         image: null,
         startDate: null,
         endDate: null,
-
         company: null,
         manager: null,
+        location: null,
         profession: null,
         attachments: []
       },

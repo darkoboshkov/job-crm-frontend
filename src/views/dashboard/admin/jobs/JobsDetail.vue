@@ -119,8 +119,11 @@
                     <span class="flex-1">
                       {{ $t("page_job_detail.form.location") }}
                     </span>
-                    <div>
-                      <b-input v-model="model.location" />
+                    <div class="pull-right">
+                      <b-input v-if="editJob" v-model="model.location" />
+                      <div v-else>
+                        {{ model.location }}
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -129,8 +132,15 @@
                     <span class="flex-1">
                       {{ $t("page_job_detail.form.hours_per_week") }}
                     </span>
-                    <div>
-                      <b-input v-model="model.hoursPerWeek" />
+                    <div class="pull-right">
+                      <b-input
+                          v-if="editJob"
+                          type="number"
+                          v-model="model.hoursPerWeek"
+                      />
+                      <div v-else>
+                        {{ model.hoursPerWeek }}
+                      </div>
                     </div>
                   </div>
                 </li>

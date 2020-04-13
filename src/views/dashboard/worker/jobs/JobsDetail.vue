@@ -62,6 +62,20 @@
                 </li>
 
                 <li>
+                  {{ $t("page_job_detail.form.location") }}
+                  <div class="pull-right">
+                    <div>{{ model.location }}</div>
+                  </div>
+                </li>
+
+                <li>
+                  {{ $t("page_job_detail.form.hours_per_week") }}
+                  <div class="pull-right">
+                    <div>{{ model.hoursPerWeek }}</div>
+                  </div>
+                </li>
+
+                <li>
                   {{ $t("page_job_detail.form.wage") }}
                   <div class="pull-right">
                     <div>
@@ -320,6 +334,7 @@ export default {
         companyId: "",
         managerId: "",
         professionId: "",
+        hoursPerWeek: null,
         wage: null,
         hourlyWage: null,
         payRate: null,
@@ -332,9 +347,9 @@ export default {
         image: null,
         startDate: null,
         endDate: null,
-
         company: null,
         manager: null,
+        location: null,
         profession: null
       },
       companies: [],
