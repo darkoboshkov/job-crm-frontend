@@ -195,7 +195,10 @@
           <b-card>
             <template v-slot:header>
               <div class="d-flex align-items-center">
-                <h5 class="m-0 flex-1">{{ $t("page_job_detail.files") }}</h5>
+                <h5 class="m-0 flex-1">
+                  <span>{{ $t("page_job_detail.files") }}</span>
+                  <span class="color-gray ml-2">(.doc,.docx,.pdf)</span>
+                </h5>
                 <input
                   type="file"
                   id="attachment"

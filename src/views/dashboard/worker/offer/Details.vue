@@ -325,7 +325,10 @@
 
     <div class="card mt-4 contract-files">
       <div class="card-header">
-        <span>{{ $t("page_offer_detail.files") }}</span>
+        <div>
+          <span>{{ $t("page_offer_detail.files") }}</span>
+          <span class="color-gray ml-2">(.doc,.docx,.pdf)</span>
+        </div>
         <input
           type="file"
           id="attachment"
@@ -669,8 +672,7 @@ export default {
       jobOfferApi
         .sign(this.model)
         .then(res => {
-          this.model = res;
-          this.$refs["modal-sign-contract"].hide();
+          this.getOfferDetails();
           this.$store.dispatch("updateShowSuccessModal", true);
           this.$store.dispatch("updateSuccessModalContent", {
             title: this.$t("page_offer_detail.modal.sign_success.title"),
@@ -691,7 +693,7 @@ export default {
       jobOfferApi
         .decline(this.model)
         .then(res => {
-          this.model = res;
+          this.getOfferDetails();
         })
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
@@ -706,15 +708,7 @@ export default {
       jobOfferApi
         .update(this.model)
         .then(res => {
-          res.startDate = this.getISODateString(res.startDate);
-          res.endDate = this.getISODateString(res.endDate);
-          this.model = { ...this.model, ...res};
-          this.company = res.company[0];
-          this.job = res.job[0];
-          this.worker = res.worker[0];
-          this.manager = res.manager[0];
-          this.hiringManager = res.hiringManager[0];
-          this.attachments = res.attachments;
+          this.getOfferDetails();
         })
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
@@ -847,7 +841,6 @@ export default {
           attachmentId: attachment._id
         })
         .then(res => {
-          this.model = res;
           this.$store.dispatch("updateShowErrorModal", false);
           this.getOfferDetails();
         });
