@@ -1,22 +1,16 @@
 <template>
   <div id="page_dashboard" class="dashboard-content">
-    <div class="container-fluid">
-      <b-row>
-        <b-col>
-          <div class="d-flex responsive justify-content-between content-header">
-            <h1 class="title text-center">{{ $t("page_dashboard.title") }}</h1>
-            <b-button v-b-modal.adjust_dashboard>{{
-              $t("page_dashboard.button.adjust")
-            }}</b-button>
-          </div>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col md="6" v-if="positionItem">
-          <Positions v-on:hide-position-card="hidePositionCard" />
-        </b-col>
-      </b-row>
+    <div class="d-flex responsive justify-content-between align-items-start">
+      <h1 class="title text-center">{{ $t("page_dashboard.title") }}</h1>
+      <b-button v-b-modal.adjust_dashboard>{{
+        $t("page_dashboard.button.adjust")
+        }}</b-button>
     </div>
+    <b-row>
+      <b-col md="6" v-if="positionItem">
+        <Positions v-on:hide-position-card="hidePositionCard" />
+      </b-col>
+    </b-row>
     <b-modal id="adjust_dashboard" footer-class="d-none" centered>
       <template v-slot:modal-header="{ close }">
         <h2>

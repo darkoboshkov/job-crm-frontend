@@ -1,6 +1,6 @@
 <template>
   <div id="page_companies" class="dashboard-content">
-    <div class="d-flex justify-content-between align-items-end">
+    <div class="d-flex justify-content-between align-items-start">
       <h1 class="title">
         {{ $t("page_companies.title") }}
       </h1>

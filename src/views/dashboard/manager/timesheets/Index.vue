@@ -1,6 +1,6 @@
 <template>
   <div id="page_timesheets" class="dashboard-content">
-    <h1 class="color-red">
+    <h1 class="title">
       {{ $t("page_timesheets.title") }}
     </h1>
     <p class="sub-title">
