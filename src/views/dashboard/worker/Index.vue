@@ -4,7 +4,7 @@
       <h1 class="title text-center">{{ $t("page_dashboard.title") }}</h1>
       <b-button v-b-modal.adjust_dashboard>{{
         $t("page_dashboard.button.adjust")
-        }}</b-button>
+      }}</b-button>
     </div>
     <b-row>
       <b-col md="6" v-if="positionItem">

@@ -7,13 +7,13 @@
       </b-button>
     </div>
     <b-row>
-        <b-col md="4" v-if="positionItem">
-          <Positions v-on:hide-position-card="hidePositionCard" />
-        </b-col>
-        <b-col md="4" v-if="usersItem">
-          <Users v-on:hide-users-card="hideUsersCard" />
-        </b-col>
-      </b-row>
+      <b-col md="4" v-if="positionItem">
+        <Positions v-on:hide-position-card="hidePositionCard" />
+      </b-col>
+      <b-col md="4" v-if="usersItem">
+        <Users v-on:hide-users-card="hideUsersCard" />
+      </b-col>
+    </b-row>
     <b-modal id="adjust_dashboard" footer-class="d-none" centered>
       <template v-slot:modal-header="{ close }">
         <h2>

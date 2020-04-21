@@ -265,7 +265,10 @@
         <div class="item">
           <div>{{ $t("page_offer_detail.form.one_way_distance") }}</div>
           <div v-if="edit">
-            <b-form-input type="number" v-model="model.oneWayTravelExpenseDistance" />
+            <b-form-input
+              type="number"
+              v-model="model.oneWayTravelExpenseDistance"
+            />
           </div>
           <div v-else class="text-right">
             {{ model.oneWayTravelExpenseDistance }}
@@ -623,7 +626,7 @@ export default {
         .then(res => {
           res.startDate = this.getISODateString(res.startDate);
           res.endDate = this.getISODateString(res.endDate);
-          this.model = { ...this.model, ...res};
+          this.model = { ...this.model, ...res };
           this.company = res.company[0];
           this.job = res.job[0];
           this.worker = res.worker[0];

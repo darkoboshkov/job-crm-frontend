@@ -1,12 +1,16 @@
 <template>
   <div id="jobs_candidates" class="dashboard-content">
-    <div class="d-flex justify-content-between justify-content-between align-items-start">
+    <div
+      class="d-flex justify-content-between justify-content-between align-items-start"
+    >
       <h1 class="title">
         {{ $t("page_jobs.title") }}
       </h1>
-      <button class="btn btn-red circle large"
-              style="width:50px"
-              @click="$router.push({ name: 'manager-job-create' })">
+      <button
+        class="btn btn-red circle large"
+        style="width:50px"
+        @click="$router.push({ name: 'manager-job-create' })"
+      >
         <i class="hiway-crm-icon icon-add" />
       </button>
     </div>

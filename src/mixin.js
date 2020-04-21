@@ -47,7 +47,7 @@ const convertISODateString = string => {
     return new Date(string).toISOString().slice(0, 10);
   }
   return "";
-}
+};
 
 const convertFullName = user => {
   let name = "";
