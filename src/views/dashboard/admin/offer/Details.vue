@@ -626,7 +626,7 @@ export default {
           res.startDate = this.getISODateString(res.startDate);
           res.endDate = this.getISODateString(res.endDate);
           this.model = { ...this.model, ...res };
-          if(res.status === 'active' && res.contractData) {
+          if (res.status === "active" && res.contractData) {
             this.job = res.contractData.job;
             this.company = res.contractData.company;
             this.worker = res.contractData.worker;

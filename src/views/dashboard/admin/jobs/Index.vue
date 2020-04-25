@@ -67,8 +67,9 @@
                 {{ $t("page_jobs.table.view_job") }}
               </b-dropdown-item>
               <b-dropdown-item
-                  v-if="props.row.status === 'active'"
-                  @click="goToMatching(props)">
+                v-if="props.row.status === 'active'"
+                @click="goToMatching(props)"
+              >
                 {{ $t("page_jobs.table.start_matching") }}
               </b-dropdown-item>
             </b-dropdown>

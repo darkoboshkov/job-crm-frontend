@@ -69,8 +69,10 @@
                 {{ $t("page_candidates.table.view_profile") }}
               </b-dropdown-item>
               <b-dropdown-item
-                  v-if="props.row.activeContract !== 'No'"
-                  href="#" @click="goToJobOffer(props)">
+                v-if="props.row.activeContract !== 'No'"
+                href="#"
+                @click="goToJobOffer(props)"
+              >
                 {{ $t("page_candidates.table.view_joboffer") }}
               </b-dropdown-item>
               <b-dropdown-item href="#" @click="selectCandidate(props)">
@@ -82,9 +84,7 @@
               <i class="hiway-crm-icon icon-bin" />
             </button>
           </div>
-          <div
-              v-else-if="props.column.field === 'profession'"
-          >
+          <div v-else-if="props.column.field === 'profession'">
             {{ $t(`profession.${props.row.profession}`) }}
           </div>
           <div
@@ -266,7 +266,7 @@ export default {
     goToJobOffer(props) {
       if (props && props.row) {
         this.$router.push(
-            `/${this.role}/dashboard/joboffers/${props.row.companyId}/${props.row.jobOfferId}`
+          `/${this.role}/dashboard/joboffers/${props.row.companyId}/${props.row.jobOfferId}`
         );
       }
     },
@@ -326,7 +326,10 @@ export default {
           row.profession = row.profession ? row.profession[0]?.name : "";
           row.createdAt = this.getDateString(row.createdAt);
           row.name = this.getFullName(row);
-          row.activeContract = row.jobOffer[0]?.status === 'active' ? row.hiringCompany[0]?.name : 'No';
+          row.activeContract =
+            row.jobOffer[0]?.status === "active"
+              ? row.hiringCompany[0]?.name
+              : "No";
 
           return row;
         });

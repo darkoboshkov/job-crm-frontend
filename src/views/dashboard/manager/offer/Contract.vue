@@ -323,10 +323,12 @@
     </div>
     <div class="row">
       <div class="col-6">
-        {{ $t(`honorific.${this.manager.honorificTitle}`) }} {{ manager | fullNameFormatter }}
+        {{ $t(`honorific.${this.manager.honorificTitle}`) }}
+        {{ manager | fullNameFormatter }}
       </div>
       <div class="col-6">
-        {{ $t(`honorific.${this.worker.honorificTitle}`)}} {{ worker | fullNameFormatter }}
+        {{ $t(`honorific.${this.worker.honorificTitle}`) }}
+        {{ worker | fullNameFormatter }}
       </div>
     </div>
     <br />

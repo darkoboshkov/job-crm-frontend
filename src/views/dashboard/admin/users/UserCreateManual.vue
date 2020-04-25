@@ -130,7 +130,7 @@
                 v-for="profession in professions"
                 :key="profession._id"
                 :value="profession._id"
-                >{{ $t(`profession.${profession.name}`)}}</option
+                >{{ $t(`profession.${profession.name}`) }}</option
               >
             </b-form-select>
           </div>

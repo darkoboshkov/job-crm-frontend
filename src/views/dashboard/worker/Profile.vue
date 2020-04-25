@@ -12,7 +12,9 @@
           </div>
           <div class="profile-header__description">
             <h2 class="fullName">{{ model.fullName }}</h2>
-            <h3 class="profession">{{ $t(`profession.${model.profession}`) }}</h3>
+            <h3 class="profession">
+              {{ $t(`profession.${model.profession}`) }}
+            </h3>
           </div>
         </div>
         <div class="profile-edit">
