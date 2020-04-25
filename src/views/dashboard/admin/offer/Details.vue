@@ -626,6 +626,7 @@ export default {
           res.endDate = this.getISODateString(res.endDate);
           this.model = { ...this.model, ...res };
           this.job = res.job[0];
+          this.company = res.company[0];
           this.worker = res.worker[0];
           this.manager = res.manager[0];
           this.hiringManager = res.hiringManager[0];

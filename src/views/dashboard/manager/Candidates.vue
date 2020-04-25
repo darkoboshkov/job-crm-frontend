@@ -68,11 +68,24 @@
               <b-dropdown-item href="#" @click="goToProfile(props)">
                 {{ $t("page_candidates.table.view_profile") }}
               </b-dropdown-item>
+              <b-dropdown-item
+                  v-if="props.row.activeContract !== 'No'"
+                  href="#" @click="goToJobOffer(props)">
+                {{ $t("page_candidates.table.view_joboffer") }}
+              </b-dropdown-item>
+              <b-dropdown-item href="#" @click="selectCandidate(props)">
+                {{ $t("page_candidates.table.delete_user") }}
+              </b-dropdown-item>
             </b-dropdown>
 
             <button class="btn btn-transparent" @click="selectCandidate(props)">
               <i class="hiway-crm-icon icon-bin" />
             </button>
+          </div>
+          <div
+              v-else-if="props.column.field === 'profession'"
+          >
+            {{ $t(`profession.${props.row.profession}`) }}
           </div>
           <div
             v-else-if="props.column.field === 'image'"
@@ -206,9 +219,19 @@ export default {
           name: "profession"
         },
         {
+          label: this.$t("page_candidates.table.location"),
+          field: "city",
+          name: "city"
+        },
+        {
           label: this.$t("page_candidates.table.company"),
           field: "company.name",
           name: "company"
+        },
+        {
+          label: this.$t("page_candidates.table.active_contract"),
+          field: "activeContract",
+          name: "activeContract"
         },
         {
           label: this.$t("page_candidates.table.status"),
@@ -244,6 +267,13 @@ export default {
     goToProfile(props) {
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/profile/${props.row._id}`);
+      }
+    },
+    goToJobOffer(props) {
+      if (props && props.row) {
+        this.$router.push(
+            `/${this.role}/dashboard/joboffers/${props.row.jobOfferId}`
+        );
       }
     },
     onPageChange(e) {
@@ -309,6 +339,8 @@ export default {
             row.profession = row.profession ? row.profession[0]?.name : "";
             row.createdAt = this.getDateString(row.createdAt);
             row.name = this.getFullName(row);
+            row.activeContract = row.jobOffer[0]?.status === 'active' ? row.hiringCompany[0]?.name : 'No';
+
             return row;
           });
           this.totalRows = res.totalDocs;

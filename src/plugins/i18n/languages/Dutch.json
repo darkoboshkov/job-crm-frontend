@@ -409,11 +409,14 @@
       "name": "Naam",
       "company": "Bedrijf",
       "profession": "Vakgebied",
+      "active_contract": "Active Contract",
       "status": "Beschikbaarheid",
       "image": "Foto",
       "location": "Plaatsnaam",
       "actions": "Acties",
-      "view_profile": "Bekijk profiel"
+      "view_joboffer": "View Contract",
+      "view_profile": "View profile",
+      "delete_user": "Delete User"
     },
     "modal": {
       "delete": {
@@ -454,10 +457,12 @@
       "image": "Logo",
       "title": "Titel",
       "company": "Bedrijf",
+      "location": "Location",
       "worker": "Werknemer",
       "manager": "Manager",
       "wage": "Loon",
       "rate": "Tarief",
+      "status": "Status",
       "start_date": "Startdatum",
       "end_date": "Einddatum",
       "duration": "Looptijd",
@@ -895,6 +900,7 @@
       "hours": "Uren",
       "price": "€",
       "hiring_manager": "Inhurende manager",
+      "hiring_company": "Inhurend bedrijf",
       "status": "Status",
       "actions": "Acties",
       "view_timesheet": "Bekijk uren declaraties",
@@ -1047,5 +1053,38 @@
     "button": {
       "back": "Terug naar inloggen"
     }
+  },
+  "profession": {
+    "administration": "Administration",
+    "banks": "Banks",
+    "security": "Beveiliging",
+    "construction": "Bouw",
+    "business-manager": "Business Manager",
+    "call-centers": "Callcenters",
+    "customer-care": "Klantenservice",
+    "communication": "Communicatie",
+    "retail": "Retail",
+    "engineering": "Engineering",
+    "financial": "Financial",
+    "catering-events": "Catering, Catering & Evenementen",
+    "hr": "HR",
+    "it": "IT",
+    "industry-production": "Industrie en productie",
+    "native-speakers-jobs": "Native Speakers Jobs",
+    "legally": "Legally",
+    "customer-service": "Klantenservice",
+    "logistics": "Logistics",
+    "management": "Management",
+    "marketing": "Marketing",
+    "education": "Onderwijs",
+    "government": "Government",
+    "sales": "Sales",
+    "cleaning": "Reiniging",
+    "secretarial": "Secretarial",
+    "technic": "Technic",
+    "transportation": "Transport",
+    "insurances": "Verzekeringen",
+    "business-services": "Zakelijke services",
+    "care": "Care"
   }
 }

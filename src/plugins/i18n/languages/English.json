@@ -409,11 +409,14 @@
       "name": "Name",
       "company": "Company",
       "profession": "Profession",
+      "active_contract": "Active Contract",
       "status": "Status",
       "image": "Image",
       "location": "Location",
       "actions": "Actions",
-      "view_profile": "View profile"
+      "view_joboffer": "View Contract",
+      "view_profile": "View profile",
+      "delete_user": "Delete User"
     },
     "modal": {
       "delete": {
@@ -453,17 +456,19 @@
     "table": {
       "image": "Image",
       "title": "Title",
+      "location": "Location",
       "company": "Company",
       "worker": "Worker",
       "manager": "Manager",
       "wage": "Wage",
       "rate": "Rate",
+      "status": "Status",
       "start_date": "Start date",
       "end_date": "End date",
       "duration": "Duration",
       "profession": "Profession",
       "actions": "Actions",
-      "start_matching": "Start natching",
+      "start_matching": "Start matching",
       "view_job": "View job"
     },
     "filter": {
@@ -1055,5 +1060,38 @@
     "button": {
       "back": "Back to Login"
     }
+  },
+  "profession": {
+    "administration": "Administration",
+    "banks": "Banks",
+    "security": "Security",
+    "construction": "Construction",
+    "business-manager": "Business Manager",
+    "call-centers": "Call Centers",
+    "customer-care": "Customer Care",
+    "communication": "Communication",
+    "retail": "Retail",
+    "engineering": "Engineering",
+    "financial": "Financial",
+    "catering-events": "Catering, Catering & Events",
+    "hr": "HR",
+    "it": "IT",
+    "industry-production": "Industry and Production",
+    "native-speakers-jobs": "Native Speakers Jobs",
+    "legally": "Legally",
+    "customer-service": "Customer Service",
+    "logistics": "Logistics",
+    "management": "Management",
+    "marketing": "Marketing",
+    "education": "Education",
+    "government": "Government",
+    "sales": "Sales",
+    "cleaning": "Cleaning",
+    "secretarial": "Secretarial",
+    "technic": "Technic",
+    "transportation": "Transportation",
+    "insurances": "Insurances",
+    "business-services": "Business Services",
+    "care": "Care"
   }
 }

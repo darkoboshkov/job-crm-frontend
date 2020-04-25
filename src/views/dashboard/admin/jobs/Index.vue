@@ -66,7 +66,9 @@
               <b-dropdown-item @click="goToJob(props)">
                 {{ $t("page_jobs.table.view_job") }}
               </b-dropdown-item>
-              <b-dropdown-item @click="goToMatching(props)">
+              <b-dropdown-item
+                  v-if="props.row.status === 'active'"
+                  @click="goToMatching(props)">
                 {{ $t("page_jobs.table.start_matching") }}
               </b-dropdown-item>
             </b-dropdown>
@@ -174,6 +176,11 @@ export default {
           name: "title"
         },
         {
+          label: this.$t("page_jobs.table.location"),
+          field: "location",
+          name: "location"
+        },
+        {
           label: this.$t("page_jobs.table.company"),
           field: "company.name",
           name: "company"
@@ -202,6 +209,11 @@ export default {
           label: this.$t("page_jobs.table.end_date"),
           field: "endDate",
           name: "endDate"
+        },
+        {
+          label: this.$t("page_jobs.table.status"),
+          field: "status",
+          name: "status"
         },
         {
           label: this.$t("page_jobs.table.actions"),
