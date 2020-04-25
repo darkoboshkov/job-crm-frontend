@@ -85,11 +85,6 @@ export default {
           name: "manager"
         },
         {
-          label: this.$t("page_offers.table.payment_type"),
-          field: "paymentType",
-          name: "paymentType"
-        },
-        {
           label: this.$t("page_offers.table.created_at"),
           field: "createdAt",
           name: "createdAt"

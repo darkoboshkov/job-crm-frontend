@@ -564,13 +564,13 @@ export default {
       exportingContract: false,
       model: {
         collectiveAgreement: "",
-        wage: null,
-        hourlyWage: null,
-        payRate: null,
-        travelExpenses: null,
-        oneWayTravelExpenseDistance: null,
-        travelHours: null,
-        otherExpenses: null,
+        wage: 0,
+        hourlyWage: 0,
+        payRate: 0,
+        travelExpenses: 0,
+        oneWayTravelExpenseDistance: 0,
+        travelHours: 0,
+        otherExpenses: 0,
         startDate: null,
         endDate: null,
         status: null,
@@ -663,6 +663,7 @@ export default {
       this.$refs["modal-sign-contract"].show();
     },
     sign() {
+      this.$refs["modal-sign-contract"].hide();
       if (this.agreement !== "accepted") {
         this.$store.dispatch("updateShowErrorModal", true);
         this.$store.dispatch("updateErrorModalContent", {
@@ -728,11 +729,19 @@ export default {
           res.startDate = this.getISODateString(res.startDate);
           res.endDate = this.getISODateString(res.endDate);
           this.model = { ...this.model, ...res };
-          this.company = res.company[0];
-          this.job = res.job[0];
-          this.worker = res.worker[0];
-          this.manager = res.manager[0];
-          this.hiringManager = res.hiringManager[0];
+          if(res.status === 'active' && res.contractData) {
+            this.job = res.contractData.job;
+            this.company = res.contractData.company;
+            this.worker = res.contractData.worker;
+            this.manager = res.contractData.manager;
+            this.hiringManager = res.contractData.hiringManager;
+          } else {
+            this.job = res.job[0];
+            this.company = res.company[0];
+            this.worker = res.worker[0];
+            this.manager = res.manager[0];
+            this.hiringManager = res.hiringManager[0];
+          }
           this.attachments = res.attachments;
         })
         .catch(e => {

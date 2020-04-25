@@ -17,7 +17,7 @@
           companyStreet: this.company.street,
           companyHouseNumber: this.company.houseNumber,
           companyPostalCode: this.company.postalCode,
-          honorificTitle: this.manager.honorificTitle,
+          honorificTitle: this.$t(`honorific.${this.manager.honorificTitle}`),
           manager: this.getFullName(manager)
         })
       }}
@@ -323,10 +323,10 @@
     </div>
     <div class="row">
       <div class="col-6">
-        {{ manager.honorificTitle }} {{ manager | fullNameFormatter }}
+        {{ $t(`honorific.${manager.honorificTitle}`) }} {{ manager | fullNameFormatter }}
       </div>
       <div class="col-6">
-        {{ worker.honorificTitle }} {{ worker | fullNameFormatter }}
+        {{ $t(`honorific.${worker.honorificTitle}`)}} {{ worker | fullNameFormatter }}
       </div>
     </div>
     <br />
