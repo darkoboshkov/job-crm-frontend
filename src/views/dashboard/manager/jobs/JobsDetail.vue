@@ -278,7 +278,7 @@
             </div>
           </template>
           <div>
-            <ul class="custom-list">
+            <ul class="custom-list interaction">
               <li class="d-flex color-gray">
                 <div class="flex-3">
                   {{ $t("page_job_detail.form.worker") }}
@@ -309,7 +309,12 @@
                 </div>
                 <div class="flex-2"></div>
               </li>
-              <li class="d-flex" v-for="offer in jobOffers" :key="offer._id">
+              <li
+                class="d-flex align-items-center"
+                v-for="offer in jobOffers"
+                :key="offer._id"
+                @click="goToOfferDetails(offer._id)"
+              >
                 <div class="flex-3">
                   {{ $t("page_job_detail.form.offer") }} -
                   {{ offer.worker | fullNameFormatter }}
@@ -397,11 +402,12 @@
             </div>
           </template>
           <div>
-            <ul class="custom-list">
+            <ul class="custom-list interaction">
               <li
-                class="d-flex"
+                class="d-flex align-items-center"
                 v-for="(attachment, idx) in model.attachments"
                 :key="idx"
+                @click="downloadFile(attachment)"
               >
                 <div class="flex-1">
                   {{ attachment.name }}

@@ -7,21 +7,27 @@ body {
 
 .d-flex {
   display: flex;
+
   &.responsive {
     @include media-breakpoint-down(sm) {
       flex-direction: column;
-    };
+    }
+  ;
   }
 }
+
 .flex-1 {
   flex: 1;
 }
+
 .flex-2 {
   flex: 2;
 }
+
 .flex-3 {
   flex: 3;
 }
+
 .container {
   width: initial !important;
 }
@@ -29,6 +35,7 @@ body {
 .pull-right {
   float: right;
 }
+
 .pull-left {
   float: left;
 }
@@ -47,19 +54,32 @@ body {
 
 a {
   color: var(--black);
+
   &:hover {
     color: var(--lipstick-red);
   }
 }
+
 ul.custom-list {
   margin: 0;
   list-style: none;
   padding: 0;
+
   li {
     &:not(:last-child) {
       border-bottom: 1px solid var(--white-two);
     }
+
     padding: 14px 0;
+  }
+
+  &.interaction {
+    li {
+      &:hover {
+        background-color: var(--pale-grey-two);
+        cursor: pointer;
+      }
+    }
   }
 }
 
@@ -79,12 +99,14 @@ ul.custom-list {
 .dropdown-menu:focus {
   outline: none;
 }
+
 .dropdown-item:focus {
   outline: none;
 }
 
-.dropdown-menu li{
+.dropdown-menu li {
   padding: 0 !important;
+
   &:not(:last-child) {
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   }
@@ -92,6 +114,7 @@ ul.custom-list {
 
 .dropdown-item {
   color: black;
+
   &:hover {
     color: var(--cobalt-blue);
   }
@@ -111,6 +134,7 @@ ul.custom-list {
   i {
     font-size: 1.25em;
   }
+
   span {
     line-height: 1;
   }

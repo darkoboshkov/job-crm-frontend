@@ -349,11 +349,12 @@
         </label>
       </div>
       <div class="card-body">
-        <ul class="custom-list">
+        <ul class="custom-list interaction">
           <li
-            class="d-flex"
+            class="d-flex align-items-center"
             v-for="(attachment, idx) in attachments"
             :key="idx"
+            @click="downloadFile(attachment)"
           >
             <div class="flex-1">
               <img
