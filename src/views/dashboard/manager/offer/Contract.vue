@@ -390,9 +390,9 @@
       }}
     </div>
     <div>{{ $t("page_offer_detail.contract.description24_6") }}</div>
+    <br />
     <div>{{ company.city }}, {{ offer.startDate | dateFormatter }}</div>
     <div>{{ $t("page_offer_detail.contract.for_approval") }},</div>
-    <br />
     <br />
     <br />
     {{ worker | fullNameFormatter }}
