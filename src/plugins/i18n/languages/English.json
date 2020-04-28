@@ -60,8 +60,20 @@
     "sun": "Sunday"
   },
   "status": {
+    "open": "Open",
+    "close": "Close",
+    "hide": "Hide",
+    "active": "Active",
+    "inactive": "Inactive",
     "available": "Available",
-    "unavailable": "Not available"
+    "unavailable": "Not available",
+    "submitted": "Submitted",
+    "not-submitted": "Not submitted",
+    "declined": "Declined",
+    "completed": "Completed",
+    "deleted": "Deleted",
+    "approved": "Approved",
+    "pending-worker": "Pending Worker"
   },
   "profession": {
     "administration": "Administration",

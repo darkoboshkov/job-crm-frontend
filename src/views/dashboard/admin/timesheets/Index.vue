@@ -91,10 +91,8 @@
                 <i class="hiway-crm-icon icon-bin" />
               </button>
             </div>
-            <span v-else-if="props.column.field === 'activeState'">
-              {{
-                props.formattedRow[props.column.field] ? "active" : "inactive"
-              }}
+            <span v-else-if="props.column.field === 'status'">
+              {{ props.row.status ? $t(`status.${props.row.status}`) : ""}}
             </span>
             <span v-else-if="props.column.field === 'submitDate'">
               {{ props.formattedRow[props.column.field] | dateFormatter }}

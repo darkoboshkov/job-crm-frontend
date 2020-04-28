@@ -80,6 +80,9 @@
               <i class="hiway-crm-icon icon-bin" />
             </button>
           </div>
+          <div v-else-if="props.column.field === 'status'">
+            {{ props.row.status ? $t(`status.${props.row.status}`) : ""}}
+          </div>
           <div
             v-else-if="props.column.field === 'image'"
             class="d-flex align-items-center"

@@ -60,8 +60,20 @@
     "sun": "Zondag"
   },
   "status": {
+    "open": "Open",
+    "close": "Sluiten",
+    "hide": "Hide",
+    "active": "Actief",
+    "inactive": "Inactief",
     "available": "Beschikbaar",
-    "unavailable": "Niet beschikbaar"
+    "unavailable": "Niet beschikbaar",
+    "submitted": "Ingediend",
+    "not-submitted": "Niet ingediend",
+    "declined": "Geweigerd",
+    "completed": "Voltooid",
+    "deleted": "Verwijderd",
+    "approved": "Goedgekeurd",
+    "pending-worker": "In afwachting van werknemer"
   },
   "profession": {
     "administration": "Administration",

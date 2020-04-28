@@ -348,7 +348,7 @@
                   {{ offer.payRate }}
                 </div>
                 <div class="flex-2">
-                  {{ offer.status }}
+                  {{ offer.status ? $t(`status.${offer.status}`) : ""}}
                 </div>
                 <div class="flex-2">
                   {{ offer.startDate | dateFormatter }}
