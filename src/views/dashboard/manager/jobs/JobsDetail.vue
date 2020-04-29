@@ -251,7 +251,7 @@
 
     <b-row class="mt-5">
       <b-col md="12">
-        <b-card>
+        <b-card body-class="px-0">
           <template v-slot:header>
             <div class="d-flex">
               <h5 class="m-0 flex-1">
@@ -279,7 +279,7 @@
           </template>
           <div>
             <ul class="custom-list interaction">
-              <li class="d-flex color-gray">
+              <li class="d-flex color-gray px-3">
                 <div class="flex-3">
                   {{ $t("page_job_detail.form.worker") }}
                 </div>
@@ -295,7 +295,7 @@
                 <div class="flex-1">
                   {{ $t("page_job_detail.form.wage") }}
                 </div>
-                <div class="flex-1">
+                <div class="flex-2">
                   {{ $t("page_job_detail.form.rate") }}
                 </div>
                 <div class="flex-2">
@@ -310,7 +310,7 @@
                 <div class="flex-2"></div>
               </li>
               <li
-                class="d-flex align-items-center"
+                class="d-flex align-items-center px-3"
                 v-for="offer in jobOffers"
                 :key="offer._id"
               >
@@ -330,7 +330,7 @@
                 <div class="flex-1" @click="goToOfferDetails(offer._id)">
                   {{ offer.wage }}
                 </div>
-                <div class="flex-1" @click="goToOfferDetails(offer._id)">
+                <div class="flex-2" @click="goToOfferDetails(offer._id)">
                   {{ offer.payRate }}
                 </div>
                 <div class="flex-2" @click="goToOfferDetails(offer._id)">
@@ -375,7 +375,7 @@
 
     <b-row class="mt-5">
       <b-col md="12">
-        <b-card>
+        <b-card body-class="px-0">
           <template v-slot:header>
             <div class="d-flex align-items-center">
               <h5 class="m-0 flex-1">
@@ -403,7 +403,7 @@
           <div>
             <ul class="custom-list interaction">
               <li
-                class="d-flex align-items-center"
+                class="d-flex align-items-center px-3"
                 v-for="(attachment, idx) in model.attachments"
                 :key="idx"
               >

@@ -198,7 +198,7 @@
                 <div class="flex-1">
                   {{ $t("page_job_detail.form.wage") }}
                 </div>
-                <div class="flex-1">
+                <div class="flex-2">
                   {{ $t("page_job_detail.form.rate") }}
                 </div>
                 <div class="flex-2">
@@ -228,7 +228,7 @@
                 <div class="flex-1">
                   {{ offer.wage }}
                 </div>
-                <div class="flex-1">
+                <div class="flex-2">
                   {{ offer.payRate }}
                 </div>
                 <div class="flex-2">

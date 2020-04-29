@@ -311,7 +311,7 @@
             <b-form-input type="date" v-model="model.startDate" />
           </div>
           <div v-else class="text-right">
-            {{ model.startDate }}
+            {{ model.startDate | dateFormatter }}
           </div>
         </div>
         <div class="item">
@@ -320,7 +320,7 @@
             <b-form-input type="date" v-model="model.endDate" />
           </div>
           <div v-else class="text-right">
-            {{ model.endDate }}
+            {{ model.endDate | dateFormatter }}
           </div>
         </div>
       </div>
@@ -348,10 +348,10 @@
           <i class="hiway-crm-icon icon-upload" />
         </label>
       </div>
-      <div class="card-body">
+      <div class="card-body px-0">
         <ul class="custom-list interaction">
           <li
-            class="d-flex align-items-center"
+            class="d-flex align-items-center px-3"
             v-for="(attachment, idx) in attachments"
             :key="idx"
           >
