@@ -331,6 +331,16 @@ export default {
         })
         .then(res => {
           this.getTimeSheets();
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_timesheets.modal.delete_success.title", {
+              type: "timesheet"
+            }),
+            subTitle: this.$t(
+                "page_timesheets.modal.delete_success.sub_title"
+            ),
+            button: this.$t("page_timesheets.modal.delete_success.continue")
+          });
         });
     },
     deleteTimeSheetConfirm(props) {
@@ -343,19 +353,8 @@ export default {
         subTitle: this.$t("page_timesheets.modal.delete_confirm.sub_title"),
         button: this.$t("page_timesheets.modal.delete_confirm.continue"),
         onButtonClick: () => {
-          this.deleteWorkLog(props).then(() => {
-            this.$store.dispatch("updateShowErrorModal", false);
-            this.$store.dispatch("updateShowSuccessModal", true);
-            this.$store.dispatch("updateSuccessModalContent", {
-              title: this.$t("page_timesheets.modal.delete_success.title", {
-                type: "timesheet"
-              }),
-              subTitle: this.$t(
-                "page_timesheets.modal.delete_success.sub_title"
-              ),
-              button: this.$t("page_timesheets.modal.delete_success.continue")
-            });
-          });
+          this.$store.dispatch("updateShowErrorModal", false);
+          this.deleteWorkLog(props);
         }
       });
     }
