@@ -8,7 +8,7 @@
           :key="index"
           class="nav-link"
         >
-          <i class="hiway-crm-icon" :class="item.icon"></i>
+          <i class="hiway-crm-icon" :class="item.icon" />
         </router-link>
       </template>
     </div>
@@ -17,7 +17,7 @@
       <!--                <img src="@/assets/image/icon/plus.svg"/>-->
       <!--            </a>-->
       <router-link :to="'/' + role + '/dashboard/setting'" class="nav-link">
-        <i class="hiway-crm-icon icon-settings"></i>
+        <i class="hiway-crm-icon icon-settings" />
       </router-link>
     </div>
   </div>

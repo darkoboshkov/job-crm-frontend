@@ -242,11 +242,6 @@ export default {
           name: "status"
         },
         {
-          label: this.$t("page_candidates.table.location"),
-          field: "city",
-          name: "city"
-        },
-        {
           label: this.$t("page_candidates.table.actions"),
           field: "actions",
           name: "actions"
