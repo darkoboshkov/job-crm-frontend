@@ -54,10 +54,10 @@
             $t("page_timesheets.modal.through", {
               from:
                 daysOfSelectedWeek[0] &&
-                getISODateString(daysOfSelectedWeek[0].date),
+                getDateString(daysOfSelectedWeek[0].date),
               to:
                 daysOfSelectedWeek[6] &&
-                getISODateString(daysOfSelectedWeek[6].date)
+                getDateString(daysOfSelectedWeek[6].date)
             })
           }}
         </span>

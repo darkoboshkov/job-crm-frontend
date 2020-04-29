@@ -11,15 +11,15 @@
     <div>
       <strong>{{ $t("page_offer_detail.contract.subject1") }}</strong>
       {{
-        $t("page_offer_detail.contract.description1", {
-          companyName: this.company.name,
-          companyCity: this.company.city,
-          companyStreet: this.company.street,
-          companyHouseNumber: this.company.houseNumber,
-          companyPostalCode: this.company.postalCode,
-          honorificTitle: this.$t(`honorific.${this.manager.honorificTitle}`),
-          manager: this.getFullName(manager)
-        })
+      $t("page_offer_detail.contract.description1", {
+      companyName: this.company.name,
+      companyCity: this.company.city,
+      companyStreet: this.company.street,
+      companyHouseNumber: this.company.houseNumber,
+      companyPostalCode: this.company.postalCode,
+      honorificTitle: this.$t(`honorific.${this.manager.honorificTitle}`),
+      manager: this.getFullName(manager)
+      })
       }}
       <br />
       <br />
@@ -29,43 +29,43 @@
       <strong>{{ $t("page_offer_detail.contract.subject2") }}</strong>
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.name") }}
       </div>
       : {{ worker | fullNameFormatter }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.address") }}
       </div>
       : {{ worker.street }} {{ worker.houseNumber }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.postal_code_city") }}
       </div>
       : {{ worker.postalCode }} {{ worker.city }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.social_security_number") }}
       </div>
       : {{ worker.socialSecurityNumber }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.birthday") }}
       </div>
-      : {{ worker.birthday }}
+      : {{ worker.birthday | dateFormatter }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.id_type") }}
       </div>
       : {{ worker.identificationType }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.id_expiration") }}
       </div>
       : {{ worker.identificationExpirationDate | dateFormatter }}
@@ -78,43 +78,43 @@
     <br />
     <br />
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.company_name") }}
       </div>
       : {{ company.name }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.address") }}
       </div>
       : {{ company.street }} {{ company.houseNumber }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.postal_code_city") }}
       </div>
       : {{ company.postalCode }} {{ company.city }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.manager") }}
       </div>
       : {{ manager | fullNameFormatter }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.telephone_number") }}
       </div>
       : {{ manager.phone }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.expected_start_date") }}
       </div>
       : {{ offer.startDate | dateFormatter }}
     </div>
     <div>
-      <div style="width: 200px; display: inline-block;">
+      <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.agreed_working_hours") }}
       </div>
       : {{ offer.hoursPerWeek }}
@@ -164,9 +164,9 @@
     <strong>{{ $t("page_offer_detail.contract.subject9") }}</strong>
     <div>
       {{
-        $t("page_offer_detail.contract.description9", {
-          hoursPerWeek: this.offer.hoursPerWeek
-        })
+      $t("page_offer_detail.contract.description9", {
+      hoursPerWeek: this.offer.hoursPerWeek
+      })
       }}
     </div>
     <br />
@@ -174,9 +174,9 @@
     <strong>{{ $t("page_offer_detail.contract.subject10") }}</strong>
     <div>
       {{
-        $t("page_offer_detail.contract.description10", {
-          jobTitle: this.job.title
-        })
+      $t("page_offer_detail.contract.description10", {
+      jobTitle: this.job.title
+      })
       }}
     </div>
     <br />
@@ -186,9 +186,9 @@
       <li style="list-style-type: decimal;">
         {{ $t("page_offer_detail.contract.description11_1") }}
         {{
-          offer.CAO && offer.CAO[0] && offer.CAO[0].name
-            ? offer.CAO[0].name
-            : ""
+        offer.CAO && offer.CAO[0] && offer.CAO[0].name
+        ? offer.CAO[0].name
+        : ""
         }}
       </li>
       <li style="list-style-type: decimal;">
@@ -323,11 +323,11 @@
     </div>
     <div class="row">
       <div class="col-6">
-        {{ $t(`honorific.${this.manager.honorificTitle}`) }}
+        {{ $t(`honorific.${manager.honorificTitle}`) }}
         {{ manager | fullNameFormatter }}
       </div>
       <div class="col-6">
-        {{ $t(`honorific.${this.worker.honorificTitle}`) }}
+        {{ $t(`honorific.${worker.honorificTitle}`) }}
         {{ worker | fullNameFormatter }}
       </div>
     </div>
@@ -338,17 +338,17 @@
     <br />
     <div>
       {{
-        $t("page_offer_detail.contract.description21_1", {
-          companyName: this.company.name
-        })
+      $t("page_offer_detail.contract.description21_1", {
+      companyName: this.company.name
+      })
       }}
     </div>
     <br />
     <div>
       {{
-        $t("page_offer_detail.contract.description21_2", {
-          companyName: this.company.name
-        })
+      $t("page_offer_detail.contract.description21_2", {
+      companyName: this.company.name
+      })
       }}
     </div>
     <br />
@@ -357,9 +357,9 @@
     </div>
     <div>
       {{
-        $t("page_offer_detail.contract.description22", {
-          companyName: this.company.name
-        })
+      $t("page_offer_detail.contract.description22", {
+      companyName: this.company.name
+      })
       }}
     </div>
     <br />
@@ -368,9 +368,9 @@
     </div>
     <div>
       {{
-        $t("page_offer_detail.contract.description23", {
-          companyName: this.company.name
-        })
+      $t("page_offer_detail.contract.description23", {
+      companyName: this.company.name
+      })
       }}
     </div>
     <br />
@@ -384,9 +384,9 @@
     <br />
     <div>
       {{
-        $t("page_offer_detail.contract.description24_5", {
-          companyName: this.company.name
-        })
+      $t("page_offer_detail.contract.description24_5", {
+      companyName: this.company.name
+      })
       }}
     </div>
     <div>{{ $t("page_offer_detail.contract.description24_6") }}</div>
