@@ -326,34 +326,33 @@
                 class="d-flex align-items-center"
                 v-for="offer in jobOffers"
                 :key="offer._id"
-                @click="goToOfferDetails(offer._id)"
               >
-                <div class="flex-3">
+                <div class="flex-3"  @click="goToOfferDetails(offer._id)">
                   {{ $t("page_job_detail.form.offer") }} -
                   {{ offer.worker | fullNameFormatter }}
                 </div>
                 <!--                  <div class="flex-2">-->
                 <!--                    {{ offer.updatedAt | dateFormatter }}-->
                 <!--                  </div>-->
-                <div class="flex-2">
+                <div class="flex-2"  @click="goToOfferDetails(offer._id)">
                   {{ offer.hiringCompany.name }}
                 </div>
-                <div class="flex-3">
+                <div class="flex-3"  @click="goToOfferDetails(offer._id)">
                   {{ offer.hiringManager | fullNameFormatter }}
                 </div>
-                <div class="flex-1">
+                <div class="flex-1"  @click="goToOfferDetails(offer._id)">
                   {{ offer.wage }}
                 </div>
-                <div class="flex-1">
+                <div class="flex-1"  @click="goToOfferDetails(offer._id)">
                   {{ offer.payRate }}
                 </div>
-                <div class="flex-2">
+                <div class="flex-2"  @click="goToOfferDetails(offer._id)">
                   {{ offer.status ? $t(`status.${offer.status}`) : ""}}
                 </div>
-                <div class="flex-2">
+                <div class="flex-2"  @click="goToOfferDetails(offer._id)">
                   {{ offer.startDate | dateFormatter }}
                 </div>
-                <div class="flex-2">
+                <div class="flex-2"  @click="goToOfferDetails(offer._id)">
                   {{ offer.endDate | dateFormatter }}
                 </div>
                 <div class="flex-2 d-flex">
@@ -420,16 +419,15 @@
                 class="d-flex align-items-center"
                 v-for="(attachment, idx) in model.attachments"
                 :key="idx"
-                @click="downloadFile(attachment)"
               >
-                <div class="flex-1">
+                <div class="flex-1" @click="downloadFile(attachment)">
                   {{ attachment.name }}
                 </div>
                 <div>
-                  <span class="mr-5"
+                  <span class="mr-5" @click="downloadFile(attachment)"
                     >{{ attachment.uploadedAt | dateTimeFormatter }}
                   </span>
-                  <span class="mr-5"
+                  <span class="mr-5" @click="downloadFile(attachment)"
                     >{{ attachment.size | fileSizeFormatter }}
                   </span>
                   <span class="mr-4">

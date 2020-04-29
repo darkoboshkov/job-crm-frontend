@@ -341,9 +341,8 @@
             class="d-flex align-items-center"
             v-for="(attachment, idx) in attachments"
             :key="idx"
-            @click="downloadFile(attachment)"
           >
-            <div class="flex-1">
+            <div class="flex-1"  @click="downloadFile(attachment)">
               <img
                 v-if="attachment.userId === worker._id"
                 :src="worker.image | appUrlFormatter"
@@ -365,10 +364,10 @@
               {{ attachment.name }}
             </div>
             <div>
-              <span class="mr-5">
+              <span class="mr-5"  @click="downloadFile(attachment)">
                 {{ attachment.uploadedAt | dateTimeFormatter }}
               </span>
-              <span class="mr-5">
+              <span class="mr-5"  @click="downloadFile(attachment)">
                 {{ attachment.size | fileSizeFormatter }}
               </span>
               <span class="mr-4">
