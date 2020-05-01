@@ -19,14 +19,12 @@
 
 <script>
 import SettingAccount from "./SettingAccount";
-import SettingSystem from "./SettingSystem";
 import ResetPassword from "./ResetPassword";
 import Localization from "@/components/common/Localization";
 export default {
   name: "Setting",
   components: {
     Localization,
-    SettingSystem,
     SettingAccount,
     ResetPassword
   }
