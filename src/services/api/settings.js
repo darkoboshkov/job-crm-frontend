@@ -10,6 +10,9 @@ export default {
   uploadImage(params, config = {}) {
     return request("post", "/settings/image", params, config);
   },
+  uploadID(params, config = {}) {
+    return request("post", "/settings/id-card", params, config);
+  },
   resetPassword(params, config = {}) {
     return request("post", "/settings/changePassword", params, config);
   }
