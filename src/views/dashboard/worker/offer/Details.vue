@@ -357,22 +357,22 @@
           >
             <div class="flex-1" @click="downloadFile(attachment)">
               <img
-                v-if="attachment.userId === worker._id"
-                :src="worker.image | appUrlFormatter"
-                class="rounded-circle border mr-4"
-                style="width:45px"
+                  v-if="attachment.userId === worker._id && worker.image"
+                  :src="worker.image | appUrlFormatter"
+                  class="rounded-circle border mr-4"
+                  style="width:45px"
               />
               <img
-                v-else-if="attachment.userId === manager._id"
-                :src="manager.image | appUrlFormatter"
-                class="rounded-circle border mr-4"
-                style="width:45px"
+                  v-else-if="attachment.userId === manager._id && manager.image"
+                  :src="manager.image | appUrlFormatter"
+                  class="rounded-circle border mr-4"
+                  style="width:45px"
               />
               <img
-                v-else-if="attachment.userId === hiringManager._id"
-                :src="hiringManager.image | appUrlFormatter"
-                class="rounded-circle border mr-4"
-                style="width:45px"
+                  v-else-if="attachment.userId === hiringManager._id && hiringManager.image"
+                  :src="hiringManager.image | appUrlFormatter"
+                  class="rounded-circle border mr-4"
+                  style="width:45px"
               />
               {{ attachment.name }}
             </div>

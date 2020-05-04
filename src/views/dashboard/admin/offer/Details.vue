@@ -344,19 +344,19 @@
           >
             <div class="flex-1"  @click="downloadFile(attachment)">
               <img
-                v-if="attachment.userId === worker._id"
+                v-if="attachment.userId === worker._id && worker.image"
                 :src="worker.image | appUrlFormatter"
                 class="rounded-circle border mr-4"
                 style="width:45px"
               />
               <img
-                v-else-if="attachment.userId === manager._id"
+                v-else-if="attachment.userId === manager._id && manager.image"
                 :src="manager.image | appUrlFormatter"
                 class="rounded-circle border mr-4"
                 style="width:45px"
               />
               <img
-                v-else-if="attachment.userId === hiringManager._id"
+                v-else-if="attachment.userId === hiringManager._id && hiringManager.image"
                 :src="hiringManager.image | appUrlFormatter"
                 class="rounded-circle border mr-4"
                 style="width:45px"
