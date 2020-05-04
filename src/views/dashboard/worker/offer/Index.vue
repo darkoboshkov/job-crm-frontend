@@ -36,6 +36,9 @@
               </b-dropdown-item>
             </b-dropdown>
           </div>
+          <div v-else-if="props.column.field === 'status'">
+            {{ props.row.status ? $t(`status.${props.row.status}`) : ""}}
+          </div>
           <div
             v-else-if="props.column.field === 'image'"
             class="d-flex align-items-center"
