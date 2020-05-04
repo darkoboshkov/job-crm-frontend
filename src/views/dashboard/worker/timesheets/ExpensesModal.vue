@@ -92,7 +92,8 @@
 
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3">Upload receipt:</span>&nbsp;<input
+          <span class="mr-3">Upload receipt:</span>&nbsp;
+          <input
             type="file"
             id="attachment"
             name="attachment"

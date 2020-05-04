@@ -222,12 +222,26 @@
       </div>
       <div class="form-element mt-3">
         <label> {{ $t("page_setting.account_setting.form.id_image") }}: </label>
-        <b-form-input
-          type="text"
-          required
-          class="custom-input"
-          v-model="model.identificationImage"
-        />
+        <div class="position-relative w-100">
+          <input
+              type="file"
+              id="idCard"
+              name="idCard"
+              accept="image/*"
+              @change="onFileChange"
+              class="d-none"
+          />
+          <b-input
+              placeholder="Choose ID Card"
+              :value="model.identificationImage"
+              class="custom-input"
+          />
+          <label class="position-absolute id-selector" for="idCard" />
+          <i
+              class="hiway-crm-icon icon-upload position-absolute"
+              style="top: 15px;right: 11px;"
+          />
+        </div>
       </div>
       <div class="form-element mt-5">
         <button class="btn btn-blue" @click="update">
