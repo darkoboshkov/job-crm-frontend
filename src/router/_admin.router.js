@@ -118,6 +118,12 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
+        path: "joboffers",
+        name: "admin-offers",
+        component: () => import("../views/dashboard/admin/offer/Index.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
         path: "joboffers/:companyId/:offerId",
         name: "admin-offer-details",
         component: () => import("../views/dashboard/admin/offer/Details.vue"),

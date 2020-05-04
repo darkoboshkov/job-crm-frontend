@@ -2,6 +2,9 @@ import request from "../request";
 
 export default {
   getAll(params, config = {}) {
+    return request("get", `/joboffers/all`, params, config);
+  },
+  getAllByCompany(params, config = {}) {
     return request("get", `/joboffers/${params.companyId}/all`, params, config);
   },
   getAllByJobId(params, config = {}) {

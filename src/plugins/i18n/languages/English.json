@@ -1083,11 +1083,17 @@
     "sub_title": "We have found {offers} offers",
     "table": {
       "image": "Image",
-      "manager": "Hiring manager",
+      "worker": "Worker",
+      "manager": "Manager",
+      "hiring_manager": "Hiring Manager",
+      "company": "Company",
+      "hiring_company": "Hiring Company",
       "job": "Job title",
       "payment_type": "Payment type",
       "payment_amount": "Payment amount",
       "created_at": "Created at",
+      "start_date": "Start Date",
+      "end_date": "End Date",
       "status": "Status",
       "view_offer": "View job offer",
       "actions": "Actions"
