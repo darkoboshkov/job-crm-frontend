@@ -15,21 +15,6 @@ export const items = [
     roles: ["worker"]
   },
   {
-    icon: "icon-contract",
-    path: "/admin/dashboard/joboffers",
-    roles: ["admin"]
-  },
-  {
-    icon: "icon-contract",
-    path: "/manager/dashboard/joboffers",
-    roles: ["manager"]
-  },
-  {
-    icon: "icon-contract",
-    path: "/worker/dashboard/joboffers",
-    roles: ["worker"]
-  },
-  {
     icon: "icon-people",
     path: "/admin/dashboard/candidates",
     roles: ["admin"]
@@ -59,6 +44,21 @@ export const items = [
   //   path: "/worker/dashboard/jobs",
   //   roles: ["worker"]
   // },
+  {
+    icon: "icon-contract",
+    path: "/admin/dashboard/joboffers",
+    roles: ["admin"]
+  },
+  {
+    icon: "icon-contract",
+    path: "/manager/dashboard/joboffers",
+    roles: ["manager"]
+  },
+  {
+    icon: "icon-contract",
+    path: "/worker/dashboard/joboffers",
+    roles: ["worker"]
+  },
   {
     icon: "icon-hours",
     path: "/admin/dashboard/timesheets",
