@@ -93,7 +93,6 @@
     "industry-production": "Industry and Production",
     "native-speakers-jobs": "Native Speakers Jobs",
     "legally": "Legally",
-    "customer-service": "Customer Service",
     "logistics": "Logistics",
     "management": "Management",
     "marketing": "Marketing",
@@ -336,7 +335,7 @@
     "privacy15_description1": "If you have any questions (or comments) concerning this Privacy Policy, you are most welcome to send us an email to the following address at support@hiway.io"
   },
   "page_dashboard": {
-    "title": "Your dashboard",
+    "title": "Dashboard",
     "button": {
       "adjust": "Adjust dashboard"
     },
@@ -374,7 +373,7 @@
       "since": "Registered since",
       "status": "Status",
       "actions": "Actions",
-      "view_company": "View company"
+      "view_company": "Show details"
     },
     "filter": {
       "name": "Name",
@@ -481,7 +480,7 @@
     "edit": "Edit profile",
     "save": "Save profile",
     "form": {
-      "overview": "Overview",
+      "overview": "About me",
       "specifications": "Specifications",
       "since": "Registered since",
       "age": "Age",
@@ -511,7 +510,7 @@
       "company": "Company",
       "worker": "Worker",
       "manager": "Manager",
-      "wage": "Wage",
+      "wage": "Montly Wage",
       "rate": "Rate",
       "status": "Status",
       "start_date": "Start date",
@@ -552,7 +551,7 @@
       "offer": "Offer",
       "level": "Level",
       "rate": "Pay Rate",
-      "wage": "Wage",
+      "wage": "Montly Wage",
       "hours_per_week": "Hours Per Week",
       "location": "Location",
       "hourly_wage": "Hourly wage",
@@ -641,7 +640,7 @@
     "download_file": "Download File",
     "form": {
       "cao": "CAO",
-      "wage": "Wage",
+      "wage": "Monthly Wage",
       "hourly_wage": "Hourly wage",
       "pay_rate": "Pay rate",
       "hours_per_week": "Hours per week",
@@ -862,7 +861,7 @@
         "other": "Other",
         "birthday": "Date of birth",
         "bank_account_number": "Bank account number",
-        "overview": "Overview",
+        "overview": "About me",
         "phone": "Phone",
         "country": "Country",
         "city": "City",

@@ -19,7 +19,7 @@
     "complete": "Voltooien",
     "upload": "Upload",
     "apply": "Toepassen",
-    "apply_filters": "Filters toepassen",
+    "apply_filters": "Toepassen",
     "status": "Status",
     "location": "Locatie",
     "age": "Leeftijd",
@@ -46,7 +46,7 @@
   },
   "roles": {
     "manager": "Manager",
-    "worker": "Worker",
+    "worker": "Werknemer",
     "owner": "Eigenaar",
     "admin": "Beheerder"
   },
@@ -76,8 +76,8 @@
     "pending-worker": "In afwachting van werknemer"
   },
   "profession": {
-    "administration": "Administration",
-    "banks": "Banks",
+    "administration": "Administratie",
+    "banks": "Banken",
     "security": "Beveiliging",
     "construction": "Bouw",
     "business-manager": "Business Manager",
@@ -86,27 +86,26 @@
     "communication": "Communicatie",
     "retail": "Retail",
     "engineering": "Engineering",
-    "financial": "Financial",
-    "catering-events": "Catering, Catering & Evenementen",
+    "financial": "Financieel",
+    "catering-events": "Catering & Evenementen",
     "hr": "HR",
     "it": "IT",
     "industry-production": "Industrie en productie",
-    "native-speakers-jobs": "Native Speakers Jobs",
-    "legally": "Legally",
-    "customer-service": "Klantenservice",
-    "logistics": "Logistics",
+    "native-speakers-jobs": "Taal en communicatie",
+    "legally": "Juridisch",
+    "logistics": "Logistiek",
     "management": "Management",
     "marketing": "Marketing",
     "education": "Onderwijs",
-    "government": "Government",
+    "government": "Overheid",
     "sales": "Sales",
     "cleaning": "Reiniging",
-    "secretarial": "Secretarial",
-    "technic": "Technic",
+    "secretarial": "Secretarieel",
+    "technic": "Techniek",
     "transportation": "Transport",
     "insurances": "Verzekeringen",
     "business-services": "Zakelijke services",
-    "care": "Care"
+    "care": "Zorg"
   },
   "honorific": {
     "mr": "de heer",
@@ -117,15 +116,15 @@
   "component": {
     "position": {
       "title": "Nieuwste vacatures",
-      "view_all": "Toon alles"
+      "view_all": "Alles weergeven"
     },
     "users": {
       "title": "Nieuwste werknemers",
-      "view_all": "Toon alles"
+      "view_all": "Alles weergeven"
     },
     "companies": {
       "title": "Nieuwste bedrijven",
-      "view_all": "Toon alles"
+      "view_all": "Alles weergeven"
     },
     "birthday": {
       "title": "Aankomende verjaardagen"
@@ -185,7 +184,7 @@
     },
     "button": {
       "login": "Inloggen",
-      "create": "Account aanmaken"
+      "create": "Aanmelden"
     }
   },
   "page_signup": {
@@ -238,7 +237,7 @@
     },
     "button": {
       "send": "Verstuur reset e-mail",
-      "resend": "Reset e-mail opnieuw versturen"
+      "resend": "Opnieuw versturen"
     }
   },
   "page_reset": {
@@ -336,7 +335,7 @@
     "privacy15_description1": "If you have any questions (or comments) concerning this Privacy Policy, you are most welcome to send us an email to the following address at support@hiway.io"
   },
   "page_dashboard": {
-    "title": "Jouw Dashboard",
+    "title": "Dashboard",
     "button": {
       "adjust": "Dashboard aanpassen"
     },
@@ -374,7 +373,7 @@
       "since": "Geregistreerd sinds",
       "status": "Status",
       "actions": "Acties",
-      "view_company": "Bekijk bedrijf"
+      "view_company": "Details weergeven"
     },
     "filter": {
       "name": "Naam",
@@ -460,14 +459,14 @@
       "name": "Naam",
       "company": "Bedrijf",
       "profession": "Vakgebied",
-      "active_contract": "Active Contract",
+      "active_contract": "Lopend Contract",
       "status": "Beschikbaarheid",
       "image": "Foto",
       "location": "Plaatsnaam",
       "actions": "Acties",
-      "view_joboffer": "View Contract",
-      "view_profile": "View profile",
-      "delete_user": "Delete User"
+      "view_joboffer": "Contract weergeven",
+      "view_profile": "Profiel weergeven",
+      "delete_user": "Werknemer verwijderen"
     },
     "modal": {
       "delete": {
@@ -481,7 +480,7 @@
     "edit": "Profiel aanpassen",
     "save": "Profiel opslaan",
     "form": {
-      "overview": "Overzicht",
+      "overview": "Over mij",
       "specifications": "Specificaties",
       "since": "Geregistreerd sinds",
       "age": "Leeftijd",
@@ -511,7 +510,7 @@
       "location": "Locatie",
       "worker": "Werknemer",
       "manager": "Manager",
-      "wage": "Loon",
+      "wage": "Maandloon",
       "rate": "Tarief",
       "status": "Status",
       "start_date": "Startdatum",
@@ -520,11 +519,11 @@
       "profession": "Vakgebied",
       "actions": "Acties",
       "start_matching": "Start matchen",
-      "view_job": "Bekijk vacature"
+      "view_job": "Vacature weergeven"
     },
     "filter": {
       "title": "Titel",
-      "wage": "Loon",
+      "wage": "Maandloon",
       "rate": "Tarief",
       "start_date": "Startdatum",
       "end_date": "Einddatum"
@@ -552,7 +551,7 @@
       "offer": "Aanbod",
       "level": "Level",
       "rate": "Tarief",
-      "wage": "Loon",
+      "wage": "Maandloon",
       "hours_per_week": "Uren per week",
       "location": "Locatie",
       "hourly_wage": "Uurloon",
@@ -561,10 +560,10 @@
       "start_date": "Startdatum",
       "end_date": "Einddatum"
     },
-    "view_offer": "Bekijk aangeboden contracten",
+    "view_offer": "Details weergeven",
     "job_offers": "Aangeboden contracten",
     "files": "Bestanden",
-    "view_file": "Bestand bekijken",
+    "view_file": "Bestand weergeven",
     "download_file": "Bestand downloaden",
     "button": {
       "upload": "Uploaden",
@@ -638,9 +637,10 @@
     "hours_per_week": "Uren per week",
     "specifications": "Specificaties",
     "files": "Bestanden",
+    "download_file": "Bestand downloaden",
     "form": {
       "cao": "CAO",
-      "wage": "Loon",
+      "wage": "Maandloon",
       "hourly_wage": "Uurloon",
       "pay_rate": "Tarief",
       "hours_per_week": "Uren per week",
@@ -659,7 +659,7 @@
       "accept": "Accepteren",
       "lock": "Vergrendelen, tekenen en versturen",
       "export_contract": "Contract exporteren",
-      "view_contract": "Contract bekijken",
+      "view_contract": "Contract weergeven",
       "upload": "Uploaden"
     },
     "modal": {
@@ -671,7 +671,7 @@
         "discount_on_taxes": "Loonheffingskorting",
         "work_earlier_as_flexworker": "Eerder gewerkt als uitzendkracht",
         "accept_term": "Ik erken en ga ermee akkoord dat ik de voorwaarden in dit contract heb gelezen en ermee akkoord ga. Ik begrijp dat ik door op de knop: 'Contract tekenen' hieronder te klikken, dit contract digitaal onderteken en mij aan dit contract bind.",
-        "view_contract": "Contract bekijken",
+        "view_contract": "Contract weergeven",
         "sign_contract": "Contract tekenen"
       },
       "sign_success": {
@@ -739,7 +739,7 @@
       "title": "Uitzendovereenkomst Fase A",
       "sub_title": "met uitzendbeding",
       "subject1": "Werkgever, de uitzendonderneming",
-      "description1": "{companyName}., gevestigd en kantoorhoudende te {companyCity} aan {companyStreet} {companyHouseNumber}, {companyPostalCode} {companyCity}, vertegenwoordigd door de {honorificTitle} {manager}.",
+      "description1": "{companyName}, gevestigd en kantoorhoudende te {companyCity} aan {companyStreet} {companyHouseNumber}, {companyPostalCode} {companyCity}, vertegenwoordigd door de {honorificTitle} {manager}.",
       "and": "en",
       "subject2": "Werknemer, de uitzendkracht",
       "name": "Naam",
@@ -861,7 +861,7 @@
         "other": "Overig",
         "birthday": "Geboortedatum",
         "bank_account_number": "Bankrekening nummer",
-        "overview": "Profiel beschrijving",
+        "overview": "Over mij",
         "phone": "Telefoonnummer",
         "country": "Land",
         "city": "Plaatsnaam",
@@ -871,7 +871,7 @@
         "password": "Wachtwoord",
         "c_password": "Herhaal wachtwoord",
         "honorific_title": "Titel",
-        "social_security_number": "Burgerservicenummer (BSN)",
+        "social_security_number": "Burgerservicenummer",
         "id_type": "Legitimatie type",
         "id_exp_date": "Geldig tot",
         "id_number": "Legitimatie nummer",
@@ -956,8 +956,8 @@
       "hiring_company": "Inhurend bedrijf",
       "status": "Status",
       "actions": "Acties",
-      "view_timesheet": "Bekijk uren declaraties",
-      "view_expense": "Bekijk onkosten declaraties"
+      "view_timesheet": "Uren declaraties weergeven",
+      "view_expense": "Onkosten declaraties weergeven"
     },
     "filter": {
       "name": "Naam",
@@ -979,7 +979,7 @@
       "fill_in_total_traveled_km": "Totale reisafstand woon-werk",
       "percentage": "Percentage",
       "travel_expenses": "Reiskosten woon-werk",
-      "adjust_travel_expenses": "Afstand woon-werk aanpassen",
+      "adjust_travel_expenses": "Afstand woon-werk",
       "save_hours": "Opslaan",
       "send_hours": "Versturen",
       "approve_hours": "Goedkeuren",
@@ -994,7 +994,7 @@
       "worked_overview_1": "In",
       "worked_overview_2": "week",
       "worked_overview_3": "heb je totaal",
-      "worked_overview_4": "uur gewerkt.",
+      "worked_overview_4": "uur gewerkt",
       "worked_overview_5": "",
       "delete_confirm": {
         "title": "Weet je zeker dat je deze declaratie wilt leegmaken?",
@@ -1020,7 +1020,7 @@
     "title": "Nieuwe gebruikers uitnodigen",
     "description": "Vul het e-mailadres van de gebruiker in, kies zijn of haar rol en verstuur de uitnodiging.",
     "form": {
-      "company_list": "Selecteerbedrijf",
+      "company_list": "Selecteer bedrijf",
       "manager": "Manager",
       "worker": "Werknemer",
       "owner": "Beheerder",
@@ -1033,7 +1033,7 @@
       "invite": {
         "title": "Het uitnodigen van de gebruiker is gelukt!",
         "sub_title": "Bedankt",
-        "view_candidates": "Bekijk werknemers",
+        "view_candidates": "Werknemers weergeven",
         "invite_more": "Nog iemand uitnodigen"
       }
     }
@@ -1082,19 +1082,19 @@
     "sub_title": "We hebben {offers} contracten gevonden",
     "table": {
       "image": "Logo",
-      "worker": "Worker",
+      "worker": "Werknemer",
       "manager": "Manager",
       "hiring_manager": "Inhurende Manager",
-      "company": "Company",
-      "hiring_company": "Hiring Company",
+      "company": "Bedrijf",
+      "hiring_company": "Inhurend bedrijf",
       "job": "Vacaturetitel",
       "payment_type": "Valuta soort",
       "payment_amount": "Hoogte betaling",
       "created_at": "Aangemaakt op",
-      "start_date": "Start Date",
-      "end_date": "End Date",
+      "start_date": "Startdatum",
+      "end_date": "Einddatum",
       "status": "Status",
-      "view_offer": "Bekijk contract",
+      "view_offer": "Contract weergeven",
       "actions": "Acties"
     },
     "modal": {
