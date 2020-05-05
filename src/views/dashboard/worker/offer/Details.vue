@@ -31,10 +31,15 @@
             </div>
             <div class="icon-group">
               <div class="icon">
-                <img src="@/assets/image/phone.svg" />
+                <img
+                  src="@/assets/image/phone.svg"
+                  @click="copyPhoneNumToClipboard(company.phone)"
+                />
               </div>
               <div class="icon">
-                <img src="@/assets/image/message.svg" />
+                <a :href="'mailto:' + company.email"
+                  ><img src="@/assets/image/message.svg"
+                /></a>
               </div>
             </div>
           </div>
@@ -72,10 +77,15 @@
             </div>
             <div class="icon-group">
               <div class="icon">
-                <img src="@/assets/image/phone.svg" />
+                <img
+                  src="@/assets/image/phone.svg"
+                  @click="copyPhoneNumToClipboard(worker.phone)"
+                />
               </div>
               <div class="icon">
-                <img src="@/assets/image/message.svg" />
+                <a :href="'mailto:' + company.email"
+                  ><img src="@/assets/image/message.svg"
+                /></a>
               </div>
             </div>
           </div>
@@ -240,23 +250,6 @@
             {{ model.payRate }}
           </div>
         </div>
-        <!--        <div class="item">-->
-        <!--          <div>{{ $t("page_offer_detail.form.payment_type") }}</div>-->
-        <!--          <div v-if="edit">-->
-        <!--            <b-form-select v-model="model.paymentType" class="normal-size">-->
-        <!--              <option-->
-        <!--                v-for="(payment, index) in paymentType"-->
-        <!--                :value="payment"-->
-        <!--                :key="index"-->
-        <!--              >-->
-        <!--                {{ payment }}-->
-        <!--              </option>-->
-        <!--            </b-form-select>-->
-        <!--          </div>-->
-        <!--          <div v-else class="text-right">-->
-        <!--            {{ model.paymentType }}-->
-        <!--          </div>-->
-        <!--        </div>-->
         <div class="item">
           <div>{{ $t("page_offer_detail.form.hours_per_week") }}</div>
           <div v-if="edit">
@@ -357,22 +350,24 @@
           >
             <div class="flex-1" @click="downloadFile(attachment)">
               <img
-                  v-if="attachment.userId === worker._id && worker.image"
-                  :src="worker.image | appUrlFormatter"
-                  class="rounded-circle border mr-4"
-                  style="width:45px"
+                v-if="attachment.userId === worker._id && worker.image"
+                :src="worker.image | appUrlFormatter"
+                class="rounded-circle border mr-4"
+                style="width:45px"
               />
               <img
-                  v-else-if="attachment.userId === manager._id && manager.image"
-                  :src="manager.image | appUrlFormatter"
-                  class="rounded-circle border mr-4"
-                  style="width:45px"
+                v-else-if="attachment.userId === manager._id && manager.image"
+                :src="manager.image | appUrlFormatter"
+                class="rounded-circle border mr-4"
+                style="width:45px"
               />
               <img
-                  v-else-if="attachment.userId === hiringManager._id && hiringManager.image"
-                  :src="hiringManager.image | appUrlFormatter"
-                  class="rounded-circle border mr-4"
-                  style="width:45px"
+                v-else-if="
+                  attachment.userId === hiringManager._id && hiringManager.image
+                "
+                :src="hiringManager.image | appUrlFormatter"
+                class="rounded-circle border mr-4"
+                style="width:45px"
               />
               {{ attachment.name }}
             </div>
@@ -524,7 +519,12 @@
 import jobOfferApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
 import Contract from "./Contract";
-import { serializeContractStatus, downloadFile, exportPDF } from "@/utils";
+import {
+  serializeContractStatus,
+  downloadFile,
+  exportPDF,
+  copyToClipboard
+} from "@/utils";
 
 export default {
   name: "Details",
@@ -841,6 +841,9 @@ export default {
           this.$store.dispatch("updateShowErrorModal", false);
           this.getOfferDetails();
         });
+    },
+    copyPhoneNumToClipboard(phone) {
+      copyToClipboard(phone, `Successfully copied the phone number ${phone}`);
     }
   },
   watch: {

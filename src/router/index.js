@@ -29,8 +29,8 @@ const routes = [
   {
     path: "/dashboard",
     redirect: to => {
-      if (store.state.user.role  ) {
-        if (store.state.user.role === 'worker') {
+      if (store.state.user.role) {
+        if (store.state.user.role === "worker") {
           return `/${store.state.user.role}/dashboard/joboffers`;
         } else {
           return `/${store.state.user.role}/dashboard`;

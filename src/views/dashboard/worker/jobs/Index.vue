@@ -71,7 +71,7 @@
             </div>
           </div>
           <div v-else-if="props.column.field === 'status'">
-            {{ props.row.status ? $t(`status.${props.row.status}`) : ""}}
+            {{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
           </div>
           <span v-else>
             {{ props.formattedRow[props.column.field] }}

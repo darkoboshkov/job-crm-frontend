@@ -103,7 +103,7 @@
               </button>
             </div>
             <div v-else-if="props.column.field === 'status'">
-              {{ props.row.status ? $t(`status.${props.row.status}`) : ""}}
+              {{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
             </div>
             <span v-else-if="props.column.field === 'submitDate'">
               {{ props.formattedRow[props.column.field] | dateFormatter }}
@@ -355,9 +355,7 @@ export default {
             title: this.$t("page_timesheets.modal.delete_success.title", {
               type: "timesheet"
             }),
-            subTitle: this.$t(
-                "page_timesheets.modal.delete_success.sub_title"
-            ),
+            subTitle: this.$t("page_timesheets.modal.delete_success.sub_title"),
             button: this.$t("page_timesheets.modal.delete_success.continue")
           });
         });

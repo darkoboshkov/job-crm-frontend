@@ -87,7 +87,11 @@
             </div>
           </div>
           <span v-else-if="props.column.field === 'activeState'">
-            {{ props.formattedRow[props.column.field] ? $t('status.active') : $t('status.inactive')  }}
+            {{
+              props.formattedRow[props.column.field]
+                ? $t("status.active")
+                : $t("status.inactive")
+            }}
           </span>
           <span v-else>
             {{ props.formattedRow[props.column.field] }}

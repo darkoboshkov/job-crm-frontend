@@ -31,10 +31,15 @@
             </div>
             <div class="icon-group">
               <div class="icon">
-                <img src="@/assets/image/phone.svg" />
+                <img
+                  src="@/assets/image/phone.svg"
+                  @click="copyPhoneNumToClipboard(company.phone)"
+                />
               </div>
               <div class="icon">
-                <img src="@/assets/image/message.svg" />
+                <a :href="'mailto:' + worker.email"
+                  ><img src="@/assets/image/message.svg"
+                /></a>
               </div>
             </div>
           </div>
@@ -72,10 +77,15 @@
             </div>
             <div class="icon-group">
               <div class="icon">
-                <img src="@/assets/image/phone.svg" />
+                <img
+                  src="@/assets/image/phone.svg"
+                  @click="copyPhoneNumToClipboard(worker.phone)"
+                />
               </div>
               <div class="icon">
-                <img src="@/assets/image/message.svg" />
+                <a :href="'mailto:' + worker.email"
+                  ><img src="@/assets/image/message.svg"
+                /></a>
               </div>
             </div>
           </div>
@@ -342,7 +352,7 @@
             v-for="(attachment, idx) in attachments"
             :key="idx"
           >
-            <div class="flex-1"  @click="downloadFile(attachment)">
+            <div class="flex-1" @click="downloadFile(attachment)">
               <img
                 v-if="attachment.userId === worker._id && worker.image"
                 :src="worker.image | appUrlFormatter"
@@ -356,7 +366,9 @@
                 style="width:45px"
               />
               <img
-                v-else-if="attachment.userId === hiringManager._id && hiringManager.image"
+                v-else-if="
+                  attachment.userId === hiringManager._id && hiringManager.image
+                "
                 :src="hiringManager.image | appUrlFormatter"
                 class="rounded-circle border mr-4"
                 style="width:45px"
@@ -364,10 +376,10 @@
               {{ attachment.name }}
             </div>
             <div>
-              <span class="mr-5"  @click="downloadFile(attachment)">
+              <span class="mr-5" @click="downloadFile(attachment)">
                 {{ attachment.uploadedAt | dateTimeFormatter }}
               </span>
-              <span class="mr-5"  @click="downloadFile(attachment)">
+              <span class="mr-5" @click="downloadFile(attachment)">
                 {{ attachment.size | fileSizeFormatter }}
               </span>
               <span class="mr-4">
@@ -465,7 +477,12 @@
 import jobOfferApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
 import Contract from "./Contract";
-import { serializeContractStatus, downloadFile, exportPDF } from "@/utils";
+import {
+  serializeContractStatus,
+  downloadFile,
+  exportPDF,
+  copyToClipboard
+} from "@/utils";
 
 export default {
   name: "Details",
@@ -740,6 +757,9 @@ export default {
           this.$store.dispatch("updateShowErrorModal", false);
           this.getOfferDetails();
         });
+    },
+    copyPhoneNumToClipboard(phone) {
+      copyToClipboard(phone, `Successfully copied the phone number ${phone}`);
     }
   }
 };

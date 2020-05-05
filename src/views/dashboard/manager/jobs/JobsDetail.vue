@@ -334,7 +334,7 @@
                   {{ offer.payRate }}
                 </div>
                 <div class="flex-2" @click="goToOfferDetails(offer._id)">
-                  {{ offer.status ? $t(`status.${offer.status}`) : ""}}
+                  {{ offer.status ? $t(`status.${offer.status}`) : "" }}
                 </div>
                 <div class="flex-2" @click="goToOfferDetails(offer._id)">
                   {{ offer.startDate | dateFormatter }}

@@ -2,6 +2,7 @@ const Swal = require("sweetalert2");
 import store from "./store";
 import axios from "./axios";
 import html2pdf from "html2pdf.js";
+import * as clipboardy from "clipboardy";
 
 /**
  * Toast
@@ -276,4 +277,20 @@ export const serializeContractStatus = (role, status) => {
   }
 
   return state;
+};
+
+/**
+ * Copy Clipboard
+ * @param val
+ * @param text
+ */
+export const copyToClipboard = async (
+  val,
+  text = "Successfully copied the clipboard"
+) => {
+  if (!val) {
+    return;
+  }
+  await clipboardy.write(val);
+  alert(text);
 };

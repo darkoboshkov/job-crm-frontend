@@ -235,6 +235,39 @@
         </div>
         <div class="form-element d-flex align-items-center mt-5">
           <label class="flex-1">
+            {{ $t("page_setting.account_setting.form.honorific_title") }}:
+          </label>
+          <div class="flex-3">
+            <div class="role">
+              <b-form-radio
+                v-model="form.honorificTitle"
+                name="honorific"
+                value="mr"
+                >{{ $t("honorific.mr") }}
+              </b-form-radio>
+              <b-form-radio
+                v-model="form.honorificTitle"
+                name="honorific"
+                value="mrs"
+                >{{ $t("honorific.mrs") }}
+              </b-form-radio>
+              <b-form-radio
+                v-model="form.honorificTitle"
+                name="honorific"
+                value="ms"
+                >{{ $t("honorific.ms") }}
+              </b-form-radio>
+              <b-form-radio
+                v-model="form.honorificTitle"
+                name="honorific"
+                value="miss"
+                >{{ $t("honorific.miss") }}
+              </b-form-radio>
+            </div>
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
             {{ $t("page_users_create_manual.form.birthday") }}:
           </label>
           <div class="flex-3">
@@ -312,6 +345,19 @@
         </div>
         <div class="form-element d-flex align-items-center mt-5">
           <label class="flex-1">
+            {{ $t("page_users_create_manual.form.country") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.country"
+            />
+          </div>
+        </div>
+        <div class="form-element d-flex align-items-center mt-5">
+          <label class="flex-1">
             {{ $t("page_users_create_manual.form.city") }}:
           </label>
           <div class="flex-3">
@@ -326,22 +372,125 @@
             </b-form-invalid-feedback>
           </div>
         </div>
-        <!--        <div class="form-element d-flex align-items-center mt-5">-->
-        <!--          <label class="flex-1">-->
-        <!--            {{ $t("page_users_create_manual.form.passport") }}:-->
-        <!--          </label>-->
-        <!--          <div class="flex-3">-->
-        <!--            <b-form-input-->
-        <!--              type="text"-->
-        <!--              required-->
-        <!--              class="custom-input"-->
-        <!--              v-model="form.passport"-->
-        <!--            />-->
-        <!--            <b-form-invalid-feedback class="d-block" v-if="passportError">-->
-        <!--              {{ $t(`validation.${passportError}`) }}-->
-        <!--            </b-form-invalid-feedback>-->
-        <!--          </div>-->
-        <!--        </div>-->
+        <div
+          class="form-element d-flex align-items-center mt-5"
+          v-if="form.role === 'worker'"
+        >
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.overview") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-textarea
+              rows="10"
+              required
+              class="custom-input"
+              v-model="form.overview"
+            />
+          </div>
+        </div>
+        <div
+          class="form-element d-flex align-items-center mt-5"
+          v-if="form.role === 'worker'"
+        >
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.social_security_number") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.socialSecurityNumber"
+            />
+          </div>
+        </div>
+        <div
+          class="form-element d-flex align-items-center mt-5"
+          v-if="form.role === 'worker'"
+        >
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.id_type") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-select v-model="form.identificationType">
+              <option value="" />
+              <option value="id">
+                {{ $t("page_users_create_manual.form.id") }}
+              </option>
+              <option value="passport">
+                {{ $t("page_users_create_manual.form.passport") }}
+              </option>
+            </b-form-select>
+            <b-form-invalid-feedback
+              class="d-block"
+              v-if="identificationTypeError"
+            >
+              {{ $t(`validation.${identificationTypeError}`) }}
+            </b-form-invalid-feedback>
+          </div>
+        </div>
+        <div
+          class="form-element d-flex align-items-center mt-5"
+          v-if="form.role === 'worker'"
+        >
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.id_number") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="text"
+              required
+              class="custom-input"
+              v-model="form.identificationNumber"
+            />
+          </div>
+        </div>
+        <div
+          class="form-element d-flex align-items-center mt-5"
+          v-if="form.role === 'worker'"
+        >
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.id_exp_date") }}:
+          </label>
+          <div class="flex-3">
+            <b-form-input
+              type="date"
+              required
+              class="custom-input"
+              v-model="form.identificationExpirationDate"
+            />
+          </div>
+        </div>
+        <div
+          class="form-element d-flex align-items-center mt-5"
+          v-if="form.role === 'worker'"
+        >
+          <label class="flex-1">
+            {{ $t("page_users_create_manual.form.id_image") }}:
+          </label>
+          <div class="flex-3">
+            <div class="position-relative w-100">
+              <input
+                type="file"
+                id="idCard"
+                name="idCard"
+                accept="image/*"
+                @change="onIDUpload"
+                class="d-none"
+              />
+              <b-input
+                placeholder="Choose ID Card"
+                :value="form.identificationImage.name"
+                class="custom-input"
+              />
+              <label class="position-absolute id-selector" for="idCard" />
+              <i
+                class="hiway-crm-icon icon-upload position-absolute"
+                style="top: 15px;right: 11px;"
+              />
+            </div>
+          </div>
+        </div>
         <b-form-invalid-feedback class="d-block mt-5" v-if="error">
           {{ $t(`${error}`) }}
         </b-form-invalid-feedback>
@@ -359,6 +508,7 @@
 import companyApi from "@/services/api/companies";
 import professionApi from "@/services/api/professions";
 import userApi from "@/services/api/users";
+import settingsApi from "@/services/api/settings";
 
 export default {
   name: "UserCreateManual",
@@ -376,15 +526,27 @@ export default {
         middleName: "",
         phone: "",
         gender: "male",
+        honorificTitle: "mr",
         birthday: "",
         bankNumber: "",
         street: "",
         houseNumber: "",
         postalCode: "",
+        country: "",
         city: "",
         password: "",
         c_password: "",
-        passport: ""
+        passport: "",
+        overview: "",
+        socialSecurityNumber: "",
+        identificationType: "",
+        identificationNumber: "",
+        identificationExpirationDate: "",
+        identificationImage: {
+          name: "",
+          size: "",
+          path: ""
+        }
       },
       roleError: "",
       emailError: "",
@@ -403,9 +565,12 @@ export default {
       passwordError: "",
       repeatPasswordError: "",
       passportError: "",
+      identificationTypeError: "",
       error: "",
       showPassword: false,
-      showRepeatPassword: false
+      showRepeatPassword: false,
+      idImageData: {},
+      isImageLoading: false
     };
   },
   mounted() {
@@ -452,7 +617,12 @@ export default {
       } else {
         this.repeatPasswordError = "";
       }
-
+      if (!this.form.identificationType && this.form.role === "worker") {
+        this.identificationTypeError = "THIS_FIELD_IS_REQUIRED";
+        valid = false;
+      } else {
+        this.identificationTypeError = "";
+      }
       return valid;
     },
     getCompanies() {
@@ -465,75 +635,106 @@ export default {
         this.professions = res;
       });
     },
-    createUser() {
+    onIDUpload(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+
+      if (window.File && window.FileList && window.FileReader) {
+        if (files.length !== 1 || !files[0].type.match("image")) return;
+        let file = files[0];
+        this.idImageData = {
+          file: file,
+          title: file.name
+        };
+        this.form.identificationImage = {
+          name: file.name,
+          size: file.size.toString()
+        };
+      } else {
+        console.error("Your browser does not support File API");
+      }
+    },
+    async createUser() {
       if (this.validate()) {
         const params = {
           ...this.form
         };
-        userApi
-          .create(params)
-          .then(res => {
-            this.$store.dispatch("updateShowSuccessModal", true);
-            this.$store.dispatch("updateSuccessModalContent", {
-              title: this.$t("page_users_create_manual.modal.create.title"),
-              subTitle: this.$t(
-                "page_users_create_manual.modal.create.sub_title"
-              ),
-              button: this.$t("page_users_create_manual.modal.create.continue")
-            });
-            this.$router.push({ name: "admin-candidates" });
-          })
-          .catch(data => {
-            let messages = data.response.data.errors.msg;
-            if (Array.isArray(messages)) {
-              messages.forEach(msg => {
-                if (msg.param === "companyId") {
-                  this.companyError = msg.msg;
-                }
-                if (msg.param === "email") {
-                  this.emailError = msg.msg;
-                }
-                if (msg.param === "firstName") {
-                  this.firstNameError = msg.msg;
-                }
-                if (msg.param === "lastName") {
-                  this.lastNameError = msg.msg;
-                }
-                if (msg.param === "middleName") {
-                  this.middleNameError = msg.msg;
-                }
-                if (msg.param === "password") {
-                  this.passwordError = msg.msg;
-                }
-                if (msg.param === "gender") {
-                  this.genderError = msg.msg;
-                }
-                if (msg.param === "birthday") {
-                  this.birthdayError = msg.msg;
-                }
-                if (msg.param === "bankNumber") {
-                  this.bankNumberError = msg.msg;
-                }
-                if (msg.param === "street") {
-                  this.streetError = msg.msg;
-                }
-                if (msg.param === "houseNumber") {
-                  this.houseNumberError = msg.msg;
-                }
-                if (msg.param === "postalCode") {
-                  this.postalCodeError = msg.msg;
-                }
-                if (msg.param === "city") {
-                  this.cityError = msg.msg;
-                }
-                if (msg.param === "passport") {
-                  this.passportError = msg.msg;
-                }
-              });
-            } else {
-              this.error = messages;
-            }
+        try {
+          if (this.idImageData.file) {
+            this.isImageLoading = true;
+            const data = new FormData();
+            data.append("title", this.idImageData.title);
+            data.append("file", this.idImageData.file);
+            const response = await settingsApi.uploadID(data);
+            this.isImageLoading = false;
+            this.form.identificationImage.path = response.path;
+            delete this.idImageData.file;
+          }
+
+          await userApi.create(params);
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_users_create_manual.modal.create.title"),
+            subTitle: this.$t(
+              "page_users_create_manual.modal.create.sub_title"
+            ),
+            button: this.$t("page_users_create_manual.modal.create.continue")
           });
+          this.$router.push({ name: "admin-candidates" });
+        } catch (data) {
+          let messages = data.response.data.errors.msg;
+          console.log(messages);
+          if (Array.isArray(messages)) {
+            messages.forEach(msg => {
+              if (msg.param === "companyId") {
+                this.companyError = msg.msg;
+              }
+              if (msg.param === "email") {
+                this.emailError = msg.msg;
+              }
+              if (msg.param === "firstName") {
+                this.firstNameError = msg.msg;
+              }
+              if (msg.param === "lastName") {
+                this.lastNameError = msg.msg;
+              }
+              if (msg.param === "middleName") {
+                this.middleNameError = msg.msg;
+              }
+              if (msg.param === "password") {
+                this.passwordError = msg.msg;
+              }
+              if (msg.param === "gender") {
+                this.genderError = msg.msg;
+              }
+              if (msg.param === "birthday") {
+                this.birthdayError = msg.msg;
+              }
+              if (msg.param === "bankNumber") {
+                this.bankNumberError = msg.msg;
+              }
+              if (msg.param === "street") {
+                this.streetError = msg.msg;
+              }
+              if (msg.param === "houseNumber") {
+                this.houseNumberError = msg.msg;
+              }
+              if (msg.param === "postalCode") {
+                this.postalCodeError = msg.msg;
+              }
+              if (msg.param === "city") {
+                this.cityError = msg.msg;
+              }
+              if (msg.param === "passport") {
+                this.passportError = msg.msg;
+              }
+            });
+          } else {
+            this.error = messages;
+          }
+        }
       }
     }
   }

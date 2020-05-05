@@ -327,32 +327,32 @@
                 v-for="offer in jobOffers"
                 :key="offer._id"
               >
-                <div class="flex-3"  @click="goToOfferDetails(offer._id)">
+                <div class="flex-3" @click="goToOfferDetails(offer._id)">
                   {{ $t("page_job_detail.form.offer") }} -
                   {{ offer.worker | fullNameFormatter }}
                 </div>
                 <!--                  <div class="flex-2">-->
                 <!--                    {{ offer.updatedAt | dateFormatter }}-->
                 <!--                  </div>-->
-                <div class="flex-2"  @click="goToOfferDetails(offer._id)">
+                <div class="flex-2" @click="goToOfferDetails(offer._id)">
                   {{ offer.hiringCompany.name }}
                 </div>
-                <div class="flex-3"  @click="goToOfferDetails(offer._id)">
+                <div class="flex-3" @click="goToOfferDetails(offer._id)">
                   {{ offer.hiringManager | fullNameFormatter }}
                 </div>
-                <div class="flex-1"  @click="goToOfferDetails(offer._id)">
+                <div class="flex-1" @click="goToOfferDetails(offer._id)">
                   {{ offer.wage }}
                 </div>
-                <div class="flex-2"  @click="goToOfferDetails(offer._id)">
+                <div class="flex-2" @click="goToOfferDetails(offer._id)">
                   {{ offer.payRate }}
                 </div>
-                <div class="flex-2"  @click="goToOfferDetails(offer._id)">
-                  {{ offer.status ? $t(`status.${offer.status}`) : ""}}
+                <div class="flex-2" @click="goToOfferDetails(offer._id)">
+                  {{ offer.status ? $t(`status.${offer.status}`) : "" }}
                 </div>
-                <div class="flex-2"  @click="goToOfferDetails(offer._id)">
+                <div class="flex-2" @click="goToOfferDetails(offer._id)">
                   {{ offer.startDate | dateFormatter }}
                 </div>
-                <div class="flex-2"  @click="goToOfferDetails(offer._id)">
+                <div class="flex-2" @click="goToOfferDetails(offer._id)">
                   {{ offer.endDate | dateFormatter }}
                 </div>
                 <div class="flex-2 d-flex">

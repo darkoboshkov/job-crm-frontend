@@ -85,10 +85,14 @@
             </button>
           </div>
           <div v-else-if="props.column.field === 'profession'">
-            {{ props.row.profession ? $t(`profession.${props.row.profession}`) : ""}}
+            {{
+              props.row.profession
+                ? $t(`profession.${props.row.profession}`)
+                : ""
+            }}
           </div>
           <div v-else-if="props.column.field === 'status'">
-            {{ props.row.status ? $t(`status.${props.row.status}`) : ""}}
+            {{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
           </div>
           <div
             v-else-if="props.column.field === 'image'"
