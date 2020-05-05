@@ -15,7 +15,7 @@
     "cancel": "Annuleren",
     "open": "Open",
     "filters": "Filters",
-    "close": "Sluiten",
+    "close": "Sluit",
     "complete": "Voltooien",
     "upload": "Upload",
     "apply": "Toepassen",
@@ -61,7 +61,7 @@
   },
   "status": {
     "open": "Open",
-    "close": "Sluiten",
+    "close": "Sluit",
     "hide": "Hide",
     "active": "Actief",
     "inactive": "Inactief",
