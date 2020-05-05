@@ -9,11 +9,11 @@ export const items = [
     path: "/manager/dashboard",
     roles: ["manager", "owner"]
   },
-  {
-    icon: "icon-home",
-    path: "/worker/dashboard",
-    roles: ["worker"]
-  },
+  // {
+  //   icon: "icon-home",
+  //   path: "/worker/dashboard",
+  //   roles: ["worker"]
+  // },
   {
     icon: "icon-people",
     path: "/admin/dashboard/candidates",

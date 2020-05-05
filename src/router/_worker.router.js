@@ -9,25 +9,25 @@ export default [
     path: "/worker/dashboard",
     component: () => import("../containers/DashboardContainer.vue"),
     children: [
-      {
-        path: "/",
-        name: "worker-dashboard",
-        component: () => import("../views/dashboard/worker/Index.vue"),
-        beforeEnter: isWorkerAuthorized
-      },
-      {
-        path: "jobs",
-        name: "worker-jobs",
-        component: () => import("../views/dashboard/worker/jobs/Index.vue"),
-        beforeEnter: isWorkerAuthorized
-      },
-      {
-        path: "jobs/:jobId",
-        name: "worker-jobs-detail",
-        component: () =>
-          import("../views/dashboard/worker/jobs/JobsDetail.vue"),
-        beforeEnter: isWorkerAuthorized
-      },
+      // {
+      //   path: "/",
+      //   name: "worker-dashboard",
+      //   component: () => import("../views/dashboard/worker/Index.vue"),
+      //   beforeEnter: isWorkerAuthorized
+      // },
+      // {
+      //   path: "jobs",
+      //   name: "worker-jobs",
+      //   component: () => import("../views/dashboard/worker/jobs/Index.vue"),
+      //   beforeEnter: isWorkerAuthorized
+      // },
+      // {
+      //   path: "jobs/:jobId",
+      //   name: "worker-jobs-detail",
+      //   component: () =>
+      //     import("../views/dashboard/worker/jobs/JobsDetail.vue"),
+      //   beforeEnter: isWorkerAuthorized
+      // },
       {
         path: "joboffers",
         name: "worker-offers",
