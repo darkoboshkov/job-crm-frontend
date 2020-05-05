@@ -48,19 +48,19 @@ $font-size-medium: 18px;
 $font-size-large: 21px;
 $font-size-x-large: 24px;
 
-//$header-height: 80px;
-//$sidebar-width: 82px;
-//$sidebar-item-height: 60px;
-//$sidebar-image-width: 28px;
-//$sidebar-image-height: 28px;
-//$dashboard-logo-height: 40px;
+$header-height: 80px;
+$sidebar-width: 82px;
+$sidebar-item-height: 60px;
+$sidebar-image-width: 28px;
+$sidebar-image-height: 28px;
+$dashboard-logo-height: 40px;
 
-$header-height: calc(100vh * 0.087);
-$sidebar-width: calc(100vh * 0.087 + 2px);
-$sidebar-item-height: calc(100vh * 0.065);
-$sidebar-image-width: calc(100vh * 0.304);
-$sidebar-image-height: calc(100vh * 0.304);
-$dashboard-logo-height: calc(100vh * 0.044);
+//$header-height: calc(100vh * 0.087);
+//$sidebar-width: calc(100vh * 0.087 + 2px);
+//$sidebar-item-height: calc(100vh * 0.065);
+//$sidebar-image-width: calc(100vh * 0.304);
+//$sidebar-image-height: calc(100vh * 0.304);
+//$dashboard-logo-height: calc(100vh * 0.044);
 
 $mobile-header-height: 70px;
 $mobile-sidebar-width: 70px;
