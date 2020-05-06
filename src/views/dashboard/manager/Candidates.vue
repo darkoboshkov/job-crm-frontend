@@ -117,6 +117,7 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import userApi from "@/services/api/users";
+import { candidatesTable } from "@/constants";
 
 export default {
   name: "Candidates",
@@ -125,77 +126,10 @@ export default {
     return {
       isLoading: true,
       totalRows: 0,
-      paginationOptions: {
-        enabled: true,
-        perPage: 20
-      },
       rows: [],
-      filterOptions: [
-        {
-          title: this.$t("page_candidates.filter.name"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_candidates.filter.company"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_candidates.filter.profession"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_candidates.filter.age"),
-          type: "select",
-          options: [
-            20,
-            21,
-            22,
-            23,
-            24,
-            25,
-            26,
-            27,
-            28,
-            29,
-            30,
-            31,
-            32,
-            33,
-            34,
-            35
-          ],
-          value: ""
-        },
-        {
-          title: this.$t("page_candidates.filter.status"),
-          type: "checkbox",
-          value: "",
-          options: [
-            {
-              label: this.$t("page_candidates.filter.available"),
-              checked: false
-            },
-            {
-              label: this.$t("page_candidates.filter.unavailable"),
-              checked: false
-            }
-          ]
-        },
-        {
-          title: this.$t("page_candidates.filter.city"),
-          type: "text",
-          value: ""
-        }
-      ],
-      serverParams: {
-        page: 1,
-        limit: 20,
-        sort: "",
-        order: ""
-      },
+      filterOptions: candidatesTable.filterOptions,
+      serverParams: candidatesTable.pagination.serverParams,
+      paginationOptions: candidatesTable.pagination.paginationOptions,
       selectedCandidate: null,
       imageMode: true
     };
@@ -213,44 +147,7 @@ export default {
           ]
         : [];
 
-      return columns.concat([
-        {
-          label: this.$t("page_candidates.table.name"),
-          field: "name",
-          name: "name",
-          tdClass: "link"
-        },
-        {
-          label: this.$t("page_candidates.table.profession"),
-          field: "profession",
-          name: "profession"
-        },
-        {
-          label: this.$t("page_candidates.table.location"),
-          field: "city",
-          name: "city"
-        },
-        {
-          label: this.$t("page_candidates.table.company"),
-          field: "company.name",
-          name: "company"
-        },
-        {
-          label: this.$t("page_candidates.table.active_contract"),
-          field: "activeContract",
-          name: "activeContract"
-        },
-        {
-          label: this.$t("page_candidates.table.status"),
-          field: "status",
-          name: "status"
-        },
-        {
-          label: this.$t("page_candidates.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ]);
+      return columns.concat(candidatesTable.columns);
     },
     companyId() {
       return this.$store.state.user.companyId;

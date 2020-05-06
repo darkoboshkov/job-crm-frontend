@@ -105,6 +105,7 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import companyApi from "@/services/api/companies";
+import { companiesTable } from "@/constants";
 
 export default {
   name: "CompanyList",
@@ -114,49 +115,10 @@ export default {
       imageMode: true,
       isLoading: true,
       totalRows: 0,
-      paginationOptions: {
-        enabled: true,
-        perPage: 20
-      },
       rows: [],
-      filterOptions: [
-        {
-          title: this.$t("page_companies.filter.name"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_companies.filter.email"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_companies.filter.status"),
-          type: "checkbox",
-          value: "",
-          options: [
-            {
-              label: this.$t("page_companies.filter.active"),
-              checked: false
-            },
-            {
-              label: this.$t("page_companies.filter.inactive"),
-              checked: false
-            }
-          ]
-        },
-        {
-          title: this.$t("page_companies.filter.city"),
-          type: "text",
-          value: ""
-        }
-      ],
-      serverParams: {
-        page: 1,
-        limit: 20,
-        sort: "",
-        order: ""
-      },
+      filterOptions: companiesTable.filterOptions,
+      serverParams: companiesTable.pagination.serverParams,
+      paginationOptions: companiesTable.pagination.paginationOptions,
       idToDelete: 0
     };
   },
@@ -173,38 +135,7 @@ export default {
           ]
         : [];
 
-      return columns.concat([
-        {
-          label: this.$t("page_companies.table.name"),
-          field: "name",
-          name: "name"
-        },
-        {
-          label: this.$t("page_companies.table.email"),
-          field: "email",
-          name: "email"
-        },
-        {
-          label: this.$t("page_companies.table.kvk"),
-          field: "kvkNumber",
-          name: "kvk"
-        },
-        {
-          label: this.$t("page_companies.table.since"),
-          field: "createdAt",
-          name: "createdAt"
-        },
-        {
-          label: this.$t("page_companies.table.status"),
-          field: "activeState",
-          name: "activeState"
-        },
-        {
-          label: this.$t("page_companies.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ]);
+      return columns.concat(companiesTable.columns);
     },
     role() {
       return this.$store.state.user.role;

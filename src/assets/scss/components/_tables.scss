@@ -42,6 +42,7 @@
 
     i {
       cursor: pointer;
+
       &:not(:last-child) {
         margin-right: 20px;
       }
@@ -74,20 +75,29 @@
 }
 
 .table-filter {
+  flex: 1;
+  max-width: 1250px;
+
   &__title {
     display: flex;
     cursor: pointer;
     color: var(--cobalt-blue);
   }
+
   &-options {
     display: flex;
+    margin: 0 -20px;
+
     @include media-breakpoint-down(sm) {
       flex-direction: column;
-    };
+    }
+
     .filter-option {
-        padding-right: 20px;
-        border-right: 1px solid var(--light-periwinkle);
-      .item {
+      padding: 0 20px;
+      border-right: 1px solid var(--light-periwinkle);
+      width: 250px;
+
+      &__item {
         margin-top: 10px;
       }
     }

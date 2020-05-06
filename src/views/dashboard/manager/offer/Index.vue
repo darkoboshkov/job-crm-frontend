@@ -6,7 +6,15 @@
     <p class="sub-title">
       {{ $t("page_offers.sub_title", { offers: this.totalRows }) }}
     </p>
-    <div class="jobs-list mt-5">
+    <div class="d-flex justify-content-between">
+      <table-filter
+        class="candidate-filters"
+        @table-filter="filter"
+        :title="'Filter Options'"
+        :options="filterOptions"
+      />
+    </div>
+    <div class="offers-list mt-3">
       <vue-good-table
         mode="remote"
         @on-page-change="onPageChange"
@@ -60,69 +68,24 @@
 </template>
 
 <script>
+import TableFilter from "@/components/common/TableFilter";
 import offersApi from "@/services/api/joboffers";
+import { offersTable } from "@/constants";
 
 export default {
   name: "OfferList",
+  components: { TableFilter },
   data() {
     return {
       isLoading: true,
-      paginationOptions: {
-        enabled: true,
-        perPage: 20
-      },
-      columns: [
-        {
-          label: this.$t("page_offers.table.image"),
-          field: "image",
-          name: "image"
-        },
-        {
-          label: this.$t("page_offers.table.worker"),
-          field: "worker",
-          name: "worker"
-        },
-        {
-          label: this.$t("page_offers.table.job"),
-          field: "job",
-          name: "job"
-        },
-        {
-          label: this.$t("page_offers.table.hiring_company"),
-          field: "hiringCompany.name",
-          name: "hiringCompany"
-        },
-        {
-          label: this.$t("page_offers.table.start_date"),
-          field: "startDate",
-          name: "startDate"
-        },
-        {
-          label: this.$t("page_offers.table.end_date"),
-          field: "endDate",
-          name: "endDate"
-        },
-        {
-          label: this.$t("page_offers.table.status"),
-          field: "status",
-          name: "status"
-        },
-        {
-          label: this.$t("page_offers.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ],
       rows: [],
       searchTerm: "",
       matched: false,
       totalRows: 0,
-      serverParams: {
-        page: 1,
-        limit: 20,
-        sort: "",
-        order: ""
-      }
+      columns: offersTable.columns,
+      filterOptions: offersTable.filterOptions,
+      paginationOptions: offersTable.pagination.paginationOptions,
+      serverParams: offersTable.pagination.serverParams
     };
   },
   computed: {
@@ -179,7 +142,8 @@ export default {
           });
           this.totalRows = res.totalDocs;
         });
-    }
+    },
+    filter(v) {}
   }
 };
 </script>

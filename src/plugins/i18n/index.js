@@ -6,7 +6,7 @@ import store from "../../store";
 
 Vue.use(VueI18n);
 
-export const i18n = new VueI18n({
+export default new VueI18n({
   locale: store.state?.locale?.lang,
   fallbackLocale: "nl",
   messages: {

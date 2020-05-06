@@ -6,125 +6,113 @@
     >
       <h5>
         <i class="hiway-crm-icon icon-equalizer mr-2" />
-        <span class="when-opened">{{ $t("common.close") }}</span
-        ><span class="when-closed">{{ $t("common.open") }}</span>
+        <span class="when-opened">{{ $t("common.close") }}</span>
+        <span class="when-closed">{{ $t("common.open") }}</span>
         {{ $t("common.filters") }}
       </h5>
     </div>
     <b-collapse id="collapse_table-filter">
       <div class="table-filter-options flex-wrap">
         <div
-          class="filter-option col-md-3"
+          class="filter-option mt-3"
           v-for="(option, index) in filterOptions"
           :key="index"
         >
-          <div class="filter-option__items mt-3">
-            <div class="item">
-              <template v-if="option.type === 'text'">
-                <div class="filter-option__title ">
-                  {{ option.title }}
-                </div>
-                <b-form-input :type="option.type" v-model="option.value"/>
-              </template>
-
-              <template v-if="option.type === 'checkbox'">
-                <div class="filter-option__title ">
-                  {{ option.title }}
-                </div>
-                <b-form-checkbox
-                  v-for="(item, itemIndex) in option.options"
-                  :key="itemIndex"
-                  v-model="item.checked"
+          <template v-if="option.type === 'group'">
+            <div class="filter-option__group">
+              <div class="filter-option__group-title">{{ option.title }}</div>
+              <div
+                class="filter-option__item"
+                v-for="(item, itemIndex) in option.items"
+                :key="itemIndex"
+              >
+                <template
+                  v-if="
+                    item.type === 'text' ||
+                      item.type === 'number' ||
+                      item.type === 'date'
+                  "
                 >
-                  {{ item.label }}
-                </b-form-checkbox>
-              </template>
-
-              <template v-if="option.type === 'radio'">
-                <div class="filter-option__title ">
-                  {{ option.title }}
-                </div>
-                <b-form-radio-group class="d-flex flex-column">
-                  <b-form-radio
-                    v-for="(item, itemIndex) in option.options"
-                    :key="itemIndex"
-                    v-model="option.value"
-                    :value="item.value"
-                    class="d-inline-block big-red mr-2"
-                  >
-                    {{ item.label }}
-                  </b-form-radio>
-                </b-form-radio-group>
-              </template>
-
-
-              <template v-if="option.type === 'select'">
-                <div class="filter-option__title ">
-                  {{ option.title }}
-                </div>
-                <b-form-select
-                  v-model="option.value"
-                  :options="option.options"
-                  class="normal-size"
-                />
-              </template>
-
-              <template v-if="option.type === 'slider'">
-                <slider
-                  :label="option.title"
-                  :value="option.value"
-                  :unit="option.unit"
-                />
-              </template>
-
-              <template v-if="option.type === 'datepicker'">
-                <div class="filter-option__title ">
-                  {{ option.title }}
-                </div>
-                <b-form-datepicker
-                  placeholder="From"
-                  v-model="option.value.fromDate"
-                  :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
-                  locale="en"
-                  class="my-1"
-                />
-                <b-form-datepicker
-                  placeholder="To"
-                  v-model="option.value.toDate"
-                  :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
-                  locale="en"
-                  class="my-1"
-                />
-              </template>
-
-              <template v-if="option.type === 'number_min_max'">
-                <div class="filter-option__title ">
-                  {{ option.title }}
-                </div>
-                <b-row class="my-1">
-                  <b-col sm="3">
-                    <label >Min:</label>
-                  </b-col>
-                  <b-col sm="9">
-                    <b-form-input
-                      type="number"
-                      v-model="option.value.minValue"
-                    />
-                  </b-col>
-                </b-row>
-                <b-row class="my-1">
-                  <b-col sm="3">
-                    <label >Max:</label>
-                  </b-col>
-                  <b-col sm="9">
-                    <b-form-input
-                      type="number"
-                      v-model="option.value.maxValue"
-                    />
-                  </b-col>
-                </b-row>
-              </template>
+                  <div class="filter-option__item-title">
+                    {{ item.title }}
+                  </div>
+                  <b-form-input
+                    :type="item.type"
+                    v-model="item.value"
+                    :placeholder="item.placeholder"
+                  />
+                </template>
+              </div>
             </div>
+          </template>
+          <div
+            class="filter-option__item"
+            v-else-if="
+              option.type === 'text' ||
+                option.type === 'number' ||
+                option.type === 'date'
+            "
+          >
+            <div class="filter-option__item-title">
+              {{ option.title }}
+            </div>
+            <b-form-input
+              :type="option.type"
+              v-model="option.value"
+              :placeholder="option.placeholder"
+            />
+          </div>
+
+          <div
+            class="filter-option__item"
+            v-else-if="option.type === 'checkbox'"
+          >
+            <div class="filter-option__item-title">
+              {{ option.title }}
+            </div>
+            <b-form-checkbox
+              v-for="(item, itemIndex) in option.options"
+              :key="itemIndex"
+              v-model="item.checked"
+            >
+              {{ item.label }}
+            </b-form-checkbox>
+          </div>
+
+          <div class="filter-option__item" v-else-if="option.type === 'radio'">
+            <div class="filter-option__item-title">
+              {{ option.title }}
+            </div>
+            <b-form-radio-group class="d-flex flex-column">
+              <b-form-radio
+                v-for="(item, itemIndex) in option.options"
+                :key="itemIndex"
+                v-model="option.value"
+                :value="item.value"
+                class="d-inline-block big-red mr-2"
+              >
+                {{ item.label }}
+              </b-form-radio>
+            </b-form-radio-group>
+          </div>
+
+          <div class="filter-option__item" v-else-if="option.type === 'select'">
+            <div class="filter-option__item-title">
+              {{ option.title }}
+            </div>
+            <b-form-select
+              v-model="option.value"
+              :options="option.options"
+              class="normal-size"
+            />
+          </div>
+
+          <div class="filter-option__item" v-else-if="option.type === 'slider'">
+            <slider
+              :label="option.title"
+              :value="option.value"
+              :unit="option.unit"
+            />
           </div>
         </div>
       </div>

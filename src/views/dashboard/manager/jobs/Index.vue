@@ -108,6 +108,7 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import jobsApi from "@/services/api/jobs";
+import { jobsTable } from "@/constants";
 
 export default {
   name: "JobList",
@@ -115,47 +116,13 @@ export default {
   data() {
     return {
       isLoading: true,
-      paginationOptions: {
-        enabled: true,
-        perPage: 20
-      },
       rows: [],
-      filterOptions: [
-        {
-          title: this.$t("page_jobs.filter.title"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_jobs.filter.wage"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_jobs.filter.rate"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_jobs.filter.start_date"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_jobs.filter.end_date"),
-          type: "text",
-          value: ""
-        }
-      ],
       searchTerm: "",
       matched: false,
       totalRows: 0,
-      serverParams: {
-        page: 1,
-        limit: 20,
-        sort: "",
-        order: ""
-      },
+      filterOptions: jobsTable.filterOptions,
+      serverParams: jobsTable.pagination.serverParams,
+      paginationOptions: jobsTable.pagination.paginationOptions,
       selectedJob: null,
       imageMode: true
     };
@@ -178,53 +145,7 @@ export default {
           ]
         : [];
 
-      return columns.concat([
-        {
-          label: this.$t("page_jobs.table.title"),
-          field: "title",
-          name: "title"
-        },
-        {
-          label: this.$t("page_jobs.table.location"),
-          field: "location",
-          name: "location"
-        },
-        {
-          label: this.$t("page_jobs.table.company"),
-          field: "company.name",
-          name: "company"
-        },
-        {
-          label: this.$t("page_jobs.table.wage"),
-          field: "wage",
-          name: "wage"
-        },
-        {
-          label: this.$t("page_jobs.table.rate"),
-          field: "payRate",
-          name: "payRate"
-        },
-        {
-          label: this.$t("page_jobs.table.start_date"),
-          field: "startDate",
-          name: "startDate"
-        },
-        {
-          label: this.$t("page_jobs.table.end_date"),
-          field: "endDate",
-          name: "endDate"
-        },
-        {
-          label: this.$t("page_jobs.table.status"),
-          field: "status",
-          name: "status"
-        },
-        {
-          label: this.$t("page_jobs.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ]);
+      return columns.concat(jobsTable.columns);
     }
   },
   mounted() {
@@ -247,6 +168,7 @@ export default {
             row.company = row.company[0];
             row.startDate = this.getDateString(row.startDate);
             row.endDate = this.getDateString(row.endDate);
+            row.manager = this.getFullName(row.manager[0]);
             return row;
           });
         });

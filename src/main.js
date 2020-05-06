@@ -11,7 +11,7 @@ import "vue-good-table/dist/vue-good-table.css";
 import "@/assets/fonts/Apercu/Apercu.css";
 import "@/assets/fonts/icomoon/style.css";
 import "@/assets/scss/app.scss";
-import { i18n } from "@/plugins/i18n";
+import i18n from "@/plugins/i18n";
 import * as lodash from "lodash";
 import mixin from "./mixin";
 

@@ -118,6 +118,7 @@
 import TableFilter from "@/components/common/TableFilter";
 import userApi from "@/services/api/users";
 import professionApi from "@/services/api/professions";
+import { candidatesTable } from "@/constants";
 
 export default {
   name: "Candidates",
@@ -126,66 +127,11 @@ export default {
     return {
       isLoading: true,
       totalRows: 0,
-      paginationOptions: {
-        enabled: true,
-        perPage: 5
-      },
       rows: [],
       professions: [],
-      filterOptions: [
-        {
-          title: this.$t("page_candidates.filter.name"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_candidates.filter.profession"),
-          type: "select",
-          options: this.professions,
-          value: "123"
-        },
-        {
-          title: this.$t("page_candidates.filter.city"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_candidates.filter.active_contract"),
-          type: "radio",
-          value: "",
-          options: [
-            {
-              label: this.$t("page_candidates.filter.yes"),
-              value: "yes"
-            },
-            {
-              label: this.$t("page_candidates.filter.no"),
-              value: "no"
-            }
-          ]
-        },
-        {
-          title: this.$t("page_candidates.filter.status"),
-          type: "radio",
-          value: "",
-          options: [
-            {
-              label: this.$t("page_candidates.filter.available"),
-              value: "available"
-            },
-            {
-              label: this.$t("page_candidates.filter.unavailable"),
-              value: "unavailable"
-            }
-          ]
-        }
-      ],
-      serverParams: {
-        page: 1,
-        limit: 5,
-        sort: "",
-        order: ""
-      },
+      filterOptions: candidatesTable.filterOptions,
+      serverParams: candidatesTable.pagination.serverParams,
+      paginationOptions: candidatesTable.pagination.paginationOptions,
       selectedCandidate: null,
       imageMode: true
     };
@@ -203,44 +149,7 @@ export default {
           ]
         : [];
 
-      return columns.concat([
-        {
-          label: this.$t("page_candidates.table.name"),
-          field: "name",
-          name: "name",
-          tdClass: "link"
-        },
-        {
-          label: this.$t("page_candidates.table.profession"),
-          field: "profession",
-          name: "profession"
-        },
-        {
-          label: this.$t("page_candidates.table.location"),
-          field: "city",
-          name: "city"
-        },
-        {
-          label: this.$t("page_candidates.table.company"),
-          field: "company.name",
-          name: "company"
-        },
-        {
-          label: this.$t("page_candidates.table.active_contract"),
-          field: "activeContract",
-          name: "activeContract"
-        },
-        {
-          label: this.$t("page_candidates.table.status"),
-          field: "status",
-          name: "status"
-        },
-        {
-          label: this.$t("page_candidates.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ]);
+      return columns.concat(candidatesTable.columns);
     },
     role() {
       return this.$store.state.user.role;

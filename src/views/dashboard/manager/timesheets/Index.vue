@@ -118,7 +118,7 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import { TIME_SHEET_STATE } from "@/constants";
+import { TIME_SHEET_STATE, timesheetsTable } from "@/constants";
 import workLogApi from "@/services/api/workLog";
 import TimeSheetsModal from "./TimeSheetsModal";
 import ExpensesModal from "./ExpensesModal";
@@ -135,18 +135,10 @@ export default {
       imageMode: true,
       isLoading: true,
       totalRows: 0,
-      paginationOptions: {
-        enabled: true,
-        perPage: 20
-      },
       rows: [],
-      serverParams: {
-        page: 1,
-        limit: 20,
-        sort: "",
-        order: ""
-      },
-      filterOptions: [],
+      filterOptions: timesheetsTable.filterOptions,
+      serverParams: timesheetsTable.pagination.serverParams,
+      paginationOptions: timesheetsTable.pagination.paginationOptions,
       showTimeSheetsModal: false,
       showExpensesModal: false,
       selectedTimeSheetRow: {},
@@ -177,53 +169,7 @@ export default {
           ]
         : [];
 
-      return columns.concat([
-        {
-          label: this.$t("page_timesheets.table.week"),
-          field: "week",
-          name: "week"
-        },
-        {
-          label: this.$t("page_timesheets.table.worker"),
-          field: "worker",
-          name: "worker"
-        },
-        {
-          label: this.$t("page_timesheets.table.hand_in_date"),
-          field: "submitDate",
-          name: "hand_in_date"
-        },
-        {
-          label: this.$t("page_timesheets.table.hours"),
-          field: "hours",
-          name: "hours"
-        },
-        {
-          label: this.$t("page_timesheets.table.price"),
-          field: "price",
-          name: "price"
-        },
-        {
-          label: this.$t("page_timesheets.table.hiring_manager"),
-          field: "hiringManager",
-          name: "hiring_manager"
-        },
-        {
-          label: this.$t("page_timesheets.table.hiring_company"),
-          field: "hiringCompany",
-          name: "hiring_company"
-        },
-        {
-          label: this.$t("page_timesheets.table.status"),
-          field: "status",
-          name: "status"
-        },
-        {
-          label: this.$t("page_timesheets.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ]);
+      return columns.concat(timesheetsTable.columns);
     }
   },
   methods: {
@@ -316,7 +262,7 @@ export default {
       });
       this.getTimeSheets();
     },
-    filter() {
+    filter(v) {
       //
     },
     goToTimeSheet(props) {

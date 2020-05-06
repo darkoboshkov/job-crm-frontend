@@ -118,7 +118,7 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import { TIME_SHEET_STATE } from "@/constants";
+import { TIME_SHEET_STATE, timesheetsTable } from "@/constants";
 import workLogApi from "@/services/api/workLog";
 import TimeSheetsModal from "./TimeSheetsModal";
 import ExpensesModal from "./ExpensesModal";
@@ -135,83 +135,16 @@ export default {
       imageMode: true,
       isLoading: true,
       totalRows: 0,
-      paginationOptions: {
-        enabled: true,
-        perPage: 20
-      },
       rows: [],
-      serverParams: {
-        page: 1,
-        limit: 20,
-        sort: "",
-        order: ""
-      },
-      filterOptions: [
-        {
-          title: this.$t("page_timesheets.filter.kind"),
-          type: "radio",
-          value: "",
-          options: [
-            {
-              label: this.$t("page_timesheets.filter.timesheets"),
-              value: "open"
-            },
-            {
-              label: this.$t("page_timesheets.filter.expenses"),
-              value: "closed"
-            }
-          ]
-        },
-        {
-          title: this.$t("page_timesheets.filter.week"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_timesheets.filter.year"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_timesheets.filter.worker"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_timesheets.filter.hiring_manager"),
-          type: "select",
-          options: [
-            2,
-            3
-          ],
-          value: ""
-        },
-        {
-          title: this.$t("page_timesheets.filter.hiring_company"),
-          type: "select",
-          options: [
-            2,
-            3
-          ],
-          value: ""
-        },
-        {
-          title: this.$t("page_timesheets.filter.status"),
-          type: "select",
-          options: [
-            2,
-            3
-          ],
-          value: ""
-        }
-      ],
+      filterOptions: timesheetsTable.filterOptions,
+      serverParams: timesheetsTable.pagination.serverParams,
+      paginationOptions: timesheetsTable.pagination.paginationOptions,
       showTimeSheetsModal: false,
       showExpensesModal: false,
       selectedTimeSheetRow: {},
       selectedExpenseRow: {},
       expensesModalMode: "edit",
       TIME_SHEET_STATE,
-
       timesheetsCount: 0,
       expensesCount: 0
     };
@@ -233,53 +166,7 @@ export default {
           ]
         : [];
 
-      return columns.concat([
-        {
-          label: this.$t("page_timesheets.table.week"),
-          field: "week",
-          name: "week"
-        },
-        {
-          label: this.$t("page_timesheets.table.worker"),
-          field: "worker",
-          name: "worker"
-        },
-        {
-          label: this.$t("page_timesheets.table.hand_in_date"),
-          field: "submitDate",
-          name: "hand_in_date"
-        },
-        {
-          label: this.$t("page_timesheets.table.hours"),
-          field: "hours",
-          name: "hours"
-        },
-        {
-          label: this.$t("page_timesheets.table.price"),
-          field: "price",
-          name: "price"
-        },
-        {
-          label: this.$t("page_timesheets.table.hiring_manager"),
-          field: "hiringManager",
-          name: "hiring_manager"
-        },
-        {
-          label: this.$t("page_timesheets.table.hiring_company"),
-          field: "hiringCompany",
-          name: "hiring_company"
-        },
-        {
-          label: this.$t("page_timesheets.table.status"),
-          field: "status",
-          name: "status"
-        },
-        {
-          label: this.$t("page_timesheets.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ]);
+      return columns.concat(timesheetsTable.columns);
     }
   },
   methods: {

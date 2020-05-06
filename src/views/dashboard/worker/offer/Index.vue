@@ -6,7 +6,7 @@
     <p class="sub-title">
       {{ $t("page_offers.sub_title", { offers: this.totalRows }) }}
     </p>
-    <div class="jobs-list mt-5">
+    <div class="offers-list mt-3">
       <vue-good-table
         mode="remote"
         @on-page-change="onPageChange"

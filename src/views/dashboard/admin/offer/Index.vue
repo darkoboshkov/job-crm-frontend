@@ -4,10 +4,7 @@
       <h1 class="title">
         {{ $t("page_offers.title") }}
       </h1>
-      <button
-        class="btn btn-red circle large"
-        style="width:50px"
-      >
+      <button class="btn btn-red circle large" style="width:50px">
         <i class="hiway-crm-icon icon-add" />
       </button>
     </div>
@@ -22,22 +19,8 @@
         :title="'Filter Options'"
         :options="filterOptions"
       />
-      <div class="view-switch">
-        View:
-        <i
-          class="hiway-crm-icon icon-ol pointer"
-          @click="imageView(true)"
-          :style="{ opacity: imageMode ? 1 : 0.261 }"
-        />
-        |
-        <i
-          class="hiway-crm-icon icon-ul pointer"
-          @click="imageView(false)"
-          :style="{ opacity: !imageMode ? 1 : 0.261 }"
-        />
-      </div>
     </div>
-    <div class="jobs-list mt-5">
+    <div class="offers-list mt-3">
       <vue-good-table
         mode="remote"
         @on-page-change="onPageChange"
@@ -93,6 +76,7 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import offersApi from "@/services/api/joboffers";
+import { offersTable } from "@/constants";
 
 export default {
   name: "OfferList",
@@ -100,123 +84,14 @@ export default {
   data() {
     return {
       isLoading: true,
-      paginationOptions: {
-        enabled: true,
-        perPage: 20
-      },
-      columns: [
-        {
-          label: this.$t("page_offers.table.image"),
-          field: "image",
-          name: "image"
-        },
-        {
-          label: this.$t("page_offers.table.worker"),
-          field: "worker",
-          name: "worker"
-        },
-        {
-          label: this.$t("page_offers.table.job"),
-          field: "job",
-          name: "job"
-        },
-        {
-          label: this.$t("page_offers.table.hiring_company"),
-          field: "hiringCompany.name",
-          name: "hiringCompany"
-        },
-        {
-          label: this.$t("page_offers.table.start_date"),
-          field: "startDate",
-          name: "startDate"
-        },
-        {
-          label: this.$t("page_offers.table.end_date"),
-          field: "endDate",
-          name: "endDate"
-        },
-        {
-          label: this.$t("page_offers.table.status"),
-          field: "status",
-          name: "status"
-        },
-        {
-          label: this.$t("page_offers.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ],
       rows: [],
       searchTerm: "",
       matched: false,
       totalRows: 0,
-      serverParams: {
-        page: 1,
-        limit: 20,
-        sort: "",
-        order: ""
-      },
-      filterOptions: [
-        {
-          title: this.$t("page_offers.filter.title"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_offers.filter.worker_name"),
-          type: "text",
-          value: ""
-        },
-        {
-          title: this.$t("page_offers.filter.hiring_company"),
-          type: "select",
-          options: [
-            2,
-            3
-          ],
-          value: ""
-        },
-        {
-          title: this.$t("page_offers.filter.type"),
-          type: "radio",
-          value: "",
-          options: [
-            {
-              label: this.$t("page_offers.filter.worker_contract"),
-              value: "worker_contract"
-            },
-            {
-              label: this.$t("page_offers.filter.company_contract"),
-              value: "company_contract"
-            }
-          ]
-        },
-        {
-          title: this.$t("page_offers.filter.start_date"),
-          type: "datepicker",
-          value: {
-            'fromDate': '',
-            'toDate': ''
-          }
-        },
-        {
-          title: this.$t("page_offers.filter.end_date"),
-          type: "datepicker",
-          value: {
-            'fromDate': '',
-            'toDate': ''
-          }
-        },
-        {
-          title: this.$t("page_offers.filter.status"),
-          type: "select",
-          options: [
-            2,
-            3
-          ],
-          value: ""
-        }
-      ],
+      columns: offersTable.columns,
+      filterOptions: offersTable.filterOptions,
+      paginationOptions: offersTable.pagination.paginationOptions,
+      serverParams: offersTable.pagination.serverParams,
       imageMode: true
     };
   },
@@ -269,9 +144,6 @@ export default {
         });
         this.totalRows = res.totalDocs;
       });
-    },
-    imageView(mode) {
-      this.imageMode = !!mode;
     },
     filter(v) {
       this.serverParams = Object.assign({}, this.serverParams, {
