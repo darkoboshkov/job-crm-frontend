@@ -137,12 +137,12 @@ export default {
       totalRows: 0,
       paginationOptions: {
         enabled: true,
-        perPage: 20
+        perPage: 5
       },
       rows: [],
       serverParams: {
         page: 1,
-        limit: 20,
+        limit: 5,
         sort: "",
         order: ""
       },

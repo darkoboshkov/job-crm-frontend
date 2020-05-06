@@ -102,7 +102,7 @@ export default {
       isLoading: true,
       paginationOptions: {
         enabled: true,
-        perPage: 20
+        perPage: 5
       },
       columns: [
         {
@@ -152,7 +152,7 @@ export default {
       totalRows: 0,
       serverParams: {
         page: 1,
-        limit: 20,
+        limit: 5,
         sort: "",
         order: ""
       },
