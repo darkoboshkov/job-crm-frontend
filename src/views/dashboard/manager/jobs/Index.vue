@@ -117,7 +117,7 @@ export default {
       isLoading: true,
       paginationOptions: {
         enabled: true,
-        perPage: 5
+        perPage: 20
       },
       rows: [],
       filterOptions: [
@@ -152,7 +152,7 @@ export default {
       totalRows: 0,
       serverParams: {
         page: 1,
-        limit: 5,
+        limit: 20,
         sort: "",
         order: ""
       },
