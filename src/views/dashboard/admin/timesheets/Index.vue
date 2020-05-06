@@ -194,9 +194,7 @@ export default {
       workLogApi
         .getAll({
           ...this.serverParams,
-          filter: {
-            type: "timesheet"
-          }
+          filter: { and: [{ key: "type", value: "timesheet", opt: "eq" }] }
         })
         .then(({ docs, totalDocs }) => {
           this.timesheetsCount = totalDocs;
@@ -206,9 +204,7 @@ export default {
       workLogApi
         .getAll({
           ...this.serverParams,
-          filter: {
-            type: "expense"
-          }
+          filter: { and: [{ key: "type", value: "expense", opt: "eq" }] }
         })
         .then(({ docs, totalDocs }) => {
           this.expensesCount = totalDocs;

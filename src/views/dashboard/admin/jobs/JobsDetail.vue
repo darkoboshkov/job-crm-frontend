@@ -563,9 +563,7 @@ export default {
     async getManagers() {
       return usersApi
         .getAll({
-          filter: {
-            role: "manager"
-          },
+          filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
           pagination: 0
         })
         .then(res => {

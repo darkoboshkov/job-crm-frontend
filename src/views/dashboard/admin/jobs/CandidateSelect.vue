@@ -136,9 +136,7 @@ export default {
     fetchManagers() {
       return usersApi
         .getAll({
-          filter: {
-            role: "manager"
-          },
+          filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
           pagination: 0
         })
         .then(res => {
@@ -146,7 +144,7 @@ export default {
         });
     },
     /* eslint-disable-next-line */
-    searchCandidate: _.debounce(function () {
+      searchCandidate: _.debounce(function () {
       if (!this.search) {
         this.users = [];
         return;
@@ -155,9 +153,11 @@ export default {
         .getAvailableCompanyWorkers({
           companyId: this.companyId,
           filter: {
-            firstName: this.search,
-            lastName: this.search,
-            middleName: this.search
+            or: [
+              { key: "firstName", value: this.search, opt: "in" },
+              { key: "lastName", value: this.search, opt: "in" },
+              { key: "middleName", value: this.search, opt: "in" }
+            ]
           },
           pagination: 0
         })

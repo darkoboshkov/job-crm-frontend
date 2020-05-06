@@ -77,9 +77,7 @@ export default {
       userApi
         .getCompanyWorkers(
           Object.assign({
-            filter: {
-              status: "available"
-            },
+            filter: { and: [{ key: "status", value: "available", opt: "eq" }] },
             limit: 3,
             page: 1,
             companyId: this.companyId

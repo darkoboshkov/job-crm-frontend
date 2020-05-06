@@ -180,16 +180,49 @@ export default {
       }
     },
     filter(v) {
-      this.serverParams = Object.assign({}, this.serverParams, {
-        title: v[0].value,
-        location: v[1].value,
-        startDate: v[2].value,
-        wage: v[3].value,
-        rate: v[4].value,
-        manager: v[5].value,
-        status: v[6].value
-      });
-      console.log(this.serverParams);
+      const filter = { or: [], and: [] };
+      const title = v[0].value;
+      const location = v[1].value;
+      const startDateFrom = v[2].items[0].value;
+      const startDateTo = v[2].items[1].value;
+      const wageMin = Number(v[3].items[0].value);
+      const wageMax = Number(v[3].items[1].value);
+      const rateMin = Number(v[4].items[0].value);
+      const rateMax = Number(v[4].items[1].value);
+      const manager = v[5].value;
+      const status = v[6].value;
+
+      if (title) {
+        filter.and.push({ key: "title", value: title, opt: "in" });
+      }
+      if (location) {
+        filter.and.push({ key: "location", value: location, opt: "in" });
+      }
+      if (startDateFrom) {
+        filter.and.push({ key: "startDate", value: startDateFrom, opt: "gte" });
+      }
+      if (startDateTo) {
+        filter.and.push({ key: "startDate", value: startDateTo, opt: "lte" });
+      }
+      if (wageMin) {
+        filter.and.push({ key: "hourlyWage", value: wageMin, opt: "gte" });
+      }
+      if (wageMax) {
+        filter.and.push({ key: "hourlyWage", value: wageMax, opt: "lte" });
+      }
+      if (rateMin) {
+        filter.and.push({ key: "payRate", value: rateMin, opt: "gte" });
+      }
+      if (rateMax) {
+        filter.and.push({ key: "payRate", value: rateMax, opt: "lte" });
+      }
+      if (manager) {
+        filter.and.push({ key: "managerId", value: manager, opt: "eq" });
+      }
+      if (status) {
+        filter.and.push({ key: "status", value: status, opt: "eq" });
+      }
+      this.serverParams = Object.assign({}, this.serverParams, { filter });
       this.getJobs();
     },
     goToJob(props) {

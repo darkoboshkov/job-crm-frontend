@@ -245,9 +245,7 @@ export default {
       jobOfferApi
         .getAllByWorker({
           companyId: this.companyId,
-          filter: {
-            status: "active"
-          }
+          filter: { and: [{ key: "status", value: "active", opt: "eq" }] }
         })
         .then(({ docs }) => {
           if (docs[0] && docs[0].hiringManager && docs[0].hiringManager[0]) {

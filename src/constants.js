@@ -79,7 +79,7 @@ export const candidatesTable = {
       title: i18n.t("page_candidates.filter.profession"),
       type: "select",
       options: [],
-      value: "123"
+      value: ""
     },
     {
       title: i18n.t("page_candidates.filter.city"),
@@ -87,7 +87,7 @@ export const candidatesTable = {
       value: ""
     },
     {
-      title: i18n.t("page_candidates.filter.active_contract"),
+      title: i18n.t("page_candidates.filter.active_contract") + " (Coming)",
       type: "radio",
       value: "",
       options: [
@@ -259,12 +259,14 @@ export const jobsTable = {
         {
           title: "",
           type: "date",
-          value: ""
+          value: "",
+          placeholder: "From"
         },
         {
           title: "",
           type: "date",
-          value: ""
+          value: "",
+          placeholder: "To"
         }
       ]
     },
@@ -275,12 +277,14 @@ export const jobsTable = {
         {
           title: "",
           type: "number",
-          value: ""
+          value: "",
+          placeholder: "Min"
         },
         {
           title: "",
           type: "number",
-          value: ""
+          value: "",
+          placeholder: "Max"
         }
       ]
     },
@@ -291,19 +295,21 @@ export const jobsTable = {
         {
           title: "",
           type: "number",
-          value: ""
+          value: "",
+          placeholder: "Min"
         },
         {
           title: "",
           type: "number",
-          value: ""
+          value: "",
+          placeholder: "Max"
         }
       ]
     },
     {
       title: i18n.t("page_jobs.filter.manager"),
       type: "select",
-      options: [2, 3],
+      options: [],
       value: ""
     },
     {
@@ -382,7 +388,7 @@ export const offersTable = {
     {
       title: i18n.t("page_offers.filter.hiring_company"),
       type: "select",
-      options: [2, 3],
+      options: [],
       value: ""
     },
     {
@@ -435,7 +441,7 @@ export const offersTable = {
     {
       title: i18n.t("page_offers.filter.status"),
       type: "select",
-      options: [2, 3],
+      options: [],
       value: ""
     }
   ]
@@ -524,19 +530,19 @@ export const timesheetsTable = {
     {
       title: i18n.t("page_timesheets.filter.hiring_manager"),
       type: "select",
-      options: [2, 3],
+      options: [],
       value: ""
     },
     {
       title: i18n.t("page_timesheets.filter.hiring_company"),
       type: "select",
-      options: [2, 3],
+      options: [],
       value: ""
     },
     {
       title: i18n.t("page_timesheets.filter.status"),
       type: "select",
-      options: [2, 3],
+      options: [],
       value: ""
     }
   ]

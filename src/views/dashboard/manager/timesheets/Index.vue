@@ -202,9 +202,7 @@ export default {
       workLogApi
         .getByCompany({
           ...this.serverParams,
-          filter: {
-            type: "timesheet"
-          },
+          filter: { and: [{ key: "type", value: "timesheet", opt: "eq" }] },
           companyId: this.companyId
         })
         .then(({ docs, totalDocs }) => {
@@ -215,9 +213,7 @@ export default {
       workLogApi
         .getByCompany({
           ...this.serverParams,
-          filter: {
-            type: "expense"
-          },
+          filter: { and: [{ key: "type", value: "expense", opt: "eq" }] },
           companyId: this.companyId
         })
         .then(({ docs, totalDocs }) => {

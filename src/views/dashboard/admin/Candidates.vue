@@ -119,6 +119,7 @@ import TableFilter from "@/components/common/TableFilter";
 import userApi from "@/services/api/users";
 import professionApi from "@/services/api/professions";
 import { candidatesTable } from "@/constants";
+import i18n from "../../../plugins/i18n";
 
 export default {
   name: "Candidates",
@@ -199,13 +200,31 @@ export default {
       this.getWorkers();
     },
     filter(v) {
-      this.serverParams = Object.assign({}, this.serverParams, {
-        firstName: v[0].value,
-        profession: v[1].value,
-        city: v[2].value,
-        activeContract: v[3].value,
-        available: v[4].value
-      });
+      const filter = { or: [], and: [] };
+      const name = v[0].value;
+      const profession = v[1].value;
+      const city = v[2].value;
+      const activeContract = v[3].value; // coming soon
+      const status = v[4].value;
+
+      if (name) {
+        filter.or = [
+          { key: "firstName", value: v[0].value, opt: "in" },
+          { key: "lastName", value: v[0].value, opt: "in" },
+          { key: "middleName", value: v[0].value, opt: "in" }
+        ];
+      }
+      if (profession) {
+        filter.and.push({ key: "professionId", value: profession, opt: "eq" });
+      }
+      if (status) {
+        filter.and.push({ key: "status", value: status, opt: "eq" });
+      }
+      if (city) {
+        filter.and.push({ key: "city", value: city, opt: "in" });
+      }
+
+      this.serverParams = Object.assign({}, this.serverParams, { filter });
       this.getWorkers();
     },
     selectCandidate(props) {
@@ -254,6 +273,15 @@ export default {
     getProfessions() {
       professionApi.getAll().then(res => {
         this.professions = res;
+
+        // professio filter options
+        this.filterOptions[1].options.push({ text: "", value: "" });
+        this.professions?.forEach(item => {
+          this.filterOptions[1].options.push({
+            text: this.$t(`profession.${item.name}`),
+            value: item._id
+          });
+        });
       });
     }
   }

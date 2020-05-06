@@ -77,9 +77,7 @@ export default {
       jobsApi
         .getAll(
           Object.assign({
-            filter: {
-              status: "active"
-            },
+            filter: { and: [{ key: "status", value: "active", opt: "eq" }] },
             limit: 3,
             page: 1
           })

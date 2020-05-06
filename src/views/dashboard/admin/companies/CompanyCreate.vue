@@ -109,8 +109,8 @@
                       style="outline: none;"
                     >
                       <b-form-radio :value="false" class="mr-5"
-                        >No</b-form-radio
-                      >
+                        >No
+                      </b-form-radio>
                       <b-form-radio :value="true">Yes</b-form-radio>
                     </b-form-radio-group>
                   </b-form-group>
@@ -149,8 +149,8 @@
                       style="outline: none;"
                     >
                       <b-form-radio :value="false" class="mr-5"
-                        >No</b-form-radio
-                      >
+                        >No
+                      </b-form-radio>
                       <b-form-radio :value="true">Yes</b-form-radio>
                     </b-form-radio-group>
                   </b-form-group>
@@ -333,9 +333,7 @@ export default {
     getManagers() {
       usersApi
         .getAll({
-          filter: {
-            role: "manager"
-          },
+          filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
           pagination: 0
         })
         .then(res => {

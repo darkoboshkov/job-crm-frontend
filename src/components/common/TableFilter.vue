@@ -39,7 +39,7 @@
                   <b-form-input
                     :type="item.type"
                     v-model="item.value"
-                    :placeholder="item.placeholder"
+                    :placeholder="item.placeholder || 'Type Here'"
                   />
                 </template>
               </div>
@@ -59,7 +59,7 @@
             <b-form-input
               :type="option.type"
               v-model="option.value"
-              :placeholder="option.placeholder"
+              :placeholder="option.placeholder || 'Type Here'"
             />
           </div>
 

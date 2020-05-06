@@ -81,9 +81,7 @@ export default {
       jobsApi
         .getCompanyJobs(
           Object.assign({
-            filter: {
-              status: "active"
-            },
+            filter: { and: [{ key: "status", value: "active", opt: "eq" }] },
             limit: 3,
             page: 1,
             companyId: this.companyId

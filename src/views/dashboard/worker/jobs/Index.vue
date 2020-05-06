@@ -220,9 +220,7 @@ export default {
         .getCompanyJobs(
           Object.assign(this.serverParams, {
             companyId: this.companyId,
-            filter: {
-              status: "active"
-            }
+            filter: { and: [{ key: "status", value: "active", opt: "eq" }] }
           })
         )
         .then(res => {
