@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="icon-group">
-              <div class="icon">
+              <div class="icon cursor-copy">
                 <img
                   src="@/assets/image/phone.svg"
                   @click="copyPhoneNumToClipboard(company.phone)"
@@ -76,7 +76,7 @@
               </div>
             </div>
             <div class="icon-group">
-              <div class="icon">
+              <div class="icon cursor-copy">
                 <img
                   src="@/assets/image/phone.svg"
                   @click="copyPhoneNumToClipboard(worker.phone)"

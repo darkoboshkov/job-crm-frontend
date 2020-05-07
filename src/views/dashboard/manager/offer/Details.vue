@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="icon-group">
-              <div class="icon">
+              <div class="icon cursor-copy">
                 <img
                   src="@/assets/image/phone.svg"
                   @click="copyPhoneNumToClipboard(company.phone)"
@@ -75,7 +75,7 @@
                 <div>{{ worker.city }}, {{ worker.country }}</div>
               </div>
             </div>
-            <div class="icon-group">
+            <div class="icon-group cursor-copy">
               <div class="icon">
                 <img
                   src="@/assets/image/phone.svg"

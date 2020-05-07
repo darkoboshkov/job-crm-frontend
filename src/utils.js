@@ -289,6 +289,7 @@ export const copyToClipboard = async (
   text = "Successfully copied the clipboard"
 ) => {
   if (!val) {
+    alert("Error! the field is empty.");
     return;
   }
   await clipboardy.write(val);
