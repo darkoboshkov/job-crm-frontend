@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'hiway-crm-icon';
-  src:  url('fonts/hiway-crm-icon.eot?77b7e0');
-  src:  url('fonts/hiway-crm-icon.eot?77b7e0#iefix') format('embedded-opentype'),
-    url('fonts/hiway-crm-icon.ttf?77b7e0') format('truetype'),
-    url('fonts/hiway-crm-icon.woff?77b7e0') format('woff'),
-    url('fonts/hiway-crm-icon.svg?77b7e0#hiway-crm-icon') format('svg');
+  src:  url('fonts/hiway-crm-icon.eot?cm1acd');
+  src:  url('fonts/hiway-crm-icon.eot?cm1acd#iefix') format('embedded-opentype'),
+    url('fonts/hiway-crm-icon.ttf?cm1acd') format('truetype'),
+    url('fonts/hiway-crm-icon.woff?cm1acd') format('woff'),
+    url('fonts/hiway-crm-icon.svg?cm1acd#hiway-crm-icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,7 +27,6 @@
 
 .icon-contract:before {
   content: "\e91f";
-  color: #7e7e7e;
 }
 .icon-hourglass:before {
   content: "\e91b";
@@ -127,4 +126,7 @@
 }
 .icon-exit:before {
   content: "\ea14";
+}
+.icon-cog:before {
+  content: "\e994";
 }

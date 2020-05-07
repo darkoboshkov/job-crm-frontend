@@ -47,6 +47,7 @@
 		'icon-user-tie': '&#xe976;',
 		'icon-lock': '&#xe98f;',
 		'icon-exit': '&#xea14;',
+		'icon-cog': '&#xe994;',
 		'0': 0
 		},
 		els = document.getElementsByTagName('*'),
