@@ -76,6 +76,7 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import offersApi from "@/services/api/joboffers";
+import companyApi from "@/services/api/companies";
 import { offersTable } from "@/constants";
 
 export default {
@@ -85,6 +86,7 @@ export default {
     return {
       isLoading: true,
       rows: [],
+      companies: [],
       searchTerm: "",
       matched: false,
       totalRows: 0,
@@ -102,6 +104,7 @@ export default {
   },
   mounted() {
     this.getActiveOffers();
+    this.getCompanies();
   },
   methods: {
     onPerPageChange(e) {
@@ -129,7 +132,7 @@ export default {
       }
     },
     getActiveOffers() {
-      offersApi.getAll().then(res => {
+      offersApi.getAll(this.serverParams).then(res => {
         this.rows = res.docs?.map(row => {
           row.job = row.job ? row.job[0].title : "";
           row.image = row.job ? row.job[0].image : "";
@@ -146,17 +149,63 @@ export default {
       });
     },
     filter(v) {
-      this.serverParams = Object.assign({}, this.serverParams, {
-        title: v[0].value,
-        worker_name: v[1].value,
-        hiring_company: v[2].value,
-        type: v[3].value,
-        start_date: v[4].value,
-        end_date: v[5].value,
-        status: v[6].value
-      });
-      console.log(this.serverParams);
+      const filter = { or: [], and: [] };
+      const title = v[0].value;
+      const worker_name = v[1].value;
+      const hiring_company = v[2].value;
+      const startDateFrom = v[3].items[0].value;
+      const startDateTo = v[3].items[1].value;
+      const endDateFrom = v[4].items[0].value;
+      const endDateTo = v[4].items[1].value;
+      const status = v[5].value;
+
+      if (title) {
+        filter.and.push({ key: "job.title", value: title, opt: "in" });
+      }
+      if (worker_name) {
+        filter.or = [
+          { key: "worker.firstName", value: worker_name, opt: "in" },
+          { key: "worker.lastName", value: worker_name, opt: "in" },
+          { key: "worker.middleName", value: worker_name, opt: "in" }
+        ];
+      }
+      if (hiring_company) {
+        filter.and.push({
+          key: "hiringCompany._id",
+          value: hiring_company,
+          opt: "eq"
+        });
+      }
+      if (startDateFrom) {
+        filter.and.push({ key: "startDate", value: startDateFrom, opt: "gte" });
+      }
+      if (startDateTo) {
+        filter.and.push({ key: "startDate", value: startDateTo, opt: "lte" });
+      }
+      if (endDateFrom) {
+        filter.and.push({ key: "endDate", value: endDateFrom, opt: "gte" });
+      }
+      if (endDateTo) {
+        filter.and.push({ key: "endDate", value: endDateTo, opt: "lte" });
+      }
+      if (status) {
+        filter.and.push({ key: "status", value: status, opt: "eq" });
+      }
+      this.serverParams = Object.assign({}, this.serverParams, { filter });
       this.getActiveOffers();
+    },
+    getCompanies() {
+      companyApi.getAll().then(res => {
+        this.companies = res;
+        this.filterOptions[2].options = [];
+        this.filterOptions[2].options.push({ text: "", value: "" });
+        this.companies?.forEach(item => {
+          this.filterOptions[2].options.push({
+            text: item.name,
+            value: item._id
+          });
+        });
+      });
     }
   }
 };

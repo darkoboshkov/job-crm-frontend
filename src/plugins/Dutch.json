@@ -1,253 +1,253 @@
 {
   "common": {
-    "update": "Update",
-    "create": "Create",
-    "delete": "Delete",
-    "login": "Login",
-    "logout": "Logout",
-    "signup": "Sign Up",
-    "register": "Register",
+    "update": "Bijwerken",
+    "create": "Aanmaken",
+    "delete": "Verwijderen",
+    "login": "Inloggen",
+    "logout": "Uitloggen",
+    "signup": "Aanmelden",
+    "register": "Registreren",
     "reset": "Reset",
-    "accept": "Accept",
-    "no": "No",
+    "accept": "Accepteer",
+    "no": "Nee",
     "ok": "Ok",
-    "save": "Save",
-    "cancel": "Cancel",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
     "open": "Open",
     "filters": "Filters",
-    "close": "Close",
-    "complete": "Complete",
+    "close": "Sluit",
+    "complete": "Voltooien",
     "upload": "Upload",
-    "apply": "Apply",
-    "apply_filters": "Apply Filters",
+    "apply": "Toepassen",
+    "apply_filters": "Toepassen",
     "status": "Status",
-    "location": "Location",
-    "age": "Age",
-    "name": "Name",
+    "location": "Locatie",
+    "age": "Leeftijd",
+    "name": "Naam",
     "email": "Email",
-    "password": "Password",
-    "c_password": "Confirm Password",
-    "years": "years",
-    "setting": "Setting",
+    "password": "Wachtwoord",
+    "c_password": "Herhaal wachtwoord",
+    "years": "jaar",
+    "setting": "Instellingen",
     "privacy": "Privacy",
-    "forgot": "Forgot",
-    "company": "Company",
-    "active": "Active",
-    "back": "Back"
+    "forgot": "Vergeten",
+    "company": "Bedrijf",
+    "active": "Actief",
+    "back": "Terug"
   },
   "validation": {
-    "EMAIL_IS_NOT_VALID": "The email is not valid",
-    "PASSWORD_TOO_SHORT_MIN_5": "The password is shorter than 5, minimum",
-    "THIS_FIELD_IS_REQUIRED": "This field is required",
-    "PASSWORDS_NOT_MATCH": "The password is not matching",
-    "WRONG_PASSWORD": "The password is not correct",
-    "USER_DOES_NOT_EXIST": "The user does not exist",
-    "EMAIL_ALREADY_EXISTS": "The email already exists"
+    "EMAIL_IS_NOT_VALID": "Dit is geen geldig e-mailadres",
+    "PASSWORD_TOO_SHORT_MIN_5": "Het wachtwoord mag niet korter zijn dan 5 tekens",
+    "THIS_FIELD_IS_REQUIRED": "Dit veld is verplicht",
+    "PASSWORDS_NOT_MATCH": "De wachtwoorden komen niet overeen",
+    "WRONG_PASSWORD": "Het wachtwoord is niet juist",
+    "USER_DOES_NOT_EXIST": "Deze gebruiker bestaat niet",
+    "EMAIL_ALREADY_EXISTS": "Dit e-mailadres is al in gebruik"
   },
   "roles": {
     "manager": "Manager",
-    "worker": "Worker",
-    "owner": "Owner",
-    "admin": "Administrator"
+    "worker": "Werknemer",
+    "owner": "Eigenaar",
+    "admin": "Beheerder"
   },
   "weekday": {
-    "mon": "Monday",
-    "tue": "Tuesday",
-    "wed": "Wednesday",
-    "thu": "Thursday",
-    "fri": "Friday",
-    "sat": "Saturday",
-    "sun": "Sunday"
+    "mon": "Maandag",
+    "tue": "Dinsdag",
+    "wed": "Woensdag",
+    "thu": "Donderdag",
+    "fri": "Vrijdag",
+    "sat": "Zaterdag",
+    "sun": "Zondag"
   },
   "status": {
     "open": "Open",
-    "close": "Close",
+    "close": "Sluit",
     "hide": "Hide",
-    "active": "Active",
-    "inactive": "Inactive",
-    "available": "Available",
-    "unavailable": "Not available",
-    "submitted": "Submitted",
-    "not-submitted": "Not submitted",
-    "declined": "Declined",
-    "completed": "Completed",
-    "deleted": "Deleted",
-    "approved": "Approved",
-    "pending-worker": "Pending Worker"
+    "active": "Actief",
+    "inactive": "Inactief",
+    "available": "Beschikbaar",
+    "unavailable": "Niet beschikbaar",
+    "submitted": "Ingediend",
+    "not-submitted": "Niet ingediend",
+    "declined": "Geweigerd",
+    "completed": "Voltooid",
+    "deleted": "Verwijderd",
+    "approved": "Goedgekeurd",
+    "pending-worker": "In afwachting van werknemer"
   },
   "profession": {
-    "administration": "Administration",
-    "banks": "Banks",
-    "security": "Security",
-    "construction": "Construction",
+    "administration": "Administratie",
+    "banks": "Banken",
+    "security": "Beveiliging",
+    "construction": "Bouw",
     "business-manager": "Business Manager",
-    "call-centers": "Call Centers",
-    "customer-care": "Customer Care",
-    "communication": "Communication",
+    "call-centers": "Callcenters",
+    "customer-care": "Klantenservice",
+    "communication": "Communicatie",
     "retail": "Retail",
     "engineering": "Engineering",
-    "financial": "Financial",
-    "catering-events": "Catering, Catering & Events",
+    "financial": "Financieel",
+    "catering-events": "Catering & Evenementen",
     "hr": "HR",
     "it": "IT",
-    "industry-production": "Industry and Production",
-    "native-speakers-jobs": "Native Speakers Jobs",
-    "legally": "Legally",
-    "logistics": "Logistics",
+    "industry-production": "Industrie en productie",
+    "native-speakers-jobs": "Taal en communicatie",
+    "legally": "Juridisch",
+    "logistics": "Logistiek",
     "management": "Management",
     "marketing": "Marketing",
-    "education": "Education",
-    "government": "Government",
+    "education": "Onderwijs",
+    "government": "Overheid",
     "sales": "Sales",
-    "cleaning": "Cleaning",
-    "secretarial": "Secretarial",
-    "technic": "Technic",
-    "transportation": "Transportation",
-    "insurances": "Insurances",
-    "business-services": "Business Services",
-    "care": "Care"
+    "cleaning": "Reiniging",
+    "secretarial": "Secretarieel",
+    "technic": "Techniek",
+    "transportation": "Transport",
+    "insurances": "Verzekeringen",
+    "business-services": "Zakelijke services",
+    "care": "Zorg"
   },
   "honorific": {
-    "mr": "Mr.",
-    "mrs": "Mrs.",
-    "ms": "Ms.",
-    "miss": "Miss."
+    "mr": "de heer",
+    "mrs": "mevrouw",
+    "ms": "dhr.",
+    "miss": "mevr."
   },
   "component": {
     "position": {
-      "title": "Most recent positions",
-      "view_all": "View all"
+      "title": "Nieuwste vacatures",
+      "view_all": "Alles weergeven"
     },
     "users": {
-      "title": "Most recent workers",
-      "view_all": "View all"
+      "title": "Nieuwste werknemers",
+      "view_all": "Alles weergeven"
     },
     "companies": {
-      "title": "Most recent companies",
-      "view_all": "View all"
+      "title": "Nieuwste bedrijven",
+      "view_all": "Alles weergeven"
     },
     "birthday": {
-      "title": "Upcoming birthdays"
+      "title": "Aankomende verjaardagen"
     },
     "message": {
-      "title": "Messages"
+      "title": "Berichten"
     },
     "statistics": {
-      "title": "Mail statistics",
-      "wage_level": "Wage level",
-      "performance": "PERFORMANCE",
-      "export": "Export"
+      "title": "E-mail statistieken",
+      "wage_level": "Loonschaal",
+      "performance": "Prestatie",
+      "export": "Exporteren"
     },
     "todo": {
-      "title": "To-do list today"
+      "title": "Acties voor vandaag"
     },
     "pending_workers": {
-      "title": "Pending workers",
-      "sub_title": "We have found {candidates} pending workers",
+      "title": "Niet toegewezen werknemers",
+      "sub_title": "We hebben {candidates} niet toegewezen werknemers gevonden",
       "table": {
-        "name": "Name",
-        "email": "Email",
+        "name": "Naam",
+        "email": "E-mail",
         "status": "Status",
-        "created_at": "Registered at",
-        "actions": "Actions",
-        "assign_company": "Assign company"
+        "created_at": "Geregistreerd op",
+        "actions": "Acties",
+        "assign_company": "Toewijzen aan bedrijf"
       },
       "modal": {
         "delete": {
-          "title": "Are you sure?",
-          "sub_title": "Are you really going to delete the user?",
-          "continue": "Continue"
+          "title": "Weet je het zeker?",
+          "sub_title": "Wil je deze gebruiken daadwerkelijk verwijderen?",
+          "continue": "Doorgaan"
         },
         "assign": {
-          "title": "Assign company",
-          "sub_title": "Please select a company and click the assign button.",
-          "assign": "Assign",
-          "cancel": "Cancel"
+          "title": "Toewijzen aan bedrijf",
+          "sub_title": "Kies een bedrijf en klik op toewijzen.",
+          "assign": "Toewijzen",
+          "cancel": "Annuleren"
         }
       }
     }
   },
   "page_404": {
     "title": "404",
-    "sub_title": "Oops, something is going wrong ...",
-    "text": "Click the button below to go back to your dashboard",
+    "sub_title": "Oeps, er is iets mis gegaan ...",
+    "text": "Klik op de knop hieronder om terug te gaan naar je dashboard",
     "button": {
-      "back": "Back to your dashboard"
+      "back": "Terug naar je dashboard"
     }
   },
   "page_login": {
-    "title": "Login",
+    "title": "Inloggen",
     "form": {
-      "email": "E-mail address",
-      "password": "Password",
-      "forgot": "Forgot"
+      "email": "E-mailadres",
+      "password": "Wachtwoord",
+      "forgot": "Vergeten"
     },
     "button": {
-      "login": "Login",
-      "create": "Create account"
+      "login": "Inloggen",
+      "create": "Aanmelden"
     }
   },
   "page_signup": {
-    "title": "Sign up",
+    "title": "Aanmelden",
     "form": {
-      "first_name": "First name",
-      "last_name": "Last name",
-      "email": "E-mail address",
-      "password": "Password",
-      "c_password": "Confirm password"
+      "first_name": "Voornaam",
+      "last_name": "Achternaam",
+      "email": "E-mailadres",
+      "password": "Wachtwoord",
+      "c_password": "Herhaal wachtwoord"
     },
     "button": {
-      "signup": "Sign up",
-      "login": "Login"
+      "signup": "Aanmelden",
+      "login": "Inloggen"
     }
   },
   "page_verify": {
-    "note": "Please verify your email address to login to Hiway CRM!",
-    "text1": "We've just sent an email to your address",
-    "text2": "Please check your email and click on the link provided to verify your address.",
-    "text3": "If you haven't received an email then click",
-    "resend": "here",
-    "here": "to send a new one."
+    "note": "Verifieer uw e-mailadres om in te loggen bij Hiway CRM!",
+    "text1": "We hebben je zojuist een e-mail gestuurd",
+    "text2": "Controleer uw e-mail en klik op link om uw adres te verifiëren.",
+    "text3": "Indien je geen e-mail hebt ontvangen, klik dan",
+    "resend": "hier",
+    "here": "om een nieuwe te versturen."
   },
   "page_accept": {
-    "title": "Accept invitation",
+    "title": "Uitnodiging accepteren",
     "form": {
-      "first_name": "First name",
-      "last_name": "Last name",
-      "middle_name": "Middle name",
-      "password": "Password",
-      "c_password": "Confirm password"
+      "first_name": "Voornaam",
+      "last_name": "Achternaam",
+      "middle_name": "Tussenvoegsel",
+      "password": "Wachtwoord",
+      "c_password": "Herhaal wachtwoord"
     },
     "button": {
-      "accept": "Accept"
+      "accept": "Accepteren"
     },
     "modal": {
       "accept": {
-        "title": "You successfully accepted the invitation",
-        "sub_title": "Thank you",
-        "login": "Login"
+        "title": "De uitnodiging is geaccepteerd",
+        "sub_title": "Bedankt",
+        "login": "Inloggen"
       }
     }
   },
   "page_forgot": {
-    "title": "Forgot my password",
-    "text1": "We sent a reset password link to your email",
+    "title": "Wachtwoord vergeten",
+    "text1": "We hebben je een e-mail gestuurd om je wachtwoord te resetten",
     "form": {
-      "email": "E-mail address"
+      "email": "E-mailadres"
     },
     "button": {
-      "send": "Send reset email",
-      "resend": "Resend reset email"
+      "send": "Verstuur reset e-mail",
+      "resend": "Opnieuw versturen"
     }
   },
   "page_reset": {
-    "title": "Reset my password",
+    "title": "Reset mijn wachtwoord",
     "form": {
-      "password": "Password",
-      "c_password": "confirm password"
+      "password": "Wachtwoord",
+      "c_password": "Herhaal wachtwoord"
     },
     "button": {
-      "reset": "Reset password"
+      "reset": "Reset wachtwoord"
     }
   },
   "page_privacy": {
@@ -337,212 +337,202 @@
   "page_dashboard": {
     "title": "Dashboard",
     "button": {
-      "adjust": "Adjust dashboard"
+      "adjust": "Dashboard aanpassen"
     },
     "modal": {
       "adjust": {
-        "title": "Adjust dashboard",
-        "save": "Save",
-        "message_area_title": "Messages",
-        "message_area_text": "This widget shows your latest messages.",
-        "position_area_title": "Positions",
-        "position_area_text": "This widget shows latest positions.",
-        "birthday_area_title": "Birthdays",
-        "birthday_area_text": "This widget shows upcoming birthdays..",
-        "todo_area_title": "To do's",
-        "todo_area_text": "This widget shows your to do's.",
-        "statistics_area_title": "Statistics",
-        "statistics_area_text": "This widget shows statistics.",
-        "users_area_title": "Users",
-        "users_area_text": "This widget shows your latest users.",
-        "companies_area_title": "Companies",
-        "companies_area_text": "This widget shows your latest companies.",
-        "pending_workers_area_title": "Unassigned workers",
-        "pending_workers_area_text": "This widget shows that have not been assigned to a company yet."
+        "title": "Dashboard aanpassen",
+        "save": "Opslaan",
+        "message_area_title": "Berichten",
+        "message_area_text": "Deze widget toont uw nieuwste berichten.",
+        "position_area_title": "Vacatures",
+        "position_area_text": "Deze widget toont uw nieuwste vacatures.",
+        "birthday_area_title": "Verjaardagen",
+        "birthday_area_text": "Deze widget toont aankomende verjaardagen.",
+        "todo_area_title": "Actielijst",
+        "todo_area_text": "Deze widget toont uw openstaande taken.",
+        "statistics_area_title": "Statistieken",
+        "statistics_area_text": "Deze widget toont statistieken.",
+        "users_area_title": "Werknemers",
+        "users_area_text": "Deze widget toont uw nieuwste werknemers.",
+        "companies_area_title": "Bedrijven",
+        "companies_area_text": "Deze widget toont uw nieuwste bedrijven",
+        "pending_workers_area_title": "Niet toegewezen werknemers",
+        "pending_workers_area_text": "Deze widget toont uw nieuwste werknemers die nog niet zijn toegewezen aan een bedrijf"
       }
     }
   },
   "page_companies": {
-    "title": "Companies",
-    "sub_title": "We have found {companies} companies",
+    "title": "Bedrijven",
+    "sub_title": "We hebben {companies} bedrijven gevonden",
     "table": {
-      "image": "Image",
-      "name": "Name",
-      "email": "Email",
-      "kvk": "KVK number",
-      "since": "Registered since",
+      "image": "Afbeelding",
+      "name": "Naam",
+      "email": "E-mail",
+      "kvk": "KVK-nummer",
+      "since": "Geregistreerd sinds",
       "status": "Status",
-      "actions": "Actions",
-      "view_company": "Show details"
+      "actions": "Acties",
+      "view_company": "Details weergeven"
     },
     "filter": {
-      "name": "Name",
-      "email": "Email",
+      "name": "Naam",
+      "email": "E-mail",
       "status": "Status",
-      "active": "Active",
-      "inactive": "Inactive",
-      "city": "City"
+      "city": "Woonplaats"
     },
     "modal": {
       "company_delete": {
-        "title": "Are you sure?",
-        "sub_title": "Are you really going to delete the company?",
-        "continue": "Continue"
+        "title": "Weet je het zeker?",
+        "sub_title": "Weet je zeker dat je dit bedrijf wilt verwijderen?",
+        "continue": "Ik weet het zeker"
       }
     }
   },
   "page_detail_company": {
-    "create_title": "Add new company",
-    "edit_title": "Company details",
-    "description": "Please fill out the company details and click on: Create company.",
-    "save": "Save adjustments",
-    "edit": "Edit company details",
+    "create_title": "Voeg nieuw bedrijf toe",
+    "edit_title": "Bedrijfsgegevens",
+    "description": "Vul hier de gegevens van het bedrijf in en klik dan op: Bedrijf aanmaken.",
+    "save": "Aanpassingen opslaan",
+    "edit": "Bedrijfsgegevens aanpassen",
     "form": {
-      "name": "Company name",
-      "kvk": "KVK number",
-      "limit_credit_safe": "Limit creditSafe",
-      "country": "Country",
-      "city": "City",
-      "street": "Street",
-      "houseNumber": "House number",
-      "postalCode": "Postal code",
-      "email": "Company email",
-      "phone": "Company phone number",
-      "vat_shifted": "VAT shifted",
-      "g_account": "G account",
-      "terms_of_payment": "Terms of payment",
-      "automatic_collection": "Automatic collection",
-      "charge_travel_expenses": "Charge travel expenses",
-      "charge_other_expenses": "Charge other expenses",
-      "is_active": "Is active"
+      "name": "Bedrijfsnaam",
+      "kvk": "KVK-nummer",
+      "limit_credit_safe": "Limiet creditsafe",
+      "country": "Land",
+      "city": "Plaatsnaam",
+      "street": "Straat",
+      "houseNumber": "Huisnummer",
+      "postalCode": "Postcode",
+      "email": "Bedrijfs e-mailadres",
+      "phone": "Bedrijfs telefoonnummer",
+      "vat_shifted": "BTW verlegd",
+      "g_account": "G-rekening",
+      "terms_of_payment": "Betalingstermijn",
+      "automatic_collection": "Automatische incasso",
+      "charge_travel_expenses": "Reiskosten doorbelasten",
+      "charge_other_expenses": "Overige kosten doorbelasten",
+      "is_active": "Is actief"
     },
     "button": {
-      "create": "Create company",
-      "update": "Update company",
-      "delete": "Delete company"
+      "create": "Bedrijf aanmaken",
+      "update": "Bedrijf updaten",
+      "delete": "Bedrijf verwijderen"
     },
     "modal": {
       "create_success": {
-        "title": "Successfully created new company",
-        "sub_title": "Thank you",
-        "continue": "Continue"
+        "title": "Het aanmaken van het bedrijf is gelukt",
+        "sub_title": "Bedankt",
+        "continue": "Doorgaan"
       },
       "create_error": {
-        "title": "Error",
-        "continue": "Continue"
+        "title": "Foutmelding",
+        "continue": "Doorgaan"
       },
       "update_success": {
-        "title": "Successfully updated new company",
-        "sub_title": "Thank you",
-        "continue": "Continue"
+        "title": "Bedrijfsgegevens succesvol aangepast",
+        "sub_title": "Bedankt",
+        "continue": "Doorgaan"
       },
       "update_error": {
-        "title": "Error",
-        "continue": "Continue"
+        "title": "Foutmelding",
+        "continue": "Doorgaan"
       }
     }
   },
   "page_candidates": {
-    "title": "Candidates",
-    "sub_title": "We have found {candidates} candidates",
+    "title": "Werknemers",
+    "sub_title": "We hebben {candidates} werknemers gevonden",
     "filter": {
-      "name": "Candidates Name",
-      "profession": "Profession",
-      "city": "Location",
-      "active_contract": "Active contract?",
+      "name": "Naam",
+      "profession": "Vakgebied",
+      "city": "Plaatsnaam",
+      "active_contract": "Lopend Contract?",
       "yes": "Yes",
       "no": "No",
-      "status": "Status",
-      "available": "Available",
-      "unavailable": "Unavailable"
+      "status": "Beschikbaarheid"
     },
     "table": {
-      "name": "Name",
-      "company": "Company",
-      "profession": "Profession",
-      "active_contract": "Active Contract",
-      "status": "Status",
-      "image": "Image",
-      "location": "Location",
-      "actions": "Actions",
-      "view_joboffer": "View Contract",
-      "view_profile": "View profile",
-      "delete_user": "Delete User"
+      "name": "Naam",
+      "company": "Bedrijf",
+      "profession": "Vakgebied",
+      "active_contract": "Lopend Contract",
+      "status": "Beschikbaarheid",
+      "image": "Foto",
+      "location": "Plaatsnaam",
+      "actions": "Acties",
+      "view_joboffer": "Contract weergeven",
+      "view_profile": "Profiel weergeven",
+      "delete_user": "Werknemer verwijderen"
     },
     "modal": {
       "delete": {
-        "title": "Are you sure?",
-        "sub_title": "Are you sure you want to delete this candidate?",
-        "continue": "Continue"
+        "title": "Weet het zeker?",
+        "sub_title": "Weet je zeker dat je deze werknemer wilt verwijderen?",
+        "continue": "Ik weet het zeker"
       }
     }
   },
   "page_profile": {
-    "edit": "Edit profile",
-    "save": "Save profile",
+    "edit": "Profiel aanpassen",
+    "save": "Profiel opslaan",
     "form": {
-      "overview": "About me",
-      "specifications": "Specifications",
-      "since": "Registered since",
-      "age": "Age",
-      "years": "years",
-      "location": "Location",
-      "status": "Status",
-      "files": "Files"
+      "overview": "Over mij",
+      "specifications": "Specificaties",
+      "since": "Geregistreerd sinds",
+      "age": "Leeftijd",
+      "years": "jaar",
+      "location": "Plaatsnaam",
+      "status": "Beschikbaarheid",
+      "files": "Bestanden"
     },
     "button": {
-      "upload": "Upload"
+      "upload": "Uploaden"
     },
     "modal": {
       "change": {
-        "title": "Successfully changed this profile",
-        "sub_title": "Thank you",
-        "continue": "Continue"
+        "title": "Profiel succesvol aangepast",
+        "sub_title": "Bedankt",
+        "continue": "Doorgaan"
       }
     }
   },
   "page_jobs": {
-    "title": "Jobs",
-    "sub_title": "We have found {jobs} jobs",
+    "title": "Vacatures",
+    "sub_title": "We hebben {jobs} vacatures gevonden",
     "table": {
-      "image": "Image",
-      "title": "Title",
-      "location": "Location",
-      "company": "Company",
-      "worker": "Worker",
+      "image": "Logo",
+      "title": "Titel",
+      "company": "Bedrijf",
+      "location": "Locatie",
+      "worker": "Werknemer",
       "manager": "Manager",
-      "wage": "Monthly Wage",
-      "rate": "Rate",
+      "wage": "Maandloon",
+      "rate": "Tarief",
       "status": "Status",
-      "start_date": "Start date",
-      "end_date": "End date",
-      "duration": "Duration",
-      "profession": "Profession",
-      "actions": "Actions",
-      "start_matching": "Start matching",
-      "view_job": "View job"
+      "start_date": "Startdatum",
+      "end_date": "Einddatum",
+      "duration": "Looptijd",
+      "profession": "Vakgebied",
+      "actions": "Acties",
+      "start_matching": "Start matchen",
+      "view_job": "Vacature weergeven"
     },
     "filter": {
-      "title": "Job Title",
-      "city": "Location",
-      "start_date": "Start date",
-      "end_date": "End date",
-      "wage": "Wage",
-      "min_wage": "Min Wage",
-      "max_wage": "Max Wage",
-      "rate": "Rate",
-      "min_rate": "Min Rate",
-      "max_rate": "Max Rate",
+      "title": "Titel",
+      "city": "Locatie",
+      "start_date": "Startdatum",
+      "end_date": "Einddatum",
+      "wage": "Maandloon",
+      "rate": "Tarief",
       "manager": "Manager",
-      "status": "Status",
-      "open": "Open",
-      "closed": "Closed"
+      "status": "Status"
     },
     "modal": {
       "delete": {
-        "title": "Are you sure?",
-        "sub_title": "Are you sure you want to delete this job?",
-        "continue": "Continue"
+        "title": "Weet je het zeker?",
+        "sub_title": "Weet je zeker dat je deze vacature wilt verwijderen?",
+        "continue": "Ik weet het zeker"
       }
     }
   },
@@ -550,199 +540,199 @@
     "edit": "Edit job",
     "save": "Save job",
     "form": {
-      "description": "Description",
-      "specifications": "Specifications",
-      "questions": "Questions",
-      "company": "Company",
+      "description": "Beschrijving",
+      "specifications": "Specificaties",
+      "questions": "Vragen",
+      "company": "Bedrijf",
       "manager": "Manager",
-      "hiring_manager": "Hiring manager",
-      "hiring_company": "Hiring company",
-      "worker": "Worker",
-      "offer": "Offer",
+      "hiring_manager": "Inhurende manager",
+      "hiring_company": "Inhurend bedrijf",
+      "worker": "Werknemer",
+      "offer": "Aanbod",
       "level": "Level",
-      "rate": "Pay Rate",
-      "wage": "Monthly Wage",
-      "hours_per_week": "Hours Per Week",
-      "location": "Location",
-      "hourly_wage": "Hourly wage",
-      "payment_type": "Payment type",
+      "rate": "Tarief",
+      "wage": "Maandloon",
+      "hours_per_week": "Uren per week",
+      "location": "Locatie",
+      "hourly_wage": "Uurloon",
+      "payment_type": "Valuata soort",
       "status": "Status",
-      "start_date": "Start date",
-      "end_date": "End date"
+      "start_date": "Startdatum",
+      "end_date": "Einddatum"
     },
-    "view_offer": "View joboffer",
-    "job_offers": "Job offers",
-    "files": "Files",
-    "view_file": "View file",
-    "download_file": "Download file",
+    "view_offer": "Details weergeven",
+    "job_offers": "Aangeboden contracten",
+    "files": "Bestanden",
+    "view_file": "Bestand weergeven",
+    "download_file": "Bestand downloaden",
     "button": {
-      "upload": "Upload",
-      "create_new_job_offer": "Create new job offer",
-      "create": "Create job",
-      "update": "Update job"
+      "upload": "Uploaden",
+      "create_new_job_offer": "Stel nieuw contract op",
+      "create": "Vacature aanmaken",
+      "update": "Vacature aanpassen"
     },
     "modal": {
       "create_success": {
-        "title": "Success!",
-        "sub_title": "Job created successfully!",
-        "continue": "Click here to continue."
+        "title": "Gelukt!",
+        "sub_title": "De vacature is aangemaakt!",
+        "continue": "Doorgaan."
       },
       "create_error": {
-        "title": "Error",
-        "sub_title": "Failed to create job!",
-        "continue": "Click here to continue."
+        "title": "Foutmelding",
+        "sub_title": "Het is niet gelukt de vacature aan te maken.",
+        "continue": "Opnieuw proberen."
       },
       "update_success": {
-        "title": "Success!",
-        "sub_title": "Job updated successfully!",
-        "continue": "Click here to continue."
+        "title": "Gelukt!",
+        "sub_title": "De vacature is succesvol aangepast!",
+        "continue": "Doorgaan."
       },
       "update_error": {
-        "title": "Error",
-        "continue": "Click here to continue."
+        "title": "Foutmelding",
+        "continue": "Opnieuw proberen."
       },
       "confirm_delete": {
-        "title": "Are you sure you want to delete?",
-        "sub_title": "This Job Offer will be removed permanently.",
-        "continue": "Delete"
+        "title": "Weet je zeker dat je het aangeboden contract wil verwijderen?",
+        "sub_title": "Het aangeboden contract wordt permanent verwijderd.",
+        "continue": "Verwijder"
       },
       "confirm_delete_attach": {
-        "title": "Are you sure you want to delete?",
-        "sub_title": "This file will be removed permanently.",
-        "continue": "Delete"
+        "title": "Weet je zeker dat je het bestand wilt verwijderen?",
+        "sub_title": "Het bestand wordt permanent verwijderd.",
+        "continue": "Verwijder"
       }
     }
   },
   "page_jobs_choose_candidate": {
-    "title": "Choose candidate",
-    "description": "Select an existing worker or add a new worker.",
+    "title": "Selecteer werknemer",
+    "description": "Zoek bestaande werknemer of voeg een nieuwe werknemer toe.",
     "button": {
-      "search": "Search candidates",
-      "new": "Add new candidate"
+      "search": "Werknemers zoeken",
+      "new": "Werknemer toevoegen"
     }
   },
   "page_jobs_select_candidate": {
-    "title": "Select candidate",
-    "description": "Search for workers by entering their name into the search field. Select the correct worker and click: Select candidate.",
+    "title": "Selecteer werknemer",
+    "description": "Zoek naar werknemers door hun naam in het zoekveld te typen. Selecteer vervolgens de juiste werknemer en klik op: Selecteer werknemer",
     "form": {
-      "search": "Search worker",
-      "hiring_company": "Select hiring company",
-      "hiring_manager": "Select hiring manager"
+      "search": "Zoek werknemer",
+      "hiring_company": "Selecteer inhurend bedrijf",
+      "hiring_manager": "Selecteer inhurende manager"
     },
     "button": {
-      "select": "Select candidate"
+      "select": "Selecteer werknemer"
     }
   },
   "page_offer_detail": {
-    "title": "Job offer details",
-    "status_actions": "Contract status & actions",
+    "title": "Contract aanbod",
+    "status_actions": "Contract status en acties",
     "offer_states": {
       "open": "Open",
-      "pending-worker": "Pending for worker",
-      "active": "Active",
-      "completed": "Completed"
+      "pending-worker": "In afwachting van werknemer",
+      "active": "Actief",
+      "completed": "Voltooid"
     },
-    "start_date": "Start date",
-    "hourly_wage": "Hourly wage",
-    "hours_per_week": "Hours per week",
-    "specifications": "Specifications",
-    "files": "Files",
-    "download_file": "Download File",
+    "start_date": "Startdatum",
+    "hourly_wage": "Uurloon",
+    "hours_per_week": "Uren per week",
+    "specifications": "Specificaties",
+    "files": "Bestanden",
+    "download_file": "Bestand downloaden",
     "form": {
       "cao": "CAO",
-      "wage": "Monthly Wage",
-      "hourly_wage": "Hourly wage",
-      "pay_rate": "Pay rate",
-      "hours_per_week": "Hours per week",
-      "payment_type": "Payment type",
-      "travel_expenses": "Travel expenses home-work compensation per km",
-      "travel_hours": "Travel expenses home-work time compensation per week ",
-      "other_expenses": "Other expenses default weekly compensation",
-      "one_way_distance": "Travel expenses home-work one way distance",
-      "start_date": "Start Date",
-      "end_date": "End Date"
+      "wage": "Maandloon",
+      "hourly_wage": "Uurloon",
+      "pay_rate": "Tarief",
+      "hours_per_week": "Uren per week",
+      "payment_type": "Valuta soort",
+      "travel_expenses": "Reiskosten woon-werkvergoeding per km",
+      "travel_hours": "Reiskosten vergoeding woon-werktijd per week",
+      "other_expenses": "Overige kosten standaard wekelijkse vergoeding",
+      "one_way_distance": "Reiskosten huis-werk enkele reis afstand",
+      "start_date": "Startdatum",
+      "end_date": "Einddatum"
     },
     "button": {
-      "adjust": "Adjust",
-      "decline": "Decline",
-      "sign": "Sign",
-      "accept": "Accept",
-      "lock": "Lock, sign and send",
-      "export_contract": "Export contract",
-      "view_contract": "View contract",
-      "upload": "Upload"
+      "adjust": "Aanpassen",
+      "decline": "Afwijzen",
+      "sign": "Tekenen",
+      "accept": "Accepteren",
+      "lock": "Vergrendelen, tekenen en versturen",
+      "export_contract": "Contract exporteren",
+      "view_contract": "Contract weergeven",
+      "upload": "Uploaden"
     },
     "modal": {
       "sign_contract": {
-        "title": "Sign contract",
-        "manager_description": "Read the contract carefully. If everything is correct, check the box and click on ‘Sign contract‘ to digitally sign the contract.",
-        "description": "Please read the attached contract carefully. Before signing choose your payment interval, discount on taxes preferences and select your working history as a flexworker. If everything is correct you can click the checkmark and digitally sign the contract by clicking: Sign contract.",
-        "payment_interval": "Payment interval",
-        "discount_on_taxes": "Discount on taxes",
-        "work_earlier_as_flexworker": "Worker earlier as flexworker",
-        "accept_term": "I hereby acknowledge and agree that I’ve read and agreed to the terms in this contract. I understand that by clicking on the “Sign contract” button below I digitally sign and bind myself to this contract.",
-        "view_contract": "View contract",
-        "sign_contract": "Sign contract"
+        "title": "Contract tekenen",
+        "manager_description": "Lees het contract aandachtig door. Als alles correct is zet je een vinkje en klik je op: ‘Contract tekenen’ om het contract digitaal te tekenen.",
+        "description": "Lees het contract aandachtig door. Kies voordat je tekent je betalingstermijn, gewenste toepassing van loonheffingskorting en je historie als uitzendkracht. Als alles correct is zet je een vinkje en klik je op: 'Contract tekenen' om het contract digitaal te tekenen.",
+        "payment_interval": "Betalingstermijn",
+        "discount_on_taxes": "Loonheffingskorting",
+        "work_earlier_as_flexworker": "Eerder gewerkt als uitzendkracht",
+        "accept_term": "Ik erken en ga ermee akkoord dat ik de voorwaarden in dit contract heb gelezen en ermee akkoord ga. Ik begrijp dat ik door op de knop: 'Contract tekenen' hieronder te klikken, dit contract digitaal onderteken en mij aan dit contract bind.",
+        "view_contract": "Contract weergeven",
+        "sign_contract": "Contract tekenen"
       },
       "sign_success": {
-        "title": "Success",
-        "sub_title": "You signed the contract successfully!",
-        "continue": "Continue"
+        "title": "Gelukt",
+        "sub_title": "Je hebt het contract getekend!",
+        "continue": "Doorgaan"
       },
       "sign_fail": {
-        "title": "Failure",
-        "sub_title": "Failed to sign the contract.",
-        "continue": "Continue"
+        "title": "Mislukt",
+        "sub_title": "Het tekenen van het contract is niet gelukt.",
+        "continue": "Doorgaan"
       },
       "decline_fail": {
-        "title": "Failure",
-        "sub_title": "Failed to decline the contract.",
-        "continue": "Continue"
+        "title": "Mislukt",
+        "sub_title": "Het afwijzen van het contract is niet gelukt.",
+        "continue": "Doorgaan"
       },
       "update_fail": {
-        "title": "Failure",
-        "sub_title": "Failed to update the contract.",
-        "continue": "Continue"
+        "title": "Mislukt",
+        "sub_title": "Het aanpassen van het contract is niet gelukt.",
+        "continue": "Doorgaan"
       },
       "get_fail": {
-        "title": "Failure",
-        "sub_title": "Failed to get the contract.",
-        "continue": "Continue"
+        "title": "Mislukt",
+        "sub_title": "Het verkrijgen van het contract is niet gelukt.",
+        "continue": "Doorgaan"
       },
       "attach_fail": {
-        "title": "Failure",
-        "sub_title": "Failed to attach a file.",
-        "continue": "continue"
+        "title": "Mislukt",
+        "sub_title": "Het toevoegen van een bestand is niet gelukt.",
+        "continue": "Doorgaan"
       },
       "confirm_delete": {
-        "title": "Are you sure you want to delete?",
-        "sub_title": "This file will be removed permanently.",
-        "continue": "Delete"
+        "title": "Weet je zeker dat je het bestand wilt verwijderen?",
+        "sub_title": "Het bestand zal permanent verwijderd worden.",
+        "continue": "Verwijder"
       },
       "delete_success": {
-        "title": "Success",
-        "sub_title": "The attachment is successfully removed!",
-        "continue": "Continue"
+        "title": "Gelukt",
+        "sub_title": "Het bestand is succesvol verwijderd!",
+        "continue": "Doorgaan"
       },
       "upload_fail": {
-        "title": "Failure",
-        "sub_title": "Failed to upload file.",
-        "continue": "Continue"
+        "title": "Mislukt",
+        "sub_title": "Het uploaden van het bestand is niet gelukt.",
+        "continue": "Doorgaan"
       },
       "lock_fail": {
-        "title": "Failure",
-        "sub_title": "Failed to lock the contract.",
-        "continue": "Continue"
+        "title": "Mislukt",
+        "sub_title": "Het vergrendelen van het contract is niet gelukt.",
+        "continue": "Doorgaan"
       },
       "adjust_fail": {
-        "title": "Failure",
-        "sub_title": "Failed to adjust the contract.",
-        "continue": "Continue"
+        "title": "Mislukt",
+        "sub_title": "Het aanpassen van het contract is niet gelukt.",
+        "continue": "Doorgaan"
       },
       "accept_fail": {
-        "title": "Failure",
-        "sub_title": "Please accept the agreement.",
-        "continue": "Continue"
+        "title": "Mislukt",
+        "sub_title": "Het accepteren van het contract is niet gelukt.",
+        "continue": "Doorgaan"
       }
     },
     "contract": {
@@ -849,305 +839,391 @@
     }
   },
   "page_matching": {
-    "title": "Matching",
-    "match_detail": "Matching detail",
-    "match_result": "{candidates} Candidates matches "
+    "title": "Matchen",
+    "match_detail": "Match eigenschappen",
+    "match_result": "{candidates} geschikte werknemers gevonden "
   },
   "page_matching_detail": {
-    "title": "Matching detail"
+    "title": "Match eigenschappen"
   },
   "page_setting": {
-    "title": "Settings",
+    "title": "Instellingen",
     "account_setting": {
-      "title": "User settings",
+      "title": "Gebruikersinstellingen",
       "form": {
-        "first_name": "First name",
-        "last_name": "Last name",
-        "middle_name": "Middle name",
-        "profession": "Profession",
-        "gender": "Gender",
+        "first_name": "Voornaam",
+        "last_name": "Achternaam",
+        "middle_name": "Tussenvoegsel",
+        "profession": "Vakgebied",
+        "gender": "Geslacht",
         "man": "Man",
-        "woman": "Woman",
-        "other": "Other",
-        "birthday": "Date of birth",
-        "bank_account_number": "Bank account number",
-        "overview": "About me",
-        "phone": "Phone",
-        "country": "Country",
-        "city": "City",
-        "street": "Street",
-        "house_number": "House number",
-        "postal_code": "Postal code",
-        "password": "Password",
-        "c_password": "Confirm password",
-        "honorific_title": "Honorific title",
-        "social_security_number": "Social security number",
-        "id_type": "ID type",
-        "id_exp_date": "ID expiration date",
-        "id_number": "ID number",
-        "id_image": "Upload ID",
-        "id": "National ID",
-        "passport": "Passport"
+        "woman": "Vrouw",
+        "other": "Overig",
+        "birthday": "Geboortedatum",
+        "bank_account_number": "Bankrekening nummer",
+        "overview": "Over mij",
+        "phone": "Telefoonnummer",
+        "country": "Land",
+        "city": "Plaatsnaam",
+        "street": "Straat",
+        "house_number": "Huisnummer",
+        "postal_code": "Postcode",
+        "password": "Wachtwoord",
+        "c_password": "Herhaal wachtwoord",
+        "honorific_title": "Titel",
+        "social_security_number": "Burgerservicenummer",
+        "id_type": "Legitimatie type",
+        "id_exp_date": "Geldig tot",
+        "id_number": "Legitimatie nummer",
+        "id_image": "Legitimatie uploaden",
+        "id": "ID-kaart",
+        "passport": "Paspoort"
       },
       "button": {
-        "update": "Update setting"
+        "update": "Wijzigingen opslaan"
       }
     },
     "system_setting": {
-      "title": "System setting",
+      "title": "Systeeminstellingen",
       "form": {
-        "back_color": "Background color",
-        "font_family": "Font family",
-        "notifications": "Notifications",
-        "mail_notifications": "Mail notifications",
-        "phone_message": "Phone nessage",
-        "timezone": "Timezone",
-        "select_option": "Select option",
-        "week_start_at": "Week start at"
+        "back_color": "Achtergrond kleur",
+        "font_family": "Lettertype",
+        "notifications": "Notificaties",
+        "mail_notifications": "E-mailnotificaties",
+        "phone_message": "Telefoonbericht",
+        "timezone": "Tijdzone",
+        "select_option": "Naar keuze",
+        "week_start_at": "Week begint op"
       },
       "button": {
-        "update": "Update setting"
+        "update": "Wijzigingen opslaan"
       }
     },
     "reset_password": {
-      "title": "Change password",
+      "title": "Wachtwoord veranderen",
       "form": {
-        "old_password": "Old password",
-        "new_password": "New password",
-        "confirm": "Confirm"
+        "old_password": "Oud wachtwoord",
+        "new_password": "Nieuw wachtwoord",
+        "confirm": "Nieuw wachtwoord herhalen"
       },
       "button": {
-        "update": "Reset"
+        "update": "Opslaan"
       }
     },
     "language_setting": {
-      "title": "Language Setting",
+      "title": "Taal instellingen",
       "form": {
-        "select_language": "Select Language"
+        "select_language": "Selecteer taal"
       }
     },
     "notification_setting": {
-      "title": "Notification setting"
+      "title": "Notificatie instellingen"
     },
     "other_setting": {
-      "title": "Other setting"
+      "title": "Overige instellingen"
     },
     "modal": {
       "account_change": {
-        "title": "Successfully changed account settings",
-        "sub_title": "Thank you",
-        "continue": "Continue"
+        "title": "Je aanpassingen zijn succesvol opgeslagen",
+        "sub_title": "Bedankt",
+        "continue": "Doorgaan"
       },
       "system_change": {
-        "title": "Successfully changed system settings",
-        "sub_title": "Thank you",
-        "continue": "Continue"
+        "title": "De aanpassingen zijn succesvol opgeslagen",
+        "sub_title": "Bedankt",
+        "continue": "Doorgaan"
       },
       "reset_password": {
-        "success_title": "Successfully updated your password",
-        "error_title": "Failed to update your password",
-        "success_sub_title": "Thank you",
-        "continue": "Continue"
+        "success_title": "Je wachtwoord is succesvol aangepast",
+        "error_title": "Het aanpassen van je wachtwoord is mislukt",
+        "success_sub_title": "Bedankt",
+        "continue": "Doorgaan"
       }
     }
   },
   "page_timesheets": {
-    "title": "Timesheets & expenses",
-    "sub_title": "We have found {timesheetsCount} timesheets and {expensesCount} expenses",
-    "add_expenses": "Add expenses",
+    "title": "Uren & Onkosten Declaraties",
+    "sub_title": "We hebben {timesheetsCount} uren declaraties en {expensesCount} onkosten declaraties gevonden",
+    "add_expenses": "Onkosten indienen",
     "table": {
-      "kind": "Kind",
-      "worker": "Worker",
+      "kind": "Soort",
       "week": "Week",
-      "hand_in_date": "Hand In date",
-      "hours": "Hours",
+      "hand_in_date": "Inlever datum",
+      "hours": "Uren",
       "price": "€",
-      "hiring_manager": "Hiring manager",
-      "hiring_company": "Hiring Company",
+      "worker": "Werknemer",
+      "hiring_manager": "Inhurende manager",
+      "hiring_company": "Inhurend bedrijf",
       "status": "Status",
-      "actions": "Actions",
-      "view_timesheet": "View timesheet",
-      "view_expense": "View expense"
+      "actions": "Acties",
+      "view_timesheet": "Uren declaraties weergeven",
+      "view_expense": "Onkosten declaraties weergeven"
     },
     "filter": {
-      "kind": "Kind",
+      "kind": "Soort",
       "timesheets": "Timesheets",
       "expenses": "Expenses",
       "week": "Week",
       "year": "Year",
-      "worker": "Worker",
-      "hiring_manager": "Hirining Manager",
-      "hiring_company": "Hiring Company",
+      "worker": "Werknemer",
+      "hiring_manager": "Inhurende manager",
+      "hiring_company": "Inhurend bedrijf",
       "status": "Status"
     },
     "modal": {
-      "add_hours": "Add hours",
-      "worker": "Worker",
-      "hiring_manager": "Hiring manager",
+      "add_hours": "Uren toevoegen",
+      "worker": "Werknemer",
+      "hiring_manager": "Inhurende manager",
       "week": "Week",
-      "date": "Date",
-      "hours": "Hours",
-      "normal_wage": "Normal wage",
-      "adjusted_wage": "Adjusted wage",
-      "fill_in_total_traveled_km": "Fill in total traveled km",
+      "date": "Datum",
+      "hours": "Uren",
+      "normal_wage": "Reguliere uren",
+      "adjusted_wage": "Toeslag uren",
+      "fill_in_total_traveled_km": "Totale reisafstand woon-werk",
       "percentage": "Percentage",
-      "travel_expenses": "Travel Expenses",
-      "adjust_travel_expenses": "Adjust travel expenses",
-      "save_hours": "Save hours",
-      "send_hours": "Send hours",
-      "approve_hours": "Approve hours",
-      "decline_hours": "Decline hours",
-      "adjust_hours": "Adjust hours",
-      "save_expenses": "Save expenses",
-      "send_expenses": "Send expenses",
-      "approve_expenses": "Approve expenses",
-      "decline_expenses": "Decline expenses",
-      "adjust_expenses": "Adjust expenses",
-      "through": "From {from} to {to}",
+      "travel_expenses": "Reiskosten woon-werk",
+      "adjust_travel_expenses": "Afstand woon-werk",
+      "save_hours": "Opslaan",
+      "send_hours": "Versturen",
+      "approve_hours": "Goedkeuren",
+      "decline_hours": "Afkeuren",
+      "adjust_hours": "Aanpassen",
+      "save_expenses": "Opslaan",
+      "send_expenses": "Versturen",
+      "approve_expenses": "Goedkeuren",
+      "decline_expenses": "Afkeuren",
+      "adjust_expenses": "Aanpassen",
+      "through": "Van {from} t/m {to}",
       "worked_overview_1": "In",
       "worked_overview_2": "week",
-      "worked_overview_3": "you worked a total of",
-      "worked_overview_4": "hours",
+      "worked_overview_3": "heb je totaal",
+      "worked_overview_4": "uur gewerkt",
       "worked_overview_5": "",
       "delete_confirm": {
-        "title": "Are you sure you want to {method} this {type}?",
+        "title": "Weet je zeker dat je deze declaratie wilt leegmaken?",
         "sub_title": "",
-        "continue": "Continue"
+        "continue": "Leegmaken"
       },
       "delete_success": {
-        "title": "The {type} is deleted successfully.",
+        "title": "deze declaratie is succesvol verwijderd.",
+        "sub_title": "",
+        "continue": "Ok"
+      }
+    }
+  },
+  "page_workerTimesheets": {
+    "title": "Uren & Onkosten Declaraties",
+    "sub_title": "We hebben {timesheetsCount} uren declaraties en {expensesCount} onkosten declaraties gevonden",
+    "add_expenses": "Onkosten indienen",
+    "table": {
+      "kind": "Soort",
+      "week": "Week",
+      "hand_in_date": "Inlever datum",
+      "hours": "Uren",
+      "price": "€",
+      "hiring_manager": "Inhurende manager",
+      "hiring_company": "Inhurend bedrijf",
+      "status": "Status",
+      "actions": "Acties",
+      "view_timesheet": "Uren declaraties weergeven",
+      "view_expense": "Onkosten declaraties weergeven"
+    },
+    "filter": {
+      "kind": "Soort",
+      "timesheets": "Timesheets",
+      "expenses": "Expenses",
+      "hand_in_date": "Inlever datum",
+      "week": "Week",
+      "status": "Status"
+    },
+    "modal": {
+      "add_hours": "Uren toevoegen",
+      "worker": "Werknemer",
+      "hiring_manager": "Inhurende manager",
+      "week": "Week",
+      "date": "Datum",
+      "hours": "Uren",
+      "normal_wage": "Reguliere uren",
+      "adjusted_wage": "Toeslag uren",
+      "fill_in_total_traveled_km": "Totale reisafstand woon-werk",
+      "percentage": "Percentage",
+      "travel_expenses": "Reiskosten woon-werk",
+      "adjust_travel_expenses": "Afstand woon-werk",
+      "save_hours": "Opslaan",
+      "send_hours": "Versturen",
+      "approve_hours": "Goedkeuren",
+      "decline_hours": "Afkeuren",
+      "adjust_hours": "Aanpassen",
+      "save_expenses": "Opslaan",
+      "send_expenses": "Versturen",
+      "approve_expenses": "Goedkeuren",
+      "decline_expenses": "Afkeuren",
+      "adjust_expenses": "Aanpassen",
+      "through": "Van {from} t/m {to}",
+      "worked_overview_1": "In",
+      "worked_overview_2": "week",
+      "worked_overview_3": "heb je totaal",
+      "worked_overview_4": "uur gewerkt",
+      "worked_overview_5": "",
+      "delete_confirm": {
+        "title": "Weet je zeker dat je deze declaratie wilt leegmaken?",
+        "sub_title": "",
+        "continue": "Leegmaken"
+      },
+      "delete_success": {
+        "title": "deze declaratie is succesvol verwijderd.",
         "sub_title": "",
         "continue": "Ok"
       }
     }
   },
   "page_users_create": {
-    "title": "Add users",
-    "description": "Add a new user by sending an email invitation or manually add a user.",
+    "title": "Gebruiker toevoegen",
+    "description": "Voeg een nieuwe gebruiker toe door een uitnodiging per e-mail te sturen of maak handmatig een nieuwe gebruiker aan.",
     "button": {
-      "invite": "Invite Users to sign up",
-      "manual": "Manually Add Users"
+      "invite": "Gebruiker uitnodigen",
+      "manual": "Handmatig invoeren"
     }
   },
   "page_users_create_invite": {
-    "title": "New User Invitation",
-    "description": "Fill out the users email address, role and click: Send invitation.",
+    "title": "Nieuwe gebruikers uitnodigen",
+    "description": "Vul het e-mailadres van de gebruiker in, kies zijn of haar rol en verstuur de uitnodiging.",
     "form": {
-      "company_list": "Select company",
+      "company_list": "Selecteer bedrijf",
       "manager": "Manager",
-      "worker": "Worker",
-      "owner": "Owner",
-      "email": "E-mail address"
+      "worker": "Werknemer",
+      "owner": "Beheerder",
+      "email": "E-mailadres"
     },
     "button": {
-      "send": "Send invitation"
+      "send": "Verstuur uitnodiging"
     },
     "modal": {
       "invite": {
-        "title": "Successfully invited this user",
-        "sub_title": "Thank you",
-        "view_candidates": "View candidates",
-        "invite_more": "Invite more"
+        "title": "Het uitnodigen van de gebruiker is gelukt!",
+        "sub_title": "Bedankt",
+        "view_candidates": "Werknemers weergeven",
+        "invite_more": "Nog iemand uitnodigen"
       }
     }
   },
   "page_users_create_manual": {
-    "title": "Manually add user",
-    "description": "Fill out known user details and click: Create user. The user will receive a confirmation email with username and password.",
+    "title": "Handmatig gebruiker toevoegen",
+    "description": "Vul de gewenste gegevens van de gebruiker in en klik op: Gebruiker aanmaken. De gebruiker zal vervolgens een e-mail krijgen met zijn wachtwoord.",
     "form": {
-      "company_list": "Select company",
+      "company_list": "Selecteer bedrijf",
       "manager": "Manager",
-      "worker": "Worker",
-      "owner": "Owner",
-      "email": "E-mail address",
-      "role": "Role",
-      "firstName": "First name",
-      "lastName": "Last name",
-      "middleName": "Middle name",
-      "profession": "Profession",
+      "worker": "Werknemer",
+      "owner": "Beheerder",
+      "email": "E-mailadres",
+      "role": "Rol",
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "middleName": "Tussenvoegsel",
+      "profession": "Vakgebied",
       "male": "Man",
-      "female": "Woman",
-      "gender": "Gender",
-      "other": "Other",
-      "phone": "Phone number",
-      "birthday": "Date of birth",
-      "street-house": "Streetname & number",
-      "bankNumber": "Bank Account number",
-      "postalCode": "Postal code",
-      "city": "City",
-      "password": "Password",
-      "repeat_password": "Repeat password",
-      "overview": "Overview",
-      "country": "Country",
-      "street": "Street",
-      "house_number": "House number",
-      "postal_code": "Postal code",
-      "c_password": "Confirm password",
-      "honorific_title": "Honorific title",
-      "social_security_number": "Social security number",
-      "id_type": "ID type",
-      "id_exp_date": "ID expiration date",
-      "id_number": "ID number",
-      "id_image": "Upload ID",
-      "id": "National ID",
-      "passport": "Passport"
+      "female": "Vrouw",
+      "gender": "Geslacht",
+      "other": "Overige",
+      "phone": "Telefoonnummer",
+      "birthday": "Geboortedatum",
+      "street-house": "Straatnaam & huisnummer",
+      "bankNumber": "Bankrekening nummer",
+      "postalCode": "Postcode",
+      "city": "Plaatsnaam",
+      "password": "Wachtwoord",
+      "repeat_password": "Herhaal wachtwoord",
+      "overview": "Over mij",
+      "country": "Land",
+      "street": "Straat",
+      "house_number": "Huisnummer",
+      "postal_code": "Postcode",
+      "c_password": "Herhaal wachtwoord",
+      "honorific_title": "Titel",
+      "social_security_number": "Burgerservicenummer",
+      "id_type": "Legitimatie type",
+      "id_exp_date": "Geldig tot",
+      "id_number": "Legitimatie nummer",
+      "id_image": "Legitimatie uploaden",
+      "id": "ID-kaart",
+      "passport": "Paspoort"
     },
     "button": {
-      "create": "Create user"
+      "create": "Gebruiker aanmaken"
     },
     "modal": {
       "create": {
-        "title": "Successfully created this user",
-        "sub_title": "Thank you",
-        "continue": "Continue"
+        "title": "De gebruiker is succesvol aangemaakt",
+        "sub_title": "De inloggegevens zijn per e-mail verstuurd",
+        "continue": "Doorgaan"
       }
     }
   },
   "page_offers": {
-    "title": "Job offers",
-    "sub_title": "We have found {offers} offers",
+    "title": "Contracten",
+    "sub_title": "We hebben {offers} contracten gevonden",
     "table": {
-      "image": "Image",
-      "worker": "Worker",
+      "image": "Logo",
+      "worker": "Werknemer",
       "manager": "Manager",
-      "hiring_manager": "Hiring Manager",
-      "company": "Company",
-      "hiring_company": "Hiring Company",
-      "job": "Job title",
-      "payment_type": "Payment type",
-      "payment_amount": "Payment amount",
-      "created_at": "Created at",
-      "start_date": "Start Date",
-      "end_date": "End Date",
+      "hiring_manager": "Inhurende Manager",
+      "company": "Bedrijf",
+      "hiring_company": "Inhurend bedrijf",
+      "job": "Vacaturetitel",
+      "payment_type": "Valuta soort",
+      "payment_amount": "Hoogte betaling",
+      "created_at": "Aangemaakt op",
+      "start_date": "Startdatum",
+      "end_date": "Einddatum",
       "status": "Status",
-      "view_offer": "View job offer",
-      "actions": "Actions"
+      "view_offer": "Contract weergeven",
+      "actions": "Acties"
     },
     "filter": {
       "title": "Job Title",
       "worker_name": "Worker Name",
-      "hiring_company": "Hiring Company",
-      "type": "Type",
-      "worker_contract": "Worker contract",
-      "company_contract": "Company contract",
-      "start_date": "Start date",
-      "end_date": "End date",
+      "hiring_company": "Inhurend bedrijf",
+      "start_date": "Startdatum",
+      "end_date": "Einddatum",
       "status": "Status"
     },
     "modal": {
       "disallow": {
-        "title": "You can't access to the page",
-        "sub_title": "Manager is currently editing the job offer details",
-        "continue": "Continue"
+        "title": "Je hebt geen toegang tot deze pagina",
+        "sub_title": "Je manager is momenteel het contract aan het aanpassen",
+        "continue": "Doorgaan"
+      }
+    }
+  },
+  "page_workerOffers": {
+    "title": "Contracten",
+    "sub_title": "We hebben {offers} contracten gevonden",
+    "table": {
+      "image": "Logo",
+      "manager": "Manager",
+      "job": "Vacaturetitel",
+      "created_at": "Aangemaakt op",
+      "status": "Status",
+      "actions": "Acties"
+    },
+    "filter": {
+      "title": "Job Title",
+      "status": "Status"
+    },
+    "modal": {
+      "disallow": {
+        "title": "Je hebt geen toegang tot deze pagina",
+        "sub_title": "Je manager is momenteel het contract aan het aanpassen",
+        "continue": "Doorgaan"
       }
     }
   },
   "page_welcome": {
-    "title": "Welcome to Hiway!",
-    "sub_title": "Your registration is currently pending!",
-    "description": "Once your registration has been processed you will be able to use Hiway.",
+    "title": "Welkom bij Hiway!",
+    "sub_title": "Je aanmelding is momenteel nog niet verwerkt.",
+    "description": "Zodra je aanmelding verwerkt is kun je gebruik maken van Hiway.",
     "button": {
-      "back": "Back to Login"
+      "back": "Terug naar inloggen"
     }
   }
 }

@@ -467,32 +467,38 @@
                 style="top: 15px;right: 11px;"
               />
             </div>
+            <b-form-invalid-feedback
+              class="d-block"
+              v-if="identificationImageError"
+            >
+              {{ $t(`validation.${identificationImageError}`) }}
+            </b-form-invalid-feedback>
           </div>
         </div>
-        <!--        <div class="form-element d-flex align-items-center mt-5">-->
-        <!--          <label class="flex-1">-->
-        <!--            {{ $t("page_users_create_manual.form.passport") }}:-->
-        <!--          </label>-->
-        <!--          <div class="flex-3">-->
-        <!--            <b-form-input-->
-        <!--              type="text"-->
-        <!--              required-->
-        <!--              class="custom-input"-->
-        <!--              v-model="form.passport"-->
-        <!--            />-->
-        <!--            <b-form-invalid-feedback class="d-block" v-if="passportError">-->
-        <!--              {{ $t(`validation.${passportError}`) }}-->
-        <!--            </b-form-invalid-feedback>-->
-        <!--          </div>-->
-        <!--        </div>-->
-        <b-form-invalid-feedback class="d-block mt-5" v-if="error">
-          {{ $t(`${error}`) }}
-        </b-form-invalid-feedback>
-        <div class="form-element mt-5 text-center">
-          <button class="btn btn-blue large" @click="createUser">
-            {{ $t("page_users_create_manual.button.create") }}
-          </button>
-        </div>
+      </div>
+      <!--        <div class="form-element d-flex align-items-center mt-5">-->
+      <!--          <label class="flex-1">-->
+      <!--            {{ $t("page_users_create_manual.form.passport") }}:-->
+      <!--          </label>-->
+      <!--          <div class="flex-3">-->
+      <!--            <b-form-input-->
+      <!--              type="text"-->
+      <!--              required-->
+      <!--              class="custom-input"-->
+      <!--              v-model="form.passport"-->
+      <!--            />-->
+      <!--            <b-form-invalid-feedback class="d-block" v-if="passportError">-->
+      <!--              {{ $t(`validation.${passportError}`) }}-->
+      <!--            </b-form-invalid-feedback>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <b-form-invalid-feedback class="d-block mt-5" v-if="error">
+        {{ $t(`${error}`) }}
+      </b-form-invalid-feedback>
+      <div class="form-element mt-5 text-center">
+        <button class="btn btn-blue large" @click="createUser">
+          {{ $t("page_users_create_manual.button.create") }}
+        </button>
       </div>
     </div>
   </div>
@@ -558,6 +564,7 @@ export default {
       repeatPasswordError: "",
       passportError: "",
       identificationTypeError: "",
+      identificationImageError: "",
       error: "",
       showPassword: false,
       showRepeatPassword: false,
@@ -613,6 +620,12 @@ export default {
         valid = false;
       } else {
         this.identificationTypeError = "";
+      }
+      if (!this.form.identificationImage.name && this.form.role === "worker") {
+        this.identificationImageError = "THIS_FIELD_IS_REQUIRED";
+        valid = false;
+      } else {
+        this.identificationImageError = "";
       }
       return valid;
     },

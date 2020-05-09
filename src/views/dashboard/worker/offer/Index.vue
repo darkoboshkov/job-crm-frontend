@@ -6,6 +6,15 @@
     <p class="sub-title">
       {{ $t("page_offers.sub_title", { offers: this.totalRows }) }}
     </p>
+    <hr />
+    <div class="d-flex justify-content-between">
+      <table-filter
+        class="candidate-filters"
+        @table-filter="filter"
+        :title="'Filter Options'"
+        :options="filterOptions"
+      />
+    </div>
     <div class="offers-list mt-3">
       <vue-good-table
         mode="remote"
@@ -61,58 +70,23 @@
 
 <script>
 import offersApi from "@/services/api/joboffers";
+import TableFilter from "@/components/common/TableFilter";
+import { workerOffersTable } from "@/constants";
 
 export default {
   name: "OfferList",
+  components: { TableFilter },
   data() {
     return {
       isLoading: true,
-      paginationOptions: {
-        enabled: true,
-        perPage: 20
-      },
-      columns: [
-        {
-          label: this.$t("page_offers.table.image"),
-          field: "image",
-          name: "image"
-        },
-        {
-          label: this.$t("page_offers.table.job"),
-          field: "job",
-          name: "job"
-        },
-        {
-          label: this.$t("page_offers.table.manager"),
-          field: "manager",
-          name: "manager"
-        },
-        {
-          label: this.$t("page_offers.table.created_at"),
-          field: "createdAt",
-          name: "createdAt"
-        },
-        {
-          label: this.$t("page_offers.table.status"),
-          field: "status",
-          name: "status"
-        },
-        {
-          label: this.$t("page_offers.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ],
+      columns: workerOffersTable.columns,
+      filterOptions: workerOffersTable.filterOptions,
+      paginationOptions: workerOffersTable.pagination.paginationOptions,
+      serverParams: workerOffersTable.pagination.serverParams,
       rows: [],
       searchTerm: "",
       matched: false,
-      totalRows: 0,
-      serverParams: {
-        page: 1,
-        limit: 20,
-        sort: "",
-        order: ""
-      }
+      totalRows: 0
     };
   },
   computed: {
@@ -161,6 +135,7 @@ export default {
     getActiveOffers() {
       offersApi
         .getAllByWorker({
+          ...this.serverParams,
           companyId: this.companyId
         })
         .then(res => {
@@ -175,6 +150,20 @@ export default {
           });
           this.totalRows = res.totalDocs;
         });
+    },
+    filter(v) {
+      const filter = { or: [], and: [] };
+      const title = v[0].value;
+      const status = v[1].value;
+
+      if (title) {
+        filter.and.push({ key: "job.title", value: title, opt: "in" });
+      }
+      if (status) {
+        filter.and.push({ key: "status", value: status, opt: "eq" });
+      }
+      this.serverParams = Object.assign({}, this.serverParams, { filter });
+      this.getActiveOffers();
     }
   }
 };

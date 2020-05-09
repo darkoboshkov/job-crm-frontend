@@ -107,6 +107,7 @@
 import TableFilter from "@/components/common/TableFilter";
 import jobsApi from "@/services/api/jobs";
 import { jobsTable } from "@/constants";
+import usersApi from "@/services/api/users";
 
 export default {
   name: "JobList",
@@ -115,6 +116,7 @@ export default {
     return {
       isLoading: true,
       rows: [],
+      managers: [],
       searchTerm: "",
       matched: false,
       totalRows: 0,
@@ -145,6 +147,7 @@ export default {
   },
   mounted() {
     this.getJobs();
+    this.getManagers();
   },
   methods: {
     imageView(mode) {
@@ -185,12 +188,14 @@ export default {
       const location = v[1].value;
       const startDateFrom = v[2].items[0].value;
       const startDateTo = v[2].items[1].value;
-      const wageMin = Number(v[3].items[0].value);
-      const wageMax = Number(v[3].items[1].value);
-      const rateMin = Number(v[4].items[0].value);
-      const rateMax = Number(v[4].items[1].value);
-      const manager = v[5].value;
-      const status = v[6].value;
+      const endDateFrom = v[3].items[0].value;
+      const endDateTo = v[3].items[1].value;
+      const wageMin = Number(v[4].items[0].value);
+      const wageMax = Number(v[4].items[1].value);
+      const rateMin = Number(v[5].items[0].value);
+      const rateMax = Number(v[5].items[1].value);
+      const manager = v[6].value;
+      const status = v[7].value;
 
       if (title) {
         filter.and.push({ key: "title", value: title, opt: "in" });
@@ -203,6 +208,12 @@ export default {
       }
       if (startDateTo) {
         filter.and.push({ key: "startDate", value: startDateTo, opt: "lte" });
+      }
+      if (endDateFrom) {
+        filter.and.push({ key: "endDate", value: endDateFrom, opt: "gte" });
+      }
+      if (endDateTo) {
+        filter.and.push({ key: "endDate", value: endDateTo, opt: "lte" });
       }
       if (wageMin) {
         filter.and.push({ key: "hourlyWage", value: wageMin, opt: "gte" });
@@ -217,7 +228,7 @@ export default {
         filter.and.push({ key: "payRate", value: rateMax, opt: "lte" });
       }
       if (manager) {
-        filter.and.push({ key: "managerId", value: manager, opt: "eq" });
+        filter.and.push({ key: "manager._id", value: manager, opt: "eq" });
       }
       if (status) {
         filter.and.push({ key: "status", value: status, opt: "eq" });
@@ -261,6 +272,24 @@ export default {
         .then(res => {
           this.$store.dispatch("updateShowErrorModal", false);
           this.getJobs();
+        });
+    },
+    getManagers() {
+      usersApi
+        .getAll({
+          filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
+          pagination: 0
+        })
+        .then(res => {
+          this.managers = res.docs;
+          this.filterOptions[6].options = [];
+          this.filterOptions[6].options.push({ text: "", value: "" });
+          this.managers?.forEach(item => {
+            this.filterOptions[6].options.push({
+              text: this.getFullName(item),
+              value: item._id
+            });
+          });
         });
     }
   }

@@ -122,6 +122,8 @@ import { TIME_SHEET_STATE, timesheetsTable } from "@/constants";
 import workLogApi from "@/services/api/workLog";
 import TimeSheetsModal from "./TimeSheetsModal";
 import ExpensesModal from "./ExpensesModal";
+import companyApi from "@/services/api/companies";
+import usersApi from "@/services/api/users";
 
 export default {
   name: "timesheets",
@@ -136,6 +138,8 @@ export default {
       isLoading: true,
       totalRows: 0,
       rows: [],
+      companies: [],
+      managers: [],
       filterOptions: timesheetsTable.filterOptions,
       serverParams: timesheetsTable.pagination.serverParams,
       paginationOptions: timesheetsTable.pagination.paginationOptions,
@@ -153,6 +157,8 @@ export default {
     this.getTimeSheets();
     this.getTimeSheetsCount();
     this.getExpensesCount();
+    this.getCompanies();
+    this.getManagers();
   },
   computed: {
     columns() {
@@ -249,16 +255,45 @@ export default {
       this.getTimeSheets();
     },
     filter(v) {
-      this.serverParams = Object.assign({}, this.serverParams, {
-        type: v[0].value,
-        week: v[1].value,
-        year: v[2].value,
-        worker: v[3].value,
-        hiring_manager: v[4].value,
-        hiring_company: v[5].value,
-        status: v[6].value
-      });
-      console.log(this.serverParams);
+      const filter = { or: [], and: [] };
+      const type = v[0].value;
+      const week = v[1].value;
+      const year = v[2].value;
+      const worker = v[3].value;
+      const hiring_manager = v[4].value;
+      const hiring_company = v[5].value;
+      const status = v[6].value;
+
+      if (type) {
+        filter.and.push({ key: "type", value: type, opt: "eq" });
+      }
+      if (week) {
+        filter.and.push({ key: "week", value: week, opt: "eq" });
+      }
+      if (year) {
+        filter.and.push({ key: "year", value: year, opt: "eq" });
+      }
+      if (worker) {
+        filter.and.push({ key: "worker._id", value: worker, opt: "eq" });
+      }
+      if (hiring_manager) {
+        filter.and.push({
+          key: "hiringManager._id",
+          value: hiring_manager,
+          opt: "eq"
+        });
+      }
+      if (hiring_company) {
+        filter.and.push({
+          key: "hiringCompany.id",
+          value: hiring_company,
+          opt: "eq"
+        });
+      }
+      if (status) {
+        filter.and.push({ key: "status", value: status, opt: "eq" });
+      }
+      this.serverParams = Object.assign({}, this.serverParams, { filter });
       this.getTimeSheets();
     },
     goToTimeSheet(props) {
@@ -295,6 +330,37 @@ export default {
           this.deleteWorkLog(props);
         }
       });
+    },
+    getCompanies() {
+      companyApi.getAll().then(res => {
+        this.companies = res;
+        this.filterOptions[5].options = [];
+        this.filterOptions[5].options.push({ text: "", value: "" });
+        this.companies?.forEach(item => {
+          this.filterOptions[5].options.push({
+            text: item.name,
+            value: item._id
+          });
+        });
+      });
+    },
+    getManagers() {
+      usersApi
+        .getAll({
+          filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
+          pagination: 0
+        })
+        .then(res => {
+          this.managers = res.docs;
+          this.filterOptions[4].options = [];
+          this.filterOptions[4].options.push({ text: "", value: "" });
+          this.managers?.forEach(item => {
+            this.filterOptions[4].options.push({
+              text: this.getFullName(item),
+              value: item._id
+            });
+          });
+        });
     }
   }
 };

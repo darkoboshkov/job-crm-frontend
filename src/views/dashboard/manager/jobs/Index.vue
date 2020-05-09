@@ -109,6 +109,7 @@
 import TableFilter from "@/components/common/TableFilter";
 import jobsApi from "@/services/api/jobs";
 import { jobsTable } from "@/constants";
+import usersApi from "@/services/api/users";
 
 export default {
   name: "JobList",
@@ -117,6 +118,7 @@ export default {
     return {
       isLoading: true,
       rows: [],
+      managers: [],
       searchTerm: "",
       matched: false,
       totalRows: 0,
@@ -150,6 +152,7 @@ export default {
   },
   mounted() {
     this.getJobs();
+    this.getManagers();
   },
   methods: {
     imageView(mode) {
@@ -190,7 +193,60 @@ export default {
         this.goToJob(params);
       }
     },
-    filter(v) {},
+    filter(v) {
+      const filter = { or: [], and: [] };
+      const title = v[0].value;
+      const location = v[1].value;
+      const startDateFrom = v[2].items[0].value;
+      const startDateTo = v[2].items[1].value;
+      const endDateFrom = v[3].items[0].value;
+      const endDateTo = v[3].items[1].value;
+      const wageMin = Number(v[4].items[0].value);
+      const wageMax = Number(v[4].items[1].value);
+      const rateMin = Number(v[5].items[0].value);
+      const rateMax = Number(v[5].items[1].value);
+      const manager = v[6].value;
+      const status = v[7].value;
+
+      if (title) {
+        filter.and.push({ key: "title", value: title, opt: "in" });
+      }
+      if (location) {
+        filter.and.push({ key: "location", value: location, opt: "in" });
+      }
+      if (startDateFrom) {
+        filter.and.push({ key: "startDate", value: startDateFrom, opt: "gte" });
+      }
+      if (startDateTo) {
+        filter.and.push({ key: "startDate", value: startDateTo, opt: "lte" });
+      }
+      if (endDateFrom) {
+        filter.and.push({ key: "endDate", value: endDateFrom, opt: "gte" });
+      }
+      if (endDateTo) {
+        filter.and.push({ key: "endDate", value: endDateTo, opt: "lte" });
+      }
+      if (wageMin) {
+        filter.and.push({ key: "hourlyWage", value: wageMin, opt: "gte" });
+      }
+      if (wageMax) {
+        filter.and.push({ key: "hourlyWage", value: wageMax, opt: "lte" });
+      }
+      if (rateMin) {
+        filter.and.push({ key: "payRate", value: rateMin, opt: "gte" });
+      }
+      if (rateMax) {
+        filter.and.push({ key: "payRate", value: rateMax, opt: "lte" });
+      }
+      if (manager) {
+        filter.and.push({ key: "manager._id", value: manager, opt: "eq" });
+      }
+      if (status) {
+        filter.and.push({ key: "status", value: status, opt: "eq" });
+      }
+      this.serverParams = Object.assign({}, this.serverParams, { filter });
+      this.getJobs();
+    },
     goToJob(props) {
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/jobs/${props.row._id}`);
@@ -225,6 +281,24 @@ export default {
         .then(res => {
           this.$store.dispatch("updateShowErrorModal", false);
           this.getJobs();
+        });
+    },
+    getManagers() {
+      usersApi
+        .getAll({
+          filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
+          pagination: 0
+        })
+        .then(res => {
+          this.managers = res.docs;
+          this.filterOptions[6].options = [];
+          this.filterOptions[6].options.push({ text: "", value: "" });
+          this.managers?.forEach(item => {
+            this.filterOptions[6].options.push({
+              text: this.getFullName(item),
+              value: item._id
+            });
+          });
         });
     }
   }

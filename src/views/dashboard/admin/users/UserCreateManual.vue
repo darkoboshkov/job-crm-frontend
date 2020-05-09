@@ -489,9 +489,15 @@
                 style="top: 15px;right: 11px;"
               />
             </div>
+            <b-form-invalid-feedback
+              class="d-block"
+              v-if="identificationImageError"
+            >
+              {{ $t(`validation.${identificationImageError}`) }}
+            </b-form-invalid-feedback>
           </div>
         </div>
-        <b-form-invalid-feedback class="d-block mt-5" v-if="error">
+        <b-form-invalid-feedback class="d-block" v-if="error">
           {{ $t(`${error}`) }}
         </b-form-invalid-feedback>
         <div class="form-element mt-5 text-center">
@@ -566,6 +572,7 @@ export default {
       repeatPasswordError: "",
       passportError: "",
       identificationTypeError: "",
+      identificationImageError: "",
       error: "",
       showPassword: false,
       showRepeatPassword: false,
@@ -623,6 +630,12 @@ export default {
       } else {
         this.identificationTypeError = "";
       }
+      if (!this.form.identificationImage.name && this.form.role === "worker") {
+        this.identificationImageError = "THIS_FIELD_IS_REQUIRED";
+        valid = false;
+      } else {
+        this.identificationImageError = "";
+      }
       return valid;
     },
     getCompanies() {
@@ -657,6 +670,7 @@ export default {
       }
     },
     async createUser() {
+      console.log("create user");
       if (this.validate()) {
         const params = {
           ...this.form

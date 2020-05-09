@@ -118,6 +118,7 @@
 import TableFilter from "@/components/common/TableFilter";
 import userApi from "@/services/api/users";
 import { candidatesTable } from "@/constants";
+import professionApi from "@/services/api/professions";
 
 export default {
   name: "Candidates",
@@ -127,6 +128,7 @@ export default {
       isLoading: true,
       totalRows: 0,
       rows: [],
+      professions: [],
       filterOptions: candidatesTable.filterOptions,
       serverParams: candidatesTable.pagination.serverParams,
       paginationOptions: candidatesTable.pagination.paginationOptions,
@@ -158,6 +160,7 @@ export default {
   },
   mounted() {
     this.getWorkers();
+    this.getProfessions();
   },
   methods: {
     imageView(mode) {
@@ -196,7 +199,41 @@ export default {
       });
       this.getWorkers();
     },
-    filter(v) {},
+    filter(v) {
+      const filter = { or: [], and: [] };
+      const name = v[0].value;
+      const profession = v[1].value;
+      const city = v[2].value;
+      const activeContract = v[3].value; // coming soon
+      const status = v[4].value;
+
+      if (name) {
+        filter.or = [
+          { key: "firstName", value: v[0].value, opt: "in" },
+          { key: "lastName", value: v[0].value, opt: "in" },
+          { key: "middleName", value: v[0].value, opt: "in" }
+        ];
+      }
+      if (profession) {
+        filter.and.push({ key: "professionId", value: profession, opt: "eq" });
+      }
+      if (status) {
+        filter.and.push({ key: "status", value: status, opt: "eq" });
+      }
+      if (city) {
+        filter.and.push({ key: "city", value: city, opt: "in" });
+      }
+      if (activeContract) {
+        filter.and.push({
+          key: "jobOffer.status",
+          value: activeContract,
+          opt: "eq"
+        });
+      }
+
+      this.serverParams = Object.assign({}, this.serverParams, { filter });
+      this.getWorkers();
+    },
     selectCandidate(props) {
       this.$store.dispatch("updateShowErrorModal", true);
       this.$store.dispatch("updateErrorModalContent", {
@@ -247,6 +284,20 @@ export default {
           });
           this.totalRows = res.totalDocs;
         });
+    },
+    getProfessions() {
+      professionApi.getAll().then(res => {
+        this.professions = res;
+
+        // professio filter options
+        this.filterOptions[1].options.push({ text: "", value: "" });
+        this.professions?.forEach(item => {
+          this.filterOptions[1].options.push({
+            text: this.$t(`profession.${item.name}`),
+            value: item._id
+          });
+        });
+      });
     }
   }
 };

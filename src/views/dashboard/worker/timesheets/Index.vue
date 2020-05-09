@@ -131,7 +131,7 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import { TIME_SHEET_STATE } from "@/constants";
+import { TIME_SHEET_STATE, workerTimesheetsTable } from "@/constants";
 import workLogApi from "@/services/api/workLog";
 import TimeSheetsModal from "./TimeSheetsModal";
 import ExpensesModal from "./ExpensesModal";
@@ -148,18 +148,10 @@ export default {
       imageMode: true,
       isLoading: true,
       totalRows: 0,
-      paginationOptions: {
-        enabled: true,
-        perPage: 20
-      },
+      paginationOptions: workerTimesheetsTable.pagination.paginationOptions,
       rows: [],
-      serverParams: {
-        page: 1,
-        limit: 20,
-        sort: "",
-        order: ""
-      },
-      filterOptions: [],
+      serverParams: workerTimesheetsTable.pagination.serverParams,
+      filterOptions: workerTimesheetsTable.filterOptions,
       showTimeSheetsModal: false,
       showExpensesModal: false,
       selectedTimeSheetRow: {},
@@ -190,48 +182,7 @@ export default {
           ]
         : [];
 
-      return columns.concat([
-        {
-          label: this.$t("page_timesheets.table.week"),
-          field: "week",
-          name: "week"
-        },
-        {
-          label: this.$t("page_timesheets.table.hand_in_date"),
-          field: "submitDate",
-          name: "hand_in_date"
-        },
-        {
-          label: this.$t("page_timesheets.table.hours"),
-          field: "hours",
-          name: "hours"
-        },
-        {
-          label: this.$t("page_timesheets.table.price"),
-          field: "price",
-          name: "price"
-        },
-        {
-          label: this.$t("page_timesheets.table.hiring_manager"),
-          field: "hiringManager",
-          name: "hiring_manager"
-        },
-        {
-          label: this.$t("page_timesheets.table.hiring_company"),
-          field: "hiringCompany",
-          name: "hiring_company"
-        },
-        {
-          label: this.$t("page_timesheets.table.status"),
-          field: "status",
-          name: "status"
-        },
-        {
-          label: this.$t("page_timesheets.table.actions"),
-          field: "actions",
-          name: "actions"
-        }
-      ]);
+      return columns.concat(workerTimesheetsTable.columns);
     }
   },
   methods: {
@@ -333,8 +284,32 @@ export default {
       });
       this.getTimeSheets();
     },
-    filter() {
-      //
+    filter(v) {
+      const filter = { or: [], and: [] };
+      const kind = v[0].value;
+      const hand_in_date = v[1].value;
+      const week = v[2].value;
+      const status = v[3].value;
+
+      if (kind) {
+        filter.and.push({ key: "kind", value: kind, opt: "eq" });
+      }
+      if (hand_in_date) {
+        filter.and.push({
+          key: "hand_in_date",
+          value: hand_in_date,
+          opt: "eq"
+        });
+      }
+      if (week) {
+        filter.and.push({ key: "week", value: week, opt: "eq" });
+      }
+      if (status) {
+        filter.and.push({ key: "status", value: status, opt: "eq" });
+      }
+      this.serverParams = Object.assign({}, this.serverParams, { filter });
+      console.log(this.serverParams);
+      this.getTimeSheets();
     },
     goToTimeSheet(props) {
       //

@@ -93,11 +93,11 @@ export const candidatesTable = {
       options: [
         {
           label: i18n.t("page_candidates.filter.yes"),
-          value: "yes"
+          value: "open"
         },
         {
           label: i18n.t("page_candidates.filter.no"),
-          value: "no"
+          value: ""
         }
       ]
     },
@@ -107,11 +107,11 @@ export const candidatesTable = {
       value: "",
       options: [
         {
-          label: i18n.t("page_candidates.filter.available"),
+          label: i18n.t("status.available"),
           value: "available"
         },
         {
-          label: i18n.t("page_candidates.filter.unavailable"),
+          label: i18n.t("status.unavailable"),
           value: "unavailable"
         }
       ]
@@ -166,16 +166,16 @@ export const companiesTable = {
     },
     {
       title: i18n.t("page_companies.filter.status"),
-      type: "checkbox",
+      type: "radio",
       value: "",
       options: [
         {
-          label: i18n.t("page_companies.filter.active"),
-          checked: false
+          label: i18n.t("status.active"),
+          value: "true"
         },
         {
-          label: i18n.t("page_companies.filter.inactive"),
-          checked: false
+          label: i18n.t("status.inactive"),
+          value: "false"
         }
       ]
     },
@@ -271,6 +271,24 @@ export const jobsTable = {
       ]
     },
     {
+      title: i18n.t("page_jobs.filter.end_date"),
+      type: "group",
+      items: [
+        {
+          title: "",
+          type: "date",
+          value: "",
+          placeholder: "From"
+        },
+        {
+          title: "",
+          type: "date",
+          value: "",
+          placeholder: "To"
+        }
+      ]
+    },
+    {
       title: i18n.t("page_jobs.filter.wage"),
       type: "group",
       items: [
@@ -314,16 +332,36 @@ export const jobsTable = {
     },
     {
       title: i18n.t("page_jobs.filter.status"),
-      type: "radio",
+      type: "select",
       value: "",
       options: [
         {
-          label: i18n.t("page_jobs.filter.open"),
+          text: "",
+          value: ""
+        },
+        {
+          text: i18n.t("status.active"),
+          value: "active"
+        },
+        {
+          text: i18n.t("status.hide"),
+          value: "hide"
+        },
+        {
+          text: i18n.t("status.open"),
           value: "open"
         },
         {
-          label: i18n.t("page_jobs.filter.closed"),
-          value: "closed"
+          text: i18n.t("status.close"),
+          value: "close"
+        },
+        {
+          text: i18n.t("status.completed"),
+          value: "completed"
+        },
+        {
+          text: i18n.t("status.deleted"),
+          value: "deleted"
         }
       ]
     }
@@ -392,21 +430,6 @@ export const offersTable = {
       value: ""
     },
     {
-      title: i18n.t("page_offers.filter.type"),
-      type: "radio",
-      value: "",
-      options: [
-        {
-          label: i18n.t("page_offers.filter.worker_contract"),
-          value: "worker_contract"
-        },
-        {
-          label: i18n.t("page_offers.filter.company_contract"),
-          value: "company_contract"
-        }
-      ]
-    },
-    {
       title: i18n.t("page_offers.filter.start_date"),
       type: "group",
       items: [
@@ -441,7 +464,28 @@ export const offersTable = {
     {
       title: i18n.t("page_offers.filter.status"),
       type: "select",
-      options: [],
+      options: [
+        {
+          text: "",
+          value: ""
+        },
+        {
+          text: i18n.t("status.open"),
+          value: "open"
+        },
+        {
+          text: i18n.t("status.pending-worker"),
+          value: "pending-worker"
+        },
+        {
+          text: i18n.t("status.active"),
+          value: "active"
+        },
+        {
+          text: i18n.t("status.completed"),
+          value: "completed"
+        }
+      ],
       value: ""
     }
   ]
@@ -504,11 +548,11 @@ export const timesheetsTable = {
       options: [
         {
           label: i18n.t("page_timesheets.filter.timesheets"),
-          value: "open"
+          value: "timesheet"
         },
         {
           label: i18n.t("page_timesheets.filter.expenses"),
-          value: "closed"
+          value: "expense"
         }
       ]
     },
@@ -542,7 +586,198 @@ export const timesheetsTable = {
     {
       title: i18n.t("page_timesheets.filter.status"),
       type: "select",
-      options: [],
+      options: [
+        {
+          text: "",
+          value: ""
+        },
+        {
+          text: i18n.t("status.not-submitted"),
+          value: "not-submitted"
+        },
+        {
+          text: i18n.t("status.submitted"),
+          value: "submitted"
+        },
+        {
+          text: i18n.t("status.declined"),
+          value: "declined"
+        },
+        {
+          text: i18n.t("status.approved"),
+          value: "approved"
+        }
+      ],
+      value: ""
+    }
+  ]
+};
+
+export const workerOffersTable = {
+  pagination,
+  columns: [
+    {
+      label: i18n.t("page_offers.table.image"),
+      field: "image",
+      name: "image"
+    },
+    {
+      label: i18n.t("page_offers.table.job"),
+      field: "job",
+      name: "job"
+    },
+    {
+      label: i18n.t("page_offers.table.manager"),
+      field: "manager",
+      name: "manager"
+    },
+    {
+      label: i18n.t("page_offers.table.created_at"),
+      field: "createdAt",
+      name: "createdAt"
+    },
+    {
+      label: i18n.t("page_offers.table.status"),
+      field: "status",
+      name: "status"
+    },
+    {
+      label: i18n.t("page_offers.table.actions"),
+      field: "actions",
+      name: "actions"
+    }
+  ],
+  filterOptions: [
+    {
+      title: i18n.t("page_workerOffers.filter.title"),
+      type: "text",
+      value: ""
+    },
+    {
+      title: i18n.t("page_workerOffers.filter.status"),
+      type: "select",
+      options: [
+        {
+          text: "",
+          value: ""
+        },
+        {
+          text: i18n.t("status.open"),
+          value: "open"
+        },
+        {
+          text: i18n.t("status.pending-worker"),
+          value: "pending-worker"
+        },
+        {
+          text: i18n.t("status.active"),
+          value: "active"
+        },
+        {
+          text: i18n.t("status.completed"),
+          value: "completed"
+        }
+      ],
+      value: ""
+    }
+  ]
+};
+
+export const workerTimesheetsTable = {
+  pagination,
+  columns: [
+    {
+      label: i18n.t("page_workerTimesheets.table.week"),
+      field: "week",
+      name: "week"
+    },
+    {
+      label: i18n.t("page_workerTimesheets.table.hand_in_date"),
+      field: "submitDate",
+      name: "hand_in_date"
+    },
+    {
+      label: i18n.t("page_workerTimesheets.table.hours"),
+      field: "hours",
+      name: "hours"
+    },
+    {
+      label: i18n.t("page_workerTimesheets.table.price"),
+      field: "price",
+      name: "price"
+    },
+    {
+      label: i18n.t("page_workerTimesheets.table.hiring_manager"),
+      field: "hiringManager",
+      name: "hiring_manager"
+    },
+    {
+      label: i18n.t("page_workerTimesheets.table.hiring_company"),
+      field: "hiringCompany",
+      name: "hiring_company"
+    },
+    {
+      label: i18n.t("page_workerTimesheets.table.status"),
+      field: "status",
+      name: "status"
+    },
+    {
+      label: i18n.t("page_workerTimesheets.table.actions"),
+      field: "actions",
+      name: "actions"
+    }
+  ],
+  filterOptions: [
+    {
+      title: i18n.t("page_workerTimesheets.filter.kind"),
+      type: "radio",
+      value: "",
+      options: [
+        {
+          label: i18n.t("page_workerTimesheets.filter.timesheets"),
+          value: "timesheet"
+        },
+        {
+          label: i18n.t("page_workerTimesheets.filter.expenses"),
+          value: "expense"
+        }
+      ]
+    },
+    {
+      title: i18n.t("page_workerTimesheets.filter.hand_in_date"),
+      type: "text",
+      value: ""
+    },
+    {
+      title: i18n.t("page_workerTimesheets.filter.week"),
+      type: "text",
+      value: ""
+    },
+    {
+      title: i18n.t("page_workerTimesheets.filter.status"),
+      type: "select",
+      options: [
+        {
+          text: "",
+          value: ""
+        },
+        {
+          text: i18n.t("status.not-submitted"),
+          value: "not-submitted"
+        },
+        {
+          text: i18n.t("status.submitted"),
+          value: "submitted"
+        },
+        {
+          text: i18n.t("status.declined"),
+          value: "declined"
+        },
+        {
+          text: i18n.t("status.approved"),
+          value: "approved"
+        }
+      ],
       value: ""
     }
   ]

@@ -223,6 +223,13 @@ export default {
       if (city) {
         filter.and.push({ key: "city", value: city, opt: "in" });
       }
+      if (activeContract) {
+        filter.and.push({
+          key: "jobOffer.status",
+          value: activeContract,
+          opt: "eq"
+        });
+      }
 
       this.serverParams = Object.assign({}, this.serverParams, { filter });
       this.getWorkers();

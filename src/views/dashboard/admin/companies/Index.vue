@@ -172,7 +172,26 @@ export default {
       this.getCompanies();
     },
     filter(v) {
-      console.log("filter", v);
+      const filter = { or: [], and: [] };
+      const name = v[0].value;
+      const email = v[1].value;
+      const status = v[2].value;
+      const city = v[3].value;
+
+      if (name) {
+        filter.and.push({ key: "name", value: name, opt: "in" });
+      }
+      if (email) {
+        filter.and.push({ key: "email", value: name, opt: "eq" });
+      }
+      if (status) {
+        filter.and.push({ key: "activeState", value: status, opt: "eq" });
+      }
+      if (city) {
+        filter.and.push({ key: "city", value: city, opt: "in" });
+      }
+      this.serverParams = Object.assign({}, this.serverParams, { filter });
+      this.getCompanies();
     },
     goToCompany(props) {
       if (props && props.row) {
