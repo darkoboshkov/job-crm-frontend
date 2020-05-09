@@ -87,7 +87,7 @@ export const candidatesTable = {
       value: ""
     },
     {
-      title: i18n.t("page_candidates.filter.active_contract") + " (Coming)",
+      title: i18n.t("page_candidates.filter.active_contract"),
       type: "radio",
       value: "",
       options: [

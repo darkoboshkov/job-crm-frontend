@@ -54,7 +54,7 @@ select.custom-select.hide-icon {
 .custom-radio {
   .custom-control-input:checked ~ .custom-control-label::before {
     background-color: transparent;
-    border-color: var(--light-periwinkle);
+    border-color: #adb5bd;
   }
 
   .custom-control-input:checked ~ .custom-control-label::after {
@@ -72,7 +72,8 @@ select.custom-select.hide-icon {
   }
 
   &.big-red {
-    .custom-control-input ~ .custom-control-label::before, .custom-control-input ~ .custom-control-label::after {
+    .custom-control-input ~ .custom-control-label::before,
+    .custom-control-input ~ .custom-control-label::after {
       font-size: 1.5em;
     }
     .custom-control-input ~ .custom-control-label::before {
