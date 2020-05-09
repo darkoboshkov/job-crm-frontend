@@ -19,6 +19,20 @@
         :title="'Filter Options'"
         :options="filterOptions"
       />
+      <div class="view-switch">
+        View:
+        <i
+          class="hiway-crm-icon icon-ol pointer"
+          @click="imageView(true)"
+          :style="{ opacity: imageMode ? 1 : 0.261 }"
+        />
+        |
+        <i
+          class="hiway-crm-icon icon-ul pointer"
+          @click="imageView(false)"
+          :style="{ opacity: !imageMode ? 1 : 0.261 }"
+        />
+      </div>
     </div>
     <div class="offers-list mt-3">
       <vue-good-table
@@ -90,7 +104,6 @@ export default {
       searchTerm: "",
       matched: false,
       totalRows: 0,
-      columns: offersTable.columns,
       filterOptions: offersTable.filterOptions,
       paginationOptions: offersTable.pagination.paginationOptions,
       serverParams: offersTable.pagination.serverParams,
@@ -100,6 +113,19 @@ export default {
   computed: {
     role() {
       return this.$store.state.user.role;
+    },
+    columns() {
+      let columns = this.imageMode
+        ? [
+            {
+              label: this.$t("page_offers.table.image"),
+              field: "image",
+              name: "image"
+            }
+          ]
+        : [];
+
+      return columns.concat(offersTable.columns);
     }
   },
   mounted() {
@@ -107,6 +133,9 @@ export default {
     this.getCompanies();
   },
   methods: {
+    imageView(mode) {
+      this.imageMode = !!mode;
+    },
     onPerPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {
         limit: e.currentPerPage

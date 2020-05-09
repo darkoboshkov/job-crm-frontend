@@ -966,74 +966,9 @@
       "week": "Week",
       "year": "Year",
       "worker": "Worker",
+      "hand_in_date": "Hand In date",
       "hiring_manager": "Hiring Manager",
       "hiring_company": "Hiring Company",
-      "status": "Status"
-    },
-    "modal": {
-      "add_hours": "Add hours",
-      "worker": "Worker",
-      "hiring_manager": "Hiring manager",
-      "week": "Week",
-      "date": "Date",
-      "hours": "Hours",
-      "normal_wage": "Normal wage",
-      "adjusted_wage": "Adjusted wage",
-      "fill_in_total_traveled_km": "Fill in total traveled km",
-      "percentage": "Percentage",
-      "travel_expenses": "Travel Expenses",
-      "adjust_travel_expenses": "Adjust travel expenses",
-      "save_hours": "Save hours",
-      "send_hours": "Send hours",
-      "approve_hours": "Approve hours",
-      "decline_hours": "Decline hours",
-      "adjust_hours": "Adjust hours",
-      "save_expenses": "Save expenses",
-      "send_expenses": "Send expenses",
-      "approve_expenses": "Approve expenses",
-      "decline_expenses": "Decline expenses",
-      "adjust_expenses": "Adjust expenses",
-      "through": "From {from} to {to}",
-      "worked_overview_1": "In",
-      "worked_overview_2": "week",
-      "worked_overview_3": "you worked a total of",
-      "worked_overview_4": "hours",
-      "worked_overview_5": "",
-      "delete_confirm": {
-        "title": "Are you sure you want to {method} this {type}?",
-        "sub_title": "",
-        "continue": "Continue"
-      },
-      "delete_success": {
-        "title": "The {type} is deleted successfully.",
-        "sub_title": "",
-        "continue": "Ok"
-      }
-    }
-  },
-  "page_workerTimesheets": {
-    "title": "Timesheets & expenses",
-    "sub_title": "We have found {timesheetsCount} timesheets and {expensesCount} expenses",
-    "add_expenses": "Add expenses",
-    "table": {
-      "kind": "Kind",
-      "week": "Week",
-      "hand_in_date": "Hand In date",
-      "hours": "Hours",
-      "price": "€",
-      "hiring_manager": "Hiring manager",
-      "hiring_company": "Hiring Company",
-      "status": "Status",
-      "actions": "Actions",
-      "view_timesheet": "View timesheet",
-      "view_expense": "View expense"
-    },
-    "filter": {
-      "kind": "Kind",
-      "timesheets": "Timesheets",
-      "expenses": "Expenses",
-      "hand_in_date": "Hand In date",
-      "week": "Week",
       "status": "Status"
     },
     "modal": {
@@ -1187,29 +1122,6 @@
       "company_contract": "Company contract",
       "start_date": "Start date",
       "end_date": "End date",
-      "status": "Status"
-    },
-    "modal": {
-      "disallow": {
-        "title": "You can't access to the page",
-        "sub_title": "Manager is currently editing the job offer details",
-        "continue": "Continue"
-      }
-    }
-  },
-  "page_workerOffers": {
-    "title": "Job offers",
-    "sub_title": "We have found {offers} offers",
-    "table": {
-      "image": "Image",
-      "manager": "Manager",
-      "job": "Job title",
-      "created_at": "Created at",
-      "status": "Status",
-      "actions": "Actions"
-    },
-    "filter": {
-      "title": "Job Title",
       "status": "Status"
     },
     "modal": {

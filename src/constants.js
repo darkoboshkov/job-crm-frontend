@@ -372,11 +372,6 @@ export const offersTable = {
   pagination,
   columns: [
     {
-      label: i18n.t("page_offers.table.image"),
-      field: "image",
-      name: "image"
-    },
-    {
       label: i18n.t("page_offers.table.worker"),
       field: "worker",
       name: "worker"
@@ -649,12 +644,12 @@ export const workerOffersTable = {
   ],
   filterOptions: [
     {
-      title: i18n.t("page_workerOffers.filter.title"),
+      title: i18n.t("page_offers.filter.title"),
       type: "text",
       value: ""
     },
     {
-      title: i18n.t("page_workerOffers.filter.status"),
+      title: i18n.t("page_offers.filter.status"),
       type: "select",
       options: [
         {
@@ -687,74 +682,69 @@ export const workerTimesheetsTable = {
   pagination,
   columns: [
     {
-      label: i18n.t("page_workerTimesheets.table.week"),
+      label: i18n.t("page_timesheets.table.week"),
       field: "week",
       name: "week"
     },
     {
-      label: i18n.t("page_workerTimesheets.table.hand_in_date"),
+      label: i18n.t("page_timesheets.table.hand_in_date"),
       field: "submitDate",
       name: "hand_in_date"
     },
     {
-      label: i18n.t("page_workerTimesheets.table.hours"),
+      label: i18n.t("page_timesheets.table.hours"),
       field: "hours",
       name: "hours"
     },
     {
-      label: i18n.t("page_workerTimesheets.table.price"),
+      label: i18n.t("page_timesheets.table.price"),
       field: "price",
       name: "price"
     },
     {
-      label: i18n.t("page_workerTimesheets.table.hiring_manager"),
+      label: i18n.t("page_timesheets.table.hiring_manager"),
       field: "hiringManager",
       name: "hiring_manager"
     },
     {
-      label: i18n.t("page_workerTimesheets.table.hiring_company"),
+      label: i18n.t("page_timesheets.table.hiring_company"),
       field: "hiringCompany",
       name: "hiring_company"
     },
     {
-      label: i18n.t("page_workerTimesheets.table.status"),
+      label: i18n.t("page_timesheets.table.status"),
       field: "status",
       name: "status"
     },
     {
-      label: i18n.t("page_workerTimesheets.table.actions"),
+      label: i18n.t("page_timesheets.table.actions"),
       field: "actions",
       name: "actions"
     }
   ],
   filterOptions: [
     {
-      title: i18n.t("page_workerTimesheets.filter.kind"),
+      title: i18n.t("page_timesheets.filter.kind"),
       type: "radio",
       value: "",
       options: [
         {
-          label: i18n.t("page_workerTimesheets.filter.timesheets"),
+          label: i18n.t("page_timesheets.filter.timesheets"),
           value: "timesheet"
         },
         {
-          label: i18n.t("page_workerTimesheets.filter.expenses"),
+          label: i18n.t("page_timesheets.filter.expenses"),
           value: "expense"
         }
       ]
     },
     {
-      title: i18n.t("page_workerTimesheets.filter.hand_in_date"),
+      title: i18n.t("page_timesheets.filter.week"),
       type: "text",
       value: ""
     },
     {
-      title: i18n.t("page_workerTimesheets.filter.week"),
-      type: "text",
-      value: ""
-    },
-    {
-      title: i18n.t("page_workerTimesheets.filter.status"),
+      title: i18n.t("page_timesheets.filter.status"),
       type: "select",
       options: [
         {

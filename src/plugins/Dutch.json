@@ -966,74 +966,9 @@
       "week": "Week",
       "year": "Year",
       "worker": "Werknemer",
+      "hand_in_date": "Inlever datum",
       "hiring_manager": "Inhurende manager",
       "hiring_company": "Inhurend bedrijf",
-      "status": "Status"
-    },
-    "modal": {
-      "add_hours": "Uren toevoegen",
-      "worker": "Werknemer",
-      "hiring_manager": "Inhurende manager",
-      "week": "Week",
-      "date": "Datum",
-      "hours": "Uren",
-      "normal_wage": "Reguliere uren",
-      "adjusted_wage": "Toeslag uren",
-      "fill_in_total_traveled_km": "Totale reisafstand woon-werk",
-      "percentage": "Percentage",
-      "travel_expenses": "Reiskosten woon-werk",
-      "adjust_travel_expenses": "Afstand woon-werk",
-      "save_hours": "Opslaan",
-      "send_hours": "Versturen",
-      "approve_hours": "Goedkeuren",
-      "decline_hours": "Afkeuren",
-      "adjust_hours": "Aanpassen",
-      "save_expenses": "Opslaan",
-      "send_expenses": "Versturen",
-      "approve_expenses": "Goedkeuren",
-      "decline_expenses": "Afkeuren",
-      "adjust_expenses": "Aanpassen",
-      "through": "Van {from} t/m {to}",
-      "worked_overview_1": "In",
-      "worked_overview_2": "week",
-      "worked_overview_3": "heb je totaal",
-      "worked_overview_4": "uur gewerkt",
-      "worked_overview_5": "",
-      "delete_confirm": {
-        "title": "Weet je zeker dat je deze declaratie wilt leegmaken?",
-        "sub_title": "",
-        "continue": "Leegmaken"
-      },
-      "delete_success": {
-        "title": "deze declaratie is succesvol verwijderd.",
-        "sub_title": "",
-        "continue": "Ok"
-      }
-    }
-  },
-  "page_workerTimesheets": {
-    "title": "Uren & Onkosten Declaraties",
-    "sub_title": "We hebben {timesheetsCount} uren declaraties en {expensesCount} onkosten declaraties gevonden",
-    "add_expenses": "Onkosten indienen",
-    "table": {
-      "kind": "Soort",
-      "week": "Week",
-      "hand_in_date": "Inlever datum",
-      "hours": "Uren",
-      "price": "€",
-      "hiring_manager": "Inhurende manager",
-      "hiring_company": "Inhurend bedrijf",
-      "status": "Status",
-      "actions": "Acties",
-      "view_timesheet": "Uren declaraties weergeven",
-      "view_expense": "Onkosten declaraties weergeven"
-    },
-    "filter": {
-      "kind": "Soort",
-      "timesheets": "Timesheets",
-      "expenses": "Expenses",
-      "hand_in_date": "Inlever datum",
-      "week": "Week",
       "status": "Status"
     },
     "modal": {
@@ -1185,29 +1120,6 @@
       "hiring_company": "Inhurend bedrijf",
       "start_date": "Startdatum",
       "end_date": "Einddatum",
-      "status": "Status"
-    },
-    "modal": {
-      "disallow": {
-        "title": "Je hebt geen toegang tot deze pagina",
-        "sub_title": "Je manager is momenteel het contract aan het aanpassen",
-        "continue": "Doorgaan"
-      }
-    }
-  },
-  "page_workerOffers": {
-    "title": "Contracten",
-    "sub_title": "We hebben {offers} contracten gevonden",
-    "table": {
-      "image": "Logo",
-      "manager": "Manager",
-      "job": "Vacaturetitel",
-      "created_at": "Aangemaakt op",
-      "status": "Status",
-      "actions": "Acties"
-    },
-    "filter": {
-      "title": "Job Title",
       "status": "Status"
     },
     "modal": {

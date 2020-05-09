@@ -14,3 +14,4 @@ export default new VueI18n({
     nl: Dutch
   }
 });
+

@@ -171,7 +171,7 @@ export default {
 .table-filter__title:not(.collapsed) .when-closed {
   display: none;
 }
-div[role='radiogroup'] {
-  outline:none;
+div[role="radiogroup"] {
+  outline: none;
 }
 </style>
