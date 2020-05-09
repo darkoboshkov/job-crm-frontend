@@ -258,15 +258,15 @@ export const jobsTable = {
       items: [
         {
           title: "",
-          type: "date",
+          type: "text",
           value: "",
-          placeholder: "From"
+          placeholder: "From: mm/dd/yyyy"
         },
         {
           title: "",
-          type: "date",
+          type: "text",
           value: "",
-          placeholder: "To"
+          placeholder: "To: mm/dd/yyyy"
         }
       ]
     },
@@ -276,15 +276,15 @@ export const jobsTable = {
       items: [
         {
           title: "",
-          type: "date",
+          type: "text",
           value: "",
-          placeholder: "From"
+          placeholder: "From: mm/dd/yyyy"
         },
         {
           title: "",
-          type: "date",
+          type: "text",
           value: "",
-          placeholder: "To"
+          placeholder: "To: mm/dd/yyyy"
         }
       ]
     },
@@ -430,13 +430,15 @@ export const offersTable = {
       items: [
         {
           title: "",
-          type: "date",
-          value: ""
+          type: "text",
+          value: "",
+          placeholder: "From: mm/dd/yyyy"
         },
         {
           title: "",
-          type: "date",
-          value: ""
+          type: "text",
+          value: "",
+          placeholder: "To: mm/dd/yyyy"
         }
       ]
     },
@@ -446,13 +448,15 @@ export const offersTable = {
       items: [
         {
           title: "",
-          type: "date",
-          value: ""
+          type: "text",
+          value: "",
+          placeholder: "From: mm/dd/yyyy"
         },
         {
           title: "",
-          type: "date",
-          value: ""
+          type: "text",
+          value: "",
+          placeholder: "To: mm/dd/yyyy"
         }
       ]
     },
