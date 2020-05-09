@@ -204,7 +204,7 @@ export default {
       const name = v[0].value;
       const profession = v[1].value;
       const city = v[2].value;
-      const activeContract = v[3].value; // coming soon
+      const activeContract = v[3].value;
       const status = v[4].value;
 
       if (name) {
@@ -226,8 +226,8 @@ export default {
       if (activeContract) {
         filter.and.push({
           key: "jobOffer.status",
-          value: activeContract,
-          opt: "eq"
+          value: "active",
+          opt: activeContract === "yes" ? "eq" : "ne"
         });
       }
 
@@ -269,7 +269,7 @@ export default {
           row.createdAt = this.getDateString(row.createdAt);
           row.name = this.getFullName(row);
           row.activeContract =
-            row.jobOffer[0]?.status === "open"
+            row.jobOffer[0]?.status === "active"
               ? row.hiringCompany[0]?.name
               : "No";
           return row;

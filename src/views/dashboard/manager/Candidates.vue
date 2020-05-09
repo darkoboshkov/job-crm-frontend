@@ -224,11 +224,13 @@ export default {
         filter.and.push({ key: "city", value: city, opt: "in" });
       }
       if (activeContract) {
-        filter.and.push({
-          key: "jobOffer.status",
-          value: activeContract,
-          opt: "eq"
-        });
+        if (activeContract) {
+          filter.and.push({
+            key: "jobOffer.status",
+            value: "active",
+            opt: activeContract === "yes" ? "eq" : "ne"
+          });
+        }
       }
 
       this.serverParams = Object.assign({}, this.serverParams, { filter });

@@ -93,11 +93,11 @@ export const candidatesTable = {
       options: [
         {
           label: i18n.t("page_candidates.filter.yes"),
-          value: "open"
+          value: "yes"
         },
         {
           label: i18n.t("page_candidates.filter.no"),
-          value: ""
+          value: "no"
         }
       ]
     },
