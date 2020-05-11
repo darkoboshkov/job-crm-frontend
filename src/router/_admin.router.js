@@ -136,6 +136,12 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
+        path: "profile/:companyId/:id/edit",
+        name: "admin-edit-profile",
+        component: () => import("../views/dashboard/admin/ProfileEdit.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
         path: "privacy",
         name: "admin-privacy",
         component: () => import("../views/dashboard/admin/Privacy.vue"),

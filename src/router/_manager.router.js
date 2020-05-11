@@ -122,6 +122,12 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
+        path: "profile/:id/edit",
+        name: "manager-edit-profile",
+        component: () => import("../views/dashboard/manager/ProfileEdit.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
         path: "privacy",
         name: "manager-privacy",
         component: () => import("../views/dashboard/manager/Privacy.vue"),

@@ -9,6 +9,14 @@ export default {
       config
     );
   },
+  getDetail(params, config = {}) {
+    return request(
+      "get",
+      `/profile/${params.companyId}/${params.id}/edit`,
+      {},
+      config
+    );
+  },
   patchById(params, config = {}) {
     const id = params.id;
     const companyId = params.companyId;
@@ -20,5 +28,11 @@ export default {
     const companyId = params.companyId;
     delete params.companyId;
     return request("patch", `/profile/${companyId}`, params, config);
-  }
+  },
+  uploadImage(params, config = {}) {
+    return request("post", "/profile/image", params, config);
+  },
+  uploadID(params, config = {}) {
+    return request("post", "/profile/id-card", params, config);
+  },
 };

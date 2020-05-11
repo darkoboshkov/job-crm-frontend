@@ -153,6 +153,11 @@ export default {
       companyId: null
     };
   },
+  computed: {
+    role() {
+      return this.$store.state.user.role;
+    }
+  },
   mounted() {
     this.companyId = this.$route.params.companyId;
     this.userId = this.$route.params.id;
@@ -176,10 +181,9 @@ export default {
         });
     },
     onEditProfile() {
-      this.editProfile = !this.editProfile;
-      if (!this.editProfile) {
-        this.updateProfile();
-      }
+      this.$router.push(
+        `/${this.role}/dashboard/profile/${this.companyId}/${this.userId}/edit`
+      );
     },
     updateProfile() {
       const data = {

@@ -68,6 +68,9 @@
               <b-dropdown-item href="#" @click="goToProfile(props)">
                 {{ $t("page_candidates.table.view_profile") }}
               </b-dropdown-item>
+              <b-dropdown-item href="#" @click="onEditProfile(props)" style="margin: 0.25rem 0">
+                {{ $t("page_candidates.table.edit_profile") }}
+              </b-dropdown-item>
               <b-dropdown-item
                 v-if="props.row.activeContract !== 'No'"
                 href="#"
@@ -169,6 +172,13 @@ export default {
     goToProfile(props) {
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/profile/${props.row._id}`);
+      }
+    },
+    onEditProfile(props) {
+      if (props && props.row) {
+        this.$router.push(
+          `/${this.role}/dashboard/profile/${props.row._id}/edit`
+        );
       }
     },
     goToJobOffer(props) {

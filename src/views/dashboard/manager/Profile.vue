@@ -211,6 +211,9 @@ export default {
   computed: {
     companyId() {
       return this.$store.state.user.companyId;
+    },
+    role() {
+      return this.$store.state.user.role;
     }
   },
   mounted() {
@@ -235,10 +238,9 @@ export default {
         });
     },
     onEditProfile() {
-      this.editProfile = !this.editProfile;
-      if (!this.editProfile) {
-        this.updateProfile();
-      }
+      this.$router.push(
+        `/${this.role}/dashboard/profile/${this.userId}/edit`
+      );
     },
     updateProfile() {
       const data = {
