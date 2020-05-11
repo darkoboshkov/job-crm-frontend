@@ -467,6 +467,7 @@
       "actions": "Actions",
       "view_joboffer": "View Contract",
       "view_profile": "View profile",
+      "edit_profile": "Edit details",
       "delete_user": "Delete User"
     },
     "modal": {
@@ -478,7 +479,7 @@
     }
   },
   "page_profile": {
-    "edit": "Edit profile",
+    "edit": "Edit details",
     "save": "Save profile",
     "form": {
       "overview": "About me",
@@ -488,10 +489,37 @@
       "years": "years",
       "location": "Location",
       "status": "Status",
-      "files": "Files"
+      "files": "Files",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "middle_name": "Middle name",
+      "profession": "Profession",
+      "gender": "Gender",
+      "man": "Man",
+      "woman": "Woman",
+      "other": "Other",
+      "birthday": "Date of birth",
+      "bank_account_number": "Bank account number",
+      "phone": "Phone",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "postal_code": "Postal code",
+      "password": "Password",
+      "c_password": "Confirm password",
+      "honorific_title": "Honorific title",
+      "social_security_number": "Social security number",
+      "id_type": "ID type",
+      "id_exp_date": "ID expiration date",
+      "id_number": "ID number",
+      "id_image": "Upload ID",
+      "id": "National ID",
+      "passport": "Passport"
     },
     "button": {
-      "upload": "Upload"
+      "upload": "Upload",
+      "update": "Update details"
     },
     "modal": {
       "change": {

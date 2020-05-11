@@ -488,10 +488,37 @@
       "years": "jaar",
       "location": "Plaatsnaam",
       "status": "Beschikbaarheid",
-      "files": "Bestanden"
+      "files": "Bestanden",
+      "first_name": "Voornaam",
+      "last_name": "Achternaam",
+      "middle_name": "Tussenvoegsel",
+      "profession": "Vakgebied",
+      "gender": "Geslacht",
+      "man": "Man",
+      "woman": "Vrouw",
+      "other": "Overig",
+      "birthday": "Geboortedatum",
+      "bank_account_number": "Bankrekening nummer",
+      "phone": "Telefoonnummer",
+      "country": "Land",
+      "city": "Plaatsnaam",
+      "street": "Straat",
+      "house_number": "Huisnummer",
+      "postal_code": "Postcode",
+      "password": "Wachtwoord",
+      "c_password": "Herhaal wachtwoord",
+      "honorific_title": "Titel",
+      "social_security_number": "Burgerservicenummer",
+      "id_type": "Legitimatie type",
+      "id_exp_date": "Geldig tot",
+      "id_number": "Legitimatie nummer",
+      "id_image": "Legitimatie uploaden",
+      "id": "ID-kaart",
+      "passport": "Paspoort"
     },
     "button": {
-      "upload": "Uploaden"
+      "upload": "Uploaden",
+      "update": "Update details"
     },
     "modal": {
       "change": {
@@ -971,8 +998,8 @@
       "week": "Week",
       "year": "Year",
       "worker": "Worker",
-      "hiring_manager": "Hiring_manager",
-      "hiring_company": "Hiring_manager",
+      "hiring_manager": "Inhurende manager",
+      "hiring_company": "Inhurend bedrijf",
       "status": "Status"
     },
     "modal": {
