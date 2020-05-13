@@ -223,7 +223,7 @@ export const serializeContractStatus = (role, status) => {
     switch (status) {
       case "open":
         state = {
-          text: i18n.t("status.not-abel-to-see"),
+          text: i18n.t("status.not-able-to-see"),
           color: "color-yellow"
         };
         break;

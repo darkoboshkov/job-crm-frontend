@@ -9,6 +9,7 @@
     "register": "Registreren",
     "reset": "Reset",
     "accept": "Accepteer",
+    "yes": "Yes",
     "no": "Nee",
     "ok": "Ok",
     "save": "Opslaan",
@@ -73,7 +74,10 @@
     "completed": "Voltooid",
     "deleted": "Verwijderd",
     "approved": "Goedgekeurd",
-    "pending-worker": "In afwachting van werknemer"
+    "pending-worker": "In afwachting van werknemer",
+    "not-able-to-see": "Not able to see",
+    "pending": "Pending",
+    "signed": "Signed"
   },
   "profession": {
     "administration": "Administratie",
@@ -379,8 +383,6 @@
       "name": "Naam",
       "email": "E-mail",
       "status": "Status",
-      "active": "Actief",
-      "inactive": "Inactief",
       "city": "Woonplaats"
     },
     "modal": {
@@ -414,7 +416,9 @@
       "automatic_collection": "Automatische incasso",
       "charge_travel_expenses": "Reiskosten doorbelasten",
       "charge_other_expenses": "Overige kosten doorbelasten",
-      "is_active": "Is actief"
+      "is_active": "Is actief",
+      "number": "Nummer",
+      "percentage": "Percentage"
     },
     "button": {
       "create": "Bedrijf aanmaken",
@@ -450,11 +454,7 @@
       "profession": "Vakgebied",
       "city": "Plaatsnaam",
       "active_contract": "Lopend Contract?",
-      "yes": "Yes",
-      "no": "No",
-      "status": "Beschikbaarheid",
-      "available": "Beschikbaar",
-      "unavailable": "Niet beschikbaar"
+      "status": "Beschikbaarheid"
     },
     "table": {
       "name": "Naam",
@@ -553,12 +553,11 @@
       "title": "Titel",
       "city": "Locatie",
       "start_date": "Startdatum",
+      "end_date": "Einddatum",
       "wage": "Maandloon",
       "rate": "Tarief",
       "manager": "Manager",
-      "status": "Status",
-      "open": "Open",
-      "closed": "Closed"
+      "status": "Status"
     },
     "modal": {
       "delete": {
@@ -977,6 +976,7 @@
     "title": "Uren & Onkosten Declaraties",
     "sub_title": "We hebben {timesheetsCount} uren declaraties en {expensesCount} onkosten declaraties gevonden",
     "add_expenses": "Onkosten indienen",
+    "expenses": "Expenses",
     "table": {
       "kind": "Soort",
       "week": "Week",
@@ -1040,7 +1040,11 @@
         "title": "deze declaratie is succesvol verwijderd.",
         "sub_title": "",
         "continue": "Ok"
-      }
+      },
+      "amount": "Amount",
+      "category": "Category",
+      "upload_receipt": "Upload receipt",
+      "note": "Note"
     }
   },
   "page_users_create": {
@@ -1112,7 +1116,8 @@
       "id_number": "Legitimatie nummer",
       "id_image": "Legitimatie uploaden",
       "id": "ID-kaart",
-      "passport": "Paspoort"
+      "passport": "Paspoort",
+      "show": "Show"
     },
     "button": {
       "create": "Gebruiker aanmaken"
@@ -1152,8 +1157,8 @@
       "type": "Type",
       "worker_contract": "Worker contract",
       "company_contract": "Company contract",
-      "start_date": "Start date",
-      "end_date": "End date",
+      "start_date": "Startdatum",
+      "end_date": "Einddatum",
       "status": "Status"
     },
     "modal": {

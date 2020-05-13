@@ -9,6 +9,7 @@
     "register": "Register",
     "reset": "Reset",
     "accept": "Accept",
+    "yes": "Yes",
     "no": "No",
     "ok": "Ok",
     "save": "Save",
@@ -73,7 +74,10 @@
     "completed": "Completed",
     "deleted": "Deleted",
     "approved": "Approved",
-    "pending-worker": "Pending Worker"
+    "pending-worker": "Pending Worker",
+    "not-able-to-see": "Not able to see",
+    "pending": "Pending",
+    "signed": "Signed"
   },
   "profession": {
     "administration": "Administration",
@@ -379,8 +383,6 @@
       "name": "Name",
       "email": "Email",
       "status": "Status",
-      "active": "Active",
-      "inactive": "Inactive",
       "city": "City"
     },
     "modal": {
@@ -414,7 +416,9 @@
       "automatic_collection": "Automatic collection",
       "charge_travel_expenses": "Charge travel expenses",
       "charge_other_expenses": "Charge other expenses",
-      "is_active": "Is active"
+      "is_active": "Is active",
+      "number": "Number",
+      "percentage": "Percentage"
     },
     "button": {
       "create": "Create company",
@@ -450,11 +454,7 @@
       "profession": "Profession",
       "city": "Location",
       "active_contract": "Active contract?",
-      "yes": "Yes",
-      "no": "No",
-      "status": "Status",
-      "available": "Available",
-      "unavailable": "Unavailable"
+      "status": "Status"
     },
     "table": {
       "name": "Name",
@@ -556,15 +556,9 @@
       "start_date": "Start date",
       "end_date": "End date",
       "wage": "Wage",
-      "min_wage": "Min Wage",
-      "max_wage": "Max Wage",
       "rate": "Rate",
-      "min_rate": "Min Rate",
-      "max_rate": "Max Rate",
       "manager": "Manager",
-      "status": "Status",
-      "open": "Open",
-      "closed": "Closed"
+      "status": "Status"
     },
     "modal": {
       "delete": {
@@ -983,6 +977,7 @@
     "title": "Timesheets & expenses",
     "sub_title": "We have found {timesheetsCount} timesheets and {expensesCount} expenses",
     "add_expenses": "Add expenses",
+    "expenses": "Expenses",
     "table": {
       "kind": "Kind",
       "worker": "Worker",
@@ -1046,7 +1041,11 @@
         "title": "The {type} is deleted successfully.",
         "sub_title": "",
         "continue": "Ok"
-      }
+      },
+      "amount": "Amount",
+      "category": "Category",
+      "upload_receipt": "Upload receipt",
+      "note": "Note"
     }
   },
   "page_users_create": {
@@ -1118,7 +1117,8 @@
       "id_number": "ID number",
       "id_image": "Upload ID",
       "id": "National ID",
-      "passport": "Passport"
+      "passport": "Passport",
+      "show": "Show"
     },
     "button": {
       "create": "Create user"
