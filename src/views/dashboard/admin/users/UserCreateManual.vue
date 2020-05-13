@@ -49,9 +49,6 @@
               <b-form-radio v-model="form.role" name="role" value="manager">
                 {{ $t("page_users_create_manual.form.manager") }}
               </b-form-radio>
-              <b-form-radio v-model="form.role" name="role" value="owner">
-                {{ $t("page_users_create_manual.form.owner") }}
-              </b-form-radio>
             </div>
           </div>
         </div>

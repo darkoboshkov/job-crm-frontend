@@ -1,6 +1,5 @@
 import {
   ifAuthenticated,
-  isAdminAuthorized,
   isManagerAuthorized
 } from "../utils";
 

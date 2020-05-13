@@ -53,9 +53,6 @@
             <b-form-radio v-model="form.role" name="role" value="manager">
               {{ $t("page_users_create_invite.form.manager") }}
             </b-form-radio>
-            <b-form-radio v-model="form.role" name="gender" value="owner">
-              {{ $t("page_users_create_invite.form.owner") }}
-            </b-form-radio>
           </div>
         </div>
         <b-form-invalid-feedback class="d-block mt-5" v-if="error">
