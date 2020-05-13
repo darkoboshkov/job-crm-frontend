@@ -1,13 +1,11 @@
 <template>
-  <div id="page_settings" class="dashboard-content">
+  <div id="page_update_profile" class="dashboard-content">
     <div class="container">
       <h1 class="title">{{ $t("page_profile.edit") }}</h1>
-      <div class="setting-profile mt-3">
-        <div class="setting-profile__form">
+      <div class="update-profile mt-3 bg-white p-5">
+        <div class="update-profile__form">
           <div class="form-element mt-3">
-            <label>
-              {{ $t("page_profile.form.first_name") }}:
-            </label>
+            <label> {{ $t("page_profile.form.first_name") }}: </label>
             <div class="d-flex flex-column w-100">
               <b-form-input
                 type="text"
@@ -21,9 +19,7 @@
             </div>
           </div>
           <div class="form-element mt-3">
-            <label
-              >{{ $t("page_profile.form.middle_name") }}:</label
-            >
+            <label>{{ $t("page_profile.form.middle_name") }}:</label>
             <b-form-input
               type="text"
               required
@@ -60,9 +56,7 @@
             </div>
           </div>
           <div class="form-element mt-3">
-            <label
-              >{{ $t("page_profile.form.honorific_title") }}:</label
-            >
+            <label>{{ $t("page_profile.form.honorific_title") }}:</label>
             <div class="gender">
               <b-form-radio
                 v-model="model.honorificTitle"
@@ -148,9 +142,7 @@
             />
           </div>
           <div class="form-element mt-3">
-            <label
-              >{{ $t("page_profile.form.house_number") }}:</label
-            >
+            <label>{{ $t("page_profile.form.house_number") }}:</label>
             <b-form-input
               type="text"
               required
@@ -159,9 +151,7 @@
             />
           </div>
           <div class="form-element mt-3">
-            <label
-              >{{ $t("page_profile.form.postal_code") }}:</label
-            >
+            <label>{{ $t("page_profile.form.postal_code") }}:</label>
             <b-form-input
               type="text"
               required
@@ -179,9 +169,7 @@
             />
           </div>
           <div class="form-element mt-3">
-            <label>
-              {{ $t("page_profile.form.bank_account_number") }}:
-            </label>
+            <label> {{ $t("page_profile.form.bank_account_number") }}: </label>
             <b-form-input
               type="text"
               required
@@ -220,9 +208,7 @@
             </div>
           </div>
           <div class="form-element mt-3">
-            <label>
-              {{ $t("page_profile.form.id_number") }}:
-            </label>
+            <label> {{ $t("page_profile.form.id_number") }}: </label>
             <b-form-input
               type="text"
               required
@@ -231,9 +217,7 @@
             />
           </div>
           <div class="form-element mt-3">
-            <label>
-              {{ $t("page_profile.form.id_exp_date") }}:
-            </label>
+            <label> {{ $t("page_profile.form.id_exp_date") }}: </label>
             <b-form-input
               type="date"
               required
@@ -278,7 +262,7 @@
             </button>
           </div>
         </div>
-        <div class="setting-profile__photo">
+        <div class="update-profile__photo">
           <div class="image-wrapper">
             <img :src="imageData.preview" />
             <b-spinner type="grow" label="Spinning" v-if="isImageLoading" />
@@ -381,18 +365,6 @@ export default {
       } else {
         this.lastNameError = "";
       }
-      if (!this.model.identificationType) {
-        this.identificationTypeError = "THIS_FIELD_IS_REQUIRED";
-        valid = false;
-      } else {
-        this.identificationTypeError = "";
-      }
-      if (!this.model.identificationImage.name) {
-        this.identificationImageError = "THIS_FIELD_IS_REQUIRED";
-        valid = false;
-      } else {
-        this.identificationImageError = "";
-      }
       return valid;
     },
     onFileChange(e) {
@@ -469,7 +441,10 @@ export default {
             delete this.idImageData.file;
           }
           await profileApi.patchById(
-            Object.assign({id: this.userId, companyId: this.companyId}, this.model)
+            Object.assign(
+              { id: this.userId, companyId: this.companyId },
+              this.model
+            )
           );
           this.$store.dispatch("updateShowSuccessModal", true);
           this.$store.dispatch("updateSuccessModalContent", {

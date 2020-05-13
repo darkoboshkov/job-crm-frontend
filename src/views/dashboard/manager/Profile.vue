@@ -238,9 +238,7 @@ export default {
         });
     },
     onEditProfile() {
-      this.$router.push(
-        `/${this.role}/dashboard/profile/${this.userId}/edit`
-      );
+      this.$router.push(`/${this.role}/dashboard/profile/${this.userId}/edit`);
     },
     updateProfile() {
       const data = {

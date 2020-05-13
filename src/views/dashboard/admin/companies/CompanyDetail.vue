@@ -191,17 +191,21 @@
                       style="outline: none;"
                       :disabled="!editCompany"
                     >
-                      <b-form-radio :value="false" class="mr-5"
-                        >No</b-form-radio
-                      >
-                      <b-form-radio :value="true">Yes</b-form-radio>
+                      <b-form-radio :value="false" class="mr-5">{{
+                        $t("common.no")
+                      }}</b-form-radio>
+                      <b-form-radio :value="true">{{
+                        $t("common.yes")
+                      }}</b-form-radio>
                     </b-form-radio-group>
                   </b-form-group>
                 </div>
                 <div class="col-12 col-md-8">
                   <div class="row align-items-center">
                     <div class="col-12 col-md-4">
-                      <label class="pull-right">Number:</label>
+                      <label class="pull-right"
+                        >{{ $t("page_detail_company.form.number") }}:</label
+                      >
                     </div>
                     <div class="col-12 col-md-8">
                       <b-form-input
@@ -232,17 +236,21 @@
                       style="outline: none;"
                       :disabled="!editCompany"
                     >
-                      <b-form-radio :value="false" class="mr-5"
-                        >No</b-form-radio
-                      >
-                      <b-form-radio :value="true">Yes</b-form-radio>
+                      <b-form-radio :value="false" class="mr-5">{{
+                        $t("common.no")
+                      }}</b-form-radio>
+                      <b-form-radio :value="true">{{
+                        $t("common.yes")
+                      }}</b-form-radio>
                     </b-form-radio-group>
                   </b-form-group>
                 </div>
                 <div class="col-12 col-md-8">
                   <div class="row align-items-center">
                     <div class="col-12 col-md-4">
-                      <label class="pull-right">Percentage:</label>
+                      <label class="pull-right"
+                        >{{ $t("page_detail_company.form.percentage") }}:</label
+                      >
                     </div>
                     <div class="col-12 col-md-8">
                       <b-form-input
@@ -292,8 +300,12 @@
                   style="outline: none;"
                   :disabled="!editCompany"
                 >
-                  <b-form-radio :value="false" class="mr-5">No</b-form-radio>
-                  <b-form-radio :value="true">Yes</b-form-radio>
+                  <b-form-radio :value="false" class="mr-5">{{
+                    $t("common.no")
+                  }}</b-form-radio>
+                  <b-form-radio :value="true">{{
+                    $t("common.yes")
+                  }}</b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
             </div>
@@ -313,8 +325,12 @@
                   style="outline: none;"
                   :disabled="!editCompany"
                 >
-                  <b-form-radio :value="false" class="mr-5">No</b-form-radio>
-                  <b-form-radio :value="true">Yes</b-form-radio>
+                  <b-form-radio :value="false" class="mr-5">{{
+                    $t("common.no")
+                  }}</b-form-radio>
+                  <b-form-radio :value="true">{{
+                    $t("common.yes")
+                  }}</b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
             </div>
@@ -334,8 +350,12 @@
                   style="outline: none;"
                   :disabled="!editCompany"
                 >
-                  <b-form-radio :value="false" class="mr-5">No</b-form-radio>
-                  <b-form-radio :value="true">Yes</b-form-radio>
+                  <b-form-radio :value="false" class="mr-5">{{
+                    $t("common.no")
+                  }}</b-form-radio>
+                  <b-form-radio :value="true">{{
+                    $t("common.yes")
+                  }}</b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
             </div>

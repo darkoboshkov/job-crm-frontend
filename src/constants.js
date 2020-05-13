@@ -92,11 +92,11 @@ export const candidatesTable = {
       value: "",
       options: [
         {
-          label: i18n.t("page_candidates.filter.yes"),
+          label: i18n.t("common.yes"),
           value: "yes"
         },
         {
-          label: i18n.t("page_candidates.filter.no"),
+          label: i18n.t("common.no"),
           value: "no"
         }
       ]

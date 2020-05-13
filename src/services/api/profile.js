@@ -34,5 +34,5 @@ export default {
   },
   uploadID(params, config = {}) {
     return request("post", "/profile/id-card", params, config);
-  },
+  }
 };

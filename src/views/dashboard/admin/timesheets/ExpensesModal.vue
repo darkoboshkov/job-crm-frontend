@@ -9,7 +9,11 @@
     v-model="showModal"
   >
     <h2 class="color-red p-4">
-      {{ mode === "edit" ? "Expenses" : "Add Expenses" }}
+      {{
+        mode === "edit"
+          ? $t("page_timesheets.expenses")
+          : $t("page_timesheets.add_expenses")
+      }}
     </h2>
 
     <div class="py-3">
@@ -41,7 +45,9 @@
     <div class="py-3">
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3">Date:</span>&nbsp;<b-input
+          <span class="mr-3">{{ $t("page_timesheets.modal.date") }}:</span
+          >&nbsp;
+          <b-input
             class="d-inline-block expense-input"
             type="date"
             v-model="model.expenseData.date"
@@ -52,7 +58,9 @@
 
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3">Amount:</span>&nbsp;<b-input
+          <span class="mr-3">{{ $t("page_timesheets.modal.amount") }}:</span
+          >&nbsp;
+          <b-input
             class="d-inline-block expense-input"
             placeholder="€0.00"
             v-model="model.expenseData.amount"
@@ -63,7 +71,8 @@
 
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3">Category:</span>&nbsp;
+          <span class="mr-3">{{ $t("page_timesheets.modal.category") }}:</span
+          >&nbsp;
           <b-form-group class="d-inline-block mb-0" :disabled="inputDisabled">
             <b-form-radio
               v-model="model.expenseData.category"
@@ -92,7 +101,10 @@
 
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3">Upload receipt:</span>&nbsp;<input
+          <span class="mr-3"
+            >{{ $t("page_timesheets.modal.upload_receipt") }}:</span
+          >
+          <input
             type="file"
             id="attachment"
             name="attachment"
@@ -123,7 +135,9 @@
 
       <div class="row mb-3">
         <div class="col align-items-baseline">
-          <span class="mr-3">Note:</span>&nbsp;<b-textarea
+          <span class="mr-3">{{ $t("page_timesheets.modal.note") }}:</span
+          >&nbsp;
+          <b-textarea
             class="d-inline-block expense-input"
             placeholder="Add a note..."
             v-model="model.expenseData.commentDescription"

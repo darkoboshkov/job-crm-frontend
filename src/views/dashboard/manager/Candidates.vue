@@ -68,7 +68,11 @@
               <b-dropdown-item href="#" @click="goToProfile(props)">
                 {{ $t("page_candidates.table.view_profile") }}
               </b-dropdown-item>
-              <b-dropdown-item href="#" @click="onEditProfile(props)" style="margin: 0.25rem 0">
+              <b-dropdown-item
+                href="#"
+                @click="onEditProfile(props)"
+                style="margin: 0.25rem 0"
+              >
                 {{ $t("page_candidates.table.edit_profile") }}
               </b-dropdown-item>
               <b-dropdown-item

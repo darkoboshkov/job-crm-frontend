@@ -179,8 +179,10 @@
               switch
               size="lg"
               v-model="showPassword"
-              ><span style="font-size: 0.75em;">Show</span></b-form-checkbox
-            >
+              ><span style="font-size: 0.75em;">{{
+                $t("page_users_create_manual.form.show")
+              }}</span>
+            </b-form-checkbox>
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -211,8 +213,10 @@
               switch
               size="lg"
               v-model="showRepeatPassword"
-              ><span style="font-size: 0.75em;">Show</span></b-form-checkbox
-            >
+              ><span style="font-size: 0.75em;">{{
+                $t("page_users_create_manual.form.show")
+              }}</span>
+            </b-form-checkbox>
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -629,12 +633,6 @@ export default {
         valid = false;
       } else {
         this.identificationTypeError = "";
-      }
-      if (!this.form.identificationImage.name && this.form.role === "worker") {
-        this.identificationImageError = "THIS_FIELD_IS_REQUIRED";
-        valid = false;
-      } else {
-        this.identificationImageError = "";
       }
       return valid;
     },

@@ -3,6 +3,7 @@ import store from "./store";
 import axios from "./axios";
 import html2pdf from "html2pdf.js";
 import * as clipboardy from "clipboardy";
+import i18n from "./plugins/i18n";
 
 /**
  * Toast
@@ -222,25 +223,25 @@ export const serializeContractStatus = (role, status) => {
     switch (status) {
       case "open":
         state = {
-          text: "Not able to see",
+          text: i18n.t("status.not-abel-to-see"),
           color: "color-yellow"
         };
         break;
       case "pending-worker":
         state = {
-          text: "Pending",
+          text: i18n.t("status.pending"),
           color: "color-yellow"
         };
         break;
       case "active":
         state = {
-          text: "Signed",
+          text: i18n.t("status.signed"),
           color: "color-green"
         };
         break;
       case "completed":
         state = {
-          text: "Completed",
+          text: i18n.t("status.completed"),
           color: "color-red"
         };
         break;
@@ -251,25 +252,25 @@ export const serializeContractStatus = (role, status) => {
     switch (status) {
       case "open":
         state = {
-          text: "Pending",
+          text: i18n.t("status.pending"),
           color: "color-yellow"
         };
         break;
       case "pending-worker":
         state = {
-          text: "Signed",
+          text: i18n.t("status.signed"),
           color: "color-blue"
         };
         break;
       case "active":
         state = {
-          text: "Signed",
+          text: i18n.t("status.signed"),
           color: "color-green"
         };
         break;
       case "completed":
         state = {
-          text: "Completed",
+          text: i18n.t("status.completed"),
           color: "color-red"
         };
         break;
