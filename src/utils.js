@@ -126,10 +126,7 @@ export const isAdminAuthorized = (to, from, next) => {
  * @param next
  */
 export const isManagerAuthorized = (to, from, next) => {
-  if (
-    store.state.user &&
-    (store.state.user.role === "manager")
-  ) {
+  if (store.state.user && store.state.user.role === "manager") {
     next();
     return;
   }

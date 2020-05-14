@@ -1,7 +1,4 @@
-import {
-  ifAuthenticated,
-  isWorkerAuthorized
-} from "../utils";
+import { ifAuthenticated, isWorkerAuthorized } from "../utils";
 
 export default [
   {

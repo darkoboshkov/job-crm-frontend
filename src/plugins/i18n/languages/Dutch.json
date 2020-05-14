@@ -396,9 +396,73 @@
   "page_detail_company": {
     "create_title": "Voeg nieuw bedrijf toe",
     "edit_title": "Bedrijfsgegevens",
-    "description": "Vul hier de gegevens van het bedrijf in en klik dan op: Bedrijf aanmaken.",
+    "description": "Description",
     "save": "Aanpassingen opslaan",
-    "edit": "Bedrijfsgegevens aanpassen",
+    "edit": "Edit details",
+    "documents": "Public company documents",
+    "download_file": "Download file",
+    "form": {
+      "name": "Bedrijfsnaam",
+      "kvk": "KVK-nummer",
+      "limit_credit_safe": "Limiet creditsafe",
+      "country": "Land",
+      "city": "Plaatsnaam",
+      "street": "Straat",
+      "houseNumber": "Huisnummer",
+      "address": "Address",
+      "postalCode": "Postcode",
+      "email": "Bedrijfs e-mailadres",
+      "phone": "Bedrijfs telefoonnummer",
+      "vat_shifted": "BTW verlegd",
+      "g_account": "G-rekening",
+      "terms_of_payment": "Betalingstermijn",
+      "automatic_collection": "Automatische incasso",
+      "charge_travel_expenses": "Reiskosten doorbelasten",
+      "charge_other_expenses": "Overige kosten doorbelasten",
+      "is_active": "Is actief",
+      "number": "Nummer",
+      "percentage": "Percentage"
+    },
+    "manager_table": {
+      "title": "Current company managers",
+      "city": "City",
+      "email": "Email",
+      "phone_number": "Phone Number",
+      "delete": "Delete"
+    },
+    "button": {
+      "create": "Bedrijf aanmaken",
+      "add_manager": "Add manager",
+      "upload": "Upload"
+    },
+    "modal": {
+      "create_success": {
+        "title": "Het aanmaken van het bedrijf is gelukt",
+        "sub_title": "Bedankt",
+        "continue": "Doorgaan"
+      },
+      "create_error": {
+        "title": "Foutmelding",
+        "continue": "Doorgaan"
+      },
+      "remove_manager": {
+        "title": "Are you sure?",
+        "sub_title": "Are you sure you want to remove this manager?",
+        "continue": "Continue"
+      },
+      "confirm_delete_attach": {
+        "title": "Are you sure you want to delete?",
+        "sub_title": "This file will be removed permanently.",
+        "continue": "Delete"
+      }
+    }
+  },
+  "page_edit_company": {
+    "create_title": "Add new company",
+    "edit_title": "Company details",
+    "description": "Please fill out the company details and click on: Update company.",
+    "save": "Save adjustments",
+    "edit": "Edit company details",
     "form": {
       "name": "Bedrijfsnaam",
       "kvk": "KVK-nummer",
@@ -422,19 +486,10 @@
     },
     "button": {
       "create": "Bedrijf aanmaken",
-      "update": "Bedrijf updaten",
-      "delete": "Bedrijf verwijderen"
+      "update": "Update company",
+      "delete": "Delete company"
     },
     "modal": {
-      "create_success": {
-        "title": "Het aanmaken van het bedrijf is gelukt",
-        "sub_title": "Bedankt",
-        "continue": "Doorgaan"
-      },
-      "create_error": {
-        "title": "Foutmelding",
-        "continue": "Doorgaan"
-      },
       "update_success": {
         "title": "Bedrijfsgegevens succesvol aangepast",
         "sub_title": "Bedankt",

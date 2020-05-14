@@ -534,7 +534,7 @@ export default {
   computed: {
     edit() {
       // return this.model.status === "pending-worker";
-			return false
+      return false;
     },
     user() {
       return this.$store.state.user;

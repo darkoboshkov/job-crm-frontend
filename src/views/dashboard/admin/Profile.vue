@@ -29,8 +29,8 @@
     </b-row>
 
     <b-row class="mt-1">
-      <b-col md="6">
-        <b-card class="mt-4">
+      <b-col md="6" class="d-flex flex-column justify-content-between">
+        <b-card class="mt-4 h-100">
           <template v-slot:header>
             <h5 class="m-0">{{ $t("page_profile.form.overview") }}</h5>
           </template>

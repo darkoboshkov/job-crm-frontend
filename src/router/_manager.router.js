@@ -1,7 +1,4 @@
-import {
-  ifAuthenticated,
-  isManagerAuthorized
-} from "../utils";
+import { ifAuthenticated, isManagerAuthorized } from "../utils";
 
 export default [
   {
