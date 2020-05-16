@@ -4,11 +4,6 @@
       <h1 class="title">
         {{ $t("page_companies.title") }}
       </h1>
-      <router-link to="/admin/dashboard/companies/create">
-        <button class="btn btn-red circle large" style="width:50px">
-          <i class="hiway-crm-icon icon-add" />
-        </button>
-      </router-link>
     </div>
     <p class="sub-title">
       {{ $t("page_companies.sub_title", { companies: this.totalRows }) }}
@@ -138,6 +133,9 @@ export default {
     },
     role() {
       return this.$store.state.user.role;
+    },
+    userId() {
+      return this.$store.state.user._id;
     }
   },
   mounted() {
@@ -221,13 +219,19 @@ export default {
         });
     },
     getCompanies() {
-      companyApi.get(this.serverParams).then(res => {
-        this.totalRows = res.totalDocs;
-        this.rows = res.docs?.map(row => {
-          row.createdAt = this.getDateString(row["createdAt"]);
-          return row;
+      companyApi
+        .getByManagerId(
+          Object.assign(this.serverParams, {
+            managerId: this.userId
+          })
+        )
+        .then(res => {
+          this.totalRows = res.totalDocs;
+          this.rows = res.docs?.map(row => {
+            row.createdAt = this.getDateString(row["createdAt"]);
+            return row;
+          });
         });
-      });
     }
   }
 };

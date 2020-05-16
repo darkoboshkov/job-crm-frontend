@@ -12,6 +12,27 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
+        path: "companies",
+        name: "manager-companies",
+        component: () =>
+          import("../views/dashboard/manager/companies/Index.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "companies/:companyId",
+        name: "manager-companies-detail",
+        component: () =>
+          import("../views/dashboard/manager/companies/CompanyDetail.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "companies/:companyId/edit",
+        name: "manager-companies-edit",
+        component: () =>
+          import("../views/dashboard/manager/companies/CompanyEdit.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
         path: "candidates",
         name: "manager-candidates",
         component: () => import("../views/dashboard/manager/Candidates.vue"),

@@ -397,6 +397,7 @@
     "create_title": "Voeg nieuw bedrijf toe",
     "edit_title": "Bedrijfsgegevens",
     "description": "Description",
+    "create_description": "Please fill out the company details and click on: Create company.",
     "save": "Aanpassingen opslaan",
     "edit": "Edit details",
     "documents": "Public company documents",
@@ -411,6 +412,7 @@
       "houseNumber": "Huisnummer",
       "address": "Address",
       "postalCode": "Postcode",
+      "description": "Description",
       "email": "Bedrijfs e-mailadres",
       "phone": "Bedrijfs telefoonnummer",
       "vat_shifted": "BTW verlegd",
@@ -428,7 +430,8 @@
       "city": "City",
       "email": "Email",
       "phone_number": "Phone Number",
-      "delete": "Delete"
+      "delete": "Delete",
+      "name": "Full Name"
     },
     "button": {
       "create": "Bedrijf aanmaken",
@@ -474,6 +477,7 @@
       "postalCode": "Postcode",
       "email": "Bedrijfs e-mailadres",
       "phone": "Bedrijfs telefoonnummer",
+      "description": "Description",
       "vat_shifted": "BTW verlegd",
       "g_account": "G-rekening",
       "terms_of_payment": "Betalingstermijn",

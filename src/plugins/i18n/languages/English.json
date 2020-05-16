@@ -397,6 +397,7 @@
     "create_title": "Add new company",
     "edit_title": "Company details",
     "description": "Description",
+    "create_description": "Please fill out the company details and click on: Create company.",
     "save": "Save adjustments",
     "edit": "Edit details",
     "documents": "Public company documents",
@@ -411,6 +412,7 @@
       "houseNumber": "House number",
       "address": "Address",
       "postalCode": "Postal code",
+      "description": "Description",
       "email": "Company email",
       "phone": "Company phone number",
       "vat_shifted": "VAT shifted",
@@ -428,7 +430,8 @@
       "city": "City",
       "email": "Email",
       "phone_number": "Phone Number",
-      "delete": "Delete"
+      "delete": "Delete",
+      "name": "Full Name"
     },
     "button": {
       "create": "Create Company",
@@ -474,6 +477,7 @@
       "postalCode": "Postal code",
       "email": "Company email",
       "phone": "Company phone number",
+      "description": "Description",
       "vat_shifted": "VAT shifted",
       "g_account": "G account",
       "terms_of_payment": "Terms of payment",

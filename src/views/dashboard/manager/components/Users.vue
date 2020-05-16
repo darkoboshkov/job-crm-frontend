@@ -1,10 +1,8 @@
 <template>
   <b-card id="open_users" body-class="pt-0">
     <template v-slot:header>
-      <div class="d-flex">
-        <div class="flex-1">
-          <h2 class="m-0">{{ $t("component.users.title") }}</h2>
-        </div>
+      <div class="d-flex align-items-center justify-content-between">
+        <h2 class="m-0">{{ $t("component.users.title") }}</h2>
         <button
           type="button"
           class="close"
@@ -30,7 +28,7 @@
             })
           "
         >
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center justify-content-between">
             <div class="avatar-image mr-2">
               <img v-if="row.image" :src="row.image | appUrlFormatter" />
             </div>

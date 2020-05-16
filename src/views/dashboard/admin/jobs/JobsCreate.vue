@@ -85,8 +85,8 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.location") }}
                   </span>
                   <div>
@@ -95,8 +95,8 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.hours_per_week") }}
                   </span>
                   <div>
@@ -105,8 +105,8 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.wage") }}
                   </span>
                   <div>
@@ -115,8 +115,8 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.hourly_wage") }}
                   </span>
                   <div>
@@ -125,8 +125,8 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.rate") }}
                   </span>
                   <div>
@@ -135,8 +135,8 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.start_date") }}
                   </span>
                   <div>
@@ -146,8 +146,8 @@
               </li>
 
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.end_date") }}
                   </span>
                   <div>
@@ -193,8 +193,8 @@
       <b-col md="12">
         <b-card>
           <template v-slot:header>
-            <div class="d-flex align-items-center">
-              <h5 class="m-0 flex-1">
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="m-0">
                 <span>{{ $t("page_job_detail.files") }}</span>
                 <span class="color-gray ml-2">(.doc,.docx,.pdf)</span>
               </h5>
@@ -219,11 +219,11 @@
           <div class="card-body">
             <ul class="custom-list">
               <li
-                class="d-flex"
+                class="d-flex align-items-center justify-content-between"
                 v-for="(attachment, idx) in model.attachments"
                 :key="idx"
               >
-                <div class="flex-1">
+                <div>
                   {{ attachment.name }}
                 </div>
                 <div>
@@ -277,7 +277,6 @@ export default {
         payRate: null,
         paymentType: "EUR",
         status: "available",
-        skillIds: [],
         description: "",
         questions: [],
         image: null,

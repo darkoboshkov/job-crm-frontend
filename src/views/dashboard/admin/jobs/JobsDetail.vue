@@ -56,8 +56,8 @@
           <div>
             <ul class="custom-list">
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.company") }}
                   </span>
                   <div>
@@ -83,8 +83,8 @@
               </li>
 
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.manager") }}
                   </span>
                   <div>
@@ -108,11 +108,11 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.location") }}
                   </span>
-                  <div class="pull-right">
+                  <div>
                     <b-input v-if="editJob" v-model="model.location" />
                     <div v-else>
                       {{ model.location }}
@@ -121,11 +121,11 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.hours_per_week") }}
                   </span>
-                  <div class="pull-right">
+                  <div>
                     <b-input
                       v-if="editJob"
                       type="number"
@@ -138,11 +138,11 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.wage") }}
                   </span>
-                  <div class="pull-right">
+                  <div>
                     <b-input
                       v-if="editJob"
                       type="number"
@@ -155,11 +155,11 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.hourly_wage") }}
                   </span>
-                  <div class="pull-right">
+                  <div>
                     <b-input
                       v-if="editJob"
                       type="number"
@@ -172,8 +172,8 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.rate") }}
                   </span>
                   <div>
@@ -189,11 +189,11 @@
                 </div>
               </li>
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.start_date") }}
                   </span>
-                  <div class="pull-right">
+                  <div>
                     <b-input
                       type="date"
                       v-if="editJob"
@@ -207,8 +207,8 @@
               </li>
 
               <li>
-                <div class="d-flex align-items-center">
-                  <span class="flex-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>
                     {{ $t("page_job_detail.form.end_date") }}
                   </span>
                   <div>
@@ -266,31 +266,27 @@
 
     <b-row class="mt-5">
       <b-col md="12">
-        <b-card body-class="px-0">
+        <b-card body-class="p-0">
           <template v-slot:header>
-            <div class="d-flex">
-              <h5 class="m-0 flex-1">
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="m-0">
                 {{ $t("page_job_detail.job_offers") }}
               </h5>
-              <div>
-                <div class="float-right">
-                  <button
-                    class="btn btn-blue"
-                    @click.prevent="
-                      $router.push({
-                        name: 'admin-jobs-choose-candidate',
-                        params: {
-                          companyId: companyId,
-                          jobId: jobId
-                        }
-                      })
-                    "
-                  >
-                    {{ $t("page_job_detail.button.create_new_job_offer") }}
-                    <i class="hiway-crm-icon icon-pencil ml-2" />
-                  </button>
-                </div>
-              </div>
+              <button
+                class="btn btn-blue"
+                @click.prevent="
+                  $router.push({
+                    name: 'admin-jobs-choose-candidate',
+                    params: {
+                      companyId: companyId,
+                      jobId: jobId
+                    }
+                  })
+                "
+              >
+                {{ $t("page_job_detail.button.create_new_job_offer") }}
+                <i class="hiway-crm-icon icon-pencil ml-2" />
+              </button>
             </div>
           </template>
           <div>
@@ -305,7 +301,7 @@
                 <div class="flex-3">
                   {{ $t("page_job_detail.form.hiring_manager") }}
                 </div>
-                <div class="flex-1">
+                <div class="flex-2">
                   {{ $t("page_job_detail.form.wage") }}
                 </div>
                 <div class="flex-2">
@@ -331,16 +327,13 @@
                   {{ $t("page_job_detail.form.offer") }} -
                   {{ offer.worker | fullNameFormatter }}
                 </div>
-                <!--                  <div class="flex-2">-->
-                <!--                    {{ offer.updatedAt | dateFormatter }}-->
-                <!--                  </div>-->
                 <div class="flex-2" @click="goToOfferDetails(offer._id)">
                   {{ offer.hiringCompany.name }}
                 </div>
                 <div class="flex-3" @click="goToOfferDetails(offer._id)">
                   {{ offer.hiringManager | fullNameFormatter }}
                 </div>
-                <div class="flex-1" @click="goToOfferDetails(offer._id)">
+                <div class="flex-2" @click="goToOfferDetails(offer._id)">
                   {{ offer.wage }}
                 </div>
                 <div class="flex-2" @click="goToOfferDetails(offer._id)">
@@ -388,10 +381,10 @@
 
     <b-row class="mt-5">
       <b-col md="12">
-        <b-card body-class="px-0">
+        <b-card body-class="p-0">
           <template v-slot:header>
-            <div class="d-flex align-items-center">
-              <h5 class="m-0 flex-1">
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="m-0">
                 <span>{{ $t("page_job_detail.files") }}</span>
                 <span class="color-gray ml-2">(.doc,.docx,.pdf)</span>
               </h5>
@@ -416,11 +409,11 @@
           <div>
             <ul class="custom-list interaction">
               <li
-                class="d-flex align-items-center px-3"
+                class="d-flex align-items-center justify-content-between px-3"
                 v-for="(attachment, idx) in model.attachments"
                 :key="idx"
               >
-                <div class="flex-1" @click="downloadFile(attachment)">
+                <div @click="downloadFile(attachment)">
                   {{ attachment.name }}
                 </div>
                 <div>
@@ -489,7 +482,6 @@ export default {
         payRate: null,
         paymentType: "EUR",
         status: "",
-        skillIds: [],
         description: "",
         questions: [],
         image: null,
@@ -626,7 +618,6 @@ export default {
       if (!this.model.image) {
         delete this.model.image;
       }
-      delete this.model.skillIds; // todo: support later
 
       jobsApi
         .update(this.model)

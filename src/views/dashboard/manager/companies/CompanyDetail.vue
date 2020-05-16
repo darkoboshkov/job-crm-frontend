@@ -255,7 +255,7 @@
       <b-col md="12">
         <b-card body-class="p-0">
           <template v-slot:header>
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
               <h5 class="m-0">
                 <span>{{ $t("page_detail_company.documents") }}</span>
               </h5>
@@ -280,7 +280,7 @@
           <div>
             <ul class="custom-list interaction">
               <li
-                class="d-flex align-items-center px-3"
+                class="d-flex align-items-center justify-content-between px-3"
                 v-for="(attachment, idx) in model.attachments"
                 :key="idx"
               >
@@ -342,7 +342,7 @@ export default {
     return {
       model: {
         name: "",
-        description: "asdfasdfasdfasdf",
+        description: "",
         email: "",
         phoneNumber: "",
         kvkNumber: "",
@@ -412,7 +412,7 @@ export default {
     },
     onEditDetail() {
       this.$router.push({
-        name: "admin-companies-edit",
+        name: "manager-companies-edit",
         params: {
           companyId: this.companyId
         }

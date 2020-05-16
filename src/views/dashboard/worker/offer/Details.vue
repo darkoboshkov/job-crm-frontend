@@ -13,7 +13,7 @@
     </h1>
     <div class="mt-5 row">
       <div class="matching-list col-6">
-        <div class="card matching-item">
+        <b-card class="matching-item" body-class="p-0">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
               <div class="avatar-image mr-2" style="width:65px;height:65px;">
@@ -51,7 +51,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        </b-card>
       </div>
 
       <div class="col-1 d-flex justify-content-center">
@@ -59,7 +59,7 @@
       </div>
 
       <div class="matching-list col-5">
-        <div class="card matching-item">
+        <b-card class="matching-item" body-class="p-0">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
               <div class="avatar-image mr-2" style="width:65px;height:65px;">
@@ -101,35 +101,37 @@
               </li>
             </ul>
           </div>
-        </div>
+        </b-card>
       </div>
     </div>
 
-    <div class="card mt-4">
-      <div class="card-header d-flex justify-content-between">
-        <span>{{ $t("page_offer_detail.status_actions") }}</span>
-        <span class="d-flex align-items-center contract-status">
-          <i
-            v-if="model.status === 'open'"
-            class="hiway-crm-icon icon-dot mr-2 color-yellow"
-            style="font-size: 0.3em;"
-          />
-          <i
-            v-else-if="model.status === 'pending-worker'"
-            class="hiway-crm-icon icon-dot mr-2 color-blue"
-            style="font-size: 0.3em;"
-          />
-          <i
-            v-else-if="model.status === 'active'"
-            class="hiway-crm-icon icon-dot mr-2 color-green"
-            style="font-size: 0.3em;"
-          />
-          <template v-if="model.status">
-            {{ $t("page_offer_detail.offer_states." + model.status) }}
-          </template>
-        </span>
-      </div>
-      <div class="card-body d-flex justify-content-between">
+    <b-card class="mt-4">
+      <template v-slot:header>
+        <div class="d-flex align-items-center justify-content-between">
+          <span>{{ $t("page_offer_detail.status_actions") }}</span>
+          <span class="d-flex align-items-center contract-status">
+            <i
+              v-if="model.status === 'open'"
+              class="hiway-crm-icon icon-dot mr-2 color-yellow"
+              style="font-size: 0.3em;"
+            />
+            <i
+              v-else-if="model.status === 'pending-worker'"
+              class="hiway-crm-icon icon-dot mr-2 color-blue"
+              style="font-size: 0.3em;"
+            />
+            <i
+              v-else-if="model.status === 'active'"
+              class="hiway-crm-icon icon-dot mr-2 color-green"
+              style="font-size: 0.3em;"
+            />
+            <template v-if="model.status">
+              {{ $t("page_offer_detail.offer_states." + model.status) }}
+            </template>
+          </span>
+        </div>
+      </template>
+      <div class="d-flex justify-content-between">
         <div>
           <div class="d-flex align-items-center mb-3">
             <div class="avatar-image mr-2">
@@ -202,13 +204,13 @@
           </button>
         </div>
       </div>
-    </div>
+    </b-card>
 
-    <div class="card mt-4 contract-specifications">
-      <div class="card-header">
-        {{ $t("page_offer_detail.specifications") }}
-      </div>
-      <div class="card-body">
+    <b-card class="mt-4 contract-specifications">
+      <template v-slot:header>
+        <div>{{ $t("page_offer_detail.specifications") }}</div>
+      </template>
+      <div>
         <div class="item">
           <div>{{ $t("page_offer_detail.form.cao") }}</div>
           <div v-if="edit">
@@ -317,38 +319,40 @@
           </div>
         </div>
       </div>
-    </div>
+    </b-card>
 
-    <div class="card mt-4 contract-files">
-      <div class="card-header">
-        <div>
-          <span>{{ $t("page_offer_detail.files") }}</span>
-          <span class="color-gray ml-2">(.doc,.docx,.pdf)</span>
+    <b-card class="mt-4 contract-files" body-class="p-0">
+      <template v-slot:header>
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <span>{{ $t("page_offer_detail.files") }}</span>
+            <span class="color-gray ml-2">(.doc,.docx,.pdf)</span>
+          </div>
+          <input
+            type="file"
+            id="attachment"
+            name="attachment"
+            accept=".doc,.docx,.pdf"
+            @change="onFileChange"
+          />
+          <label
+            for="attachment"
+            class="btn btn-blue ml-2"
+            style="min-width:160px;"
+          >
+            {{ $t("page_offer_detail.button.upload") }}
+            <i class="hiway-crm-icon icon-upload" />
+          </label>
         </div>
-        <input
-          type="file"
-          id="attachment"
-          name="attachment"
-          accept=".doc,.docx,.pdf"
-          @change="onFileChange"
-        />
-        <label
-          for="attachment"
-          class="btn btn-blue ml-2"
-          style="min-width:160px;"
-        >
-          {{ $t("page_offer_detail.button.upload") }}
-          <i class="hiway-crm-icon icon-upload" />
-        </label>
-      </div>
-      <div class="card-body px-0">
+      </template>
+      <div>
         <ul class="custom-list interaction">
           <li
-            class="d-flex align-items-center px-3"
+            class="d-flex align-items-center justify-content-between px-3"
             v-for="(attachment, idx) in attachments"
             :key="idx"
           >
-            <div class="flex-1" @click="downloadFile(attachment)">
+            <div @click="downloadFile(attachment)">
               <img
                 v-if="attachment.userId === worker._id && worker.image"
                 :src="worker.image | appUrlFormatter"
@@ -405,7 +409,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </b-card>
     <b-modal
       ref="modal-view-contract"
       size="lg"

@@ -84,23 +84,6 @@
           v-model="model.birthday"
         />
       </div>
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('BANK_ACCOUNT_NUMBER') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.bankNumber"-->
-      <!--/>-->
-      <!--</div>-->
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('ADDRESS') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--/>-->
-      <!--</div>-->
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.country") }}:</label>
         <b-form-input
@@ -159,33 +142,6 @@
           v-model="model.phone"
         />
       </div>
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t("page_setting.account_setting.form.email") }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.email"-->
-      <!--/>-->
-      <!--</div>-->
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('PASSWORD') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.password"-->
-      <!--/>-->
-      <!--</div>-->
-      <!--<div class="form-element mt-3">-->
-      <!--<label>{{ $t('PASSPORT') }}:</label>-->
-      <!--<b-form-input-->
-      <!--type="text"-->
-      <!--required-->
-      <!--class="custom-input"-->
-      <!--v-model="model.passport"-->
-      <!--/>-->
-      <!--</div>-->
       <div class="form-element mt-3">
         <button class="btn btn-blue" @click="update">
           {{ $t("page_setting.account_setting.button.update") }}

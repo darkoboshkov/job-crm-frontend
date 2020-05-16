@@ -95,10 +95,6 @@
 
   .contract-specifications, .contract-files {
     .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
       input[type=file] {
         visibility: hidden;
       }

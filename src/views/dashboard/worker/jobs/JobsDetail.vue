@@ -100,16 +100,6 @@
                   </div>
                 </div>
               </li>
-
-              <!--                <li>-->
-              <!--                  {{ $t("page_job_detail.form.payment_type") }}-->
-              <!--                  <div class="pull-right">-->
-              <!--                    <div>-->
-              <!--                      {{ model.paymentType }}-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </li>-->
-
               <li>
                 {{ $t("page_job_detail.form.start_date") }}
                 <div class="pull-right">
@@ -174,11 +164,9 @@
       <b-col md="12">
         <b-card>
           <template v-slot:header>
-            <div class="d-flex">
-              <h5 class="m-0 flex-1">
-                {{ $t("page_job_detail.job_offers") }}
-              </h5>
-            </div>
+            <h5 class="m-0">
+              {{ $t("page_job_detail.job_offers") }}
+            </h5>
           </template>
           <div>
             <ul class="custom-list">
@@ -186,9 +174,6 @@
                 <div class="flex-3">
                   {{ $t("page_job_detail.form.worker") }}
                 </div>
-                <!--                  <div class="flex-2">-->
-                <!--                    Last Updated-->
-                <!--                  </div>-->
                 <div class="flex-2">
                   {{ $t("page_job_detail.form.hiring_company") }}
                 </div>
@@ -216,9 +201,6 @@
                   {{ $t("page_job_detail.form.offer") }} -
                   {{ offer.worker | fullNameFormatter }}
                 </div>
-                <!--                  <div class="flex-2">-->
-                <!--                    {{ offer.updatedAt | dateFormatter }}-->
-                <!--                  </div>-->
                 <div class="flex-2">
                   {{ offer.hiringCompany.name }}
                 </div>
@@ -253,22 +235,6 @@
           <template v-slot:header>
             <div class="d-flex align-items-center">
               <h5 class="m-0 flex-1">{{ $t("page_job_detail.files") }}</h5>
-              <!--                <input-->
-              <!--                  type="file"-->
-              <!--                  id="attachment"-->
-              <!--                  class="d-none"-->
-              <!--                  name="attachment"-->
-              <!--                  accept=".doc,.docx,.pdf"-->
-              <!--                  @change="onFileChange"-->
-              <!--                />-->
-              <!--                <label-->
-              <!--                  for="attachment"-->
-              <!--                  class="btn btn-blue m-0"-->
-              <!--                  style="min-width:160px;"-->
-              <!--                >-->
-              <!--                  {{ $t("page_job_detail.button.upload") }}-->
-              <!--                  <i class="hiway-crm-icon icon-upload"></i>-->
-              <!--                </label>-->
             </div>
           </template>
           <div class="card-body">
@@ -300,9 +266,6 @@
                         class="hiway-crm-icon icon-more-vertical color-black"
                       />
                     </template>
-                    <!--                      <b-dropdown-item @click="viewFile(attachment)">-->
-                    <!--                        {{ $t("page_job_detail.view_file") }}-->
-                    <!--                      </b-dropdown-item>-->
                     <b-dropdown-item @click="downloadFile(attachment)">
                       {{ $t("page_job_detail.download_file") }}
                     </b-dropdown-item>
@@ -339,7 +302,6 @@ export default {
         paymentType: "EUR",
         level: null,
         status: "",
-        skillIds: [],
         description: "",
         questions: [],
         image: null,

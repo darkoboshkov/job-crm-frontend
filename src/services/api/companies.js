@@ -15,6 +15,11 @@ export default {
     delete params.companyId;
     return request("get", `/companies/${companyId}`, params, config);
   },
+  getByManagerId(params, config = {}) {
+    const managerId = params.managerId;
+    delete params.managerId;
+    return request("get", `/companies/manager/${managerId}`, params, config);
+  },
   patch(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;

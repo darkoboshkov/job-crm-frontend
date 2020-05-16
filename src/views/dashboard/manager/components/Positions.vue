@@ -1,10 +1,8 @@
 <template>
   <b-card id="open_positions" body-class="pt-0">
     <template v-slot:header>
-      <div class="d-flex">
-        <div class="flex-1">
-          <h2 class="m-0">{{ $t("component.position.title") }}</h2>
-        </div>
+      <div class="d-flex align-items-center justify-content-between">
+        <h2 class="m-0">{{ $t("component.position.title") }}</h2>
         <button
           type="button"
           class="close"
