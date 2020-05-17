@@ -83,17 +83,6 @@ export default {
             button: this.$t("page_setting.modal.reset_password.continue")
           });
         });
-
-      settingsApi
-        .patch(Object.assign(this.$store.state.user, this.model))
-        .then(res => {
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_setting.modal.reset_password.error_title"),
-            subTitle: this.error,
-            button: this.$t("page_setting.modal.reset_password.continue")
-          });
-        });
     }
   }
 };
