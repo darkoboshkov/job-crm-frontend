@@ -248,7 +248,7 @@
       <b-col md="12">
         <b-card body-class="p-0">
           <template v-slot:header>
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center justify-content-between">
               <h5 class="m-0">
                 <span>{{ $t("page_detail_company.documents") }}</span>
               </h5>

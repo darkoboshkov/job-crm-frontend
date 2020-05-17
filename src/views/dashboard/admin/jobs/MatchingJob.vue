@@ -55,7 +55,7 @@
           <div>{{ item.location }}</div>
           <div>
             <a
-              class="underline red"
+              class="underline color-red"
               href="javascript:void(0);"
               @click.prevent="goToMatchDetails(item)"
               >{{ $t("page_matching.match_detail") }}</a

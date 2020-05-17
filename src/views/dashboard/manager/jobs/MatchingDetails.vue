@@ -87,7 +87,7 @@
             </div>
             <div class="footer">
               Gemiddelde reistijd van de woon-werk afstand is
-              <span class="red">16 minuten</span>.
+              <span class="color-red">16 minuten</span>.
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@
               </div>
             </div>
             <div class="footer">
-              Magalie heeft is <span class="red">HBO afgestudeerd</span> en
+              Magalie heeft is <span class="color-red">HBO afgestudeerd</span> en
               voldoet aan de eisen.
             </div>
           </div>
@@ -140,7 +140,7 @@
             </div>
             <div class="footer">
               Kandidaat heeft een
-              <span class="red">geschikte leeftijd</span> voor de functie met
+              <span class="color-red">geschikte leeftijd</span> voor de functie met
               enige ervaring.
             </div>
           </div>
