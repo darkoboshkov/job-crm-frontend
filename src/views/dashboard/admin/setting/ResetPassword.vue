@@ -43,7 +43,6 @@
 
 <script>
 import settingsApi from "@/services/api/settings";
-import errorReader from "@/helpers/ErrorReader";
 
 export default {
   name: "ResetPassword",
@@ -73,13 +72,9 @@ export default {
           });
         })
         .catch(err => {
-          let read = errorReader(err);
-          this.error = read.param + " is " + read.msg.toLowerCase();
-
           this.$store.dispatch("updateShowErrorModal", true);
           this.$store.dispatch("updateErrorModalContent", {
             title: this.$t("page_setting.modal.reset_password.error_title"),
-            subTitle: this.error,
             button: this.$t("page_setting.modal.reset_password.continue")
           });
         });
