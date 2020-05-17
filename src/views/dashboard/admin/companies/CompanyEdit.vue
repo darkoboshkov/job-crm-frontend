@@ -239,7 +239,7 @@
                     </div>
                     <div class="col-12 col-md-8">
                       <b-form-input
-                        type="text"
+												type="text"
                         name="vat_shifted"
                         :disabled="!vatShiftedEnabled"
                         class="custom-input"
@@ -425,8 +425,8 @@ export default {
         postalcode: "",
         kvkNumber: "",
         limitCreditSafe: "",
-        VATShifted: "",
-        GAccount: "",
+        VATShifted: null,
+        GAccount: null,
         termOfPayment: "",
         automaticCollection: true,
         chargeTravelExpenses: true,
@@ -537,11 +537,11 @@ export default {
             delete this.imageData.file;
           }
 
-          if (!this.model.vatShiftedEnabled) {
-            delete this.model.VATShifted;
+          if (!this.vatShiftedEnabled) {
+            this.model.VATShifted = null;
           }
-          if (!this.model.gAccountEnabled) {
-            delete this.model.GAccount;
+          if (!this.gAccountEnabled) {
+            this.model.GAccount = null;
           }
 
           companyApi

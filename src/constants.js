@@ -557,12 +557,7 @@ export const timesheetsTable = {
     },
     {
       title: i18n.t("page_timesheets.filter.week"),
-      type: "text",
-      value: ""
-    },
-    {
-      title: i18n.t("page_timesheets.filter.year"),
-      type: "text",
+      type: "number",
       value: ""
     },
     {
@@ -744,7 +739,7 @@ export const workerTimesheetsTable = {
     },
     {
       title: i18n.t("page_timesheets.filter.week"),
-      type: "text",
+      type: "number",
       value: ""
     },
     {

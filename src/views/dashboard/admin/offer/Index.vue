@@ -180,8 +180,8 @@ export default {
     filter(v) {
       const filter = { or: [], and: [] };
       const title = v[0].value;
-      const worker_name = v[1].value;
-      const hiring_company = v[2].value;
+      const workerName = v[1].value;
+      const hiringCompany = v[2].value;
       const startDateFrom = v[3].items[0].value;
       const startDateTo = v[3].items[1].value;
       const endDateFrom = v[4].items[0].value;
@@ -191,17 +191,17 @@ export default {
       if (title) {
         filter.and.push({ key: "job.title", value: title, opt: "in" });
       }
-      if (worker_name) {
+      if (workerName) {
         filter.or = [
-          { key: "worker.firstName", value: worker_name, opt: "in" },
-          { key: "worker.lastName", value: worker_name, opt: "in" },
-          { key: "worker.middleName", value: worker_name, opt: "in" }
+          { key: "worker.firstName", value: workerName, opt: "in" },
+          { key: "worker.lastName", value: workerName, opt: "in" },
+          { key: "worker.middleName", value: workerName, opt: "in" }
         ];
       }
-      if (hiring_company) {
+      if (hiringCompany) {
         filter.and.push({
           key: "hiringCompany._id",
-          value: hiring_company,
+          value: hiringCompany,
           opt: "eq"
         });
       }

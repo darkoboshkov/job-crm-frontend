@@ -285,24 +285,17 @@ export default {
       this.getTimeSheets();
     },
     filter(v) {
+      console.log(v)
       const filter = { or: [], and: [] };
       const kind = v[0].value;
-      const hand_in_date = v[1].value;
-      const week = v[2].value;
-      const status = v[3].value;
+      const week = Number(v[1].value);
+      const status = v[2].value;
 
       if (kind) {
-        filter.and.push({ key: "kind", value: kind, opt: "eq" });
-      }
-      if (hand_in_date) {
-        filter.and.push({
-          key: "hand_in_date",
-          value: hand_in_date,
-          opt: "eq"
-        });
+        filter.and.push({ key: "type", value: kind, opt: "eq" });
       }
       if (week) {
-        filter.and.push({ key: "week", value: week, opt: "eq" });
+        filter.and.push({ key: "timeSheetData.weekNumber", value: week, opt: "eq" });
       }
       if (status) {
         filter.and.push({ key: "status", value: status, opt: "eq" });

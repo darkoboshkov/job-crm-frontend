@@ -265,37 +265,37 @@ export default {
     },
     filter(v) {
       const filter = { or: [], and: [] };
-      const kind = v[0].value;
-      const week = v[1].value;
-      const year = v[2].value;
-      const worker = v[3].value;
-      const hiring_manager = v[4].value;
-      const hiring_company = v[5].value;
-      const status = v[6].value;
+      const type = v[0].value;
+      const week = Number(v[1].value);
+      const worker = v[2].value;
+      const hiringManager = v[3].value;
+      const hiringCompany = v[4].value;
+      const status = v[5].value;
 
-      if (kind) {
-        filter.and.push({ key: "kind", value: kind, opt: "eq" });
+      if (type) {
+        filter.and.push({ key: "type", value: type, opt: "eq" });
       }
       if (week) {
-        filter.and.push({ key: "week", value: week, opt: "eq" });
-      }
-      if (year) {
-        filter.and.push({ key: "year", value: year, opt: "eq" });
+        filter.and.push({ key: "timeSheetData.weekNumber", value: week, opt: "eq" });
       }
       if (worker) {
-        filter.and.push({ key: "worker._id", value: worker, opt: "eq" });
+        filter.or = [
+          { key: "worker.firstName", value: worker, opt: "in" },
+          { key: "worker.lastName", value: worker, opt: "in" },
+          { key: "worker.middleName", value: worker, opt: "in" }
+        ];
       }
-      if (hiring_manager) {
+      if (hiringManager) {
         filter.and.push({
           key: "hiringManager._id",
-          value: hiring_manager,
+          value: hiringManager,
           opt: "eq"
         });
       }
-      if (hiring_company) {
+      if (hiringCompany) {
         filter.and.push({
-          key: "hiringCompany.id",
-          value: hiring_company,
+          key: "hiringCompany._id",
+          value: hiringCompany,
           opt: "eq"
         });
       }
@@ -343,10 +343,10 @@ export default {
     getCompanies() {
       companyApi.getAll().then(res => {
         this.companies = res;
-        this.filterOptions[5].options = [];
-        this.filterOptions[5].options.push({ text: "", value: "" });
+        this.filterOptions[4].options = [];
+        this.filterOptions[4].options.push({ text: "", value: "" });
         this.companies?.forEach(item => {
-          this.filterOptions[5].options.push({
+          this.filterOptions[4].options.push({
             text: item.name,
             value: item._id
           });
@@ -361,10 +361,10 @@ export default {
         })
         .then(res => {
           this.managers = res.docs;
-          this.filterOptions[4].options = [];
-          this.filterOptions[4].options.push({ text: "", value: "" });
+          this.filterOptions[3].options = [];
+          this.filterOptions[3].options.push({ text: "", value: "" });
           this.managers?.forEach(item => {
-            this.filterOptions[4].options.push({
+            this.filterOptions[3].options.push({
               text: this.getFullName(item),
               value: item._id
             });

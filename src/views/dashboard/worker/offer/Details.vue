@@ -244,15 +244,6 @@
           </div>
         </div>
         <div class="item">
-          <div>{{ $t("page_offer_detail.form.pay_rate") }}</div>
-          <div v-if="edit">
-            <b-form-input type="number" v-model="model.payRate" />
-          </div>
-          <div v-else class="text-right">
-            {{ model.payRate }}
-          </div>
-        </div>
-        <div class="item">
           <div>{{ $t("page_offer_detail.form.hours_per_week") }}</div>
           <div v-if="edit">
             <b-form-input type="number" v-model="model.hoursPerWeek" />

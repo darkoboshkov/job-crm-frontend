@@ -156,14 +156,7 @@
               <div>
                 <button
                   class="btn btn-blue"
-                  @click.prevent="
-                    $router.push({
-                      name: 'admin-jobs-choose-candidate',
-                      params: {
-                        companyId: companyId
-                      }
-                    })
-                  "
+                  @click.prevent="$router.push({name: 'manager-users-create'})"
                 >
                   {{ $t("page_detail_company.button.add_manager") }}
                   <i class="hiway-crm-icon icon-pencil ml-2" />
