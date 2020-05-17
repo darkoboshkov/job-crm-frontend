@@ -1,16 +1,16 @@
 <template>
-  <div id="page_companies_detail" class="dashboard-content">
+  <div id="page_company_detail" class="dashboard-content">
     <a href="javascript:void(0)" class="back" @click.prevent="$router.go(-1)">
       <i class="hiway-crm-icon icon-angle-left mr-2" />
       <span>{{ $t("common.back") }}</span>
     </a>
     <b-row class="mt-5">
       <b-col md="12">
-        <div class="companies-detail-header">
-          <div class="companies-detail-header__photo">
+        <div class="company-detail__header">
+          <div class="company-detail__header__photo">
             <img v-if="model.logo" :src="model.logo | appUrlFormatter" />
           </div>
-          <div class="companies-detail-header__description">
+          <div class="company-detail__header__description">
             <div>
               <h2 class="fullName">{{ model.name }}</h2>
             </div>
@@ -19,7 +19,7 @@
             </h3>
           </div>
         </div>
-        <div class="companies-detail-edit">
+        <div class="company-detail__edit">
           <a href="javascript:void(0);" @click.prevent="onEditDetail">
             {{ $t("page_detail_company.edit") }}
           </a>

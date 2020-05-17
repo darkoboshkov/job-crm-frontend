@@ -57,8 +57,8 @@
   }
 }
 
-#page_companies_detail {
-  .companies-detail-edit {
+#page_company_detail {
+  .company-detail__edit {
     position: absolute;
     right: 30px;
     top: 0;
@@ -66,7 +66,7 @@
       color: black;
     }
   }
-  .companies-detail-header {
+  .company-detail__header {
     display: flex;
     align-items: center;
     margin-top: 20px;
@@ -122,7 +122,7 @@
   }
 }
 
-#page_companies_edit {
+#page_company_edit {
   margin: 0 auto;
   max-width: 1200px;
 
@@ -132,15 +132,15 @@
     margin-top: 50px;
   }
 
-  .company-detail__header {
+  .company-edit__header {
     color: var(--lipstick-red);
     font-size: 34px;
   }
-  .company-detail__description {
+  .company-edit__description {
     margin-top: 50px;
   }
 
-  .company-detail__photo {
+  .company-edit__photo {
     flex: 1;
     margin-right: 20px;
 

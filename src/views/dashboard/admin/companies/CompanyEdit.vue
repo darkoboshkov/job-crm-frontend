@@ -1,5 +1,5 @@
 <template>
-  <div id="page_companies_edit" class="dashboard-content">
+  <div id="page_company_edit" class="dashboard-content">
     <div class="d-flex justify-content-between">
       <a
         href="javascript:void(0)"
@@ -11,17 +11,17 @@
       </a>
     </div>
     <div class="content">
-      <div class="company-detail__header text-center">
+      <div class="company-edit__header text-center">
         <h1>
           {{ $t("page_edit_company.edit_title") }}
         </h1>
       </div>
 
-      <div class="company-detail__description">
+      <div class="company-edit__description">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-12 col-md-4">
-              <div class="company-detail__photo">
+              <div class="company-edit__photo">
                 <div class="image-wrapper">
                   <img :src="imageData.preview" />
                   <b-spinner
