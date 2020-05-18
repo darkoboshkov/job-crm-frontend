@@ -9,7 +9,7 @@
     "register": "Registreren",
     "reset": "Reset",
     "accept": "Accepteer",
-    "yes": "Yes",
+    "yes": "Ja",
     "no": "Nee",
     "ok": "Ok",
     "save": "Opslaan",
@@ -63,7 +63,7 @@
   "status": {
     "open": "Open",
     "close": "Sluit",
-    "hide": "Hide",
+    "hide": "Verbergen",
     "active": "Actief",
     "inactive": "Inactief",
     "available": "Beschikbaar",
@@ -75,9 +75,9 @@
     "deleted": "Verwijderd",
     "approved": "Goedgekeurd",
     "pending-worker": "In afwachting van werknemer",
-    "not-able-to-see": "Not able to see",
-    "pending": "Pending",
-    "signed": "Signed"
+    "not-able-to-see": "Verborgen",
+    "pending": "In afwachting",
+    "signed": "Getekend"
   },
   "profession": {
     "administration": "Administratie",
@@ -146,8 +146,8 @@
       "title": "Acties voor vandaag"
     },
     "pending_workers": {
-      "title": "Niet toegewezen werknemers",
-      "sub_title": "We hebben {candidates} niet toegewezen werknemers gevonden",
+      "title": "Niet toegewezen gebruikers",
+      "sub_title": "We hebben {candidates} niet toegewezen gebruikers gevonden",
       "table": {
         "name": "Naam",
         "email": "E-mail",
@@ -361,8 +361,8 @@
         "users_area_text": "Deze widget toont uw nieuwste werknemers.",
         "companies_area_title": "Bedrijven",
         "companies_area_text": "Deze widget toont uw nieuwste bedrijven",
-        "pending_workers_area_title": "Niet toegewezen werknemers",
-        "pending_workers_area_text": "Deze widget toont uw nieuwste werknemers die nog niet zijn toegewezen aan een bedrijf"
+        "pending_workers_area_title": "Niet toegewezen gebruikers",
+        "pending_workers_area_text": "Deze widget toont uw nieuwste gebruikers die nog niet zijn toegewezen aan een bedrijf"
       }
     }
   },
@@ -396,12 +396,12 @@
   "page_detail_company": {
     "create_title": "Voeg nieuw bedrijf toe",
     "edit_title": "Bedrijfsgegevens",
-    "description": "Description",
-    "create_description": "Please fill out the company details and click on: Create company.",
+    "description": "Bedrijfsprofiel",
+    "create_description": "Vul de gegevens van het bedrijf in en klik op: Bedrijf aanmaken.",
     "save": "Aanpassingen opslaan",
-    "edit": "Edit details",
-    "documents": "Public company documents",
-    "download_file": "Download file",
+    "edit": "Details aanpassen",
+    "documents": "Publieke bedrijfs bestanden",
+    "download_file": "Bestand downloaden",
     "form": {
       "name": "Bedrijfsnaam",
       "kvk": "KVK-nummer",
@@ -412,7 +412,7 @@
       "houseNumber": "Huisnummer",
       "address": "Address",
       "postalCode": "Postcode",
-      "description": "Description",
+      "description": "Bedrijfsprofiel",
       "email": "Bedrijfs e-mailadres",
       "phone": "Bedrijfs telefoonnummer",
       "vat_shifted": "BTW verlegd",
@@ -426,17 +426,17 @@
       "percentage": "Percentage"
     },
     "manager_table": {
-      "title": "Current company managers",
-      "city": "City",
-      "email": "Email",
-      "phone_number": "Phone Number",
-      "delete": "Delete",
-      "name": "Full Name"
+      "title": "Managers van dit bedrijf",
+      "city": "Plaats",
+      "email": "E-mail",
+      "phone_number": "Telefoonnummer",
+      "delete": "Verwijder",
+      "name": "Naam"
     },
     "button": {
       "create": "Bedrijf aanmaken",
-      "add_manager": "Add manager",
-      "upload": "Upload"
+      "add_manager": "Manager toevoegen",
+      "upload": "Uploaden"
     },
     "modal": {
       "create_success": {
@@ -449,23 +449,23 @@
         "continue": "Doorgaan"
       },
       "remove_manager": {
-        "title": "Are you sure?",
-        "sub_title": "Are you sure you want to remove this manager?",
-        "continue": "Continue"
+        "title": "Weet je het zeker?",
+        "sub_title": "Weet je zeker dat je deze manager wilt verwijderen?",
+        "continue": "Ik weet het zeker"
       },
       "confirm_delete_attach": {
-        "title": "Are you sure you want to delete?",
-        "sub_title": "This file will be removed permanently.",
-        "continue": "Delete"
+        "title": "Weet je zeker dat je dit bestand wilt verwijderen?",
+        "sub_title": "Dit bestand zal permanent verwijderd worden.",
+        "continue": "Verwijder"
       }
     }
   },
   "page_edit_company": {
-    "create_title": "Add new company",
-    "edit_title": "Company details",
-    "description": "Please fill out the company details and click on: Update company.",
-    "save": "Save adjustments",
-    "edit": "Edit company details",
+    "create_title": "Nieuw bedrijf aanmaken",
+    "edit_title": "Bedrijfsgegevens",
+    "description": "Vul alle bedrijfsgegevens in en klik op: Bedrijfsgegevens aanpassen.",
+    "save": "Wijzigingen opslaan",
+    "edit": "Bedrijfsgegevens aanpassen",
     "form": {
       "name": "Bedrijfsnaam",
       "kvk": "KVK-nummer",
@@ -490,8 +490,8 @@
     },
     "button": {
       "create": "Bedrijf aanmaken",
-      "update": "Update company",
-      "delete": "Delete company"
+      "update": "Bedrijfsgegevens aanpassen",
+      "delete": "Bedrijf verwijderen"
     },
     "modal": {
       "update_success": {
@@ -682,7 +682,7 @@
         "continue": "Opnieuw proberen."
       },
       "confirm_delete": {
-        "title": "Weet je zeker dat je het aangeboden contract wil verwijderen?",
+        "title": "Weet je zeker dat je het aangeboden contract wilt verwijderen?",
         "sub_title": "Het aangeboden contract wordt permanent verwijderd.",
         "continue": "Verwijder"
       },
@@ -760,7 +760,7 @@
         "payment_interval": "Betalingstermijn",
         "discount_on_taxes": "Loonheffingskorting",
         "work_earlier_as_flexworker": "Eerder gewerkt als uitzendkracht",
-        "accept_term": "Ik erken en ga ermee akkoord dat ik de voorwaarden in dit contract heb gelezen en ermee akkoord ga. Ik begrijp dat ik door op de knop: 'Contract tekenen' hieronder te klikken, dit contract digitaal onderteken en mij aan dit contract bind.",
+        "accept_term": "Ik erken dat ik de voorwaarden in dit contract heb gelezen en ermee akkoord ga. Ik begrijp dat ik door op de knop: 'Contract tekenen' hieronder te klikken, dit contract digitaal onderteken en mij aan dit contract bind.",
         "view_contract": "Contract weergeven",
         "sign_contract": "Contract tekenen"
       },
@@ -1051,12 +1051,12 @@
       "view_expense": "Onkosten declaraties weergeven"
     },
     "filter": {
-      "kind": "Kind",
-      "timesheets": "Timesheets",
-      "expenses": "Expenses",
+      "kind": "Soort",
+      "timesheets": "Uren declaraties",
+      "expenses": "Onkosten declaraties",
       "week": "Week",
-      "year": "Year",
-      "worker": "Worker",
+      "year": "Jaar",
+      "worker": "Werknemer",
       "hiring_manager": "Inhurende manager",
       "hiring_company": "Inhurend bedrijf",
       "status": "Status"
@@ -1176,7 +1176,7 @@
       "id_image": "Legitimatie uploaden",
       "id": "ID-kaart",
       "passport": "Paspoort",
-      "show": "Show"
+      "show": "Toon"
     },
     "button": {
       "create": "Gebruiker aanmaken"
@@ -1210,12 +1210,12 @@
       "actions": "Acties"
     },
     "filter": {
-      "title": "Job Title",
-      "worker_name": "Worker Name",
-      "hiring_company": "Hiring Company",
-      "type": "Type",
-      "worker_contract": "Worker contract",
-      "company_contract": "Company contract",
+      "title": "Vacaturetitel",
+      "worker_name": "Werknemer",
+      "hiring_company": "Inhurend bedrijf",
+      "type": "Type contract",
+      "worker_contract": "Arbeidsovereenkomst",
+      "company_contract": "Inleenovereenkomst",
       "start_date": "Startdatum",
       "end_date": "Einddatum",
       "status": "Status"

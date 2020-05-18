@@ -146,8 +146,8 @@
       "title": "To-do list today"
     },
     "pending_workers": {
-      "title": "Pending workers",
-      "sub_title": "We have found {candidates} pending workers",
+      "title": "Pending users",
+      "sub_title": "We have found {candidates} pending users",
       "table": {
         "name": "Name",
         "email": "Email",
@@ -426,7 +426,7 @@
       "percentage": "Percentage"
     },
     "manager_table": {
-      "title": "Current company managers",
+      "title": "Company managers",
       "city": "City",
       "email": "Email",
       "phone_number": "Phone Number",
@@ -454,7 +454,7 @@
         "continue": "Continue"
       },
       "confirm_delete_attach": {
-        "title": "Are you sure you want to delete?",
+        "title": "Are you sure you want to delete this file?",
         "sub_title": "This file will be removed permanently.",
         "continue": "Delete"
       }
