@@ -276,7 +276,11 @@ export default {
         filter.and.push({ key: "type", value: type, opt: "eq" });
       }
       if (week) {
-        filter.and.push({ key: "timeSheetData.weekNumber", value: week, opt: "eq" });
+        filter.and.push({
+          key: "timeSheetData.weekNumber",
+          value: week,
+          opt: "eq"
+        });
       }
       if (worker) {
         filter.or = [

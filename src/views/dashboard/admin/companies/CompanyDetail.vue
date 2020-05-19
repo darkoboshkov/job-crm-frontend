@@ -106,14 +106,14 @@
               <li>
                 {{ $t("page_detail_company.form.vat_shifted") }}
                 <span class="pull-right">
-									{{ vatShiftedEnabled ? model.VATShifted : $t("common.no") }}
-								</span>
+                  {{ vatShiftedEnabled ? model.VATShifted : $t("common.no") }}
+                </span>
               </li>
               <li>
                 {{ $t("page_detail_company.form.g_account") }}
                 <span class="pull-right">
-									{{ gAccountEnabled ? `${model.GAccount}%` : $t("common.no") }}
-								</span>
+                  {{ gAccountEnabled ? `${model.GAccount}%` : $t("common.no") }}
+                </span>
               </li>
               <li>
                 {{ $t("page_detail_company.form.terms_of_payment") }}
@@ -160,7 +160,7 @@
               <div>
                 <button
                   class="btn btn-blue"
-                  @click.prevent="$router.push({name: 'admin-users-create'})"
+                  @click.prevent="$router.push({ name: 'admin-users-create' })"
                 >
                   {{ $t("page_detail_company.button.add_manager") }}
                   <i class="hiway-crm-icon icon-pencil ml-2" />
@@ -171,9 +171,9 @@
           <div>
             <ul class="custom-list interaction">
               <li class="d-flex color-gray px-3">
-								<div class="flex-2">
-									{{ $t("page_detail_company.manager_table.name") }}
-								</div>
+                <div class="flex-2">
+                  {{ $t("page_detail_company.manager_table.name") }}
+                </div>
                 <div class="flex-2">
                   {{ $t("page_detail_company.manager_table.city") }}
                 </div>

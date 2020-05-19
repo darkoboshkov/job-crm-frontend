@@ -239,7 +239,7 @@
                     </div>
                     <div class="col-12 col-md-8">
                       <b-form-input
-												type="text"
+                        type="text"
                         name="vat_shifted"
                         :disabled="!vatShiftedEnabled"
                         class="custom-input"

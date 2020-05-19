@@ -76,9 +76,9 @@
                   </span>
                   <div>
                     <b-input v-if="editJob" v-model="model.location" />
-										<div v-else>
-											{{ model.location }}
-										</div>
+                    <div v-else>
+                      {{ model.location }}
+                    </div>
                   </div>
                 </div>
               </li>
@@ -93,9 +93,9 @@
                       type="number"
                       v-model="model.hoursPerWeek"
                     />
-										<div v-else>
-											{{ model.hoursPerWeek }}
-										</div>
+                    <div v-else>
+                      {{ model.hoursPerWeek }}
+                    </div>
                   </div>
                 </div>
               </li>
