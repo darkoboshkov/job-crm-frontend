@@ -543,10 +543,9 @@ export default {
         city: "",
         password: "",
         c_password: "",
-        passport: "",
         overview: "",
         socialSecurityNumber: "",
-        identificationType: "",
+        identificationType: "id",
         identificationNumber: "",
         identificationExpirationDate: "",
         identificationImage: {
@@ -735,9 +734,6 @@ export default {
               }
               if (msg.param === "city") {
                 this.cityError = msg.msg;
-              }
-              if (msg.param === "passport") {
-                this.passportError = msg.msg;
               }
             });
           } else {
