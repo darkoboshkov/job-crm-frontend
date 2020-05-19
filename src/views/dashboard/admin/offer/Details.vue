@@ -356,7 +356,7 @@
             v-for="(attachment, idx) in attachments"
             :key="idx"
           >
-            <div @click="downloadFile(attachment)">
+            <div @click="downloadFile(attachment)" class="flex-1">
               <img
                 v-if="attachment.userId === worker._id && worker.image"
                 :src="worker.image | appUrlFormatter"
