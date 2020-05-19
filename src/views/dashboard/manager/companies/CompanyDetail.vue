@@ -103,14 +103,18 @@
                 {{ $t("page_detail_company.form.postalCode") }}
                 <span class="pull-right">{{ model.postalCode }}</span>
               </li>
-              <li>
-                {{ $t("page_detail_company.form.vat_shifted") }}
-                <span class="pull-right">{{ model.VATShifted }}</span>
-              </li>
-              <li>
-                {{ $t("page_detail_company.form.g_account") }}
-                <span class="pull-right">{{ model.GAccount }}</span>
-              </li>
+							<li>
+								{{ $t("page_detail_company.form.vat_shifted") }}
+								<span class="pull-right">
+									{{ vatShiftedEnabled ? model.VATShifted : $t("common.no") }}
+								</span>
+							</li>
+							<li>
+								{{ $t("page_detail_company.form.g_account") }}
+								<span class="pull-right">
+									{{ gAccountEnabled ? `${model.GAccount}%` : $t("common.no") }}
+								</span>
+							</li>
               <li>
                 {{ $t("page_detail_company.form.terms_of_payment") }}
                 <span class="pull-right">{{ model.termOfPayment }}</span>
