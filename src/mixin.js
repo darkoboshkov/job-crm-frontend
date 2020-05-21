@@ -1,4 +1,6 @@
 import { APP_URL } from "@/constants";
+import English from "./plugins/i18n/languages/English.json";
+import i18n from "./plugins/i18n";
 
 const timeStringOptions = {
   hour12: false,
@@ -63,6 +65,30 @@ const convertFullName = user => {
   return name;
 };
 
+const filterErrors = (message, key) => {
+  if (message) {
+    if (Array.isArray(message)) {
+      const items = message.filter(error => error.param === key);
+      if (items.length) {
+        if (items[0].msg in English["validation"]) {
+          return i18n.t(`validation.${items[0].msg}`);
+        } else {
+          return items[0].msg;
+        }
+      } else {
+        return "";
+      }
+    } else {
+      if (message in English["validation"]) {
+        return i18n.t(`validation.${message}`);
+      } else {
+        return message;
+      }
+    }
+  }
+  return "";
+};
+
 export default {
   filters: {
     dateISOFormatter(string) {
@@ -76,6 +102,9 @@ export default {
     },
     timeFormatter(string) {
       return convertLocalTimeString(string);
+    },
+    errorFormatter(errors, key = null) {
+      return filterErrors(errors, key);
     },
     appUrlFormatter(string) {
       return APP_URL + string;
@@ -120,6 +149,9 @@ export default {
         return new Date().getFullYear() - new Date(birthday).getFullYear();
       }
       return "-";
+    },
+    getFilterErrors(errors, key = null) {
+      return filterErrors(errors, key);
     }
   }
 };

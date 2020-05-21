@@ -261,7 +261,6 @@ import jobsApi from "@/services/api/jobs";
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 import constantsApi from "@/services/api/constants";
-import errorReader from "@/helpers/ErrorReader";
 
 export default {
   name: "JobsCreate",
@@ -293,7 +292,7 @@ export default {
       levels: [],
       state: [],
       paymentType: [],
-      error: "",
+      errors: null,
       imageData: {}
     };
   },
@@ -361,10 +360,7 @@ export default {
           });
           this.$router.push({ name: "admin-jobs" });
         })
-        .catch(err => {
-          let read = errorReader(err);
-          this.error = read.param + " is " + read.msg.toLowerCase();
-
+        .catch(error => {
           this.$store.dispatch("updateShowErrorModal", true);
           this.$store.dispatch("updateErrorModalContent", {
             title: this.$t("page_job_detail.modal.create_error.title"),

@@ -463,7 +463,6 @@ import joboffersApi from "@/services/api/joboffers";
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 import constantsApi from "@/services/api/constants";
-import errorReader from "@/helpers/ErrorReader";
 import { downloadFile } from "@/utils";
 
 export default {
@@ -497,7 +496,7 @@ export default {
       managers: [],
       state: [],
       paymentType: [],
-      error: "",
+      errors: null,
       companyId: "",
       jobId: "",
       jobOffers: [],
@@ -629,14 +628,12 @@ export default {
             button: this.$t("page_job_detail.modal.update_success.continue")
           });
         })
-        .catch(err => {
-          let read = errorReader(err);
-          this.error = read.param + " is " + read.msg.toLowerCase();
+        .catch(error => {
+          this.errors = error.response.data.errors.msg;
 
           this.$store.dispatch("updateShowErrorModal", true);
           this.$store.dispatch("updateErrorModalContent", {
             title: this.$t("page_job_detail.modal.update_error.title"),
-            subTitle: this.error,
             button: this.$t("page_job_detail.modal.update_error.continue")
           });
         });

@@ -359,7 +359,7 @@ export default {
         attachments: []
       },
       managers: [],
-      error: "",
+      errors: null,
       companyId: "",
       imageData: {},
       selectedAttachmentId: null,
@@ -438,8 +438,8 @@ export default {
           this.$store.dispatch("updateShowErrorModal", false);
           this.getManagers();
         })
-        .catch(err => {
-          console.log(err);
+        .catch(error => {
+          console.log(error);
         });
     },
     goToProfile(userId) {

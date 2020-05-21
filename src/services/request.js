@@ -10,6 +10,7 @@ const request = function(method, path, params, config = {}) {
             resolve(response.data);
           })
           .catch(e => {
+            console.log(e.response);
             reject(e);
           });
       } else if (method === "post") {

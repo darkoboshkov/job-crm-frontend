@@ -62,8 +62,8 @@
                 class="custom-input"
                 v-model="model.name"
               />
-              <b-form-invalid-feedback class="d-block" v-if="nameError">
-                {{ $t(`validation.${nameError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("name") }}
               </b-form-invalid-feedback>
             </div>
           </div>
@@ -79,8 +79,8 @@
                 class="custom-input"
                 v-model="model.email"
               />
-              <b-form-invalid-feedback class="d-block" v-if="emailError">
-                {{ $t(`validation.${emailError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("email") }}
               </b-form-invalid-feedback>
             </div>
           </div>
@@ -96,8 +96,8 @@
                 class="custom-input"
                 v-model="model.kvkNumber"
               />
-              <b-form-invalid-feedback class="d-block" v-if="kvkNumberError">
-                {{ $t(`validation.${kvkNumberError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("kvkNumber") }}
               </b-form-invalid-feedback>
             </div>
           </div>
@@ -115,11 +115,8 @@
                 class="custom-input"
                 v-model="model.limitCreditSafe"
               />
-              <b-form-invalid-feedback
-                class="d-block"
-                v-if="limitCreditSafeError"
-              >
-                {{ $t(`validation.${limitCreditSafeError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("limitCreditSafe") }}
               </b-form-invalid-feedback>
             </div>
           </div>
@@ -133,6 +130,9 @@
                 class="custom-input"
                 v-model="model.country"
               />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("country") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -145,6 +145,9 @@
                 class="custom-input"
                 v-model="model.city"
               />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("city") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -157,6 +160,9 @@
                 class="custom-input"
                 v-model="model.street"
               />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("street") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -169,6 +175,9 @@
                 class="custom-input"
                 v-model="model.houseNumber"
               />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("houseNumber") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -181,6 +190,9 @@
                 class="custom-input"
                 v-model="model.postalCode"
               />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("postalCode") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -193,6 +205,9 @@
                 class="custom-input"
                 v-model="model.phoneNumber"
               />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("phoneNumber") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -205,6 +220,9 @@
                 class="custom-input"
                 v-model="model.description"
               />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("description") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -249,6 +267,9 @@
                   </div>
                 </div>
               </div>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("VATShifted") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -293,6 +314,9 @@
                   </div>
                 </div>
               </div>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("GAccount") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -311,6 +335,9 @@
                   style="outline: none;"
                 />
               </b-form-group>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("termOfPayment") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -335,6 +362,9 @@
                   </b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("automaticCollection") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -359,6 +389,9 @@
                   </b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("chargeTravelExpenses") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row align-items-center mt-5">
@@ -383,6 +416,9 @@
                   </b-form-radio>
                 </b-form-radio-group>
               </b-form-group>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("charge_other_expenses") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="row mt-5">
@@ -435,43 +471,46 @@ export default {
         members: []
       },
       termsOfPayment: [],
-      error: "",
+      errors: null,
       imageData: {
         preview: null
       },
-      isImageLoading: false,
-      nameError: "",
-      emailError: "",
-      kvkNumberError: "",
-      limitCreditSafeError: ""
+      isImageLoading: false
     };
   },
   methods: {
     validate() {
       let valid = true;
+      this.errors = [];
+
       if (!this.model.name) {
-        this.nameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "name",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.nameError = "";
       }
+
       if (!this.model.email) {
-        this.emailError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "email",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.emailError = "";
       }
       if (!this.model.kvkNumber) {
-        this.kvkNumberError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "kvkNumber",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.kvkNumberError = "";
       }
       if (!this.model.limitCreditSafe) {
-        this.limitCreditSafeError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "limitCreditSafe",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.limitCreditSafeError = "";
       }
       return valid;
     },
@@ -564,16 +603,12 @@ export default {
 
               this.editCompany = !this.editCompany;
             })
-            .catch(err => {
-              // let read = errorReader(err);
-              // this.error = read.param + ' is ' + read.msg.toLowerCase();
-
-              this.error = err.response.data?.errors?.msg;
+            .catch(error => {
+              this.errors = error.response.data.errors.msg;
 
               this.$store.dispatch("updateShowErrorModal", true);
               this.$store.dispatch("updateErrorModalContent", {
                 title: this.$t("page_edit_company.modal.update_error.title"),
-                subTitle: this.error,
                 button: this.$t("page_edit_company.modal.update_error.continue")
               });
             });

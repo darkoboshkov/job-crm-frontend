@@ -13,19 +13,24 @@
                 class="custom-input"
                 v-model="model.firstName"
               />
-              <b-form-invalid-feedback class="d-block" v-if="firstNameError">
-                {{ $t(`validation.${firstNameError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("firstName") }}
               </b-form-invalid-feedback>
             </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.middle_name") }}:</label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.middleName"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.middleName"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("middleName") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.last_name") }}:</label>
@@ -36,157 +41,230 @@
                 class="custom-input"
                 v-model="model.lastName"
               />
-              <b-form-invalid-feedback class="d-block" v-if="lastNameError">
-                {{ $t(`validation.${lastNameError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("lastName") }}
               </b-form-invalid-feedback>
             </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.gender") }}:</label>
-            <div class="gender">
-              <b-form-radio v-model="model.gender" name="gender" value="male">
-                {{ $t("page_profile.form.man") }}
-              </b-form-radio>
-              <b-form-radio v-model="model.gender" name="gender" value="female">
-                {{ $t("page_profile.form.woman") }}
-              </b-form-radio>
-              <b-form-radio v-model="model.gender" name="gender" value="other">
-                {{ $t("page_profile.form.other") }}
-              </b-form-radio>
+            <div class="d-flex flex-column w-100">
+              <div class="gender">
+                <b-form-radio v-model="model.gender" name="gender" value="male">
+                  {{ $t("page_profile.form.man") }}
+                </b-form-radio>
+                <b-form-radio
+                  v-model="model.gender"
+                  name="gender"
+                  value="female"
+                >
+                  {{ $t("page_profile.form.woman") }}
+                </b-form-radio>
+                <b-form-radio
+                  v-model="model.gender"
+                  name="gender"
+                  value="other"
+                >
+                  {{ $t("page_profile.form.other") }}
+                </b-form-radio>
+              </div>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("gender") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.honorific_title") }}:</label>
-            <div class="gender">
-              <b-form-radio
-                v-model="model.honorificTitle"
-                name="honorific"
-                value="mr"
-                >{{ $t("honorific.mr") }}
-              </b-form-radio>
-              <b-form-radio
-                v-model="model.honorificTitle"
-                name="honorific"
-                value="mrs"
-                >{{ $t("honorific.mrs") }}
-              </b-form-radio>
-              <b-form-radio
-                v-model="model.honorificTitle"
-                name="honorific"
-                value="ms"
-                >{{ $t("honorific.ms") }}
-              </b-form-radio>
-              <b-form-radio
-                v-model="model.honorificTitle"
-                name="honorific"
-                value="miss"
-                >{{ $t("honorific.miss") }}
-              </b-form-radio>
+            <div class="d-flex flex-column w-100">
+              <div class="gender">
+                <b-form-radio
+                  v-model="model.honorificTitle"
+                  name="honorific"
+                  value="mr"
+                  >{{ $t("honorific.mr") }}
+                </b-form-radio>
+                <b-form-radio
+                  v-model="model.honorificTitle"
+                  name="honorific"
+                  value="mrs"
+                  >{{ $t("honorific.mrs") }}
+                </b-form-radio>
+                <b-form-radio
+                  v-model="model.honorificTitle"
+                  name="honorific"
+                  value="ms"
+                  >{{ $t("honorific.ms") }}
+                </b-form-radio>
+                <b-form-radio
+                  v-model="model.honorificTitle"
+                  name="honorific"
+                  value="miss"
+                  >{{ $t("honorific.miss") }}
+                </b-form-radio>
+              </div>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("honorificTitle") }}
+              </b-form-invalid-feedback>
             </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.profession") }}:</label>
-            <b-form-select v-model="model.professionId">
-              <option
-                v-for="profession in professions"
-                :key="profession._id"
-                :value="profession._id"
-                >{{ $t(`profession.${profession.name}`) }}
-              </option>
-            </b-form-select>
+            <div class="d-flex flex-column w-100">
+              <b-form-select v-model="model.professionId">
+                <option
+                  v-for="profession in professions"
+                  :key="profession._id"
+                  :value="profession._id"
+                  >{{ $t(`profession.${profession.name}`) }}
+                </option>
+              </b-form-select>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("professionId") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
 
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.overview") }}:</label>
-            <b-form-textarea
-              rows="10"
-              required
-              class="custom-input"
-              v-model="model.overview"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-textarea
+                rows="10"
+                required
+                class="custom-input"
+                v-model="model.overview"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("overview") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.phone") }}:</label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.phone"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.phone"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("phone") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.country") }}:</label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.country"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.country"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("country") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.city") }}:</label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.city"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.city"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("city") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.street") }}:</label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.street"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.street"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("street") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.house_number") }}:</label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.houseNumber"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.houseNumber"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("houseNumber") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.postal_code") }}:</label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.postalCode"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.postalCode"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("postalCode") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label>{{ $t("page_profile.form.birthday") }}:</label>
-            <b-form-input
-              type="date"
-              required
-              class="custom-input"
-              v-model="model.birthday"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="date"
+                required
+                class="custom-input"
+                v-model="model.birthday"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("birthday") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label> {{ $t("page_profile.form.bank_account_number") }}: </label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.bankNumber"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.bankNumber"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("bankNumber") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label>
               {{ $t("page_profile.form.social_security_number") }}:
             </label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.socialSecurityNumber"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.socialSecurityNumber"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("socialSecurityNumber") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label> {{ $t("page_profile.form.id_type") }}: </label>
@@ -199,31 +277,38 @@
                   {{ $t("page_profile.form.passport") }}
                 </option>
               </b-form-select>
-              <b-form-invalid-feedback
-                class="d-block"
-                v-if="identificationTypeError"
-              >
-                {{ $t(`validation.${identificationTypeError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("identificationType") }}
               </b-form-invalid-feedback>
             </div>
           </div>
           <div class="form-element mt-3">
             <label> {{ $t("page_profile.form.id_number") }}: </label>
-            <b-form-input
-              type="text"
-              required
-              class="custom-input"
-              v-model="model.identificationNumber"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="text"
+                required
+                class="custom-input"
+                v-model="model.identificationNumber"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("identificationNumber") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label> {{ $t("page_profile.form.id_exp_date") }}: </label>
-            <b-form-input
-              type="date"
-              required
-              class="custom-input"
-              v-model="model.identificationExpirationDate"
-            />
+            <div class="d-flex flex-column w-100">
+              <b-form-input
+                type="date"
+                required
+                class="custom-input"
+                v-model="model.identificationExpirationDate"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("identificationExpirationDate") }}
+              </b-form-invalid-feedback>
+            </div>
           </div>
           <div class="form-element mt-3">
             <label> {{ $t("page_profile.form.id_image") }}: </label>
@@ -248,11 +333,8 @@
                   style="top: 15px;right: 11px;"
                 />
               </div>
-              <b-form-invalid-feedback
-                class="d-block"
-                v-if="identificationImageError"
-              >
-                {{ $t(`validation.${identificationImageError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("identificationImage") }}
               </b-form-invalid-feedback>
             </div>
           </div>
@@ -327,10 +409,7 @@ export default {
       isImageLoading: false,
       companyId: "",
       userId: "",
-      firstNameError: "",
-      lastNameError: "",
-      identificationTypeError: "",
-      identificationImageError: ""
+      errors: null
     };
   },
   mounted() {
@@ -353,17 +432,20 @@ export default {
   methods: {
     validate() {
       let valid = true;
+      this.errors = [];
       if (!this.model.firstName) {
-        this.firstNameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "firstName",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.firstNameError = "";
       }
       if (!this.model.lastName) {
-        this.lastNameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "lastName",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.lastNameError = "";
       }
       return valid;
     },
@@ -446,15 +528,16 @@ export default {
               this.model
             )
           );
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
+          await this.$store.dispatch("updateShowSuccessModal", true);
+          await this.$store.dispatch("updateSuccessModalContent", {
             title: this.$t("page_profile.modal.change.title"),
             subTitle: this.$t("page_profile.modal.change.sub_title"),
             button: this.$t("page_profile.modal.change.continue")
           });
-        } catch (error) {
+        } catch (errors) {
+          this.errors = errors.response.data.errors.msg;
           this.isImageLoading = false;
-          console.log(error);
+          console.log(errors);
         }
       }
     }

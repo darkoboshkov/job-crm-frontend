@@ -361,7 +361,7 @@ export default {
         attachments: []
       },
       managers: [],
-      error: "",
+      errors: null,
       companyId: "",
       imageData: {},
       selectedAttachmentId: null,

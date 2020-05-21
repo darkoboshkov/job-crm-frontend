@@ -18,9 +18,11 @@
               :placeholder="$t('page_login.form.email')"
               class="custom-input mt-5"
             />
-            <b-form-invalid-feedback class="d-block" v-if="emailError">
-              {{ $t(`validation.${emailError}`) }}
+
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("email") }}
             </b-form-invalid-feedback>
+
             <div class="input-wrapper mt-5">
               <b-form-input
                 id="password"
@@ -30,16 +32,18 @@
                 :placeholder="$t('page_login.form.password')"
                 class="custom-input"
               />
-              <b-form-invalid-feedback class="d-block" v-if="passwordError">
-                {{ $t(`validation.${passwordError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("password") }}
               </b-form-invalid-feedback>
               <a href="/forgot" class="forgot-pass"
                 >{{ $t("page_login.form.forgot") }}?</a
               >
             </div>
-            <b-form-invalid-feedback class="d-block mt-4" v-if="error">
-              {{ $t(`validation.${error}`) }}
+
+            <b-form-invalid-feedback class="d-block mt-5">
+              {{ errors | errorFormatter }}
             </b-form-invalid-feedback>
+
             <div class="buttons d-flex">
               <div>
                 <button class="btn btn-red login" @click.prevent="login">
@@ -69,32 +73,28 @@ export default {
     return {
       email: "",
       password: "",
-      emailError: "",
-      passwordError: "",
-      error: ""
+      errors: null
     };
   },
   methods: {
-    isError(str) {
-      return str && str.length > 0;
-    },
     validate() {
       let valid = true;
-      this.error = "";
+      this.error = [];
 
       if (!this.email) {
-        this.emailError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "email",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.emailError = "";
       }
       if (!this.password) {
-        this.passwordError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "password",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.passwordError = "";
       }
-
       return valid;
     },
     login() {
@@ -115,19 +115,7 @@ export default {
             this.$router.push("/dashboard");
           })
           .catch(data => {
-            let messages = data.response.data.errors.msg;
-            if (Array.isArray(messages)) {
-              messages.forEach(msg => {
-                if (msg.param === "email") {
-                  this.emailError = msg.msg;
-                }
-                if (msg.param === "password") {
-                  this.passwordError = msg.msg;
-                }
-              });
-            } else {
-              this.error = messages;
-            }
+            this.errors = data.response.data.errors.msg;
           });
       }
     },

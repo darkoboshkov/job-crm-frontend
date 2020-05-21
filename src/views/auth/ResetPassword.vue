@@ -19,8 +19,8 @@
               :placeholder="$t('page_reset.form.password')"
               class="custom-input mt-5"
             />
-            <b-form-invalid-feedback class="d-block" v-if="passwordError">
-              {{ $t(`validation.${passwordError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("password") }}
             </b-form-invalid-feedback>
             <b-form-input
               id="c_password"
@@ -30,8 +30,8 @@
               :placeholder="$t('page_reset.form.c_password')"
               class="custom-input mt-5"
             />
-            <b-form-invalid-feedback class="d-block" v-if="cPasswordError">
-              {{ $t(`validation.${cPasswordError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("c_password") }}
             </b-form-invalid-feedback>
             <div class="d-flex">
               <button class="btn btn-blue reset" @click.prevent="reset">
@@ -55,26 +55,28 @@ export default {
     return {
       password: "",
       cPassword: "",
-      passwordError: "",
-      cPasswordError: ""
+      errors: null
     };
   },
   methods: {
     validate() {
       let valid = true;
+      this.error = [];
 
       if (!this.password) {
-        this.passwordError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "password",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.passwordError = "";
       }
 
       if (!this.cPassword) {
-        this.cPasswordError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "c_password",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.cPasswordError = "";
       }
 
       return valid;
@@ -94,17 +96,7 @@ export default {
             this.$router.push("/login");
           })
           .catch(data => {
-            let messages = data.response.data.errors.msg;
-            if (Array.isArray(messages)) {
-              messages.forEach(msg => {
-                if (msg.param === "password") {
-                  this.passwordError = msg.msg;
-                }
-                if (msg.param === "c_password") {
-                  this.cPasswordError = msg.msg;
-                }
-              });
-            }
+            this.errors = data.response.data.errors.msg;
           });
       }
     }

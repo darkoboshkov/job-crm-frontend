@@ -415,7 +415,7 @@ export default {
       },
       managers: [],
       termsOfPayment: [],
-      error: "",
+      errors: null,
       imageData: {
         preview: null
       },
@@ -509,13 +509,11 @@ export default {
               }
             });
           })
-          .catch(err => {
-            this.error = err.response.data?.errors?.msg;
-
+          .catch(error => {
+            this.errors = error.response.data.errors.msg;
             this.$store.dispatch("updateShowErrorModal", true);
             this.$store.dispatch("updateErrorModalContent", {
               title: this.$t("page_detail_company.modal.create_error.title"),
-              subTitle: this.error,
               button: this.$t("page_detail_company.modal.create_error.continue")
             });
           });

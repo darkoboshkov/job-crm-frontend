@@ -104,13 +104,6 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
-        path: "jobs/:companyId/:jobId/new-candidate",
-        name: "admin-jobs-new-candidate",
-        component: () =>
-          import("../views/dashboard/admin/jobs/CandidateNew.vue"),
-        beforeEnter: isAdminAuthorized
-      },
-      {
         path: "jobs/:companyId/:jobId/matching",
         name: "admin-matching",
         component: () =>

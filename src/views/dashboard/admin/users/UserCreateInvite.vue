@@ -21,7 +21,7 @@
         <div class="form-element">
           <label>{{ $t("page_users_create_invite.form.company_list") }}:</label>
           <b-form-select v-model="form.companyId">
-            <option value=""></option>
+            <option value="" />
             <option
               v-for="(company, idx) in companies"
               :key="idx"
@@ -29,8 +29,8 @@
               >{{ company.name }}</option
             >
           </b-form-select>
-          <b-form-invalid-feedback class="d-block" v-if="companyError">
-            {{ $t(`validation.${companyError}`) }}
+          <b-form-invalid-feedback class="d-block">
+            {{ errors | errorFormatter("companyId") }}
           </b-form-invalid-feedback>
         </div>
         <div class="form-element mt-5">
@@ -41,8 +41,8 @@
             class="custom-input"
             v-model="form.email"
           />
-          <b-form-invalid-feedback class="d-block" v-if="emailError">
-            {{ $t(`validation.${emailError}`) }}
+          <b-form-invalid-feedback class="d-block">
+            {{ errors | errorFormatter("email") }}
           </b-form-invalid-feedback>
         </div>
         <div class="form-element mt-5">
@@ -54,9 +54,12 @@
               {{ $t("page_users_create_invite.form.manager") }}
             </b-form-radio>
           </div>
+          <b-form-invalid-feedback class="d-block">
+            {{ errors | errorFormatter("role") }}
+          </b-form-invalid-feedback>
         </div>
-        <b-form-invalid-feedback class="d-block mt-5" v-if="error">
-          {{ $t(`${error}`) }}
+        <b-form-invalid-feedback class="d-block mt-5">
+          {{ errors | errorFormatter }}
         </b-form-invalid-feedback>
         <div class="form-element mt-5 text-center">
           <button class="btn btn-blue large" @click="sendInvitation">
@@ -110,9 +113,7 @@ export default {
         role: "worker",
         email: ""
       },
-      emailError: "",
-      companyError: "",
-      error: ""
+      errors: null
     };
   },
   mounted() {
@@ -121,20 +122,21 @@ export default {
   methods: {
     validate() {
       let valid = true;
-      this.error = "";
+      this.errors = [];
       if (!this.form.companyId) {
-        this.companyError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "companyId",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.companyError = "";
       }
       if (!this.form.email) {
-        this.emailError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "email",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.emailError = "";
       }
-
       return valid;
     },
     clear() {
@@ -156,20 +158,8 @@ export default {
           .then(res => {
             this.$refs["modal-invite-success"].show();
           })
-          .catch(data => {
-            let messages = data.response.data.errors.msg;
-            if (Array.isArray(messages)) {
-              messages.forEach(msg => {
-                if (msg.param === "companyId") {
-                  this.companyError = msg.msg;
-                }
-                if (msg.param === "email") {
-                  this.emailError = msg.msg;
-                }
-              });
-            } else {
-              this.error = messages;
-            }
+          .catch(error => {
+            this.errors = error.response.data.errors.msg;
           });
       }
     }

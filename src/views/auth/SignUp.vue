@@ -17,8 +17,8 @@
                   :placeholder="$t('page_signup.form.first_name')"
                   class="custom-input first-name mt-3"
                 />
-                <b-form-invalid-feedback class="d-block" v-if="firstNameError">
-                  {{ $t(`validation.${firstNameError}`) }}
+                <b-form-invalid-feedback class="d-block">
+                  {{ errors | errorFormatter("firstName") }}
                 </b-form-invalid-feedback>
               </b-col>
               <b-col md="6">
@@ -30,8 +30,8 @@
                   :placeholder="$t('page_signup.form.last_name')"
                   class="custom-input last-name mt-3"
                 />
-                <b-form-invalid-feedback class="d-block" v-if="lastNameError">
-                  {{ $t(`validation.${lastNameError}`) }}
+                <b-form-invalid-feedback class="d-block">
+                  {{ errors | errorFormatter("lastName") }}
                 </b-form-invalid-feedback>
               </b-col>
             </b-row>
@@ -43,8 +43,8 @@
               :placeholder="$t('page_signup.form.email')"
               class="custom-input mt-3"
             />
-            <b-form-invalid-feedback class="d-block" v-if="emailError">
-              {{ $t(`validation.${emailError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("email") }}
             </b-form-invalid-feedback>
             <b-form-input
               id="password"
@@ -54,8 +54,8 @@
               :placeholder="$t('page_signup.form.password')"
               class="custom-input mt-3"
             />
-            <b-form-invalid-feedback class="d-block" v-if="passwordError">
-              {{ $t(`validation.${passwordError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("password") }}
             </b-form-invalid-feedback>
             <b-form-input
               id="c_password"
@@ -65,11 +65,11 @@
               :placeholder="$t('page_signup.form.c_password')"
               class="custom-input mt-3"
             />
-            <b-form-invalid-feedback class="d-block" v-if="cPasswordError">
-              {{ $t(`validation.${cPasswordError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("c_password") }}
             </b-form-invalid-feedback>
-            <b-form-invalid-feedback class="d-block mt-4" v-if="error">
-              {{ $t(`validation.${error}`) }}
+            <b-form-invalid-feedback class="d-block mt-5">
+              {{ errors | errorFormatter }}
             </b-form-invalid-feedback>
             <b-row class="buttons">
               <b-col md="6">
@@ -103,49 +103,48 @@ export default {
       email: "",
       password: "",
       cPassword: "",
-
-      firstNameError: "",
-      lastNameError: "",
-      emailError: "",
-      passwordError: "",
-      cPasswordError: "",
-      error: ""
+      errors: null
     };
   },
   methods: {
     validate() {
       let valid = true;
-      this.error = "";
+      this.error = [];
 
       if (!this.firstName) {
-        this.firstNameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "firstName",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.firstNameError = "";
       }
       if (!this.lastName) {
-        this.lastNameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "lastName",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.lastNameError = "";
       }
       if (!this.email) {
-        this.emailError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "email",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.emailError = "";
       }
       if (!this.password) {
-        this.passwordError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "password",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.passwordError = "";
       }
       if (!this.cPassword) {
-        this.cPasswordError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "c_password",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.cPasswordError = "";
       }
 
       return valid;
@@ -172,28 +171,7 @@ export default {
             this.$router.push("/verify");
           })
           .catch(data => {
-            let messages = data.response.data.errors.msg;
-            if (Array.isArray(messages)) {
-              messages.forEach(msg => {
-                if (msg.param === "firstName") {
-                  this.firstNameError = msg.msg;
-                }
-                if (msg.param === "lastName") {
-                  this.lastNameError = msg.msg;
-                }
-                if (msg.param === "email") {
-                  this.emailError = msg.msg;
-                }
-                if (msg.param === "password") {
-                  this.passwordError = msg.msg;
-                }
-                if (msg.param === "c_password") {
-                  this.cPasswordError = msg.msg;
-                }
-              });
-            } else {
-              this.error = messages;
-            }
+            this.errors = data.response.data.errors.msg;
           });
       }
     },

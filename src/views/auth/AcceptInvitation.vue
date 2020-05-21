@@ -20,8 +20,8 @@
                 :placeholder="$t('page_accept.form.first_name')"
                 class="custom-input first-name mt-5"
               />
-              <b-form-invalid-feedback class="d-block" v-if="firstNameError">
-                {{ $t(`validation.${firstNameError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("firstName") }}
               </b-form-invalid-feedback>
               <b-form-input
                 id="last_name"
@@ -31,8 +31,8 @@
                 :placeholder="$t('page_accept.form.last_name')"
                 class="custom-input last-name mt-5"
               />
-              <b-form-invalid-feedback class="d-block" v-if="lastNameError">
-                {{ $t(`validation.${lastNameError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("lastName") }}
               </b-form-invalid-feedback>
             </div>
             <b-form-input
@@ -43,8 +43,8 @@
               :placeholder="$t('page_accept.form.password')"
               class="custom-input mt-5"
             />
-            <b-form-invalid-feedback class="d-block" v-if="passwordError">
-              {{ $t(`validation.${passwordError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("password") }}
             </b-form-invalid-feedback>
             <b-form-input
               id="c_password"
@@ -54,11 +54,11 @@
               :placeholder="$t('page_accept.form.c_password')"
               class="custom-input mt-5"
             />
-            <b-form-invalid-feedback class="d-block" v-if="cPasswordError">
-              {{ $t(`validation.${cPasswordError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("c_password") }}
             </b-form-invalid-feedback>
-            <b-form-invalid-feedback class="d-block mt-4" v-if="error">
-              {{ $t(`validation.${error}`) }}
+            <b-form-invalid-feedback class="d-block mt-4">
+              {{ errors | errorFormatter }}
             </b-form-invalid-feedback>
             <div class="d-flex">
               <button class="btn btn-blue accept" @click.prevent="accept">
@@ -86,11 +86,7 @@ export default {
         c_password: null,
         id: null
       },
-      firstNameError: "",
-      lastNameError: "",
-      passwordError: "",
-      cPasswordError: "",
-      error: ""
+      errors: null
     };
   },
   mounted() {
@@ -99,30 +95,35 @@ export default {
   methods: {
     validate() {
       let valid = true;
-      this.error = "";
+      this.error = [];
+
       if (!this.form.firstName) {
-        this.firstNameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "firstName",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.firstNameError = "";
       }
       if (!this.form.lastName) {
-        this.lastNameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "lastName",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.lastNameError = "";
       }
       if (!this.form.password) {
-        this.lastNameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "password",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.passwordError = "";
       }
       if (!this.form.c_password) {
-        this.cPasswordError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "c_password",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.cPasswordError = "";
       }
 
       return valid;
@@ -147,25 +148,7 @@ export default {
             });
           })
           .catch(data => {
-            let messages = data.response.data.errors.msg;
-            if (Array.isArray(messages)) {
-              messages.forEach(msg => {
-                if (msg.param === "firstName") {
-                  this.firstNameError = msg.msg;
-                }
-                if (msg.param === "lastName") {
-                  this.lastNameError = msg.msg;
-                }
-                if (msg.param === "password") {
-                  this.passwordError = msg.msg;
-                }
-                if (msg.param === "c_password") {
-                  this.cPasswordError = msg.msg;
-                }
-              });
-            } else {
-              this.error = messages;
-            }
+            this.errors = data.response.data.errors.msg;
           });
       }
     }

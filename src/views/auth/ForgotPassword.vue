@@ -20,8 +20,8 @@
                 :placeholder="$t('page_forgot.form.email')"
                 class="custom-input mt-5"
               />
-              <b-form-invalid-feedback class="d-block" v-if="error">
-                {{ $t(`validation.${error}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("email") }}
               </b-form-invalid-feedback>
               <div class="d-flex">
                 <button class="btn btn-blue send" @click.prevent="forgot">
@@ -50,19 +50,21 @@ export default {
   data() {
     return {
       email: "",
-      error: "",
+      errors: null,
       mailSent: false
     };
   },
   methods: {
     validate() {
       let valid = true;
+      this.errors = [];
 
       if (!this.email) {
-        this.error = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "email",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.error = "";
       }
 
       return valid;
@@ -79,14 +81,7 @@ export default {
             this.mailSent = true;
           })
           .catch(data => {
-            let messages = data.response.data.errors.msg;
-            if (Array.isArray(messages)) {
-              messages.forEach(msg => {
-                if (msg.param === "email") {
-                  this.error = msg.msg;
-                }
-              });
-            }
+            this.errors = data.response.data.errors.msg;
           });
       }
     }

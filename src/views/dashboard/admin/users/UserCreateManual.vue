@@ -32,8 +32,8 @@
                 >{{ company.name }}</option
               >
             </b-form-select>
-            <b-form-invalid-feedback class="d-block" v-if="companyError">
-              {{ $t(`validation.${companyError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("companyId") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -50,6 +50,9 @@
                 {{ $t("page_users_create_manual.form.manager") }}
               </b-form-radio>
             </div>
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("role") }}
+            </b-form-invalid-feedback>
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -63,8 +66,8 @@
               class="custom-input"
               v-model="form.email"
             />
-            <b-form-invalid-feedback class="d-block" v-if="emailError">
-              {{ $t(`validation.${emailError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("email") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -79,8 +82,8 @@
               class="custom-input"
               v-model="form.firstName"
             />
-            <b-form-invalid-feedback class="d-block" v-if="firstNameError">
-              {{ $t(`validation.${firstNameError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("firstName") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -95,8 +98,8 @@
               class="custom-input"
               v-model="form.middleName"
             />
-            <b-form-invalid-feedback class="d-block" v-if="middleNameError">
-              {{ $t(`validation.${middleNameError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("middleName") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -111,8 +114,8 @@
               class="custom-input"
               v-model="form.lastName"
             />
-            <b-form-invalid-feedback class="d-block" v-if="lastNameError">
-              {{ $t(`validation.${lastNameError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("lastName") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -122,7 +125,7 @@
           </label>
           <div class="flex-3">
             <b-form-select v-model="form.professionId">
-              <option value=""></option>
+              <option value="" />
               <option
                 v-for="profession in professions"
                 :key="profession._id"
@@ -130,6 +133,9 @@
                 >{{ $t(`profession.${profession.name}`) }}</option
               >
             </b-form-select>
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("professionId") }}
+            </b-form-invalid-feedback>
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -143,8 +149,8 @@
               class="custom-input"
               v-model="form.phone"
             />
-            <b-form-invalid-feedback class="d-block" v-if="phoneError">
-              {{ $t(`validation.${phoneError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("phone") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -167,8 +173,8 @@
               class="custom-input"
               v-model="form.password"
             />
-            <b-form-invalid-feedback class="d-block" v-if="passwordError">
-              {{ $t(`validation.${passwordError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("password") }}
             </b-form-invalid-feedback>
             <b-form-checkbox
               class="rtl text-right"
@@ -201,8 +207,8 @@
               class="custom-input"
               v-model="form.c_password"
             />
-            <b-form-invalid-feedback class="d-block" v-if="repeatPasswordError">
-              {{ $t(`validation.${repeatPasswordError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("c_password") }}
             </b-form-invalid-feedback>
             <b-form-checkbox
               class="rtl text-right"
@@ -232,6 +238,9 @@
                 {{ $t("page_users_create_manual.form.other") }}
               </b-form-radio>
             </div>
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("gender") }}
+            </b-form-invalid-feedback>
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -265,6 +274,9 @@
                 >{{ $t("honorific.miss") }}
               </b-form-radio>
             </div>
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("honorificTitle") }}
+            </b-form-invalid-feedback>
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -278,8 +290,8 @@
               class="custom-input"
               v-model="form.birthday"
             />
-            <b-form-invalid-feedback class="d-block" v-if="birthdayError">
-              {{ $t(`validation.${birthdayError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("birthday") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -294,8 +306,8 @@
               class="custom-input"
               v-model="form.bankNumber"
             />
-            <b-form-invalid-feedback class="d-block" v-if="bankNumberError">
-              {{ $t(`validation.${bankNumberError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("bankNumber") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -311,8 +323,8 @@
                 class="custom-input"
                 v-model="form.street"
               />
-              <b-form-invalid-feedback class="d-block" v-if="streetError">
-                {{ $t(`validation.${streetError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("street") }}
               </b-form-invalid-feedback>
             </div>
             <div class="flex-1 pl-2">
@@ -322,8 +334,8 @@
                 class="custom-input"
                 v-model="form.houseNumber"
               />
-              <b-form-invalid-feedback class="d-block" v-if="houseNumberError">
-                {{ $t(`validation.${houseNumberError}`) }}
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("houseNumber") }}
               </b-form-invalid-feedback>
             </div>
           </div>
@@ -339,8 +351,8 @@
               class="custom-input"
               v-model="form.postalCode"
             />
-            <b-form-invalid-feedback class="d-block" v-if="postalCodeError">
-              {{ $t(`validation.${postalCodeError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("postalCode") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -355,6 +367,9 @@
               class="custom-input"
               v-model="form.country"
             />
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("country") }}
+            </b-form-invalid-feedback>
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -368,8 +383,8 @@
               class="custom-input"
               v-model="form.city"
             />
-            <b-form-invalid-feedback class="d-block" v-if="cityError">
-              {{ $t(`validation.${cityError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("city") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -387,6 +402,9 @@
               class="custom-input"
               v-model="form.overview"
             />
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("overview") }}
+            </b-form-invalid-feedback>
           </div>
         </div>
         <div
@@ -403,6 +421,9 @@
               class="custom-input"
               v-model="form.socialSecurityNumber"
             />
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("socialSecurityNumber") }}
+            </b-form-invalid-feedback>
           </div>
         </div>
         <div
@@ -422,11 +443,8 @@
                 {{ $t("page_users_create_manual.form.passport") }}
               </option>
             </b-form-select>
-            <b-form-invalid-feedback
-              class="d-block"
-              v-if="identificationTypeError"
-            >
-              {{ $t(`validation.${identificationTypeError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("identificationType") }}
             </b-form-invalid-feedback>
           </div>
         </div>
@@ -444,6 +462,9 @@
               class="custom-input"
               v-model="form.identificationNumber"
             />
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("identificationNumber") }}
+            </b-form-invalid-feedback>
           </div>
         </div>
         <div
@@ -460,6 +481,9 @@
               class="custom-input"
               v-model="form.identificationExpirationDate"
             />
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("identificationExpirationDate") }}
+            </b-form-invalid-feedback>
           </div>
         </div>
         <div
@@ -490,16 +514,13 @@
                 style="top: 15px;right: 11px;"
               />
             </div>
-            <b-form-invalid-feedback
-              class="d-block"
-              v-if="identificationImageError"
-            >
-              {{ $t(`validation.${identificationImageError}`) }}
+            <b-form-invalid-feedback class="d-block">
+              {{ errors | errorFormatter("identificationImage") }}
             </b-form-invalid-feedback>
           </div>
         </div>
-        <b-form-invalid-feedback class="d-block" v-if="error">
-          {{ $t(`${error}`) }}
+        <b-form-invalid-feedback class="d-block mt-5">
+          {{ errors | errorFormatter }}
         </b-form-invalid-feedback>
         <div class="form-element mt-5 text-center">
           <button class="btn btn-blue large" @click="createUser">
@@ -554,26 +575,7 @@ export default {
           path: ""
         }
       },
-      roleError: "",
-      emailError: "",
-      companyError: "",
-      firstNameError: "",
-      lastNameError: "",
-      middleNameError: "",
-      genderError: "male",
-      birthdayError: "",
-      bankNumberError: "",
-      streetError: "",
-      houseNumberError: "",
-      postalCodeError: "",
-      cityError: "",
-      phoneError: "",
-      passwordError: "",
-      repeatPasswordError: "",
-      passportError: "",
-      identificationTypeError: "",
-      identificationImageError: "",
-      error: "",
+      errors: null,
       showPassword: false,
       showRepeatPassword: false,
       idImageData: {},
@@ -587,48 +589,55 @@ export default {
   methods: {
     validate() {
       let valid = true;
-      this.error = "";
+      this.errors = [];
       if (!this.form.companyId) {
-        this.companyError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "companyId",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.companyError = "";
       }
       if (!this.form.email) {
-        this.emailError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "email",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.emailError = "";
       }
       if (!this.form.firstName) {
-        this.firstNameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "firstName",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.firstNameError = "";
       }
       if (!this.form.lastName) {
-        this.lastNameError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "lastName",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.lastNameError = "";
       }
       if (!this.form.password) {
-        this.passwordError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "password",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.passwordError = "";
       }
       if (this.form.password !== this.form.c_password) {
-        this.repeatPasswordError = "PASSWORDS_NOT_MATCH";
+        this.errors.push({
+          param: "c_password",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.repeatPasswordError = "";
       }
       if (!this.form.identificationType && this.form.role === "worker") {
-        this.identificationTypeError = "THIS_FIELD_IS_REQUIRED";
+        this.errors.push({
+          param: "identificationType",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
         valid = false;
-      } else {
-        this.identificationTypeError = "";
       }
       return valid;
     },
@@ -682,63 +691,17 @@ export default {
           }
 
           await userApi.create(params);
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
+          await this.$store.dispatch("updateShowSuccessModal", true);
+          await this.$store.dispatch("updateSuccessModalContent", {
             title: this.$t("page_users_create_manual.modal.create.title"),
             subTitle: this.$t(
               "page_users_create_manual.modal.create.sub_title"
             ),
             button: this.$t("page_users_create_manual.modal.create.continue")
           });
-          this.$router.push({ name: "admin-candidates" });
+          await this.$router.push({ name: "admin-candidates" });
         } catch (data) {
-          let messages = data.response.data.errors.msg;
-          console.log(messages);
-          if (Array.isArray(messages)) {
-            messages.forEach(msg => {
-              if (msg.param === "companyId") {
-                this.companyError = msg.msg;
-              }
-              if (msg.param === "email") {
-                this.emailError = msg.msg;
-              }
-              if (msg.param === "firstName") {
-                this.firstNameError = msg.msg;
-              }
-              if (msg.param === "lastName") {
-                this.lastNameError = msg.msg;
-              }
-              if (msg.param === "middleName") {
-                this.middleNameError = msg.msg;
-              }
-              if (msg.param === "password") {
-                this.passwordError = msg.msg;
-              }
-              if (msg.param === "gender") {
-                this.genderError = msg.msg;
-              }
-              if (msg.param === "birthday") {
-                this.birthdayError = msg.msg;
-              }
-              if (msg.param === "bankNumber") {
-                this.bankNumberError = msg.msg;
-              }
-              if (msg.param === "street") {
-                this.streetError = msg.msg;
-              }
-              if (msg.param === "houseNumber") {
-                this.houseNumberError = msg.msg;
-              }
-              if (msg.param === "postalCode") {
-                this.postalCodeError = msg.msg;
-              }
-              if (msg.param === "city") {
-                this.cityError = msg.msg;
-              }
-            });
-          } else {
-            this.error = messages;
-          }
+          this.errors = data.response.data.errors.msg;
         }
       }
     }

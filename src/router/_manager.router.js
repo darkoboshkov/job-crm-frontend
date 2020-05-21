@@ -100,13 +100,6 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
-        path: "jobs/:jobId/new-candidate",
-        name: "manager-jobs-new-candidate",
-        component: () =>
-          import("../views/dashboard/manager/jobs/CandidateNew.vue"),
-        beforeEnter: isManagerAuthorized
-      },
-      {
         path: "jobs/:jobId/matching",
         name: "manager-matching",
         component: () =>
