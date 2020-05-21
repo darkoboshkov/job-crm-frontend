@@ -118,10 +118,10 @@ export default {
         });
         valid = false;
       }
-      if (!this.form.c_password) {
+      if (this.form.password !== this.form.c_password) {
         this.errors.push({
           param: "c_password",
-          msg: "THIS_FIELD_IS_REQUIRED"
+          msg: "PASSWORDS_NOT_MATCH"
         });
         valid = false;
       }
