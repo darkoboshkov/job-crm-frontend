@@ -440,8 +440,7 @@ export default {
           this.$store.dispatch("updateShowErrorModal", false);
           this.getManagers();
         })
-        .catch(err => {
-        });
+        .catch(err => {});
     },
     goToProfile(userId) {
       // if (userId) {
@@ -450,8 +449,7 @@ export default {
       //   );
       // }
     },
-    viewFile(attachment) {
-    },
+    viewFile(attachment) {},
     downloadFile(attachment) {
       companiesApi
         .downloadAttachment({

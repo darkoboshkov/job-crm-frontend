@@ -401,8 +401,8 @@ export default {
         await settingsApi.patch(
           Object.assign(this.$store.state.user, this.model)
         );
-        this.$store.dispatch("updateShowSuccessModal", true);
-        this.$store.dispatch("updateSuccessModalContent", {
+        await this.$store.dispatch("updateShowSuccessModal", true);
+        await this.$store.dispatch("updateSuccessModalContent", {
           title: this.$t("page_setting.modal.account_change.title"),
           subTitle: this.$t("page_setting.modal.account_change.sub_title"),
           button: this.$t("page_setting.modal.account_change.continue")

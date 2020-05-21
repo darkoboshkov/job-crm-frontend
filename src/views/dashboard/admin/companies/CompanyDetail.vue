@@ -438,8 +438,7 @@ export default {
           this.$store.dispatch("updateShowErrorModal", false);
           this.getManagers();
         })
-        .catch(error => {
-        });
+        .catch(error => {});
     },
     goToProfile(userId) {
       // if (userId) {
@@ -448,8 +447,7 @@ export default {
       //   );
       // }
     },
-    viewFile(attachment) {
-    },
+    viewFile(attachment) {},
     downloadFile(attachment) {
       companiesApi
         .downloadAttachment({
