@@ -527,9 +527,7 @@ export default {
     }
   },
   methods: {
-    viewFile(attachment) {
-      console.log(attachment);
-    },
+    viewFile(attachment) {},
     downloadFile(attachment) {
       jobsApi
         .downloadAttachment({

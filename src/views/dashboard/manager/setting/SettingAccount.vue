@@ -256,7 +256,6 @@ export default {
         });
       } catch (error) {
         this.isImageLoading = false;
-        console.log(error);
       }
     }
   }

@@ -439,7 +439,6 @@ export default {
           this.getManagers();
         })
         .catch(error => {
-          console.log(error);
         });
     },
     goToProfile(userId) {
@@ -450,7 +449,6 @@ export default {
       // }
     },
     viewFile(attachment) {
-      console.log(attachment);
     },
     downloadFile(attachment) {
       companiesApi

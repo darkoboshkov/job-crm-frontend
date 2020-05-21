@@ -673,7 +673,6 @@ export default {
       }
     },
     async createUser() {
-      console.log("create user");
       if (this.validate()) {
         const params = {
           ...this.form

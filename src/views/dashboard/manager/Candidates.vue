@@ -264,7 +264,6 @@ export default {
       this.selectedCandidate = props.row;
     },
     deleteCandidate() {
-      console.log(this.companyId);
       if (this.selectedCandidate) {
         userApi
           .delete({

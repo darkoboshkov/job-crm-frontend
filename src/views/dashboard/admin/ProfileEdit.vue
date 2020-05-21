@@ -537,7 +537,6 @@ export default {
         } catch (errors) {
           this.errors = errors.response.data.errors.msg;
           this.isImageLoading = false;
-          console.log(errors);
         }
       }
     }

@@ -285,7 +285,6 @@ export default {
       this.getTimeSheets();
     },
     filter(v) {
-      console.log(v);
       const filter = { or: [], and: [] };
       const kind = v[0].value;
       const week = Number(v[1].value);
@@ -305,7 +304,6 @@ export default {
         filter.and.push({ key: "status", value: status, opt: "eq" });
       }
       this.serverParams = Object.assign({}, this.serverParams, { filter });
-      console.log(this.serverParams);
       this.getTimeSheets();
     },
     goToTimeSheet(props) {
