@@ -35,9 +35,9 @@
               <b-form-invalid-feedback class="d-block">
                 {{ errors | errorFormatter("password") }}
               </b-form-invalid-feedback>
-              <a href="/forgot" class="forgot-pass"
-                >{{ $t("page_login.form.forgot") }}?</a
-              >
+              <a href="/forgot" class="forgot-pass">
+                {{ $t("page_login.form.forgot") }}?
+              </a>
             </div>
 
             <b-form-invalid-feedback class="d-block mt-5">

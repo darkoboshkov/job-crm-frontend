@@ -78,7 +78,7 @@ const filterErrors = (message, key) => {
       } else {
         return "";
       }
-    } else {
+    } else if (!key) {
       if (message in English["validation"]) {
         return i18n.t(`validation.${message}`);
       } else {
