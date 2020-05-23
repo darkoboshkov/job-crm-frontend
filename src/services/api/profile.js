@@ -30,9 +30,21 @@ export default {
     return request("patch", `/profile/${companyId}`, params, config);
   },
   uploadImage(params, config = {}) {
-    return request("post", "/profile/image", params, config);
+    return request("post", "/profile/image-upload", params, config);
   },
   uploadID(params, config = {}) {
-    return request("post", "/profile/id-card", params, config);
+    return request("post", "/profile/id-upload", params, config);
+  },
+  downloadID(params, config = {}) {
+    const companyId = params.companyId;
+    const id = params.userId;
+    return request(
+      "post",
+      `/profile/${companyId}/${id}/id-download`,
+      {},
+      {
+        responseType: "blob"
+      }
+    );
   }
 };

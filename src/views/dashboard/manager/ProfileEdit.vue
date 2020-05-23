@@ -1,6 +1,16 @@
 <template>
   <div id="page_update_profile" class="dashboard-content">
     <div class="container">
+      <div class="d-flex justify-content-between mb-4">
+        <a
+          href="javascript:void(0)"
+          class="back pull-left"
+          @click.prevent="$router.go(-1)"
+        >
+          <i class="hiway-crm-icon icon-angle-left mr-2" />
+          <span>{{ $t("common.back") }}</span>
+        </a>
+      </div>
       <h1 class="title">{{ $t("page_profile.edit") }}</h1>
       <div class="update-profile mt-3 bg-white p-5">
         <div class="update-profile__form">
@@ -328,10 +338,17 @@
                   class="custom-input"
                 />
                 <label class="position-absolute id-selector" for="idCard" />
-                <i
-                  class="hiway-crm-icon icon-upload position-absolute"
-                  style="top: 15px;right: 11px;"
-                />
+                <div
+                  class="d-flex position-absolute"
+                  style="top:15px;right:10px;"
+                >
+                  <i class="hiway-crm-icon icon-upload" />
+                  <i
+                    class="hiway-crm-icon icon-upload color-blue rotate-180 cursor-pointer ml-3"
+                    @click="onIDDownload"
+                    v-show="model.identificationImage.path"
+                  />
+                </div>
               </div>
               <b-form-invalid-feedback class="d-block">
                 {{ errors | errorFormatter("identificationImage") }}
@@ -365,6 +382,7 @@
 <script>
 import profileApi from "@/services/api/profile";
 import professionApi from "@/services/api/professions";
+import { downloadFile } from "@/utils";
 
 export default {
   name: "ProfileEdit",
@@ -408,7 +426,8 @@ export default {
       idImageData: {},
       isImageLoading: false,
       userId: "",
-      errors: null
+      errors: null,
+      allowIDImage: false
     };
   },
   computed: {
@@ -418,16 +437,7 @@ export default {
   },
   mounted() {
     this.userId = this.$route.params.id;
-    profileApi
-      .getDetail({ companyId: this.companyId, id: this.userId })
-      .then(res => {
-        this.model = res;
-        this.model.birthday = this.getISODateString(res.birthday);
-        this.model.identificationExpirationDate = this.getISODateString(
-          res.identificationExpirationDate
-        );
-        this.imageData.preview = res.image ? this.getAppUrl(res.image) : null;
-      });
+    this.getProfile();
     professionApi.getAll().then(res => {
       this.professions = res;
     });
@@ -502,46 +512,82 @@ export default {
         console.error("Your browser does not support File API");
       }
     },
-    async update() {
-      if (this.validate()) {
-        try {
-          if (this.imageData.file) {
-            this.isImageLoading = true;
-            const data = new FormData();
-            data.append("title", this.imageData.title);
-            data.append("file", this.imageData.file);
-            const response = await profileApi.uploadImage(data);
-            this.isImageLoading = false;
-            this.model.image = response.path;
-            delete this.imageData.file;
-          }
-          if (this.idImageData.file) {
-            this.isImageLoading = true;
-            const data = new FormData();
-            data.append("title", this.idImageData.title);
-            data.append("file", this.idImageData.file);
-            const response = await profileApi.uploadID(data);
-            this.isImageLoading = false;
-            this.model.identificationImage.path = response.path;
-            delete this.idImageData.file;
-          }
-          await profileApi.patchById(
-            Object.assign(
-              { id: this.userId, companyId: this.companyId },
-              this.model
-            )
+    getProfile() {
+      profileApi
+        .getDetail({ companyId: this.companyId, id: this.userId })
+        .then(res => {
+          this.model = res;
+          this.model.birthday = this.getISODateString(res.birthday);
+          this.model.identificationExpirationDate = this.getISODateString(
+            res.identificationExpirationDate
           );
-          await this.$store.dispatch("updateShowSuccessModal", true);
-          await this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_profile.modal.change.title"),
-            subTitle: this.$t("page_profile.modal.change.sub_title"),
-            button: this.$t("page_profile.modal.change.continue")
-          });
-        } catch (errors) {
-          this.errors = errors.response.data.errors.msg;
-          this.isImageLoading = false;
+          this.imageData.preview = res.image ? this.getAppUrl(res.image) : null;
+        });
+    },
+    async update() {
+      try {
+        if (!this.validate()) {
+          return false;
         }
+        if (this.idImageData.file) {
+          if (!this.allowIDImage) {
+            await this.$store.dispatch("updateShowConfirmModal", true);
+            await this.$store.dispatch("updateConfirmModalContent", {
+              title: this.$t("page_profile.modal.confirm.title"),
+              subTitle: this.$t("page_profile.modal.confirm.sub_title"),
+              button: this.$t("page_profile.modal.confirm.continue"),
+              onButtonClick: () => {
+                this.$store.dispatch("updateShowConfirmModal", false);
+                this.allowIDImage = true;
+                this.update();
+              }
+            });
+            return false;
+          }
+          const data = new FormData();
+          data.append("title", this.idImageData.title);
+          data.append("file", this.idImageData.file);
+          const response = await profileApi.uploadID(data);
+          this.model.identificationImage.path = response.path;
+          delete this.idImageData.file;
+        }
+        if (this.imageData.file) {
+          this.isImageLoading = true;
+          const data = new FormData();
+          data.append("title", this.imageData.title);
+          data.append("file", this.imageData.file);
+          const response = await profileApi.uploadImage(data);
+          this.isImageLoading = false;
+          this.model.image = response.path;
+          delete this.imageData.file;
+        }
+        await profileApi.patchById(
+          Object.assign(
+            { id: this.userId, companyId: this.companyId },
+            this.model
+          )
+        );
+        this.getProfile();
+        await this.$store.dispatch("updateShowSuccessModal", true);
+        await this.$store.dispatch("updateSuccessModalContent", {
+          title: this.$t("page_profile.modal.change.title"),
+          subTitle: this.$t("page_profile.modal.change.sub_title"),
+          button: this.$t("page_profile.modal.change.continue")
+        });
+      } catch (errors) {
+        this.errors = errors.response.data.errors.msg;
+        this.isImageLoading = false;
       }
+    },
+    onIDDownload() {
+      profileApi
+        .downloadID({
+          companyId: this.companyId,
+          userId: this.userId
+        })
+        .then(res => {
+          downloadFile(res, this.model.identificationImage.name);
+        });
     }
   }
 };

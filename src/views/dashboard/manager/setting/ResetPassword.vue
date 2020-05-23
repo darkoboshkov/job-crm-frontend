@@ -5,32 +5,47 @@
         <label
           >{{ $t("page_setting.reset_password.form.old_password") }}:</label
         >
-        <b-form-input
-          type="password"
-          required
-          class="custom-input"
-          v-model="model.oldPassword"
-        />
+        <div class="d-flex flex-column w-100">
+          <b-form-input
+            type="password"
+            required
+            class="custom-input"
+            v-model="model.oldPassword"
+          />
+          <b-form-invalid-feedback class="d-block">
+            {{ errors | errorFormatter("oldPassword") }}
+          </b-form-invalid-feedback>
+        </div>
       </div>
       <div class="form-element mt-3">
         <label
           >{{ $t("page_setting.reset_password.form.new_password") }}:</label
         >
-        <b-form-input
-          type="password"
-          required
-          class="custom-input"
-          v-model="model.newPassword"
-        />
+        <div class="d-flex flex-column w-100">
+          <b-form-input
+            type="password"
+            required
+            class="custom-input"
+            v-model="model.newPassword"
+          />
+          <b-form-invalid-feedback class="d-block">
+            {{ errors | errorFormatter("newPassword") }}
+          </b-form-invalid-feedback>
+        </div>
       </div>
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.reset_password.form.confirm") }}:</label>
-        <b-form-input
-          type="password"
-          required
-          class="custom-input"
-          v-model="model.confirm"
-        />
+        <div class="d-flex flex-column w-100">
+          <b-form-input
+            type="password"
+            required
+            class="custom-input"
+            v-model="model.confirm"
+          />
+          <b-form-invalid-feedback class="d-block">
+            {{ errors | errorFormatter("confirm") }}
+          </b-form-invalid-feedback>
+        </div>
       </div>
       <div class="form-element mt-3">
         <button class="btn btn-blue" @click="update">
@@ -53,31 +68,68 @@ export default {
         oldPassword: "",
         newPassword: "",
         confirm: ""
-      }
+      },
+      errors: null
     };
   },
   mounted() {},
   methods: {
-    update() {
-      settingsApi
-        .resetPassword(this.model)
-        .then(res => {
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_setting.modal.reset_password.success_title"),
-            subTitle: this.$t(
-              "page_setting.modal.reset_password.success_sub_title"
-            ),
-            button: this.$t("page_setting.modal.reset_password.continue")
-          });
-        })
-        .catch(err => {
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_setting.modal.reset_password.error_title"),
-            button: this.$t("page_setting.modal.reset_password.continue")
-          });
+    validate() {
+      let valid = true;
+      this.errors = [];
+      if (!this.model.oldPassword) {
+        this.errors.push({
+          param: "oldPassword",
+          msg: "THIS_FIELD_IS_REQUIRED"
         });
+        valid = false;
+      }
+      if (!this.model.newPassword) {
+        this.errors.push({
+          param: "newPassword",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      } else {
+        if (this.model.newPassword.length < 5) {
+          this.errors.push({
+            param: "newPassword",
+            msg: "PASSWORD_TOO_SHORT_MIN_5"
+          });
+          valid = false;
+        }
+      }
+      if (this.model.newPassword !== this.model.confirm) {
+        this.errors.push({
+          param: "confirm",
+          msg: "PASSWORDS_NOT_MATCH"
+        });
+        valid = false;
+      }
+      return valid;
+    },
+    update() {
+      if (this.validate()) {
+        settingsApi
+          .resetPassword(this.model)
+          .then(res => {
+            this.$store.dispatch("updateShowSuccessModal", true);
+            this.$store.dispatch("updateSuccessModalContent", {
+              title: this.$t("page_setting.modal.reset_password.success_title"),
+              subTitle: this.$t(
+                "page_setting.modal.reset_password.success_sub_title"
+              ),
+              button: this.$t("page_setting.modal.reset_password.continue")
+            });
+          })
+          .catch(err => {
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_setting.modal.reset_password.error_title"),
+              button: this.$t("page_setting.modal.reset_password.continue")
+            });
+          });
+      }
     }
   }
 };

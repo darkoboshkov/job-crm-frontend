@@ -4,6 +4,7 @@
     <loader />
     <success-modal />
     <error-modal />
+    <confirm-modal />
   </div>
 </template>
 
@@ -11,13 +12,15 @@
 import Loader from "@/components/Loader";
 import ErrorModal from "@/components/ErrorModal";
 import SuccessModal from "@/components/SuccessModal";
+import ConfirmModal from "@/components/ConfirmModal";
 
 export default {
   name: "App",
   components: {
-    loader: Loader,
-    "error-modal": ErrorModal,
-    "success-modal": SuccessModal
+    Loader,
+    ErrorModal,
+    SuccessModal,
+    ConfirmModal
   }
 };
 </script>

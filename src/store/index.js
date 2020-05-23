@@ -30,7 +30,13 @@ const state = {
   successModalTitle: "",
   successModalSubTitle: "",
   successModalButton: "",
-  successModalOnButtonClick: ""
+  successModalOnButtonClick: "",
+
+  showConfirmModal: false,
+  confirmModalTitle: "",
+  confirmModalSubTitle: "",
+  confirmModalButton: "",
+  confirmModalOnButtonClick: ""
 };
 
 const mutations = {
@@ -66,6 +72,21 @@ const mutations = {
   },
   UPDATE_SUCCESS_MODAL_ON_BUTTON_CLICK(state, payload) {
     state.successModalOnButtonClick = payload;
+  },
+  UPDATE_SHOW_CONFIRM_MODAL(state, payload) {
+    state.showConfirmModal = payload;
+  },
+  UPDATE_SHOW_CONFIRM_TITLE(state, payload) {
+    state.confirmModalTitle = payload;
+  },
+  UPDATE_SHOW_CONFIRM_SUB_TITLE(state, payload) {
+    state.confirmModalSubTitle = payload;
+  },
+  UPDATE_SHOW_CONFIRM_BUTTON(state, payload) {
+    state.confirmModalButton = payload;
+  },
+  UPDATE_SHOW_CONFIRM_ON_BUTTON_CLICK(state, payload) {
+    state.confirmModalOnButtonClick = payload;
   }
 };
 
@@ -90,6 +111,15 @@ export const actions = {
     commit("UPDATE_SUCCESS_MODAL_SUB_TITLE", payload.subTitle);
     commit("UPDATE_SUCCESS_MODAL_BUTTON", payload.button);
     commit("UPDATE_SUCCESS_MODAL_ON_BUTTON_CLICK", payload.onButtonClick);
+  },
+  updateShowConfirmModal({ commit }, payload) {
+    commit("UPDATE_SHOW_CONFIRM_MODAL", !!payload);
+  },
+  updateConfirmModalContent({ commit }, payload) {
+    commit("UPDATE_SHOW_CONFIRM_TITLE", payload.title);
+    commit("UPDATE_SHOW_CONFIRM_SUB_TITLE", payload.subTitle);
+    commit("UPDATE_SHOW_CONFIRM_BUTTON", payload.button);
+    commit("UPDATE_SHOW_CONFIRM_ON_BUTTON_CLICK", payload.onButtonClick);
   }
 };
 

@@ -585,6 +585,12 @@
         "title": "Successfully changed this profile",
         "sub_title": "Thank you",
         "continue": "Continue"
+      },
+      "confirm": {
+        "title": "Uploading Identification",
+        "sub_title": "You are about to upload your ID document. By uploading this document, you agree with the fact that Hiway or your employing company may use this document to verify your identity.",
+        "continue": "I accept the above statment",
+        "cancel": "Take me back"
       }
     }
   },

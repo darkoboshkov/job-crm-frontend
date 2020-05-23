@@ -178,3 +178,7 @@ hr {
 .cursor-pointer {
   cursor: copy !important;
 }
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
