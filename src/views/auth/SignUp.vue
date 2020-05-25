@@ -92,7 +92,7 @@
 
 <script>
 import authApi from "@/services/api/auth";
-import { Toast, handleLogin } from "@/utils";
+import { handleLogin } from "@/utils";
 
 export default {
   name: "SignUp",
@@ -103,6 +103,7 @@ export default {
       email: "",
       password: "",
       cPassword: "",
+			companyId: "",
       errors: null
     };
   },
@@ -150,15 +151,22 @@ export default {
       return valid;
     },
     signup() {
+
       if (this.validate()) {
+        const data = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password,
+          c_password: this.cPassword,
+        };
+
+        if(this.$route.params.code) {
+          data.companyId = this.$route.params.code;
+				}
+
         return authApi
-          .signup({
-            firstName: this.firstName,
-            lastName: this.lastName,
-            email: this.email,
-            password: this.password,
-            c_password: this.cPassword
-          })
+          .signup(data)
           .then(res => {
             handleLogin(
               {

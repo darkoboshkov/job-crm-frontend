@@ -25,6 +25,11 @@ export default [
         path: "/",
         name: "signup",
         component: () => import("../views/auth/SignUp.vue")
+      },
+      {
+        path: ":code",
+        name: "signup-code",
+        component: () => import("../views/auth/SignUp.vue")
       }
     ],
     beforeEnter: ifNotAuthenticated
