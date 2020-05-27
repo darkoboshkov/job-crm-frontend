@@ -17,6 +17,9 @@
             <div>
               <b-input v-if="editJob" v-model="model.title" class="fullName" />
               <h2 v-else class="fullName">{{ model.title }}</h2>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("title") }}
+              </b-form-invalid-feedback>
             </div>
             <h3 class="profession mt-3">
               {{ model.company && model.company.name }}
@@ -78,6 +81,9 @@
                     <span v-else>
                       {{ model.company && model.company.name }}
                     </span>
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("company") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -104,6 +110,9 @@
                     <span v-else>
                       {{ model.manager | fullNameFormatter }}
                     </span>
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("manager") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -134,6 +143,9 @@
                     <div v-else>
                       {{ model.hoursPerWeek }}
                     </div>
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("hoursPerWeek") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -151,6 +163,9 @@
                     <div v-else>
                       {{ model.wage }}
                     </div>
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("wage") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -168,6 +183,9 @@
                     <div v-else>
                       {{ model.hourlyWage }}
                     </div>
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("hourlyWage") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -185,6 +203,9 @@
                     <div v-else>
                       {{ model.payRate }}
                     </div>
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("payRate") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -527,6 +548,63 @@ export default {
     }
   },
   methods: {
+    validate() {
+      let valid = true;
+      this.errors = [];
+      if (!this.model.title) {
+        this.errors.push({
+          param: "title",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!this.model.company) {
+        this.errors.push({
+          param: "company",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (
+        !this.model.manager ||
+        this.filteredManagers.indexOf(this.model.manager) == -1
+      ) {
+        this.errors.push({
+          param: "manager",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!parseFloat(this.model.hoursPerWeek)) {
+        this.errors.push({
+          param: "hoursPerWeek",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!parseFloat(this.model.wage)) {
+        this.errors.push({
+          param: "wage",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!parseFloat(this.model.hourlyWage)) {
+        this.errors.push({
+          param: "hourlyWage",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!parseFloat(this.model.payRate)) {
+        this.errors.push({
+          param: "payRate",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      return valid;
+    },
     viewFile(attachment) {},
     downloadFile(attachment) {
       jobsApi
@@ -606,35 +684,42 @@ export default {
       });
     },
     updateJob() {
-      this.model.companyId = this.model.company?._id;
-      this.model.managerId = this.model.manager?._id;
-      this.model.professionId = this.model.profession?._id;
-      if (!this.model.endDate) {
-        delete this.model.endDate;
-      }
-      if (!this.model.image) {
-        delete this.model.image;
-      }
+      if (this.validate()) {
+        this.model.companyId = this.model.company?._id;
+        this.model.managerId = this.model.manager?._id;
+        this.model.professionId = this.model.profession?._id;
+        if (!this.model.endDate) {
+          delete this.model.endDate;
+        }
+        if (!this.model.image) {
+          delete this.model.image;
+        }
 
-      jobsApi
-        .update(this.model)
-        .then(res => {
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_job_detail.modal.update_success.title"),
-            subTitle: this.$t("page_job_detail.modal.update_success.sub_title"),
-            button: this.$t("page_job_detail.modal.update_success.continue")
-          });
-        })
-        .catch(error => {
-          this.errors = error.response.data.errors.msg;
+        jobsApi
+          .update(this.model)
+          .then(res => {
+            this.$store.dispatch("updateShowSuccessModal", true);
+            this.$store.dispatch("updateSuccessModalContent", {
+              title: this.$t("page_job_detail.modal.update_success.title"),
+              subTitle: this.$t(
+                "page_job_detail.modal.update_success.sub_title"
+              ),
+              button: this.$t("page_job_detail.modal.update_success.continue")
+            });
+            this.editJob = false;
+          })
+          .catch(error => {
+            this.errors = error.response.data.errors.msg;
 
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_job_detail.modal.update_error.title"),
-            button: this.$t("page_job_detail.modal.update_error.continue")
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_job_detail.modal.update_error.title"),
+              button: this.$t("page_job_detail.modal.update_error.continue")
+            });
           });
-        });
+      } else {
+        this.editJob = true;
+      }
     },
     showDeleteOfferModal(offerId) {
       this.$store.dispatch("updateShowErrorModal", true);

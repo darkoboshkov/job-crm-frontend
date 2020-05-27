@@ -103,7 +103,7 @@ export default {
       email: "",
       password: "",
       cPassword: "",
-			companyId: "",
+      companyId: "",
       errors: null
     };
   },
@@ -151,19 +151,18 @@ export default {
       return valid;
     },
     signup() {
-
       if (this.validate()) {
         const data = {
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
           password: this.password,
-          c_password: this.cPassword,
+          c_password: this.cPassword
         };
 
-        if(this.$route.params.code) {
+        if (this.$route.params.code) {
           data.companyId = this.$route.params.code;
-				}
+        }
 
         return authApi
           .signup(data)

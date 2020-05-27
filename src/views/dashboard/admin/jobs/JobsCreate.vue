@@ -14,11 +14,16 @@
             />
           </div>
           <div class="job-create-header__description">
-            <b-input
-              class="fullName mb-3"
-              v-model="model.title"
-              placeholder="Add job title"
-            />
+            <div class="d-flex flex-column mb-3">
+              <b-input
+                class="fullName"
+                v-model="model.title"
+                placeholder="Add job title"
+              />
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("title") }}
+              </b-form-invalid-feedback>
+            </div>
             <h3 class="profession">{{ userName }}</h3>
           </div>
         </div>
@@ -49,7 +54,7 @@
             <ul class="custom-list">
               <li>
                 {{ $t("page_job_detail.form.company") }}
-                <div class="pull-right">
+                <div class="pull-right d-flex flex-column">
                   <b-form-select
                     v-model="model.company"
                     class="normal-size"
@@ -63,12 +68,15 @@
                       {{ company && company.name }}
                     </option>
                   </b-form-select>
+                  <b-form-invalid-feedback class="d-block text-right">
+                    {{ errors | errorFormatter("company") }}
+                  </b-form-invalid-feedback>
                 </div>
+                <div class="clearfix"></div>
               </li>
-
               <li>
                 {{ $t("page_job_detail.form.manager") }}
-                <div class="pull-right">
+                <div class="pull-right d-flex flex-column">
                   <b-form-select
                     v-model="model.manager"
                     class="normal-size"
@@ -82,7 +90,11 @@
                       {{ manager | fullNameFormatter }}
                     </option>
                   </b-form-select>
+                  <b-form-invalid-feedback class="d-block text-right">
+                    {{ errors | errorFormatter("manager") }}
+                  </b-form-invalid-feedback>
                 </div>
+                <div class="clearfix"></div>
               </li>
               <li>
                 <div class="d-flex align-items-center justify-content-between">
@@ -101,6 +113,9 @@
                   </span>
                   <div>
                     <b-input type="number" v-model="model.hoursPerWeek" />
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("hoursPerWeek") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -111,6 +126,9 @@
                   </span>
                   <div>
                     <b-input type="number" v-model="model.wage" />
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("wage") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -121,6 +139,9 @@
                   </span>
                   <div>
                     <b-input type="number" v-model="model.hourlyWage" />
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("hourlyWage") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -131,6 +152,9 @@
                   </span>
                   <div>
                     <b-input type="number" v-model="model.payRate" />
+                    <b-form-invalid-feedback class="d-block text-right">
+                      {{ errors | errorFormatter("payRate") }}
+                    </b-form-invalid-feedback>
                   </div>
                 </div>
               </li>
@@ -314,6 +338,60 @@ export default {
     }
   },
   methods: {
+    validate() {
+      let valid = true;
+      this.errors = [];
+      if (!this.model.title) {
+        this.errors.push({
+          param: "title",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!this.model.company) {
+        this.errors.push({
+          param: "company",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!this.model.manager) {
+        this.errors.push({
+          param: "manager",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!parseFloat(this.model.hoursPerWeek)) {
+        this.errors.push({
+          param: "hoursPerWeek",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!parseFloat(this.model.wage)) {
+        this.errors.push({
+          param: "wage",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!parseFloat(this.model.hourlyWage)) {
+        this.errors.push({
+          param: "hourlyWage",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      if (!parseFloat(this.model.payRate)) {
+        this.errors.push({
+          param: "payRate",
+          msg: "THIS_FIELD_IS_REQUIRED"
+        });
+        valid = false;
+      }
+      return valid;
+    },
     deleteFile(attachments, idx) {
       attachments.splice(idx, 1);
     },
@@ -339,35 +417,39 @@ export default {
         });
     },
     createJob() {
-      this.model.companyId = this.model.company?._id;
-      this.model.managerId = this.model.manager?._id;
-      if (!this.model.endDate) {
-        delete this.model.endDate;
-      }
-      if (!this.model.image) {
-        delete this.model.image;
-      }
+      if (this.validate()) {
+        this.model.companyId = this.model.company?._id;
+        this.model.managerId = this.model.manager?._id;
+        if (!this.model.endDate) {
+          delete this.model.endDate;
+        }
+        if (!this.model.image) {
+          delete this.model.image;
+        }
 
-      jobsApi
-        .create(this.model)
-        .then(res => {
-          this.model = res;
-          this.$store.dispatch("updateShowSuccessModal", true);
-          this.$store.dispatch("updateSuccessModalContent", {
-            title: this.$t("page_job_detail.modal.create_success.title"),
-            subTitle: this.$t("page_job_detail.modal.create_success.sub_title"),
-            button: this.$t("page_job_detail.modal.create_success.continue")
+        jobsApi
+          .create(this.model)
+          .then(res => {
+            this.model = res;
+            this.$store.dispatch("updateShowSuccessModal", true);
+            this.$store.dispatch("updateSuccessModalContent", {
+              title: this.$t("page_job_detail.modal.create_success.title"),
+              subTitle: this.$t(
+                "page_job_detail.modal.create_success.sub_title"
+              ),
+              button: this.$t("page_job_detail.modal.create_success.continue")
+            });
+            this.$router.push({ name: "admin-jobs" });
+          })
+          .catch(error => {
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_job_detail.modal.create_error.title"),
+              subTitle: this.$t("page_job_detail.modal.create_error.sub_title"),
+              button: this.$t("page_job_detail.modal.create_error.continue")
+            });
           });
-          this.$router.push({ name: "admin-jobs" });
-        })
-        .catch(error => {
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_job_detail.modal.create_error.title"),
-            subTitle: this.$t("page_job_detail.modal.create_error.sub_title"),
-            button: this.$t("page_job_detail.modal.create_error.continue")
-          });
-        });
+      }
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
