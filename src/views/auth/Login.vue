@@ -78,22 +78,18 @@ export default {
   },
   methods: {
     validate() {
-
-      this.error = [];
-
+      this.errors = [];
       if (!this.email) {
         this.errors.push({
           param: "email",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-
       }
       if (!this.password) {
         this.errors.push({
           param: "password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-
       }
       return this.errors.length === 0;
     },

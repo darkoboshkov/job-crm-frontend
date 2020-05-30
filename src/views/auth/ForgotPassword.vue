@@ -67,8 +67,6 @@ export default {
     },
     forgot() {
       if (this.validate()) {
-        this.error = "";
-
         authApi
           .forgot({
             email: this.email

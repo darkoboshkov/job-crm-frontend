@@ -98,34 +98,30 @@
     },
     methods: {
       validate() {
-        this.error = [];
+        this.errors = [];
         if (!this.form.firstName) {
           this.errors.push({
             param: "firstName",
             msg: "THIS_FIELD_IS_REQUIRED"
           });
-
         }
         if (!this.form.lastName) {
           this.errors.push({
             param: "lastName",
             msg: "THIS_FIELD_IS_REQUIRED"
           });
-
         }
         if (!this.form.password) {
           this.errors.push({
             param: "password",
             msg: "THIS_FIELD_IS_REQUIRED"
           });
-
         }
         if (this.form.password !== this.form.c_password) {
           this.errors.push({
             param: "c_password",
             msg: "PASSWORDS_NOT_MATCH"
           });
-
         }
         return this.errors.length === 0;
       },

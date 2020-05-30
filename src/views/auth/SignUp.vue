@@ -109,45 +109,37 @@ export default {
   },
   methods: {
     validate() {
-
-      this.error = [];
-
+      this.errors = [];
       if (!this.firstName) {
         this.errors.push({
           param: "firstName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-
       }
       if (!this.lastName) {
         this.errors.push({
           param: "lastName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-
       }
       if (!this.email) {
         this.errors.push({
           param: "email",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-
       }
       if (!this.password) {
         this.errors.push({
           param: "password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-
       }
       if (!this.cPassword) {
         this.errors.push({
           param: "c_password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-
       }
-
       return this.errors.length === 0;
     },
     signup() {
