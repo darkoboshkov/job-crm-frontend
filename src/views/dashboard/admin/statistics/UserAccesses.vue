@@ -90,13 +90,13 @@
           filter.and.push({ key: "email", value: email, opt: "in" });
         }
         if (ip) {
-          filter.and.push({ key: "ip", value: email, opt: "in" });
+          filter.and.push({ key: "ip", value: ip, opt: "in" });
         }
         if (country) {
-          filter.and.push({ key: "country", value: email, opt: "eq" });
+          filter.and.push({ key: "country", value: country, opt: "eq" });
         }
         if (browser) {
-          filter.and.push({ key: "browser", value: email, opt: "in" });
+          filter.and.push({ key: "browser", value: browser, opt: "in" });
         }
         this.serverParams = Object.assign({}, this.serverParams, { filter });
         this.getUserAccesses();
