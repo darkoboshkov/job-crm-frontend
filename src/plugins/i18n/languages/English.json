@@ -799,7 +799,7 @@
       },
       "validate_contract": {
         "title": "Contract validation was failed.",
-        "sub_title": "Please fill bellow all information out to sign this contract!",
+        "sub_title": "Please fill out all information to sign this contract!",
         "worker_info": "Worker Information",
         "company_info": "Company Information",
         "manager_info": "Manager Information",
