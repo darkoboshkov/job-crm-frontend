@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     validate() {
-      let valid = true;
+
       this.error = [];
 
       if (!this.password) {
@@ -68,7 +68,7 @@ export default {
           param: "password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
 
       if (!this.cPassword) {
@@ -76,10 +76,10 @@ export default {
           param: "c_password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
 
-      return valid;
+      return this.errors.length === 0;
     },
     reset() {
       if (this.validate()) {

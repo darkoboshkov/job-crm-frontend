@@ -11,30 +11,34 @@
             />
             <div class="invitation-form__header-line"></div>
             <h1 class="title">{{ $t("page_accept.title") }}</h1>
-            <div class="name-group d-flex">
-              <b-form-input
-                id="first_name"
-                v-model="form.firstName"
-                type="text"
-                required
-                :placeholder="$t('page_accept.form.first_name')"
-                class="custom-input first-name mt-5"
-              />
-              <b-form-invalid-feedback class="d-block">
-                {{ errors | errorFormatter("firstName") }}
-              </b-form-invalid-feedback>
-              <b-form-input
-                id="last_name"
-                v-model="form.lastName"
-                type="text"
-                required
-                :placeholder="$t('page_accept.form.last_name')"
-                class="custom-input last-name mt-5"
-              />
-              <b-form-invalid-feedback class="d-block">
-                {{ errors | errorFormatter("lastName") }}
-              </b-form-invalid-feedback>
-            </div>
+            <b-row>
+              <b-col md="6">
+                <b-form-input
+                  id="first_name"
+                  v-model="form.firstName"
+                  type="text"
+                  required
+                  :placeholder="$t('page_accept.form.first_name')"
+                  class="custom-input first-name mt-5"
+                />
+                <b-form-invalid-feedback class="d-block">
+                  {{ errors | errorFormatter("firstName") }}
+                </b-form-invalid-feedback>
+              </b-col>
+              <b-col md="6">
+                <b-form-input
+                  id="last_name"
+                  v-model="form.lastName"
+                  type="text"
+                  required
+                  :placeholder="$t('page_accept.form.last_name')"
+                  class="custom-input last-name mt-5"
+                />
+                <b-form-invalid-feedback class="d-block">
+                  {{ errors | errorFormatter("lastName") }}
+                </b-form-invalid-feedback>
+              </b-col>
+            </b-row>
             <b-form-input
               id="password"
               v-model="form.password"
@@ -94,7 +98,7 @@ export default {
   },
   methods: {
     validate() {
-      let valid = true;
+
       this.error = [];
 
       if (!this.form.firstName) {
@@ -102,31 +106,31 @@ export default {
           param: "firstName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
       if (!this.form.lastName) {
         this.errors.push({
           param: "lastName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
       if (!this.form.password) {
         this.errors.push({
           param: "password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
       if (this.form.password !== this.form.c_password) {
         this.errors.push({
           param: "c_password",
           msg: "PASSWORDS_NOT_MATCH"
         });
-        valid = false;
+
       }
 
-      return valid;
+      return this.errors.length === 0;
     },
     accept() {
       if (this.validate()) {

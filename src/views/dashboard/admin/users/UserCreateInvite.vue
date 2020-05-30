@@ -121,23 +121,20 @@ export default {
   },
   methods: {
     validate() {
-      let valid = true;
       this.errors = [];
       if (!this.form.companyId) {
         this.errors.push({
           param: "companyId",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!this.form.email) {
         this.errors.push({
           param: "email",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
-      return valid;
+      return this.errors.length === 0;
     },
     clear() {
       this.form.email = "";

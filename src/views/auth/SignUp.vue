@@ -109,7 +109,7 @@ export default {
   },
   methods: {
     validate() {
-      let valid = true;
+
       this.error = [];
 
       if (!this.firstName) {
@@ -117,38 +117,38 @@ export default {
           param: "firstName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
       if (!this.lastName) {
         this.errors.push({
           param: "lastName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
       if (!this.email) {
         this.errors.push({
           param: "email",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
       if (!this.password) {
         this.errors.push({
           param: "password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
       if (!this.cPassword) {
         this.errors.push({
           param: "c_password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
 
-      return valid;
+      return this.errors.length === 0;
     },
     signup() {
       if (this.validate()) {

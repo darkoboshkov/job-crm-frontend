@@ -480,7 +480,6 @@ export default {
   },
   methods: {
     validate() {
-      let valid = true;
       this.errors = [];
 
       if (!this.model.name) {
@@ -488,7 +487,6 @@ export default {
           param: "name",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
 
       if (!this.model.email) {
@@ -496,23 +494,20 @@ export default {
           param: "email",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!this.model.kvkNumber) {
         this.errors.push({
           param: "kvkNumber",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!this.model.limitCreditSafe) {
         this.errors.push({
           param: "limitCreditSafe",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
-      return valid;
+      return this.errors.length === 0;
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;

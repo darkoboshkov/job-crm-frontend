@@ -155,23 +155,20 @@ export default {
   },
   methods: {
     validate() {
-      let valid = true;
       this.errors = [];
       if (!this.model.firstName) {
         this.errors.push({
           param: "firstName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!this.model.lastName) {
         this.errors.push({
           param: "lastName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
-      return valid;
+      return this.errors.length === 0;
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
