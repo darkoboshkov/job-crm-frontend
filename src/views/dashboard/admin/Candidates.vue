@@ -126,7 +126,6 @@ import TableFilter from "@/components/common/TableFilter";
 import userApi from "@/services/api/users";
 import professionApi from "@/services/api/professions";
 import { candidatesTable } from "@/constants";
-import i18n from "../../../plugins/i18n";
 
 export default {
   name: "Candidates",
@@ -296,6 +295,7 @@ export default {
         this.professions = res;
 
         // profession filter options
+        this.filterOptions[1].options = [];
         this.filterOptions[1].options.push({ text: "", value: "" });
         this.professions?.forEach(item => {
           this.filterOptions[1].options.push({

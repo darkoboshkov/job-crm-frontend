@@ -304,7 +304,8 @@ export default {
       professionApi.getAll().then(res => {
         this.professions = res;
 
-        // professio filter options
+        // profession filter options
+        this.filterOptions[1].options = [];
         this.filterOptions[1].options.push({ text: "", value: "" });
         this.professions?.forEach(item => {
           this.filterOptions[1].options.push({
