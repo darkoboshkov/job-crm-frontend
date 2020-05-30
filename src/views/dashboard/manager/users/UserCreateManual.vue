@@ -569,51 +569,44 @@ export default {
   },
   methods: {
     validate() {
-      let valid = true;
       this.errors = [];
       if (!this.form.email) {
         this.errors.push({
           param: "email",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!this.form.firstName) {
         this.errors.push({
           param: "firstName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!this.form.lastName) {
         this.errors.push({
           param: "lastName",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!this.form.password) {
         this.errors.push({
           param: "password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (this.form.password !== this.form.c_password) {
         this.errors.push({
           param: "c_password",
           msg: "PASSWORDS_NOT_MATCH"
         });
-        valid = false;
       }
       if (!this.form.identificationType && this.form.role === "worker") {
         this.errors.push({
           param: "identificationType",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
-      return valid;
+      return this.errors.length === 0;
     },
     getCompanies() {
       return companyApi.getAll().then(res => {

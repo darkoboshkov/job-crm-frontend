@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     validate() {
-      let valid = true;
+
       this.error = [];
 
       if (!this.email) {
@@ -86,16 +86,16 @@ export default {
           param: "email",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
       if (!this.password) {
         this.errors.push({
           param: "password",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
+
       }
-      return valid;
+      return this.errors.length === 0;
     },
     login() {
       if (this.validate()) {

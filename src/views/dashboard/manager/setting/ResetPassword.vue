@@ -75,28 +75,24 @@ export default {
   mounted() {},
   methods: {
     validate() {
-      let valid = true;
       this.errors = [];
       if (!this.model.oldPassword) {
         this.errors.push({
           param: "oldPassword",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!this.model.newPassword) {
         this.errors.push({
           param: "newPassword",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       } else {
         if (this.model.newPassword.length < 5) {
           this.errors.push({
             param: "newPassword",
             msg: "PASSWORD_TOO_SHORT_MIN_5"
           });
-          valid = false;
         }
       }
       if (this.model.newPassword !== this.model.confirm) {
@@ -104,9 +100,8 @@ export default {
           param: "confirm",
           msg: "PASSWORDS_NOT_MATCH"
         });
-        valid = false;
       }
-      return valid;
+      return this.errors.length === 0;
     },
     update() {
       if (this.validate()) {

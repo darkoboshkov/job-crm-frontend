@@ -498,44 +498,38 @@ export default {
   },
   methods: {
     validate() {
-      let valid = true;
       this.errors = [];
       if (!this.model.title) {
         this.errors.push({
           param: "title",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!parseFloat(this.model.hoursPerWeek)) {
         this.errors.push({
           param: "hoursPerWeek",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!parseFloat(this.model.wage)) {
         this.errors.push({
           param: "wage",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!parseFloat(this.model.hourlyWage)) {
         this.errors.push({
           param: "hourlyWage",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
       if (!parseFloat(this.model.payRate)) {
         this.errors.push({
           param: "payRate",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-        valid = false;
       }
-      return valid;
+      return this.errors.length === 0;
     },
     viewFile(attachment) {
       //

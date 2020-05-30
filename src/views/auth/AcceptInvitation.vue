@@ -98,39 +98,36 @@
     },
     methods: {
       validate() {
-        let valid = true;
         this.error = [];
-
         if (!this.form.firstName) {
           this.errors.push({
             param: "firstName",
             msg: "THIS_FIELD_IS_REQUIRED"
           });
-          valid = false;
+
         }
         if (!this.form.lastName) {
           this.errors.push({
             param: "lastName",
             msg: "THIS_FIELD_IS_REQUIRED"
           });
-          valid = false;
+
         }
         if (!this.form.password) {
           this.errors.push({
             param: "password",
             msg: "THIS_FIELD_IS_REQUIRED"
           });
-          valid = false;
+
         }
         if (this.form.password !== this.form.c_password) {
           this.errors.push({
             param: "c_password",
             msg: "PASSWORDS_NOT_MATCH"
           });
-          valid = false;
-        }
 
-        return valid;
+        }
+        return this.errors.length === 0;
       },
       accept() {
         if (this.validate()) {
@@ -150,14 +147,11 @@
                   this.$store.dispatch("updateShowSuccessModal", false);
                 }
               });
-            })
-            .catch(data => {
-              this.errors = data.response.data.errors.msg;
             });
         }
       }
     }
-  };
+  }
 </script>
 
 <style scoped></style>
