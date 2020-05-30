@@ -13,6 +13,19 @@ const pagination = {
   }
 };
 
+const pagination_10 = {
+  paginationOptions: {
+    enabled: true,
+    perPage: 10
+  },
+  serverParams: {
+    page: 1,
+    limit: 10,
+    sort: "",
+    order: ""
+  }
+};
+
 export const APP_URL = process.env.VUE_APP_URL;
 
 export const EXPENSE_STATE = {
@@ -772,9 +785,8 @@ export const workerTimesheetsTable = {
   ]
 };
 
-
 export const userAccessesTable = {
-  pagination,
+  pagination: pagination_10,
   columns: [
     {
       label: "Email",
@@ -820,6 +832,59 @@ export const userAccessesTable = {
     },
     {
       title: "Browser",
+      type: "text",
+      value: ""
+    },
+  ]
+};
+
+export const emailHistoriesTable = {
+  pagination: pagination_10,
+  columns: [
+    {
+      label: "From Email",
+      field: "from",
+      name: "from"
+    },
+    {
+      label: "To Email",
+      field: "to",
+      name: "to"
+    },
+    {
+      label: "Subject",
+      field: "subject",
+      name: "subject"
+    },
+    {
+      label: "Status",
+      field: "status",
+      name: "status"
+    },
+    {
+      label: "Sent At",
+      field: "sentAt",
+      name: "sentAt"
+    }
+  ],
+  filterOptions: [
+    {
+      title: "From Email",
+      type: "text",
+      value: ""
+    },
+    {
+      title: "To Email",
+      type: "text",
+      value: ""
+    },
+    {
+      title: "Subject",
+      type: "text",
+      value: ""
+    },
+    {
+      title: "Status",
       type: "text",
       value: ""
     },
