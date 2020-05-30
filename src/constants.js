@@ -771,3 +771,57 @@ export const workerTimesheetsTable = {
     }
   ]
 };
+
+
+export const userAccessesTable = {
+  pagination,
+  columns: [
+    {
+      label: "Email",
+      field: "email",
+      name: "email"
+    },
+    {
+      label: "IP",
+      field: "ip",
+      name: "ip"
+    },
+    {
+      label: "Country",
+      field: "country",
+      name: "country"
+    },
+    {
+      label: "Browser",
+      field: "browser",
+      name: "browser"
+    },
+    {
+      label: "Login At",
+      field: "loginAt",
+      name: "loginAt"
+    }
+  ],
+  filterOptions: [
+    {
+      title: "Email",
+      type: "text",
+      value: ""
+    },
+    {
+      title: "IP",
+      type: "text",
+      value: ""
+    },
+    {
+      title: "Country",
+      type: "text",
+      value: ""
+    },
+    {
+      title: "Browser",
+      type: "text",
+      value: ""
+    },
+  ]
+};
