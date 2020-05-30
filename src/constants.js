@@ -834,7 +834,7 @@ export const userAccessesTable = {
       title: "Browser",
       type: "text",
       value: ""
-    },
+    }
   ]
 };
 
@@ -887,6 +887,6 @@ export const emailHistoriesTable = {
       title: "Status",
       type: "text",
       value: ""
-    },
+    }
   ]
 };

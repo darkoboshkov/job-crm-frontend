@@ -1,17 +1,14 @@
 <template>
   <div class="table-filter">
-    <div
-      v-b-toggle.collapse_table-filter
-      class="table-filter__title d-inline-block"
-    >
+    <div class="table-filter__title d-inline-block" @click="visible = !visible">
       <h5>
         <i class="hiway-crm-icon icon-equalizer mr-2" />
-        <span class="when-opened">{{ $t("common.close") }}</span>
-        <span class="when-closed">{{ $t("common.open") }}</span>
+        <span v-if="visible">{{ $t("common.close") }}</span>
+        <span v-else>{{ $t("common.open") }}</span>
         {{ $t("common.filters") }}
       </h5>
     </div>
-    <b-collapse id="collapse_table-filter">
+    <b-collapse v-model="visible">
       <div class="table-filter-options flex-wrap">
         <div
           class="filter-option mt-3"
@@ -148,7 +145,9 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      visible: false
+    };
   },
   computed: {
     filterOptions: {
@@ -167,10 +166,6 @@ export default {
 </script>
 
 <style>
-.table-filter__title.collapsed .when-opened,
-.table-filter__title:not(.collapsed) .when-closed {
-  display: none;
-}
 div[role="radiogroup"] {
   outline: none;
 }

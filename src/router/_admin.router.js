@@ -14,7 +14,8 @@ export default [
       {
         path: "statistics",
         name: "admin-statistics",
-        component: () => import("../views/dashboard/admin/statistics/Index.vue"),
+        component: () =>
+          import("../views/dashboard/admin/statistics/Index.vue"),
         beforeEnter: isAdminAuthorized
       },
       {
