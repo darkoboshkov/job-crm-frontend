@@ -690,7 +690,6 @@ export default {
             ),
             button: this.$t("page_users_create_manual.modal.create.continue")
           });
-          await this.$router.push({ name: "admin-candidates" });
         } catch (data) {
           this.errors = data.response.data.errors.msg;
         }

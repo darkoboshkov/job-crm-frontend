@@ -723,10 +723,11 @@ export default {
 
       return (
         this.validations.worker.length +
-        this.validations.company.length +
-        this.validations.manager.length +
-        this.validations.jobOffer.length
-      ) === 0;
+          this.validations.company.length +
+          this.validations.manager.length +
+          this.validations.jobOffer.length ===
+        0
+      );
     },
     downloadFile(attachment) {
       jobOfferApi
@@ -774,7 +775,7 @@ export default {
         jobOfferApi
           .lock(this.model)
           .then(res => {
-            if(res.signAble) {
+            if (res.signAble) {
               this.getOfferDetails();
               this.$refs["modal-sign-contract"].hide();
               this.$store.dispatch("updateShowSuccessModal", true);
@@ -785,10 +786,10 @@ export default {
                 ),
                 button: this.$t("page_offer_detail.modal.sign_success.continue")
               });
-						} else {
+            } else {
               this.validations = res.validations;
               this.$refs["modal-validate-contract"].show();
-						}
+            }
           })
           .catch(e => {
             this.$store.dispatch("updateShowErrorModal", true);

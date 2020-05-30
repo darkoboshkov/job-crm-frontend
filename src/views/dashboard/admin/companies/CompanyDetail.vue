@@ -429,10 +429,10 @@ export default {
       this.selectedManager = id;
     },
     removeManager() {
-      companiesApi
-        .removeMember({
+      usersApi
+        .delete({
           companyId: this.companyId,
-          userId: this.selectedManager
+          id: this.selectedManager
         })
         .then(res => {
           this.$store.dispatch("updateShowErrorModal", false);

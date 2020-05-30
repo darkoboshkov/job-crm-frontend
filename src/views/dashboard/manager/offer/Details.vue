@@ -723,10 +723,11 @@ export default {
       }
       return (
         this.validations.worker.length +
-        this.validations.company.length +
-        this.validations.manager.length +
-        this.validations.jobOffer.length
-      ) === 0;
+          this.validations.company.length +
+          this.validations.manager.length +
+          this.validations.jobOffer.length ===
+        0
+      );
     },
     downloadFile(attachment) {
       jobOfferApi
@@ -774,7 +775,7 @@ export default {
         jobOfferApi
           .lock(this.model)
           .then(res => {
-            if(res.signAble) {
+            if (res.signAble) {
               this.getOfferDetails();
               this.$refs["modal-sign-contract"].hide();
               this.$store.dispatch("updateShowSuccessModal", true);
