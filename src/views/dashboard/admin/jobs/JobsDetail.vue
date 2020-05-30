@@ -564,7 +564,7 @@ export default {
       }
       if (
         !this.model.manager ||
-        this.filteredManagers.indexOf(this.model.manager) == -1
+        this.filteredManagers.indexOf(this.model.manager) === -1
       ) {
         this.errors.push({
           param: "manager",

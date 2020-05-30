@@ -481,7 +481,6 @@ export default {
   methods: {
     validate() {
       this.errors = [];
-
       if (!this.model.name) {
         this.errors.push({
           param: "name",

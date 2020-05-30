@@ -56,17 +56,13 @@ export default {
   },
   methods: {
     validate() {
-
       this.errors = [];
-
       if (!this.email) {
         this.errors.push({
           param: "email",
           msg: "THIS_FIELD_IS_REQUIRED"
         });
-
       }
-
       return this.errors.length === 0;
     },
     forgot() {
