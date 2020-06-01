@@ -328,7 +328,8 @@
                   type="file"
                   id="idCard"
                   name="idCard"
-                  accept="image/*"
+									ref="idCard"
+									accept="image/*,.pdf"
                   @change="onIDUpload"
                   class="d-none"
                 />
@@ -342,7 +343,7 @@
                   class="d-flex position-absolute"
                   style="top:15px;right:10px;"
                 >
-                  <i class="hiway-crm-icon icon-upload" />
+                  <i class="hiway-crm-icon icon-upload cursor-pointer" @click="$refs.idCard.click()" />
                   <i
                     class="hiway-crm-icon icon-upload color-blue rotate-180 cursor-pointer ml-3"
                     @click="onIDDownload"
@@ -495,7 +496,7 @@ export default {
       }
 
       if (window.File && window.FileList && window.FileReader) {
-        if (files.length !== 1 || !files[0].type.match("image")) return;
+        if (files.length !== 1) return;
         let file = files[0];
         this.idImageData = {
           file: file,
