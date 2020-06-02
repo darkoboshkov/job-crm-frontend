@@ -687,7 +687,7 @@ export default {
       if (!this.model.startDate) {
         this.validations.jobOffer.push("OFFER_START_DATE_INVALID");
       }
-      if (this.model.CAO.length === 0) {
+      if (this.model.collectiveAgreement.length === 0) {
         this.validations.jobOffer.push("OFFER_CAO_INVALID");
       }
       if (this.model.wage <= 0) {
