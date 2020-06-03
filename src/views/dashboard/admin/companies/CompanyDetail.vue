@@ -7,7 +7,7 @@
     <b-row class="mt-5">
       <b-col md="12">
         <div class="company-detail__header">
-          <div class="company-detail__header__photo">
+          <div class="avatar-image size-112">
             <img v-if="model.logo" :src="model.logo | appUrlFormatter" />
           </div>
           <div class="company-detail__header__description">

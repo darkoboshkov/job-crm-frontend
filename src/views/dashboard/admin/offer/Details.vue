@@ -16,7 +16,7 @@
         <b-card class="matching-item" body-class="p-0">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
-              <div class="avatar-image mr-2" style="width:65px;height:65px;">
+              <div class="avatar-image size-65 mr-2">
                 <img
                   v-if="company.logo"
                   :src="company.logo | appUrlFormatter"
@@ -62,7 +62,7 @@
         <b-card class="matching-item" body-class="p-0">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
-              <div class="avatar-image mr-2" style="width:65px;height:65px;">
+              <div class="avatar-image size-65 mr-2">
                 <img
                   v-if="worker.image"
                   :src="worker.image | appUrlFormatter"

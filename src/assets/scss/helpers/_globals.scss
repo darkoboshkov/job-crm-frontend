@@ -145,14 +145,6 @@ hr {
   margin: 1rem 0 1.5rem 0;
 }
 
-.avatar-placeholder {
-  background: var(--white-two);
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
 .avatar-image {
   background: var(--white-two);
   width: 45px;
@@ -161,6 +153,17 @@ hr {
   overflow: hidden;
   align-items: center;
   display: flex;
+
+  &.size-65 {
+    width: 65px;
+    height: 65px;
+  }
+
+  &.size-112 {
+    width: 112px;
+    height: 112px;
+  }
+
 
   img {
     width: 100%;
@@ -181,4 +184,21 @@ hr {
 
 .rotate-180 {
   transform: rotate(180deg);
+}
+
+.upload:hover {
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-image: url("~@/assets/image/icon/upload.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 1;
+  }
 }

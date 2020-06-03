@@ -15,17 +15,7 @@
      flex-direction: column;
     };
 
-    &__photo {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      border: 1px solid var(--pale-grey-two);
-      background: var(--white-two);
-      overflow: hidden;
-      img {
-       width: 100%;
-      }
-    }
+
     &__description {
       margin-left: 20px;
       .fullName {
@@ -82,7 +72,8 @@
         }
 
         & > label {
-          width: 175px;
+          width: 250px;
+          word-break: break-all;
         }
       }
 

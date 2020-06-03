@@ -7,7 +7,7 @@
     <b-row class="mt-5">
       <b-col md="12">
         <div class="profile-header">
-          <div class="profile-header__photo">
+          <div class="avatar-image size-112">
             <img src="@/assets/image/avatar_nick.png" />
           </div>
           <div class="profile-header__description">

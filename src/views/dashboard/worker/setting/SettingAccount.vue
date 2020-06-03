@@ -355,7 +355,7 @@
       </div>
     </div>
     <div class="setting-profile__photo">
-      <div class="image-wrapper">
+      <div class="image-wrapper upload">
         <img :src="imageData.preview" />
         <b-spinner type="grow" label="Spinning" v-if="isImageLoading" />
         <input

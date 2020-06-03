@@ -15,16 +15,6 @@
      flex-direction: column;
     };
 
-    &__photo {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      background: var(--white-two);
-      overflow: hidden;
-      img {
-       width: 100%;
-      }
-    }
     &__description {
       margin-left: 20px;
       flex: 1;
@@ -80,16 +70,6 @@
       flex-direction: column;
     };
 
-    &__photo {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      background: var(--white-two);
-      overflow: hidden;
-      img {
-        width: 100%;
-      }
-    }
     &__description {
       margin-left: 20px;
       flex: 1;

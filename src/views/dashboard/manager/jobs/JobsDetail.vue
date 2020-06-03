@@ -7,7 +7,7 @@
     <b-row class="mt-5">
       <b-col md="12">
         <div class="job-detail-header">
-          <div class="job-detail-header__photo">
+          <div class="avatar-image size-112">
             <img
               v-if="model.company && model.company.logo"
               :src="model.company.logo | appUrlFormatter"
