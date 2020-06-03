@@ -690,13 +690,13 @@ export default {
       if (!this.model.collectiveAgreement) {
         this.validations.jobOffer.push("OFFER_CAO_INVALID");
       }
-      if (this.model.wage <= 0) {
+      if (this.model.wage < 0) {
         this.validations.jobOffer.push("OFFER_WAGE_INVALID");
       }
       if (this.model.hourlyWage <= 0) {
         this.validations.jobOffer.push("OFFER_HOURLY_WAGE_INVALID");
       }
-      if (this.model.payRate <= 0) {
+      if (this.model.payRate < 0) {
         this.validations.jobOffer.push("OFFER_PAY_RATE_INVALID");
       }
       if (this.model.hoursPerWeek <= 0) {
