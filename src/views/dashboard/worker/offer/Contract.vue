@@ -62,7 +62,7 @@
       <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.id_type") }}
       </div>
-      : {{ worker.identificationType }}
+      : {{ worker.identificationType }}, {{ worker.identificationNumber }}
     </div>
     <div>
       <div style="width: 350px; display: inline-block;">
