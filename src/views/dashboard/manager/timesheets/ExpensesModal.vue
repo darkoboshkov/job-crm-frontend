@@ -47,11 +47,14 @@
         <div class="col">
           <span class="mr-3">{{ $t("page_timesheets.modal.date") }}:</span
           >&nbsp;
-          <b-input
-            class="d-inline-block expense-input"
-            type="date"
+          <b-form-datepicker
             v-model="model.expenseData.date"
             :disabled="inputDisabled"
+            class="d-inline-block expense-input"
+            :date-format-options="dateStringOptions"
+            today-button
+            reset-button
+            locale="nl"
           />
         </div>
       </div>

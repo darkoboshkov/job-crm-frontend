@@ -1,12 +1,9 @@
 .btn {
-  border: 1px solid transparent;
   border-radius: 50rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  color: white;
   cursor: pointer;
   outline: none;
-  //width: 100%;
   &.rectangle {
     border-radius: 0;
   }

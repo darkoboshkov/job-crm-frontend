@@ -284,11 +284,13 @@
             {{ $t("page_users_create_manual.form.birthday") }}:
           </label>
           <div class="flex-3">
-            <b-form-input
-              type="date"
-              required
+            <b-form-datepicker
               class="custom-input"
               v-model="form.birthday"
+              :date-format-options="dateStringOptions"
+              today-button
+              reset-button
+              locale="nl"
             />
             <b-form-invalid-feedback class="d-block">
               {{ errors | errorFormatter("birthday") }}
@@ -475,11 +477,13 @@
             {{ $t("page_users_create_manual.form.id_exp_date") }}:
           </label>
           <div class="flex-3">
-            <b-form-input
-              type="date"
-              required
+            <b-form-datepicker
               class="custom-input"
               v-model="form.identificationExpirationDate"
+              :date-format-options="dateStringOptions"
+              today-button
+              reset-button
+              locale="nl"
             />
             <b-form-invalid-feedback class="d-block">
               {{ errors | errorFormatter("identificationExpirationDate") }}

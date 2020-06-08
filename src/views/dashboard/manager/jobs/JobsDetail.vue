@@ -171,10 +171,13 @@
                     {{ $t("page_job_detail.form.start_date") }}
                   </span>
                   <div>
-                    <b-input
-                      type="date"
+                    <b-form-datepicker
                       v-if="editJob"
                       v-model="model.startDate"
+                      :date-format-options="dateStringOptions"
+                      today-button
+                      reset-button
+                      locale="nl"
                     />
                     <div v-else>
                       {{ model.startDate | dateFormatter }}
@@ -189,10 +192,13 @@
                     {{ $t("page_job_detail.form.end_date") }}
                   </span>
                   <div>
-                    <b-input
-                      type="date"
+                    <b-form-datepicker
                       v-if="editJob"
                       v-model="model.endDate"
+                      :date-format-options="dateStringOptions"
+                      today-button
+                      reset-button
+                      locale="nl"
                     />
                     <div v-else>
                       {{ model.endDate | dateFormatter }}

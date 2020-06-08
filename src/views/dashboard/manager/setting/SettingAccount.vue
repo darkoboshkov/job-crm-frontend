@@ -103,11 +103,13 @@
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.birthday") }}:</label>
         <div class="d-flex flex-column w-100">
-          <b-form-input
-            type="date"
-            required
-            class="custom-input"
+          <b-form-datepicker
             v-model="model.birthday"
+            class="custom-input"
+            :date-format-options="dateStringOptions"
+            today-button
+            reset-button
+            locale="nl"
           />
           <b-form-invalid-feedback class="d-block">
             {{ errors | errorFormatter("birthday") }}

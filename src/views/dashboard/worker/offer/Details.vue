@@ -294,7 +294,13 @@
         <div class="item">
           <div>{{ $t("page_offer_detail.form.start_date") }}</div>
           <div v-if="edit">
-            <b-form-input type="date" v-model="model.startDate" />
+            <b-form-datepicker
+              v-model="model.startDate"
+              :date-format-options="dateStringOptions"
+              today-button
+              reset-button
+              locale="nl"
+            />
           </div>
           <div v-else class="text-right">
             {{ model.startDate | dateFormatter }}
@@ -303,7 +309,13 @@
         <div class="item">
           <div>{{ $t("page_offer_detail.form.end_date") }}</div>
           <div v-if="edit">
-            <b-form-input type="date" v-model="model.endDate" />
+            <b-form-datepicker
+              v-model="model.endDate"
+              :date-format-options="dateStringOptions"
+              today-button
+              reset-button
+              locale="nl"
+            />
           </div>
           <div v-else class="text-right">
             {{ model.endDate | dateFormatter }}

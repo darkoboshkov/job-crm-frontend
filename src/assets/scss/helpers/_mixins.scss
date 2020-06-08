@@ -22,8 +22,9 @@
 }
 
 @mixin button-color($color) {
+  border: 1px solid  var($color);
   background-color: var($color);
-  border-color: var($color);
+  color: white;
 
   &:hover {
     background-color: white;

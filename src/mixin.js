@@ -22,24 +22,24 @@ const dateTimeStringOptions = {
 
 const convertLocalDateString = string => {
   if (string) {
-    //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
-    return new Date(string).toLocaleDateString("en-US", dateStringOptions);
+    return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
+    // return new Date(string).toLocaleDateString("en-US", dateStringOptions);
   }
   return "";
 };
 
 const convertLocalDateTimeString = string => {
   if (string) {
-    //return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
-    return new Date(string).toLocaleString("en-US", dateTimeStringOptions);
+    return new Date(string).toLocaleDateString("nl-NL", dateStringOptions);
+    // return new Date(string).toLocaleString("en-US", dateTimeStringOptions);
   }
   return "";
 };
 
 const convertLocalTimeString = string => {
   if (string) {
-    // return new Date(string).toLocaleTimeString("nl-NL", timeStringOptions);
-    return new Date(string).toLocaleTimeString("en-US", timeStringOptions);
+    return new Date(string).toLocaleTimeString("nl-NL", timeStringOptions);
+    // return new Date(string).toLocaleTimeString("en-US", timeStringOptions);
   }
   return "";
 };
@@ -90,6 +90,13 @@ const filterErrors = (message, key) => {
 };
 
 export default {
+  data() {
+    return {
+      dateStringOptions,
+      dateTimeStringOptions,
+      timeStringOptions
+    };
+  },
   filters: {
     dateISOFormatter(string) {
       return convertISODateString(string);

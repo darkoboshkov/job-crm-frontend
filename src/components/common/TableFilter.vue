@@ -23,13 +23,7 @@
                 v-for="(item, itemIndex) in option.items"
                 :key="itemIndex"
               >
-                <template
-                  v-if="
-                    item.type === 'text' ||
-                      item.type === 'number' ||
-                      item.type === 'date'
-                  "
-                >
+                <template v-if="item.type === 'text' || item.type === 'number'">
                   <div class="filter-option__item-title">
                     {{ item.title }}
                   </div>
@@ -39,16 +33,26 @@
                     :placeholder="item.placeholder || 'Type Here'"
                   />
                 </template>
+                <template v-else-if="item.type === 'date'">
+                  <div class="filter-option__item-title">
+                    {{ item.title }}
+                  </div>
+                  <b-form-datepicker
+                    v-model="item.value"
+                    :date-format-options="dateStringOptions"
+                    :placeholder="item.placeholder || 'Type Here'"
+                    hide-header
+                    today-button
+                    reset-button
+                    locale="nl"
+                  />
+                </template>
               </div>
             </div>
           </template>
           <div
             class="filter-option__item"
-            v-else-if="
-              option.type === 'text' ||
-                option.type === 'number' ||
-                option.type === 'date'
-            "
+            v-else-if="option.type === 'text' || option.type === 'number'"
           >
             <div class="filter-option__item-title">
               {{ option.title }}
@@ -59,7 +63,20 @@
               :placeholder="option.placeholder || 'Type Here'"
             />
           </div>
-
+          <div class="filter-option__item" v-else-if="option.type === 'date'">
+            <div class="filter-option__item-title">
+              {{ option.title }}
+            </div>
+            <b-form-datepicker
+              v-model="option.value"
+              :date-format-options="dateStringOptions"
+              :placeholder="option.placeholder || 'Type Here'"
+              hide-header
+              today-button
+              reset-button
+              locale="nl"
+            />
+          </div>
           <div
             class="filter-option__item"
             v-else-if="option.type === 'checkbox'"

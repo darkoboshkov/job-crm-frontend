@@ -223,11 +223,13 @@
       <div class="form-element mt-3">
         <label>{{ $t("page_setting.account_setting.form.birthday") }}:</label>
         <div class="d-flex flex-column w-100">
-          <b-form-input
-            type="date"
-            required
-            class="custom-input"
+          <b-form-datepicker
             v-model="model.birthday"
+            class="custom-input"
+            :date-format-options="dateStringOptions"
+            today-button
+            reset-button
+            locale="nl"
           />
           <b-form-invalid-feedback class="d-block">
             {{ errors | errorFormatter("birthday") }}
@@ -304,11 +306,13 @@
           {{ $t("page_setting.account_setting.form.id_exp_date") }}:
         </label>
         <div class="d-flex flex-column w-100">
-          <b-form-input
-            type="date"
-            required
-            class="custom-input"
+          <b-form-datepicker
             v-model="model.identificationExpirationDate"
+            class="custom-input"
+            :date-format-options="dateStringOptions"
+            today-button
+            reset-button
+            locale="nl"
           />
           <b-form-invalid-feedback class="d-block">
             {{ errors | errorFormatter("identificationExpirationDate") }}
@@ -323,8 +327,8 @@
               type="file"
               id="idCard"
               name="idCard"
-							ref="idCard"
-							accept="image/*,.pdf"
+              ref="idCard"
+              accept="image/*,.pdf"
               @change="onIDUpload"
               class="d-none"
             />
@@ -335,7 +339,10 @@
             />
             <label class="position-absolute id-selector" for="idCard" />
             <div class="d-flex position-absolute" style="top:15px;right:10px;">
-              <i class="hiway-crm-icon icon-upload cursor-pointer" @click="$refs.idCard.click()" />
+              <i
+                class="hiway-crm-icon icon-upload cursor-pointer"
+                @click="$refs.idCard.click()"
+              />
               <i
                 class="hiway-crm-icon icon-upload color-blue rotate-180 cursor-pointer ml-3"
                 @click="onIDDownload"
