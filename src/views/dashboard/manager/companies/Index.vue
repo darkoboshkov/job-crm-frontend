@@ -136,6 +136,9 @@ export default {
     },
     userId() {
       return this.$store.state.user._id;
+    },
+    companyId() {
+      return this.$store.state.user.companyId;
     }
   },
   mounted() {
@@ -220,9 +223,9 @@ export default {
     },
     getCompanies() {
       companyApi
-        .getByManagerId(
+        .getAllowed(
           Object.assign(this.serverParams, {
-            managerId: this.userId
+            companyId: this.companyId
           })
         )
         .then(res => {
