@@ -95,7 +95,7 @@
 <script>
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
-import jobOfferApi from "@/services/api/joboffers";
+import jobOffersApi from "@/services/api/joboffers";
 
 export default {
   name: "CandidateSelect",
@@ -183,7 +183,7 @@ export default {
       this.users = [];
     },
     sendOffer() {
-      jobOfferApi
+      jobOffersApi
         .create({
           companyId: this.companyId,
           jobId: this.jobId,

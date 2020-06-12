@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import companyApi from "@/services/api/companies";
+import companiesApi from "@/services/api/companies";
 
 export default {
   name: "users",
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     getCompanies() {
-      companyApi
+      companiesApi
         .get(
           Object.assign({
             limit: 3,

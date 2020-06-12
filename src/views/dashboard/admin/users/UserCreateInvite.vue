@@ -100,8 +100,8 @@
 </template>
 
 <script>
-import companyApi from "@/services/api/companies";
-import userApi from "@/services/api/users";
+import companiesApi from "@/services/api/companies";
+import usersApi from "@/services/api/users";
 
 export default {
   name: "UserCreateInvite",
@@ -141,7 +141,7 @@ export default {
       this.$refs["modal-invite-success"].hide();
     },
     getCompanies() {
-      return companyApi.getAll().then(res => {
+      return companiesApi.getAll().then(res => {
         this.companies = res;
       });
     },
@@ -150,7 +150,7 @@ export default {
         const params = {
           ...this.form
         };
-        userApi
+        usersApi
           .invite(params)
           .then(res => {
             this.$refs["modal-invite-success"].show();

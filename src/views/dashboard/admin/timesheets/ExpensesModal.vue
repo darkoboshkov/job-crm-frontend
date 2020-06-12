@@ -177,7 +177,7 @@
 </template>
 
 <script>
-import workLogApi from "@/services/api/workLog";
+import workLogsApi from "@/services/api/worklogs";
 import { EXPENSE_STATE } from "@/constants";
 
 export default {
@@ -239,7 +239,7 @@ export default {
     saveExpenses() {
       const { companyId } = this.model;
 
-      workLogApi
+      workLogsApi
         .save({
           ...this.model,
           companyId
@@ -252,7 +252,7 @@ export default {
     approveExpenses() {
       const { companyId } = this.model;
 
-      workLogApi
+      workLogsApi
         .approve({
           ...this.model,
           companyId
@@ -265,7 +265,7 @@ export default {
     declineExpenses() {
       const { companyId } = this.model;
 
-      workLogApi
+      workLogsApi
         .decline({
           ...this.model,
           companyId
@@ -303,7 +303,7 @@ export default {
 
       this.$store.dispatch("updateLoading", true);
 
-      workLogApi.upload(data).then(res => {
+      workLogsApi.upload(data).then(res => {
         this.imageData.path = res.path;
         this.model.expenseData.attachments = [this.imageData];
 

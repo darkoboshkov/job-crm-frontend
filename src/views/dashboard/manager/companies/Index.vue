@@ -99,7 +99,7 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import companyApi from "@/services/api/companies";
+import companiesApi from "@/services/api/companies";
 import { companiesTable } from "@/constants";
 
 export default {
@@ -212,7 +212,7 @@ export default {
       this.idToDelete = props?.row?._id;
     },
     deleteCompany() {
-      companyApi
+      companiesApi
         .delete({
           companyId: this.idToDelete
         })
@@ -222,7 +222,7 @@ export default {
         });
     },
     getCompanies() {
-      companyApi
+      companiesApi
         .getAllowed(
           Object.assign(this.serverParams, {
             companyId: this.companyId

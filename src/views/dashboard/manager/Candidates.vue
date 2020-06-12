@@ -123,9 +123,9 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import userApi from "@/services/api/users";
+import usersApi from "@/services/api/users";
 import { candidatesTable } from "@/constants";
-import professionApi from "@/services/api/professions";
+import professionsApi from "@/services/api/professions";
 
 export default {
   name: "Candidates",
@@ -265,7 +265,7 @@ export default {
     },
     deleteCandidate() {
       if (this.selectedCandidate) {
-        userApi
+        usersApi
           .delete({
             companyId: this.companyId,
             id: this.selectedCandidate._id
@@ -277,7 +277,7 @@ export default {
       }
     },
     getWorkers() {
-      userApi
+      usersApi
         .getCompanyWorkers(
           Object.assign(this.serverParams, {
             companyId: this.companyId
@@ -301,7 +301,7 @@ export default {
         });
     },
     getProfessions() {
-      professionApi.getAll().then(res => {
+      professionsApi.getAll().then(res => {
         this.professions = res;
 
         // profession filter options

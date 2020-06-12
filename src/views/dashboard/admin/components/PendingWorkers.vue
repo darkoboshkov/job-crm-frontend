@@ -116,8 +116,8 @@
 </template>
 
 <script>
-import userApi from "@/services/api/users";
-import companyApi from "@/services/api/companies";
+import usersApi from "@/services/api/users";
+import companiesApi from "@/services/api/companies";
 
 export default {
   name: "PendingWorkers",
@@ -209,7 +209,7 @@ export default {
     deleteCandidate() {
       this.$store.dispatch("updateShowErrorModal", false);
       if (this.selectedCandidate) {
-        userApi
+        usersApi
           .deletePendingWorker({
             id: this.selectedCandidate._id
           })
@@ -219,7 +219,7 @@ export default {
       }
     },
     assignToCompany() {
-      userApi
+      usersApi
         .assignPendingWorker({
           id: this.selectedCandidate._id,
           companyId: this.selectedCompany
@@ -230,7 +230,7 @@ export default {
         });
     },
     getWorkers() {
-      userApi
+      usersApi
         .getAllPendingWorkers(Object.assign(this.serverParams))
         .then(res => {
           this.rows = res.docs?.map(row => {
@@ -242,7 +242,7 @@ export default {
         });
     },
     getCompanies() {
-      companyApi.getAll().then(res => {
+      companiesApi.getAll().then(res => {
         this.companies = res;
       });
     },

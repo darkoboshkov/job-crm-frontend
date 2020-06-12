@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import userApi from "@/services/api/users";
+import usersApi from "@/services/api/users";
 
 export default {
   name: "UserCreateInvite",
@@ -125,7 +125,7 @@ export default {
           ...this.form,
           companyId: this.companyId
         };
-        userApi
+        usersApi
           .invite(params)
           .then(res => {
             this.$refs["modal-invite-success"].show();

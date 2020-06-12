@@ -523,7 +523,7 @@
 </template>
 
 <script>
-import jobOfferApi from "@/services/api/joboffers";
+import jobOffersApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
 import Contract from "./Contract";
 import {
@@ -643,7 +643,7 @@ export default {
   },
   methods: {
     downloadFile(attachment) {
-      jobOfferApi
+      jobOffersApi
         .downloadAttachment({
           companyId: this.companyId,
           id: this.offerId,
@@ -654,7 +654,7 @@ export default {
         });
     },
     getCaoOptions() {
-      jobOfferApi
+      jobOffersApi
         .getCaoOptions({
           companyId: this.companyId
         })
@@ -681,7 +681,7 @@ export default {
         });
         return;
       }
-      jobOfferApi
+      jobOffersApi
         .sign(this.model)
         .then(res => {
           this.getOfferDetails();
@@ -702,7 +702,7 @@ export default {
         });
     },
     decline() {
-      jobOfferApi
+      jobOffersApi
         .decline(this.model)
         .then(res => {
           this.getOfferDetails();
@@ -731,7 +731,7 @@ export default {
     getOfferDetails() {
       const { companyId, offerId } = this;
 
-      jobOfferApi
+      jobOffersApi
         .get({ companyId, offerId })
         .then(res => {
           res.startDate = this.getISODateString(res.startDate);
@@ -787,11 +787,11 @@ export default {
       data.append("file", this.imageData.file);
       this.$store.dispatch("updateLoading", true);
 
-      jobOfferApi
+      jobOffersApi
         .upload(data)
         .then(response => {
           this.imageData.path = response.path;
-          jobOfferApi
+          jobOffersApi
             .addAttachment(
               Object.assign(
                 {
@@ -839,7 +839,7 @@ export default {
       });
     },
     deleteAttachment(attachment) {
-      jobOfferApi
+      jobOffersApi
         .deleteAttachment({
           companyId: this.companyId,
           _id: this.offerId,

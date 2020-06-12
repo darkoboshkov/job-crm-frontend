@@ -439,7 +439,7 @@
 </template>
 
 <script>
-import companyApi from "@/services/api/companies";
+import companiesApi from "@/services/api/companies";
 import constantsApi from "@/services/api/constants";
 
 export default {
@@ -538,7 +538,7 @@ export default {
       }
     },
     getCompany() {
-      companyApi
+      companiesApi
         .getById({
           companyId: this.companyId
         })
@@ -564,7 +564,7 @@ export default {
             const data = new FormData();
             data.append("title", this.imageData.title);
             data.append("file", this.imageData.file);
-            const response = await companyApi.uploadLogo(data);
+            const response = await companiesApi.uploadLogo(data);
             this.isImageLoading = false;
             this.model.logo = response.path;
             delete this.imageData.file;
@@ -577,7 +577,7 @@ export default {
             this.model.GAccount = null;
           }
 
-          companyApi
+          companiesApi
             .patch(
               Object.assign(this.model, {
                 companyId: this.model._id
@@ -627,7 +627,7 @@ export default {
       });
     },
     deleteCompany() {
-      companyApi
+      companiesApi
         .delete({
           companyId: this.companyId
         })

@@ -382,7 +382,7 @@
 </template>
 
 <script>
-import companyApi from "@/services/api/companies";
+import companiesApi from "@/services/api/companies";
 import constantsApi from "@/services/api/constants";
 import usersApi from "@/services/api/users";
 
@@ -475,7 +475,7 @@ export default {
           const data = new FormData();
           data.append("title", this.imageData.title);
           data.append("file", this.imageData.file);
-          const response = await companyApi.uploadLogo(data);
+          const response = await companiesApi.uploadLogo(data);
           this.isImageLoading = false;
           this.model.logo = response.path;
           delete this.imageData.file;
@@ -488,7 +488,7 @@ export default {
           delete this.model.GAccount;
         }
 
-        companyApi
+        companiesApi
           .create(this.model)
           .then(res => {
             this.$store.dispatch("updateShowSuccessModal", true);

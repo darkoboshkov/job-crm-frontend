@@ -210,7 +210,7 @@
 </template>
 
 <script>
-import workLogApi from "@/services/api/workLog";
+import workLogsApi from "@/services/api/worklogs";
 import { TIME_SHEET_STATE } from "@/constants";
 
 export default {
@@ -303,7 +303,7 @@ export default {
   methods: {
     adjustHours() {
       const { _id } = this.timeSheetsData;
-      workLogApi
+      workLogsApi
         .adjust({
           companyId: this.companyId,
           _id
@@ -322,7 +322,7 @@ export default {
         });
     },
     saveHours() {
-      workLogApi
+      workLogsApi
         .save({
           ...this.timeSheetsData,
           companyId: this.companyId
@@ -341,7 +341,7 @@ export default {
         });
     },
     sendHours() {
-      workLogApi
+      workLogsApi
         .send({
           ...this.timeSheetsData,
           companyId: this.companyId

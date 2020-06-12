@@ -123,8 +123,8 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import userApi from "@/services/api/users";
-import professionApi from "@/services/api/professions";
+import usersApi from "@/services/api/users";
+import professionsApi from "@/services/api/professions";
 import { candidatesTable } from "@/constants";
 
 export default {
@@ -262,7 +262,7 @@ export default {
     },
     deleteCandidate() {
       if (this.selectedCandidate) {
-        userApi
+        usersApi
           .delete({
             companyId: this.selectedCandidate.companyId,
             id: this.selectedCandidate._id
@@ -274,7 +274,7 @@ export default {
       }
     },
     getWorkers() {
-      userApi.getAllWorkers(Object.assign(this.serverParams)).then(res => {
+      usersApi.getAllWorkers(Object.assign(this.serverParams)).then(res => {
         this.rows = res.docs?.map(row => {
           row.age = this.getAge(row.birthday);
           row.company = row.company[0];
@@ -291,7 +291,7 @@ export default {
       });
     },
     getProfessions() {
-      professionApi.getAll().then(res => {
+      professionsApi.getAll().then(res => {
         this.professions = res;
 
         // profession filter options

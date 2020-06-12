@@ -379,7 +379,7 @@
 
 <script>
 import settingsApi from "@/services/api/settings";
-import professionApi from "@/services/api/professions";
+import professionsApi from "@/services/api/professions";
 import { downloadFile } from "@/utils";
 
 export default {
@@ -429,7 +429,7 @@ export default {
   },
   mounted() {
     this.getSettings();
-    professionApi.getAll().then(res => {
+    professionsApi.getAll().then(res => {
       this.professions = res;
     });
   },

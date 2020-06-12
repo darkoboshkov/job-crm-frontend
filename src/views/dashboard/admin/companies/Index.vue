@@ -104,7 +104,7 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import companyApi from "@/services/api/companies";
+import companiesApi from "@/services/api/companies";
 import { companiesTable } from "@/constants";
 
 export default {
@@ -211,7 +211,7 @@ export default {
       this.idToDelete = props?.row?._id;
     },
     deleteCompany() {
-      companyApi
+      companiesApi
         .delete({
           companyId: this.idToDelete
         })
@@ -221,7 +221,7 @@ export default {
         });
     },
     getCompanies() {
-      companyApi.get(this.serverParams).then(res => {
+      companiesApi.get(this.serverParams).then(res => {
         this.totalRows = res.totalDocs;
         this.rows = res.docs?.map(row => {
           row.createdAt = this.getDateString(row["createdAt"]);

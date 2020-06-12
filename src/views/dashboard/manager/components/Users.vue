@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import userApi from "@/services/api/users";
+import usersApi from "@/services/api/users";
 
 export default {
   name: "users",
@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     getActiveUsers() {
-      userApi
+      usersApi
         .getCompanyWorkers(
           Object.assign({
             filter: { and: [{ key: "status", value: "available", opt: "eq" }] },

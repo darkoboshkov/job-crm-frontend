@@ -443,7 +443,7 @@
 
 <script>
 import jobsApi from "@/services/api/jobs";
-import joboffersApi from "@/services/api/joboffers";
+import jobOffersApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
 import { downloadFile } from "@/utils";
 
@@ -567,7 +567,7 @@ export default {
       });
     },
     fetchJobOffers() {
-      joboffersApi
+      jobOffersApi
         .getAllByJobId({
           companyId: this.companyId,
           jobId: this.jobId,
@@ -610,7 +610,7 @@ export default {
       this.selectedJobOfferId = offerId;
     },
     deleteJobOffer() {
-      joboffersApi
+      jobOffersApi
         .delete({
           companyId: this.companyId,
           _id: this.selectedJobOfferId

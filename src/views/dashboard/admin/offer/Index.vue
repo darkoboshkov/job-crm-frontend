@@ -89,8 +89,8 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import offersApi from "@/services/api/joboffers";
-import companyApi from "@/services/api/companies";
+import jobOffersApi from "@/services/api/joboffers";
+import companiesApi from "@/services/api/companies";
 import { offersTable } from "@/constants";
 
 export default {
@@ -161,7 +161,7 @@ export default {
       }
     },
     getActiveOffers() {
-      offersApi.getAll(this.serverParams).then(res => {
+      jobOffersApi.getAll(this.serverParams).then(res => {
         this.rows = res.docs?.map(row => {
           row.job = row.job ? row.job[0].title : "";
           row.image = row.job ? row.job[0].image : "";
@@ -224,7 +224,7 @@ export default {
       this.getActiveOffers();
     },
     getCompanies() {
-      companyApi.getAll().then(res => {
+      companiesApi.getAll().then(res => {
         this.companies = res;
         this.filterOptions[2].options = [];
         this.filterOptions[2].options.push({ text: "", value: "" });

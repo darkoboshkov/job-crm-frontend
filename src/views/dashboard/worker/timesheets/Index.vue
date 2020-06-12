@@ -132,7 +132,7 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import { TIME_SHEET_STATE, workerTimesheetsTable } from "@/constants";
-import workLogApi from "@/services/api/workLog";
+import workLogsApi from "@/services/api/worklogs";
 import TimeSheetsModal from "./TimeSheetsModal";
 import ExpensesModal from "./ExpensesModal";
 
@@ -202,7 +202,7 @@ export default {
       this.showExpensesModal = true;
     },
     getTimeSheets() {
-      workLogApi
+      workLogsApi
         .getByWorker({
           ...this.serverParams,
           companyId: this.companyId
@@ -224,7 +224,7 @@ export default {
         });
     },
     getTimeSheetsCount() {
-      workLogApi
+      workLogsApi
         .getByWorker({
           ...this.serverParams,
           filter: { and: [{ key: "type", value: "timesheet", opt: "eq" }] },
@@ -235,7 +235,7 @@ export default {
         });
     },
     getExpensesCount() {
-      workLogApi
+      workLogsApi
         .getByWorker({
           ...this.serverParams,
           filter: { and: [{ key: "type", value: "expense", opt: "eq" }] },
@@ -310,7 +310,7 @@ export default {
       //
     },
     deleteWorkLog(props) {
-      workLogApi
+      workLogsApi
         .delete({
           ...props.row
         })

@@ -283,7 +283,7 @@
 
 <script>
 import jobsApi from "@/services/api/jobs";
-import joboffersApi from "@/services/api/joboffers";
+import jobOffersApi from "@/services/api/joboffers";
 import { downloadFile } from "@/utils";
 
 export default {
@@ -359,7 +359,7 @@ export default {
       });
     },
     fetchJobOffers() {
-      joboffersApi
+      jobOffersApi
         .getAllByJobId({
           companyId: this.companyId,
           jobId: this.jobId,

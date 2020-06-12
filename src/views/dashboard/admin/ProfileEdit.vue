@@ -389,7 +389,7 @@
 
 <script>
 import profileApi from "@/services/api/profile";
-import professionApi from "@/services/api/professions";
+import professionsApi from "@/services/api/professions";
 import { downloadFile } from "@/utils";
 
 export default {
@@ -443,7 +443,7 @@ export default {
     this.companyId = this.$route.params.companyId;
     this.userId = this.$route.params.id;
     this.getProfile();
-    professionApi.getAll().then(res => {
+    professionsApi.getAll().then(res => {
       this.professions = res;
     });
   },

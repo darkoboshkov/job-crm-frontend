@@ -119,10 +119,10 @@
 <script>
 import TableFilter from "@/components/common/TableFilter";
 import { TIME_SHEET_STATE, timesheetsTable } from "@/constants";
-import workLogApi from "@/services/api/workLog";
+import workLogsApi from "@/services/api/worklogs";
 import TimeSheetsModal from "./TimeSheetsModal";
 import ExpensesModal from "./ExpensesModal";
-import companyApi from "@/services/api/companies";
+import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 
 export default {
@@ -180,7 +180,7 @@ export default {
       this.imageMode = !!mode;
     },
     getTimeSheets() {
-      workLogApi.getAll(this.serverParams).then(({ docs, totalDocs }) => {
+      workLogsApi.getAll(this.serverParams).then(({ docs, totalDocs }) => {
         this.rows = docs?.map(row => {
           row.hiringManager = this.getFullName(row.hiringManager[0]);
           row.hiringCompany = row.hiringCompany[0].name;
@@ -197,7 +197,7 @@ export default {
       });
     },
     getTimeSheetsCount() {
-      workLogApi
+      workLogsApi
         .getAll({
           ...this.serverParams,
           filter: { and: [{ key: "type", value: "timesheet", opt: "eq" }] }
@@ -207,7 +207,7 @@ export default {
         });
     },
     getExpensesCount() {
-      workLogApi
+      workLogsApi
         .getAll({
           ...this.serverParams,
           filter: { and: [{ key: "type", value: "expense", opt: "eq" }] }
@@ -304,7 +304,7 @@ export default {
       //
     },
     deleteWorkLog(props) {
-      workLogApi
+      workLogsApi
         .delete({
           ...props.row
         })
@@ -336,7 +336,7 @@ export default {
       });
     },
     getCompanies() {
-      companyApi.getAll().then(res => {
+      companiesApi.getAll().then(res => {
         this.companies = res;
         this.filterOptions[4].options = [];
         this.filterOptions[4].options.push({ text: "", value: "" });

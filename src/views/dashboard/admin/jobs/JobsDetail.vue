@@ -486,7 +486,7 @@
 
 <script>
 import jobsApi from "@/services/api/jobs";
-import joboffersApi from "@/services/api/joboffers";
+import jobOffersApi from "@/services/api/joboffers";
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
 import constantsApi from "@/services/api/constants";
@@ -651,7 +651,7 @@ export default {
         });
     },
     fetchJobOffers() {
-      joboffersApi
+      jobOffersApi
         .getAllByJobId({
           companyId: this.companyId,
           jobId: this.jobId,
@@ -732,7 +732,7 @@ export default {
       this.selectedJobOfferId = offerId;
     },
     deleteJobOffer() {
-      joboffersApi
+      jobOffersApi
         .delete({
           companyId: this.companyId,
           _id: this.selectedJobOfferId

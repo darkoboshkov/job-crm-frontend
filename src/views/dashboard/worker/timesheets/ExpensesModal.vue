@@ -185,8 +185,8 @@
 </template>
 
 <script>
-import jobOfferApi from "@/services/api/joboffers";
-import workLogApi from "@/services/api/workLog";
+import jobOffersApi from "@/services/api/joboffers";
+import workLogsApi from "@/services/api/worklogs";
 import { EXPENSE_STATE } from "@/constants";
 
 export default {
@@ -256,7 +256,7 @@ export default {
   },
   methods: {
     getHiringManager() {
-      jobOfferApi
+      jobOffersApi
         .getAllByWorker({
           companyId: this.companyId,
           filter: { and: [{ key: "status", value: "active", opt: "eq" }] }
@@ -297,7 +297,7 @@ export default {
 
       this.$store.dispatch("updateLoading", true);
 
-      workLogApi.upload(data).then(res => {
+      workLogsApi.upload(data).then(res => {
         this.imageData.path = res.path;
         this.model.expenseData.attachments = [this.imageData];
 
@@ -305,7 +305,7 @@ export default {
       });
     },
     createExpenses() {
-      workLogApi
+      workLogsApi
         .createExpense({
           ...this.model.expenseData,
           companyId: this.companyId
@@ -316,7 +316,7 @@ export default {
         });
     },
     submitExpenses() {
-      workLogApi
+      workLogsApi
         .send({
           ...this.model,
           companyId: this.companyId
@@ -327,7 +327,7 @@ export default {
         });
     },
     createAndSubmitExpenses() {
-      workLogApi
+      workLogsApi
         .createExpense({
           ...this.model.expenseData,
           companyId: this.companyId
@@ -336,7 +336,7 @@ export default {
           this.$emit("refresh");
           this.model = res;
 
-          workLogApi
+          workLogsApi
             .send({
               ...this.model,
               companyId: this.companyId
@@ -348,7 +348,7 @@ export default {
         });
     },
     saveExpenses() {
-      workLogApi
+      workLogsApi
         .save({
           ...this.model,
           companyId: this.companyId
@@ -359,7 +359,7 @@ export default {
         });
     },
     adjustExpenses() {
-      workLogApi
+      workLogsApi
         .adjust({
           ...this.model,
           companyId: this.companyId

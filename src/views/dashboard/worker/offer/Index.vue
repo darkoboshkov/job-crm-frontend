@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import offersApi from "@/services/api/joboffers";
+import jobOffersApi from "@/services/api/joboffers";
 import TableFilter from "@/components/common/TableFilter";
 import { workerOffersTable } from "@/constants";
 
@@ -133,7 +133,7 @@ export default {
       }
     },
     getActiveOffers() {
-      offersApi
+      jobOffersApi
         .getAllByWorker({
           ...this.serverParams,
           companyId: this.companyId

@@ -515,9 +515,9 @@
 </template>
 
 <script>
-import companyApi from "@/services/api/companies";
-import professionApi from "@/services/api/professions";
-import userApi from "@/services/api/users";
+import companiesApi from "@/services/api/companies";
+import professionsApi from "@/services/api/professions";
+import usersApi from "@/services/api/users";
 import settingsApi from "@/services/api/settings";
 
 export default {
@@ -613,12 +613,12 @@ export default {
       return this.errors.length === 0;
     },
     getCompanies() {
-      return companyApi.getAll().then(res => {
+      return companiesApi.getAll().then(res => {
         this.companies = res;
       });
     },
     getProfessions() {
-      professionApi.getAll().then(res => {
+      professionsApi.getAll().then(res => {
         this.professions = res;
       });
     },
@@ -661,7 +661,7 @@ export default {
             delete this.idImageData.file;
           }
 
-          await userApi.create(params);
+          await usersApi.create(params);
           await this.$store.dispatch("updateShowSuccessModal", true);
           await this.$store.dispatch("updateSuccessModalContent", {
             title: this.$t("page_users_create_manual.modal.create.title"),
