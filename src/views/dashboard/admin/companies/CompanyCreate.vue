@@ -124,7 +124,7 @@
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
-                name="country"
+                name="city"
                 class="custom-input"
                 v-model="model.city"
               />
@@ -136,7 +136,7 @@
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
-                name="country"
+                name="street"
                 class="custom-input"
                 v-model="model.street"
               />
@@ -148,7 +148,7 @@
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
-                name="country"
+                name="houseNumber"
                 class="custom-input"
                 v-model="model.houseNumber"
               />
@@ -160,7 +160,7 @@
             </div>
             <div class="col-12 col-md-8">
               <b-form-input
-                name="country"
+                name="postalCode"
                 class="custom-input"
                 v-model="model.postalCode"
               />
@@ -267,7 +267,7 @@
                     <div class="col-12 col-md-8">
                       <b-form-input
                         type="number"
-                        name="vat_shifted"
+                        name="GAccount"
                         :disabled="!model.gAccountEnabled"
                         class="custom-input"
                         v-model="model.GAccount"
@@ -399,7 +399,7 @@ export default {
         city: "",
         street: "",
         houseNumber: "",
-        postalcode: "",
+        postalCode: "",
         kvkNumber: "",
         limitCreditSafe: "",
         vatShiftedEnabled: false,
