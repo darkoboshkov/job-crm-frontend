@@ -10,7 +10,8 @@ let syncedData = {
     role: null,
     companyId: null,
     verified: false,
-    image: null
+    image: null,
+    companyType: null
   }
 };
 
@@ -60,6 +61,7 @@ export const mutations = {
     state.verified = user.verified ? user.verified : false;
     state.companyId = user.companyId ? user.companyId : null;
     state.image = user.image ? user.image : null;
+    state.companyType = user.companyType ? user.companyType : null;
   }
 };
 

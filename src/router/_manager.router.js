@@ -26,6 +26,13 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
+        path: "companies/:companyId/create",
+        name: "manager-companies-create",
+        component: () =>
+          import("../views/dashboard/manager/companies/CompanyCreate.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
         path: "companies/:companyId/edit",
         name: "manager-companies-edit",
         component: () =>

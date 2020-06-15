@@ -417,6 +417,10 @@
         "sub_title": "Weet je zeker dat je dit bedrijf wilt verwijderen?",
         "continue": "Ik weet het zeker"
       }
+    },
+    "button": {
+      "create": "Create Company",
+      "request": "Request access"
     }
   },
   "page_detail_company": {
@@ -434,6 +438,7 @@
       "limit_credit_safe": "Limiet creditsafe",
       "country": "Land",
       "city": "Plaatsnaam",
+      "type": "Company type",
       "street": "Straat",
       "houseNumber": "Huisnummer",
       "address": "Address",

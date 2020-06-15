@@ -76,6 +76,21 @@
               />
             </div>
           </div>
+          <div class="row mt-5 align-items-center">
+            <div class="col-12 col-md-4">
+              <label>{{ $t("page_detail_company.form.type") }}:</label>
+            </div>
+            <div class="col-12 col-md-8">
+              <b-form-select class="normal-size" v-model="model.type">
+                <option
+                  v-for="companyType in companyTypes"
+                  :value="companyType.type"
+                  :key="companyType.type"
+                  >{{ companyType.type }}
+                </option>
+              </b-form-select>
+            </div>
+          </div>
           <div class="row row mt-5 align-items-center">
             <div class="col-12 col-md-4">
               <label>{{ $t("page_detail_company.form.kvk") }}:</label>
@@ -411,8 +426,13 @@ export default {
         chargeTravelExpenses: true,
         chargeOtherExpenses: true,
         active: false,
-        members: []
+        members: [],
+        type: "normal"
       },
+      companyTypes: [
+        { id: 1, type: "normal" },
+        { id: 2, type: "intermediary" }
+      ],
       managers: [],
       termsOfPayment: [],
       errors: null,

@@ -417,6 +417,10 @@
         "sub_title": "Are you really going to delete the company?",
         "continue": "Continue"
       }
+    },
+    "button": {
+      "create": "Create Company",
+      "request": "Request access"
     }
   },
   "page_detail_company": {
@@ -440,6 +444,7 @@
       "postalCode": "Postal code",
       "description": "Description",
       "email": "Company email",
+      "type": "Company type",
       "phone": "Company phone number",
       "vat_shifted": "VAT shifted",
       "g_account": "G account",

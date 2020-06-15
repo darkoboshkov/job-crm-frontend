@@ -4,6 +4,17 @@
       <h1 class="title">
         {{ $t("page_companies.title") }}
       </h1>
+      <div v-if="isIntermediary">
+        <button class="btn btn-blue large mr-1" style="width:50px;">
+					<i class="hiway-crm-icon icon-lock" />
+        </button>
+        <button
+					class="btn btn-red circle large" style="width:50px"
+          @click="$router.push({ name: 'manager-companies-create' })"
+        >
+					<i class="hiway-crm-icon icon-add" />
+        </button>
+      </div>
     </div>
     <p class="sub-title">
       {{ $t("page_companies.sub_title", { companies: this.totalRows }) }}
@@ -139,6 +150,9 @@ export default {
     },
     companyId() {
       return this.$store.state.user.companyId;
+    },
+    isIntermediary() {
+      return this.$store.state.user.companyType === "intermediary";
     }
   },
   mounted() {
