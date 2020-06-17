@@ -114,6 +114,16 @@ export default {
       }
     );
   },
+  downloadOfferFile(params, config = {}) {
+    return request(
+      "post",
+      `/joboffers/${params.companyId}/${params.id}/offer/download`,
+      params,
+      {
+        responseType: "blob"
+      }
+    );
+  },
   deleteAttachment(params, config = {}) {
     return request(
       "delete",

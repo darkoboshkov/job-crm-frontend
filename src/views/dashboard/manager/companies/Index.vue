@@ -6,13 +6,14 @@
       </h1>
       <div v-if="isIntermediary">
         <button class="btn btn-blue large mr-1" style="width:50px;">
-					<i class="hiway-crm-icon icon-lock" />
+          <i class="hiway-crm-icon icon-lock" />
         </button>
         <button
-					class="btn btn-red circle large" style="width:50px"
+          class="btn btn-red circle large"
+          style="width:50px"
           @click="$router.push({ name: 'manager-companies-create' })"
         >
-					<i class="hiway-crm-icon icon-add" />
+          <i class="hiway-crm-icon icon-add" />
         </button>
       </div>
     </div>
