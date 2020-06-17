@@ -616,6 +616,7 @@ export default {
       worker: {},
       caoOptions: [],
       imageData: {},
+      offerContract: null,
       attachments: [],
       paymentType: [],
       validations: {
@@ -832,13 +833,15 @@ export default {
       this.$refs["modal-view-contract"].show();
     },
     exportContract() {
-      this.exportingContract = true;
-      this.$refs["modal-view-contract"].show();
-      setTimeout(() => {
-        exportPDF("joboffer_contract", "contract.pdf");
-        this.$refs["modal-view-contract"].hide();
-        this.exportingContract = false;
-      }, 100);
+      jobOffersApi
+        .downloadOfferFile({
+          companyId: this.companyId,
+          id: this.offerId,
+          offerName: this.offerContract.name
+        })
+        .then(res => {
+          downloadFile(res, this.offerContract.name);
+        });
     },
     getOfferDetails() {
       const { companyId, offerId } = this;
@@ -863,6 +866,7 @@ export default {
             this.hiringManager = res.hiringManager[0];
           }
           this.attachments = res.attachments;
+          this.offerContract = res.contractData?.offerContractDoc;
         })
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
