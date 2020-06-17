@@ -654,16 +654,6 @@ export default {
           downloadFile(res, attachment.name);
         });
     },
-    downloadOfferFile(offerContract) {
-      jobOffersApi
-        .downloadOfferContract({
-          companyId: this.companyId,
-          id: this.offerId
-        })
-        .then(res => {
-          downloadFile(res, offerContract.name);
-        });
-    },
     getCaoOptions() {
       jobOffersApi
         .getCaoOptions({
@@ -732,7 +722,7 @@ export default {
     },
     exportContract() {
       jobOffersApi
-        .downloadOfferFile({
+        .downloadOfferContract({
           companyId: this.companyId,
           id: this.offerId,
           offerName: this.offerContract.name

@@ -613,9 +613,11 @@ export default {
       return this.errors.length === 0;
     },
     getCompanies() {
-      return companiesApi.getAll().then(res => {
-        this.companies = res;
-      });
+      return companiesApi
+        .getAllowed({ companyId: this.companyId, pagination: 0 })
+        .then(res => {
+          this.companies = res.docs;
+        });
     },
     getProfessions() {
       professionsApi.getAll().then(res => {

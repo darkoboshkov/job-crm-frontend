@@ -345,17 +345,19 @@ export default {
       });
     },
     getCompanies() {
-      companiesApi.getAll().then(res => {
-        this.companies = res;
-        this.filterOptions[4].options = [];
-        this.filterOptions[4].options.push({ text: "", value: "" });
-        this.companies?.forEach(item => {
-          this.filterOptions[4].options.push({
-            text: item.name,
-            value: item._id
+      companiesApi
+        .getAllowed({ companyId: this.companyId, pagination: 0 })
+        .then(res => {
+          this.companies = res.docs;
+          this.filterOptions[4].options = [];
+          this.filterOptions[4].options.push({ text: "", value: "" });
+          this.companies?.forEach(item => {
+            this.filterOptions[4].options.push({
+              text: item.name,
+              value: item._id
+            });
           });
         });
-      });
     },
     getManagers() {
       usersApi

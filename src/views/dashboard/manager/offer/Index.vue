@@ -226,17 +226,19 @@ export default {
       this.getActiveOffers();
     },
     getCompanies() {
-      companiesApi.getAll().then(res => {
-        this.companies = res;
-        this.filterOptions[2].options = [];
-        this.filterOptions[2].options.push({ text: "", value: "" });
-        this.companies?.forEach(item => {
-          this.filterOptions[2].options.push({
-            text: item.name,
-            value: item._id
+      companiesApi
+        .getAllowed({ companyId: this.companyId, pagination: 0 })
+        .then(res => {
+          this.companies = res.docs;
+          this.filterOptions[2].options = [];
+          this.filterOptions[2].options.push({ text: "", value: "" });
+          this.companies?.forEach(item => {
+            this.filterOptions[2].options.push({
+              text: item.name,
+              value: item._id
+            });
           });
         });
-      });
     }
   }
 };
