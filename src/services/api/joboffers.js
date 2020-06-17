@@ -114,11 +114,11 @@ export default {
       }
     );
   },
-  downloadOfferFile(params, config = {}) {
+  downloadOfferContract(params, config = {}) {
     return request(
       "post",
-      `/joboffers/${params.companyId}/${params.id}/offer/download`,
-      params,
+      `/joboffers/${params.companyId}/${params.id}/offer-contract/download`,
+      {},
       {
         responseType: "blob"
       }

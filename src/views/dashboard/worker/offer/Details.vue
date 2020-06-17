@@ -656,10 +656,9 @@ export default {
     },
     downloadOfferFile(offerContract) {
       jobOffersApi
-        .downloadOfferFile({
+        .downloadOfferContract({
           companyId: this.companyId,
-          id: this.offerId,
-          offerName: offerContract.name
+          id: this.offerId
         })
         .then(res => {
           downloadFile(res, offerContract.name);
