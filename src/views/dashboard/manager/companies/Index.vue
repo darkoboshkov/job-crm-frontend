@@ -5,7 +5,11 @@
         {{ $t("page_companies.title") }}
       </h1>
       <div v-if="isIntermediary">
-        <button class="btn btn-blue large mr-1" style="width:50px;">
+        <button
+          class="btn btn-blue large mr-1"
+          style="width:50px;"
+          @click="onAccessButton"
+        >
           <i class="hiway-crm-icon icon-lock" />
         </button>
         <button
@@ -106,6 +110,7 @@
         </template>
       </vue-good-table>
     </div>
+    <access-request-modal :modal-open.sync="accessRequestModal" />
   </div>
 </template>
 
@@ -113,16 +118,21 @@
 import TableFilter from "@/components/common/TableFilter";
 import companiesApi from "@/services/api/companies";
 import { companiesTable } from "@/constants";
+import AccessRequestModal from "../companies/CompanyAccessRequest";
 
 export default {
   name: "CompanyList",
-  components: { TableFilter },
+  components: {
+    TableFilter,
+    AccessRequestModal
+  },
   data() {
     return {
       imageMode: true,
       isLoading: true,
       totalRows: 0,
       rows: [],
+      accessRequestModal: false,
       filterOptions: companiesTable.filterOptions,
       serverParams: companiesTable.pagination.serverParams,
       paginationOptions: companiesTable.pagination.paginationOptions,
@@ -179,6 +189,9 @@ export default {
       if (params.column.name !== "actions") {
         this.goToCompany(params);
       }
+    },
+    onAccessButton() {
+      this.accessRequestModal = true;
     },
     onPerPageChange(e) {
       this.serverParams = Object.assign({}, this.serverParams, {

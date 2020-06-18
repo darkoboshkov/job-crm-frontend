@@ -439,6 +439,8 @@
         :company="company"
         :manager="manager"
         :worker="worker"
+        :hiringCompany="hiringCompany"
+        :hiringManager="hiringManager"
         :job="job"
       />
     </b-modal>
@@ -612,6 +614,7 @@ export default {
       job: {},
       manager: {},
       hiringManager: {},
+      hiringCompany: {},
       worker: {},
       caoOptions: [],
       imageData: {},
@@ -857,12 +860,14 @@ export default {
             this.worker = res.contractData.worker;
             this.manager = res.contractData.manager;
             this.hiringManager = res.contractData.hiringManager;
+            this.hiringCompany = res.contractData.hiringCompany;
           } else {
             this.job = res.job[0];
             this.company = res.company[0];
             this.worker = res.worker[0];
             this.manager = res.manager[0];
             this.hiringManager = res.hiringManager[0];
+            this.hiringCompany = res.hiringCompany[0];
           }
 
           this.attachments = res.attachments;

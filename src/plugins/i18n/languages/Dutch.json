@@ -416,6 +416,12 @@
         "title": "Weet je het zeker?",
         "sub_title": "Weet je zeker dat je dit bedrijf wilt verwijderen?",
         "continue": "Ik weet het zeker"
+      },
+      "access_request": {
+        "title": "Access Request",
+        "description": "This widget shows that have not been assigned to a company yet. Please fill out the company Unique ID and click on: Send Request.",
+        "unique_id": "Unique ID",
+        "send_button": "Send Request"
       }
     },
     "button": {
@@ -874,7 +880,7 @@
       "title": "Uitzendovereenkomst Fase A",
       "sub_title": "met uitzendbeding",
       "subject1": "Werkgever, de uitzendonderneming",
-      "description1": "{companyName}, gevestigd en kantoorhoudende te {companyCity} aan {companyStreet} {companyHouseNumber}, {companyPostalCode} {companyCity}, vertegenwoordigd door de {honorificTitle} {manager}.",
+      "description1": "{companyName}, gevestigd en kantoorhoudende te {companyCity} aan {companyStreet} {companyHouseNumber}, {companyPostalCode} {companyCity}, vertegenwoordigd door {honorificTitle} {manager}.",
       "and": "en",
       "subject2": "Werknemer, de uitzendkracht",
       "name": "Naam",

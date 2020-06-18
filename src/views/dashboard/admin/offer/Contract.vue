@@ -81,31 +81,31 @@
       <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.company_name") }}
       </div>
-      : {{ company.name }}
+      : {{ hiringCompany.name }}
     </div>
     <div>
       <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.address") }}
       </div>
-      : {{ company.street }} {{ company.houseNumber }}
+      : {{ hiringCompany.street }} {{ hiringCompany.houseNumber }}
     </div>
     <div>
       <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.postal_code_city") }}
       </div>
-      : {{ company.postalCode }} {{ company.city }}
+      : {{ hiringCompany.postalCode }} {{ hiringCompany.city }}
     </div>
     <div>
       <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.manager") }}
       </div>
-      : {{ manager | fullNameFormatter }}
+      : {{ hiringManager | fullNameFormatter }}
     </div>
     <div>
       <div style="width: 350px; display: inline-block;">
         {{ $t("page_offer_detail.contract.telephone_number") }}
       </div>
-      : {{ manager.phone }}
+      : {{ hiringManager.phone }}
     </div>
     <div>
       <div style="width: 350px; display: inline-block;">
@@ -410,6 +410,12 @@ export default {
       default: {}
     },
     manager: {
+      default: {}
+    },
+    hiringCompany: {
+      default: {}
+    },
+    hiringManager: {
       default: {}
     },
     worker: {

@@ -425,6 +425,8 @@
         :offer="model"
         :company="company"
         :manager="manager"
+        :hiringCompany="hiringCompany"
+        :hiringManager="hiringManager"
         :worker="worker"
         :job="job"
       />
@@ -590,6 +592,7 @@ export default {
       job: {},
       manager: {},
       hiringManager: {},
+      hiringCompany: {},
       worker: {},
       caoOptions: [],
       imageData: {},
@@ -746,12 +749,14 @@ export default {
             this.worker = res.contractData.worker;
             this.manager = res.contractData.manager;
             this.hiringManager = res.contractData.hiringManager;
+            this.hiringCompany = res.contractData.hiringCompany;
           } else {
             this.job = res.job[0];
             this.company = res.company[0];
             this.worker = res.worker[0];
             this.manager = res.manager[0];
             this.hiringManager = res.hiringManager[0];
+            this.hiringCompany = res.hiringCompany[0];
           }
           this.attachments = res.attachments;
           this.offerContract = res.contractData?.offerContractDoc;

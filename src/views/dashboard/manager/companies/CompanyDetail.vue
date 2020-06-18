@@ -383,14 +383,15 @@ export default {
   methods: {
     async getManagers() {
       return usersApi
-        .getAll({
+        .getAllowedCompanyUsers({
           filter: {
             and: [
               { key: "companyId", value: this.companyId, opt: "eq" },
               { key: "role", value: "manager", opt: "eq" }
             ]
           },
-          pagination: 0
+          pagination: 0,
+          companyId: this.companyId
         })
         .then(res => {
           this.managers = res.docs;

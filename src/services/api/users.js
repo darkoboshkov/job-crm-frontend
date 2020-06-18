@@ -4,6 +4,11 @@ export default {
   getAll(params, config = {}) {
     return request("get", "/users", params, config);
   },
+  getAllowedCompanyUsers(params, config = {}) {
+    const companyId = params.companyId;
+    delete params.companyId;
+    return request("get", `/users/${companyId}/allowed`, params, config);
+  },
   getAllWorkers(params, config = {}) {
     return request("get", "/users/workers", params, config);
   },

@@ -360,10 +360,11 @@ export default {
         });
     },
     getManagers() {
-      usersApi
-        .getAll({
+      return usersApi
+        .getAllowedCompanyUsers({
           filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
-          pagination: 0
+          pagination: 0,
+          companyId: this.companyId
         })
         .then(res => {
           this.managers = res.docs;

@@ -119,9 +119,30 @@ export default {
       return this.$store.state.user.companyId;
     },
     filteredManagers() {
-      return this.managers.filter(
-        manager => manager.companyId === this.model.hiringCompanyId
-      );
+      const result = [];
+      for (let index = 0; index < this.managers.length; index++) {
+        if (this.managers[index].companyId === this.model.hiringCompanyId)
+          result.push(this.managers[index]);
+        for (let i = 0; i < this.companies.length; i++) {
+          if (this.companies[i].allowedCompanies) {
+            for (
+              let j = 0;
+              j < this.companies[i].allowedCompanies.length;
+              j++
+            ) {
+              if (
+                this.managers[index].companyId ===
+                  this.companies[i].allowedCompanies[j].companyId &&
+                this.companies[i].allowedCompanies[j].companyId !==
+                  this.model.hiringCompanyId
+              ) {
+                result.push(this.managers[index]);
+              }
+            }
+          }
+        }
+      }
+      return result;
     }
   },
 
@@ -143,16 +164,18 @@ export default {
     },
     fetchManagers() {
       return usersApi
-        .getAll({
+        .getAllowedCompanyUsers({
           filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
-          pagination: 0
+          pagination: 0,
+          companyId: this.companyId
         })
         .then(res => {
           this.managers = res.docs;
         });
     },
+
     /* eslint-disable-next-line */
-    searchCandidate: _.debounce(function () {
+      searchCandidate: _.debounce(function () {
       if (!this.search) {
         this.users = [];
         return;

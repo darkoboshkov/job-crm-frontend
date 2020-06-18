@@ -384,7 +384,6 @@
 <script>
 import companiesApi from "@/services/api/companies";
 import constantsApi from "@/services/api/constants";
-import usersApi from "@/services/api/users";
 
 export default {
   name: "CompanyCreate",
@@ -463,16 +462,6 @@ export default {
       } else {
         console.error("Your browser does not support File API");
       }
-    },
-    getManagers() {
-      usersApi
-        .getAll({
-          filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
-          pagination: 0
-        })
-        .then(res => {
-          this.managers = res.docs;
-        });
     },
     getTermsOfPayment() {
       constantsApi.getAll().then(res => {
