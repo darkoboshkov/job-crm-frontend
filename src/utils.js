@@ -224,7 +224,35 @@ export const serializeContractStatus = (role, status) => {
           color: "color-yellow"
         };
         break;
-      case "pending-worker":
+      case "pending":
+        state = {
+          text: i18n.t("status.pending"),
+          color: "color-yellow"
+        };
+        break;
+      case "active":
+        state = {
+          text: i18n.t("status.signed"),
+          color: "color-green"
+        };
+        break;
+      case "completed":
+        state = {
+          text: i18n.t("status.completed"),
+          color: "color-red"
+        };
+        break;
+    }
+  }
+  if (role === "hiringManager") {
+    switch (status) {
+      case "open":
+        state = {
+          text: i18n.t("status.not-able-to-see"),
+          color: "color-yellow"
+        };
+        break;
+      case "pending":
         state = {
           text: i18n.t("status.pending"),
           color: "color-yellow"
@@ -253,7 +281,7 @@ export const serializeContractStatus = (role, status) => {
           color: "color-yellow"
         };
         break;
-      case "pending-worker":
+      case "pending":
         state = {
           text: i18n.t("status.signed"),
           color: "color-blue"

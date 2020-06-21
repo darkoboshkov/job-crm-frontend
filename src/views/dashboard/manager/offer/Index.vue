@@ -68,8 +68,8 @@
           >
             <div class="avatar-image mr-2">
               <img
-                v-if="props.row.hiringCompany.logo"
-                :src="props.row.hiringCompany.logo | appUrlFormatter"
+                v-if="props.row.company.logo"
+                :src="props.row.company.logo | appUrlFormatter"
               />
             </div>
           </div>
@@ -153,7 +153,15 @@ export default {
     },
     goToOffer(props) {
       if (props && props.row) {
-        this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}`);
+        if (props.row.companyId === props.row.hiringCompanyId) {
+          this.$router.push(
+            `/${this.role}/dashboard/joboffers/${props.row._id}`
+          );
+        } else {
+          this.$router.push(
+            `/${this.role}/dashboard/joboffers/${props.row._id}/intermediary`
+          );
+        }
       }
     },
     getActiveOffers() {

@@ -12,7 +12,7 @@
       {{ $t("page_offer_detail.title") }}
     </h1>
     <div class="mt-5 row">
-      <div class="matching-list col-6">
+      <div class="matching-list col-4">
         <b-card class="matching-item" body-class="p-0">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
@@ -37,7 +37,7 @@
                 />
               </div>
               <div class="icon">
-                <a :href="'mailto:' + worker.email"
+                <a :href="'mailto:' + company.email"
                   ><img src="@/assets/image/message.svg"
                 /></a>
               </div>
@@ -53,12 +53,48 @@
           </div>
         </b-card>
       </div>
+      <div class="col-4 matching-list">
+        <div class="row">
+          <div class="col-2 d-flex justify-content-center">
+            <img src="@/assets/image/matching.svg" />
+          </div>
 
-      <div class="col-1 d-flex justify-content-center">
-        <img src="@/assets/image/matching.svg" />
+          <div class="matching-list col-8">
+            <b-card class="matching-item" body-class="p-0">
+              <div class="up d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-image size-65 mr-2">
+                    <img
+                      v-if="hiringCompany.logo"
+                      :src="hiringCompany.logo | appUrlFormatter"
+                    />
+                  </div>
+                  <div>
+                    <div>
+                      <strong>{{ hiringCompany.name }}</strong>
+                    </div>
+                    <div>{{ $t("page_offer_detail.intermediate") }}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="down">
+                <ul>
+                  <li>
+                    {{ $t("page_offer_detail.start_date") }}:
+                    {{ model.startDate | dateFormatter }}
+                  </li>
+                </ul>
+              </div>
+            </b-card>
+          </div>
+
+          <div class="col-2 d-flex justify-content-center">
+            <img src="@/assets/image/matching.svg" />
+          </div>
+        </div>
       </div>
 
-      <div class="matching-list col-5">
+      <div class="matching-list col-4">
         <b-card class="matching-item" body-class="p-0">
           <div class="up d-flex justify-content-between">
             <div class="d-flex align-items-center">
@@ -75,17 +111,17 @@
                 <div>{{ worker.city }}, {{ worker.country }}</div>
               </div>
             </div>
-            <div class="icon-group cursor-copy">
-              <div class="icon">
+            <div class="icon-group">
+              <div class="icon cursor-copy">
                 <img
                   src="@/assets/image/phone.svg"
                   @click="copyPhoneNumToClipboard(worker.phone)"
                 />
               </div>
               <div class="icon">
-                <a :href="'mailto:' + worker.email"
-                  ><img src="@/assets/image/message.svg"
-                /></a>
+                <a :href="'mailto:' + worker.email">
+                  <img src="@/assets/image/message.svg" />
+                </a>
               </div>
             </div>
           </div>
@@ -136,20 +172,20 @@
           <div class="d-flex align-items-center mb-3">
             <div class="avatar-image mr-2">
               <img
-                v-if="manager.image"
-                :src="manager.image | appUrlFormatter"
+                v-if="hiringCompany.logo"
+                :src="hiringCompany.logo | appUrlFormatter"
               />
             </div>
             <div>
               <i
                 class="hiway-crm-icon icon-dot mr-2"
-                :class="managerState.color"
+                :class="hiringManagerState.color"
                 style="font-size: 0.3em;"
               />
-              {{ managerState.text }}
+              {{ hiringManagerState.text }}
             </div>
           </div>
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center mb-3">
             <div class="avatar-image mr-2">
               <img v-if="worker.image" :src="worker.image | appUrlFormatter" />
             </div>
@@ -160,6 +196,19 @@
                 style="font-size: 0.3em;"
               />
               {{ workerState.text }}
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="avatar-image mr-2">
+              <img v-if="company.logo" :src="company.logo | appUrlFormatter" />
+            </div>
+            <div>
+              <i
+                class="hiway-crm-icon icon-dot mr-2"
+                :class="managerState.color"
+                style="font-size: 0.3em;"
+              />
+              {{ managerState.text }}
             </div>
           </div>
         </div>
@@ -187,13 +236,36 @@
           <button
             class="btn ml-2"
             :class="signed ? 'btn-red' : 'btn-secondary'"
-            @click="exportContract"
+            @click="toggleExportDropdown"
             style="min-width:160px;"
             :disabled="!signed"
           >
             {{ $t("page_offer_detail.button.export_contract") }}
           </button>
-
+          <ul v-show="exportCollapsed" class="export-dropdown">
+            <li>
+              <router-link to="#">
+                <div>
+                  <i class="hiway-crm-icon icon-upload mr-3" />
+                  <span>{{
+                    $t("page_offer_detail.button.dropdown.company_export")
+                  }}</span>
+                </div>
+                <i class="hiway-crm-icon icon-angle-right ml-3" />
+              </router-link>
+            </li>
+            <li @click="exportContract">
+              <router-link to="#">
+                <div>
+                  <i class="hiway-crm-icon icon-upload mr-3" />
+                  <span>{{
+                    $t("page_offer_detail.button.dropdown.client_export")
+                  }}</span>
+                </div>
+                <i class="hiway-crm-icon icon-angle-right ml-3" />
+              </router-link>
+            </li>
+          </ul>
           <button
             class="btn ml-2"
             :class="signed ? 'btn-blue' : 'btn-secondary'"
@@ -203,6 +275,38 @@
           >
             {{ $t("page_offer_detail.button.view_contract") }}
           </button>
+          <button
+            class="btn-secondary btn ml-2"
+            @click="toggleDropdown"
+            :disabled="edit"
+            style="min-width:160px;"
+          >
+            {{ $t("page_offer_detail.button.other") }}
+          </button>
+          <ul v-show="collapsed" class="other-dropdown">
+            <li>
+              <router-link to="#">
+                <div>
+                  <i class="hiway-crm-icon icon-contract mr-3" />
+                  <span>{{
+                    $t("page_offer_detail.button.dropdown.extend")
+                  }}</span>
+                </div>
+                <i class="hiway-crm-icon icon-angle-right ml-3" />
+              </router-link>
+            </li>
+            <li>
+              <router-link to="#">
+                <div>
+                  <i class="hiway-crm-icon icon-hours mr-3" />
+                  <span>{{
+                    $t("page_offer_detail.button.dropdown.early")
+                  }}</span>
+                </div>
+                <i class="hiway-crm-icon icon-angle-right ml-3" />
+              </router-link>
+            </li>
+          </ul>
         </div>
       </div>
     </b-card>
@@ -566,7 +670,7 @@ import {
 } from "@/utils";
 
 export default {
-  name: "Details",
+  name: "DetailsIntermediary",
   components: {
     Contract: Contract
   },
@@ -591,11 +695,19 @@ export default {
     },
     workerState() {
       return serializeContractStatus("worker", this.model.status);
+    },
+    hiringManagerState() {
+      return serializeContractStatus(
+        "hiringManager",
+        this.model.intermediaryStatus
+      );
     }
   },
   data() {
     return {
       exportingContract: false,
+      exportCollapsed: false,
+      collapsed: false,
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
       model: {
@@ -609,7 +721,8 @@ export default {
         otherExpenses: 0,
         startDate: null,
         endDate: null,
-        status: null
+        status: null,
+        intermediaryStatus: null
       },
       company: {},
       job: {},
@@ -632,10 +745,14 @@ export default {
     };
   },
   mounted() {
+    // document.addEventListener("click", this.closeDropdown.bind(this));
     this.getOfferDetails();
     this.getCaoOptions();
     this.getPaymentType();
   },
+  // beforeDestroy() {
+  //   document.removeEventListener("click", this.closeDropdown);
+  // },
   methods: {
     validate() {
       const worker = this.model.worker[0];
@@ -744,6 +861,15 @@ export default {
           this.validations.jobOffer.length ===
         0
       );
+    },
+    toggleDropdown() {
+      this.collapsed = !this.collapsed;
+    },
+    toggleExportDropdown() {
+      this.exportCollapsed = !this.exportCollapsed;
+    },
+    closeDropdown() {
+      this.collapsed = false;
     },
     downloadFile(attachment) {
       jobOffersApi

@@ -116,7 +116,7 @@
               style="font-size: 0.3em;"
             />
             <i
-              v-else-if="model.status === 'pending-worker'"
+              v-else-if="model.status === 'pending'"
               class="hiway-crm-icon icon-dot mr-2 color-blue"
               style="font-size: 0.3em;"
             />
@@ -542,7 +542,7 @@ export default {
   },
   computed: {
     edit() {
-      // return this.model.status === "pending-worker";
+      // return this.model.status === "pending";
       return false;
     },
     user() {
@@ -725,7 +725,7 @@ export default {
     },
     exportContract() {
       jobOffersApi
-        .downloadOfferContract({
+        .downloadWorkerContract({
           companyId: this.companyId,
           id: this.offerId,
           offerName: this.offerContract.name
@@ -759,7 +759,7 @@ export default {
             this.hiringCompany = res.hiringCompany[0];
           }
           this.attachments = res.attachments;
-          this.offerContract = res.contractData?.offerContractDoc;
+          this.offerContract = res.contractData?.workerContractDoc;
         })
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);

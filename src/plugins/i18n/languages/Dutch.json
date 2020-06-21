@@ -759,6 +759,7 @@
   "page_offer_detail": {
     "title": "Contract aanbod",
     "status_actions": "Contract status en acties",
+    "intermediate": "intermediay",
     "offer_states": {
       "open": "Open",
       "pending-worker": "In afwachting van werknemer",
@@ -793,7 +794,14 @@
       "lock": "Vergrendelen, tekenen en versturen",
       "export_contract": "Contract exporteren",
       "view_contract": "Contract weergeven",
-      "upload": "Uploaden"
+      "upload": "Uploaden",
+      "other": "Other options",
+      "dropdown": {
+        "company_export": "Export Company Contract",
+        "client_export": "Export Client Contract",
+        "extend": "Extend contract",
+        "early": "Early termination"
+      }
     },
     "modal": {
       "sign_contract": {

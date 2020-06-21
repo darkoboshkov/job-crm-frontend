@@ -760,6 +760,7 @@
   "page_offer_detail": {
     "title": "Job offer details",
     "status_actions": "Contract status & actions",
+    "intermediate": "intermediay",
     "offer_states": {
       "open": "Open",
       "pending-worker": "Pending for worker",
@@ -794,7 +795,14 @@
       "lock": "Lock, sign and send",
       "export_contract": "Export contract",
       "view_contract": "View contract",
-      "upload": "Upload"
+      "upload": "Upload",
+      "other": "Other options",
+      "dropdown": {
+        "company_export": "Export Company Contract",
+        "client_export": "Export Client Contract",
+        "extend": "Extend contract",
+        "early": "Early termination"
+      }
     },
     "modal": {
       "sign_contract": {
