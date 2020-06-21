@@ -698,7 +698,10 @@ export default {
       return serializeContractStatus("worker", this.model.status);
     },
     hiringManagerState() {
-      return serializeContractStatus("hiringManager", this.model.intermediaryStatus);
+      return serializeContractStatus(
+        "hiringManager",
+        this.model.intermediaryStatus
+      );
     }
   },
   data() {

@@ -37,9 +37,9 @@
                 />
               </div>
               <div class="icon">
-                <a :href="'mailto:' + company.email"
-                  ><img src="@/assets/image/message.svg"
-                /></a>
+                <a :href="'mailto:' + company.email">
+                  <img src="@/assets/image/message.svg" />
+                </a>
               </div>
             </div>
           </div>
@@ -83,9 +83,9 @@
                 />
               </div>
               <div class="icon">
-                <a :href="'mailto:' + company.email"
-                  ><img src="@/assets/image/message.svg"
-                /></a>
+                <a :href="'mailto:' + company.email">
+                  <img src="@/assets/image/message.svg" />
+                </a>
               </div>
             </div>
           </div>
@@ -219,7 +219,8 @@
                 v-for="caoOption in caoOptions"
                 :value="caoOption._id"
                 :key="caoOption._id"
-                >{{ caoOption.name }}
+              >
+                {{ caoOption.name }}
               </option>
             </b-form-select>
           </div>
@@ -457,7 +458,8 @@
                 v-for="option in paymentIntervalOptions"
                 :value="option.value"
                 :key="option.value"
-                >{{ option.label }}
+              >
+                {{ option.label }}
               </option>
             </b-form-select>
           </div>
@@ -472,7 +474,8 @@
                 v-for="option in discountOnTaxesOptions"
                 :value="option.value"
                 :key="option.value"
-                >{{ option.label }}
+              >
+                {{ option.label }}
               </option>
             </b-form-select>
           </div>
@@ -491,7 +494,8 @@
                 v-for="option in workedEarlierAsFlexWorkerOptions"
                 :value="option.value"
                 :key="option.value"
-                >{{ option.label }}
+              >
+                {{ option.label }}
               </option>
             </b-form-select>
           </div>
@@ -542,7 +546,6 @@ export default {
   },
   computed: {
     edit() {
-      // return this.model.status === "pending";
       return false;
     },
     user() {
@@ -873,4 +876,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped />

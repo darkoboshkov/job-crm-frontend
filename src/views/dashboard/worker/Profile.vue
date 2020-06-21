@@ -79,9 +79,9 @@
               </li>
               <li>
                 {{ $t("page_profile.form.age") }}
-                <span class="pull-right"
-                  >{{ model.age }} {{ $t("page_profile.form.years") }}</span
-                >
+                <span class="pull-right">
+                  {{ model.age }} {{ $t("page_profile.form.years") }}
+                </span>
               </li>
               <li>
                 {{ $t("page_profile.form.status") }}

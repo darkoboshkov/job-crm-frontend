@@ -2,9 +2,9 @@
   <div id="page_dashboard" class="dashboard-content">
     <div class="d-flex responsive justify-content-between align-items-start">
       <h1 class="title text-center">{{ $t("page_dashboard.title") }}</h1>
-      <b-button v-b-modal.adjust_dashboard>{{
-        $t("page_dashboard.button.adjust")
-      }}</b-button>
+      <b-button v-b-modal.adjust_dashboard>
+        {{ $t("page_dashboard.button.adjust") }}
+      </b-button>
     </div>
     <b-row>
       <b-col md="6" v-if="positionItem">
@@ -24,10 +24,8 @@
             <div class="content">
               <p>{{ $t("page_dashboard.modal.adjust.position_area_title") }}</p>
               <small>
-                {{
-                  $t("page_dashboard.modal.adjust.position_area_text")
-                }}</small
-              >
+                {{ $t("page_dashboard.modal.adjust.position_area_text") }}
+              </small>
             </div>
             <b-form-checkbox
               class="rtl"
