@@ -163,10 +163,11 @@
               switch
               size="lg"
               v-model="showPassword"
-              ><span style="font-size: 0.75em;">{{
-                $t("page_users_create_manual.form.show")
-              }}</span></b-form-checkbox
             >
+              <span style="font-size: 0.75em;">
+                {{ $t("page_users_create_manual.form.show") }}
+              </span>
+            </b-form-checkbox>
           </div>
         </div>
         <div class="form-element d-flex align-items-center mt-5">
@@ -197,9 +198,10 @@
               switch
               size="lg"
               v-model="showRepeatPassword"
-              ><span style="font-size: 0.75em;">{{
-                $t("page_users_create_manual.form.show")
-              }}</span>
+            >
+              <span style="font-size: 0.75em;">
+                {{ $t("page_users_create_manual.form.show") }}
+              </span>
             </b-form-checkbox>
           </div>
         </div>
@@ -234,25 +236,29 @@
                 v-model="form.honorificTitle"
                 name="honorific"
                 value="mr"
-                >{{ $t("honorific.mr") }}
+              >
+                {{ $t("honorific.mr") }}
               </b-form-radio>
               <b-form-radio
                 v-model="form.honorificTitle"
                 name="honorific"
                 value="mrs"
-                >{{ $t("honorific.mrs") }}
+              >
+                {{ $t("honorific.mrs") }}
               </b-form-radio>
               <b-form-radio
                 v-model="form.honorificTitle"
                 name="honorific"
                 value="ms"
-                >{{ $t("honorific.ms") }}
+              >
+                {{ $t("honorific.ms") }}
               </b-form-radio>
               <b-form-radio
                 v-model="form.honorificTitle"
                 name="honorific"
                 value="miss"
-                >{{ $t("honorific.miss") }}
+              >
+                {{ $t("honorific.miss") }}
               </b-form-radio>
             </div>
             <b-form-invalid-feedback class="d-block">

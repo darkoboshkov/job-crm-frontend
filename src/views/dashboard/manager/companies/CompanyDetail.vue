@@ -121,9 +121,13 @@
               </li>
               <li>
                 {{ $t("page_detail_company.form.automatic_collection") }}
-                <span class="pull-right">{{
-                  model.automaticCollection ? $t("common.yes") : $t("common.no")
-                }}</span>
+                <span class="pull-right">
+                  {{
+                    model.automaticCollection
+                      ? $t("common.yes")
+                      : $t("common.no")
+                  }}
+                </span>
               </li>
               <li>
                 {{ $t("page_detail_company.form.limit_credit_safe") }}
@@ -131,17 +135,23 @@
               </li>
               <li>
                 {{ $t("page_detail_company.form.charge_travel_expenses") }}
-                <span class="pull-right">{{
-                  model.chargeTravelExpenses
-                    ? $t("common.yes")
-                    : $t("common.no")
-                }}</span>
+                <span class="pull-right">
+                  {{
+                    model.chargeTravelExpenses
+                      ? $t("common.yes")
+                      : $t("common.no")
+                  }}
+                </span>
               </li>
               <li>
                 {{ $t("page_detail_company.form.charge_other_expenses") }}
-                <span class="pull-right">{{
-                  model.chargeOtherExpenses ? $t("common.yes") : $t("common.no")
-                }}</span>
+                <span class="pull-right">
+                  {{
+                    model.chargeOtherExpenses
+                      ? $t("common.yes")
+                      : $t("common.no")
+                  }}
+                </span>
               </li>
             </ul>
           </div>
@@ -450,7 +460,6 @@ export default {
       //   );
       // }
     },
-    viewFile(attachment) {},
     downloadFile(attachment) {
       companiesApi
         .downloadAttachment({

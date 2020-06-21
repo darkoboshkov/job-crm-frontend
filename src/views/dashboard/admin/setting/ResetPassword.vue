@@ -2,9 +2,9 @@
   <div class="setting-profile">
     <div class="setting-profile__form">
       <div class="form-element">
-        <label
-          >{{ $t("page_setting.reset_password.form.old_password") }}:</label
-        >
+        <label>
+          {{ $t("page_setting.reset_password.form.old_password") }}:
+        </label>
         <div class="d-flex flex-column w-100">
           <b-form-input
             type="password"
@@ -18,9 +18,9 @@
         </div>
       </div>
       <div class="form-element mt-3">
-        <label
-          >{{ $t("page_setting.reset_password.form.new_password") }}:</label
-        >
+        <label>
+          {{ $t("page_setting.reset_password.form.new_password") }}:
+        </label>
         <div class="d-flex flex-column w-100">
           <b-form-input
             type="password"
@@ -131,4 +131,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped />

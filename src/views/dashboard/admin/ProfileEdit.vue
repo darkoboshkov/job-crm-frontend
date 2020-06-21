@@ -91,25 +91,29 @@
                   v-model="model.honorificTitle"
                   name="honorific"
                   value="mr"
-                  >{{ $t("honorific.mr") }}
+                >
+                  {{ $t("honorific.mr") }}
                 </b-form-radio>
                 <b-form-radio
                   v-model="model.honorificTitle"
                   name="honorific"
                   value="mrs"
-                  >{{ $t("honorific.mrs") }}
+                >
+                  {{ $t("honorific.mrs") }}
                 </b-form-radio>
                 <b-form-radio
                   v-model="model.honorificTitle"
                   name="honorific"
                   value="ms"
-                  >{{ $t("honorific.ms") }}
+                >
+                  {{ $t("honorific.ms") }}
                 </b-form-radio>
                 <b-form-radio
                   v-model="model.honorificTitle"
                   name="honorific"
                   value="miss"
-                  >{{ $t("honorific.miss") }}
+                >
+                  {{ $t("honorific.miss") }}
                 </b-form-radio>
               </div>
               <b-form-invalid-feedback class="d-block">
@@ -125,7 +129,8 @@
                   v-for="profession in professions"
                   :key="profession._id"
                   :value="profession._id"
-                  >{{ $t(`profession.${profession.name}`) }}
+                >
+                  {{ $t(`profession.${profession.name}`) }}
                 </option>
               </b-form-select>
               <b-form-invalid-feedback class="d-block">

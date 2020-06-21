@@ -19,9 +19,10 @@
     <div class="py-3">
       <div class="row mb-3">
         <div class="col">
-          <span class="color-blue mr-3"
-            >{{ $t("page_timesheets.modal.hiring_manager") }}:</span
-          >&nbsp;<b-input
+          <span class="color-blue mr-3">
+            {{ $t("page_timesheets.modal.hiring_manager") }}: </span
+          >&nbsp;
+          <b-input
             class="d-inline-block expense-input"
             v-model="model.hiringManager"
             disabled
@@ -31,9 +32,10 @@
 
       <div class="row mb-3">
         <div class="col">
-          <span class="color-blue mr-3"
-            >{{ $t("page_timesheets.modal.worker") }}:</span
-          >&nbsp;<b-input
+          <span class="color-blue mr-3">
+            {{ $t("page_timesheets.modal.worker") }}: </span
+          >&nbsp;
+          <b-input
             class="d-inline-block expense-input"
             :value="model.worker"
             disabled
@@ -45,8 +47,7 @@
     <div class="py-3">
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3">{{ $t("page_timesheets.modal.date") }}:</span
-          >&nbsp;
+          <span class="mr-3">{{ $t("page_timesheets.modal.date") }}:</span>
           <b-form-datepicker
             class="d-inline-block expense-input"
             v-model="model.expenseData.date"
@@ -61,8 +62,7 @@
 
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3">{{ $t("page_timesheets.modal.amount") }}:</span
-          >&nbsp;
+          <span class="mr-3">{{ $t("page_timesheets.modal.amount") }}:</span>
           <b-input
             class="d-inline-block expense-input"
             placeholder="€0.00"
@@ -74,39 +74,41 @@
 
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3">{{ $t("page_timesheets.modal.category") }}:</span
-          >&nbsp;
+          <span class="mr-3">{{ $t("page_timesheets.modal.category") }}:</span>
           <b-form-group class="d-inline-block mb-0" :disabled="inputDisabled">
             <b-form-radio
               v-model="model.expenseData.category"
               name="some-radios"
               value="travel"
               class="d-inline-block big-red mr-2"
-              >Travel</b-form-radio
             >
+              Travel
+            </b-form-radio>
             <b-form-radio
               v-model="model.expenseData.category"
               name="some-radios"
               value="food"
               class="d-inline-block big-red mr-2"
-              >Food</b-form-radio
             >
+              Food
+            </b-form-radio>
             <b-form-radio
               v-model="model.expenseData.category"
               name="some-radios"
               value="other"
               class="d-inline-block big-red"
-              >Other</b-form-radio
             >
+              Other
+            </b-form-radio>
           </b-form-group>
         </div>
       </div>
 
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3"
-            >{{ $t("page_timesheets.modal.upload_receipt") }}:</span
-          >
+          <span class="mr-3">
+            {{ $t("page_timesheets.modal.upload_receipt") }}:
+          </span>
           <input
             type="file"
             id="attachment"
@@ -138,8 +140,7 @@
 
       <div class="row mb-3">
         <div class="col align-items-baseline">
-          <span class="mr-3">{{ $t("page_timesheets.modal.note") }}:</span
-          >&nbsp;
+          <span class="mr-3">{{ $t("page_timesheets.modal.note") }}:</span>
           <b-textarea
             class="d-inline-block expense-input"
             placeholder="Add a note..."
@@ -327,4 +328,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped />

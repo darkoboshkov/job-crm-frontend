@@ -16,9 +16,9 @@
         </div>
       </div>
       <div class="form-element mt-3">
-        <label
-          >{{ $t("page_setting.account_setting.form.middle_name") }}:</label
-        >
+        <label>
+          {{ $t("page_setting.account_setting.form.middle_name") }}:
+        </label>
         <div class="d-flex flex-column w-100">
           <b-form-input
             type="text"
@@ -232,4 +232,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped />

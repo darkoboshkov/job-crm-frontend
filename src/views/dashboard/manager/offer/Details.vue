@@ -37,9 +37,9 @@
                 />
               </div>
               <div class="icon">
-                <a :href="'mailto:' + worker.email"
-                  ><img src="@/assets/image/message.svg"
-                /></a>
+                <a :href="'mailto:' + worker.email">
+                  <img src="@/assets/image/message.svg" />
+                </a>
               </div>
             </div>
           </div>
@@ -83,9 +83,9 @@
                 />
               </div>
               <div class="icon">
-                <a :href="'mailto:' + worker.email"
-                  ><img src="@/assets/image/message.svg"
-                /></a>
+                <a :href="'mailto:' + worker.email">
+                  <img src="@/assets/image/message.svg" />
+                </a>
               </div>
             </div>
           </div>
@@ -223,7 +223,8 @@
                 v-for="caoOption in caoOptions"
                 :value="caoOption._id"
                 :key="caoOption._id"
-                >{{ caoOption.name }}
+              >
+                {{ caoOption.name }}
               </option>
             </b-form-select>
           </div>
@@ -595,7 +596,6 @@ export default {
   },
   data() {
     return {
-      exportingContract: false,
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
       model: {
@@ -620,6 +620,7 @@ export default {
       caoOptions: [],
       imageData: {},
       offerContract: null,
+      exportingContract: false,
       attachments: [],
       paymentType: [],
       validations: {
@@ -977,4 +978,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped />

@@ -19,9 +19,9 @@
       </p>
       <div class="select-form mt-5">
         <b-form-group class="mt-3">
-          <label>{{
-            $t("page_jobs_select_candidate.form.hiring_company")
-          }}</label>
+          <label>
+            {{ $t("page_jobs_select_candidate.form.hiring_company") }}
+          </label>
           <b-form-select v-model="model.hiringCompanyId">
             <option value="" disabled />
             <option
@@ -34,9 +34,9 @@
           </b-form-select>
         </b-form-group>
         <b-form-group class="mt-3">
-          <label>{{
-            $t("page_jobs_select_candidate.form.hiring_manager")
-          }}</label>
+          <label>
+            {{ $t("page_jobs_select_candidate.form.hiring_manager") }}
+          </label>
           <b-form-select v-model="model.hiringManagerId">
             <option value="" disabled />
             <option
@@ -220,16 +220,25 @@ export default {
           hiringManagerId: this.model.hiringManagerId
         })
         .then(res => {
-          this.$router.push({
-            name: "manager-offer-details",
-            params: {
-              offerId: res._id
-            }
-          });
+          if (this.companyId === this.model.hiringCompanyId) {
+            this.$router.push({
+              name: "manager-offer-details",
+              params: {
+                offerId: res._id
+              }
+            });
+          } else {
+            this.$router.push({
+              name: "manager-offer-inter-details",
+              params: {
+                offerId: res._id
+              }
+            });
+          }
         });
     }
   }
 };
 </script>
 
-<style scoped></style>
+<style scoped />

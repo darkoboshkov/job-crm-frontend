@@ -537,9 +537,6 @@ export default {
       }
       return this.errors.length === 0;
     },
-    viewFile(attachment) {
-      //
-    },
     downloadFile(attachment) {
       jobsApi
         .downloadAttachment({

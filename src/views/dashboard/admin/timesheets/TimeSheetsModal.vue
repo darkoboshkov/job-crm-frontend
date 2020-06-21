@@ -17,7 +17,7 @@
           <span class="color-blue mr-3">
             {{ $t("page_timesheets.modal.worker") }}:
           </span>
-          &nbsp;<b-input
+          <b-input
             class="d-inline-block"
             style="width: 175px;"
             :value="worker"
@@ -28,7 +28,7 @@
           <span class="color-blue mr-3">
             {{ $t("page_timesheets.modal.hiring_manager") }}:
           </span>
-          &nbsp;<b-input
+          <b-input
             class="d-inline-block"
             style="width: 175px;"
             :value="hiringManager"
@@ -169,15 +169,15 @@
       <div class="d-flex justify-content-between align-items-center">
         <div class="d-inline-block conclusion">
           {{ $t("page_timesheets.modal.worked_overview_1") }}
-          <span class="empress"
-            >{{ $t("page_timesheets.modal.worked_overview_2") }}
-            {{ selectedWeekNumber }}</span
-          >
+          <span class="empress">
+            {{ $t("page_timesheets.modal.worked_overview_2") }}
+            {{ selectedWeekNumber }}
+          </span>
           {{ $t("page_timesheets.modal.worked_overview_3") }}
-          <span class="empress"
-            >{{ totalHours }}
-            {{ $t("page_timesheets.modal.worked_overview_4") }}</span
-          >
+          <span class="empress">
+            {{ totalHours }}
+            {{ $t("page_timesheets.modal.worked_overview_4") }}
+          </span>
           {{ $t("page_timesheets.modal.worked_overview_5") }}.
         </div>
         <div class="d-inline-block">
@@ -379,4 +379,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped />

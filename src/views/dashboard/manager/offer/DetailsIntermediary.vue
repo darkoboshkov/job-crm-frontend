@@ -37,9 +37,9 @@
                 />
               </div>
               <div class="icon">
-                <a :href="'mailto:' + company.email"
-                  ><img src="@/assets/image/message.svg"
-                /></a>
+                <a :href="'mailto:' + company.email">
+                  <img src="@/assets/image/message.svg" />
+                </a>
               </div>
             </div>
           </div>
@@ -236,20 +236,20 @@
           <button
             class="btn ml-2"
             :class="signed ? 'btn-red' : 'btn-secondary'"
-            @click="toggleExportDropdown"
+            @click.stop.prevent="toggleExportDropdown"
             style="min-width:160px;"
             :disabled="!signed"
           >
             {{ $t("page_offer_detail.button.export_contract") }}
           </button>
-          <ul v-show="exportCollapsed" class="export-dropdown">
+          <ul v-show="isExportCollapsed" class="export-dropdown">
             <li>
               <router-link to="#">
                 <div>
                   <i class="hiway-crm-icon icon-upload mr-3" />
-                  <span>{{
-                    $t("page_offer_detail.button.dropdown.company_export")
-                  }}</span>
+                  <span>
+                    {{ $t("page_offer_detail.button.dropdown.company_export") }}
+                  </span>
                 </div>
                 <i class="hiway-crm-icon icon-angle-right ml-3" />
               </router-link>
@@ -258,9 +258,9 @@
               <router-link to="#">
                 <div>
                   <i class="hiway-crm-icon icon-upload mr-3" />
-                  <span>{{
-                    $t("page_offer_detail.button.dropdown.client_export")
-                  }}</span>
+                  <span>
+                    {{ $t("page_offer_detail.button.dropdown.client_export") }}
+                  </span>
                 </div>
                 <i class="hiway-crm-icon icon-angle-right ml-3" />
               </router-link>
@@ -277,20 +277,20 @@
           </button>
           <button
             class="btn-secondary btn ml-2"
-            @click="toggleDropdown"
+            @click.stop.prevent="toggleOtherDropdown"
             :disabled="edit"
             style="min-width:160px;"
           >
             {{ $t("page_offer_detail.button.other") }}
           </button>
-          <ul v-show="collapsed" class="other-dropdown">
+          <ul v-show="isOtherCollapsed" class="other-dropdown">
             <li>
               <router-link to="#">
                 <div>
                   <i class="hiway-crm-icon icon-contract mr-3" />
-                  <span>{{
-                    $t("page_offer_detail.button.dropdown.extend")
-                  }}</span>
+                  <span>
+                    {{ $t("page_offer_detail.button.dropdown.extend") }}
+                  </span>
                 </div>
                 <i class="hiway-crm-icon icon-angle-right ml-3" />
               </router-link>
@@ -299,9 +299,9 @@
               <router-link to="#">
                 <div>
                   <i class="hiway-crm-icon icon-hours mr-3" />
-                  <span>{{
-                    $t("page_offer_detail.button.dropdown.early")
-                  }}</span>
+                  <span>
+                    {{ $t("page_offer_detail.button.dropdown.early") }}
+                  </span>
                 </div>
                 <i class="hiway-crm-icon icon-angle-right ml-3" />
               </router-link>
@@ -327,7 +327,8 @@
                 v-for="caoOption in caoOptions"
                 :value="caoOption._id"
                 :key="caoOption._id"
-                >{{ caoOption.name }}
+              >
+                {{ caoOption.name }}
               </option>
             </b-form-select>
           </div>
@@ -697,17 +698,14 @@ export default {
       return serializeContractStatus("worker", this.model.status);
     },
     hiringManagerState() {
-      return serializeContractStatus(
-        "hiringManager",
-        this.model.intermediaryStatus
-      );
+      return serializeContractStatus("hiringManager", this.model.intermediaryStatus);
     }
   },
   data() {
     return {
       exportingContract: false,
-      exportCollapsed: false,
-      collapsed: false,
+      isExportCollapsed: false,
+      isOtherCollapsed: false,
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
       model: {
@@ -745,14 +743,14 @@ export default {
     };
   },
   mounted() {
-    // document.addEventListener("click", this.closeDropdown.bind(this));
+    window.addEventListener("click", this.closeDropdown.bind(this));
     this.getOfferDetails();
     this.getCaoOptions();
     this.getPaymentType();
   },
-  // beforeDestroy() {
-  //   document.removeEventListener("click", this.closeDropdown);
-  // },
+  beforeDestroy() {
+    document.removeEventListener("click", this.closeDropdown);
+  },
   methods: {
     validate() {
       const worker = this.model.worker[0];
@@ -862,14 +860,17 @@ export default {
         0
       );
     },
-    toggleDropdown() {
-      this.collapsed = !this.collapsed;
+    toggleOtherDropdown() {
+      this.isOtherCollapsed = !this.isOtherCollapsed;
+      this.isExportCollapsed = false;
     },
     toggleExportDropdown() {
-      this.exportCollapsed = !this.exportCollapsed;
+      this.isExportCollapsed = !this.isExportCollapsed;
+      this.isOtherCollapsed = false;
     },
     closeDropdown() {
-      this.collapsed = false;
+      this.isExportCollapsed = false;
+      this.isOtherCollapsed = false;
     },
     downloadFile(attachment) {
       jobOffersApi
@@ -1103,4 +1104,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped />

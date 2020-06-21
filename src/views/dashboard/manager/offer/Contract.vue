@@ -400,8 +400,6 @@
 </template>
 
 <script>
-import { isManagerAuthorized } from "../../../../utils";
-
 export default {
   name: "ViewJobOffer",
   props: {
@@ -446,4 +444,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped />

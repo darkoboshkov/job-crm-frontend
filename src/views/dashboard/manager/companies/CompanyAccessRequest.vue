@@ -20,8 +20,7 @@
     </div>
     <div class="row my-3">
       <div class="col">
-        <span>{{ $t("page_companies.modal.access_request.unique_id") }}:</span
-        >&nbsp;
+        <span>{{ $t("page_companies.modal.access_request.unique_id") }}:</span>
         <b-input v-model="model.companyId" class="custom-input" />
       </div>
     </div>
@@ -50,12 +49,6 @@ export default {
       set(v) {
         this.$emit("update:modalOpen", v);
       }
-    },
-    addMode() {
-      return this.mode === "add";
-    },
-    editMode() {
-      return this.mode === "edit";
     }
   },
   data() {
@@ -64,10 +57,8 @@ export default {
         companyId: null
       }
     };
-  },
-  mounted() {},
-  methods: {}
+  }
 };
 </script>
 
-<style scoped></style>
+<style scoped />

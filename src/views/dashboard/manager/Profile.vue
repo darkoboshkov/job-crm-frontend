@@ -48,11 +48,11 @@
                   style="width:31px"
                   class="mr-3"
                 />
-                <span
-                  ><a :href="'mailto:' + model.email">{{
-                    model.email
-                  }}</a></span
-                >
+                <span>
+                  <a :href="'mailto:' + model.email">
+                    {{ model.email }}
+                  </a>
+                </span>
               </div>
             </b-card>
           </b-col>
@@ -83,9 +83,9 @@
               </li>
               <li>
                 {{ $t("page_profile.form.age") }}
-                <span class="pull-right"
-                  >{{ model.age }} {{ $t("page_profile.form.years") }}</span
-                >
+                <span class="pull-right">
+                  {{ model.age }} {{ $t("page_profile.form.years") }}
+                </span>
               </li>
               <li>
                 {{ $t("page_profile.form.status") }}
