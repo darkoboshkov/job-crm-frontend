@@ -76,12 +76,12 @@
               />
             </div>
           </div>
-          <div class="row mt-5 align-items-center">
-            <div class="col-12 col-md-4">
-              <label>{{ $t("page_detail_company.form.type") }}:</label>
-            </div>
+          <div class="row align-items-center mt-5">
+            <label class="col-12 col-md-4">
+              {{ $t("page_detail_company.form.type") }}:
+            </label>
             <div class="col-12 col-md-8">
-              <b-form-select class="normal-size" v-model="model.type">
+              <b-form-select v-model="model.type">
                 <option
                   v-for="companyType in companyTypes"
                   :value="companyType.type"

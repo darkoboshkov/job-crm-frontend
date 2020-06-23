@@ -85,6 +85,25 @@
             </div>
           </div>
           <div class="row align-items-center mt-5">
+            <label class="col-12 col-md-4">
+              {{ $t("page_edit_company.form.type") }}:
+            </label>
+            <div class="col-12 col-md-8">
+              <b-form-select v-model="model.type">
+                <option
+                  v-for="companyType in companyTypes"
+                  :value="companyType.type"
+                  :key="companyType.type"
+                >
+                  {{ companyType.type }}
+                </option>
+              </b-form-select>
+              <b-form-invalid-feedback class="d-block">
+                {{ errors | errorFormatter("companyType") }}
+              </b-form-invalid-feedback>
+            </div>
+          </div>
+          <div class="row align-items-center mt-5">
             <div class="col-12 col-md-4">
               <label>{{ $t("page_edit_company.form.kvk") }}:</label>
             </div>
@@ -449,6 +468,10 @@ export default {
       vatShiftedEnabled: false,
       gAccountEnabled: false,
       companyId: this.$route.params.companyId,
+      companyTypes: [
+        { id: 1, type: "normal" },
+        { id: 2, type: "intermediary" }
+      ],
       model: {
         name: "",
         email: "",
@@ -468,6 +491,7 @@ export default {
         chargeTravelExpenses: true,
         chargeOtherExpenses: true,
         active: false,
+        type: "",
         members: []
       },
       termsOfPayment: [],

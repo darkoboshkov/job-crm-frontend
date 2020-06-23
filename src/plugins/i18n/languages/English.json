@@ -429,6 +429,14 @@
       "request": "Request access"
     }
   },
+  "page_request_company": {
+    "title": "Request Access",
+    "description": "click on : Accept Request or Decline Request",
+    "button": {
+      "accept": "Accept Request",
+      "decline": "Decline Request"
+    }
+  },
   "page_detail_company": {
     "create_title": "Add new company",
     "edit_title": "Company details",
@@ -506,6 +514,7 @@
     "form": {
       "name": "Company name",
       "kvk": "KVK number",
+      "type": "Company type",
       "limit_credit_safe": "Limit creditSafe",
       "country": "Country",
       "city": "City",

@@ -40,6 +40,13 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
+        path: "companies/request",
+        name: "manager-companies-request",
+        component: () =>
+          import("../views/dashboard/manager/companies/CompanyRequest.vue"),
+        beforeEnter: isManagerAuthorized
+      },
+      {
         path: "candidates",
         name: "manager-candidates",
         component: () => import("../views/dashboard/manager/Candidates.vue"),

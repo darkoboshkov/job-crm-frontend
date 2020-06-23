@@ -429,6 +429,14 @@
       "request": "Request access"
     }
   },
+  "page_request_company": {
+    "title": "Request Access",
+    "description": "click on : Accept Request or Decline Request",
+    "button": {
+      "accept": "Accept Request",
+      "decline": "Decline Request"
+    }
+  },
   "page_detail_company": {
     "create_title": "Voeg nieuw bedrijf toe",
     "edit_title": "Bedrijfsgegevens",
@@ -505,6 +513,7 @@
     "edit": "Bedrijfsgegevens aanpassen",
     "form": {
       "name": "Bedrijfsnaam",
+      "type": "Company type",
       "kvk": "KVK-nummer",
       "limit_credit_safe": "Limiet creditsafe",
       "country": "Land",
