@@ -49,7 +49,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]:focus {
-  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  outline: none; /* Removes the blue border. */
 }
 
 input[type="range"]::-ms-track {

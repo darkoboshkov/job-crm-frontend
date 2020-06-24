@@ -128,8 +128,8 @@
           <div class="down">
             <ul>
               <li>
-                {{ $t("page_offer_detail.form.pay_rate") }}:
-                {{ model.payRate }}
+                {{ $t("page_offer_detail.hourly_wage") }}:
+                {{ model.hourlyWage }}
               </li>
               <li>
                 {{ model.hoursPerWeek }}
@@ -147,24 +147,22 @@
           <span>{{ $t("page_offer_detail.status_actions") }}</span>
           <span class="d-flex align-items-center contract-status">
             <i
-              v-if="model.intermediaryStatus === 'open'"
+              v-if="model.status === 'open'"
               class="hiway-crm-icon icon-dot mr-2 color-yellow"
               style="font-size: 0.3em;"
             />
             <i
-              v-else-if="model.intermediaryStatus === 'pending'"
+              v-else-if="model.status === 'pending'"
               class="hiway-crm-icon icon-dot mr-2 color-blue"
               style="font-size: 0.3em;"
             />
             <i
-              v-else-if="model.intermediaryStatus === 'active'"
+              v-else-if="model.status === 'active'"
               class="hiway-crm-icon icon-dot mr-2 color-green"
               style="font-size: 0.3em;"
             />
-            <template v-if="model.intermediaryStatus">
-              {{
-                $t("page_offer_detail.offer_states." + model.intermediaryStatus)
-              }}
+            <template v-if="model.status">
+              {{ $t("page_offer_detail.offer_states." + model.status) }}
             </template>
           </span>
         </div>
@@ -236,15 +234,6 @@
           </button>
 
           <button
-            v-if="edit"
-            class="btn btn-blue ml-2"
-            @click="openSignContractModal"
-            style="min-width:160px;"
-          >
-            {{ $t("page_offer_detail.button.lock") }}
-          </button>
-
-          <button
             class="btn ml-2"
             :class="signed ? 'btn-red' : 'btn-secondary'"
             @click.stop.prevent="toggleExportDropdown"
@@ -259,18 +248,18 @@
                 <div>
                   <i class="hiway-crm-icon icon-upload mr-3" />
                   <span>
-                    {{ $t("page_offer_detail.button.dropdown.company_export") }}
+                    {{ $t("page_offer_detail.button.dropdown.client_export") }}
                   </span>
                 </div>
                 <i class="hiway-crm-icon icon-angle-right ml-3" />
               </router-link>
             </li>
           </ul>
+
           <button
             class="btn ml-2"
             :class="signed ? 'btn-blue' : 'btn-secondary'"
             @click="viewContract"
-            :disabled="edit"
             style="min-width:160px;"
           >
             {{ $t("page_offer_detail.button.view_contract") }}
@@ -285,12 +274,9 @@
       </template>
       <div>
         <div class="item">
-          <div>CAO</div>
+          <div>{{ $t("page_offer_detail.form.cao") }}</div>
           <div v-if="edit">
-            <b-form-select
-              class="normal-size"
-              v-model="model.collectiveAgreement"
-            >
+            <b-form-select v-model="model.collectiveAgreement">
               <option
                 v-for="caoOption in caoOptions"
                 :value="caoOption._id"
@@ -303,12 +289,21 @@
           <div v-else class="text-right">{{ selectedCaoOption.name }}</div>
         </div>
         <div class="item">
-          <div>{{ $t("page_offer_detail.form.pay_rate") }}</div>
+          <div>{{ $t("page_offer_detail.form.wage") }}</div>
           <div v-if="edit">
-            <b-form-input type="number" v-model="model.payRate" />
+            <b-form-input v-model="model.wage" />
+          </div>
+          <div v-else type="number" class="text-right">
+            {{ model.wage }}
+          </div>
+        </div>
+        <div class="item">
+          <div>{{ $t("page_offer_detail.form.hourly_wage") }}</div>
+          <div v-if="edit">
+            <b-form-input type="number" v-model="model.hourlyWage" />
           </div>
           <div v-else class="text-right">
-            {{ model.payRate }}
+            {{ model.hourlyWage }}
           </div>
         </div>
         <div class="item">
@@ -470,12 +465,11 @@
                 </b-dropdown>
               </span>
               <span>
-                <button
-                  class="btn btn-transparent"
+                <i
+                  v-if="attachment.userId === user._id"
+                  class="hiway-crm-icon icon-bin"
                   @click="confirmDelete(attachment)"
-                >
-                  <i class="hiway-crm-icon icon-bin" />
-                </button>
+                />
               </span>
             </div>
           </li>
@@ -494,9 +488,9 @@
         :offer="model"
         :company="company"
         :manager="manager"
-        :worker="worker"
         :hiringCompany="hiringCompany"
         :hiringManager="hiringManager"
+        :worker="worker"
         :job="job"
       />
     </b-modal>
@@ -513,7 +507,61 @@
         </h1>
       </div>
       <div class="text-center mb-5">
-        {{ $t("page_offer_detail.modal.sign_contract.manager_description") }}
+        {{ $t("page_offer_detail.modal.sign_contract.description") }}
+      </div>
+      <div class="mb-5">
+        <div class="sign-item">
+          <div>
+            {{ $t("page_offer_detail.modal.sign_contract.payment_interval") }}
+          </div>
+          <div>
+            <b-form-select v-model="model.paymentInterval">
+              <option
+                v-for="option in paymentIntervalOptions"
+                :value="option.value"
+                :key="option.value"
+              >
+                {{ option.label }}
+              </option>
+            </b-form-select>
+          </div>
+        </div>
+        <div class="sign-item">
+          <div>
+            {{ $t("page_offer_detail.modal.sign_contract.discount_on_taxes") }}
+          </div>
+          <div>
+            <b-form-select v-model="model.discountOnTaxes">
+              <option
+                v-for="option in discountOnTaxesOptions"
+                :value="option.value"
+                :key="option.value"
+              >
+                {{ option.label }}
+              </option>
+            </b-form-select>
+          </div>
+        </div>
+        <div class="sign-item">
+          <div>
+            {{
+              $t(
+                "page_offer_detail.modal.sign_contract.work_earlier_as_flexworker"
+              )
+            }}
+          </div>
+          <div>
+            <b-form-select v-model="model.workedEarlierAsFlexWorker">
+              <option
+                v-for="option in workedEarlierAsFlexWorkerOptions"
+                :value="option.value"
+                :key="option.value"
+              >
+                {{ option.label }}
+              </option>
+            </b-form-select>
+          </div>
+        </div>
       </div>
       <div class="mb-4">
         <b-form-checkbox
@@ -534,76 +582,9 @@
           {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
         </button>
 
-        <button
-          class="btn btn-blue"
-          @click="lockSignSend"
-          style="min-width:160px;"
-        >
+        <button class="btn btn-blue" @click="sign" style="min-width:160px;">
           {{ $t("page_offer_detail.modal.sign_contract.sign_contract") }}
         </button>
-      </div>
-    </b-modal>
-    <b-modal
-      ref="modal-validate-contract"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      size="lg"
-      modal-class="modal-validate-contract"
-    >
-      <h2 class="text-center color-red mt-4">
-        {{ $t("page_offer_detail.modal.validate_contract.title") }}
-      </h2>
-      <h4 class="text-center color-gray">
-        {{ $t("page_offer_detail.modal.validate_contract.sub_title") }}
-      </h4>
-      <div class="pl-3" v-if="validations.worker.length">
-        <p class="mt-4 font-weight-bold">
-          {{ $t("page_offer_detail.modal.validate_contract.worker_info") }}
-        </p>
-        <b-form-invalid-feedback
-          v-for="(item, index) in validations.worker"
-          :key="index + 'worker'"
-          class="d-block pl-3"
-        >
-          {{ $t(`validation.${item}`) }}
-        </b-form-invalid-feedback>
-      </div>
-      <div class="pl-3" v-if="validations.company.length">
-        <p class="mt-4 font-weight-bold">
-          {{ $t("page_offer_detail.modal.validate_contract.company_info") }}
-        </p>
-        <b-form-invalid-feedback
-          v-for="(item, index) in validations.company"
-          :key="index + 'company'"
-          class="d-block pl-3"
-        >
-          {{ $t(`validation.${item}`) }}
-        </b-form-invalid-feedback>
-      </div>
-      <div class="pl-3" v-if="validations.manager.length">
-        <p class="mt-4 font-weight-bold">
-          {{ $t("page_offer_detail.modal.validate_contract.manager_info") }}
-        </p>
-        <b-form-invalid-feedback
-          v-for="(item, index) in validations.manager"
-          :key="index + 'manager'"
-          class="d-block pl-3"
-        >
-          {{ $t(`validation.${item}`) }}
-        </b-form-invalid-feedback>
-      </div>
-      <div class="pl-3" v-if="validations.jobOffer.length">
-        <p class="mt-4 font-weight-bold">
-          {{ $t("page_offer_detail.modal.validate_contract.job_offer_info") }}
-        </p>
-        <b-form-invalid-feedback
-          v-for="(item, index) in validations.jobOffer"
-          :key="index + 'jobOffer'"
-          class="d-block pl-3"
-        >
-          {{ $t(`validation.${item}`) }}
-        </b-form-invalid-feedback>
       </div>
     </b-modal>
   </div>
@@ -621,19 +602,16 @@ import {
 } from "@/utils";
 
 export default {
-  name: "DetailsIntermediary",
+  name: "Details",
   components: {
     Contract: Contract
   },
   computed: {
-    signed() {
-      return (
-        this.model.intermediaryStatus === "active" ||
-        this.model.intermediaryStatus === "completed"
-      );
-    },
     edit() {
-      return this.model.intermediaryStatus === "open";
+      return false;
+    },
+    user() {
+      return this.$store.state.user;
     },
     selectedCaoOption() {
       return (
@@ -653,13 +631,17 @@ export default {
         "hiringManager",
         this.model.intermediaryStatus
       );
+    },
+    signed() {
+      return (
+        this.model.status === "active" || this.model.status === "completed"
+      );
     }
   },
   data() {
     return {
       exportingContract: false,
       isExportCollapsed: false,
-      isOtherCollapsed: false,
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
       model: {
@@ -674,7 +656,9 @@ export default {
         startDate: null,
         endDate: null,
         status: null,
-        intermediaryStatus: null
+        paymentInterval: "",
+        discountOnTaxes: "",
+        workedEarlierAsFlexWorker: ""
       },
       company: {},
       job: {},
@@ -684,153 +668,62 @@ export default {
       worker: {},
       caoOptions: [],
       imageData: {},
-      offerContract: null,
       attachments: [],
+      offerContract: null,
+      agreement: "not_accepted",
       paymentType: [],
-      validations: {
-        worker: [],
-        company: [],
-        manager: [],
-        jobOffer: []
-      },
-      agreement: "not_accepted"
+      paymentIntervalOptions: [
+        {
+          label: "Week",
+          value: "each-week"
+        },
+        {
+          label: "4 weeks",
+          value: "each-4-weeks"
+        },
+        {
+          label: "Month",
+          value: "each-month"
+        }
+      ],
+      discountOnTaxesOptions: [
+        {
+          label: "Yes",
+          value: "yes"
+        },
+        {
+          label: "No",
+          value: "no"
+        }
+      ],
+      workedEarlierAsFlexWorkerOptions: [
+        {
+          label: "No",
+          value: "no"
+        },
+        {
+          label: "Yes, in construction",
+          value: "in-construction"
+        },
+        {
+          label: "Yes, not in construction",
+          value: "not-in-construction"
+        }
+      ]
     };
   },
   mounted() {
-    window.addEventListener("click", this.closeDropdown.bind(this));
     this.getOfferDetails();
     this.getCaoOptions();
     this.getPaymentType();
+    window.addEventListener("click", this.closeDropdown.bind(this));
   },
   beforeDestroy() {
     document.removeEventListener("click", this.closeDropdown);
   },
   methods: {
-    validate() {
-      const worker = this.model.worker[0];
-      const company = this.model.company[0];
-      const manager = this.model.manager[0];
-
-      this.validations.worker = [];
-      this.validations.company = [];
-      this.validations.manager = [];
-      this.validations.jobOffer = [];
-
-      //worker validation
-      if (!worker.firstName) {
-        this.validations.worker.push("WORKER_FIRST_NAME_INVALID");
-      }
-      if (!worker.lastName) {
-        this.validations.worker.push("WORKER_LAST_NAME_INVALID");
-      }
-      if (!worker.street) {
-        this.validations.worker.push("WORKER_STREET_INVALID");
-      }
-      if (!worker.city) {
-        this.validations.worker.push("WORKER_CITY_INVALID");
-      }
-      if (!worker.postalCode) {
-        this.validations.worker.push("WORKER_POSTAL_CODE_INVALID");
-      }
-      if (!worker.houseNumber) {
-        this.validations.worker.push("WORKER_HOUSE_NUMBER_INVALID");
-      }
-      if (!worker.socialSecurityNumber) {
-        this.validations.worker.push("WORKER_SOCIAL_SECURITY_NUMBER_INVALID");
-      }
-      if (!worker.identificationExpirationDate) {
-        this.validations.worker.push(
-          "WORKER_IDENTIFICATION_EXPIRATION_DATE_INVALID"
-        );
-      }
-      //company validation
-      if (!company.city) {
-        this.validations.company.push("COMPANY_CITY_INVALID");
-      }
-      if (!company.street) {
-        this.validations.company.push("COMPANY_STREET_INVALID");
-      }
-      if (!company.houseNumber) {
-        this.validations.company.push("COMPANY_HOUSE_NUMBER_INVALID");
-      }
-      if (!company.postalCode) {
-        this.validations.company.push("COMPANY_POSTAL_CODE_INVALID");
-      }
-      //manager validation
-      if (!manager.firstName) {
-        this.validations.manager.push("MANAGER_FIRST_NAME_INVALID");
-      }
-      if (!manager.lastName) {
-        this.validations.manager.push("MANAGER_LAST_NAME_INVALID");
-      }
-      if (!manager.honorificTitle) {
-        this.validations.manager.push("MANAGER_HONORIFIC_TITLE_INVALID");
-      }
-      if (!manager.phone) {
-        this.validations.manager.push("MANAGER_PHONE_NUMBER_INVALID");
-      }
-      //jobOffer validation
-      if (!this.model.startDate) {
-        this.validations.jobOffer.push("OFFER_START_DATE_INVALID");
-      }
-      if (!this.model.collectiveAgreement) {
-        this.validations.jobOffer.push("OFFER_CAO_INVALID");
-      }
-      if (this.model.wage < 0) {
-        this.validations.jobOffer.push("OFFER_WAGE_INVALID");
-      }
-      if (this.model.hourlyWage <= 0) {
-        this.validations.jobOffer.push("OFFER_HOURLY_WAGE_INVALID");
-      }
-      if (this.model.payRate < 0) {
-        this.validations.jobOffer.push("OFFER_PAY_RATE_INVALID");
-      }
-      if (this.model.hoursPerWeek <= 0) {
-        this.validations.jobOffer.push("OFFER_HOURS_PER_WEEK_INVALID");
-      }
-      if (this.model.travelExpenses < 0) {
-        this.validations.jobOffer.push(
-          "OFFER_TRAVEL_COMPENSATION_PER_KM_INVALID"
-        );
-      }
-      if (this.model.oneWayTravelExpenseDistance < 0) {
-        this.validations.jobOffer.push("OFFER_TRAVEL_ONE_WAY_DISTANCE_INVALID");
-      }
-      if (this.model.travelHours < 0) {
-        this.validations.jobOffer.push(
-          "OFFER_TRAVEL_TIME_COMPENSATION_PER_WEEK_INVALID"
-        );
-      }
-      if (!this.model.otherExpenses < 0) {
-        this.validations.jobOffer.push(
-          "OFFER_TRAVEL_WEEKLY_COMPENSATION_INVALID"
-        );
-      }
-      return (
-        this.validations.worker.length +
-          this.validations.company.length +
-          this.validations.manager.length +
-          this.validations.jobOffer.length ===
-        0
-      );
-    },
     toggleExportDropdown() {
       this.isExportCollapsed = !this.isExportCollapsed;
-    },
-    decline() {
-      jobOffersApi
-        .declineHiringCompany(this.model)
-        .then(res => {
-          this.getOfferDetails();
-        })
-        .catch(e => {
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_offer_detail.modal.decline_fail.title"),
-            subTitle: this.$t("page_offer_detail.modal.decline_fail.sub_title"),
-            button: this.$t("page_offer_detail.modal.decline_fail.continue")
-          });
-        });
     },
     closeDropdown() {
       this.isExportCollapsed = false;
@@ -846,11 +739,6 @@ export default {
           downloadFile(res, attachment.name);
         });
     },
-    getPaymentType() {
-      constantsApi.getAll().then(res => {
-        this.paymentType = res.paymentType;
-      });
-    },
     getCaoOptions() {
       jobOffersApi
         .getCaoOptions({
@@ -860,13 +748,17 @@ export default {
           this.caoOptions = res;
         });
     },
+    getPaymentType() {
+      constantsApi.getAll().then(res => {
+        this.paymentType = res.paymentType;
+      });
+    },
     openSignContractModal() {
       this.$refs["modal-sign-contract"].show();
     },
-    lockSignSend() {
+    sign() {
       this.$refs["modal-sign-contract"].hide();
       if (this.agreement !== "accepted") {
-        this.$refs["modal-sign-contract"].hide();
         this.$store.dispatch("updateShowErrorModal", true);
         this.$store.dispatch("updateErrorModalContent", {
           title: this.$t("page_offer_detail.modal.accept_fail.title"),
@@ -875,45 +767,38 @@ export default {
         });
         return;
       }
-      if (!this.validate()) {
-        this.$refs["modal-validate-contract"].show();
-      } else {
-        jobOffersApi
-          .hiringCompanySign(this.model)
-          .then(res => {
-            this.getOfferDetails();
-            this.$refs["modal-sign-contract"].hide();
-            this.$store.dispatch("updateShowSuccessModal", true);
-            this.$store.dispatch("updateSuccessModalContent", {
-              title: this.$t("page_offer_detail.modal.sign_success.title"),
-              subTitle: this.$t(
-                "page_offer_detail.modal.sign_success.sub_title"
-              ),
-              button: this.$t("page_offer_detail.modal.sign_success.continue")
-            });
-          })
-          .catch(e => {
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_offer_detail.modal.lock_fail.title"),
-              subTitle: this.$t("page_offer_detail.modal.lock_fail.sub_title"),
-              button: this.$t("page_offer_detail.modal.lock_fail.continue")
-            });
-          });
-      }
-    },
-    adjust() {
       jobOffersApi
-        .adjust(this.model)
+        .sign(this.model)
+        .then(res => {
+          this.getOfferDetails();
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_offer_detail.modal.sign_success.title"),
+            subTitle: this.$t("page_offer_detail.modal.sign_success.sub_title"),
+            button: this.$t("page_offer_detail.modal.sign_success.continue")
+          });
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_offer_detail.modal.sign_fail.title"),
+            subTitle: this.$t("page_offer_detail.modal.sign_fail.sub_title"),
+            button: this.$t("page_offer_detail.modal.sign_fail.continue")
+          });
+        });
+    },
+    decline() {
+      jobOffersApi
+        .decline(this.model)
         .then(res => {
           this.getOfferDetails();
         })
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
           this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_offer_detail.modal.adjust_fail.title"),
-            subTitle: this.$t("page_offer_detail.modal.adjust_fail.sub_title"),
-            button: this.$t("page_offer_detail.modal.adjust_fail.continue")
+            title: this.$t("page_offer_detail.modal.decline_fail.title"),
+            subTitle: this.$t("page_offer_detail.modal.decline_fail.sub_title"),
+            button: this.$t("page_offer_detail.modal.decline_fail.continue")
           });
         });
     },
@@ -922,9 +807,10 @@ export default {
     },
     exportContract() {
       jobOffersApi
-        .downloadCompanyContract({
+        .downloadWorkerContract({
           companyId: this.companyId,
-          id: this.offerId
+          id: this.offerId,
+          offerName: this.offerContract.name
         })
         .then(res => {
           downloadFile(res, this.offerContract.name);
@@ -939,7 +825,7 @@ export default {
           res.startDate = this.getISODateString(res.startDate);
           res.endDate = this.getISODateString(res.endDate);
           this.model = { ...this.model, ...res };
-          if (res.intermediaryStatus === "active" && res.contractData) {
+          if (res.status === "active" && res.contractData) {
             this.job = res.contractData.job;
             this.company = res.contractData.company;
             this.worker = res.contractData.worker;
@@ -955,7 +841,7 @@ export default {
             this.hiringCompany = res.hiringCompany[0];
           }
           this.attachments = res.attachments;
-          this.offerContract = res.contractData?.companyContractDoc;
+          this.offerContract = res.contractData?.workerContractDoc;
         })
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
@@ -1059,6 +945,13 @@ export default {
       copyToClipboard(phone, `Successfully copied the phone number ${phone}`);
     }
   },
+  watch: {
+    "model.status"(value) {
+      if (value === "open") {
+        this.$router.push({ name: "worker-offers" });
+      }
+    }
+  }
 };
 </script>
 

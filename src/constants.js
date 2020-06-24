@@ -410,6 +410,11 @@ export const offersTable = {
       name: "endDate"
     },
     {
+      label: i18n.t("page_offers.table.contract_type"),
+      field: "contractType",
+      name: "contractType"
+    },
+    {
       label: i18n.t("page_offers.table.status"),
       field: "status",
       name: "status"
@@ -629,19 +634,34 @@ export const workerOffersTable = {
       name: "image"
     },
     {
+      label: i18n.t("page_offers.table.worker"),
+      field: "worker",
+      name: "worker"
+    },
+    {
       label: i18n.t("page_offers.table.job"),
       field: "job",
       name: "job"
     },
     {
-      label: i18n.t("page_offers.table.manager"),
-      field: "manager",
-      name: "manager"
+      label: i18n.t("page_offers.table.hiring_company"),
+      field: "hiringCompany.name",
+      name: "hiringCompany"
     },
     {
-      label: i18n.t("page_offers.table.created_at"),
-      field: "createdAt",
-      name: "createdAt"
+      label: i18n.t("page_offers.table.start_date"),
+      field: "startDate",
+      name: "startDate"
+    },
+    {
+      label: i18n.t("page_offers.table.end_date"),
+      field: "endDate",
+      name: "endDate"
+    },
+    {
+      label: i18n.t("page_offers.table.contract_type"),
+      field: "contractType",
+      name: "contractType"
     },
     {
       label: i18n.t("page_offers.table.status"),

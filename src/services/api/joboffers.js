@@ -77,10 +77,27 @@ export default {
       config
     );
   },
+  hiringCompanySign(params, config = {}) {
+    // "Sign" Contract by manager
+    return request(
+      "patch",
+      `/joboffers/${params.hiringCompanyId}/${params._id}/contract/hiringCompanySign`,
+      params,
+      config
+    );
+  },
   decline(params, config = {}) {
     return request(
       "patch",
       `/joboffers/${params.companyId}/${params._id}/contract/decline`,
+      params,
+      config
+    );
+  },
+  declineHiringCompany(params, config = {}) {
+    return request(
+      "patch",
+      `/joboffers/${params.companyId}/${params._id}/contract/declineHiring`,
       params,
       config
     );
@@ -118,6 +135,16 @@ export default {
     return request(
       "post",
       `/joboffers/${params.companyId}/${params.id}/worker-contract/download`,
+      {},
+      {
+        responseType: "blob"
+      }
+    );
+  },
+  downloadCompanyContract(params, config = {}) {
+    return request(
+      "post",
+      `/joboffers/${params.companyId}/${params.id}/company-contract/download`,
       {},
       {
         responseType: "blob"

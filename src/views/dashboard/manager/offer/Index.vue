@@ -59,18 +59,24 @@
               </b-dropdown-item>
             </b-dropdown>
           </div>
-          <div v-else-if="props.column.field === 'status'">
-            {{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
-          </div>
+
+					<div v-else-if="props.column.field === 'status'">
+						{{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
+					</div>
+
           <div
             v-else-if="props.column.field === 'image'"
             class="d-flex align-items-center"
           >
             <div class="avatar-image mr-2">
-              <img
-                v-if="props.row.company.logo"
-                :src="props.row.company.logo | appUrlFormatter"
+							<!-- eslint-disable -->
+              <img v-if="props.row.contractType === 'company' && props.row.hiringCompany.logo"
+                :src="props.row.hiringCompany.logo | appUrlFormatter"
               />
+              <img v-if="props.row.contractType === 'worker' && props.row.workerImage"
+                :src="props.row.workerImage | appUrlFormatter"
+              />
+							<!-- eslint-enable -->
             </div>
           </div>
           <span v-else>
@@ -153,13 +159,28 @@ export default {
     },
     goToOffer(props) {
       if (props && props.row) {
-        if (props.row.companyId === props.row.hiringCompanyId) {
+        if (
+          props.row.companyId === props.row.hiringCompanyId &&
+          this.companyId === props.row.companyId
+        ) {
           this.$router.push(
             `/${this.role}/dashboard/joboffers/${props.row._id}`
           );
-        } else {
+        }
+        if (
+          props.row.companyId !== props.row.hiringCompanyId &&
+          this.companyId === props.row.companyId
+        ) {
           this.$router.push(
             `/${this.role}/dashboard/joboffers/${props.row._id}/intermediary`
+          );
+        }
+        if (
+          props.row.companyId !== props.row.hiringCompanyId &&
+          this.companyId !== props.row.companyId
+        ) {
+          this.$router.push(
+            `/${this.role}/dashboard/joboffers/${props.row._id}/hiringCompany`
           );
         }
       }
@@ -181,9 +202,13 @@ export default {
             row.startDate = this.getDateString(row.startDate);
             row.endDate = this.getDateString(row.endDate);
             row.manager = this.getFullName(row.manager[0]);
+            row.workerImage = row.worker[0].image;
             row.worker = this.getFullName(row.worker[0]);
+            row.contractType = row.companyId === row.hiringCompanyId ? "worker" : "company";
+
             return row;
           });
+
           this.totalRows = res.totalDocs;
         });
     },

@@ -131,6 +131,15 @@ export default {
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}`);
       }
+      if (
+        props &&
+        props.row &&
+        props.row.companyId !== props.row.hiringCompanyId
+      ) {
+        this.$router.push(
+          `/${this.role}/dashboard/joboffers/${props.row._id}/intermediary`
+        );
+      }
     },
     getActiveOffers() {
       jobOffersApi
@@ -144,6 +153,8 @@ export default {
             row.image = row.job ? row.job[0].image : "";
             row.company = row.company[0];
             row.hiringCompany = row.hiringCompany[0];
+            row.startDate = this.getDateString(row.startDate);
+            row.endDate = this.getDateString(row.endDate);
             row.createdAt = this.getDateString(row.createdAt);
             row.manager = this.getFullName(row.manager[0]);
             return row;

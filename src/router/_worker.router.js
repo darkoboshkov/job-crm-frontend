@@ -37,6 +37,13 @@ export default [
         beforeEnter: isWorkerAuthorized
       },
       {
+        path: "joboffers/:offerId/intermediary",
+        name: "worker-offer-details-intermediary",
+        component: () =>
+          import("../views/dashboard/worker/offer/DetailsIntermediary.vue"),
+        beforeEnter: isWorkerAuthorized
+      },
+      {
         path: "chats",
         name: "worker-chats",
         component: () => import("../views/dashboard/worker/Chats.vue"),

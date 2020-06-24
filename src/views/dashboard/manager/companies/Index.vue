@@ -118,7 +118,7 @@
 import TableFilter from "@/components/common/TableFilter";
 import companiesApi from "@/services/api/companies";
 import { companiesTable } from "@/constants";
-import AccessRequestModal from "../companies/CompanyAccessRequest";
+import AccessRequestModal from "../companies/CompanyRequest";
 
 export default {
   name: "CompanyList",
