@@ -103,7 +103,8 @@
     "pending-worker": "Pending Worker",
     "not-able-to-see": "Not able to see",
     "pending": "Pending",
-    "signed": "Signed"
+    "signed": "Signed",
+    "failed": "Failed"
   },
   "profession": {
     "administration": "Administration",
@@ -772,9 +773,10 @@
     "intermediate": "intermediay",
     "offer_states": {
       "open": "Open",
-      "pending-worker": "Pending for worker",
+      "pending": "Pending",
       "active": "Active",
-      "completed": "Completed"
+      "completed": "Completed",
+      "failed": "Failed"
     },
     "start_date": "Start date",
     "hourly_wage": "Hourly wage",
@@ -807,8 +809,8 @@
       "upload": "Upload",
       "other": "Other options",
       "dropdown": {
-        "company_export": "Export Company Contract",
-        "client_export": "Export Client Contract",
+        "company_export": "Company Contract",
+        "client_export": "Client Contract",
         "extend": "Extend contract",
         "early": "Early termination"
       }
@@ -1274,6 +1276,7 @@
       "created_at": "Created at",
       "start_date": "Start Date",
       "end_date": "End Date",
+      "contract_type": "Contract Type",
       "status": "Status",
       "view_offer": "View job offer",
       "actions": "Actions"
@@ -1293,6 +1296,11 @@
       "disallow": {
         "title": "You can't access to the page",
         "sub_title": "Manager is currently editing the job offer details",
+        "continue": "Continue"
+      },
+      "failed": {
+        "title": "Reject",
+        "sub_title": "We'll find a nice name later",
         "continue": "Continue"
       }
     }

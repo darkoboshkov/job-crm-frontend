@@ -45,6 +45,29 @@
       }
     }
   }
+  .export-dropdown-company {
+    display: table;
+    border: 1px solid #eeeeee;
+    padding-left: 0px;
+    margin: 0px;
+    position: absolute;
+    right: 65px;
+    z-index: 1;
+    background-color: white;
+    li {
+      border-bottom: 1px solid #eeeeee;
+      list-style-type: none;
+      padding: 5px;
+      a{
+        width: 270px;
+        justify-content: space-between;
+        display: flex;
+      }
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
   .matching-list {
     .matching-item {
       padding: 30px;

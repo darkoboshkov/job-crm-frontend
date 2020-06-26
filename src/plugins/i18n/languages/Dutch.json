@@ -103,7 +103,8 @@
     "pending-worker": "In afwachting van werknemer",
     "not-able-to-see": "Verborgen",
     "pending": "In afwachting",
-    "signed": "Getekend"
+    "signed": "Getekend",
+    "failed": "Failed"
   },
   "profession": {
     "administration": "Administratie",
@@ -773,7 +774,9 @@
       "open": "Open",
       "pending-worker": "In afwachting van werknemer",
       "active": "Actief",
-      "completed": "Voltooid"
+      "pending": "Pending",
+      "completed": "Voltooid",
+      "failed": "Failed"
     },
     "start_date": "Startdatum",
     "hourly_wage": "Uurloon",

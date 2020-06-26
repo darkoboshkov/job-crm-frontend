@@ -147,7 +147,7 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
-        path: "joboffers/:offerId/hiringCompany",
+        path: "joboffers/:offerId/hiring-company",
         name: "manager-offer-hiring-details",
         component: () =>
           import("../views/dashboard/manager/offer/DetailsHiringCompany.vue"),

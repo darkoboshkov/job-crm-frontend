@@ -947,7 +947,7 @@ export default {
   },
   watch: {
     "model.status"(value) {
-      if (value === "open") {
+      if (value === "open" || value === "failed") {
         this.$router.push({ name: "worker-offers" });
       }
     }

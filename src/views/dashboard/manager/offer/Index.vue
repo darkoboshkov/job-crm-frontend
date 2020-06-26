@@ -60,22 +60,39 @@
             </b-dropdown>
           </div>
 
-					<div v-else-if="props.column.field === 'status'">
-						{{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
-					</div>
+          <div
+            v-else-if="
+              props.column.field === 'status' &&
+                props.row.contractType === 'worker'
+            "
+          >
+            {{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
+          </div>
+          <div
+            v-else-if="
+              props.column.field === 'status' &&
+                props.row.contractType === 'company'
+            "
+          >
+            {{
+              props.row.intermediaryStatus
+                ? $t(`status.${props.row.intermediaryStatus}`)
+                : ""
+            }}
+          </div>
 
           <div
             v-else-if="props.column.field === 'image'"
             class="d-flex align-items-center"
           >
             <div class="avatar-image mr-2">
-							<!-- eslint-disable -->
-              <img v-if="props.row.contractType === 'company' && props.row.hiringCompany.logo"
-                :src="props.row.hiringCompany.logo | appUrlFormatter"
-              />
-              <img v-if="props.row.contractType === 'worker' && props.row.workerImage"
-                :src="props.row.workerImage | appUrlFormatter"
-              />
+              <!-- eslint-disable -->
+							<img v-if="props.row.contractType === 'company' && props.row.hiringCompany.logo"
+									 :src="props.row.hiringCompany.logo | appUrlFormatter"
+							/>
+							<img v-if="props.row.contractType === 'worker' && props.row.workerImage"
+									 :src="props.row.workerImage | appUrlFormatter"
+							/>
 							<!-- eslint-enable -->
             </div>
           </div>
@@ -171,6 +188,18 @@ export default {
           props.row.companyId !== props.row.hiringCompanyId &&
           this.companyId === props.row.companyId
         ) {
+          if (
+            props.row.intermediaryStatus === "failed" ||
+            props.row.status === "failed"
+          ) {
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_offers.modal.failed.title"),
+              subTitle: this.$t("page_offers.modal.failed.sub_title"),
+              button: ""
+            });
+            return false;
+          }
           this.$router.push(
             `/${this.role}/dashboard/joboffers/${props.row._id}/intermediary`
           );
@@ -179,8 +208,20 @@ export default {
           props.row.companyId !== props.row.hiringCompanyId &&
           this.companyId !== props.row.companyId
         ) {
+          if (
+            props.row.intermediaryStatus === "open" ||
+            props.row.intermediaryStatus === "failed"
+          ) {
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_offers.modal.disallow.title"),
+              subTitle: this.$t("page_offers.modal.disallow.sub_title"),
+              button: ""
+            });
+            return false;
+          }
           this.$router.push(
-            `/${this.role}/dashboard/joboffers/${props.row._id}/hiringCompany`
+            `/${this.role}/dashboard/joboffers/${props.row._id}/hiring-company`
           );
         }
       }
@@ -204,7 +245,8 @@ export default {
             row.manager = this.getFullName(row.manager[0]);
             row.workerImage = row.worker[0].image;
             row.worker = this.getFullName(row.worker[0]);
-            row.contractType = row.companyId === row.hiringCompanyId ? "worker" : "company";
+            row.contractType =
+              row.companyId === row.hiringCompanyId ? "worker" : "company";
 
             return row;
           });

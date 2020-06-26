@@ -236,15 +236,6 @@
           </button>
 
           <button
-            v-if="edit"
-            class="btn btn-blue ml-2"
-            @click="openSignContractModal"
-            style="min-width:160px;"
-          >
-            {{ $t("page_offer_detail.button.lock") }}
-          </button>
-
-          <button
             class="btn ml-2"
             :class="signed ? 'btn-red' : 'btn-secondary'"
             @click.stop.prevent="toggleExportDropdown"
@@ -643,7 +634,7 @@ export default {
       );
     },
     managerState() {
-      return serializeContractStatus("manager", this.model.status);
+      return serializeContractStatus("manager", this.model.intermediaryStatus);
     },
     workerState() {
       return serializeContractStatus("worker", this.model.status);
@@ -659,7 +650,6 @@ export default {
     return {
       exportingContract: false,
       isExportCollapsed: false,
-      isOtherCollapsed: false,
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
       model: {
@@ -991,7 +981,6 @@ export default {
       const data = new FormData();
       data.append("file", this.imageData.file);
       this.$store.dispatch("updateLoading", true);
-
       jobOffersApi
         .upload(data)
         .then(response => {
@@ -1059,6 +1048,13 @@ export default {
       copyToClipboard(phone, `Successfully copied the phone number ${phone}`);
     }
   },
+  watch: {
+    "model.intermediaryStatus"(value) {
+      if (value === "open" || value === "failed") {
+        this.$router.push({ name: "manager-offers" });
+      }
+    }
+  }
 };
 </script>
 

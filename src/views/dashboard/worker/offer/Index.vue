@@ -119,7 +119,7 @@ export default {
       }
     },
     goToOffer(props) {
-      if (props.row.status === "open") {
+      if (props.row.status === "open" || props.row.status === "failed") {
         this.$store.dispatch("updateShowErrorModal", true);
         this.$store.dispatch("updateErrorModalContent", {
           title: this.$t("page_offers.modal.disallow.title"),
@@ -157,6 +157,8 @@ export default {
             row.endDate = this.getDateString(row.endDate);
             row.createdAt = this.getDateString(row.createdAt);
             row.manager = this.getFullName(row.manager[0]);
+            row.worker = this.getFullName(row.worker[0]);
+            row.contractType = "worker";
             return row;
           });
           this.totalRows = res.totalDocs;

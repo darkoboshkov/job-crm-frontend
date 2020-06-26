@@ -81,7 +81,7 @@ export default {
     // "Sign" Contract by manager
     return request(
       "patch",
-      `/joboffers/${params.hiringCompanyId}/${params._id}/contract/hiringCompanySign`,
+      `/joboffers/${params.hiringCompanyId}/${params._id}/company-contract/sign`,
       params,
       config
     );
@@ -97,7 +97,7 @@ export default {
   declineHiringCompany(params, config = {}) {
     return request(
       "patch",
-      `/joboffers/${params.companyId}/${params._id}/contract/declineHiring`,
+      `/joboffers/${params.hiringCompanyId}/${params._id}/company-contract/decline`,
       params,
       config
     );
