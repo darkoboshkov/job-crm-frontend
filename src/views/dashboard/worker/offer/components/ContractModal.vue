@@ -5,6 +5,7 @@
     :hide-footer="true"
     :hide-header="true"
     centered
+		v-model="showModal"
   >
     <div id="joboffer_contract" class="p-3">
       <div class="text-center">
