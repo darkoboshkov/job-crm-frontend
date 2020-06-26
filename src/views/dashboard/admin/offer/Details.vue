@@ -197,7 +197,7 @@
           <button
             class="btn ml-2"
             :class="signed ? 'btn-blue' : 'btn-secondary'"
-            @click="viewContract"
+            @click="contractModal = true"
             :disabled="edit"
             style="min-width:160px;"
           >
@@ -426,25 +426,6 @@
         </ul>
       </div>
     </b-card>
-
-    <b-modal
-      ref="modal-view-contract"
-      size="lg"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      :modal-class="{ invisible: exportingContract }"
-    >
-      <Contract
-        :offer="model"
-        :company="company"
-        :manager="manager"
-        :worker="worker"
-        :hiringCompany="hiringCompany"
-        :hiringManager="hiringManager"
-        :job="job"
-      />
-    </b-modal>
     <b-modal
       ref="modal-sign-contract"
       :hide-footer="true"
@@ -473,7 +454,7 @@
       <div class="d-flex justify-content-around">
         <button
           class="btn btn-red"
-          @click="viewContract"
+          @click="contractModal = true"
           style="min-width:160px;"
         >
           {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
@@ -489,86 +470,57 @@
       </div>
     </b-modal>
     <b-modal
-      ref="modal-validate-contract"
+      ref="modal-view-contract"
+      size="lg"
       :hide-footer="true"
       :hide-header="true"
       centered
-      size="lg"
-      modal-class="modal-validate-contract"
+      :modal-class="{ invisible: exportingContract }"
     >
-      <h2 class="text-center color-red mt-4">
-        {{ $t("page_offer_detail.modal.validate_contract.title") }}
-      </h2>
-      <h4 class="text-center color-gray">
-        {{ $t("page_offer_detail.modal.validate_contract.sub_title") }}
-      </h4>
-      <div class="pl-5" v-if="validations.worker.length">
-        <p class="mt-4 font-weight-bold">
-          {{ $t("page_offer_detail.modal.validate_contract.worker_info") }}
-        </p>
-        <b-form-invalid-feedback
-          v-for="(item, index) in validations.worker"
-          :key="index + 'worker'"
-          class="d-block pl-3"
-        >
-          {{ $t(`validation.${item}`) }}
-        </b-form-invalid-feedback>
-      </div>
-      <div class="pl-5" v-if="validations.company.length">
-        <p class="mt-4 font-weight-bold">
-          {{ $t("page_offer_detail.modal.validate_contract.company_info") }}
-        </p>
-        <b-form-invalid-feedback
-          v-for="(item, index) in validations.company"
-          :key="index + 'company'"
-          class="d-block pl-3"
-        >
-          {{ $t(`validation.${item}`) }}
-        </b-form-invalid-feedback>
-      </div>
-      <div class="pl-5" v-if="validations.manager.length">
-        <p class="mt-4 font-weight-bold">
-          {{ $t("page_offer_detail.modal.validate_contract.manager_info") }}
-        </p>
-        <b-form-invalid-feedback
-          v-for="(item, index) in validations.manager"
-          :key="index + 'manager'"
-          class="d-block pl-3"
-        >
-          {{ $t(`validation.${item}`) }}
-        </b-form-invalid-feedback>
-      </div>
-      <div class="pl-5" v-if="validations.jobOffer.length">
-        <p class="mt-4 font-weight-bold">
-          {{ $t("page_offer_detail.modal.validate_contract.job_offer_info") }}
-        </p>
-        <b-form-invalid-feedback
-          v-for="(item, index) in validations.jobOffer"
-          :key="index + 'jobOffer'"
-          class="d-block pl-3"
-        >
-          {{ $t(`validation.${item}`) }}
-        </b-form-invalid-feedback>
-      </div>
+      <Contract
+        :offer="model"
+        :company="company"
+        :manager="manager"
+        :worker="worker"
+        :hiringCompany="hiringCompany"
+        :hiringManager="hiringManager"
+        :job="job"
+      />
     </b-modal>
+    <contract-modal
+      :offer="model"
+      :company="company"
+      :manager="manager"
+      :worker="worker"
+      :hiringCompany="hiringCompany"
+      :hiringManager="hiringManager"
+      :job="job"
+      :modal-open.sync="contractModal"
+    />
+    <sign-validation-modal
+      :validations="validations"
+      :modal-open.sync="signValidationModal"
+    />
   </div>
 </template>
 
 <script>
 import jobOffersApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
-import Contract from "./Contract";
+import ContractModal from "./components/ContractModal";
+import SignValidationModal from "./components/SignValidationModal";
+
 import {
   serializeContractStatus,
   downloadFile,
-  exportPDF,
   copyToClipboard
 } from "@/utils";
 
 export default {
   name: "Details",
   components: {
-    Contract: Contract
+    ContractModal,
+    SignValidationModal
   },
   computed: {
     signed() {
@@ -628,7 +580,9 @@ export default {
         manager: [],
         jobOffer: []
       },
-      agreement: "not_accepted"
+      agreement: "not_accepted",
+      contractModal: false,
+      signValidationModal: false
     };
   },
   mounted() {
@@ -787,7 +741,7 @@ export default {
         return;
       }
       if (!this.validate()) {
-        this.$refs["modal-validate-contract"].show();
+        this.signValidationModal = true;
       } else {
         jobOffersApi
           .lock(this.model)
@@ -832,9 +786,6 @@ export default {
             button: this.$t("page_offer_detail.modal.adjust_fail.continue")
           });
         });
-    },
-    viewContract() {
-      this.$refs["modal-view-contract"].show();
     },
     exportContract() {
       jobOffersApi

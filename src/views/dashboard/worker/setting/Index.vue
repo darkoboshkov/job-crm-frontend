@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import SettingAccount from "./SettingAccount";
-import ResetPassword from "./ResetPassword";
 import Localization from "@/components/common/Localization";
+import SettingAccount from "./components/SettingAccount";
+import ResetPassword from "./components/ResetPassword";
 
 export default {
   name: "Setting",

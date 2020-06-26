@@ -40,13 +40,6 @@ export default [
         beforeEnter: isManagerAuthorized
       },
       {
-        path: "companies/request",
-        name: "manager-companies-request",
-        component: () =>
-          import("../views/dashboard/manager/companies/CompanyRequest.vue"),
-        beforeEnter: isManagerAuthorized
-      },
-      {
         path: "candidates",
         name: "manager-candidates",
         component: () => import("../views/dashboard/manager/Candidates.vue"),
@@ -156,13 +149,13 @@ export default [
       {
         path: "profile/:id",
         name: "manager-profile",
-        component: () => import("../views/dashboard/manager/Profile.vue"),
+        component: () => import("../views/dashboard/manager/profile/Index.vue"),
         beforeEnter: isManagerAuthorized
       },
       {
         path: "profile/:id/edit",
         name: "manager-edit-profile",
-        component: () => import("../views/dashboard/manager/ProfileEdit.vue"),
+        component: () => import("../views/dashboard/manager/profile/Edit.vue"),
         beforeEnter: isManagerAuthorized
       },
       {

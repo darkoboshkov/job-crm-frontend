@@ -120,10 +120,10 @@
 import TableFilter from "@/components/common/TableFilter";
 import { timeSheetStatus, timesheetsTable } from "@/constants";
 import workLogsApi from "@/services/api/worklogs";
-import TimeSheetsModal from "./TimeSheetsModal";
-import ExpensesModal from "./ExpensesModal";
 import companiesApi from "@/services/api/companies";
 import usersApi from "@/services/api/users";
+import TimeSheetsModal from "./components/TimeSheetsModal";
+import ExpensesModal from "./components/ExpensesModal";
 
 export default {
   name: "timesheets",

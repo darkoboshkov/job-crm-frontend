@@ -42,6 +42,47 @@ export const timeSheetStatus = {
   APPROVED: "approved"
 };
 
+export const paymentIntervalOptions = [
+  {
+    label: "Week",
+    value: "each-week"
+  },
+  {
+    label: "4 weeks",
+    value: "each-4-weeks"
+  },
+  {
+    label: "Month",
+    value: "each-month"
+  }
+];
+
+export const discountOnTaxesOptions = [
+  {
+    label: "Yes",
+    value: "yes"
+  },
+  {
+    label: "No",
+    value: "no"
+  }
+];
+
+export const workedEarlierAsFlexWorkerOptions = [
+  {
+    label: "No",
+    value: "no"
+  },
+  {
+    label: "Yes, in construction",
+    value: "in-construction"
+  },
+  {
+    label: "Yes, not in construction",
+    value: "not-in-construction"
+  }
+];
+
 export const candidatesTable = {
   pagination,
   columns: [

@@ -137,8 +137,8 @@
 import TableFilter from "@/components/common/TableFilter";
 import { timeSheetStatus, workerTimesheetsTable } from "@/constants";
 import workLogsApi from "@/services/api/worklogs";
-import TimeSheetsModal from "./TimeSheetsModal";
-import ExpensesModal from "./ExpensesModal";
+import TimeSheetsModal from "./components/TimeSheetsModal";
+import ExpensesModal from "./components/ExpensesModal";
 
 export default {
   name: "timesheets",

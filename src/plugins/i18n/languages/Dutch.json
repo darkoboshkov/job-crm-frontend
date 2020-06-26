@@ -806,8 +806,8 @@
       "upload": "Uploaden",
       "other": "Other options",
       "dropdown": {
-        "company_export": "Export Company Contract",
-        "client_export": "Export Client Contract",
+        "company_export": "Company Contract",
+        "client_export": "Worker Contract",
         "extend": "Extend contract",
         "early": "Early termination"
       }

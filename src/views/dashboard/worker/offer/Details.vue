@@ -197,7 +197,7 @@
           <button
             class="btn ml-2"
             :class="signed ? 'btn-blue' : 'btn-secondary'"
-            @click="viewContract"
+            @click="contractModal = true"
             style="min-width:160px;"
           >
             {{ $t("page_offer_detail.button.view_contract") }}
@@ -415,24 +415,6 @@
       </div>
     </b-card>
     <b-modal
-      ref="modal-view-contract"
-      size="lg"
-      :hide-footer="true"
-      :hide-header="true"
-      centered
-      :modal-class="{ invisible: exportingContract }"
-    >
-      <Contract
-        :offer="model"
-        :company="company"
-        :manager="manager"
-        :hiringCompany="hiringCompany"
-        :hiringManager="hiringManager"
-        :worker="worker"
-        :job="job"
-      />
-    </b-modal>
-    <b-modal
       ref="modal-sign-contract"
       :hide-footer="true"
       :hide-header="true"
@@ -514,7 +496,7 @@
       <div class="d-flex justify-content-around">
         <button
           class="btn btn-red"
-          @click="viewContract"
+          @click="contractModal = true"
           style="min-width:160px;"
         >
           {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
@@ -525,24 +507,38 @@
         </button>
       </div>
     </b-modal>
+    <contract-modal
+      :offer="model"
+      :company="company"
+      :manager="manager"
+      :hiringCompany="hiringCompany"
+      :hiringManager="hiringManager"
+      :worker="worker"
+      :job="job"
+      :modal-open.sync="contractModal"
+    />
   </div>
 </template>
 
 <script>
 import jobOffersApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
-import Contract from "./Contract";
+import ContractModal from "./components/ContractModal";
 import {
   serializeContractStatus,
   downloadFile,
-  exportPDF,
   copyToClipboard
 } from "@/utils";
+import {
+  paymentIntervalOptions,
+  discountOnTaxesOptions,
+  workedEarlierAsFlexWorkerOptions
+} from "@/constants";
 
 export default {
   name: "Details",
   components: {
-    Contract: Contract
+    ContractModal
   },
   computed: {
     edit() {
@@ -574,7 +570,6 @@ export default {
     return {
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
-      exportingContract: false,
       model: {
         collectiveAgreement: "",
         wage: 0,
@@ -603,44 +598,10 @@ export default {
       offerContract: null,
       agreement: "not_accepted",
       paymentType: [],
-      paymentIntervalOptions: [
-        {
-          label: "Week",
-          value: "each-week"
-        },
-        {
-          label: "4 weeks",
-          value: "each-4-weeks"
-        },
-        {
-          label: "Month",
-          value: "each-month"
-        }
-      ],
-      discountOnTaxesOptions: [
-        {
-          label: "Yes",
-          value: "yes"
-        },
-        {
-          label: "No",
-          value: "no"
-        }
-      ],
-      workedEarlierAsFlexWorkerOptions: [
-        {
-          label: "No",
-          value: "no"
-        },
-        {
-          label: "Yes, in construction",
-          value: "in-construction"
-        },
-        {
-          label: "Yes, not in construction",
-          value: "not-in-construction"
-        }
-      ]
+      contractModal: false,
+      paymentIntervalOptions,
+      discountOnTaxesOptions,
+      workedEarlierAsFlexWorkerOptions
     };
   },
   mounted() {
@@ -722,9 +683,6 @@ export default {
             button: this.$t("page_offer_detail.modal.decline_fail.continue")
           });
         });
-    },
-    viewContract() {
-      this.$refs["modal-view-contract"].show();
     },
     exportContract() {
       jobOffersApi

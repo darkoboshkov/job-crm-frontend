@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import UserAccesses from "./UserAccesses";
-import EmailHistories from "./EmailHistories";
+import UserAccesses from "./components/UserAccesses";
+import EmailHistories from "./components/EmailHistories";
 
 export default {
   name: "Index",

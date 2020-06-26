@@ -139,13 +139,13 @@ export default [
       {
         path: "profile/:companyId/:id",
         name: "admin-profile",
-        component: () => import("../views/dashboard/admin/Profile.vue"),
+        component: () => import("../views/dashboard/admin/profile/Index.vue"),
         beforeEnter: isAdminAuthorized
       },
       {
         path: "profile/:companyId/:id/edit",
         name: "admin-edit-profile",
-        component: () => import("../views/dashboard/admin/ProfileEdit.vue"),
+        component: () => import("../views/dashboard/admin/profile/Edit.vue"),
         beforeEnter: isAdminAuthorized
       },
       {
