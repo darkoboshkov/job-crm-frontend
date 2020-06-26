@@ -89,6 +89,20 @@ const filterErrors = (message, key) => {
   return "";
 };
 
+const contractStatus = (status, intermediaryStatus) => {
+  let result = "";
+  if (status === "open" || intermediaryStatus === "open") {
+    result = "open";
+  } else if (status === "pending" || intermediaryStatus === "pending") {
+    result = "pending";
+  } else if (status === "failed" || intermediaryStatus === "failed") {
+    result = "failed";
+  } else {
+    result = "active";
+  }
+  return result;
+};
+
 export default {
   data() {
     return {
@@ -98,17 +112,11 @@ export default {
     };
   },
   filters: {
-    dateISOFormatter(string) {
-      return convertISODateString(string);
-    },
     dateFormatter(string) {
       return convertLocalDateString(string);
     },
     dateTimeFormatter(string) {
       return convertLocalDateTimeString(string);
-    },
-    timeFormatter(string) {
-      return convertLocalTimeString(string);
     },
     errorFormatter(errors, key = null) {
       return filterErrors(errors, key);
@@ -145,9 +153,6 @@ export default {
     getDateTimeString(string) {
       return convertLocalDateTimeString(string);
     },
-    getTimeString(string) {
-      return convertLocalTimeString(string);
-    },
     getFullName(user) {
       return convertFullName(user);
     },
@@ -157,8 +162,11 @@ export default {
       }
       return "-";
     },
-    getFilterErrors(errors, key = null) {
-      return filterErrors(errors, key);
+    getContractType(companyId, hiringCompanyId) {
+      return companyId === hiringCompanyId ? "worker" : "company";
+    },
+    getContractStatus(status, intermediaryStatus) {
+      return contractStatus(status, intermediaryStatus);
     }
   }
 };

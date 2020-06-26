@@ -147,24 +147,22 @@
           <span>{{ $t("page_offer_detail.status_actions") }}</span>
           <span class="d-flex align-items-center contract-status">
             <i
-              v-if="model.intermediaryStatus === 'open'"
+              v-if="contractStatus === 'open'"
               class="hiway-crm-icon icon-dot mr-2 color-yellow"
               style="font-size: 0.3em;"
             />
             <i
-              v-else-if="model.intermediaryStatus === 'pending'"
+              v-else-if="contractStatus === 'pending'"
               class="hiway-crm-icon icon-dot mr-2 color-blue"
               style="font-size: 0.3em;"
             />
             <i
-              v-else-if="model.intermediaryStatus === 'active'"
+              v-else-if="contractStatus === 'active'"
               class="hiway-crm-icon icon-dot mr-2 color-green"
               style="font-size: 0.3em;"
             />
-            <template v-if="model.intermediaryStatus">
-              {{
-                $t("page_offer_detail.offer_states." + model.intermediaryStatus)
-              }}
+            <template v-if="contractStatus">
+              {{ $t("status." + contractStatus) }}
             </template>
           </span>
         </div>
@@ -248,23 +246,21 @@
             <li @click="exportCompanyContract">
               <router-link to="#">
                 <div>
-                  <i class="hiway-crm-icon icon-upload mr-3" />
+                  <i class="hiway-crm-icon icon-upload mr-1" />
                   <span>
                     {{ $t("page_offer_detail.button.dropdown.company_export") }}
                   </span>
                 </div>
-                <i class="hiway-crm-icon icon-angle-right ml-3" />
               </router-link>
             </li>
             <li @click="exportContract">
               <router-link to="#">
                 <div>
-                  <i class="hiway-crm-icon icon-upload mr-3" />
+                  <i class="hiway-crm-icon icon-upload mr-1" />
                   <span>
                     {{ $t("page_offer_detail.button.dropdown.client_export") }}
                   </span>
                 </div>
-                <i class="hiway-crm-icon icon-angle-right ml-3" />
               </router-link>
             </li>
           </ul>
@@ -289,23 +285,21 @@
             <li>
               <router-link to="#">
                 <div>
-                  <i class="hiway-crm-icon icon-contract mr-3" />
+                  <i class="hiway-crm-icon icon-contract mr-1" />
                   <span>
                     {{ $t("page_offer_detail.button.dropdown.extend") }}
                   </span>
                 </div>
-                <i class="hiway-crm-icon icon-angle-right ml-3" />
               </router-link>
             </li>
             <li>
               <router-link to="#">
                 <div>
-                  <i class="hiway-crm-icon icon-hours mr-3" />
+                  <i class="hiway-crm-icon icon-hours mr-1" />
                   <span>
                     {{ $t("page_offer_detail.button.dropdown.early") }}
                   </span>
                 </div>
-                <i class="hiway-crm-icon icon-angle-right ml-3" />
               </router-link>
             </li>
           </ul>
@@ -698,27 +692,7 @@ export default {
       );
     },
     managerState() {
-      let managerState;
-      if (
-        this.model.status === "open" ||
-        this.model.intermediaryStatus === "open"
-      ) {
-        managerState = "open";
-      } else if (
-        this.model.status === "pending" ||
-        this.model.intermediaryStatus === "pending"
-      ) {
-        managerState = "pending";
-      } else if (
-        this.model.status === "active" ||
-        this.model.intermediaryStatus === "active"
-      ) {
-        managerState = "active";
-      } else {
-        managerState = "completed";
-      }
-
-      return serializeContractStatus("manager", managerState);
+      return serializeContractStatus("manager", this.contractStatus);
     },
     workerState() {
       return serializeContractStatus("worker", this.model.status);
@@ -751,6 +725,7 @@ export default {
         status: null,
         intermediaryStatus: null
       },
+      contractStatus: null,
       company: {},
       job: {},
       manager: {},
@@ -1021,7 +996,12 @@ export default {
           res.startDate = this.getISODateString(res.startDate);
           res.endDate = this.getISODateString(res.endDate);
           this.model = { ...this.model, ...res };
-          if (res.status === "active" && res.contractData) {
+          this.contractStatus = this.getContractStatus(
+            this.model.status,
+            this.model.intermediaryStatus
+          );
+
+          if (this.contractStatus === "active" && res.contractData) {
             this.job = res.contractData.job;
             this.company = res.contractData.company;
             this.worker = res.contractData.worker;

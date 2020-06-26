@@ -131,15 +131,11 @@ export default {
       if (props && props.row) {
         this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}`);
       }
-      if (
-        props &&
-        props.row &&
-        props.row.companyId !== props.row.hiringCompanyId
-      ) {
-        this.$router.push(
-          `/${this.role}/dashboard/joboffers/${props.row._id}/intermediary`
-        );
+      /* eslint-disable */
+      if (props && props.row && props.row.companyId !== props.row.hiringCompanyId) {
+        this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}/intermediary`);
       }
+      /* eslint-enable */
     },
     getActiveOffers() {
       jobOffersApi
@@ -158,7 +154,11 @@ export default {
             row.createdAt = this.getDateString(row.createdAt);
             row.manager = this.getFullName(row.manager[0]);
             row.worker = this.getFullName(row.worker[0]);
-            row.contractType = "worker";
+            /* eslint-disable */
+            row.contractType = this.getContractType(row.companyId, row.hiringCompanyId);
+            row.status = this.getContractStatus(row.status, row.intermediaryStatus);
+            /* eslint-enable */
+
             return row;
           });
           this.totalRows = res.totalDocs;

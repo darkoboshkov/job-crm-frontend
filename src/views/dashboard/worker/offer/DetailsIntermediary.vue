@@ -147,22 +147,22 @@
           <span>{{ $t("page_offer_detail.status_actions") }}</span>
           <span class="d-flex align-items-center contract-status">
             <i
-              v-if="model.status === 'open'"
+              v-if="contractStatus === 'open'"
               class="hiway-crm-icon icon-dot mr-2 color-yellow"
               style="font-size: 0.3em;"
             />
             <i
-              v-else-if="model.status === 'pending'"
+              v-else-if="contractStatus === 'pending'"
               class="hiway-crm-icon icon-dot mr-2 color-blue"
               style="font-size: 0.3em;"
             />
             <i
-              v-else-if="model.status === 'active'"
+              v-else-if="contractStatus === 'active'"
               class="hiway-crm-icon icon-dot mr-2 color-green"
               style="font-size: 0.3em;"
             />
-            <template v-if="model.status">
-              {{ $t("page_offer_detail.offer_states." + model.status) }}
+            <template v-if="contractStatus">
+              {{ $t("status." + contractStatus) }}
             </template>
           </span>
         </div>
@@ -236,25 +236,12 @@
           <button
             class="btn ml-2"
             :class="signed ? 'btn-red' : 'btn-secondary'"
-            @click.stop.prevent="toggleExportDropdown"
+            @click="exportContract"
             style="min-width:160px;"
             :disabled="!signed"
           >
             {{ $t("page_offer_detail.button.export_contract") }}
           </button>
-          <ul v-show="isExportCollapsed" class="export-dropdown-company">
-            <li @click="exportContract">
-              <router-link to="#">
-                <div>
-                  <i class="hiway-crm-icon icon-upload mr-3" />
-                  <span>
-                    {{ $t("page_offer_detail.button.dropdown.client_export") }}
-                  </span>
-                </div>
-                <i class="hiway-crm-icon icon-angle-right ml-3" />
-              </router-link>
-            </li>
-          </ul>
 
           <button
             class="btn ml-2"
@@ -621,7 +608,7 @@ export default {
       );
     },
     managerState() {
-      return serializeContractStatus("manager", this.model.status);
+      return serializeContractStatus("manager", this.contractStatus);
     },
     workerState() {
       return serializeContractStatus("worker", this.model.status);
@@ -641,7 +628,6 @@ export default {
   data() {
     return {
       exportingContract: false,
-      isExportCollapsed: false,
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
       model: {
@@ -656,10 +642,12 @@ export default {
         startDate: null,
         endDate: null,
         status: null,
+        intermediaryStatus: null,
         paymentInterval: "",
         discountOnTaxes: "",
         workedEarlierAsFlexWorker: ""
       },
+      contractStatus: null,
       company: {},
       job: {},
       manager: {},
@@ -716,18 +704,8 @@ export default {
     this.getOfferDetails();
     this.getCaoOptions();
     this.getPaymentType();
-    window.addEventListener("click", this.closeDropdown.bind(this));
-  },
-  beforeDestroy() {
-    document.removeEventListener("click", this.closeDropdown);
   },
   methods: {
-    toggleExportDropdown() {
-      this.isExportCollapsed = !this.isExportCollapsed;
-    },
-    closeDropdown() {
-      this.isExportCollapsed = false;
-    },
     downloadFile(attachment) {
       jobOffersApi
         .downloadAttachment({
@@ -825,7 +803,12 @@ export default {
           res.startDate = this.getISODateString(res.startDate);
           res.endDate = this.getISODateString(res.endDate);
           this.model = { ...this.model, ...res };
-          if (res.status === "active" && res.contractData) {
+          this.contractStatus = this.getContractStatus(
+            this.model.status,
+            this.model.intermediaryStatus
+          );
+
+          if (this.contractStatus === "active" && res.contractData) {
             this.job = res.contractData.job;
             this.company = res.contractData.company;
             this.worker = res.contractData.worker;

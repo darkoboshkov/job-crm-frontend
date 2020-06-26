@@ -147,24 +147,22 @@
           <span>{{ $t("page_offer_detail.status_actions") }}</span>
           <span class="d-flex align-items-center contract-status">
             <i
-              v-if="model.intermediaryStatus === 'open'"
+              v-if="contractStatus === 'open'"
               class="hiway-crm-icon icon-dot mr-2 color-yellow"
               style="font-size: 0.3em;"
             />
             <i
-              v-else-if="model.intermediaryStatus === 'pending'"
+              v-else-if="contractStatus === 'pending'"
               class="hiway-crm-icon icon-dot mr-2 color-blue"
               style="font-size: 0.3em;"
             />
             <i
-              v-else-if="model.intermediaryStatus === 'active'"
+              v-else-if="contractStatus === 'active'"
               class="hiway-crm-icon icon-dot mr-2 color-green"
               style="font-size: 0.3em;"
             />
-            <template v-if="model.intermediaryStatus">
-              {{
-                $t("page_offer_detail.offer_states." + model.intermediaryStatus)
-              }}
+            <template v-if="contractStatus">
+              {{ $t("status." + contractStatus) }}
             </template>
           </span>
         </div>
@@ -238,25 +236,12 @@
           <button
             class="btn ml-2"
             :class="signed ? 'btn-red' : 'btn-secondary'"
-            @click.stop.prevent="toggleExportDropdown"
+            @click="exportContract"
             style="min-width:160px;"
             :disabled="!signed"
           >
             {{ $t("page_offer_detail.button.export_contract") }}
           </button>
-          <ul v-show="isExportCollapsed" class="export-dropdown-company">
-            <li @click="exportContract">
-              <router-link to="#">
-                <div>
-                  <i class="hiway-crm-icon icon-upload mr-3" />
-                  <span>
-                    {{ $t("page_offer_detail.button.dropdown.company_export") }}
-                  </span>
-                </div>
-                <i class="hiway-crm-icon icon-angle-right ml-3" />
-              </router-link>
-            </li>
-          </ul>
           <button
             class="btn ml-2"
             :class="signed ? 'btn-blue' : 'btn-secondary'"
@@ -481,7 +466,7 @@
       centered
       :modal-class="{ invisible: exportingContract }"
     >
-      <Contract
+      <CompanyContract
         :offer="model"
         :company="company"
         :manager="manager"
@@ -603,7 +588,7 @@
 <script>
 import jobOffersApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
-import Contract from "./Contract";
+import CompanyContract from "./CompanyContract";
 import {
   serializeContractStatus,
   downloadFile,
@@ -614,7 +599,7 @@ import {
 export default {
   name: "DetailsIntermediary",
   components: {
-    Contract: Contract
+    CompanyContract: CompanyContract
   },
   computed: {
     signed() {
@@ -634,7 +619,7 @@ export default {
       );
     },
     managerState() {
-      return serializeContractStatus("manager", this.model.intermediaryStatus);
+      return serializeContractStatus("manager", this.contractStatus);
     },
     workerState() {
       return serializeContractStatus("worker", this.model.status);
@@ -649,7 +634,6 @@ export default {
   data() {
     return {
       exportingContract: false,
-      isExportCollapsed: false,
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
       model: {
@@ -666,6 +650,7 @@ export default {
         status: null,
         intermediaryStatus: null
       },
+      contractStatus: null,
       company: {},
       job: {},
       manager: {},
@@ -687,13 +672,9 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener("click", this.closeDropdown.bind(this));
     this.getOfferDetails();
     this.getCaoOptions();
     this.getPaymentType();
-  },
-  beforeDestroy() {
-    document.removeEventListener("click", this.closeDropdown);
   },
   methods: {
     validate() {
@@ -804,12 +785,9 @@ export default {
         0
       );
     },
-    toggleExportDropdown() {
-      this.isExportCollapsed = !this.isExportCollapsed;
-    },
     decline() {
       jobOffersApi
-        .declineHiringCompany(this.model)
+        .declineCompanyContract(this.model)
         .then(res => {
           this.getOfferDetails();
         })
@@ -821,9 +799,6 @@ export default {
             button: this.$t("page_offer_detail.modal.decline_fail.continue")
           });
         });
-    },
-    closeDropdown() {
-      this.isExportCollapsed = false;
     },
     downloadFile(attachment) {
       jobOffersApi
@@ -929,7 +904,12 @@ export default {
           res.startDate = this.getISODateString(res.startDate);
           res.endDate = this.getISODateString(res.endDate);
           this.model = { ...this.model, ...res };
-          if (res.intermediaryStatus === "active" && res.contractData) {
+          this.contractStatus = this.getContractStatus(
+            this.model.status,
+            this.model.intermediaryStatus
+          );
+
+          if (this.contractStatus === "active" && res.contractData) {
             this.job = res.contractData.job;
             this.company = res.contractData.company;
             this.worker = res.contractData.worker;

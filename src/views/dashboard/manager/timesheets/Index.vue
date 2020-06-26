@@ -24,13 +24,13 @@
         <i
           class="hiway-crm-icon icon-ol pointer"
           @click="imageView(true)"
-          :style="{ opacity: imageMode ? 1 : 0.261 }"
+          :style="{ opacity: imageMode ? 1 : 0.3 }"
         />
         |
         <i
           class="hiway-crm-icon icon-ul pointer"
           @click="imageView(false)"
-          :style="{ opacity: !imageMode ? 1 : 0.261 }"
+          :style="{ opacity: !imageMode ? 1 : 0.3 }"
         />
       </div>
     </div>
@@ -83,8 +83,8 @@
               class="btn btn-transparent"
               @click.stop="deleteTimeSheetConfirm(props)"
               v-if="
-                props.row.status !== TIME_SHEET_STATE.SUBMITTED &&
-                  props.row.status !== TIME_SHEET_STATE.APPROVED
+                props.row.status !== timeSheetStatus.SUBMITTED &&
+                  props.row.status !== timeSheetStatus.APPROVED
               "
             >
               <i class="hiway-crm-icon icon-bin" />
@@ -118,7 +118,7 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import { TIME_SHEET_STATE, timesheetsTable } from "@/constants";
+import { timeSheetStatus, timesheetsTable } from "@/constants";
 import workLogsApi from "@/services/api/worklogs";
 import TimeSheetsModal from "./TimeSheetsModal";
 import ExpensesModal from "./ExpensesModal";
@@ -149,7 +149,7 @@ export default {
       selectedExpenseRow: {},
       expensesModalMode: "edit",
       selectedRow: {},
-      TIME_SHEET_STATE,
+      timeSheetStatus,
       timesheetsCount: 0,
       expensesCount: 0,
       companyId: this.$store.state.user.companyId

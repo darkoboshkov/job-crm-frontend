@@ -35,13 +35,13 @@
         <i
           class="hiway-crm-icon icon-ol pointer"
           @click="imageView(true)"
-          :style="{ opacity: imageMode ? 1 : 0.261 }"
+          :style="{ opacity: imageMode ? 1 : 0.3 }"
         />
         |
         <i
           class="hiway-crm-icon icon-ul pointer"
           @click="imageView(false)"
-          :style="{ opacity: !imageMode ? 1 : 0.261 }"
+          :style="{ opacity: !imageMode ? 1 : 0.3 }"
         />
       </div>
     </div>
@@ -91,16 +91,20 @@
                   {{ $t("page_timesheets.table.view_expense") }}
                 </b-dropdown-item>
               </b-dropdown>
-              <button
-                class="btn btn-transparent"
-                @click.stop="deleteTimeSheetConfirm(props)"
+              <!-- eslint-next-line-disable -->
+              <template
                 v-if="
-                  props.row.status !== TIME_SHEET_STATE.SUBMITTED &&
-                    props.row.status !== TIME_SHEET_STATE.APPROVED
+                  props.row.status !== timeSheetStatus.SUBMITTED &&
+                    props.row.status !== timeSheetStatus.APPROVED
                 "
               >
-                <i class="hiway-crm-icon icon-bin" />
-              </button>
+                <button
+                  class="btn btn-transparent"
+                  @click.stop="deleteTimeSheetConfirm(props)"
+                >
+                  <i class="hiway-crm-icon icon-bin" />
+                </button>
+              </template>
             </div>
             <div v-else-if="props.column.field === 'status'">
               {{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
@@ -131,7 +135,7 @@
 
 <script>
 import TableFilter from "@/components/common/TableFilter";
-import { TIME_SHEET_STATE, workerTimesheetsTable } from "@/constants";
+import { timeSheetStatus, workerTimesheetsTable } from "@/constants";
 import workLogsApi from "@/services/api/worklogs";
 import TimeSheetsModal from "./TimeSheetsModal";
 import ExpensesModal from "./ExpensesModal";
@@ -158,7 +162,7 @@ export default {
       selectedExpenseRow: {},
       expensesModalMode: "edit",
       selectedRow: {},
-      TIME_SHEET_STATE,
+      timeSheetStatus,
 
       timesheetsCount: 0,
       expensesCount: 0,

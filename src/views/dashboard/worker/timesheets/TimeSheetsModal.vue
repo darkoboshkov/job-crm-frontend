@@ -180,8 +180,8 @@
         <div class="d-inline-block">
           <template
             v-if="
-              timeSheetsData.status === TIME_SHEET_STATE.NOT_SUBMITTED ||
-                timeSheetsData.status === TIME_SHEET_STATE.DECLINED
+              timeSheetsData.status === timeSheetStatus.NOT_SUBMITTED ||
+                timeSheetsData.status === timeSheetStatus.DECLINED
             "
           >
             <button class="btn btn-blue" @click="saveHours">
@@ -192,14 +192,14 @@
             </button>
           </template>
           <template
-            v-else-if="timeSheetsData.status === TIME_SHEET_STATE.SUBMITTED"
+            v-else-if="timeSheetsData.status === timeSheetStatus.SUBMITTED"
           >
             <button class="btn btn-red" @click="adjustHours">
               {{ $t("page_timesheets.modal.adjust_hours") }}
             </button>
           </template>
           <template
-            v-else-if="timeSheetsData.status === TIME_SHEET_STATE.APPROVED"
+            v-else-if="timeSheetsData.status === timeSheetStatus.APPROVED"
           >
             <!-- nothing to show -->
           </template>
@@ -211,7 +211,7 @@
 
 <script>
 import workLogsApi from "@/services/api/worklogs";
-import { TIME_SHEET_STATE } from "@/constants";
+import { timeSheetStatus } from "@/constants";
 
 export default {
   name: "TimeSheetsModal",
@@ -243,8 +243,8 @@ export default {
     },
     inputDisabled() {
       return (
-        this.timeSheetsData.status === TIME_SHEET_STATE.APPROVED ||
-        this.timeSheetsData.status === TIME_SHEET_STATE.SUBMITTED
+        this.timeSheetsData.status === timeSheetStatus.APPROVED ||
+        this.timeSheetsData.status === timeSheetStatus.SUBMITTED
       );
     },
     worker() {
@@ -296,7 +296,7 @@ export default {
       addMode: false,
       selectedWeekNumber: 1,
       daysOfSelectedWeek: [],
-      TIME_SHEET_STATE,
+      timeSheetStatus,
       companyId: this.$store.state.user.companyId
     };
   },

@@ -28,14 +28,14 @@ const pagination_10 = {
 
 export const APP_URL = process.env.VUE_APP_URL;
 
-export const EXPENSE_STATE = {
+export const expenseStatus = {
   NOT_SUBMITTED: "not-submitted",
   SUBMITTED: "submitted",
   DECLINED: "declined",
   APPROVED: "approved"
 };
 
-export const TIME_SHEET_STATE = {
+export const timeSheetStatus = {
   NOT_SUBMITTED: "not-submitted",
   SUBMITTED: "submitted",
   DECLINED: "declined",

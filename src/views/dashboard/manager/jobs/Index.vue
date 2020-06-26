@@ -30,13 +30,13 @@
         <i
           class="hiway-crm-icon icon-ol pointer"
           @click="imageView(true)"
-          :style="{ opacity: imageMode ? 1 : 0.261 }"
+          :style="{ opacity: imageMode ? 1 : 0.3 }"
         />
         |
         <i
           class="hiway-crm-icon icon-ul pointer"
           @click="imageView(false)"
-          :style="{ opacity: !imageMode ? 1 : 0.261 }"
+          :style="{ opacity: !imageMode ? 1 : 0.3 }"
         />
       </div>
     </div>

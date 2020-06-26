@@ -102,8 +102,8 @@
 
       <div class="row mb-3">
         <div class="col">
-          <span class="mr-3"
-            >{{ $t("page_timesheets.modal.upload_receipt") }}:</span
+          <span class="mr-3">
+            {{ $t("page_timesheets.modal.upload_receipt") }}: </span
           >&nbsp;
           <input
             type="file"
@@ -158,10 +158,11 @@
         >
           {{ $t("page_timesheets.modal.send_expenses") }}
         </button>
+        <!-- eslint-next-line-disable -->
         <template
           v-else-if="
-            model.status === EXPENSE_STATE.NOT_SUBMITTED ||
-              model.status === EXPENSE_STATE.DECLINED
+            model.status === expenseStatus.NOT_SUBMITTED ||
+              model.status === expenseStatus.DECLINED
           "
         >
           <button class="btn btn-blue" @click="saveExpenses">
@@ -171,12 +172,12 @@
             {{ $t("page_timesheets.modal.send_expenses") }}
           </button>
         </template>
-        <template v-else-if="model.status === EXPENSE_STATE.SUBMITTED">
+        <template v-else-if="model.status === expenseStatus.SUBMITTED">
           <button class="btn btn-red" @click="adjustExpenses">
             {{ $t("page_timesheets.modal.adjust_expenses") }}
           </button>
         </template>
-        <template v-else-if="model.status === EXPENSE_STATE.APPROVED">
+        <template v-else-if="model.status === expenseStatus.APPROVED">
           <!-- nothing to show -->
         </template>
       </div>
@@ -187,7 +188,7 @@
 <script>
 import jobOffersApi from "@/services/api/joboffers";
 import workLogsApi from "@/services/api/worklogs";
-import { EXPENSE_STATE } from "@/constants";
+import { expenseStatus } from "@/constants";
 
 export default {
   name: "ExpensesModal",
@@ -226,8 +227,8 @@ export default {
     },
     inputDisabled() {
       return (
-        this.model.status === EXPENSE_STATE.APPROVED ||
-        this.model.status === EXPENSE_STATE.SUBMITTED
+        this.model.status === expenseStatus.APPROVED ||
+        this.model.status === expenseStatus.SUBMITTED
       );
     }
   },
@@ -247,7 +248,7 @@ export default {
       },
 
       imageData: {},
-      EXPENSE_STATE,
+      expenseStatus,
       companyId: this.$store.state.user.companyId
     };
   },

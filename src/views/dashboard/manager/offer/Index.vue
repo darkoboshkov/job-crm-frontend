@@ -19,13 +19,13 @@
         <i
           class="hiway-crm-icon icon-ol pointer"
           @click="imageView(true)"
-          :style="{ opacity: imageMode ? 1 : 0.261 }"
+          :style="{ opacity: imageMode ? 1 : 0.3 }"
         />
         |
         <i
           class="hiway-crm-icon icon-ul pointer"
           @click="imageView(false)"
-          :style="{ opacity: !imageMode ? 1 : 0.261 }"
+          :style="{ opacity: !imageMode ? 1 : 0.3 }"
         />
       </div>
     </div>
@@ -60,25 +60,8 @@
             </b-dropdown>
           </div>
 
-          <div
-            v-else-if="
-              props.column.field === 'status' &&
-                props.row.contractType === 'worker'
-            "
-          >
+          <div v-else-if="props.column.field === 'status'">
             {{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
-          </div>
-          <div
-            v-else-if="
-              props.column.field === 'status' &&
-                props.row.contractType === 'company'
-            "
-          >
-            {{
-              props.row.intermediaryStatus
-                ? $t(`status.${props.row.intermediaryStatus}`)
-                : ""
-            }}
           </div>
 
           <div
@@ -96,6 +79,9 @@
 							<!-- eslint-enable -->
             </div>
           </div>
+          <span v-else-if="props.column.field === 'contractType'">
+            {{ $t(`contract.${props.row.contractType}`) }}
+          </span>
           <span v-else>
             {{ props.formattedRow[props.column.field] }}
           </span>
@@ -176,22 +162,12 @@ export default {
     },
     goToOffer(props) {
       if (props && props.row) {
-        if (
-          props.row.companyId === props.row.hiringCompanyId &&
-          this.companyId === props.row.companyId
-        ) {
-          this.$router.push(
-            `/${this.role}/dashboard/joboffers/${props.row._id}`
-          );
+        /* eslint-disable */
+        if (props.row.companyId === props.row.hiringCompanyId && this.companyId === props.row.companyId) {
+          this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}`);
         }
-        if (
-          props.row.companyId !== props.row.hiringCompanyId &&
-          this.companyId === props.row.companyId
-        ) {
-          if (
-            props.row.intermediaryStatus === "failed" ||
-            props.row.status === "failed"
-          ) {
+        if (props.row.companyId !== props.row.hiringCompanyId && this.companyId === props.row.companyId) {
+          if (props.row.intermediaryStatus === "failed" || props.row.status === "failed") {
             this.$store.dispatch("updateShowErrorModal", true);
             this.$store.dispatch("updateErrorModalContent", {
               title: this.$t("page_offers.modal.failed.title"),
@@ -200,18 +176,10 @@ export default {
             });
             return false;
           }
-          this.$router.push(
-            `/${this.role}/dashboard/joboffers/${props.row._id}/intermediary`
-          );
+          this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}/intermediary`);
         }
-        if (
-          props.row.companyId !== props.row.hiringCompanyId &&
-          this.companyId !== props.row.companyId
-        ) {
-          if (
-            props.row.intermediaryStatus === "open" ||
-            props.row.intermediaryStatus === "failed"
-          ) {
+        if (props.row.companyId !== props.row.hiringCompanyId &&this.companyId !== props.row.companyId) {
+          if (props.row.intermediaryStatus === "open" || props.row.intermediaryStatus === "failed") {
             this.$store.dispatch("updateShowErrorModal", true);
             this.$store.dispatch("updateErrorModalContent", {
               title: this.$t("page_offers.modal.disallow.title"),
@@ -220,10 +188,9 @@ export default {
             });
             return false;
           }
-          this.$router.push(
-            `/${this.role}/dashboard/joboffers/${props.row._id}/hiring-company`
-          );
+          this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}/hiring-company`);
         }
+        /* eslint-enable */
       }
     },
     getActiveOffers() {
@@ -245,8 +212,10 @@ export default {
             row.manager = this.getFullName(row.manager[0]);
             row.workerImage = row.worker[0].image;
             row.worker = this.getFullName(row.worker[0]);
-            row.contractType =
-              row.companyId === row.hiringCompanyId ? "worker" : "company";
+            /* eslint-disable */
+            row.contractType = this.getContractType(row.companyId, row.hiringCompanyId);
+            row.status = this.getContractStatus(row.status, row.intermediaryStatus);
+            /* eslint-enable */
 
             return row;
           });

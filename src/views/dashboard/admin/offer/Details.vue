@@ -126,7 +126,7 @@
               style="font-size: 0.3em;"
             />
             <template v-if="model.status">
-              {{ $t("page_offer_detail.offer_states." + model.status) }}
+              {{ $t("status." + model.status) }}
             </template>
           </div>
         </div>

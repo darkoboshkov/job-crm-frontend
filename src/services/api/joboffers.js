@@ -94,7 +94,7 @@ export default {
       config
     );
   },
-  declineHiringCompany(params, config = {}) {
+  declineCompanyContract(params, config = {}) {
     return request(
       "patch",
       `/joboffers/${params.hiringCompanyId}/${params._id}/company-contract/decline`,
