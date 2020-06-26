@@ -13,7 +13,7 @@ const pagination = {
   }
 };
 
-const pagination_10 = {
+const pagination10 = {
   paginationOptions: {
     enabled: true,
     perPage: 10
@@ -26,7 +26,7 @@ const pagination_10 = {
   }
 };
 
-export const APP_URL = process.env.VUE_APP_URL;
+export const appUrl = process.env.VUE_APP_URL;
 
 export const expenseStatus = {
   NOT_SUBMITTED: "not-submitted",
@@ -847,7 +847,7 @@ export const workerTimesheetsTable = {
 };
 
 export const userAccessesTable = {
-  pagination: pagination_10,
+  pagination: pagination10,
   columns: [
     {
       label: "Email",
@@ -900,7 +900,7 @@ export const userAccessesTable = {
 };
 
 export const emailHistoriesTable = {
-  pagination: pagination_10,
+  pagination: pagination10,
   columns: [
     {
       label: "From Email",

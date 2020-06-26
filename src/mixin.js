@@ -1,4 +1,4 @@
-import { APP_URL } from "@/constants";
+import { appUrl } from "@/constants";
 import English from "./plugins/i18n/languages/English.json";
 import i18n from "./plugins/i18n";
 
@@ -122,7 +122,7 @@ export default {
       return filterErrors(errors, key);
     },
     appUrlFormatter(string) {
-      return APP_URL + string;
+      return appUrl + string;
     },
     fullNameFormatter(user) {
       return convertFullName(user);
@@ -145,7 +145,7 @@ export default {
       return convertISODateString(string);
     },
     getAppUrl(string) {
-      return APP_URL + string;
+      return appUrl + string;
     },
     getDateString(string) {
       return convertLocalDateString(string);
