@@ -10,7 +10,6 @@
             <img
               src="@/assets/image/avatar_nick.png"
               class="rounded-circle border mr-2"
-              style="width:65px"
             />
             <div>Parttime Magazijnmed</div>
             <div>Kruidvat</div>
@@ -43,7 +42,6 @@
             <img
               src="@/assets/image/avatar_nick.png"
               class="rounded-circle border mr-2"
-              style="width:65px"
             />
             <div>Magalie Lindeboom</div>
             <div>Visual Designer</div>
@@ -163,3 +161,9 @@ export default {
   methods: {}
 };
 </script>
+
+<style scoped>
+.rounded-circle {
+  width: 65px;
+}
+</style>

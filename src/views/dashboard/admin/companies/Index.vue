@@ -5,7 +5,7 @@
         {{ $t("page_companies.title") }}
       </h1>
       <router-link to="/admin/dashboard/companies/create">
-        <button class="btn btn-red circle large" style="width:50px">
+        <button class="btn btn-red circle large btn-50">
           <i class="hiway-crm-icon icon-add" />
         </button>
       </router-link>

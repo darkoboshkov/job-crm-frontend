@@ -137,6 +137,13 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
+        path: "joboffers/:companyId/:offerId/intermediary",
+        name: "admin-offer-inter-details",
+        component: () =>
+          import("../views/dashboard/admin/offer/DetailsIntermediary.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
         path: "profile/:companyId/:id",
         name: "admin-profile",
         component: () => import("../views/dashboard/admin/profile/Index.vue"),

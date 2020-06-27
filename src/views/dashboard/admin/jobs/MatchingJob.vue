@@ -9,7 +9,6 @@
           <img
             src="@/assets/image/company-flooop-logo.png"
             class="rounded-circle border mr-5"
-            style="width:65px;"
           />
           <div>{{ job.title }}</div>
           <div>{{ job.company ? job.company[0].name : " " }}</div>
@@ -21,7 +20,6 @@
     </div>
     <matching-filter
       class="candidate-filters"
-      style="margin-top: 24px;"
       @match-filter="startMatch"
       title="Filter Options"
       :options="filterOptions"
@@ -45,7 +43,6 @@
           <img
             src="@/assets/image/avatar_nick.png"
             class="rounded-circle border mr-2"
-            style="width:65px"
           />
           <div>{{ item.fullName }}</div>
           <div>{{ item.profession }}</div>
@@ -191,3 +188,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.rounded-circle {
+  width: 65px;
+}
+.candidate-filters {
+  margin-top: 24px;
+}
+</style>

@@ -45,8 +45,7 @@
               <div class="d-flex">
                 <img
                   src="@/assets/image/icon/mail-red.svg"
-                  style="width:31px"
-                  class="mr-3"
+                  class="mr-3 mail-red"
                 />
                 <span>{{ model.email }}</span>
               </div>
@@ -57,8 +56,7 @@
               <div class="d-flex">
                 <img
                   src="@/assets/image/icon/phone-red.svg"
-                  style="width: 22px"
-                  class="mr-3"
+                  class="mr-3 phone-red"
                 />
                 <span>{{ model.phone }}</span>
               </div>
@@ -90,7 +88,6 @@
                     v-if="editProfile"
                     v-model="model.status"
                     class="normal-size"
-                    style="margin-top:-8px"
                   >
                     <option
                       v-for="(status, index) in userStates"
@@ -198,3 +195,15 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.mail-red {
+  width: 31px;
+}
+.phone-red {
+  width: 22px;
+}
+.normal-size {
+  margin-top: -8px;
+}
+</style>

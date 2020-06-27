@@ -130,10 +130,7 @@
               :disabled="inputDisabled"
             />
             <label class="position-absolute file-selector" for="attachment" />
-            <i
-              class="hiway-crm-icon icon-upload position-absolute"
-              style="top: 11px;right: 11px;"
-            />
+            <i class="hiway-crm-icon icon-upload position-absolute" />
           </div>
         </div>
       </div>
@@ -328,4 +325,9 @@ export default {
 };
 </script>
 
-<style scoped />
+<style scoped>
+.icon-upload {
+  top: 11px;
+  right: 11px;
+}
+</style>

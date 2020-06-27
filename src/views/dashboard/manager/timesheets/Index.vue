@@ -56,8 +56,7 @@
           >
             <i
               v-if="props.row.type === 'timesheet'"
-              class="table-icon hiway-crm-icon icon-watch"
-              style="background-color: var(--cobalt-blue)"
+              class="table-icon hiway-crm-icon icon-watch color-cobalt"
             />
             <i v-else class="table-icon hiway-crm-icon icon-euro" />
           </div>

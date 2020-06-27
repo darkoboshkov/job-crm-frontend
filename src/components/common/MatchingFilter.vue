@@ -61,8 +61,7 @@
       </div>
       <div class="mt-5">
         <button
-          class="btn btn-red large mt-5 d-flex m-auto align-items-center justify-content-around"
-          style="width: 200px"
+          class="btn btn-red large mt-5 d-flex m-auto align-items-center justify-content-around input-200"
           @click="applyFilter"
         >
           {{ $t("common.apply_filters")
@@ -110,13 +109,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .table-filter__title.collapsed .when-opened,
 .table-filter__title:not(.collapsed) .when-closed {
   display: none;
 }
-</style>
-<style scoped>
 .filter-option {
   flex: 1;
 }

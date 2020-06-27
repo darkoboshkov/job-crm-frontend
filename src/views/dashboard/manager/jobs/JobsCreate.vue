@@ -169,8 +169,7 @@
               <div class="d-flex">
                 <img
                   src="@/assets/image/icon/mail-red.svg"
-                  style="width:31px"
-                  class="mr-3"
+                  class="mr-3 mail-red"
                 />
                 <span>{{ user.email }}</span>
               </div>
@@ -182,8 +181,7 @@
               <div class="d-flex">
                 <img
                   src="@/assets/image/icon/phone-red.svg"
-                  style="width: 22px"
-                  class="mr-3"
+                  class="mr-3 phone-red"
                 />
                 <span>{{ user.phone }}</span>
               </div>
@@ -210,11 +208,7 @@
                 accept=".doc,.docx,.pdf"
                 @change="onFileChange"
               />
-              <label
-                for="attachment"
-                class="btn btn-blue m-0"
-                style="min-width:160px;"
-              >
+              <label for="attachment" class="btn btn-blue m-0 min-btn-160">
                 {{ $t("page_job_detail.button.upload") }}
                 <i class="hiway-crm-icon icon-upload" />
               </label>
@@ -433,3 +427,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.mail-red {
+  width: 31px;
+}
+.phone-red {
+  width: 22px;
+}
+</style>

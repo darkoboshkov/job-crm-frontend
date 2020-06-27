@@ -5,9 +5,8 @@
         {{ $t("page_candidates.title") }}
       </h1>
       <img
-        class="pointer"
+        class="pointer person-add"
         src="@/assets/image/icon/person-add.svg"
-        style="width:50px"
         @click="$router.push({ name: 'admin-users-create' })"
       />
     </div>
@@ -71,7 +70,7 @@
               <b-dropdown-item
                 href="#"
                 @click="onEditProfile(props)"
-                style="margin: 0.25rem 0"
+                class="m-0-25"
               >
                 {{ $t("page_candidates.table.edit_profile") }}
               </b-dropdown-item>
@@ -309,4 +308,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.person-add {
+  width: 50px;
+}
+</style>

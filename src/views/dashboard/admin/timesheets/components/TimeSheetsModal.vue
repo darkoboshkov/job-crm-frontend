@@ -17,20 +17,14 @@
           <span class="color-blue mr-3">
             {{ $t("page_timesheets.modal.worker") }}:
           </span>
-          <b-input
-            class="d-inline-block"
-            style="width: 175px;"
-            :value="worker"
-            disabled
-          />
+          <b-input class="d-inline-block input-175" :value="worker" disabled />
         </div>
         <div class="d-inline-block">
           <span class="color-blue mr-3">
             {{ $t("page_timesheets.modal.hiring_manager") }}:
           </span>
           <b-input
-            class="d-inline-block"
-            style="width: 175px;"
+            class="d-inline-block input-175"
             :value="hiringManager"
             disabled
           />
@@ -39,13 +33,12 @@
     </b-card>
 
     <b-card no-body class="mb-3">
-      <div style="padding: 20px; border-bottom: 1px solid #ececec;">
+      <div class="timesheet-week">
         <span class="color-blue mr-3">
           Week:
         </span>
         <b-input
-          class="d-inline-block"
-          style="width: 175px;"
+          class="d-inline-block input-175"
           :value="selectedWeekNumber"
           disabled
         />
@@ -109,7 +102,7 @@
             <div>
               <b-input
                 type="text"
-                style="width: 60px;"
+                class="input-60"
                 :disabled="inputDisabled"
                 v-model="d.normalWageHours"
               />
@@ -117,7 +110,7 @@
             <div>
               <b-input
                 type="text"
-                style="width: 60px;"
+                class="input-60"
                 :disabled="inputDisabled"
                 v-model="d.adjustedWageHours"
               />
@@ -125,7 +118,7 @@
             <div>
               <b-input
                 type="text"
-                style="width: 60px;"
+                class="input-60"
                 :disabled="inputDisabled"
                 v-model="d.percentOfAdjustedWage"
               />
@@ -141,8 +134,7 @@
             <div>
               <b-input
                 type="text"
-                class="d-inline-block"
-                style="width: 60px; margin-right: 0.5rem;"
+                class="d-inline-block input-60 mr-0-5"
                 :disabled="inputDisabled"
                 v-model="d.distanceTraveled"
               />

@@ -67,8 +67,7 @@
                     <b-form-select
                       v-if="editJob"
                       v-model="model.company"
-                      class="normal-size"
-                      style="margin-top:-8px"
+                      class="normal-size form-select"
                     >
                       <option
                         v-for="(company, index) in companies"
@@ -260,8 +259,7 @@
               <div class="d-flex">
                 <img
                   src="@/assets/image/icon/mail-red.svg"
-                  style="width:31px"
-                  class="mr-3"
+                  class="mr-3 mail-red"
                 />
                 <span>
                   <a
@@ -280,8 +278,7 @@
               <div class="d-flex">
                 <img
                   src="@/assets/image/icon/phone-red.svg"
-                  style="width: 22px"
-                  class="mr-3"
+                  class="mr-3 phone-red"
                 />
                 <span>{{ model.manager && model.manager.phone }}</span>
               </div>
@@ -423,11 +420,7 @@
                 accept=".doc,.docx,.pdf"
                 @change="onFileChange"
               />
-              <label
-                for="attachment"
-                class="btn btn-blue m-0"
-                style="min-width:160px;"
-              >
+              <label for="attachment" class="btn btn-blue m-0 min-btn-160">
                 {{ $t("page_job_detail.button.upload") }}
                 <i class="hiway-crm-icon icon-upload" />
               </label>
@@ -823,3 +816,15 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.mail-red {
+  width: 31px;
+}
+.phone-red {
+  width: 22px;
+}
+.form-select {
+  margin-top: -8px;
+}
+</style>

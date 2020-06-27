@@ -4,7 +4,7 @@
       <h1 class="title">
         {{ $t("page_offers.title") }}
       </h1>
-      <button class="btn btn-red circle large" style="width:50px">
+      <button class="btn btn-red circle large">
         <i class="hiway-crm-icon icon-add" />
       </button>
     </div>
@@ -155,9 +155,24 @@ export default {
     },
     goToOffer(props) {
       if (props && props.row) {
-        this.$router.push(
-          `/${this.role}/dashboard/joboffers/${props.row.company._id}/${props.row._id}`
-        );
+        /* eslint-disable */
+        if (props.row.companyId === props.row.hiringCompanyId) {
+          this.$router.push(
+            `/${this.role}/dashboard/joboffers/${props.row.company._id}/${props.row._id}`
+          );
+        } else {
+          if (props.row.intermediaryStatus === "failed" || props.row.status === "failed") {
+            this.$store.dispatch("updateShowErrorModal", true);
+            this.$store.dispatch("updateErrorModalContent", {
+              title: this.$t("page_offers.modal.failed.title"),
+              subTitle: this.$t("page_offers.modal.failed.sub_title"),
+              button: ""
+            });
+            return false;
+          }
+          this.$router.push(`/${this.role}/dashboard/joboffers/${props.row.company._id}/${props.row._id}/intermediary`);
+        }
+        /* eslint-enable */
       }
     },
     getActiveOffers() {
@@ -172,6 +187,10 @@ export default {
           row.endDate = this.getDateString(row.endDate);
           row.manager = this.getFullName(row.manager[0]);
           row.worker = this.getFullName(row.worker[0]);
+          /* eslint-disable */
+          row.contractType = this.getContractType(row.companyId, row.hiringCompanyId);
+          row.status = this.getContractStatus(row.status, row.intermediaryStatus);
+          /* eslint-enable */
           return row;
         });
         this.totalRows = res.totalDocs;
@@ -239,3 +258,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.circle {
+  width: 50px;
+}
+</style>

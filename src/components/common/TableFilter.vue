@@ -130,11 +130,7 @@
           </div>
         </div>
       </div>
-      <button
-        class="btn btn-blue mt-4"
-        style="width: 150px"
-        @click="applyFilter"
-      >
+      <button class="btn btn-blue mt-4 input-150" @click="applyFilter">
         {{ $t("common.apply_filters") }}
       </button>
     </b-collapse>

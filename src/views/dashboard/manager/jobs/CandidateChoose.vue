@@ -19,7 +19,7 @@
       </p>
       <div class="mt-5">
         <button
-          class="btn btn-red large mr-2"
+          class="btn btn-red large mr-2 min-btn-260"
           @click="
             $router.push({
               name: 'manager-jobs-select-candidate',
@@ -28,15 +28,13 @@
               }
             })
           "
-          style="min-width:260px;"
         >
           {{ $t("page_jobs_choose_candidate.button.search") }}
         </button>
 
         <button
-          class="btn btn-blue large ml-2"
+          class="btn btn-blue large ml-2 min-btn-240"
           @click="$router.push({ name: 'manager-users-create' })"
-          style="min-width:240px;"
         >
           {{ $t("page_jobs_choose_candidate.button.new") }}
         </button>

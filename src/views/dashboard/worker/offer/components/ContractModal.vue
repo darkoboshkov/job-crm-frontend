@@ -5,7 +5,7 @@
     :hide-footer="true"
     :hide-header="true"
     centered
-		v-model="showModal"
+    v-model="showModal"
   >
     <div id="joboffer_contract" class="p-3">
       <div class="text-center">
@@ -37,43 +37,43 @@
         <strong>{{ $t("page_offer_detail.contract.subject2") }}</strong>
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.name") }}
         </div>
         : {{ worker | fullNameFormatter }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.address") }}
         </div>
         : {{ worker.street }} {{ worker.houseNumber }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.postal_code_city") }}
         </div>
         : {{ worker.postalCode }} {{ worker.city }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.social_security_number") }}
         </div>
         : {{ worker.socialSecurityNumber }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.birthday") }}
         </div>
         : {{ worker.birthday | dateFormatter }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.id_type") }}
         </div>
         : {{ worker.identificationType }}, {{ worker.identificationNumber }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.id_expiration") }}
         </div>
         : {{ worker.identificationExpirationDate | dateFormatter }}
@@ -86,43 +86,43 @@
       <br />
       <br />
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.company_name") }}
         </div>
         : {{ hiringCompany.name }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.address") }}
         </div>
         : {{ hiringCompany.street }} {{ hiringCompany.houseNumber }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.postal_code_city") }}
         </div>
         : {{ hiringCompany.postalCode }} {{ hiringCompany.city }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.manager") }}
         </div>
         : {{ hiringManager | fullNameFormatter }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.telephone_number") }}
         </div>
         : {{ hiringManager.phone }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.expected_start_date") }}
         </div>
         : {{ offer.startDate | dateFormatter }}
       </div>
       <div>
-        <div style="width: 350px; display: inline-block;">
+        <div class="title">
           {{ $t("page_offer_detail.contract.agreed_working_hours") }}
         </div>
         : {{ offer.hoursPerWeek }}
@@ -143,17 +143,17 @@
 
       <strong>{{ $t("page_offer_detail.contract.subject7") }}</strong>
       <div>{{ $t("page_offer_detail.contract.description7_1") }}</div>
-      <ul style="padding: 0 0 0 20px; margin: 0;">
-        <li style="list-style-type: none;">
+      <ul class="description">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description7_1_1") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description7_1_2") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description7_1_3") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description7_1_4") }}
         </li>
       </ul>
@@ -190,8 +190,8 @@
       <br />
 
       <strong>{{ $t("page_offer_detail.contract.subject11") }}</strong>
-      <ul style="padding: 0 0 0 20px; margin: 0;">
-        <li style="list-style-type: decimal;">
+      <ul class="description">
+        <li class="list-type-decimal">
           {{ $t("page_offer_detail.contract.description11_1") }}
           {{
             offer.CAO && offer.CAO[0] && offer.CAO[0].name
@@ -199,21 +199,21 @@
               : ""
           }}
         </li>
-        <li style="list-style-type: decimal;">
+        <li class="list-type-decimal">
           {{ $t("page_offer_detail.contract.description11_2") }} €
           {{ offer.hourlyWage }}
         </li>
-        <li style="list-style-type: decimal;">
+        <li class="list-type-decimal">
           {{ $t("page_offer_detail.contract.description11_3") }}
         </li>
-        <li style="list-style-type: decimal;">
+        <li class="list-type-decimal">
           {{ $t("page_offer_detail.contract.description11_4") }}
           €{{ offer.travelExpenses }} per kilometer
         </li>
-        <li style="list-style-type: decimal;">
+        <li class="list-type-decimal">
           {{ $t("page_offer_detail.contract.description11_5") }}
         </li>
-        <li style="list-style-type: decimal;">
+        <li class="list-type-decimal">
           {{ $t("page_offer_detail.contract.description11_6") }}
         </li>
       </ul>
@@ -230,17 +230,17 @@
       <div>{{ $t("page_offer_detail.contract.description12") }}</div>
       <br />
       <strong>{{ $t("page_offer_detail.contract.subject13") }}</strong>
-      <ul style="padding: 0 0 0 20px; margin: 0;">
-        <li style="list-style-type: none;">
+      <ul class="description">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description13_1") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description13_2") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description13_3") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description13_4") }}
         </li>
       </ul>
@@ -259,29 +259,29 @@
       <br />
       <strong>{{ $t("page_offer_detail.contract.subject18") }}</strong>
       <div>{{ $t("page_offer_detail.contract.description18") }}</div>
-      <ul style="padding: 0 0 0 20px; margin: 0;">
-        <li style="list-style-type: none;">
+      <ul class="description">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description18_1") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description18_2") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description18_3") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description18_4") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description18_5") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description18_6") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description18_7") }}
         </li>
-        <li style="list-style-type: none;">
+        <li class="list-unstyled">
           {{ $t("page_offer_detail.contract.description18_8") }}
         </li>
       </ul>
@@ -412,7 +412,7 @@
 
 <script>
 export default {
-  name: "ViewJobOffer",
+  name: "Contract",
   props: {
     offer: {
       default: {}
@@ -466,4 +466,17 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.title {
+  width: 350px;
+  display: inline-block;
+}
+
+.description {
+  padding: 0 0 0 20px;
+  margin: 0;
+}
+.list-type-decimal {
+  list-style-type: decimal;
+}
+</style>

@@ -15,17 +15,15 @@
       <p class="mt-5">{{ $t("page_users_create.description") }}</p>
       <div class="mt-5">
         <button
-          class="btn btn-red large mr-2"
+          class="btn btn-red large mr-2 min-btn-260"
           @click="$router.push({ name: 'manager-users-create-invite' })"
-          style="min-width:260px;"
         >
           {{ $t("page_users_create.button.invite") }}
         </button>
 
         <button
-          class="btn btn-blue large ml-2"
+          class="btn btn-blue large ml-2 min-btn-240"
           @click="$router.push({ name: 'manager-users-create-manual' })"
-          style="min-width:240px;"
         >
           {{ $t("page_users_create.button.manual") }}
         </button>

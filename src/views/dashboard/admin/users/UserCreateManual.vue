@@ -179,13 +179,12 @@
               {{ errors | errorFormatter("password") }}
             </b-form-invalid-feedback>
             <b-form-checkbox
-              class="rtl text-right"
-              style="margin-right: 20px;"
+              class="rtl text-right mr-20"
               switch
               size="lg"
               v-model="showPassword"
             >
-              <span style="font-size: 0.75em;">
+              <span class="font-size-7">
                 {{ $t("page_users_create_manual.form.show") }}
               </span>
             </b-form-checkbox>
@@ -214,13 +213,12 @@
               {{ errors | errorFormatter("c_password") }}
             </b-form-invalid-feedback>
             <b-form-checkbox
-              class="rtl text-right"
-              style="margin-right: 20px;"
+              class="rtl text-right mr-20"
               switch
               size="lg"
               v-model="showRepeatPassword"
             >
-              <span style="font-size: 0.75em;">
+              <span class="font-size-7">
                 {{ $t("page_users_create_manual.form.show") }}
               </span>
             </b-form-checkbox>
@@ -521,10 +519,7 @@
                 class="custom-input"
               />
               <label class="position-absolute id-selector" for="idCard" />
-              <i
-                class="hiway-crm-icon icon-upload position-absolute"
-                style="top: 15px;right: 11px;"
-              />
+              <i class="hiway-crm-icon icon-upload position-absolute" />
             </div>
             <b-form-invalid-feedback class="d-block">
               {{ errors | errorFormatter("identificationImage") }}
@@ -710,3 +705,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.icon-upload {
+  top: 15px;
+  right: 11px;
+}
+</style>

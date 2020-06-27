@@ -208,39 +208,77 @@
         </div>
         <div>
           <button
+            v-if="!edit"
             class="btn mr-2 min-btn-160"
             :class="signed ? 'btn-secondary' : 'btn-red'"
-            @click="decline"
+            @click="adjust"
             :disabled="signed"
           >
-            {{ $t("page_offer_detail.button.decline") }}
+            {{ $t("page_offer_detail.button.adjust") }}
           </button>
 
           <button
-            class="btn ml-2 min-btn-160"
-            :class="signed ? 'btn-secondary' : 'btn-blue'"
+            v-if="edit"
+            class="btn btn-blue ml-2 min-btn-160"
             @click="openSignContractModal"
-            :disabled="signed"
           >
-            {{ $t("page_offer_detail.button.sign") }}
+            {{ $t("page_offer_detail.button.lock") }}
           </button>
-
-          <button
-            class="btn ml-2 min-btn-160"
-            :class="signed ? 'btn-red' : 'btn-secondary'"
-            @click="exportContract"
+          <b-dropdown
+            :text="$t('page_offer_detail.button.export_contract')"
+            class="ml-2"
+            :variant="signed ? 'red' : 'secondary'"
             :disabled="!signed"
           >
-            {{ $t("page_offer_detail.button.export_contract") }}
-          </button>
-          <button
-            class="btn ml-2 min-btn-160"
-            :class="signed ? 'btn-blue' : 'btn-secondary'"
-            @click="companyContractModal = true"
+            <b-dropdown-item @click="exportCompanyContract">
+              <i class="hiway-crm-icon icon-upload mr-1" />
+              <span>
+                {{ $t("page_offer_detail.button.dropdown.company_export") }}
+              </span>
+            </b-dropdown-item>
+            <b-dropdown-item @click="exportContract">
+              <i class="hiway-crm-icon icon-upload mr-1" />
+              <span>
+                {{ $t("page_offer_detail.button.dropdown.client_export") }}
+              </span>
+            </b-dropdown-item>
+          </b-dropdown>
+          <b-dropdown
+            :text="$t('page_offer_detail.button.view_contract')"
+            class="ml-2"
+            :variant="signed ? 'blue' : 'secondary'"
             :disabled="edit"
           >
-            {{ $t("page_offer_detail.button.view_contract") }}
-          </button>
+            <b-dropdown-item @click="companyContractModal = true">
+              <span>
+                {{ $t("page_offer_detail.button.dropdown.company_contract") }}
+              </span>
+            </b-dropdown-item>
+            <b-dropdown-item @click="contractModal = true">
+              <span>
+                {{ $t("page_offer_detail.button.dropdown.worker_contract") }}
+              </span>
+            </b-dropdown-item>
+          </b-dropdown>
+          <b-dropdown
+            :text="$t('page_offer_detail.button.other')"
+            class="ml-2"
+            variant="secondary"
+            :disabled="edit"
+          >
+            <b-dropdown-item>
+              <i class="hiway-crm-icon icon-contract mr-1" />
+              <span>
+                {{ $t("page_offer_detail.button.dropdown.extend") }}
+              </span>
+            </b-dropdown-item>
+            <b-dropdown-item @click="exportContract">
+              <i class="hiway-crm-icon icon-hours mr-1" />
+              <span>
+                {{ $t("page_offer_detail.button.dropdown.early") }}
+              </span>
+            </b-dropdown-item>
+          </b-dropdown>
         </div>
       </div>
     </b-card>
@@ -267,6 +305,24 @@
             </b-form-select>
           </div>
           <div v-else class="text-right">{{ selectedCaoOption.name }}</div>
+        </div>
+        <div class="item">
+          <div>{{ $t("page_offer_detail.form.wage") }}</div>
+          <div v-if="edit">
+            <b-form-input type="number" v-model="model.wage" />
+          </div>
+          <div v-else class="text-right">
+            {{ model.wage }}
+          </div>
+        </div>
+        <div class="item">
+          <div>{{ $t("page_offer_detail.form.hourly_wage") }}</div>
+          <div v-if="edit">
+            <b-form-input type="number" v-model="model.hourlyWage" />
+          </div>
+          <div v-else class="text-right">
+            {{ model.hourlyWage }}
+          </div>
         </div>
         <div class="item">
           <div>{{ $t("page_offer_detail.form.pay_rate") }}</div>
@@ -467,10 +523,7 @@
         </b-form-checkbox>
       </div>
       <div class="d-flex justify-content-around">
-        <button
-          class="btn btn-red min-btn-160"
-          @click="companyContractModal = true"
-        >
+        <button class="btn btn-red min-btn-160" @click="contractModal = true">
           {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
         </button>
 
@@ -479,6 +532,16 @@
         </button>
       </div>
     </b-modal>
+    <contract-modal
+      :offer="model"
+      :company="company"
+      :manager="manager"
+      :worker="worker"
+      :hiringCompany="hiringCompany"
+      :hiringManager="hiringManager"
+      :job="job"
+      :modal-open.sync="contractModal"
+    />
     <company-contract-modal
       :offer="model"
       :company="company"
@@ -499,6 +562,7 @@
 <script>
 import jobOffersApi from "@/services/api/joboffers";
 import constantsApi from "@/services/api/constants";
+import ContractModal from "./components/ContractModal";
 import CompanyContractModal from "./components/CompanyContractModal";
 import SignValidationModal from "./components/SignValidationModal";
 
@@ -511,18 +575,22 @@ import {
 export default {
   name: "DetailsIntermediary",
   components: {
+    ContractModal,
     CompanyContractModal,
     SignValidationModal
   },
   computed: {
     signed() {
       return (
-        this.model.intermediaryStatus === "active" ||
-        this.model.intermediaryStatus === "completed"
+        (this.model.status === "active" || this.model.status === "completed") &&
+        (this.model.intermediaryStatus === "active" ||
+          this.model.intermediaryStatus === "completed")
       );
     },
     edit() {
-      return this.model.intermediaryStatus === "open";
+      return (
+        this.model.status === "open" || this.model.intermediaryStatus === "open"
+      );
     },
     selectedCaoOption() {
       return (
@@ -546,7 +614,7 @@ export default {
   },
   data() {
     return {
-      companyId: this.$store.state.user.companyId,
+      companyId: this.$route.params.companyId,
       offerId: this.$route.params.offerId,
       model: {
         collectiveAgreement: "",
@@ -572,6 +640,7 @@ export default {
       caoOptions: [],
       imageData: {},
       offerContract: null,
+      companyContract: null,
       attachments: [],
       paymentType: [],
       validations: {
@@ -581,6 +650,7 @@ export default {
         jobOffer: []
       },
       agreement: "not_accepted",
+      contractModal: false,
       companyContractModal: false,
       signValidationModal: false
     };
@@ -686,11 +756,12 @@ export default {
           "OFFER_TRAVEL_TIME_COMPENSATION_PER_WEEK_INVALID"
         );
       }
-      if (!this.model.otherExpenses < 0) {
+      if (this.model.otherExpenses < 0) {
         this.validations.jobOffer.push(
           "OFFER_TRAVEL_WEEKLY_COMPENSATION_INVALID"
         );
       }
+
       return (
         this.validations.worker.length +
           this.validations.company.length +
@@ -698,21 +769,6 @@ export default {
           this.validations.jobOffer.length ===
         0
       );
-    },
-    decline() {
-      jobOffersApi
-        .declineCompanyContract(this.model)
-        .then(res => {
-          this.getOfferDetails();
-        })
-        .catch(e => {
-          this.$store.dispatch("updateShowErrorModal", true);
-          this.$store.dispatch("updateErrorModalContent", {
-            title: this.$t("page_offer_detail.modal.decline_fail.title"),
-            subTitle: this.$t("page_offer_detail.modal.decline_fail.sub_title"),
-            button: this.$t("page_offer_detail.modal.decline_fail.continue")
-          });
-        });
     },
     downloadFile(attachment) {
       jobOffersApi
@@ -758,18 +814,23 @@ export default {
         this.signValidationModal = true;
       } else {
         jobOffersApi
-          .hiringCompanySign(this.model)
+          .lock(this.model)
           .then(res => {
-            this.getOfferDetails();
-            this.$refs["modal-sign-contract"].hide();
-            this.$store.dispatch("updateShowSuccessModal", true);
-            this.$store.dispatch("updateSuccessModalContent", {
-              title: this.$t("page_offer_detail.modal.sign_success.title"),
-              subTitle: this.$t(
-                "page_offer_detail.modal.sign_success.sub_title"
-              ),
-              button: this.$t("page_offer_detail.modal.sign_success.continue")
-            });
+            if (res.signAble) {
+              this.getOfferDetails();
+              this.$refs["modal-sign-contract"].hide();
+              this.$store.dispatch("updateShowSuccessModal", true);
+              this.$store.dispatch("updateSuccessModalContent", {
+                title: this.$t("page_offer_detail.modal.sign_success.title"),
+                subTitle: this.$t(
+                  "page_offer_detail.modal.sign_success.sub_title"
+                ),
+                button: this.$t("page_offer_detail.modal.sign_success.continue")
+              });
+            } else {
+              this.validations = res.validations;
+              this.$refs["modal-validate-contract"].show();
+            }
           })
           .catch(e => {
             this.$store.dispatch("updateShowErrorModal", true);
@@ -798,12 +859,22 @@ export default {
     },
     exportContract() {
       jobOffersApi
-        .downloadCompanyContract({
+        .downloadWorkerContract({
           companyId: this.companyId,
           id: this.offerId
         })
         .then(res => {
           downloadFile(res, this.offerContract.name);
+        });
+    },
+    exportCompanyContract() {
+      jobOffersApi
+        .downloadCompanyContract({
+          companyId: this.model.companyId,
+          id: this.offerId
+        })
+        .then(res => {
+          downloadFile(res, this.companyContract.name);
         });
     },
     getOfferDetails() {
@@ -835,8 +906,10 @@ export default {
             this.hiringManager = res.hiringManager[0];
             this.hiringCompany = res.hiringCompany[0];
           }
+
           this.attachments = res.attachments;
-          this.offerContract = res.contractData?.companyContractDoc;
+          this.offerContract = res.contractData?.workerContractDoc;
+          this.companyContract = res.contractData?.companyContractDoc;
         })
         .catch(e => {
           this.$store.dispatch("updateShowErrorModal", true);
@@ -872,10 +945,12 @@ export default {
       const data = new FormData();
       data.append("file", this.imageData.file);
       this.$store.dispatch("updateLoading", true);
+
       jobOffersApi
         .upload(data)
         .then(response => {
           this.imageData.path = response.path;
+
           jobOffersApi
             .addAttachment(
               Object.assign(
@@ -937,13 +1012,6 @@ export default {
     },
     copyPhoneNumToClipboard(phone) {
       copyToClipboard(phone, `Successfully copied the phone number ${phone}`);
-    }
-  },
-  watch: {
-    "model.intermediaryStatus"(value) {
-      if (value === "open" || value === "failed") {
-        this.$router.push({ name: "manager-offers" });
-      }
     }
   }
 };

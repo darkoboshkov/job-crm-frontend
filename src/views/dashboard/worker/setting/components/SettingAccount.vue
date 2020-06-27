@@ -338,7 +338,7 @@
               class="custom-input"
             />
             <label class="position-absolute id-selector" for="idCard" />
-            <div class="d-flex position-absolute" style="top:15px;right:10px;">
+            <div class="d-flex position-absolute upload-card">
               <i
                 class="hiway-crm-icon icon-upload cursor-pointer"
                 @click="$refs.idCard.click()"
@@ -585,4 +585,9 @@ export default {
 };
 </script>
 
-<style scoped />
+<style scoped>
+.upload-card {
+  top: 15px;
+  right: 10px;
+}
+</style>

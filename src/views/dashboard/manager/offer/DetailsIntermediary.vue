@@ -148,18 +148,15 @@
           <span class="d-flex align-items-center contract-status">
             <i
               v-if="contractStatus === 'open'"
-              class="hiway-crm-icon icon-dot mr-2 color-yellow"
-              style="font-size: 0.3em;"
+              class="hiway-crm-icon icon-dot mr-2 color-yellow font-size-3"
             />
             <i
               v-else-if="contractStatus === 'pending'"
-              class="hiway-crm-icon icon-dot mr-2 color-blue"
-              style="font-size: 0.3em;"
+              class="hiway-crm-icon icon-dot mr-2 color-blue font-size-3"
             />
             <i
               v-else-if="contractStatus === 'active'"
-              class="hiway-crm-icon icon-dot mr-2 color-green"
-              style="font-size: 0.3em;"
+              class="hiway-crm-icon icon-dot mr-2 color-green font-size-3"
             />
             <template v-if="contractStatus">
               {{ $t("status." + contractStatus) }}
@@ -175,9 +172,8 @@
             </div>
             <div>
               <i
-                class="hiway-crm-icon icon-dot mr-2"
+                class="hiway-crm-icon icon-dot mr-2 font-size-3"
                 :class="managerState.color"
-                style="font-size: 0.3em;"
               />
               {{ managerState.text }}
             </div>
@@ -191,9 +187,8 @@
             </div>
             <div>
               <i
-                class="hiway-crm-icon icon-dot mr-2"
+                class="hiway-crm-icon icon-dot mr-2 font-size-3"
                 :class="hiringManagerState.color"
-                style="font-size: 0.3em;"
               />
               {{ hiringManagerState.text }}
             </div>
@@ -204,9 +199,8 @@
             </div>
             <div>
               <i
-                class="hiway-crm-icon icon-dot mr-2"
+                class="hiway-crm-icon icon-dot mr-2 font-size-3"
                 :class="workerState.color"
-                style="font-size: 0.3em;"
               />
               {{ workerState.text }}
             </div>
@@ -215,20 +209,18 @@
         <div>
           <button
             v-if="!edit"
-            class="btn mr-2"
+            class="btn mr-2 min-btn-160"
             :class="signed ? 'btn-secondary' : 'btn-red'"
             @click="adjust"
             :disabled="signed"
-            style="min-width:160px;"
           >
             {{ $t("page_offer_detail.button.adjust") }}
           </button>
 
           <button
             v-if="edit"
-            class="btn btn-blue ml-2"
+            class="btn btn-blue ml-2 min-btn-160"
             @click="openSignContractModal"
-            style="min-width:160px;"
           >
             {{ $t("page_offer_detail.button.lock") }}
           </button>
@@ -436,11 +428,7 @@
             accept=".doc,.docx,.pdf"
             @change="onFileChange"
           />
-          <label
-            for="attachment"
-            class="btn btn-blue ml-2"
-            style="min-width:160px;"
-          >
+          <label for="attachment" class="btn btn-blue ml-2 min-btn-160">
             {{ $t("page_offer_detail.button.upload") }}
             <i class="hiway-crm-icon icon-upload" />
           </label>
@@ -458,13 +446,11 @@
                 v-if="attachment.userId === worker._id && worker.image"
                 :src="worker.image | appUrlFormatter"
                 class="rounded-circle border mr-4"
-                style="width:45px"
               />
               <img
                 v-else-if="attachment.userId === manager._id && manager.image"
                 :src="manager.image | appUrlFormatter"
                 class="rounded-circle border mr-4"
-                style="width:45px"
               />
               <img
                 v-else-if="
@@ -472,7 +458,6 @@
                 "
                 :src="hiringManager.image | appUrlFormatter"
                 class="rounded-circle border mr-4"
-                style="width:45px"
               />
               {{ attachment.name }}
             </div>
@@ -538,19 +523,11 @@
         </b-form-checkbox>
       </div>
       <div class="d-flex justify-content-around">
-        <button
-          class="btn btn-red"
-          @click="contractModal = true"
-          style="min-width:160px;"
-        >
+        <button class="btn btn-red min-btn-160" @click="contractModal = true">
           {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
         </button>
 
-        <button
-          class="btn btn-blue"
-          @click="lockSignSend"
-          style="min-width:160px;"
-        >
+        <button class="btn btn-blue min-btn-160" @click="lockSignSend">
           {{ $t("page_offer_detail.modal.sign_contract.sign_contract") }}
         </button>
       </div>
@@ -1037,4 +1014,8 @@ export default {
 };
 </script>
 
-<style scoped />
+<style scoped>
+.rounded-circle {
+  width: 45px;
+}
+</style>

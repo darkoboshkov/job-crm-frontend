@@ -127,8 +127,7 @@
               <div class="d-flex">
                 <img
                   src="@/assets/image/icon/mail-red.svg"
-                  style="width:31px"
-                  class="mr-3"
+                  class="mr-3 mail-red"
                 />
                 <span>
                   <a
@@ -147,8 +146,7 @@
               <div class="d-flex">
                 <img
                   src="@/assets/image/icon/phone-red.svg"
-                  style="width: 22px"
-                  class="mr-3"
+                  class="mr-3 phone-red"
                 />
                 <span>
                   {{ model.manager ? model.manager.phone : "" }}
@@ -429,3 +427,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.mail-red {
+  width: 31px;
+}
+.phone-red {
+  width: 22px;
+}
+</style>

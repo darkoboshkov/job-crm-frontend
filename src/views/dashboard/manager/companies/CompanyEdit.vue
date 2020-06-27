@@ -237,7 +237,6 @@
                       id="radio-group-1"
                       v-model="vatShiftedEnabled"
                       name="vat_shifted"
-                      style="outline: none;"
                     >
                       <b-form-radio :value="false" class="mr-5">
                         {{ $t("common.no") }}
@@ -284,7 +283,6 @@
                       id="radio-group-2"
                       v-model="gAccountEnabled"
                       name="g_account"
-                      style="outline: none;"
                     >
                       <b-form-radio :value="false" class="mr-5">
                         {{ $t("common.no") }}
@@ -332,7 +330,6 @@
                   v-model="model.termOfPayment"
                   :options="termsOfPayment"
                   name="term_of_payment"
-                  style="outline: none;"
                 />
               </b-form-group>
               <b-form-invalid-feedback class="d-block">
@@ -352,7 +349,6 @@
                   id="radio-group-4"
                   v-model="model.automaticCollection"
                   name="automatic_collection"
-                  style="outline: none;"
                 >
                   <b-form-radio :value="false" class="mr-5">
                     {{ $t("common.no") }}
@@ -379,7 +375,6 @@
                   id="radio-group-5"
                   v-model="model.chargeTravelExpenses"
                   name="charge_travel_expenses"
-                  style="outline: none;"
                 >
                   <b-form-radio :value="false" class="mr-5">
                     {{ $t("common.no") }}
@@ -406,7 +401,6 @@
                   id="radio-group-6"
                   v-model="model.chargeOtherExpenses"
                   name="charge_other_expenses"
-                  style="outline: none;"
                 >
                   <b-form-radio :value="false" class="mr-5">
                     {{ $t("common.no") }}
@@ -653,3 +647,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+div[role="radiogroup"] {
+  outline: none;
+}
+</style>

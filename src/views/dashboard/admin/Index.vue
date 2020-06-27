@@ -2,9 +2,9 @@
   <div id="page_dashboard" class="dashboard-content">
     <div class="d-flex responsive justify-content-between align-items-start">
       <h1 class="title text-center">{{ $t("page_dashboard.title") }}</h1>
-      <b-button v-b-modal.adjust_dashboard>{{
-        $t("page_dashboard.button.adjust")
-      }}</b-button>
+      <b-button v-b-modal.adjust_dashboard>
+        {{ $t("page_dashboard.button.adjust") }}
+      </b-button>
     </div>
     <b-row>
       <b-col md="4" v-if="positionItem">
