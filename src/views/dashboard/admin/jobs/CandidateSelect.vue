@@ -80,7 +80,7 @@
         </div>
       </div>
       <div>
-        <button class="btn btn-red large mr-2 min-btn-260" @click="sendOffer">
+        <button class="btn btn-red large mr-2 min-width-260" @click="sendOffer">
           {{ $t("page_jobs_select_candidate.button.select") }}
         </button>
       </div>

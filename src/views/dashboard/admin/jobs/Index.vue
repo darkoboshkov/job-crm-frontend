@@ -5,7 +5,7 @@
         {{ $t("page_jobs.title") }}
       </h1>
       <button
-        class="btn btn-red circle large btn-50"
+        class="btn btn-red circle large width-50"
         @click="$router.push({ name: 'admin-job-create' })"
       >
         <i class="hiway-crm-icon icon-add" />

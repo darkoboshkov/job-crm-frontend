@@ -17,14 +17,14 @@
           <span class="color-blue mr-3">
             {{ $t("page_timesheets.modal.worker") }}:
           </span>
-          <b-input class="d-inline-block input-175" :value="worker" disabled />
+          <b-input class="d-inline-block width-175" :value="worker" disabled />
         </div>
         <div class="d-inline-block">
           <span class="color-blue mr-3">
             {{ $t("page_timesheets.modal.hiring_manager") }}:
           </span>
           <b-input
-            class="d-inline-block input-175"
+            class="d-inline-block width-175"
             :value="hiringManager"
             disabled
           />
@@ -38,7 +38,7 @@
           Week:
         </span>
         <b-input
-          class="d-inline-block input-175"
+          class="d-inline-block width-175"
           :value="selectedWeekNumber"
           disabled
         />
@@ -102,7 +102,7 @@
             <div>
               <b-input
                 type="text"
-                class="input-60"
+                class="width-60"
                 :disabled="inputDisabled"
                 v-model="d.normalWageHours"
               />
@@ -110,7 +110,7 @@
             <div>
               <b-input
                 type="text"
-                class="input-60"
+                class="width-60"
                 :disabled="inputDisabled"
                 v-model="d.adjustedWageHours"
               />
@@ -118,7 +118,7 @@
             <div>
               <b-input
                 type="text"
-                class="input-60"
+                class="width-60"
                 :disabled="inputDisabled"
                 v-model="d.percentOfAdjustedWage"
               />
@@ -134,7 +134,7 @@
             <div>
               <b-input
                 type="text"
-                class="d-inline-block input-60 mr-0-5"
+                class="d-inline-block width-60 mr-0-5"
                 :disabled="inputDisabled"
                 v-model="d.distanceTraveled"
               />

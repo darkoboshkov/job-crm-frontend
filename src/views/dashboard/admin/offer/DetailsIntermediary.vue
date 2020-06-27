@@ -209,7 +209,7 @@
         <div>
           <button
             v-if="!edit"
-            class="btn mr-2 min-btn-160"
+            class="btn mr-2 min-width-160"
             :class="signed ? 'btn-secondary' : 'btn-red'"
             @click="adjust"
             :disabled="signed"
@@ -219,7 +219,7 @@
 
           <button
             v-if="edit"
-            class="btn btn-blue ml-2 min-btn-160"
+            class="btn btn-blue ml-2 min-width-160"
             @click="openSignContractModal"
           >
             {{ $t("page_offer_detail.button.lock") }}
@@ -428,7 +428,7 @@
             accept=".doc,.docx,.pdf"
             @change="onFileChange"
           />
-          <label for="attachment" class="btn btn-blue ml-2 min-btn-160">
+          <label for="attachment" class="btn btn-blue ml-2 min-width-160">
             {{ $t("page_offer_detail.button.upload") }}
             <i class="hiway-crm-icon icon-upload" />
           </label>
@@ -523,11 +523,11 @@
         </b-form-checkbox>
       </div>
       <div class="d-flex justify-content-around">
-        <button class="btn btn-red min-btn-160" @click="contractModal = true">
+        <button class="btn btn-red min-width-160" @click="contractModal = true">
           {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
         </button>
 
-        <button class="btn btn-blue min-btn-160" @click="lockSignSend">
+        <button class="btn btn-blue min-width-160" @click="lockSignSend">
           {{ $t("page_offer_detail.modal.sign_contract.sign_contract") }}
         </button>
       </div>

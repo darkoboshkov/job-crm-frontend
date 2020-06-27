@@ -5,11 +5,11 @@
         {{ $t("page_companies.title") }}
       </h1>
       <div v-if="isIntermediary">
-        <button class="btn btn-blue large mr-1 btn-50" @click="onAccessButton">
+        <button class="btn btn-blue large mr-1 width-50" @click="onAccessButton">
           <i class="hiway-crm-icon icon-lock" />
         </button>
         <button
-          class="btn btn-red circle large btn-50"
+          class="btn btn-red circle large width-50"
           @click="$router.push({ name: 'manager-companies-create' })"
         >
           <i class="hiway-crm-icon icon-add" />

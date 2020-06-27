@@ -5,7 +5,7 @@
         {{ $t("page_candidates.title") }}
       </h1>
       <img
-        class="pointer btn-50"
+        class="pointer width-50"
         src="@/assets/image/icon/person-add.svg"
         @click="$router.push({ name: 'manager-users-create' })"
       />

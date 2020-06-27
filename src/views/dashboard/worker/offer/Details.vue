@@ -160,7 +160,7 @@
         </div>
         <div>
           <button
-            class="btn mr-2 min-btn-160"
+            class="btn mr-2 min-width-160"
             :class="signed ? 'btn-secondary' : 'btn-red'"
             @click="decline"
             :disabled="signed"
@@ -169,7 +169,7 @@
           </button>
 
           <button
-            class="btn ml-2 min-btn-160"
+            class="btn ml-2 min-width-160"
             :class="signed ? 'btn-secondary' : 'btn-blue'"
             @click="openSignContractModal"
             :disabled="signed"
@@ -178,7 +178,7 @@
           </button>
 
           <button
-            class="btn ml-2 min-btn-160"
+            class="btn ml-2 min-width-160"
             :class="signed ? 'btn-red' : 'btn-secondary'"
             @click="exportContract"
             :disabled="!signed"
@@ -187,7 +187,7 @@
           </button>
 
           <button
-            class="btn ml-2 min-btn-160"
+            class="btn ml-2 min-width-160"
             :class="signed ? 'btn-blue' : 'btn-secondary'"
             @click="contractModal = true"
           >
@@ -330,7 +330,7 @@
             accept=".doc,.docx,.pdf"
             @change="onFileChange"
           />
-          <label for="attachment" class="btn btn-blue ml-2 min-btn-160">
+          <label for="attachment" class="btn btn-blue ml-2 min-width-160">
             {{ $t("page_offer_detail.button.upload") }}
             <i class="hiway-crm-icon icon-upload" />
           </label>
@@ -478,11 +478,11 @@
         </b-form-checkbox>
       </div>
       <div class="d-flex justify-content-around">
-        <button class="btn btn-red min-btn-160" @click="contractModal = true">
+        <button class="btn btn-red min-width-160" @click="contractModal = true">
           {{ $t("page_offer_detail.modal.sign_contract.view_contract") }}
         </button>
 
-        <button class="btn btn-blue min-btn-160" @click="sign">
+        <button class="btn btn-blue min-width-160" @click="sign">
           {{ $t("page_offer_detail.modal.sign_contract.sign_contract") }}
         </button>
       </div>

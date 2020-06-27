@@ -238,7 +238,7 @@
                 accept=".doc,.docx,.pdf"
                 @change="onFileChange"
               />
-              <label for="attachment" class="btn btn-blue m-0 min-btn-160">
+              <label for="attachment" class="btn btn-blue m-0 min-width-160">
                 {{ $t("page_job_detail.button.upload") }}
                 <i class="hiway-crm-icon icon-upload" />
               </label>

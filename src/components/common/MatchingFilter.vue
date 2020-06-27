@@ -61,7 +61,7 @@
       </div>
       <div class="mt-5">
         <button
-          class="btn btn-red large mt-5 d-flex m-auto align-items-center justify-content-around input-200"
+          class="btn btn-red large mt-5 d-flex m-auto align-items-center justify-content-around width-200"
           @click="applyFilter"
         >
           {{ $t("common.apply_filters")
