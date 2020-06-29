@@ -134,6 +134,43 @@ export const isManagerAuthorized = (to, from, next) => {
 };
 
 /**
+ * Check if Intermediary manager user is authorized
+ * @param to
+ * @param from
+ * @param next
+ */
+export const isIntermediaryManagerAuthorized = (to, from, next) => {
+  if (
+    store.state.user &&
+    store.state.user.role === "manager" &&
+    store.state.user.companyType === "intermediary"
+  ) {
+    next();
+    return;
+  }
+  next({ name: "404" });
+};
+
+/**
+ * Check if Intermediary manager user is authorized
+ * @param to
+ * @param from
+ * @param next
+ */
+export const isHiringManagerAuthorized = (to, from, next) => {
+  if (
+    store.state.user &&
+    store.state.user.role === "manager" &&
+    store.state.user.companyType !== "intermediary"
+  ) {
+    next();
+    return;
+  }
+  next({ name: "404" });
+};
+
+
+/**
  * Check if worker user is authorized
  * @param to
  * @param from

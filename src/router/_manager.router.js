@@ -1,4 +1,9 @@
-import { ifAuthenticated, isManagerAuthorized } from "../utils";
+import {
+  ifAuthenticated,
+  isHiringManagerAuthorized,
+  isIntermediaryManagerAuthorized,
+  isManagerAuthorized
+} from "../utils";
 
 export default [
   {
@@ -137,14 +142,14 @@ export default [
         name: "manager-offer-inter-details",
         component: () =>
           import("../views/dashboard/manager/offer/DetailsIntermediary.vue"),
-        beforeEnter: isManagerAuthorized
+        beforeEnter: isIntermediaryManagerAuthorized
       },
       {
         path: "joboffers/:offerId/hiring-company",
         name: "manager-offer-hiring-details",
         component: () =>
           import("../views/dashboard/manager/offer/DetailsHiringCompany.vue"),
-        beforeEnter: isManagerAuthorized
+        beforeEnter: isHiringManagerAuthorized
       },
       {
         path: "profile/:id",
