@@ -193,6 +193,7 @@ export default {
           row.startDate = this.getDateString(row.startDate);
           row.endDate = this.getDateString(row.endDate);
           row.manager = this.getFullName(row.manager[0]);
+          row.workerImage = row.worker[0].image;
           row.worker = this.getFullName(row.worker[0]);
           /* eslint-disable */
           row.contractType = this.getContractType(row.companyId, row.hiringCompanyId);
