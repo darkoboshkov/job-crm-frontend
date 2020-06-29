@@ -125,15 +125,21 @@ export default {
   },
   methods: {
     fetchCompanies() {
-      return companiesApi.getAll().then(res => {
-        this.companies = res;
+      return companiesApi.getAllowed(
+				{
+          companyId: this.companyId,
+          pagination: 0
+				}
+			).then(res => {
+        this.companies = res.docs;
       });
     },
     fetchManagers() {
       return usersApi
-        .getAll({
+        .getAllowedCompanyUsers({
           filter: { and: [{ key: "role", value: "manager", opt: "eq" }] },
-          pagination: 0
+          pagination: 0,
+          companyId: this.companyId
         })
         .then(res => {
           this.managers = res.docs;
