@@ -191,13 +191,23 @@ export default {
           hiringManagerId: this.model.hiringManagerId
         })
         .then(res => {
-          this.$router.push({
-            name: "admin-offer-details",
-            params: {
-              offerId: res._id,
-              companyId: this.companyId
-            }
-          });
+          if (this.companyId === this.model.hiringCompanyId) {
+            this.$router.push({
+              name: "admin-offer-details",
+              params: {
+                offerId: res._id,
+                companyId: this.companyId
+              }
+            });
+          } else {
+            this.$router.push({
+              name: "admin-offer-inter-details",
+              params: {
+                offerId: res._id,
+                companyId: this.companyId
+              }
+            });
+          }
         });
     }
   }
