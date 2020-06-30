@@ -169,7 +169,6 @@ export const isHiringManagerAuthorized = (to, from, next) => {
   next({ name: "404" });
 };
 
-
 /**
  * Check if worker user is authorized
  * @param to

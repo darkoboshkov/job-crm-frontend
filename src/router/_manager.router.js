@@ -152,6 +152,33 @@ export default [
         beforeEnter: isHiringManagerAuthorized
       },
       {
+        path: "joboffers/:offerId/extend-contract",
+        name: "manager-offer-extend-contract",
+        component: () =>
+          import(
+            "../views/dashboard/manager/offer/contract/ExtendContract.vue"
+          ),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "joboffers/:offerId/end-contract",
+        name: "manager-offer-end-contract",
+        component: () =>
+          import(
+            "../views/dashboard/manager/offer/contract/EndingContract.vue"
+          ),
+        beforeEnter: isManagerAuthorized
+      },
+      {
+        path: "joboffers/:offerId/select-date",
+        name: "manager-offer-select-date",
+        component: () =>
+          import(
+            "../views/dashboard/manager/offer/contract/SelectEndingDate.vue"
+          ),
+        beforeEnter: isManagerAuthorized
+      },
+      {
         path: "profile/:id",
         name: "manager-profile",
         component: () => import("../views/dashboard/manager/profile/Index.vue"),

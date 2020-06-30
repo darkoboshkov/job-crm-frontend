@@ -266,13 +266,31 @@
             variant="secondary"
             :disabled="edit"
           >
-            <b-dropdown-item>
+            <b-dropdown-item
+              @click="
+                $router.push({
+                  name: 'manager-offer-extend-contract',
+                  params: {
+                    offerId: offerId
+                  }
+                })
+              "
+            >
               <i class="hiway-crm-icon icon-contract mr-1" />
               <span>
                 {{ $t("page_offer_detail.button.dropdown.extend") }}
               </span>
             </b-dropdown-item>
-            <b-dropdown-item @click="exportContract">
+            <b-dropdown-item
+              @click="
+                $router.push({
+                  name: 'manager-offer-end-contract',
+                  params: {
+                    offerId: offerId
+                  }
+                })
+              "
+            >
               <i class="hiway-crm-icon icon-hours mr-1" />
               <span>
                 {{ $t("page_offer_detail.button.dropdown.early") }}

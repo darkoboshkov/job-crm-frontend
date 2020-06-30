@@ -67,12 +67,12 @@
           <div v-else-if="props.column.field === 'status'">
             {{ props.row.status ? $t(`status.${props.row.status}`) : "" }}
           </div>
-					<div
-							v-else-if="props.column.field === 'image'"
-							class="d-flex align-items-center"
-					>
-						<div class="avatar-image mr-2">
-							<!-- eslint-disable -->
+          <div
+            v-else-if="props.column.field === 'image'"
+            class="d-flex align-items-center"
+          >
+            <div class="avatar-image mr-2">
+              <!-- eslint-disable -->
 							<img v-if="props.row.contractType === 'company' && props.row.hiringCompany.logo"
 									 :src="props.row.hiringCompany.logo | appUrlFormatter"
 							/>
@@ -80,9 +80,9 @@
 									 :src="props.row.workerImage | appUrlFormatter"
 							/>
 							<!-- eslint-enable -->
-						</div>
-					</div>
-					<span v-else-if="props.column.field === 'contractType'">
+            </div>
+          </div>
+          <span v-else-if="props.column.field === 'contractType'">
             {{ $t(`contract.${props.row.contractType}`) }}
           </span>
           <span v-else>

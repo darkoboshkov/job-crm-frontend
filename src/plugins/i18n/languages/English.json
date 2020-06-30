@@ -1132,6 +1132,26 @@
       "sign_name": "voor deze"
     }
   },
+  "page_offer_extend": {
+    "title": "Contract Extending",
+    "description": "To extend the current contract we'll create a new contract a day after the current one ends. Would you like to copy all current details or start over with a blanc canvas?",
+    "button": {
+      "current": "Use all current setting",
+      "clean": "Create a clean contract"
+    }
+  },
+  "page_offer_end": {
+    "title": "Early termination",
+    "description": "You can apply a change to the end that of the current, running contract. The other party will get an notification and the option to accept the new end date. Would you like to continue?",
+    "select_date": "Select a new end date",
+    "content": "By sending an invitation I understand that the contract end date will note be changed. Only after the other party accepts the changes the contract date will change. You will be notified of the other parties acceptance.",
+    "current_date": "Current end date:",
+    "new_date": "New end date:",
+    "button": {
+      "end_date": "Yes, let me set a new end date",
+      "send": "Send Invitation"
+    }
+  },
   "page_matching": {
     "title": "Matching",
     "match_detail": "Matching detail",

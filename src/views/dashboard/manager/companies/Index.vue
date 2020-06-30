@@ -5,7 +5,10 @@
         {{ $t("page_companies.title") }}
       </h1>
       <div v-if="isIntermediary">
-        <button class="btn btn-blue large mr-1 width-50" @click="onAccessButton">
+        <button
+          class="btn btn-blue large mr-1 width-50"
+          @click="onAccessButton"
+        >
           <i class="hiway-crm-icon icon-lock" />
         </button>
         <button

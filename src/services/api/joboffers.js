@@ -86,6 +86,38 @@ export default {
       config
     );
   },
+  createCurrentJobOffer(params, config = {}) {
+    return request(
+      "post",
+      `/joboffers/${params.companyId}/${params.offerId}/contract/extend-current`,
+      params,
+      config
+    );
+  },
+  createNewJobOffer(params, config = {}) {
+    return request(
+      "post",
+      `/joboffers/${params.companyId}/${params.offerId}/contract/extend-new`,
+      params,
+      config
+    );
+  },
+  getCurrentEndDate(params, config = {}) {
+    return request(
+      "get",
+      `/joboffers/${params.companyId}/${params.offerId}/end-date`,
+      params,
+      config
+    );
+  },
+  endContract(params, config = {}) {
+    return request(
+      "patch",
+      `/joboffers/${params.companyId}/${params.offerId}/contract/end`,
+      params,
+      config
+    );
+  },
   decline(params, config = {}) {
     return request(
       "patch",
