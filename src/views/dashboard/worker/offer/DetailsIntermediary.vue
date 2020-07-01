@@ -3,7 +3,7 @@
     <a
       href="javascript:void(0)"
       class="back mb-3"
-      @click.prevent="$router.go(-1)"
+      @click.prevent="$router.go(-2)"
     >
       <i class="hiway-crm-icon icon-angle-left mr-2" />
       <span>{{ $t("common.back") }}</span>
@@ -157,6 +157,10 @@
             <i
               v-else-if="contractStatus === 'active'"
               class="hiway-crm-icon icon-dot mr-2 color-green font-size-3"
+            />
+            <i
+              v-else-if="contractStatus === 'failed'"
+              class="hiway-crm-icon icon-dot mr-2 color-black font-size-3"
             />
             <template v-if="contractStatus">
               {{ $t("status." + contractStatus) }}
@@ -596,7 +600,9 @@ export default {
     },
     signed() {
       return (
-        this.model.status === "active" || this.model.status === "completed"
+        this.model.status === "active" ||
+        this.model.status === "completed" ||
+        this.model.status === "failed"
       );
     }
   },
@@ -867,7 +873,7 @@ export default {
   },
   watch: {
     "model.status"(value) {
-      if (value === "open" || value === "failed") {
+      if (value === "open") {
         this.$router.push({ name: "worker-offers" });
       }
     }

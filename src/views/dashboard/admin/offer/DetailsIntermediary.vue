@@ -158,6 +158,10 @@
               v-else-if="contractStatus === 'active'"
               class="hiway-crm-icon icon-dot mr-2 color-green font-size-3"
             />
+            <i
+              v-else-if="contractStatus === 'failed'"
+              class="hiway-crm-icon icon-dot mr-2 color-black font-size-3"
+            />
             <template v-if="contractStatus">
               {{ $t("status." + contractStatus) }}
             </template>
@@ -582,9 +586,9 @@ export default {
   computed: {
     signed() {
       return (
-        (this.model.status === "active" || this.model.status === "completed") &&
-        (this.model.intermediaryStatus === "active" ||
-          this.model.intermediaryStatus === "completed")
+        this.contractStatus === "active" ||
+        this.contractStatus === "completed" ||
+        this.contractStatus === "failed"
       );
     },
     edit() {

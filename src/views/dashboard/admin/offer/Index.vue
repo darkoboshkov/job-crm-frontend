@@ -73,13 +73,13 @@
           >
             <div class="avatar-image mr-2">
               <!-- eslint-disable -->
-							<img v-if="props.row.contractType === 'company' && props.row.hiringCompany.logo"
-									 :src="props.row.hiringCompany.logo | appUrlFormatter"
-							/>
-							<img v-if="props.row.contractType === 'worker' && props.row.workerImage"
-									 :src="props.row.workerImage | appUrlFormatter"
-							/>
-							<!-- eslint-enable -->
+              <img v-if="props.row.contractType === 'company' && props.row.hiringCompany.logo"
+                   :src="props.row.hiringCompany.logo | appUrlFormatter"
+              />
+              <img v-if="props.row.contractType === 'worker' && props.row.workerImage"
+                   :src="props.row.workerImage | appUrlFormatter"
+              />
+              <!-- eslint-enable -->
             </div>
           </div>
           <span v-else-if="props.column.field === 'contractType'">
@@ -168,15 +168,6 @@ export default {
             `/${this.role}/dashboard/joboffers/${props.row.company._id}/${props.row._id}`
           );
         } else {
-          if (props.row.intermediaryStatus === "failed" || props.row.status === "failed") {
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_offers.modal.failed.title"),
-              subTitle: this.$t("page_offers.modal.failed.sub_title"),
-              button: ""
-            });
-            return false;
-          }
           this.$router.push(`/${this.role}/dashboard/joboffers/${props.row.company._id}/${props.row._id}/intermediary`);
         }
         /* eslint-enable */

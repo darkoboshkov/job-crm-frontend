@@ -158,6 +158,10 @@
               v-else-if="contractStatus === 'active'"
               class="hiway-crm-icon icon-dot mr-2 color-green font-size-3"
             />
+            <i
+              v-else-if="contractStatus === 'failed'"
+              class="hiway-crm-icon icon-dot mr-2 color-black font-size-3"
+            />
             <template v-if="contractStatus">
               {{ $t("status." + contractStatus) }}
             </template>
@@ -518,7 +522,8 @@ export default {
     signed() {
       return (
         this.model.intermediaryStatus === "active" ||
-        this.model.intermediaryStatus === "completed"
+        this.model.intermediaryStatus === "completed" ||
+        this.model.intermediaryStatus === "failed"
       );
     },
     edit() {
@@ -941,7 +946,7 @@ export default {
   },
   watch: {
     "model.intermediaryStatus"(value) {
-      if (value === "open" || value === "failed") {
+      if (value === "open") {
         this.$router.push({ name: "manager-offers" });
       }
     }

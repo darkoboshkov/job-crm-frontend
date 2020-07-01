@@ -167,19 +167,10 @@ export default {
           this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}`);
         }
         if (props.row.companyId !== props.row.hiringCompanyId && this.companyId === props.row.companyId) {
-          if (props.row.intermediaryStatus === "failed" || props.row.status === "failed") {
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_offers.modal.failed.title"),
-              subTitle: this.$t("page_offers.modal.failed.sub_title"),
-              button: ""
-            });
-            return false;
-          }
           this.$router.push(`/${this.role}/dashboard/joboffers/${props.row._id}/intermediary`);
         }
         if (props.row.companyId !== props.row.hiringCompanyId &&this.companyId !== props.row.companyId) {
-          if (props.row.intermediaryStatus === "open" || props.row.intermediaryStatus === "failed") {
+          if (props.row.intermediaryStatus === "open") {
             this.$store.dispatch("updateShowErrorModal", true);
             this.$store.dispatch("updateErrorModalContent", {
               title: this.$t("page_offers.modal.disallow.title"),

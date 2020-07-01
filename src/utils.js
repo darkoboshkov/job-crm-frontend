@@ -278,6 +278,12 @@ export const serializeContractStatus = (role, status) => {
           color: "color-red"
         };
         break;
+      case "failed":
+        state = {
+          text: i18n.t("status.failed"),
+          color: "color-black"
+        };
+        break;
     }
   }
   if (role === "hiringManager") {
@@ -304,6 +310,12 @@ export const serializeContractStatus = (role, status) => {
         state = {
           text: i18n.t("status.completed"),
           color: "color-red"
+        };
+        break;
+      case "failed":
+        state = {
+          text: i18n.t("status.failed"),
+          color: "color-black"
         };
         break;
     }
@@ -333,6 +345,12 @@ export const serializeContractStatus = (role, status) => {
         state = {
           text: i18n.t("status.completed"),
           color: "color-red"
+        };
+        break;
+      case "failed":
+        state = {
+          text: i18n.t("status.failed"),
+          color: "color-black"
         };
         break;
     }

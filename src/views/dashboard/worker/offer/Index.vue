@@ -119,7 +119,7 @@ export default {
       }
     },
     goToOffer(props) {
-      if (props.row.status === "open" || props.row.status === "failed") {
+      if (props.row.status === "open") {
         this.$store.dispatch("updateShowErrorModal", true);
         this.$store.dispatch("updateErrorModalContent", {
           title: this.$t("page_offers.modal.disallow.title"),
