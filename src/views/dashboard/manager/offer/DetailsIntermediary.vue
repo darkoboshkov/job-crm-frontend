@@ -274,9 +274,7 @@
               @click="
                 $router.push({
                   name: 'manager-offer-extend-contract',
-                  params: {
-                    offerId: this.$route.params.offerId
-                  }
+                  params: { offerId }
                 })
               "
             >
@@ -289,9 +287,7 @@
               @click="
                 $router.push({
                   name: 'manager-offer-end-contract',
-                  params: {
-                    offerId: this.$route.params.offerId
-                  }
+                  params: { offerId }
                 })
               "
             >
