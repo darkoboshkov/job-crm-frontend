@@ -70,7 +70,8 @@
     "OFFER_TRAVEL_ONE_WAY_DISTANCE_INVALID": "One Way Distance is invalid.",
     "OFFER_TRAVEL_TIME_COMPENSATION_PER_WEEK_INVALID": "Time Compensation Per Week is invalid.",
     "OFFER_TRAVEL_WEEKLY_COMPENSATION_INVALID": "Weekly Compensation is invalid.",
-    "OFFER_START_DATE_INVALID": "Start Date is invalid."
+    "OFFER_START_DATE_INVALID": "Start Date is invalid.",
+    "OFFER_END_DATE_INVALID": "End Date is invalid."
   },
   "roles": {
     "manager": "Manager",
