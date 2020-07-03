@@ -43,7 +43,7 @@ export default {
   name: "ExtendContract",
   data() {
     return {
-      companyId: this.$store.state.user.companyId,
+      companyId: this.$route.params.companyId,
       offerId: this.$route.params.offerId
     };
   },
@@ -69,16 +69,18 @@ export default {
         .then(res => {
           if (res.companyId === res.hiringCompanyId) {
             this.$router.push({
-              name: "manager-offer-details",
+              name: "admin-offer-details",
               params: {
-                offerId: res._id
+                offerId: res._id,
+                companyId: res.companyId
               }
             });
           } else {
             this.$router.push({
-              name: "manager-offer-inter-details",
+              name: "admin-offer-inter-details",
               params: {
-                offerId: res._id
+                offerId: res._id,
+                companyId: res.companyId
               }
             });
           }
@@ -105,16 +107,18 @@ export default {
         .then(res => {
           if (res.companyId === res.hiringCompanyId) {
             this.$router.push({
-              name: "manager-offer-details",
+              name: "admin-offer-details",
               params: {
-                offerId: res._id
+                offerId: res._id,
+                companyId: res.companyId
               }
             });
           } else {
             this.$router.push({
-              name: "manager-offer-inter-details",
+              name: "admin-offer-inter-details",
               params: {
-                offerId: res._id
+                offerId: res._id,
+                companyId: res.companyId
               }
             });
           }

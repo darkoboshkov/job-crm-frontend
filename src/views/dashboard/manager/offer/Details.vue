@@ -194,6 +194,39 @@
           >
             {{ $t("page_offer_detail.button.view_contract") }}
           </button>
+          <b-dropdown
+            :text="$t('page_offer_detail.button.other')"
+            class="ml-2"
+            variant="secondary"
+            :disabled="edit"
+          >
+            <b-dropdown-item
+              @click="
+                $router.push({
+                  name: 'manager-offer-extend-contract',
+                  params: { offerId }
+                })
+              "
+            >
+              <i class="hiway-crm-icon icon-contract mr-1" />
+              <span>
+                {{ $t("page_offer_detail.button.dropdown.extend") }}
+              </span>
+            </b-dropdown-item>
+            <b-dropdown-item
+              @click="
+                $router.push({
+                  name: 'manager-offer-end-contract',
+                  params: { offerId }
+                })
+              "
+            >
+              <i class="hiway-crm-icon icon-hours mr-1" />
+              <span>
+                {{ $t("page_offer_detail.button.dropdown.early") }}
+              </span>
+            </b-dropdown-item>
+          </b-dropdown>
         </div>
       </div>
     </b-card>
@@ -618,6 +651,9 @@ export default {
       if (!this.model.startDate) {
         this.validations.jobOffer.push("OFFER_START_DATE_INVALID");
       }
+      if (!this.model.endDate) {
+        this.validations.jobOffer.push("OFFER_END_DATE_INVALID");
+      }
       if (!this.model.collectiveAgreement) {
         this.validations.jobOffer.push("OFFER_CAO_INVALID");
       }
@@ -651,6 +687,7 @@ export default {
           "OFFER_TRAVEL_WEEKLY_COMPENSATION_INVALID"
         );
       }
+
       return (
         this.validations.worker.length +
           this.validations.company.length +

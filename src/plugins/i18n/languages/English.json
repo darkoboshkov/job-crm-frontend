@@ -1138,6 +1138,18 @@
     "button": {
       "current": "Use all current setting",
       "clean": "Create a clean contract"
+    },
+    "modal": {
+      "current": {
+        "title": "Use all current details",
+        "sub_title": "You are about to extend the contract. By extending the contract, you'll create a new contract with all current details",
+        "continue": "I accept the extending contract."
+      },
+      "clean": {
+        "title": "Create a clean contract",
+        "sub_title": "You are about to extend the contract. By extending the contract, you'll create a new contract after the current one ends",
+        "continue": "I accept the extending contract."
+      }
     }
   },
   "page_offer_end": {
@@ -1150,6 +1162,18 @@
     "button": {
       "end_date": "Yes, let me set a new end date",
       "send": "Send Invitation"
+    },
+    "modal": {
+      "success": {
+        "title": "Success",
+        "sub_title": "You changed the contract end date successfully.",
+        "continue": "Continue"
+      },
+      "fail": {
+        "title": "Failure",
+        "sub_title": "Failed to change the contract end date.",
+        "continue": "Continue"
+      }
     }
   },
   "page_matching": {

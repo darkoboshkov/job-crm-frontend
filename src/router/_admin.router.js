@@ -144,6 +144,29 @@ export default [
         beforeEnter: isAdminAuthorized
       },
       {
+        path: "joboffers/:companyId/:offerId/extend-contract",
+        name: "admin-offer-extend-contract",
+        component: () =>
+          import("../views/dashboard/admin/offer/contract/ExtendContract.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
+        path: "joboffers/:companyId/:offerId/end-contract",
+        name: "admin-offer-end-contract",
+        component: () =>
+          import("../views/dashboard/admin/offer/contract/EndingContract.vue"),
+        beforeEnter: isAdminAuthorized
+      },
+      {
+        path: "joboffers/:companyId/:offerId/select-date",
+        name: "admin-offer-select-date",
+        component: () =>
+          import(
+            "../views/dashboard/admin/offer/contract/SelectEndingDate.vue"
+          ),
+        beforeEnter: isAdminAuthorized
+      },
+      {
         path: "profile/:companyId/:id",
         name: "admin-profile",
         component: () => import("../views/dashboard/admin/profile/Index.vue"),

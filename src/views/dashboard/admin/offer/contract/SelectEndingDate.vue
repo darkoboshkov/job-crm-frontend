@@ -72,7 +72,7 @@ export default {
   name: "SelectEndDate",
   data() {
     return {
-      companyId: this.$store.state.user.companyId,
+      companyId: this.$route.params.companyId,
       offerId: this.$route.params.offerId,
       currentEndDate: null,
       newEndDate: null,
@@ -117,15 +117,17 @@ export default {
               onButtonClick: () => {
                 res.companyId === res.hiringCompanyId
                   ? this.$router.push({
-                      name: "manager-offer-details",
+                      name: "admin-offer-details",
                       params: {
-                        offerId
+                        offerId,
+                        companyId
                       }
                     })
                   : this.$router.push({
-                      name: "manager-offer-inter-details",
+                      name: "admin-offer-inter-details",
                       params: {
-                        offerId
+                        offerId,
+                        companyId
                       }
                     });
                 this.$store.dispatch("updateShowSuccessModal", false);

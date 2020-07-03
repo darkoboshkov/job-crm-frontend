@@ -596,114 +596,6 @@ export default {
     this.getPaymentType();
   },
   methods: {
-    validate() {
-      const worker = this.model.worker[0];
-      const company = this.model.company[0];
-      const manager = this.model.manager[0];
-
-      this.validations.worker = [];
-      this.validations.company = [];
-      this.validations.manager = [];
-      this.validations.jobOffer = [];
-
-      //worker validation
-      if (!worker.firstName) {
-        this.validations.worker.push("WORKER_FIRST_NAME_INVALID");
-      }
-      if (!worker.lastName) {
-        this.validations.worker.push("WORKER_LAST_NAME_INVALID");
-      }
-      if (!worker.street) {
-        this.validations.worker.push("WORKER_STREET_INVALID");
-      }
-      if (!worker.city) {
-        this.validations.worker.push("WORKER_CITY_INVALID");
-      }
-      if (!worker.postalCode) {
-        this.validations.worker.push("WORKER_POSTAL_CODE_INVALID");
-      }
-      if (!worker.houseNumber) {
-        this.validations.worker.push("WORKER_HOUSE_NUMBER_INVALID");
-      }
-      if (!worker.socialSecurityNumber) {
-        this.validations.worker.push("WORKER_SOCIAL_SECURITY_NUMBER_INVALID");
-      }
-      if (!worker.identificationExpirationDate) {
-        this.validations.worker.push(
-          "WORKER_IDENTIFICATION_EXPIRATION_DATE_INVALID"
-        );
-      }
-      //company validation
-      if (!company.city) {
-        this.validations.company.push("COMPANY_CITY_INVALID");
-      }
-      if (!company.street) {
-        this.validations.company.push("COMPANY_STREET_INVALID");
-      }
-      if (!company.houseNumber) {
-        this.validations.company.push("COMPANY_HOUSE_NUMBER_INVALID");
-      }
-      if (!company.postalCode) {
-        this.validations.company.push("COMPANY_POSTAL_CODE_INVALID");
-      }
-      //manager validation
-      if (!manager.firstName) {
-        this.validations.manager.push("MANAGER_FIRST_NAME_INVALID");
-      }
-      if (!manager.lastName) {
-        this.validations.manager.push("MANAGER_LAST_NAME_INVALID");
-      }
-      if (!manager.honorificTitle) {
-        this.validations.manager.push("MANAGER_HONORIFIC_TITLE_INVALID");
-      }
-      if (!manager.phone) {
-        this.validations.manager.push("MANAGER_PHONE_NUMBER_INVALID");
-      }
-      //jobOffer validation
-      if (!this.model.startDate) {
-        this.validations.jobOffer.push("OFFER_START_DATE_INVALID");
-      }
-      if (!this.model.collectiveAgreement) {
-        this.validations.jobOffer.push("OFFER_CAO_INVALID");
-      }
-      if (this.model.wage < 0) {
-        this.validations.jobOffer.push("OFFER_WAGE_INVALID");
-      }
-      if (this.model.hourlyWage <= 0) {
-        this.validations.jobOffer.push("OFFER_HOURLY_WAGE_INVALID");
-      }
-      if (this.model.payRate < 0) {
-        this.validations.jobOffer.push("OFFER_PAY_RATE_INVALID");
-      }
-      if (this.model.hoursPerWeek <= 0) {
-        this.validations.jobOffer.push("OFFER_HOURS_PER_WEEK_INVALID");
-      }
-      if (this.model.travelExpenses < 0) {
-        this.validations.jobOffer.push(
-          "OFFER_TRAVEL_COMPENSATION_PER_KM_INVALID"
-        );
-      }
-      if (this.model.oneWayTravelExpenseDistance < 0) {
-        this.validations.jobOffer.push("OFFER_TRAVEL_ONE_WAY_DISTANCE_INVALID");
-      }
-      if (this.model.travelHours < 0) {
-        this.validations.jobOffer.push(
-          "OFFER_TRAVEL_TIME_COMPENSATION_PER_WEEK_INVALID"
-        );
-      }
-      if (!this.model.otherExpenses < 0) {
-        this.validations.jobOffer.push(
-          "OFFER_TRAVEL_WEEKLY_COMPENSATION_INVALID"
-        );
-      }
-      return (
-        this.validations.worker.length +
-          this.validations.company.length +
-          this.validations.manager.length +
-          this.validations.jobOffer.length ===
-        0
-      );
-    },
     decline() {
       jobOffersApi
         .declineCompanyContract(this.model)
@@ -759,32 +651,26 @@ export default {
         });
         return;
       }
-      if (!this.validate()) {
-        this.signValidationModal = true;
-      } else {
-        jobOffersApi
-          .hiringCompanySign(this.model)
-          .then(res => {
-            this.getOfferDetails();
-            this.$refs["modal-sign-contract"].hide();
-            this.$store.dispatch("updateShowSuccessModal", true);
-            this.$store.dispatch("updateSuccessModalContent", {
-              title: this.$t("page_offer_detail.modal.sign_success.title"),
-              subTitle: this.$t(
-                "page_offer_detail.modal.sign_success.sub_title"
-              ),
-              button: this.$t("page_offer_detail.modal.sign_success.continue")
-            });
-          })
-          .catch(e => {
-            this.$store.dispatch("updateShowErrorModal", true);
-            this.$store.dispatch("updateErrorModalContent", {
-              title: this.$t("page_offer_detail.modal.lock_fail.title"),
-              subTitle: this.$t("page_offer_detail.modal.lock_fail.sub_title"),
-              button: this.$t("page_offer_detail.modal.lock_fail.continue")
-            });
+      jobOffersApi
+        .hiringCompanySign(this.model)
+        .then(res => {
+          this.getOfferDetails();
+          this.$refs["modal-sign-contract"].hide();
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_offer_detail.modal.sign_success.title"),
+            subTitle: this.$t("page_offer_detail.modal.sign_success.sub_title"),
+            button: this.$t("page_offer_detail.modal.sign_success.continue")
           });
-      }
+        })
+        .catch(e => {
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_offer_detail.modal.lock_fail.title"),
+            subTitle: this.$t("page_offer_detail.modal.lock_fail.sub_title"),
+            button: this.$t("page_offer_detail.modal.lock_fail.continue")
+          });
+        });
     },
     adjust() {
       jobOffersApi
