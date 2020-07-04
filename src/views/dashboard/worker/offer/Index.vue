@@ -59,7 +59,7 @@
               />
             </div>
           </div>
-					<span v-else-if="props.column.field === 'contractType'">
+          <span v-else-if="props.column.field === 'contractType'">
             {{ $t(`contract.${props.row.contractType}`) }}
           </span>
           <span v-else>

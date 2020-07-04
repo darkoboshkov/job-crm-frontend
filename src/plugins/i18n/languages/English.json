@@ -485,6 +485,16 @@
       "delete": "Delete",
       "name": "Full Name"
     },
+    "access_table": {
+      "title": "Company access",
+      "city": "City",
+      "email": "Email",
+      "postal_code": "Postal code",
+      "status": "Status",
+      "name": "Company name",
+      "accept": "Accept request",
+      "decline": "Decline request"
+    },
     "button": {
       "create": "Create Company",
       "add_manager": "Add manager",
@@ -509,6 +519,16 @@
         "title": "Are you sure you want to delete this file?",
         "sub_title": "This file will be removed permanently.",
         "continue": "Delete"
+      },
+      "accept_company": {
+        "title": "Are you sure?",
+        "sub_title": "Are you sure you want to accept the request?",
+        "continue": "Continue"
+      },
+      "decline_company": {
+        "title": "Are you sure?",
+        "sub_title": "Are you sure you want to decline the request?",
+        "continue": "Continue"
       }
     }
   },

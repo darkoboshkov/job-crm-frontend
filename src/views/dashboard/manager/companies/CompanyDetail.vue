@@ -257,6 +257,97 @@
         </b-card>
       </b-col>
     </b-row>
+    <b-row class="mt-5" v-if="companyEnabled">
+      <b-col md="12">
+        <b-card body-class="p-0">
+          <template v-slot:header>
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="m-0">
+                {{ $t("page_detail_company.access_table.title") }}
+              </h5>
+            </div>
+          </template>
+          <div>
+            <ul class="custom-list interaction">
+              <li class="d-flex color-gray px-3">
+                <div class="flex-2">
+                  {{ $t("page_detail_company.access_table.name") }}
+                </div>
+                <div class="flex-2">
+                  {{ $t("page_detail_company.access_table.city") }}
+                </div>
+                <div class="flex-2">
+                  {{ $t("page_detail_company.access_table.email") }}
+                </div>
+                <div class="flex-2">
+                  {{ $t("page_detail_company.access_table.postal_code") }}
+                </div>
+                <div class="flex-2">
+                  {{ $t("page_detail_company.access_table.status") }}
+                </div>
+                <div class="flex-2" />
+              </li>
+              <li
+                class="d-flex align-items-center px-3"
+                v-for="(company, index) in this.accessCompany"
+                :key="index"
+              >
+                <div class="flex-2 d-flex flex-row align-items-center">
+                  <div class="avatar-image mr-3">
+                    <img
+                      v-if="company.logo"
+                      :src="company.logo | appUrlFormatter"
+                    />
+                  </div>
+                  <div>
+                    {{ company.name | fullNameFormatter }}
+                  </div>
+                </div>
+                <div class="flex-2">
+                  {{ company.city }}
+                </div>
+                <div class="flex-2">
+                  {{ company.email }}
+                </div>
+                <div class="flex-2">
+                  {{ company.postalCode }}
+                </div>
+                <div class="flex-2">
+                  {{ company.status }}
+                </div>
+                <div class="flex-2 d-flex">
+                  <b-dropdown
+                    variant="link"
+                    toggle-class="text-decoration-none"
+                    no-caret
+                    offset="0"
+                    class="icon-dropdown m-2"
+                  >
+                    <template v-slot:button-content>
+                      <i
+                        class="hiway-crm-icon icon-more-vertical color-black"
+                      />
+                    </template>
+                    <b-dropdown-item
+                      href="#"
+                      @click="selectCompanyAccept(company._id, company.token)"
+                    >
+                      {{ $t("page_detail_company.access_table.accept") }}
+                    </b-dropdown-item>
+                    <b-dropdown-item
+                      href="#"
+                      @click="selectCompanyDecline(company._id, company.token)"
+                    >
+                      {{ $t("page_detail_company.access_table.decline") }}
+                    </b-dropdown-item>
+                  </b-dropdown>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </b-card>
+      </b-col>
+    </b-row>
 
     <b-row class="mt-5">
       <b-col md="12">
@@ -364,20 +455,25 @@ export default {
         companyMembers: [],
         attachments: []
       },
+      companyEnabled: false,
       managers: [],
+      accessCompany: [],
       errors: null,
       companyId: "",
       imageData: {},
       selectedAttachmentId: null,
       vatShiftedEnabled: false,
       gAccountEnabled: false,
-      selectedManager: null
+      selectedManager: null,
+      selectedCompanyId: null,
+      selectedToken: null
     };
   },
   async mounted() {
     this.companyId = this.$route.params.companyId;
     await this.getCompany();
     await this.getManagers();
+    await this.getAccessCompany();
   },
   computed: {
     role() {
@@ -412,6 +508,118 @@ export default {
           this.vatShiftedEnabled = !!res.VATShifted;
           this.gAccountEnabled = !!res.GAccount;
           this.imageData.preview = res.logo ? this.getAppUrl(res.logo) : null;
+          this.companyEnabled = res.type !== "intermediary";
+        });
+    },
+    getAccessCompany() {
+      companiesApi
+        .getAccessCompanyById({
+          companyId: this.companyId
+        })
+        .then(res => {
+          const companies = res.docs;
+          this.accessCompany = [];
+          companies.forEach(company => {
+            if (company.allowedCompanies) {
+              company.allowedCompanies.forEach(item => {
+                if (item.companyId === this.companyId) {
+                  this.accessCompany.push({
+                    ...company,
+                    status: item.status,
+                    token: item.verification
+                  });
+                }
+              });
+            }
+          });
+        });
+    },
+    selectCompanyAccept(id, token) {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_detail_company.modal.accept_company.title"),
+        subTitle: this.$t("page_detail_company.modal.accept_company.sub_title"),
+        button: this.$t("page_detail_company.modal.accept_company.continue"),
+        onButtonClick: () => {
+          this.companyAccept();
+          this.$store.dispatch("updateShowErrorModal", false);
+        }
+      });
+      this.selectedCompanyId = id;
+      this.selectedToken = token;
+    },
+    companyAccept() {
+      companiesApi
+        .acceptCompanyAccessById({
+          companyId: this.companyId,
+          intermediaryCompanyId: this.selectedCompanyId,
+          token: this.selectedToken
+        })
+        .then(res => {
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_offer_end.modal.success.title"),
+            button: this.$t("page_offer_end.modal.success.continue"),
+            onButtonClick: () => {
+              this.$store.dispatch("updateShowSuccessModal", false);
+              this.showModal = false;
+            }
+          });
+          this.getAccessCompany();
+        })
+        .catch(e => {
+          this.errors = e.response.data.errors.msg;
+          this.$store.dispatch("updateLoading", false);
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_offer_end.modal.fail.title"),
+            button: this.$t("page_offer_end.modal.fail.continue")
+          });
+        });
+    },
+    selectCompanyDecline(id, token) {
+      this.$store.dispatch("updateShowErrorModal", true);
+      this.$store.dispatch("updateErrorModalContent", {
+        title: this.$t("page_detail_company.modal.decline_company.title"),
+        subTitle: this.$t(
+          "page_detail_company.modal.decline_company.sub_title"
+        ),
+        button: this.$t("page_detail_company.modal.decline_company.continue"),
+        onButtonClick: () => {
+          this.companyDecline();
+          this.$store.dispatch("updateShowErrorModal", false);
+        }
+      });
+      this.selectedCompanyId = id;
+      this.selectedToken = token;
+    },
+    companyDecline() {
+      companiesApi
+        .declineCompanyAccessById({
+          companyId: this.companyId,
+          intermediaryCompanyId: this.selectedCompanyId,
+          token: this.selectedToken
+        })
+        .then(res => {
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_offer_end.modal.success.title"),
+            button: this.$t("page_offer_end.modal.success.continue"),
+            onButtonClick: () => {
+              this.$store.dispatch("updateShowSuccessModal", false);
+              this.showModal = false;
+            }
+          });
+          this.getAccessCompany();
+        })
+        .catch(e => {
+          this.errors = e.response.data.errors.msg;
+          this.$store.dispatch("updateLoading", false);
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_offer_end.modal.fail.title"),
+            button: this.$t("page_offer_end.modal.fail.continue")
+          });
         });
     },
     onEditDetail() {

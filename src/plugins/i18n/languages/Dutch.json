@@ -485,6 +485,16 @@
       "delete": "Verwijder",
       "name": "Naam"
     },
+    "access_table": {
+      "title": "Company access",
+      "city": "City",
+      "email": "Email",
+      "postal_code": "Postal code",
+      "status": "Status",
+      "name": "Company name",
+      "accept": "Accept request",
+      "decline": "Decline request"
+    },
     "button": {
       "create": "Bedrijf aanmaken",
       "add_manager": "Manager toevoegen",
@@ -509,6 +519,16 @@
         "title": "Weet je zeker dat je dit bestand wilt verwijderen?",
         "sub_title": "Dit bestand zal permanent verwijderd worden.",
         "continue": "Verwijder"
+      },
+      "accept_company": {
+        "title": "Are you sure?",
+        "sub_title": "Are you sure you want to accept the request?",
+        "continue": "Continue"
+      },
+      "decline_company": {
+        "title": "Are you sure?",
+        "sub_title": "Are you sure you want to decline the request?",
+        "continue": "Continue"
       }
     }
   },

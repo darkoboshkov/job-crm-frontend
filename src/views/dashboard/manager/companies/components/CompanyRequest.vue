@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="text-center mt-5">
-      <button class="btn btn-blue large">
+      <button class="btn btn-blue large" @click="sendCompanyAccess">
         <span>{{ $t("page_companies.modal.access_request.send_button") }}</span>
       </button>
     </div>
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import companiesApi from "@/services/api/companies";
+
 export default {
   name: "CompanyAccessRequest",
   props: {
@@ -57,6 +59,35 @@ export default {
         companyId: null
       }
     };
+  },
+  methods: {
+    sendCompanyAccess() {
+      companiesApi
+        .sendCompanyAccess({
+          companyId: this.$store.state.user.companyId,
+          hiringCompanyId: this.model.companyId
+        })
+        .then(res => {
+          this.$store.dispatch("updateShowSuccessModal", true);
+          this.$store.dispatch("updateSuccessModalContent", {
+            title: this.$t("page_offer_end.modal.success.title"),
+            button: this.$t("page_offer_end.modal.success.continue"),
+            onButtonClick: () => {
+              this.$store.dispatch("updateShowSuccessModal", false);
+              this.showModal = false;
+            }
+          });
+        })
+        .catch(e => {
+          this.errors = e.response.data.errors.msg;
+          this.$store.dispatch("updateLoading", false);
+          this.$store.dispatch("updateShowErrorModal", true);
+          this.$store.dispatch("updateErrorModalContent", {
+            title: this.$t("page_offer_end.modal.fail.title"),
+            button: this.$t("page_offer_end.modal.fail.continue")
+          });
+        });
+    }
   }
 };
 </script>
