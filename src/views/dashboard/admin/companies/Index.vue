@@ -221,7 +221,7 @@ export default {
         });
     },
     getCompanies() {
-      companiesApi.get(this.serverParams).then(res => {
+      companiesApi.getCompanies(this.serverParams).then(res => {
         this.totalRows = res.totalDocs;
         this.rows = res.docs?.map(row => {
           row.createdAt = this.getDateString(row["createdAt"]);

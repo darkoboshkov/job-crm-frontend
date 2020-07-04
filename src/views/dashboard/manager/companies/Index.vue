@@ -249,7 +249,7 @@ export default {
     },
     getCompanies() {
       companiesApi
-        .getAllowed(
+        .getAllowedCompanies(
           Object.assign(this.serverParams, {
             companyId: this.companyId
           })

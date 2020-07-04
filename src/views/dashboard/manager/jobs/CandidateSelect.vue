@@ -150,7 +150,7 @@ export default {
   methods: {
     fetchCompanies() {
       return companiesApi
-        .getAllowed({
+        .getAllowedCompanies({
           companyId: this.companyId,
           pagination: 0
         })

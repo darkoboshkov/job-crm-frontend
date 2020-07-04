@@ -106,7 +106,8 @@
     "not-able-to-see": "Not able to see",
     "pending": "Pending",
     "signed": "Signed",
-    "failed": "Failed"
+    "failed": "Failed",
+    "allowed": "Allowed"
   },
   "contract": {
     "company": "Company",

@@ -257,7 +257,7 @@
         </b-card>
       </b-col>
     </b-row>
-    <b-row class="mt-5" v-if="companyEnabled">
+    <b-row class="mt-5" v-if="showAccessCompanies">
       <b-col md="12">
         <b-card body-class="p-0">
           <template v-slot:header>
@@ -289,7 +289,7 @@
               </li>
               <li
                 class="d-flex align-items-center px-3"
-                v-for="(company, index) in this.accessCompany"
+                v-for="(company, index) in this.accessCompanies"
                 :key="index"
               >
                 <div class="flex-2 d-flex flex-row align-items-center">
@@ -313,7 +313,7 @@
                   {{ company.postalCode }}
                 </div>
                 <div class="flex-2">
-                  {{ company.status }}
+                  {{ $t(`status.${company.status}`) }}
                 </div>
                 <div class="flex-2 d-flex">
                   <b-dropdown
@@ -330,13 +330,13 @@
                     </template>
                     <b-dropdown-item
                       href="#"
-                      @click="selectCompanyAccept(company._id, company.token)"
+                      @click="selectCompanyAccept(company._id)"
                     >
                       {{ $t("page_detail_company.access_table.accept") }}
                     </b-dropdown-item>
                     <b-dropdown-item
                       href="#"
-                      @click="selectCompanyDecline(company._id, company.token)"
+                      @click="selectCompanyDecline(company._id)"
                     >
                       {{ $t("page_detail_company.access_table.decline") }}
                     </b-dropdown-item>
@@ -455,9 +455,10 @@ export default {
         companyMembers: [],
         attachments: []
       },
-      companyEnabled: false,
+      showAccessCompanies:
+        this.$route.params.companyId === this.$store.state.user.companyId,
       managers: [],
-      accessCompany: [],
+      accessCompanies: [],
       errors: null,
       companyId: "",
       imageData: {},
@@ -465,15 +466,16 @@ export default {
       vatShiftedEnabled: false,
       gAccountEnabled: false,
       selectedManager: null,
-      selectedCompanyId: null,
-      selectedToken: null
+      selectedCompanyId: null
     };
   },
   async mounted() {
     this.companyId = this.$route.params.companyId;
     await this.getCompany();
     await this.getManagers();
-    await this.getAccessCompany();
+    if (this.showAccessCompanies) {
+      await this.getIntermediaryCompanies();
+    }
   },
   computed: {
     role() {
@@ -508,33 +510,21 @@ export default {
           this.vatShiftedEnabled = !!res.VATShifted;
           this.gAccountEnabled = !!res.GAccount;
           this.imageData.preview = res.logo ? this.getAppUrl(res.logo) : null;
-          this.companyEnabled = res.type !== "intermediary";
         });
     },
-    getAccessCompany() {
+    getIntermediaryCompanies() {
       companiesApi
-        .getAccessCompanyById({
+        .getIntermediaryCompanies({
           companyId: this.companyId
         })
         .then(res => {
-          const companies = res.docs;
-          this.accessCompany = [];
-          companies.forEach(company => {
-            if (company.allowedCompanies) {
-              company.allowedCompanies.forEach(item => {
-                if (item.companyId === this.companyId) {
-                  this.accessCompany.push({
-                    ...company,
-                    status: item.status,
-                    token: item.verification
-                  });
-                }
-              });
-            }
+          this.accessCompanies = res.docs?.map(row => {
+            row.status = row.allowedCompanies[0]?.status;
+            return row;
           });
         });
     },
-    selectCompanyAccept(id, token) {
+    selectCompanyAccept(id) {
       this.$store.dispatch("updateShowErrorModal", true);
       this.$store.dispatch("updateErrorModalContent", {
         title: this.$t("page_detail_company.modal.accept_company.title"),
@@ -546,14 +536,12 @@ export default {
         }
       });
       this.selectedCompanyId = id;
-      this.selectedToken = token;
     },
     companyAccept() {
       companiesApi
-        .acceptCompanyAccessById({
+        .acceptCompanyAccess({
           companyId: this.companyId,
-          intermediaryCompanyId: this.selectedCompanyId,
-          token: this.selectedToken
+          intermediaryCompanyId: this.selectedCompanyId
         })
         .then(res => {
           this.$store.dispatch("updateShowSuccessModal", true);
@@ -565,7 +553,7 @@ export default {
               this.showModal = false;
             }
           });
-          this.getAccessCompany();
+          this.getIntermediaryCompanies();
         })
         .catch(e => {
           this.errors = e.response.data.errors.msg;
@@ -577,7 +565,7 @@ export default {
           });
         });
     },
-    selectCompanyDecline(id, token) {
+    selectCompanyDecline(id) {
       this.$store.dispatch("updateShowErrorModal", true);
       this.$store.dispatch("updateErrorModalContent", {
         title: this.$t("page_detail_company.modal.decline_company.title"),
@@ -591,14 +579,12 @@ export default {
         }
       });
       this.selectedCompanyId = id;
-      this.selectedToken = token;
     },
     companyDecline() {
       companiesApi
-        .declineCompanyAccessById({
+        .declineCompanyAccess({
           companyId: this.companyId,
-          intermediaryCompanyId: this.selectedCompanyId,
-          token: this.selectedToken
+          intermediaryCompanyId: this.selectedCompanyId
         })
         .then(res => {
           this.$store.dispatch("updateShowSuccessModal", true);
@@ -610,7 +596,7 @@ export default {
               this.showModal = false;
             }
           });
-          this.getAccessCompany();
+          this.getIntermediaryCompanies();
         })
         .catch(e => {
           this.errors = e.response.data.errors.msg;

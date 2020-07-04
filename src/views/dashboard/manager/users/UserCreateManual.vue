@@ -615,7 +615,7 @@ export default {
     },
     getCompanies() {
       return companiesApi
-        .getAllowed({ companyId: this.companyId, pagination: 0 })
+        .getAllowedCompanies({ companyId: this.companyId, pagination: 0 })
         .then(res => {
           this.companies = res.docs;
         });

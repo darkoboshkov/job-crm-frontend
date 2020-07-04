@@ -106,7 +106,8 @@
     "not-able-to-see": "Verborgen",
     "pending": "In afwachting",
     "signed": "Getekend",
-    "failed": "Failed"
+    "failed": "Failed",
+    "allowed": "Allowed"
   },
   "contract": {
     "company": "Bedrijf",

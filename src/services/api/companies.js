@@ -1,26 +1,31 @@
 import request from "../request";
 
 export default {
-  getAll(params, config = {}) {
-    return request("get", `/companies/all`, {}, config);
-  },
-  get(params, config = {}) {
-    return request("get", `/companies`, params, config);
-  },
-  getAllowed(params, config = {}) {
-    const companyId = params.companyId;
-    delete params.companyId;
-    return request("get", `/companies/${companyId}/allowed`, params, config);
-  },
   getById(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
     return request("get", `/companies/${companyId}`, params, config);
   },
-  getAccessCompanyById(params, config = {}) {
+  getAll(params, config = {}) {
+    return request("get", `/companies/all`, {}, config);
+  },
+  getCompanies(params, config = {}) {
+    return request("get", `/companies`, params, config);
+  },
+  getAllowedCompanies(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
-    return request("get", `/companies/${companyId}/access`, params, config);
+    return request("get", `/companies/${companyId}/allowed`, params, config);
+  },
+  getIntermediaryCompanies(params, config = {}) {
+    const companyId = params.companyId;
+    delete params.companyId;
+    return request(
+      "get",
+      `/companies/${companyId}/intermediary`,
+      params,
+      config
+    );
   },
   create(params, config = {}) {
     return request("post", `/companies`, params, config);
@@ -29,22 +34,20 @@ export default {
     const companyId = params.companyId;
     return request("post", `/companies/${companyId}/request`, params, config);
   },
-  acceptCompanyAccessById(params, config = {}) {
+  acceptCompanyAccess(params, config = {}) {
     const companyId = params.companyId;
     const intermediaryCompanyId = params.intermediaryCompanyId;
-    const token = params.token;
     return request(
       "post",
-      `/companies/${companyId}/accept/${intermediaryCompanyId}/${token}`
+      `/companies/${companyId}/accept/${intermediaryCompanyId}`
     );
   },
-  declineCompanyAccessById(params, config = {}) {
+  declineCompanyAccess(params, config = {}) {
     const companyId = params.companyId;
     const intermediaryCompanyId = params.intermediaryCompanyId;
-    const token = params.token;
     return request(
       "post",
-      `/companies/${companyId}/decline/${intermediaryCompanyId}/${token}`
+      `/companies/${companyId}/decline/${intermediaryCompanyId}`
     );
   },
   patch(params, config = {}) {

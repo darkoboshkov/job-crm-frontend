@@ -262,7 +262,7 @@ export default {
     },
     getCompanies() {
       companiesApi
-        .getAllowed({ companyId: this.companyId, pagination: 0 })
+        .getAllowedCompanies({ companyId: this.companyId, pagination: 0 })
         .then(res => {
           this.companies = res.docs;
           this.filterOptions[2].options = [];

@@ -15,11 +15,6 @@ export default {
   getAllPendingWorkers(params, config = {}) {
     return request("get", "/users/pending-workers", params, config);
   },
-  getCompanyUsers(params, config = {}) {
-    const companyId = params.companyId;
-    delete params.companyId;
-    return request("get", `/users/${companyId}/all`, params, config);
-  },
   getCompanyWorkers(params, config = {}) {
     const companyId = params.companyId;
     delete params.companyId;
