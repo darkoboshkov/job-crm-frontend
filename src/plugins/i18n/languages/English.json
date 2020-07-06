@@ -113,6 +113,16 @@
     "company": "Company",
     "worker": "Worker"
   },
+  "payment_interval_options": {
+    "each-week": "Week",
+    "each-4-weeks": "4 weeks",
+    "each-month": "Month"
+  },
+  "flex_worker_options": {
+    "no": "No",
+    "in-construction": "Yes, in construction",
+    "not-in-construction": "Yes, not in construction"
+  },
   "profession": {
     "administration": "Administration",
     "banks": "Banks",

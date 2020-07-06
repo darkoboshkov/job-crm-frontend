@@ -44,41 +44,41 @@ export const timeSheetStatus = {
 
 export const paymentIntervalOptions = [
   {
-    label: "Week",
+    label: i18n.t("payment_interval_options.week"),
     value: "each-week"
   },
   {
-    label: "4 weeks",
+    label: i18n.t("payment_interval_options.each-week"),
     value: "each-4-weeks"
   },
   {
-    label: "Month",
+    label: i18n.t("payment_interval_options.each-month"),
     value: "each-month"
   }
 ];
 
 export const discountOnTaxesOptions = [
   {
-    label: "Yes",
+    label: i18n.t("common.yes"),
     value: "yes"
   },
   {
-    label: "No",
+    label: i18n.t("common.yes"),
     value: "no"
   }
 ];
 
 export const workedEarlierAsFlexWorkerOptions = [
   {
-    label: "No",
+    label: i18n.t("flex_worker_options.no"),
     value: "no"
   },
   {
-    label: "Yes, in construction",
+    label: i18n.t("flex_worker_options.in-construction"),
     value: "in-construction"
   },
   {
-    label: "Yes, not in construction",
+    label: i18n.t("flex_worker_options.not-in-construction"),
     value: "not-in-construction"
   }
 ];

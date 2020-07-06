@@ -113,6 +113,16 @@
     "company": "Bedrijf",
     "worker": "Werknemer"
   },
+  "payment_interval_options": {
+    "each-week": "Per week",
+    "each-4-weeks": "Per 4 weken",
+    "each-month": "Per maand"
+  },
+  "flex_worker_options": {
+    "no": "Nee",
+    "in-construction": "Ja, in de bouw",
+    "not-in-construction": "Ja, maar niet in de bouw"
+  },
   "profession": {
     "administration": "Administratie",
     "banks": "Banken",
