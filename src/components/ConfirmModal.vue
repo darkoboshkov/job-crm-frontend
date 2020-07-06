@@ -15,7 +15,7 @@
         {{ subTitle }}
       </p>
       <button class="btn btn-red mr-3" @click="showConfirmModal = false">
-        {{ $t("page_profile.modal.confirm.cancel") }}
+        {{ $t("common.cancel") }}
       </button>
       <button v-if="button" class="btn btn-blue" @click="onButtonClick">
         {{ button }}
