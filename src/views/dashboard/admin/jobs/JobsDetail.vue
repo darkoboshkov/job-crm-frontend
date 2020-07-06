@@ -517,8 +517,8 @@ export default {
       state: [],
       paymentType: [],
       errors: null,
-      companyId: "",
-      jobId: "",
+      companyId: this.$route.params.companyId,
+      jobId: this.$route.params.jobId,
       jobOffers: [],
       imageData: {},
       selectedJobOfferId: null,
@@ -526,8 +526,6 @@ export default {
     };
   },
   async mounted() {
-    this.companyId = this.$route.params.companyId;
-    this.jobId = this.$route.params.jobId;
     await this.getCompanies();
     await this.getManagers();
     await this.fetchJobDetails();

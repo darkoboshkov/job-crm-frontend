@@ -114,13 +114,11 @@ export default {
       filterOptions: offersTable.filterOptions,
       paginationOptions: offersTable.pagination.paginationOptions,
       serverParams: offersTable.pagination.serverParams,
-      imageMode: true
+      imageMode: true,
+      role: this.$store.state.user.role
     };
   },
   computed: {
-    role() {
-      return this.$store.state.user.role;
-    },
     columns() {
       let columns = this.imageMode
         ? [

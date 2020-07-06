@@ -717,7 +717,6 @@ export default {
       default: false
     }
   },
-  mounted() {},
   computed: {
     contract() {
       return this.offer.contractSigned;

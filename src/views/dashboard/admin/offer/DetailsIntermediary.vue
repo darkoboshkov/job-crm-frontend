@@ -73,7 +73,7 @@
                     <div>
                       <strong>{{ company.name }}</strong>
                     </div>
-                    <div>{{ $t("page_offer_detail.intermediate") }}</div>
+                    <div>{{ $t("page_offer_detail.intermediary") }}</div>
                   </div>
                 </div>
               </div>

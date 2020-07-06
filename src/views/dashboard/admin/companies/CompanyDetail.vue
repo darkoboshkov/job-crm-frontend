@@ -364,23 +364,18 @@ export default {
       },
       managers: [],
       errors: null,
-      companyId: "",
+      companyId: this.$route.params.companyId,
       imageData: {},
       selectedAttachmentId: null,
       vatShiftedEnabled: false,
       gAccountEnabled: false,
-      selectedManager: null
+      selectedManager: null,
+      role: this.$store.state.user.role
     };
   },
   async mounted() {
-    this.companyId = this.$route.params.companyId;
     await this.getCompany();
     await this.getManagers();
-  },
-  computed: {
-    role() {
-      return this.$store.state.user.role;
-    }
   },
   methods: {
     async getManagers() {

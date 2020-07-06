@@ -123,13 +123,11 @@ export default {
       serverParams: jobsTable.pagination.serverParams,
       paginationOptions: jobsTable.pagination.paginationOptions,
       selectedJob: null,
-      imageMode: true
+      imageMode: true,
+      role: this.$store.state.user.role
     };
   },
   computed: {
-    role() {
-      return this.$store.state.user.role;
-    },
     columns() {
       let columns = this.imageMode
         ? [

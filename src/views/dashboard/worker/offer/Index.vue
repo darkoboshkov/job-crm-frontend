@@ -89,16 +89,10 @@ export default {
       rows: [],
       searchTerm: "",
       matched: false,
-      totalRows: 0
+      totalRows: 0,
+      role: this.$store.state.user.role,
+      companyId: this.$store.state.user.companyId
     };
-  },
-  computed: {
-    role() {
-      return this.$store.state.user.role;
-    },
-    companyId() {
-      return this.$store.state.user.companyId;
-    }
   },
   mounted() {
     this.getActiveOffers();

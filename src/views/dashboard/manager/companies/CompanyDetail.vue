@@ -460,26 +460,21 @@ export default {
       managers: [],
       accessCompanies: [],
       errors: null,
-      companyId: "",
+      companyId: this.$route.params.companyId,
       imageData: {},
       selectedAttachmentId: null,
       vatShiftedEnabled: false,
       gAccountEnabled: false,
       selectedManager: null,
-      selectedCompanyId: null
+      selectedCompanyId: null,
+      role: this.$store.state.user.role
     };
   },
   async mounted() {
-    this.companyId = this.$route.params.companyId;
     await this.getCompany();
     await this.getManagers();
     if (this.showAccessCompanies) {
       await this.getIntermediaryCompanies();
-    }
-  },
-  computed: {
-    role() {
-      return this.$store.state.user.role;
     }
   },
   methods: {

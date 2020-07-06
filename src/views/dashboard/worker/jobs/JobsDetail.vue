@@ -314,26 +314,18 @@ export default {
       managers: [],
       state: [],
       error: "",
-      companyId: "",
-      jobId: "",
+      companyId: this.$store.state.user.companyId,
+      jobId: this.$route.params.jobId,
       jobOffers: [],
       imageData: {},
-      attachments: []
+      attachments: [],
+      user: this.$store.state.user,
+      userName: this.getFullName(this.$store.state.user)
     };
   },
   mounted() {
-    this.companyId = this.$store.state.user.companyId;
-    this.jobId = this.$route.params.jobId;
     this.fetchJobDetails();
     this.fetchJobOffers();
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    },
-    userName() {
-      return this.getFullName(this.$store.state.user);
-    }
   },
   methods: {
     viewFile(attachment) {},

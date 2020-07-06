@@ -413,19 +413,11 @@ export default {
       imageData: {
         preview: null
       },
-      isImageLoading: false
+      isImageLoading: false,
+      role: this.$store.state.user.role,
+      userId: this.$store.state.user._id,
+      companyId: this.$store.state.user.companyId
     };
-  },
-  computed: {
-    role() {
-      return this.$store.state.user.role;
-    },
-    userId() {
-      return this.$store.state.user._id;
-    },
-    companyId() {
-      return this.$store.state.user.companyId;
-    }
   },
   methods: {
     onFileChange(e) {

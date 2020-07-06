@@ -59,13 +59,9 @@ export default {
   name: "users",
   data() {
     return {
-      rows: []
+      rows: [],
+      companyId: this.$store.state.user.companyId
     };
-  },
-  computed: {
-    companyId() {
-      return this.$store.state.user.companyId;
-    }
   },
   mounted() {
     this.getActiveUsers();

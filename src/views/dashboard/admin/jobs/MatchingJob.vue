@@ -148,20 +148,14 @@ export default {
           unit: "jaar"
         }
       ],
-      jobId: null,
-      companyId: null,
+      jobId: this.$route.params.jobId,
+      companyId: this.$route.params.companyId,
       job: {},
-      matchedWorkers: []
+      matchedWorkers: [],
+      role: this.$store.state.user.role
     };
   },
-  computed: {
-    role() {
-      return this.$store.state.user.role;
-    }
-  },
   mounted() {
-    this.companyId = this.$route.params.companyId;
-    this.jobId = this.$route.params.jobId;
     this.getJob();
   },
   methods: {

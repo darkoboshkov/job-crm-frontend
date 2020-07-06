@@ -104,16 +104,14 @@ export default {
         selectedUserId: null
       },
       users: [],
-      jobId: null,
+      jobId: this.$route.params.jobId,
       selectedUserId: null,
       companies: [],
-      managers: []
+      managers: [],
+      companyId: this.$store.state.user.companyId
     };
   },
   computed: {
-    companyId() {
-      return this.$store.state.user.companyId;
-    },
     filteredManagers() {
       const result = [];
       for (let index = 0; index < this.managers.length; index++) {
@@ -143,7 +141,6 @@ export default {
   },
 
   mounted() {
-    this.jobId = this.$route.params.jobId;
     this.fetchManagers();
     this.fetchCompanies();
   },

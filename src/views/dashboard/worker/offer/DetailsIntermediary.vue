@@ -73,7 +73,7 @@
                     <div>
                       <strong>{{ company.name }}</strong>
                     </div>
-                    <div>{{ $t("page_offer_detail.intermediate") }}</div>
+                    <div>{{ $t("page_offer_detail.intermediary") }}</div>
                   </div>
                 </div>
               </div>
@@ -572,44 +572,11 @@ export default {
   components: {
     ContractModal
   },
-  computed: {
-    edit() {
-      return false;
-    },
-    user() {
-      return this.$store.state.user;
-    },
-    selectedCaoOption() {
-      return (
-        this.caoOptions.find(
-          option => option._id === this.model.collectiveAgreement
-        ) || {}
-      );
-    },
-    managerState() {
-      return serializeContractStatus("manager", this.contractStatus);
-    },
-    workerState() {
-      return serializeContractStatus("worker", this.model.status);
-    },
-    hiringManagerState() {
-      return serializeContractStatus(
-        "hiringManager",
-        this.model.intermediaryStatus
-      );
-    },
-    signed() {
-      return (
-        this.model.status === "active" ||
-        this.model.status === "completed" ||
-        this.model.status === "failed"
-      );
-    }
-  },
   data() {
     return {
       companyId: this.$store.state.user.companyId,
       offerId: this.$route.params.offerId,
+      user: this.$store.state.user,
       model: {
         collectiveAgreement: "",
         wage: 0,
@@ -645,6 +612,37 @@ export default {
       discountOnTaxesOptions,
       workedEarlierAsFlexWorkerOptions
     };
+  },
+  computed: {
+    edit() {
+      return false;
+    },
+    selectedCaoOption() {
+      return (
+        this.caoOptions.find(
+          option => option._id === this.model.collectiveAgreement
+        ) || {}
+      );
+    },
+    managerState() {
+      return serializeContractStatus("manager", this.contractStatus);
+    },
+    workerState() {
+      return serializeContractStatus("worker", this.model.status);
+    },
+    hiringManagerState() {
+      return serializeContractStatus(
+        "hiringManager",
+        this.model.intermediaryStatus
+      );
+    },
+    signed() {
+      return (
+        this.model.status === "active" ||
+        this.model.status === "completed" ||
+        this.model.status === "failed"
+      );
+    }
   },
   mounted() {
     this.getOfferDetails();

@@ -134,7 +134,11 @@ export default {
       filterOptions: companiesTable.filterOptions,
       serverParams: companiesTable.pagination.serverParams,
       paginationOptions: companiesTable.pagination.paginationOptions,
-      idToDelete: 0
+      idToDelete: 0,
+      role: this.$store.state.user.role,
+      userId: this.$store.state.user._id,
+      companyId: this.$store.state.user.companyId,
+      isIntermediary: this.$store.state.user.companyType === "intermediary"
     };
   },
   computed: {
@@ -150,18 +154,6 @@ export default {
         : [];
 
       return columns.concat(companiesTable.columns);
-    },
-    role() {
-      return this.$store.state.user.role;
-    },
-    userId() {
-      return this.$store.state.user._id;
-    },
-    companyId() {
-      return this.$store.state.user.companyId;
-    },
-    isIntermediary() {
-      return this.$store.state.user.companyType === "intermediary";
     }
   },
   mounted() {

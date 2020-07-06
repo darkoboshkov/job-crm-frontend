@@ -288,20 +288,14 @@ export default {
       levels: [],
       paymentType: [],
       state: [],
-      errors: null
+      errors: null,
+      user: this.$store.state.user,
+      userName: this.getFullName(this.$store.state.user)
     };
   },
   mounted() {
     this.getCompany();
     this.getPaymentType();
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    },
-    userName() {
-      return this.getFullName(this.$store.state.user);
-    }
   },
   methods: {
     validate() {

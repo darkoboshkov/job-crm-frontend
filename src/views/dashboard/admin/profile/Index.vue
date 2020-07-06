@@ -146,18 +146,12 @@ export default {
         status: "available",
         image: ""
       },
-      userId: null,
-      companyId: null
+      userId: this.$route.params.id,
+      companyId: this.$route.params.companyId,
+      role: this.$store.state.user.role
     };
   },
-  computed: {
-    role() {
-      return this.$store.state.user.role;
-    }
-  },
   mounted() {
-    this.companyId = this.$route.params.companyId;
-    this.userId = this.$route.params.id;
     this.fetchProfile();
   },
   methods: {

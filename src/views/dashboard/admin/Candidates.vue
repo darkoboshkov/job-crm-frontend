@@ -139,7 +139,8 @@ export default {
       serverParams: candidatesTable.pagination.serverParams,
       paginationOptions: candidatesTable.pagination.paginationOptions,
       selectedCandidate: null,
-      imageMode: true
+      imageMode: true,
+      role: this.$store.state.user.role
     };
   },
   computed: {
@@ -156,9 +157,6 @@ export default {
         : [];
 
       return columns.concat(candidatesTable.columns);
-    },
-    role() {
-      return this.$store.state.user.role;
     }
   },
   mounted() {

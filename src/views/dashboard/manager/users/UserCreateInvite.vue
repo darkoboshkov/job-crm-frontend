@@ -96,13 +96,9 @@ export default {
         role: "worker",
         email: ""
       },
-      errors: null
+      errors: null,
+      companyId: this.$store.state.user.companyId
     };
-  },
-  computed: {
-    companyId() {
-      return this.$store.state.user.companyId;
-    }
   },
   methods: {
     validate() {

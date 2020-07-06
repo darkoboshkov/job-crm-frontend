@@ -560,13 +560,9 @@ export default {
       showPassword: false,
       showRepeatPassword: false,
       idImageData: {},
-      isImageLoading: false
+      isImageLoading: false,
+      companyId: this.$store.state.user.companyId
     };
-  },
-  computed: {
-    companyId() {
-      return this.$store.state.user.companyId;
-    }
   },
   mounted() {
     this.getCompanies();

@@ -63,13 +63,9 @@ export default {
   name: "positions",
   data() {
     return {
-      rows: []
+      rows: [],
+      companyId: this.$store.state.user.companyId
     };
-  },
-  computed: {
-    companyId() {
-      return this.$store.state.user.companyId;
-    }
   },
   mounted() {
     this.getActiveJobs();

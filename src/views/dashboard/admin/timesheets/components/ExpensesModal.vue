@@ -309,9 +309,6 @@ export default {
       });
     }
   },
-  mounted() {
-    //
-  },
   watch: {
     rowData() {
       this.model = this.rowData;

@@ -435,15 +435,13 @@ export default {
       },
       idImageData: {},
       isImageLoading: false,
-      companyId: "",
-      userId: "",
+      companyId: this.$route.params.companyId,
+      userId: this.$route.params.id,
       errors: null,
       allowIDImage: false
     };
   },
   mounted() {
-    this.companyId = this.$route.params.companyId;
-    this.userId = this.$route.params.id;
     this.getProfile();
     professionsApi.getAll().then(res => {
       this.professions = res;

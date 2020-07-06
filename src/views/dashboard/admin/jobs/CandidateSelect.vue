@@ -104,8 +104,8 @@ export default {
         selectedUserId: null
       },
       users: [],
-      companyId: null,
-      jobId: null,
+      companyId: this.$route.params.companyId,
+      jobId: this.$route.params.jobId,
       companies: [],
       managers: []
     };
@@ -118,8 +118,6 @@ export default {
     }
   },
   async mounted() {
-    this.companyId = this.$route.params.companyId;
-    this.jobId = this.$route.params.jobId;
     this.fetchManagers();
     this.fetchCompanies();
   },

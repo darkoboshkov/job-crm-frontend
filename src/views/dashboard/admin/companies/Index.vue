@@ -119,7 +119,8 @@ export default {
       filterOptions: companiesTable.filterOptions,
       serverParams: companiesTable.pagination.serverParams,
       paginationOptions: companiesTable.pagination.paginationOptions,
-      idToDelete: 0
+      idToDelete: 0,
+      role: this.$store.state.user.role
     };
   },
   computed: {
@@ -135,9 +136,6 @@ export default {
         : [];
 
       return columns.concat(companiesTable.columns);
-    },
-    role() {
-      return this.$store.state.user.role;
     }
   },
   mounted() {

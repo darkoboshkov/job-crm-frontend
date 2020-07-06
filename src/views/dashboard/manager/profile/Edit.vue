@@ -430,7 +430,7 @@ export default {
       },
       idImageData: {},
       isImageLoading: false,
-      userId: "",
+      userId: this.$route.params.id,
       errors: null,
       allowIDImage: false
     };
@@ -441,7 +441,6 @@ export default {
     }
   },
   mounted() {
-    this.userId = this.$route.params.id;
     this.getProfile();
     professionsApi.getAll().then(res => {
       this.professions = res;

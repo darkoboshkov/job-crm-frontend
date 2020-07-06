@@ -72,7 +72,6 @@ export default {
       errors: []
     };
   },
-  mounted() {},
   methods: {
     validate() {
       this.errors = [];

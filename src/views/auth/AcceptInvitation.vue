@@ -88,13 +88,10 @@ export default {
         lastName: null,
         password: null,
         c_password: null,
-        id: null
+        id: this.$route.params.id
       },
       errors: null
     };
-  },
-  mounted() {
-    this.form.id = this.$route.params.id;
   },
   methods: {
     validate() {

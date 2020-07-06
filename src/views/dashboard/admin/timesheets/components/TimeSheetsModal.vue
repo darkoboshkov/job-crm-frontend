@@ -359,9 +359,6 @@ export default {
         });
     }
   },
-  mounted() {
-    //
-  },
   watch: {
     timeSheetsData(v) {
       this.daysOfSelectedWeek = this.timeSheetsData.timeSheetData.data;

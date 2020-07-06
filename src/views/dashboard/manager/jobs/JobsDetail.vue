@@ -473,28 +473,20 @@ export default {
       state: [],
       paymentType: [],
       errors: null,
-      companyId: "",
-      jobId: "",
+      companyId: this.$store.state.user.companyId,
+      jobId: this.$route.params.jobId,
       jobOffers: [],
       imageData: {},
       selectedJobOfferId: null,
-      selectedAttachmentId: null
+      selectedAttachmentId: null,
+      user: this.$store.state.user,
+      userName: this.getFullName(this.$store.state.user)
     };
   },
   mounted() {
-    this.companyId = this.$store.state.user.companyId;
-    this.jobId = this.$route.params.jobId;
     this.fetchJobDetails();
     this.fetchJobOffers();
     this.getPaymentType();
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    },
-    userName() {
-      return this.getFullName(this.$store.state.user);
-    }
   },
   methods: {
     validate() {

@@ -140,16 +140,10 @@ export default {
         registeredAt: "08-09-2019",
         location: "Arhem",
         status: "available"
-      }
+      },
+      companyId: this.$store.state.user.companyId,
+      userId: this.$store.state.user._id
     };
-  },
-  computed: {
-    companyId() {
-      return this.$store.state.user.companyId;
-    },
-    userId() {
-      return this.$store.state.user._id;
-    }
   },
   mounted() {
     this.fetchProfile();
