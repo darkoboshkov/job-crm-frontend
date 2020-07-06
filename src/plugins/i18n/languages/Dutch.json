@@ -33,7 +33,7 @@
     "privacy": "Privacy",
     "forgot": "Vergeten",
     "company": "Bedrijf",
-    "worker":  "Werknemer",
+    "worker": "Werknemer",
     "active": "Actief",
     "back": "Terug"
   },
@@ -45,33 +45,33 @@
     "WRONG_PASSWORD": "Het wachtwoord is niet juist",
     "USER_DOES_NOT_EXIST": "Deze gebruiker bestaat niet",
     "EMAIL_ALREADY_EXISTS": "Dit e-mailadres is al in gebruik",
-    "WORKER_FIRST_NAME_INVALID": "First Name is invalid.",
-    "WORKER_LAST_NAME_INVALID": "Last Name is invalid.",
-    "WORKER_STREET_INVALID": "Street Name is invalid.",
-    "WORKER_CITY_INVALID": "City is invalid.",
-    "WORKER_POSTAL_CODE_INVALID": "Postal Code is invalid.",
-    "WORKER_HOUSE_NUMBER_INVALID": "House Number is invalid.",
-    "WORKER_SOCIAL_SECURITY_NUMBER_INVALID": "Social Security Number is invalid.",
-    "WORKER_IDENTIFICATION_EXPIRATION_DATE_INVALID": "ID Expiration Date is invalid",
-    "COMPANY_CITY_INVALID": "City is invalid.",
-    "COMPANY_STREET_INVALID": "Street is invalid.",
-    "COMPANY_HOUSE_NUMBER_INVALID": "House Number is invalid.",
-    "COMPANY_POSTAL_CODE_INVALID": "Postal Code is invalid.",
-    "MANAGER_FIRST_NAME_INVALID": "First Name is invalid.",
-    "MANAGER_LAST_NAME_INVALID": "Last Name is invalid.",
-    "MANAGER_HONORIFIC_TITLE_INVALID": "Honorific Title is invalid.",
-    "MANAGER_PHONE_NUMBER_INVALID": "Phone Number is invalid.",
-    "OFFER_CAO_INVALID": "CAO is invalid.",
-    "OFFER_WAGE_INVALID": "Wage is invalid.",
-    "OFFER_HOURLY_WAGE_INVALID": "Hourly Wage is invalid.",
-    "OFFER_PAY_RATE_INVALID": "Pay Rate is invalid.",
-    "OFFER_HOURS_PER_WEEK_INVALID": "Hours Per Week is invalid.",
-    "OFFER_TRAVEL_COMPENSATION_PER_KM_INVALID": "Compensation Per KM is invalid.",
-    "OFFER_TRAVEL_ONE_WAY_DISTANCE_INVALID": "One Way Distance is invalid.",
-    "OFFER_TRAVEL_TIME_COMPENSATION_PER_WEEK_INVALID": "Time Compensation Per Week is invalid.",
-    "OFFER_TRAVEL_WEEKLY_COMPENSATION_INVALID": "Weekly Compensation is invalid.",
-    "OFFER_START_DATE_INVALID": "Start Date is invalid.",
-    "OFFER_END_DATE_INVALID": "End Date is invalid."
+    "WORKER_FIRST_NAME_INVALID": "Voornaam is niet geldig.",
+    "WORKER_LAST_NAME_INVALID": "Achternaam is niet geldig.",
+    "WORKER_STREET_INVALID": "Straatnaam is niet geldig.",
+    "WORKER_CITY_INVALID": "Plaatsnaam is niet geldig.",
+    "WORKER_POSTAL_CODE_INVALID": "Postcode is niet geldig.",
+    "WORKER_HOUSE_NUMBER_INVALID": "Huisnummer is niet geldig.",
+    "WORKER_SOCIAL_SECURITY_NUMBER_INVALID": "Burgerservicenummer is niet geldig.",
+    "WORKER_IDENTIFICATION_EXPIRATION_DATE_INVALID": "Vervaldatum is niet geldig.",
+    "COMPANY_CITY_INVALID": "Plaatsnaam is niet geldig.",
+    "COMPANY_STREET_INVALID": "Straatnaam is niet geldig.",
+    "COMPANY_HOUSE_NUMBER_INVALID": "Huisnummer is niet geldig.",
+    "COMPANY_POSTAL_CODE_INVALID": "Postcode is niet geldig.",
+    "MANAGER_FIRST_NAME_INVALID": "Voornaam is niet geldig.",
+    "MANAGER_LAST_NAME_INVALID": "Achternaam is niet geldig.",
+    "MANAGER_HONORIFIC_TITLE_INVALID": "Titel is niet geldig.",
+    "MANAGER_PHONE_NUMBER_INVALID": "Telefoonnummer is niet geldig.",
+    "OFFER_CAO_INVALID": "CAO is niet geldig.",
+    "OFFER_WAGE_INVALID": "Maandloon is niet geldig.",
+    "OFFER_HOURLY_WAGE_INVALID": "Uurl is niet geldig.",
+    "OFFER_PAY_RATE_INVALID": "Tarief is niet geldig.",
+    "OFFER_HOURS_PER_WEEK_INVALID": "Uren per week is niet geldig.",
+    "OFFER_TRAVEL_COMPENSATION_PER_KM_INVALID": "Kilometervergoeding is niet geldig.",
+    "OFFER_TRAVEL_ONE_WAY_DISTANCE_INVALID": "Reisafstand enkele reis is niet geldig.",
+    "OFFER_TRAVEL_TIME_COMPENSATION_PER_WEEK_INVALID": "Reisvergoeding is niet geldig.",
+    "OFFER_TRAVEL_WEEKLY_COMPENSATION_INVALID": "Wekelijkse vergoeding is niet geldig.",
+    "OFFER_START_DATE_INVALID": "Stardatum is niet geldig.",
+    "OFFER_END_DATE_INVALID": "Einddatum is niet geldig."
   },
   "roles": {
     "manager": "Manager",
@@ -106,12 +106,12 @@
     "not-able-to-see": "Verborgen",
     "pending": "In afwachting",
     "signed": "Getekend",
-    "failed": "Failed",
-    "allowed": "Allowed"
+    "failed": "Mislukt",
+    "allowed": "Toegestaan"
   },
   "contract": {
     "company": "Bedrijf",
-    "worker":  "Werknemer"
+    "worker": "Werknemer"
   },
   "profession": {
     "administration": "Administratie",
@@ -148,8 +148,8 @@
   "honorific": {
     "mr": "de heer",
     "mrs": "mevrouw",
-    "ms": "dhr.",
-    "miss": "mevr."
+    "ms": "mevr.",
+    "miss": "mw."
   },
   "component": {
     "position": {
@@ -426,27 +426,27 @@
         "continue": "Ik weet het zeker"
       },
       "access_request": {
-        "title": "Access Request",
-        "description": "This widget shows that have not been assigned to a company yet. Please fill out the company Unique ID and click on: Send Request.",
-        "unique_id": "Unique ID",
-        "send_button": "Send Request"
+        "title": "Toegangsverzoek",
+        "description": "Met dit verzoek kunt toegang tot het beheren van uw klant's account vragen waardoor u kandidaten bij hen kunt plaatsen. Voor het versturen van dit verzoek heeft u uw klants unieke ID nodig. Dit ID is vindbaar op de profielpagina van uw klant.",
+        "unique_id": "Uniek ID",
+        "send_button": "Verstuur verzoek"
       }
     },
     "button": {
-      "create": "Create Company",
-      "request": "Request access"
+      "create": "Klant aanmaken",
+      "request": "Toegangsverzoek"
     }
   },
   "page_request_company": {
-    "title": "Request Access",
-    "description": "click on : Accept Request or Decline Request",
+    "title": "Toegang",
+    "description": "klik op : Toegang verlenen of weigeren",
     "button": {
-      "accept": "Accept Request",
-      "decline": "Decline Request"
+      "accept": "Toegang verlenen",
+      "decline": "Toegang weigeren"
     }
   },
   "page_detail_company": {
-    "create_title": "Voeg nieuw bedrijf toe",
+    "create_title": "Voeg bedrijf toe",
     "edit_title": "Bedrijfsgegevens",
     "description": "Bedrijfsprofiel",
     "create_description": "Vul de gegevens van het bedrijf in en klik op: Bedrijf aanmaken.",
@@ -487,14 +487,14 @@
       "name": "Naam"
     },
     "access_table": {
-      "title": "Company access",
-      "city": "City",
-      "email": "Email",
-      "postal_code": "Postal code",
+      "title": "Bedrijfstoegang",
+      "city": "Plaatsnaam",
+      "email": "E-mail",
+      "postal_code": "Postcode",
       "status": "Status",
-      "name": "Company name",
-      "accept": "Accept request",
-      "decline": "Decline request"
+      "name": "Bedrijf",
+      "accept": "Verleen toegang",
+      "decline": "Weiger toegang"
     },
     "button": {
       "create": "Bedrijf aanmaken",
@@ -509,7 +509,7 @@
       },
       "create_error": {
         "title": "Foutmelding",
-        "continue": "Doorgaan"
+        "continue": "Terug"
       },
       "remove_manager": {
         "title": "Weet je het zeker?",
@@ -522,14 +522,14 @@
         "continue": "Verwijder"
       },
       "accept_company": {
-        "title": "Are you sure?",
-        "sub_title": "Are you sure you want to accept the request?",
-        "continue": "Continue"
+        "title": "Toegangsverzoek accepteren",
+        "sub_title": "Weet je zeker dat je dit bedrijf toegang wil geven?",
+        "continue": "Ik weet het zeker"
       },
       "decline_company": {
-        "title": "Are you sure?",
-        "sub_title": "Are you sure you want to decline the request?",
-        "continue": "Continue"
+        "title": "Toegangsverzoek weigeren",
+        "sub_title": "Weet je zeker dat je de dit bedrijf geen toegang wil geven?",
+        "continue": "Ik weet het zeker"
       }
     }
   },
@@ -600,6 +600,7 @@
       "actions": "Acties",
       "view_joboffer": "Contract weergeven",
       "view_profile": "Profiel weergeven",
+      "edit_profile": "Profiel wijzigen",
       "delete_user": "Werknemer verwijderen"
     },
     "modal": {
@@ -651,7 +652,7 @@
     },
     "button": {
       "upload": "Uploaden",
-      "update": "Update details"
+      "update": "Wijzigingen opslaan"
     },
     "modal": {
       "change": {
@@ -660,10 +661,10 @@
         "continue": "Doorgaan"
       },
       "confirm": {
-        "title": "Uploading Identification",
-        "sub_title": "You are about to upload your ID document. By uploading this document, you agree with the fact that Hiway or your employing company may use this document to verify your identity.",
-        "continue": "I accept the above statment",
-        "cancel": "Take me back"
+        "title": "Identificatie uploaden",
+        "sub_title": "U staat op het punt uw identiteitsbewijs te uploaden. Door dit document te uploaden, gaat u ermee akkoord dat Hiway B.V. en het bedrijf waar u in dienst komt dit document kunnen gebruiken om uw identiteit te verifiëren.",
+        "continue": "Ik ga akkoord",
+        "cancel": "Ik ga niet akkoord"
       }
     }
   },
@@ -707,8 +708,8 @@
     }
   },
   "page_job_detail": {
-    "edit": "Edit job",
-    "save": "Save job",
+    "edit": "Vacature wijzigen",
+    "save": "Wijzigingen opslaan",
     "form": {
       "description": "Beschrijving",
       "specifications": "Specificaties",
@@ -716,7 +717,7 @@
       "company": "Bedrijf",
       "manager": "Manager",
       "hiring_manager": "Inhurende manager",
-      "hiring_company": "Inhurend bedrijf",
+      "hiring_company": "Opdrachtgever",
       "worker": "Werknemer",
       "offer": "Aanbod",
       "level": "Level",
@@ -786,8 +787,8 @@
     "description": "Zoek naar werknemers door hun naam in het zoekveld te typen. Selecteer vervolgens de juiste werknemer en klik op: Selecteer werknemer",
     "form": {
       "search": "Zoek werknemer",
-      "hiring_company": "Selecteer inhurend bedrijf",
-      "hiring_manager": "Selecteer inhurende manager"
+      "hiring_company": "Selecteer opdrachtgever",
+      "hiring_manager": "Selecteer manager bij opdrachtgever"
     },
     "button": {
       "select": "Selecteer werknemer"
@@ -826,12 +827,12 @@
       "export_contract": "Contract exporteren",
       "view_contract": "Contract weergeven",
       "upload": "Uploaden",
-      "other": "Other options",
+      "other": "Meer opties",
       "dropdown": {
-        "company_export": "Company Contract",
-        "client_export": "Worker Contract",
-        "extend": "Extend contract",
-        "early": "Early termination"
+        "company_export": "Inleenovereenkomst",
+        "client_export": "Arbeidsovereenkomst",
+        "extend": "Contract verlengen",
+        "early": "Contract vervroegd beeindigen"
       }
     },
     "modal": {
@@ -847,12 +848,12 @@
         "sign_contract": "Contract tekenen"
       },
       "validate_contract": {
-        "title": "Contract validation was failed.",
-        "sub_title": "Please fill out all information to sign this contract!",
-        "worker_info": "Worker Information",
-        "company_info": "Company Information",
-        "manager_info": "Manager Information",
-        "job_offer_info": "JobOffer Information"
+        "title": "Het is niet mogelijk om het contract te tekenen en te verzenden.",
+        "sub_title": "De volgende informatie is nodig om het contract te kunnen tekenen:",
+        "worker_info": "Werknemer gegevens:",
+        "company_info": "Werkgever gegevens:",
+        "manager_info": "Manager gegevens:",
+        "job_offer_info": "Contract gegevens:"
       },
       "sign_success": {
         "title": "Gelukt",
@@ -1154,46 +1155,46 @@
     }
   },
   "page_offer_extend": {
-    "title": "Contract Extending",
-    "description": "To extend the current contract we'll create a new contract a day after the current one ends. Would you like to copy all current details or start over with a blanc canvas?",
+    "title": "Contractverlenging",
+    "description": "Wilt u alle actuele gegevens overnemen of opnieuw beginnen met een leeg contract?",
     "button": {
-      "current": "Use all current setting",
-      "clean": "Create a clean contract"
+      "current": "Gegevens overnemen",
+      "clean": "Leeg contract"
     },
     "modal": {
       "current": {
-        "title": "Use all current details",
-        "sub_title": "You are about to extend the contract. By extending the contract, you'll create a new contract with all current details",
-        "continue": "I accept the extending contract."
+        "title": "Contractverlenging",
+        "sub_title": "Er wordt een nieuw contract aangemaakt waarbij de huidige gegevens worden gecopieerd. U kunt vervolgens zelf de gegevens nog verder aanpassen.",
+        "continue": "Contract aanmaken"
       },
       "clean": {
-        "title": "Create a clean contract",
-        "sub_title": "You are about to extend the contract. By extending the contract, you'll create a new contract after the current one ends",
-        "continue": "I accept the extending contract."
+        "title": "Contractverlenging",
+        "sub_title": "Er wordt een nieuw leeg contract. U dient alle gegevens zelf opnieuw in te vullen.",
+        "continue": "Contract aanmaken"
       }
     }
   },
   "page_offer_end": {
-    "title": "Early termination",
-    "description": "You can apply a change to the end that of the current, running contract. The other party will get an notification and the option to accept the new end date. Would you like to continue?",
-    "select_date": "Select a new end date",
-    "content": "By sending an invitation I understand that the contract end date will note be changed. Only after the other party accepts the changes the contract date will change. You will be notified of the other parties acceptance.",
-    "current_date": "Current end date:",
-    "new_date": "New end date:",
+    "title": "Contract vroegtijdig beeindigen",
+    "description": "Weet u zeker dat u het contract vroegtijdig wilt beeindigen en een nieuwe einddatum wilt kiezen?",
+    "select_date": "Nieuwe einddatum selecteren",
+    "content": "De nieuwe einddatum moet altijd voor de huidige einddatum van het contract liggen.",
+    "current_date": "Huidige einddatum:",
+    "new_date": "Nieuwe einddatum:",
     "button": {
-      "end_date": "Yes, let me set a new end date",
-      "send": "Send Invitation"
+      "end_date": "Selecteer nieuwe einddatum",
+      "send": "Contractswijziging doorvoeren"
     },
     "modal": {
       "success": {
-        "title": "Success",
-        "sub_title": "You changed the contract end date successfully.",
-        "continue": "Continue"
+        "title": "Gelukt",
+        "sub_title": "De einddatum van het contract is gewijzigd.",
+        "continue": "Doorgaan"
       },
       "fail": {
-        "title": "Failure",
-        "sub_title": "Failed to change the contract end date.",
-        "continue": "Continue"
+        "title": "Mislukt",
+        "sub_title": "Het is aanpassen van de einddatum van het contract is mislukt.",
+        "continue": "Terug"
       }
     }
   },
@@ -1313,7 +1314,7 @@
       "price": "€",
       "worker": "Werknemer",
       "hiring_manager": "Inhurende manager",
-      "hiring_company": "Inhurend bedrijf",
+      "hiring_company": "Opdrachtgever",
       "status": "Status",
       "actions": "Acties",
       "view_timesheet": "Uren declaraties weergeven",
@@ -1327,7 +1328,7 @@
       "year": "Jaar",
       "worker": "Werknemer",
       "hiring_manager": "Inhurende manager",
-      "hiring_company": "Inhurend bedrijf",
+      "hiring_company": "Opdrachtgever",
       "status": "Status"
     },
     "modal": {
@@ -1369,10 +1370,10 @@
         "sub_title": "",
         "continue": "Ok"
       },
-      "amount": "Amount",
-      "category": "Category",
-      "upload_receipt": "Upload receipt",
-      "note": "Note"
+      "amount": "Bedrag",
+      "category": "Soort",
+      "upload_receipt": "Bon uploaden",
+      "note": "Opmerking"
     }
   },
   "page_users_create": {
@@ -1467,13 +1468,14 @@
       "manager": "Manager",
       "hiring_manager": "Inhurende Manager",
       "company": "Bedrijf",
-      "hiring_company": "Inhurend bedrijf",
+      "hiring_company": "Opdrachtgever",
       "job": "Vacaturetitel",
       "payment_type": "Valuta soort",
       "payment_amount": "Hoogte betaling",
       "created_at": "Aangemaakt op",
       "start_date": "Startdatum",
       "end_date": "Einddatum",
+      "contract_type": "Contractsoort",
       "status": "Status",
       "view_offer": "Contract weergeven",
       "actions": "Acties"
@@ -1481,7 +1483,7 @@
     "filter": {
       "title": "Vacaturetitel",
       "worker_name": "Werknemer",
-      "hiring_company": "Inhurend bedrijf",
+      "hiring_company": "Opdrachtgever",
       "type": "Type contract",
       "worker_contract": "Arbeidsovereenkomst",
       "company_contract": "Inleenovereenkomst",
@@ -1493,6 +1495,11 @@
       "disallow": {
         "title": "Je hebt geen toegang tot deze pagina",
         "sub_title": "Je manager is momenteel het contract aan het aanpassen",
+        "continue": "Doorgaan"
+      },
+      "failed": {
+        "title": "Mislukt",
+        "sub_title": "Doordat een van de partijen het contract heeft afgewezen is het doorvoeren van het contract mislukt. Indien u dit contract alsnog wilt aanamken dient u een nieuw contract op te stellen.",
         "continue": "Doorgaan"
       }
     }

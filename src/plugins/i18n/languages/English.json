@@ -33,18 +33,18 @@
     "privacy": "Privacy",
     "forgot": "Forgot",
     "company": "Company",
-    "worker":  "Worker",
+    "worker": "Worker",
     "active": "Active",
     "back": "Back"
   },
   "validation": {
-    "EMAIL_IS_NOT_VALID": "The email is not valid",
-    "PASSWORD_TOO_SHORT_MIN_5": "The password is shorter than 5, minimum",
-    "THIS_FIELD_IS_REQUIRED": "This field is required",
-    "PASSWORDS_NOT_MATCH": "The password is not matching",
-    "WRONG_PASSWORD": "The password is not correct",
-    "USER_DOES_NOT_EXIST": "The user does not exist",
-    "EMAIL_ALREADY_EXISTS": "The email already exists",
+    "EMAIL_IS_NOT_VALID": "The email is not valid.",
+    "PASSWORD_TOO_SHORT_MIN_5": "The password is shorter than 5, minimum.",
+    "THIS_FIELD_IS_REQUIRED": "This field is required.",
+    "PASSWORDS_NOT_MATCH": "The password is not matching.",
+    "WRONG_PASSWORD": "The password is not correct.",
+    "USER_DOES_NOT_EXIST": "The user does not exist.",
+    "EMAIL_ALREADY_EXISTS": "The email already exists.",
     "WORKER_FIRST_NAME_INVALID": "First Name is invalid.",
     "WORKER_LAST_NAME_INVALID": "Last Name is invalid.",
     "WORKER_STREET_INVALID": "Street is invalid.",
@@ -52,7 +52,7 @@
     "WORKER_POSTAL_CODE_INVALID": "Postal Code is invalid.",
     "WORKER_HOUSE_NUMBER_INVALID": "House Number is invalid.",
     "WORKER_SOCIAL_SECURITY_NUMBER_INVALID": "Social Security Number is invalid.",
-    "WORKER_IDENTIFICATION_EXPIRATION_DATE_INVALID": "ID Expiration Date is invalid",
+    "WORKER_IDENTIFICATION_EXPIRATION_DATE_INVALID": "ID Expiration Date is invalid.",
     "COMPANY_CITY_INVALID": "City is invalid.",
     "COMPANY_STREET_INVALID": "Street is invalid.",
     "COMPANY_HOUSE_NUMBER_INVALID": "House Number is invalid.",
@@ -62,7 +62,7 @@
     "MANAGER_HONORIFIC_TITLE_INVALID": "Honorific Title is invalid.",
     "MANAGER_PHONE_NUMBER_INVALID": "Phone Number is invalid.",
     "OFFER_CAO_INVALID": "CAO is invalid.",
-    "OFFER_WAGE_INVALID": "Wage is invalid.",
+    "OFFER_WAGE_INVALID": "Monthly Wage is invalid.",
     "OFFER_HOURLY_WAGE_INVALID": "Hourly Wage is invalid.",
     "OFFER_PAY_RATE_INVALID": "Pay Rate is invalid.",
     "OFFER_HOURS_PER_WEEK_INVALID": "Hours Per Week is invalid.",
@@ -111,7 +111,7 @@
   },
   "contract": {
     "company": "Company",
-    "worker":  "Worker"
+    "worker": "Worker"
   },
   "profession": {
     "administration": "Administration",
@@ -396,7 +396,7 @@
         "companies_area_title": "Companies",
         "companies_area_text": "This widget shows your latest companies.",
         "pending_workers_area_title": "Unassigned workers",
-        "pending_workers_area_text": "This widget shows that have not been assigned to a company yet."
+        "pending_workers_area_text": "This widget shows workers that have not been assigned to a company yet."
       }
     }
   },
@@ -441,8 +441,8 @@
     "title": "Request Access",
     "description": "click on : Accept Request or Decline Request",
     "button": {
-      "accept": "Accept Request",
-      "decline": "Decline Request"
+      "accept": "Allow access",
+      "decline": "Decline access"
     }
   },
   "page_detail_company": {
@@ -522,14 +522,14 @@
         "continue": "Delete"
       },
       "accept_company": {
-        "title": "Are you sure?",
-        "sub_title": "Are you sure you want to accept the request?",
-        "continue": "Continue"
+        "title": "Accept access request",
+        "sub_title": "Are you sure you want to give this company access?",
+        "continue": "Give access"
       },
       "decline_company": {
-        "title": "Are you sure?",
-        "sub_title": "Are you sure you want to decline the request?",
-        "continue": "Continue"
+        "title": "Decline access request",
+        "sub_title": "Are you sure you don't want to grant this company access?",
+        "continue": "Decline access"
       }
     }
   },
@@ -848,12 +848,12 @@
         "sign_contract": "Sign contract"
       },
       "validate_contract": {
-        "title": "Contract validation was failed.",
-        "sub_title": "Please fill out all information to sign this contract!",
-        "worker_info": "Worker Information",
-        "company_info": "Company Information",
-        "manager_info": "Manager Information",
-        "job_offer_info": "JobOffer Information"
+        "title": "It was not possible to sign and send the contract.",
+        "sub_title": "Please fill out the following information before signing:",
+        "worker_info": "Worker Information:",
+        "company_info": "Company Information:",
+        "manager_info": "Manager Information:",
+        "job_offer_info": "JobOffer Information:"
       },
       "sign_success": {
         "title": "Success",
@@ -1155,35 +1155,35 @@
     }
   },
   "page_offer_extend": {
-    "title": "Contract Extending",
-    "description": "To extend the current contract we'll create a new contract a day after the current one ends. Would you like to copy all current details or start over with a blanc canvas?",
+    "title": "Contract renewal",
+    "description": "Would you like to copy all current details or start over with an empty contract?",
     "button": {
-      "current": "Use all current setting",
-      "clean": "Create a clean contract"
+      "current": "Copy current settings",
+      "clean": "Use empty contract"
     },
     "modal": {
       "current": {
-        "title": "Use all current details",
-        "sub_title": "You are about to extend the contract. By extending the contract, you'll create a new contract with all current details",
-        "continue": "I accept the extending contract."
+        "title": "Contract renewal",
+        "sub_title": "A new contract is created with the current data being copied. You can then further adjust the data yourself.",
+        "continue": "Create contract"
       },
       "clean": {
-        "title": "Create a clean contract",
-        "sub_title": "You are about to extend the contract. By extending the contract, you'll create a new contract after the current one ends",
-        "continue": "I accept the extending contract."
+        "title": "Contract renewal",
+        "sub_title": "A new empty contract is created. You must enter all the details yourself again.",
+        "continue": "Create contract"
       }
     }
   },
   "page_offer_end": {
     "title": "Early termination",
-    "description": "You can apply a change to the end that of the current, running contract. The other party will get an notification and the option to accept the new end date. Would you like to continue?",
+    "description": "Are you sure you want to end the contract early and choose a new end date?",
     "select_date": "Select a new end date",
-    "content": "By sending an invitation I understand that the contract end date will note be changed. Only after the other party accepts the changes the contract date will change. You will be notified of the other parties acceptance.",
+    "content": "The new end date must always be before the current end date of the contract.",
     "current_date": "Current end date:",
     "new_date": "New end date:",
     "button": {
-      "end_date": "Yes, let me set a new end date",
-      "send": "Send Invitation"
+      "end_date": "Select new end date",
+      "send": "Apply changes"
     },
     "modal": {
       "success": {
@@ -1498,8 +1498,8 @@
         "continue": "Continue"
       },
       "failed": {
-        "title": "Reject",
-        "sub_title": "We'll find a nice name later",
+        "title": "Failed",
+        "sub_title": "Because one of the parties rejected the contract, the execution of the contract failed. If you still want to create this contract, you must draw up a new contract.",
         "continue": "Continue"
       }
     }
