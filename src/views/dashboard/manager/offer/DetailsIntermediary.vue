@@ -237,13 +237,13 @@
             <b-dropdown-item @click="exportCompanyContract">
               <i class="hiway-crm-icon icon-upload mr-1" />
               <span>
-                {{ $t("page_offer_detail.button.dropdown.company_export") }}
+                {{ $t("page_offer_detail.button.dropdown.company_contract") }}
               </span>
             </b-dropdown-item>
             <b-dropdown-item @click="exportContract">
               <i class="hiway-crm-icon icon-upload mr-1" />
               <span>
-                {{ $t("page_offer_detail.button.dropdown.client_export") }}
+                {{ $t("page_offer_detail.button.dropdown.worker_contract") }}
               </span>
             </b-dropdown-item>
           </b-dropdown>

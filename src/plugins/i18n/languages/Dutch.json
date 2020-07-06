@@ -829,8 +829,8 @@
       "upload": "Uploaden",
       "other": "Meer opties",
       "dropdown": {
-        "company_export": "Inleenovereenkomst",
-        "client_export": "Arbeidsovereenkomst",
+        "company_contract": "Inleenovereenkomst",
+        "worker_contract": "Arbeidsovereenkomst",
         "extend": "Contract verlengen",
         "early": "Contract vervroegd beeindigen"
       }
