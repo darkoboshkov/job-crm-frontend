@@ -44,11 +44,11 @@ export const timeSheetStatus = {
 
 export const paymentIntervalOptions = [
   {
-    label: i18n.t("payment_interval_options.week"),
+    label: i18n.t("payment_interval_options.each-week"),
     value: "each-week"
   },
   {
-    label: i18n.t("payment_interval_options.each-week"),
+    label: i18n.t("payment_interval_options.each-4-weeks"),
     value: "each-4-weeks"
   },
   {
@@ -63,7 +63,7 @@ export const discountOnTaxesOptions = [
     value: "yes"
   },
   {
-    label: i18n.t("common.yes"),
+    label: i18n.t("common.no"),
     value: "no"
   }
 ];
