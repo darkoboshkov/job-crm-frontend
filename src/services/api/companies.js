@@ -32,6 +32,7 @@ export default {
   },
   sendCompanyAccess(params, config = {}) {
     const companyId = params.companyId;
+    delete params.companyId;
     return request("post", `/companies/${companyId}/request`, params, config);
   },
   acceptCompanyAccess(params, config = {}) {
