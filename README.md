@@ -1,4 +1,4 @@
-# hiway-crm-frontend
+# job-crm-frontend
 
 ## Project setup
 ```
